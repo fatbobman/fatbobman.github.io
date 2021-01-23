@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="博客,健康笔记,swift,swiftui,ios">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          在SwiftUI中制作可以控制取消手势的Sheet - 徐杨 | Blog | 健康笔记
+        
+    </title>
+
+    <link rel="canonical" href="http://www.fatbobman.com/article/dismissControlSheet/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<link rel="alternate" href="/atom.xml" title="Swift记事本" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/articlebg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#SwiftUI" title="SwiftUI">SwiftUI</a>
+                            
+                        </div>
+                        <h1>在SwiftUI中制作可以控制取消手势的Sheet</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 徐杨 on
+                            2020-09-17
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Swift记事本</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/healthnotes/">健康笔记app</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>在前面的两篇文章中，我们探讨了如何制作一个可以判断是否进行了修改的表单，以及如何统一管理app各个层级View的弹出Sheet。今天我们将他们合并在一起，完成整个项目的最终目的——在Sheet中制作一个可以实时响应的表单，并且sheet会感觉表单的情况响应取消手势。</p>
+</blockquote>
+<p><img src="dissmissConfirmSheetPic.gif" alt="Demo"></p>
+<p><a href="http://www.fatbobman.com/article/AllInOneSheet/">在SwiftUI中,根据需求弹出不同的Sheet</a></p>
+<p><a href="http://www.fatbobman.com/article/DynamicForm/">如何在SwiftUI中创建一个实时响应的Form</a></p>
+<h2 id="由来">由来</h2>
+<p>在之前Form的例子中，虽然我们可以根据表单是否进行了修改来对cancel、edit等做出不同的响应，但是我们并没有办法控制用户直接使用手势来取消sheet，为了不让用户绕过程序的判断检查，不得已使用了fullScreenCover来规避手势取消。不过在实际使用中，尽管全屏sheet提供了更多的屏幕可用空间，但还是会给使用者带来了操作逻辑不统一的体验。</p>
+<p>在去年，我使用的解决方案是，屏蔽sheet的拖动手势。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.highPriorityGesture(<span class="type">DragGesture</span>())</span><br></pre></td></tr></table></figure>
+<p>这也是没有办法的办法。</p>
+<p>后来，SwiftUI-lab中，Javier提出了他的解决方案Dismiss Gesture for SwiftUI Modals](<a href="https://swiftui-lab.com/modal-dismiss-gesture/" target="_blank" rel="noopener">https://swiftui-lab.com/modal-dismiss-gesture/</a>)。这个方案基本上实现了我想要的全部功能。不过这个方案看起来有些怪异。</p>
+<ol>
+<li>数据和sheet控制混合在一起</li>
+<li>对于sheet的控制过于繁琐，而且不直观</li>
+</ol>
+<p>前段时间<a href="https://gist.github.com/mobilinked/9b6086b3760bcf1e5432932dad0813c0" target="_blank" rel="noopener">mobilinked</a>编写了一段用于控制sheet的代码，结构精巧，使用简单。</p>
+<p>本文对于sheet的控制采用了mobilinked的基础代码，并针对Form的响应做出了对应的修改。</p>
+<p>在进行下面的代码说明前，如果你还没有阅读前两篇文章的话，请阅读后再继续。</p>
+<p><a href="http://www.fatbobman.com/article/AllInOneSheet/">在SwiftUI中,根据需求弹出不同的Sheet</a></p>
+<p><a href="http://www.fatbobman.com/article/DynamicForm/">如何在SwiftUI中创建一个实时响应的Form</a></p>
+<h2 id="目标">目标</h2>
+<ol>
+<li>表单对输入的内容进行实时检查（是否有错误，是否有空白项）</li>
+<li>表单将根据当前的状态决定是否允许sheet进行手势取消</li>
+<li>当用户进行手势取消时，如果表单已经进行了修改，需要用户二次确认是否取消</li>
+</ol>
+<h2 id="代码简介">代码简介</h2>
+<p>由于本文代码中多数部分同Form示例代码类似，所以仅简述一下新增及修改的部分。</p>
+<p><strong>SheetManager</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AIOSheetManager</span>:<span class="title">ObservableObject</span></span>&#123;</span><br><span class="line">    @<span class="type">Published</span>  <span class="keyword">var</span> action:<span class="type">AllInOneSheetAction</span>?</span><br><span class="line">    <span class="keyword">var</span> unlock:<span class="type">Bool</span> = <span class="literal">false</span> <span class="comment">//false时无法下滑dismiss,由form程序维护</span></span><br><span class="line">    <span class="keyword">var</span> type:<span class="type">AllInOneSheetType</span> = .sheet <span class="comment">//sheet or fullScreenCover</span></span><br><span class="line">    <span class="keyword">var</span> dismissControl:<span class="type">Bool</span> = <span class="literal">true</span> <span class="comment">//是否启动dismiss阻止开关,true启动阻止</span></span><br><span class="line">    </span><br><span class="line">    @<span class="type">Published</span> <span class="keyword">var</span> showSheet = <span class="literal">false</span></span><br><span class="line">    @<span class="type">Published</span> <span class="keyword">var</span> showFullCoverScreen = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> dismissed = <span class="type">PassthroughSubject</span>&lt;<span class="type">Bool</span>,<span class="type">Never</span>&gt;()</span><br><span class="line">    <span class="keyword">var</span> dismissAction:(() -&gt; <span class="type">Void</span>)? = <span class="literal">nil</span></span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">AllInOneSheetType</span></span>&#123;</span><br><span class="line">        <span class="keyword">case</span> fullScreenCover</span><br><span class="line">        <span class="keyword">case</span> sheet</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>sheet控制代码</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MbModalHackView</span>: <span class="title">UIViewControllerRepresentable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> manager:<span class="type">AIOSheetManager</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">makeUIViewController</span><span class="params">(context: UIViewControllerRepresentableContext&lt;MbModalHackView&gt;)</span></span> -&gt; <span class="type">UIViewController</span> &#123;</span><br><span class="line">        <span class="type">UIViewController</span>()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">updateUIViewController</span><span class="params">(<span class="number">_</span> uiViewController: UIViewController, context: UIViewControllerRepresentableContext&lt;MbModalHackView&gt;)</span></span> &#123;</span><br><span class="line">        rootViewController(of: uiViewController).presentationController?.delegate = context.coordinator</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">rootViewController</span><span class="params">(of uiViewController: UIViewController)</span></span> -&gt; <span class="type">UIViewController</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> parent = uiViewController.parent &#123;</span><br><span class="line">            <span class="keyword">return</span> rootViewController(of: parent)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> uiViewController</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">makeCoordinator</span><span class="params">()</span></span> -&gt; <span class="type">Coordinator</span> &#123;</span><br><span class="line">        <span class="type">Coordinator</span>(manager: manager)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Coordinator</span>: <span class="title">NSObject</span>, <span class="title">UIAdaptivePresentationControllerDelegate</span> </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> manager:<span class="type">AIOSheetManager</span></span><br><span class="line">        <span class="keyword">init</span>(manager:<span class="type">AIOSheetManager</span>)&#123;</span><br><span class="line">            <span class="keyword">self</span>.manager = manager</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">func</span> <span class="title">presentationControllerShouldDismiss</span><span class="params">(<span class="number">_</span> presentationController: UIPresentationController)</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">            <span class="keyword">guard</span> manager.dismissControl <span class="keyword">else</span> &#123;<span class="keyword">return</span> <span class="literal">true</span>&#125;</span><br><span class="line">            <span class="keyword">return</span> manager.unlock</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//当阻止取消时,发送用户要求取消sheet命令</span></span><br><span class="line">        <span class="function"><span class="keyword">func</span> <span class="title">presentationControllerDidAttemptToDismiss</span><span class="params">(<span class="number">_</span> presentationController: UIPresentationController)</span></span>&#123;</span><br><span class="line">            manager.dismissed.send(<span class="literal">true</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">View</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">allowAutoDismiss</span><span class="params">(<span class="number">_</span> manager:AIOSheetManager)</span></span> -&gt; some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="keyword">self</span></span><br><span class="line">            .background(<span class="type">MbModalHackView</span>(manager: manager))</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>包装</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">XSheet</span>:<span class="title">ViewModifier</span></span>&#123;</span><br><span class="line">    @<span class="type">EnvironmentObject</span> <span class="keyword">var</span> manager:<span class="type">AIOSheetManager</span></span><br><span class="line">    @<span class="type">EnvironmentObject</span> <span class="keyword">var</span> store:<span class="type">Store</span></span><br><span class="line">    @<span class="type">Environment</span>(\.managedObjectContext) <span class="keyword">var</span> context</span><br><span class="line">    <span class="keyword">var</span> onDismiss:()-&gt;<span class="type">Void</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            (manager.dismissAction ?? &#123;&#125;)()</span><br><span class="line">            manager.dismissAction = <span class="literal">nil</span></span><br><span class="line">            manager.action = <span class="literal">nil</span></span><br><span class="line">            manager.showSheet = <span class="literal">false</span></span><br><span class="line">            manager.showFullCoverScreen = <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">body</span><span class="params">(content: Content)</span></span> -&gt; some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">ZStack</span>&#123;</span><br><span class="line">            content</span><br><span class="line">            </span><br><span class="line">            <span class="type">Color</span>.clear</span><br><span class="line">                .sheet(isPresented: $manager.showSheet,onDismiss: onDismiss)&#123;</span><br><span class="line">                        <span class="keyword">if</span> <span class="keyword">let</span> action = manager.action</span><br><span class="line">                        &#123;</span><br><span class="line">                            reducer(action)</span><br><span class="line">                            .allowAutoDismiss(manager)</span><br><span class="line">                            .environmentObject(manager)</span><br><span class="line">                        &#125;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="type">Color</span>.clear</span><br><span class="line">                .fullScreenCover(isPresented: $manager.showFullCoverScreen,onDismiss: onDismiss)&#123;</span><br><span class="line">                        <span class="keyword">if</span> <span class="keyword">let</span> action = manager.action</span><br><span class="line">                        &#123;</span><br><span class="line">                            reducer(action)</span><br><span class="line">                                .allowAutoDismiss(manager)</span><br><span class="line">                                .environmentObject(manager)</span><br><span class="line">                        &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        .onChange(of: manager.action)&#123; action <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">guard</span> action != <span class="literal">nil</span> <span class="keyword">else</span> &#123;</span><br><span class="line">                manager.showSheet = <span class="literal">false</span></span><br><span class="line">                manager.showFullCoverScreen = <span class="literal">false</span></span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> manager.type == .sheet &#123;</span><br><span class="line">                manager.showSheet = <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> manager.type == .fullScreenCover&#123;</span><br><span class="line">                manager.showFullCoverScreen = <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">AllInOneSheetAction</span>:<span class="title">Identifiable</span>,<span class="title">Equatable</span></span>&#123;</span><br><span class="line">    <span class="keyword">case</span> show(student:<span class="type">Student</span>)</span><br><span class="line">    <span class="keyword">case</span> edit(student:<span class="type">Student</span>)</span><br><span class="line">    <span class="keyword">case</span> new</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> id:<span class="type">UUID</span>&#123;<span class="type">UUID</span>()&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">XSheet</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">reducer</span><span class="params">(<span class="number">_</span> action:AllInOneSheetAction)</span></span> -&gt; some <span class="type">View</span>&#123;</span><br><span class="line">        <span class="keyword">switch</span> action&#123;</span><br><span class="line">        <span class="keyword">case</span> .show(<span class="keyword">let</span> student):</span><br><span class="line">            <span class="keyword">return</span> <span class="type">StudentManager</span>(action:.show, student:student)</span><br><span class="line">        <span class="keyword">case</span> .new:</span><br><span class="line">            <span class="keyword">return</span> <span class="type">StudentManager</span>(action: .new, student: <span class="literal">nil</span>)</span><br><span class="line">        <span class="keyword">case</span> .edit(<span class="keyword">let</span> student):</span><br><span class="line">            <span class="keyword">return</span> <span class="type">StudentManager</span>(action:.edit,student: student)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">View</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">xsheet</span><span class="params">()</span></span> -&gt; some <span class="type">View</span>&#123;</span><br><span class="line">        <span class="keyword">self</span></span><br><span class="line">            .modifier(<span class="type">XSheet</span>())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>调用方式</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">NavigationView</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">.xsheet()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">Button</span>(<span class="string">"New"</span>)&#123;</span><br><span class="line">         sheetManager.type = .sheet  <span class="comment">//当前支持两种方式 sheet fullScreenCover</span></span><br><span class="line">         sheetManager.dismissControl = <span class="literal">true</span> <span class="comment">//打开控制</span></span><br><span class="line">         sheetManager.action = .new   <span class="comment">//设置统一sheet的action</span></span><br><span class="line">              &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Form代码的修改</strong></p>
+<p>为了让我们的表单代码能够管理sheet，并且可以响应用户的取消手势，对Form代码做了如下的修改：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@<span class="type">State</span> <span class="keyword">private</span> <span class="keyword">var</span> changed = <span class="literal">false</span>&#123;</span><br><span class="line">    <span class="keyword">didSet</span>&#123;</span><br><span class="line">        <span class="comment">//控制sheet是否允许dismiss</span></span><br><span class="line">        <span class="keyword">if</span> action == .show &#123;</span><br><span class="line">            sheetManager.unlock = <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            sheetManager.unlock = !changed</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">新增</span><br><span class="line"> .onReceive(sheetManager.dismissed)&#123; value <span class="keyword">in</span></span><br><span class="line">                delConfirm.toggle()</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+<p>详细代码请访问我的<a href="https://github.com/fatbobman/DismissConfirmSheet" target="_blank" rel="noopener">github</a></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/helthNotes2-4/" data-toggle="tooltip" data-placement="top" title="健康笔记开发随笔（四）">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/healthNotes2-3/" data-toggle="tooltip" data-placement="top" title="健康笔记2.0开发随笔（三）">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                    <div class="reward">
+                        <div class="reward-button">赏 <span class="reward-code"> 
+                            <span class="alipay-code"> <img class="alipay-img" src="/img/alipay.jpeg"><b>支付宝打赏</b></span> 
+                            <span class="wechat-code"> <img class="wechat-img" src="/img/weixin.jpeg"><b>微信打赏</b> </span>
+                            </span></div>
+                        <p class="reward-notice">请我喝杯茶</p>
+                    </div>
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+                
+                    <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC81MTMzMS8yNzgxMg==">
+    <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+    
+           if (typeof LivereTower === 'function') { return; }
+    
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+    
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    <style>
+      span.toc-nav-number{
+        display: none
+      }
+    </style>
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#由来"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x7531;&#x6765;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#目标"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x76EE;&#x6807;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#代码简介"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">&#x4EE3;&#x7801;&#x7B80;&#x4ECB;</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#SwiftUI" title="SwiftUI">SwiftUI</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://zhuanlan.zhihu.com/c_1242412078326702080" target="_blank">肘子的Swift笔记</a></li>
+                    
+                </ul>
+                
+            </div> 
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/fatbobman">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fatbobman3000">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/fatbobman">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 徐杨 2021  <a href="http://beian.miit.gov.cn">辽ICP备20006550</a>
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://www.huweihuang.com">HWH</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huweihuang&repo=hexo-theme-huweihuang&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.fatbobman.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165296388-1';
+    var _gaDomain = 'fatbobman.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '14e5d60a3ea6276655f9d14c58b1fcd0';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.fatbobman.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

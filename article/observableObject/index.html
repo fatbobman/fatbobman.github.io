@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="博客,健康笔记,swift,swiftui,ios">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          observableObject研究 - 徐杨 | Blog | 健康笔记
+        
+    </title>
+
+    <link rel="canonical" href="http://www.fatbobman.com/article/observableObject/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<link rel="alternate" href="/atom.xml" title="Swift记事本" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/articlebg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#SwiftUI" title="SwiftUI">SwiftUI</a>
+                            
+                              <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                            
+                        </div>
+                        <h1>observableObject研究</h1>
+                        <h2 class="subheading">想说爱你不容易</h2>
+                        <span class="meta">
+                            Posted by 徐杨 on
+                            2020-05-17
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Swift记事本</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/healthnotes/">健康笔记app</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>本文主要研究在SwiftUI中，采用单一数据源(Single Source of Truth)的开发模式，ObservableObject是否为最佳选择。是否可以在几乎不改变现有设计思路下进行新的尝试，以提高响应效率。最后提供了一个仍采用单一数据源设计思路但完全弃用ObservableObject的方式。</p>
+</blockquote>
+<h2 id="单一数据源">单一数据源</h2>
+<p>我是在去年阅读王巍写的<a href="https://objccn.io/products/swift-ui" target="_blank" rel="noopener">《SwiftUI 与 Combine 编程》</a>才第一次接触到<strong>单一数据源</strong>这一概念的。</p>
+<ul>
+<li>
+<p>将 app 当作一个状态机，状态决定用户界面。</p>
+</li>
+<li>
+<p>这些状态都保存在一个 Store 对象中，被称为 State。</p>
+</li>
+<li>
+<p>View 不能直接操作 State，而只能通过发送 Action 的方式，间接改变存储在 Store 中的 State。</p>
+</li>
+<li>
+<p>Reducer 接受原有的 State 和发送过来的 Action，生成新的 State。</p>
+</li>
+<li>
+<p>用新的 State 替换 Store 中原有的状态，并用新状态来驱动更新界面。</p>
+</li>
+</ul>
+<p><img src="reduximage.gif" alt="Redux架构"></p>
+<p>在该书中结合作者之前Redux、RxSwift等开发经验，提供了一个SwiftUI化的范例程序。之后我也继续学习了一些有关的资料，并通过阅读Github上不少的开源范例，基本对这一方式有所掌握，并在<a href="https://apps.apple.com/app/id1492861358" target="_blank" rel="noopener"><strong>健康笔记</strong></a>中得以应用。总的来说，当前在SwiftUI框架下，大家的实现手段主要的不同都体现在细节上，大的方向、模式、代码构成基本都差不多：</p>
+<ul>
+<li>
+<p>Store对象遵守ObservableObject协议</p>
+</li>
+<li>
+<p>State保存在Store对象中，并使用@Published进行包装。从而在State发生变化时通知Store</p>
+</li>
+<li>
+<p>Store对象通过@ObservedObject 或 @EnvironmentObject与View建立依赖</p>
+</li>
+<li>
+<p>Store对象在State变化后通过objectWillChange的Pbulisher通知与其已建立依赖关系的View进行刷新</p>
+</li>
+<li>
+<p>View发送Action -&gt; Recudcer(State,Action) -&gt; newState 周而复始</p>
+</li>
+<li>
+<p>由于SwiftUI的双向绑定机制，数据流并非完全单向的</p>
+</li>
+<li>
+<p>在部分视图中可以结合SwiftUI通过的其他包装属性如@FetchRequest等将状态局部化</p>
+</li>
+</ul>
+<p><em>后两项是利用SwiftUI的特性，也可以不采用，完全采用单向数据流的方式</em></p>
+<p>基于以上方法，在SwiftUI中进行单一数据源开发是非常便利的，在多数情况下执行效率、响应速度都是有基本保证的。不过就像我在上一篇文章 <a href="http://www.fatbobman.com/article/state/">@State研究</a> 中提到过的，<strong>当随着动态数据量的增大、与Store保有依赖关系的View数量提高到一定程度后，整个app的响应效率便会急剧恶化。</strong></p>
+<p>恶化的原因主要有以下几点：</p>
+<ol>
+<li>对于遵循ObservableObject对象的依赖注入时机</li>
+<li>View的精细化</li>
+<li>依赖通知接口唯一性。State（状态集合）中任何的单一元素发生变化都将通知所有与Store有依赖的View进行重绘。</li>
+</ol>
+<p>我就以上几点逐条进行分析。</p>
+<h2 id="对于遵循observableobject对象的依赖注入时机">对于遵循ObservableObject对象的依赖注入时机</h2>
+<p>在 <a href="http://www.fatbobman.com/article/state/">@State研究</a> 中的 **什么时候建立的依赖？**章节中，我们通过了一段代码进行过@State和@ObservedObject对于依赖注入时机的推测。结果就是通过使用@ObservedObject或@EnvironmentObject进行的依赖注入，编译器没有办法根据当前View的具体内容来进行更精确的判断，只要你的View中进行了声明，依赖关系变建立了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MainView</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    @<span class="type">ObservedObject</span> <span class="keyword">var</span> store = <span class="type">AppStore</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"mainView"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="type">Form</span> &#123;</span><br><span class="line">            <span class="type">SubView</span>(date: $store.date)</span><br><span class="line">            <span class="type">Button</span>(<span class="string">"修改日期"</span>) &#123;</span><br><span class="line">                <span class="keyword">self</span>.store.date = <span class="type">Date</span>().description</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SubView</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    @<span class="type">Binding</span> <span class="keyword">var</span> date: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"subView"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="type">Text</span>(date)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppStore</span>:<span class="title">ObservableObject</span></span>&#123;</span><br><span class="line">    @<span class="type">Published</span> <span class="keyword">var</span> date:<span class="type">String</span> = <span class="type">Date</span>().description</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行后输出如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mainView</span><br><span class="line">subView</span><br><span class="line">mainView</span><br><span class="line">subView</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><em>更详细的分析请参见 <a href="http://www.fatbobman.com/article/state/">@State研究</a></em></p>
+<p><strong>即使你只在View中发送action，并没有显示State中的数据或使用其做判断，该View也会被强制刷新。甚至，如果你像我一样，忘了移除在View中的声明，View也同样会被更新。</strong></p>
+<p>如果类似的View比较多，你的app将会出现大量的无效更新。</p>
+<h2 id="view的精细化">View的精细化</h2>
+<p>这里所指的View是你自己构建的遵循View协议的结构体。</p>
+<p>在SwiftUI下开发，无论是主观还是客观都需要你将View的表述精细化，用更多的子View来组成你的最终视图，而不是把所有的代码都尽量写在同一个View上。</p>
+<p><strong>主观方面</strong></p>
+<ul>
+<li>更小的耦合性</li>
+<li>更强的复用性</li>
+</ul>
+<p><strong>客观方面</strong></p>
+<ul>
+<li>
+<p>ViewBuilder的设计限制<br>
+FunctionBuilder作为Swift5.1的重要新增特性，成为了SwiftUI声明式编程的基础。它为在Swift代码中实现DSL带来了极大的便利。不过作为一个新生产物，它目前的能力还并不十分的强大。</p>
+<p>目前它仅提供非常有限的逻辑语句</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">if</span> &#123;&#125; <span class="keyword">else</span> &#123;&#125;</span><br><span class="line">  <span class="keyword">if</span> &#123;&#125;</span><br><span class="line">? :</span><br><span class="line">  <span class="type">ForEach</span> <span class="comment">//唯一的循环能力，有诸多的限制</span></span><br></pre></td></tr></table></figure>
+<p>以及数量有限的Block合成能力。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">func</span> <span class="title">buildBlock</span>&lt;C0, C1, C2, C3, C4, C5, C6, C7, C8, C9&gt;<span class="params">(<span class="number">_</span> c0: C0, <span class="number">_</span> c1: C1, <span class="number">_</span> c2: C2, <span class="number">_</span> c3: C3, <span class="number">_</span> c4: C4, <span class="number">_</span> c5: C5, <span class="number">_</span> c6: C6, <span class="number">_</span> c7: C7, <span class="number">_</span> c8: C8, <span class="number">_</span> c9: C9)</span></span> -&gt; <span class="type">TupleView</span>&lt;(<span class="type">C0</span>, <span class="type">C1</span>, <span class="type">C2</span>, <span class="type">C3</span>, <span class="type">C4</span>, <span class="type">C5</span>, <span class="type">C6</span>, <span class="type">C7</span>, <span class="type">C8</span>, <span class="type">C9</span>)&gt; <span class="keyword">where</span> <span class="type">C0</span> : <span class="type">View</span>, <span class="type">C1</span> : <span class="type">View</span>, <span class="type">C2</span> : <span class="type">View</span>, <span class="type">C3</span> : <span class="type">View</span>, <span class="type">C4</span> : <span class="type">View</span>, <span class="type">C5</span> : <span class="type">View</span>, <span class="type">C6</span> : <span class="type">View</span>, <span class="type">C7</span> : <span class="type">View</span>, <span class="type">C8</span> : <span class="type">View</span>, <span class="type">C9</span> : <span class="type">View</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在编写代码中，为了能够实现更多逻辑和丰富的UI，我们必须把代码分散到各个View中，再最终合成。否则你会经常获得无法使用过多逻辑等等的错误提示。</p>
+<ul>
+<li>
+<p>以Body为单位的优化机制</p>
+<p>SwiftUI为了减少View的重绘其实做了大量的工作，它以View的body为单位进行非常深度的优化（body是每个View的唯一入口；View中使用func -&gt; some View无法享受优化，只有独立的View才可以）。SwiftUI在程序编译时便已将所有的View编译成View树，它尽可能的只对必须要响应状态变化的View（@State完美的支持）进行重绘工作。用户还可以通过自行设置Equatable的比对条件进一步优化View重绘策略。</p>
+</li>
+<li>
+<p>Xcode的代码实时解析能力限制</p>
+<p>如果你在同一个View中写入了过多的代码，Xcode的代码提示功能几乎就会变得不可用了。我估计应该是解析DSL本身的工作量非常大，我们在View body中写的看起来不多的描述语句，其实后面对应的是非常多的具体代码。Xcode的代码提示总会超出了它合理的计算时间而导致故障。此时只需把View分解成几个View，即使仍然在同一个文件中，Xcode的工作也会立刻正常起来。</p>
+</li>
+<li>
+<p>预览的可靠性限制</p>
+<p>新的预览功能本来会极大的提升布局及调试效率，但由于其对复杂代码的支持并不完美，将View分割后，通过使用合适的Preview控制语句可以高效、无错的对每个子View进行独立预览。</p>
+</li>
+</ul>
+<p>从上面几点看，无论从任何角度，更精细化的View描述都是十分合适的。</p>
+<p><strong>但由于在单一数据源的情况下，我们将会有更多的View和Store建立依赖。众多的依赖将使我们无法享受到SwiftUI提供的View更新优化机制。</strong></p>
+<p>有关View优化的问题大家可以参考 <a href="https://objccn.io/products/thinking-in-swiftui" target="_blank" rel="noopener">《SwiftUI编程思想》</a>一书中View更新机制的介绍，另外<a href="https://swiftui-lab.com/equatableview/" target="_blank" rel="noopener">swiftui-lab</a>上也有探讨Equality的文章。</p>
+<h2 id="依赖通知接口唯一性">依赖通知接口唯一性</h2>
+<p>State（状态集合）中任何的单一元素的变化都将通知所有与Store有依赖的View进行重绘。</p>
+<p>使用@Published对State进行了包装。在State的值发生变化后，其会通过Store（ObservableObject协议）提供的ObjectWillChangePublisher发送通知，所有与其有依赖的View进行刷新。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppStore</span>:<span class="title">ObservableObject</span></span>&#123;</span><br><span class="line">    @<span class="type">Published</span> <span class="keyword">var</span> state = <span class="type">State</span>()</span><br><span class="line">  	...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">State</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> userName:<span class="type">String</span> = <span class="string">""</span></span><br><span class="line">    <span class="keyword">var</span> login:<span class="type">Bool</span> = <span class="literal">false</span></span><br><span class="line">    <span class="keyword">var</span> selection:<span class="type">Int</span> = <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于一个并不复杂的State来说，尽管仍有无效动作，但整体效率影响并不大，但是如果你的app的State里面内容较多，更新较频繁，View的更新压力会陡然增大。尤其State中本来很多数据的变化性是不高的，大量的View只需要使用变化性低的数据，但只要State发生任何改动，都将被迫重绘。</p>
+<h2 id="如何改善">如何改善</h2>
+<p>在发现了上述的问题后，开始逐步尝试找寻解决的途径。</p>
+<h3 id="第一步-减少注入依赖">第一步 减少注入依赖</h3>
+<p>针对只要声明则就会形成依赖的的问题，我第一时间想到的就是减少注入依赖。首先不要在代码中添加不必要的依赖声明；对于那些只需要发送Action但并不使用State的View，将store定义成全部变量，无需注入直接使用。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//AppDelegate中</span></span><br><span class="line"><span class="built_in">lazy</span> <span class="keyword">var</span> store = <span class="type">Store</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">let</span> store = (<span class="type">UIApplication</span>.shared.delegate <span class="keyword">as</span>! <span class="type">AppDelegate</span>).store</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ContentView</span>:<span class="title">View</span></span>&#123;</span><br><span class="line">  <span class="keyword">var</span> body:some <span class="type">View</span>&#123;</span><br><span class="line">    <span class="type">Button</span>(<span class="string">"直接使用Action"</span>)&#123;</span><br><span class="line">      store.dispatch(.test)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//其他需要依赖注入的View则正常使用</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">OtherView</span>:<span class="title">View</span></span>&#123;</span><br><span class="line">  @<span class="type">EnvironmentObject</span> <span class="keyword">var</span> store:<span class="type">Store</span></span><br><span class="line">  <span class="keyword">var</span> boyd:some <span class="type">View</span>&#123;</span><br><span class="line">    <span class="type">Text</span>(store.state.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="第二步-将无必要性的状态区域化">第二步 将无必要性的状态区域化</h3>
+<p>听起来这条貌似背离了单一数据源的思想，不过其实在app中，有非常多的状态仅对当前View或小范围的View有效。如果能够合理的进行设计，这些状态信息在自己的小区域中完全可以很好地自我管理，自我维持。没有必要统统汇总到State中。</p>
+<p>在区域范围内来创建被维持一个小的状态，主要可以使用以下几种手段：</p>
+<ul>
+<li>
+<p><strong>善用@State</strong><br>
+在 <a href="http://www.fatbobman.com/article/state/">@State研究</a> 这篇文章中,我们讨论了SwiftUI对于@State的优化问题。如果设计合理，我们可以将无关大局的信息，保存在局部View。同时通过对@State的二度包装，我们同样可以完成所需要的副作用。该View的子View如果使用了@Binding，也只对局部的View树产生影响。</p>
+<p>另外也可以将常用的View修饰通过ViewModifier进行包装。ViewModifier可以维持自己的@State，可以自行管理状态。</p>
+</li>
+<li>
+<p><strong>创建自己的@EnviromentKey或PreferenceKey，仅注入需要的View树分支</strong></p>
+<p>同EnviromentObject类似，注入EnviromentKey的依赖也是显性的</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="type">Environment</span>(\.myKey) <span class="keyword">var</span> currentPage</span><br></pre></td></tr></table></figure>
+<p>我们可以通过以下方式，更改该EnvironmentKey的值，但作用范围仅针对当前View下面的子View分支</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span>(<span class="string">"修改值"</span>)&#123;</span><br><span class="line">  <span class="keyword">self</span>.currentPage = <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">SubView</span>()</span><br><span class="line">	.environment(\.myKey, currentPage)</span><br></pre></td></tr></table></figure>
+<p>EnvironmentObject也是可以在任意某个分支注入依赖的，不过由于其是引用类型，通常任何分支的改动，都仍然会对整个View树其他的使用者造成影响。</p>
+<p>同理，我们也可以使用PreferenceKey，只将数据注入到当前View之上的层级。</p>
+<p>值类型无论如何都要比引用类型都更可控些。</p>
+</li>
+<li>
+<p><strong>在当前View使用SwiftUI提供的其他包装属性</strong></p>
+<p>我现在最常使用的SwiftUI的其他包装属性就属@FetchRequest了。除了必要的数据放置于State中，我对于CoreDate的大多数据需求都通过该属性包装器来完成。@FetchRequest目前有不足之处，比如无法进行更精细的批量指定、明确惰性状态、获取限制等，不过相对于它带来的便利性，我还是完全可以接受的。FetchRequest完全可以实现同其他CoreData NSFetchRequest一样的程序化Request设定，结合上面的方式同样可以将Request生成器放在Store中而不影响当前View。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SideView</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    @<span class="type">Environment</span>(\.managedObjectContext)</span><br><span class="line">    <span class="keyword">var</span> context</span><br><span class="line"></span><br><span class="line">    @<span class="type">State</span> <span class="keyword">var</span> search: <span class="type">Search</span>?</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">VStack</span>(alignment: .leading) &#123;</span><br><span class="line">            <span class="type">SearchView</span>(</span><br><span class="line">                onSearch: <span class="keyword">self</span>.onSearch</span><br><span class="line">            )</span><br><span class="line">            <span class="type">InsideListView</span>(fetchRequest: makeFetchRequest())  <span class="comment">//根据上面的search 来生成不同谓词对应的fetchrequest.</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">makeFetchRequest</span><span class="params">()</span></span> -&gt; <span class="type">FetchRequest</span>&lt;<span class="type">Book</span>&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> predicate: <span class="type">NSPredicate</span>?</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> search = search &#123;</span><br><span class="line">            <span class="keyword">let</span> textPredicate = <span class="type">NSPredicate</span>(format: <span class="string">"string CONTAINS[cd] %@"</span>, search.text)</span><br><span class="line">            <span class="keyword">let</span> appPredicate = <span class="type">NSPredicate</span>(format: <span class="string">"appName == %@"</span>, search.app)</span><br><span class="line">            <span class="keyword">let</span> typePredicate = <span class="type">NSPredicate</span>(format: <span class="string">"type == %@"</span>, search.type)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> predicates: [<span class="type">NSPredicate</span>] = []</span><br><span class="line">            <span class="keyword">if</span> search.text.<span class="built_in">count</span> &gt;= <span class="number">3</span> &#123;</span><br><span class="line">                predicates.append(textPredicate)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> search.app != <span class="type">Constants</span>.all &#123;</span><br><span class="line">                predicates.append(appPredicate)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> search.type != <span class="type">Constants</span>.all &#123;</span><br><span class="line">                predicates.append(typePredicate)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            predicate = <span class="type">NSCompoundPredicate</span>(andPredicateWithSubpredicates: predicates)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            predicate = <span class="literal">nil</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="type">FetchRequest</span>&lt;<span class="type">Book</span>&gt;(</span><br><span class="line">            entity: <span class="type">Book</span>.entity(),</span><br><span class="line">            sortDescriptors: [</span><br><span class="line">                <span class="type">NSSortDescriptor</span>(keyPath: \<span class="type">Book</span>.date, ascending: <span class="literal">false</span>)</span><br><span class="line">            ],</span><br><span class="line">            predicate: predicate</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">onSearch</span><span class="params">(<span class="number">_</span> search: Search)</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> search.text.<span class="built_in">count</span> &lt; <span class="number">3</span> &amp;&amp; search.type != <span class="type">Constants</span>.all &amp;&amp; search.app != <span class="type">Constants</span>.all &#123;</span><br><span class="line">            <span class="keyword">self</span>.search = <span class="literal">nil</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">self</span>.search = search</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">struct</span> <span class="title">InsideListView</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    @<span class="type">Environment</span>(\.managedObjectContext)</span><br><span class="line">    <span class="keyword">var</span> context</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> fetchRequest: <span class="type">FetchRequest</span>&lt;<span class="type">Book</span>&gt;    <span class="comment">//只声明,内容需要由调用者来设定</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">List</span>(items) &#123;</span><br><span class="line">            <span class="type">ForEach</span></span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> items: <span class="type">FetchedResults</span>&lt;<span class="type">Book</span>&gt; &#123;</span><br><span class="line">        fetchRequest.wrappedValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我相信，下一步SwiftUI应该还会提供更多的直接将状态控制在局部的包装器。</p>
+</li>
+</ul>
+<h3 id="第三部-和observedobject说再见">第三部 和ObservedObject说再见</h3>
+<p>只要我们的View还需要依赖单一数据源的State，前面我们做努力就都付之东流了。但坚持单一数据源的设计思路又是十分明确的。由于任何状态的变化ObservedObject只有通过ObjectWillChangePublisher这一个途径来通知与其依赖的View，因此我们如果要解决这个问题，只能放弃使用ObservedObject，通过自己创建视图和State中每个独立元素的依赖关系，完成我们的优化目的。</p>
+<p>Combine当然是首选。我希望达到的效果如下：</p>
+<ul>
+<li>State仍然以目前的形式保存在Store中，整个程序的结构基本和使用ObservedObject一样</li>
+<li>State中每个元素可以自己通知与其依赖的View而不通过@Published</li>
+<li>每个View可以根据自己的需要同State中的元素建立依赖关系，State中其他无关的变化不会导致其被强制刷新</li>
+<li>State中的数据仍然支持Binding等操作，而且能够支持各种形式的结构设定</li>
+</ul>
+<p>基于以上几点，我最终采用了如下的解决方案：</p>
+<p>1、Store不变，只是去掉了ObservedObject</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Store</span></span>&#123;</span><br><span class="line">  <span class="keyword">var</span> state = <span class="type">AppState</span>()</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、State结构如下</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AppState</span></span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="type">CurrentValueSubject</span>&lt;<span class="type">String</span>,<span class="type">Never</span>&gt;(<span class="string">"肘子"</span>)</span><br><span class="line">  <span class="keyword">var</span> age = <span class="type">CurrentValueSubject</span>&lt;<span class="type">Int</span>,<span class="type">Never</span>&gt;(<span class="number">100</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过使用CurrentValueSubject来创建指定类型的Publisher。</p>
+<p>3、通过如下方式注入</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当前View只需要显示name</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ContentView</span>:<span class="title">View</span></span>&#123;</span><br><span class="line">  @<span class="type">State</span> <span class="keyword">var</span> name:<span class="type">String</span> = <span class="string">""</span></span><br><span class="line">  <span class="keyword">var</span> body:some <span class="type">View</span>&#123;</span><br><span class="line">    <span class="type">Form</span>&#123;</span><br><span class="line">      <span class="type">Text</span>(name)</span><br><span class="line">    &#125;</span><br><span class="line">    .onReceive(store.state.name, perform: &#123; name <span class="keyword">in</span></span><br><span class="line">                <span class="keyword">self</span>.name = name</span><br><span class="line">            &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们需要显式的在每个View中把需要依赖的元素单独通过.onReceive获取并保存到本地。</p>
+<p>4、修改State中的值</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基于View-&gt; Action 来修改State的机制</span></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Store</span></span>&#123;</span><br><span class="line">  <span class="comment">//例程并非遵循action，不过也是调用Store，意会即可</span></span><br><span class="line">  fune test&#123;</span><br><span class="line">     state.name.value = <span class="string">"大肘子"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//在上面的ContentView中添加</span></span><br><span class="line"><span class="type">Button</span>(<span class="string">"修改名字"</span>)&#123;</span><br><span class="line">  store.test()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>5、支持Binding</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">CurrentValueSubject</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> binding:<span class="type">Binding</span>&lt;<span class="type">Output</span>&gt;&#123;</span><br><span class="line">        <span class="type">Binding</span>&lt;<span class="type">Output</span>&gt;(<span class="keyword">get</span>: &#123;<span class="keyword">self</span>.value&#125;, <span class="keyword">set</span>: &#123;<span class="keyword">self</span>.value = $<span class="number">0</span>&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用binding</span></span><br><span class="line"></span><br><span class="line"><span class="type">TextField</span>(<span class="string">"姓名"</span>,text:store.state.name.binding)</span><br></pre></td></tr></table></figure>
+<p>6、对结构体支持Binding</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">"fat"</span></span><br><span class="line">    <span class="keyword">var</span> age = <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">AppState</span></span>&#123;</span><br><span class="line">	  <span class="keyword">var</span> student = <span class="type">CurrentValueSubject</span>&lt;<span class="type">Student</span>,<span class="type">Never</span>&gt;(<span class="type">Student</span>())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">CurrentValueSubject</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">binding</span>&lt;Value&gt;<span class="params">(<span class="keyword">for</span> keyPath:WritableKeyPath&lt;Output,Value&gt;)</span></span>-&gt;<span class="type">Binding</span>&lt;<span class="type">Value</span>&gt;&#123;</span><br><span class="line">			   <span class="type">Binding</span>&lt;<span class="type">Value</span>&gt;(<span class="keyword">get</span>: &#123;<span class="keyword">self</span>.value[keyPath:keyPath]&#125;, </span><br><span class="line">      			            <span class="keyword">set</span>: &#123; <span class="keyword">self</span>.value[keyPath:keyPath] = $<span class="number">0</span>&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用Binding</span></span><br><span class="line"><span class="type">TextField</span>(<span class="string">"studentName:"</span>,text: store.state.student.binding(<span class="keyword">for</span>: \.name))</span><br></pre></td></tr></table></figure>
+<p>7、对于更复杂的State元素设计的Binding支持。如果你却有必要在State中创建以上Binding方式无法支持的格式可以通过使用我另一篇文章中 <a href="http://www.fatbobman.com/article/state/">@State研究</a>最后创建的增强型@MyState来完成特殊的需要，你对本地的 studentAge做的任何改动都将自动的反馈到State中</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ContentView</span>:<span class="title">View</span></span>&#123;</span><br><span class="line">  @<span class="type">MyState</span>&lt;<span class="type">String</span>&gt;(wrappedValue: <span class="type">String</span>(store.state.student.value.age), toAction: &#123;</span><br><span class="line">        store.state.student.value.age = <span class="type">Int</span>($<span class="number">0</span>) ?? <span class="number">0</span></span><br><span class="line">    &#125;) <span class="keyword">var</span> studentAge</span><br><span class="line">  <span class="keyword">var</span> body:some <span class="type">View</span>&#123;</span><br><span class="line">     <span class="type">TextField</span>(<span class="string">"student age:"</span>,text: $studentAge)   </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至此我们便达成了之前设定的全部目标。</p>
+<ul>
+<li>只对原有的程序结构做微小的调整</li>
+<li>State中每个元素都会在自改动时独立的发出通知</li>
+<li>每个View可以只与自己有关的State中的元素创建依赖</li>
+<li>对Binding的完美支持</li>
+</ul>
+<h4 id="追加减少代码量">追加：减少代码量</h4>
+<p>在实际的使用中，上述解决方案会导致每个View的代码量有了一定的增长。尤其是当你忘了写.onReceive时，程序并不会报错，但同时数据不会实时响应，反倒增加排查错误的难度。通过使用属性包装器，我们可以将Publisher订阅和变量声明合二为一，进一步的优化上述的解决方案。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">@propertyWrapper</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ObservedPublisher</span>&lt;<span class="title">P</span>:<span class="title">Publisher</span>&gt;:<span class="title">DynamicProperty</span> <span class="title">where</span> <span class="title">P</span>.<span class="title">Failure</span> == <span class="title">Never</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">let</span> publisher:<span class="type">P</span></span><br><span class="line">    @<span class="type">State</span> <span class="keyword">var</span> cancellable:<span class="type">AnyCancellable</span>? = <span class="literal">nil</span></span><br><span class="line">    </span><br><span class="line">    @<span class="type">State</span> <span class="keyword">public</span> <span class="keyword">private</span>(<span class="keyword">set</span>) <span class="keyword">var</span> wrappedValue:<span class="type">P</span>.<span class="type">Output</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> updateWrappedValue = <span class="type">MutableHeapWrapper</span>&lt;(<span class="type">P</span>.<span class="type">Output</span>)-&gt;<span class="type">Void</span>&gt;(&#123; <span class="number">_</span> <span class="keyword">in</span> &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">init</span>(publisher:<span class="type">P</span>,initial:<span class="type">P</span>.<span class="type">Output</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.publisher = publisher</span><br><span class="line">        <span class="keyword">self</span>._wrappedValue = .<span class="keyword">init</span>(wrappedValue: initial)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">let</span> updateWrappedValue = <span class="keyword">self</span>.updateWrappedValue</span><br><span class="line">        <span class="keyword">self</span>._cancellable = .<span class="keyword">init</span>(initialValue:  publisher</span><br><span class="line">            .delay(<span class="keyword">for</span>: .nanoseconds(<span class="number">1</span>), scheduler: <span class="type">RunLoop</span>.main)</span><br><span class="line">            .sink(receiveValue: &#123;</span><br><span class="line">                updateWrappedValue.value($<span class="number">0</span>)</span><br><span class="line">            &#125;))</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">let</span> _wrappedValue = <span class="keyword">self</span>._wrappedValue</span><br><span class="line">        updateWrappedValue.value = &#123;</span><br><span class="line">            _wrappedValue.wrappedValue = $<span class="number">0</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">MutableHeapWrapper</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> value: <span class="type">T</span></span><br><span class="line">    </span><br><span class="line">    @inlinable</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(<span class="number">_</span> value: <span class="type">T</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.value = value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>上面的代码来自于开源项目SwiftUIX，我对其进行了很小修改使其能够适配CurrentValueSubject</em></p>
+<p>使用方法</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="type">ObservedPublisher</span>(publisher: store.state.title, initial: <span class="string">""</span>) <span class="keyword">var</span> title</span><br></pre></td></tr></table></figure>
+<p>至此，我们进一步的减少了代码量，并且基本消除了由于漏写.onReceive而可能出现的问题。</p>
+<p>上述代码我已经放到了<a href="https://github.com/fatbobman/MySingleSoureOfTruthDemo" target="_blank" rel="noopener">Github</a></p>
+<h2 id="总结">总结</h2>
+<p>之所以进行这方面的探讨是由于我的app出现了响应的粘滞（和我心目中iOS平台上该有的丝滑感有落差）。在研究学习的过程中也让我对SwiftUI的有了进一步的认识。无论我提出的思路是否正确，至少整个过程让我获益匪浅。</p>
+<p>在我做这方面学习的过程中，恰好也发现了另外一位朋友提出了类似的观点，并提出了他的解决方案。由于他之前有RxSwift上开发大型项目的经验，他的解决方案使用了快照（SnapShot）的概念。注入方式采用EnvironmetKey，对于State元素的无效修改（比如说和原值相同）做了比较好的过滤。可以到<a href="https://nalexn.github.io/swiftui-observableobject/" target="_blank" rel="noopener">他的博客</a>查看该文。</p>
+<p>最后希望Apple能够在将来提供更原生的方式解决以上问题。</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/stateobject/" data-toggle="tooltip" data-placement="top" title="StateObject研究">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/state/" data-toggle="tooltip" data-placement="top" title="@state研究">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                    <div class="reward">
+                        <div class="reward-button">赏 <span class="reward-code"> 
+                            <span class="alipay-code"> <img class="alipay-img" src="/img/alipay.jpeg"><b>支付宝打赏</b></span> 
+                            <span class="wechat-code"> <img class="wechat-img" src="/img/weixin.jpeg"><b>微信打赏</b> </span>
+                            </span></div>
+                        <p class="reward-notice">请我喝杯茶</p>
+                    </div>
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+                
+                    <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC81MTMzMS8yNzgxMg==">
+    <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+    
+           if (typeof LivereTower === 'function') { return; }
+    
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+    
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    <style>
+      span.toc-nav-number{
+        display: none
+      }
+    </style>
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#单一数据源"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x5355;&#x4E00;&#x6570;&#x636E;&#x6E90;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#对于遵循observableobject对象的依赖注入时机"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x5BF9;&#x4E8E;&#x9075;&#x5FAA;ObservableObject&#x5BF9;&#x8C61;&#x7684;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x65F6;&#x673A;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#view的精细化"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">View&#x7684;&#x7CBE;&#x7EC6;&#x5316;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#依赖通知接口唯一性"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">&#x4F9D;&#x8D56;&#x901A;&#x77E5;&#x63A5;&#x53E3;&#x552F;&#x4E00;&#x6027;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#如何改善"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">&#x5982;&#x4F55;&#x6539;&#x5584;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#第一步-减少注入依赖"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">&#x7B2C;&#x4E00;&#x6B65; &#x51CF;&#x5C11;&#x6CE8;&#x5165;&#x4F9D;&#x8D56;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#第二步-将无必要性的状态区域化"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">&#x7B2C;&#x4E8C;&#x6B65; &#x5C06;&#x65E0;&#x5FC5;&#x8981;&#x6027;&#x7684;&#x72B6;&#x6001;&#x533A;&#x57DF;&#x5316;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#第三部-和observedobject说再见"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text">&#x7B2C;&#x4E09;&#x90E8; &#x548C;ObservedObject&#x8BF4;&#x518D;&#x89C1;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#追加减少代码量"><span class="toc-nav-number">5.3.1.</span> <span class="toc-nav-text">&#x8FFD;&#x52A0;&#xFF1A;&#x51CF;&#x5C11;&#x4EE3;&#x7801;&#x91CF;</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#总结"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">&#x603B;&#x7ED3;</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#SwiftUI" title="SwiftUI">SwiftUI</a>
+                        
+                          <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://zhuanlan.zhihu.com/c_1242412078326702080" target="_blank">肘子的Swift笔记</a></li>
+                    
+                </ul>
+                
+            </div> 
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/fatbobman">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fatbobman3000">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/fatbobman">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 徐杨 2021  <a href="http://beian.miit.gov.cn">辽ICP备20006550</a>
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://www.huweihuang.com">HWH</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huweihuang&repo=hexo-theme-huweihuang&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.fatbobman.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165296388-1';
+    var _gaDomain = 'fatbobman.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '14e5d60a3ea6276655f9d14c58b1fcd0';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.fatbobman.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

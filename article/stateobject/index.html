@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="博客,健康笔记,swift,swiftui,ios">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          StateObject研究 - 徐杨 | Blog | 健康笔记
+        
+    </title>
+
+    <link rel="canonical" href="http://www.fatbobman.com/article/stateobject/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<link rel="alternate" href="/atom.xml" title="Swift记事本" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/articlebg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#SwiftUI" title="SwiftUI">SwiftUI</a>
+                            
+                              <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                            
+                        </div>
+                        <h1>StateObject研究</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 徐杨 on
+                            2020-06-26
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Swift记事本</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/healthnotes/">健康笔记app</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>WWDC20刚刚结束，在过去的一周，苹果为开发者带来了巨大的惊喜。由于新特性实在太多，需要不少时间来消化，我首先选择自己最感兴趣的内容进行一些简单的研究和探讨。本文首先浅谈一下SwiftUI新提供的属性包装器@StateObject。</p>
+</blockquote>
+<h2 id="为什么要新增stateobject">为什么要新增@StateObject</h2>
+<p>在我之前的文章<a href="http://www.fatbobman.com/article/state/">@State研究</a>中我们探讨过@State，通过它，我们可以方便的将值类型数据作为View的Source of truth。在SwiftUI 1.0时代，如果想将引用类型作为source of truth,通常的方法是使用@EnvironmentObject或者 @ObservedObject。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RootView</span>:<span class="title">View</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span>&#123;</span><br><span class="line">        <span class="type">ContentView</span>()</span><br><span class="line">            .environmentObject(<span class="type">Store</span>())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ContentView</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    @<span class="type">EnvironmentObject</span>  <span class="keyword">var</span> store1:<span class="type">Store</span></span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">Text</span>(<span class="string">"count:<span class="subst">\(store.<span class="built_in">count</span>)</span>"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于使用@EnvironmentObject注入的数据，由于其通常是在SceneDelegate或着当前View的父辈、祖先View上创建的，所以其生命周期必然不短于当前View,因此在使用中并不会发生由于生命周期不可预测而导致的异常。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test5</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    @<span class="type">ObservedObject</span> <span class="keyword">var</span> store = <span class="type">Store</span>()</span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">Text</span>(<span class="string">"count:<span class="subst">\(store.<span class="built_in">count</span>)</span>"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于上面的代码，乍看起来没有任何不妥，不过由于@ObservedObject的机制问题，其创建的实例并不被当前View所拥有（当前View无法管理其生命周期），因此在一些特殊的情况下会出现不可预料的结果。</p>
+<p>为了能够让开发者更好的掌控代码，同时也保持对于上一版本良好的兼容性，苹果在SwiftUI2.0中添加了@StateObject。顾名思义，它是@State的引用类型版本。</p>
+<p>在WWDC的视频中，苹果明确的表明@StateObject是被创建他的View所持有的，也就是说，实例的生命周期是完全可控的，是同创建它的View的生命周期一样的。</p>
+<p><strong>@StateObject 和 @ObservedObject 的区别就是实例是否被创建其的View所持有，其生命周期是否完全可控。</strong></p>
+<h2 id="通过代码了解不同">通过代码了解不同</h2>
+<p>我通过下面的代码来详细阐述一下 @StateObject 和 @ObservedObject的不同表现。</p>
+<p><strong>准备工作：</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StateObjectClass</span>:<span class="title">ObservableObject</span></span>&#123;</span><br><span class="line">    <span class="keyword">let</span> type:<span class="type">String</span></span><br><span class="line">    <span class="keyword">let</span> id:<span class="type">Int</span></span><br><span class="line">    @<span class="type">Published</span> <span class="keyword">var</span> <span class="built_in">count</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">init</span>(type:<span class="type">String</span>)&#123;</span><br><span class="line">        <span class="keyword">self</span>.type = type</span><br><span class="line">        <span class="keyword">self</span>.id = <span class="type">Int</span>.random(<span class="keyword">in</span>: <span class="number">0</span>...<span class="number">1000</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"type:<span class="subst">\(type)</span> id:<span class="subst">\(id)</span> init"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">deinit</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"type:<span class="subst">\(type)</span> id:<span class="subst">\(id)</span> deinit"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CountViewState</span>:<span class="title">View</span></span>&#123;</span><br><span class="line">    @<span class="type">StateObject</span> <span class="keyword">var</span> state = <span class="type">StateObjectClass</span>(type:<span class="string">"StateObject"</span>)</span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span>&#123;</span><br><span class="line">        <span class="type">VStack</span>&#123;</span><br><span class="line">            <span class="type">Text</span>(<span class="string">"@StateObject count :<span class="subst">\(state.<span class="built_in">count</span>)</span>"</span>)</span><br><span class="line">            <span class="type">Button</span>(<span class="string">"+1"</span>)&#123;</span><br><span class="line">                state.<span class="built_in">count</span> += <span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CountViewObserved</span>:<span class="title">View</span></span>&#123;</span><br><span class="line">    @<span class="type">ObservedObject</span> <span class="keyword">var</span> state = <span class="type">StateObjectClass</span>(type:<span class="string">"Observed"</span>)</span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span>&#123;</span><br><span class="line">        <span class="type">VStack</span>&#123;</span><br><span class="line">            <span class="type">Text</span>(<span class="string">"@Observed count :<span class="subst">\(state.<span class="built_in">count</span>)</span>"</span>)</span><br><span class="line">            <span class="type">Button</span>(<span class="string">"+1"</span>)&#123;</span><br><span class="line">                state.<span class="built_in">count</span> += <span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>StateObjectClass将在其被创建和销毁时通过type 和 id 告知我们它是被那种方法创建的，以及具体哪个实例被销毁了。</p>
+<p>CountViewState和CountViewObserved唯一的不同是创建实例使用的属性包装器不同。</p>
+<p><strong>测试1：</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test1</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    @<span class="type">State</span> <span class="keyword">var</span> <span class="built_in">count</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">VStack</span>&#123;</span><br><span class="line">            <span class="type">Text</span>(<span class="string">"刷新CounterView计数 :<span class="subst">\(<span class="built_in">count</span>)</span>"</span>)</span><br><span class="line">            <span class="type">Button</span>(<span class="string">"刷新"</span>)&#123;</span><br><span class="line">                <span class="built_in">count</span> += <span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="type">CountViewState</span>()</span><br><span class="line">                .padding()</span><br><span class="line">            </span><br><span class="line">            <span class="type">CountViewObserved</span>()</span><br><span class="line">                .padding()</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在测试1中，当进点击+1按钮时，无论是@StateObject或是@ObservedObject其都表现出一致的状态，两个View都可以正常的显示当前按钮的点击次数，不过当点击刷新按钮时，CountViewState中的数值仍然正常，不过CountViewObserved中的计数值被清零了。从调试信息可以看出，当点击刷新时，CountViewObserved中的实例被重新创建了，并销毁了之前的实例（CountViewObserved视图并没有被重新创建，仅是重新求了body的值）。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">type:<span class="type">Observed</span> id:<span class="number">443</span> <span class="keyword">init</span></span><br><span class="line">type:<span class="type">Observed</span> id:<span class="number">103</span> <span class="keyword">deinit</span></span><br></pre></td></tr></table></figure>
+<p>在这个测试中，@ObservedObject创建的实例的生命周期短于当前View。</p>
+<p><strong>测试2:</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test2</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    @<span class="type">State</span> <span class="keyword">var</span> <span class="built_in">count</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">NavigationView</span>&#123;</span><br><span class="line">            <span class="type">List</span>&#123;</span><br><span class="line">                <span class="type">NavigationLink</span>(<span class="string">"@StateObject"</span>, destination: <span class="type">CountViewState</span>())</span><br><span class="line">                <span class="type">NavigationLink</span>(<span class="string">"@ObservedObject"</span>, destination: <span class="type">CountViewObserved</span>())</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试2中，点击link进入对应的View后通过点击+1进行计数，然后返回父视图。当再次进入link后，@StateObject对应的视图中计数清零（由于返回父视图，再次进入时会重新创建视图，所以会重新创建实例），不过@ObservedObject对应的视图中计数是不清零的。</p>
+<p>在这个测试中，@ObservedObject创建的实例生命周期长于当前的View。</p>
+<p><strong>测试3:</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test3</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    @<span class="type">State</span> <span class="keyword">private</span> <span class="keyword">var</span> showStateObjectSheet = <span class="literal">false</span></span><br><span class="line">    @<span class="type">State</span> <span class="keyword">private</span> <span class="keyword">var</span> showObservedObjectSheet = <span class="literal">false</span></span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">List</span>&#123;</span><br><span class="line">            <span class="type">Button</span>(<span class="string">"Show StateObject Sheet"</span>)&#123;</span><br><span class="line">                showStateObjectSheet.toggle()</span><br><span class="line">            &#125;</span><br><span class="line">            .sheet(isPresented: $showStateObjectSheet) &#123;</span><br><span class="line">                <span class="type">CountViewState</span>()</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">Button</span>(<span class="string">"Show ObservedObject Sheet"</span>)&#123;</span><br><span class="line">                showObservedObjectSheet.toggle()</span><br><span class="line">            &#125;</span><br><span class="line">            .sheet(isPresented: $showObservedObjectSheet) &#123;</span><br><span class="line">                <span class="type">CountViewObserved</span>()</span><br><span class="line">            &#125;   </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>测试3中点击按钮，在sheet中点击+1,当再次进入sheet后，无论是@StateObject还是@ObservedObject对应的View中的计数都被清零。</p>
+<p>在这个测试中，@ObservedObject创建的实例生命周期和View是一致的。</p>
+<p><strong>三段代码，三种结果，这也就是为什么苹果要新增@StateObject的原因——让开发者可以明确地了解并掌握实例的生命周期，消除不确定性！</strong></p>
+<h2 id="observedobject是否还有存在的必要">ObservedObject是否还有存在的必要？</h2>
+<p>对我个人而言，基本失去了使用其的理由（可用于绑定父视图传递的@StateObject）。</p>
+<p>尽管或许上面例子的某种特性可能让你觉得ObservedObject可以完成某些特殊需求（比如测试2），但我们无法保证苹果在之后不改变ObservedObject的运行机理，从而改变当前的结果。</p>
+<p>我个人还是更推荐将来都使用@StateObject来消除代码运行的不确定性。</p>
+<p>通过下述代码，使用@StateObject同样可以得到测试2中ObservedObject的运行效果。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Test4</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    @<span class="type">State</span> <span class="keyword">private</span> <span class="keyword">var</span> showStateObjectSheet = <span class="literal">false</span></span><br><span class="line">    @<span class="type">StateObject</span> <span class="keyword">var</span> state = <span class="type">StateObjectClass</span>(type: <span class="string">"stateObject"</span>)</span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="type">List</span>&#123;</span><br><span class="line">            <span class="type">Button</span>(<span class="string">"Show StateObject1 Sheet"</span>)&#123;</span><br><span class="line">                showStateObjectSheet.toggle()</span><br><span class="line">            &#125;</span><br><span class="line">            .sheet(isPresented: $showStateObjectSheet) &#123;</span><br><span class="line">                <span class="type">CountViewState1</span>(state: state)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CountViewState1</span>:<span class="title">View</span></span>&#123;</span><br><span class="line">    @<span class="type">ObservedObject</span> <span class="keyword">var</span> state:<span class="type">StateObjectClass</span></span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span>&#123;</span><br><span class="line">        <span class="type">VStack</span>&#123;</span><br><span class="line">            <span class="type">Text</span>(<span class="string">"@StateObject count :<span class="subst">\(state.<span class="built_in">count</span>)</span>"</span>)</span><br><span class="line">            <span class="type">Button</span>(<span class="string">"+1"</span>)&#123;</span><br><span class="line">                state.<span class="built_in">count</span> += <span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="next">Next</h2>
+<p>苹果使用@StateObject一方面修复了之前的隐患，同时通过SwiftUI2.0众多新特性的引入，进一步完善了Data Flow的实现手段。在下一篇文章《SwiftUI2.0 —— 100% SwiftUI app》中，我们来进一步探讨。</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/commands/" data-toggle="tooltip" data-placement="top" title="SwiftUI2.0 —— Commands（macOS菜单）">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/observableObject/" data-toggle="tooltip" data-placement="top" title="observableObject研究">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                    <div class="reward">
+                        <div class="reward-button">赏 <span class="reward-code"> 
+                            <span class="alipay-code"> <img class="alipay-img" src="/img/alipay.jpeg"><b>支付宝打赏</b></span> 
+                            <span class="wechat-code"> <img class="wechat-img" src="/img/weixin.jpeg"><b>微信打赏</b> </span>
+                            </span></div>
+                        <p class="reward-notice">请我喝杯茶</p>
+                    </div>
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+                
+                    <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC81MTMzMS8yNzgxMg==">
+    <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+    
+           if (typeof LivereTower === 'function') { return; }
+    
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+    
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    <style>
+      span.toc-nav-number{
+        display: none
+      }
+    </style>
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#为什么要新增stateobject"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x65B0;&#x589E;@StateObject</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#通过代码了解不同"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x901A;&#x8FC7;&#x4EE3;&#x7801;&#x4E86;&#x89E3;&#x4E0D;&#x540C;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#observedobject是否还有存在的必要"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">ObservedObject&#x662F;&#x5426;&#x8FD8;&#x6709;&#x5B58;&#x5728;&#x7684;&#x5FC5;&#x8981;&#xFF1F;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#next"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Next</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#SwiftUI" title="SwiftUI">SwiftUI</a>
+                        
+                          <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://zhuanlan.zhihu.com/c_1242412078326702080" target="_blank">肘子的Swift笔记</a></li>
+                    
+                </ul>
+                
+            </div> 
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/fatbobman">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fatbobman3000">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/fatbobman">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 徐杨 2021  <a href="http://beian.miit.gov.cn">辽ICP备20006550</a>
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://www.huweihuang.com">HWH</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huweihuang&repo=hexo-theme-huweihuang&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.fatbobman.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165296388-1';
+    var _gaDomain = 'fatbobman.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '14e5d60a3ea6276655f9d14c58b1fcd0';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.fatbobman.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="博客,健康笔记,swift,swiftui,ios">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          @state研究 - 徐杨 | Blog | 健康笔记
+        
+    </title>
+
+    <link rel="canonical" href="http://www.fatbobman.com/article/state/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<link rel="alternate" href="/atom.xml" title="Swift记事本" type="application/atom+xml">
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/articlebg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#SwiftUI" title="SwiftUI">SwiftUI</a>
+                            
+                              <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                            
+                        </div>
+                        <h1>@state研究</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 徐杨 on
+                            2020-05-17
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Swift记事本</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/healthnotes/">健康笔记app</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>本文试图探讨并分析SwiftUI 中 @State的实现方式和运行特征；最后提供了一个有关扩展@State功能的思路及例程。读者需要对SwiftUI的响应式编程有基本概念。</p>
+</blockquote>
+<h2 id="研究的意义何在">研究的意义何在</h2>
+<p>我在去年底使用了SwiftUI写了第一个 iOS app <strong>健康笔记</strong>，这是我第一次接触响应式编程概念。在有了些基本的认识和尝试后，深深的被这种编程的思路所打动。不过，我在使用中也发现了一些奇怪的问题。就像之前在  <a href="https://zhuanlan.zhihu.com/p/103822455" target="_blank" rel="noopener">老人新兵</a> 中说的那样，我发现在视图（View）数量达到一定程度，随着数据量的增加，整个app的响应有些开始迟钝，变得有粘滞感、不跟手。app响应出现了问题一方面肯定和我的代码效率、数据结构设计欠佳有关；不过随着继续分析，发现其中也有很大部分原因来自于SwiftUI中所使用的响应式的实现方式。不恰当的使用，可能导致响应速度会随着数据量及View量的增加而大幅下降。通过一段时间的研究和分析，我打算用两篇文章来阐述这方面的问题，并尝试提供一个现阶段的使用思路。</p>
+<h2 id="数据状态驱动">数据（状态）驱动</h2>
+<p>在SwiftUI中，视图是由数据（状态）驱动的。按照苹果的说法，视图是状态的函数，而不是事件的序列（The views are a function of state, not a sequence of events）。每当视图在创建或解析时，都会为该视图和与该视图中使用的状态数据之间创建一个依赖关系，每当状态的信息发生变化是，有依赖关系的视图则会马上反应出这些变化并重绘。SwiftUI中提供了诸如 @State ObservedObject EnvironmentObject等来创建应对不同类型、不同作用域的状态形式。</p>
+<p><img src="stateimage.jpg" alt="类型及作用域"></p>
+<center>图片来自于SwiftUI for Absoloute Beginners</center>
+<p>其中@State只能用于当前视图，并且其对应的数据类型为值类型（如果非要对应引用类型的话则必须在每次赋值时重新创建新的实例才可以）。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DemoView</span>:<span class="title">View</span></span>&#123;</span><br><span class="line">  @<span class="type">State</span> <span class="keyword">var</span> name = <span class="string">"肘子"</span></span><br><span class="line">  <span class="keyword">var</span> body:some <span class="type">View</span>&#123;</span><br><span class="line">    <span class="type">VStack</span>&#123;</span><br><span class="line">      <span class="type">Text</span>(name)</span><br><span class="line">      <span class="type">Button</span>(<span class="string">"改名"</span>)&#123;</span><br><span class="line">        <span class="keyword">self</span>.name = <span class="string">"大肘子"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过执行上面代码，我们可以发现两个情况：</p>
+<ol>
+<li>
+<p>通过使用@State，我们可以在未使用mutating的情况下修改结构中的值</p>
+</li>
+<li>
+<p>当状态值发生变化后，视图会自动重绘以反应状态的变化。</p>
+</li>
+</ol>
+<h2 id="state如何工作的">@State如何工作的</h2>
+<p>在分析@State如何工作之前，我们需要先了解几个知识点</p>
+<h3 id="属性包装器">属性包装器</h3>
+<p>作为swift 5.1的新增功能之一，<a href="https://swiftgg.gitbook.io/swift/swift-jiao-cheng/10_properties#property-wrappers" target="_blank" rel="noopener">属性包装器在管理属性如何存储和定义属性的代码之间添加了一个分割层</a>。通过该特性，可以在对值校验、持久化、编解码等多个方面获得收益。</p>
+<p>它的实现也很简单,下面的例子定义了一个包装器用来确保它包装的值始终小于等于12。如果要求它存储一个更大的数字，它则会存储 12 这个数字。呈现值(投射值)则返回当前包装值是否为偶数</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@propertyWrapper</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TwelveOrLess</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> number: <span class="type">Int</span></span><br><span class="line">    <span class="keyword">init</span>() &#123; <span class="keyword">self</span>.number = <span class="number">0</span> &#125;</span><br><span class="line">    <span class="keyword">var</span> wrappedValue: <span class="type">Int</span> &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123; <span class="keyword">return</span> number &#125;</span><br><span class="line">        <span class="keyword">set</span> &#123; number = <span class="built_in">min</span>(newValue, <span class="number">12</span>) &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> projectedValue: <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">self</span>.number % <span class="number">2</span> == <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>更多的具体资料请查阅<a href="https://swiftgg.gitbook.io/swift/swift-jiao-cheng/10_properties#property-wrappers" target="_blank" rel="noopener">官方文档</a></p>
+<h3 id="binding">Binding</h3>
+<p>Binding是数据的一级引用，在SwiftUI中作为数据（状态）双向绑定的桥梁，允许在不拥有数据的情况下对数据进行读写操作。我们可以绑定到多种类型，包括 State ObservedObject 等，甚至还可以绑定到另一个Binding上面。Binding本身就是一个Getter和Setter的封装。</p>
+<h3 id="state-的定义">State 的定义</h3>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@frozen @propertyWrapper <span class="keyword">public</span> <span class="class"><span class="keyword">struct</span> <span class="title">State</span>&lt;<span class="title">Value</span>&gt; : <span class="title">DynamicProperty</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// Initialize with the provided initial value.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(wrappedValue value: <span class="type">Value</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// Initialize with the provided initial value.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(initialValue value: <span class="type">Value</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// The current state value.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> wrappedValue: <span class="type">Value</span> &#123; <span class="keyword">get</span> <span class="keyword">nonmutating</span> <span class="keyword">set</span> &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// Produces the binding referencing this state value</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> projectedValue: <span class="type">Binding</span>&lt;<span class="type">Value</span>&gt; &#123; <span class="keyword">get</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="dynamicproperty-的定义">DynamicProperty 的定义</h3>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">protocol</span> <span class="title">DynamicProperty</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// Called immediately before the view's body() function is</span></span><br><span class="line">    <span class="comment">/// executed, after updating the values of any dynamic properties</span></span><br><span class="line">    <span class="comment">/// stored in `self`.</span></span><br><span class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">()</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="工作原理">工作原理</h3>
+<p>前面我们说过 @State 有两个作用</p>
+<ol>
+<li>通过使用@State，我们可以在未使用mutating的情况下修改结构中的值</li>
+<li>当状态值发生变化后，视图会自动重绘以反应状态的变化。</li>
+</ol>
+<p>让我们根据上面的知识点来分析如何才能实现以上功能。</p>
+<ul>
+<li>
+<p>@State本身包含 @propertyWrapper,意味着他是一个属性包装器。</p>
+</li>
+<li>
+<p>public var wrappedValue: Value { get nonmutating set } 意味着他的包装值并没有保存在本地。</p>
+</li>
+<li>
+<p>它的呈现值（投射值）为Binding类型。也就是只是一个管道，对包装数据的引用</p>
+</li>
+<li>
+<p>遵循 DynamicProperty 协议，该协议完成了创建数据（状态）和视图的依赖操作所需接口。现在只暴露了很少的接口，我们暂时无法完全使用它。</p>
+</li>
+</ul>
+<p>在了解了以上几点后，我们来尝试使用自己的代码来构建一个@State的<strong><em>半成品</em></strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@propertyWrapper</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MyStates</span>:<span class="title">DynamicProperty</span></span>&#123;</span><br><span class="line">    <span class="keyword">init</span>(wrappedValue:<span class="type">String</span>)&#123;</span><br><span class="line">        <span class="type">UserDefaults</span>.standard.<span class="keyword">set</span>(wrappedValue, forKey: <span class="string">"myString"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> wrappedValue:<span class="type">String</span>&#123;</span><br><span class="line">        <span class="keyword">nonmutating</span> <span class="keyword">set</span>&#123;<span class="type">UserDefaults</span>.standard.<span class="keyword">set</span>(newValue, forKey: <span class="string">"myString"</span>)&#125;</span><br><span class="line">        <span class="keyword">get</span>&#123;<span class="type">UserDefaults</span>.standard.string(forKey: <span class="string">"myString"</span>) ?? <span class="string">""</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> projectedValue:<span class="type">Binding</span>&lt;<span class="type">String</span>&gt;&#123;</span><br><span class="line">        <span class="type">Binding</span>&lt;<span class="type">String</span>&gt;(</span><br><span class="line">            <span class="keyword">get</span>:&#123;<span class="type">String</span>(<span class="keyword">self</span>.wrappedValue)&#125;,</span><br><span class="line">            <span class="keyword">set</span>:&#123;</span><br><span class="line">                <span class="keyword">self</span>.wrappedValue = $<span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"重绘视图"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是一个可以用来包装String类型的State。</p>
+<p>我们使用UserDefault将数据包装后保存到本地。读取包装数据也是从本地的UserDefault里读取的。</p>
+<p>为了能够包装其他的类型的数据，同时也为了能够提高存储效率，进一步的可以修改成如下代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">@propertyWrapper</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MyState</span>&lt;<span class="title">Value</span>&gt;:<span class="title">DynamicProperty</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> _value:<span class="type">Value</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> _location:<span class="type">AnyLocation</span>&lt;<span class="type">Value</span>&gt;?</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">init</span>(wrappedValue:<span class="type">Value</span>)&#123;</span><br><span class="line">        <span class="keyword">self</span>._value = wrappedValue</span><br><span class="line">        <span class="keyword">self</span>._location = <span class="type">AnyLocation</span>(value: wrappedValue)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> wrappedValue:<span class="type">Value</span>&#123;</span><br><span class="line">        <span class="keyword">get</span>&#123; _location?._value.pointee ?? _value&#125;</span><br><span class="line">        <span class="keyword">nonmutating</span> <span class="keyword">set</span>&#123; _location?._value.pointee = newValue&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> projectedValue:<span class="type">Binding</span>&lt;<span class="type">Value</span>&gt;&#123;</span><br><span class="line">        <span class="type">Binding</span>&lt;<span class="type">Value</span>&gt;(</span><br><span class="line">            <span class="keyword">get</span>:&#123;<span class="keyword">self</span>.wrappedValue&#125;,</span><br><span class="line">            <span class="keyword">set</span>:&#123;<span class="keyword">self</span>._location?._value.pointee = $<span class="number">0</span>&#125;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"重绘视图"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AnyLocation</span>&lt;<span class="title">Value</span>&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> _value = <span class="type">UnsafeMutablePointer</span>&lt;<span class="type">Value</span>&gt;.allocate(capacity: <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">init</span>(value:<span class="type">Value</span>)&#123;</span><br><span class="line">        <span class="keyword">self</span>._value.pointee = value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至此，我们完成了这个@MyState的半成品。</p>
+<p>之所以说是半成品，因为尽管我们也遵循了DynamicProperty协议，但我们自己编写的这段代码并不能和视图建立依赖。我们可以和使用@State一样来使用@MyState，同样支持绑定、修改，除了视图不会自动刷新😂。</p>
+<p>但至少我们可以大概了解@State是如何让我们在视图中修改、绑定数据的。</p>
+<h3 id="什么时候建立的依赖">什么时候建立的依赖？</h3>
+<p>我目前无法找到任何关于SwiftUI建立依赖的更具体的资料或实现线索。不过我们可以通过下面两段代码来猜测编译器是如何处理数据和视图之间的依赖关联时机的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MainView</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    @<span class="type">State</span> <span class="keyword">var</span> date: <span class="type">String</span> = <span class="type">Date</span>().description</span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"mainView"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="type">Form</span> &#123;</span><br><span class="line">            <span class="type">SubView</span>(date: $date)</span><br><span class="line">            <span class="type">Button</span>(<span class="string">"修改日期"</span>) &#123;</span><br><span class="line">                <span class="keyword">self</span>.date = <span class="type">Date</span>().description</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SubView</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    @<span class="type">Binding</span> <span class="keyword">var</span> date: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"subView"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="type">Text</span>(date)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行这段代码，我们点击<strong>修改日期</strong> ，我们会得到如下输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mainView</span><br><span class="line">subView</span><br><span class="line">subView</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>虽然我们在MainView中使用@State声明了date，并且在MainView中修改了date的值，但由于我们并没有在MainView中使用date的值来进行显示或者判断，所以无论我们如何修改date值，MainView都不会重绘。我推测@State同视图的依赖是在ViewBuilder解析时进行的。编译器在解析我们的body时，会判断date的数据变化是否会对当前视图造成改变。如果没有则不建立依赖关联。</p>
+<p>我们可以用另一段代码来分析编译器对 ObservedObject 的反应。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MainView</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    @<span class="type">ObservedObject</span> <span class="keyword">var</span> store = <span class="type">AppStore</span>()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"mainView"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="type">Form</span> &#123;</span><br><span class="line">            <span class="type">SubView</span>(date: $store.date)</span><br><span class="line">            <span class="type">Button</span>(<span class="string">"修改日期"</span>) &#123;</span><br><span class="line">                <span class="keyword">self</span>.store.date = <span class="type">Date</span>().description</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SubView</span>: <span class="title">View</span> </span>&#123;</span><br><span class="line">    @<span class="type">Binding</span> <span class="keyword">var</span> date: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> body: some <span class="type">View</span> &#123;</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"subView"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="type">Text</span>(date)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppStore</span>:<span class="title">ObservableObject</span></span>&#123;</span><br><span class="line">    @<span class="type">Published</span> <span class="keyword">var</span> date:<span class="type">String</span> = <span class="type">Date</span>().description</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行后输出如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mainView</span><br><span class="line">subView</span><br><span class="line">mainView</span><br><span class="line">subView</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>我们把@State换成了@ObservedObject ，同样在MainView中并没有显示store.date的值或者用其来做判断，但是只要我们改变了store里的date值，MainView便会刷新重绘。由此可以推测，SwiftUI对于ObservedObject采用了不同的依赖创建时机，只要声明，无论body里是否有需要，在ObservableObject的objectWillChange产生send后，都会进行重绘。因此ObservedObject很可能是在初始化MainView的时候建立的依赖关系。</p>
+<p>之所以花气力来判断这个问题，<strong>因为这两种创建依赖的时机的不同会导致View更新效率的巨大差异。这个差异也正是我下一篇文章要重点探讨的地方</strong>。</p>
+<h2 id="打造适合自己的增强型-state">打造适合自己的增强型 @State</h2>
+<p>@State使用属性包装器这个特性来实现了它既定的功能，不过属性包装器还被广泛用于数据验证、副作用等众多领域，我们能否将众多功能属性集于一身？</p>
+<p>本文我们自己通过代码打造的@State半成品并不能创建和视图的依赖，我们如何才能完成这种依赖关联的创建？</p>
+<p>@State不仅可以被用于对属性的包装，同时State本身也是一个标准的结构体。它通过内部没有暴露的功能接口完成了同视图的依赖创建。</p>
+<p>以下两种使用方式是等效的：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@<span class="type">State</span> <span class="keyword">var</span> name = <span class="string">""</span></span><br><span class="line"><span class="keyword">self</span>.name = <span class="string">"肘子"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="type">State</span>&lt;<span class="type">String</span>&gt;(wrappedValue:<span class="string">""</span>)</span><br><span class="line"><span class="keyword">self</span>.name.wrappedValue = <span class="string">"肘子"</span></span><br></pre></td></tr></table></figure>
+<p>因此我们可以通过将State作为包装值类型，创建新的属性包装器，来实现我们的最终目标 —— 完整功能、可任意扩展的增强型@State。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">@propertyWrapper</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MyState</span>&lt;<span class="title">Value</span>&gt;:<span class="title">DynamicProperty</span></span>&#123;</span><br><span class="line">    <span class="keyword">typealias</span> <span class="type">Action</span> = (<span class="type">Value</span>) -&gt; <span class="type">Void</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> _value:<span class="type">State</span>&lt;<span class="type">Value</span>&gt;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> _toAction:<span class="type">Action</span>?</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">init</span>(wrappedValue value:<span class="type">Value</span>)&#123;</span><br><span class="line">        <span class="keyword">self</span>._value = <span class="type">State</span>&lt;<span class="type">Value</span>&gt;(wrappedValue: value)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">init</span>(wrappedValue value:<span class="type">Value</span>,toAction:@escaping <span class="type">Action</span>)&#123;</span><br><span class="line">        <span class="keyword">self</span>._value = <span class="type">State</span>&lt;<span class="type">Value</span>&gt;(wrappedValue: value)</span><br><span class="line">        <span class="keyword">self</span>._toAction = toAction</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> wrappedValue: <span class="type">Value</span> &#123;</span><br><span class="line">        <span class="keyword">get</span> &#123;<span class="keyword">self</span>._value.wrappedValue&#125;</span><br><span class="line">        <span class="keyword">nonmutating</span> <span class="keyword">set</span> &#123;<span class="keyword">self</span>._value.wrappedValue = newValue&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> projectedValue: <span class="type">Binding</span>&lt;<span class="type">Value</span>&gt;&#123;</span><br><span class="line">        <span class="type">Binding</span>&lt;<span class="type">Value</span>&gt;(</span><br><span class="line">            <span class="keyword">get</span>: &#123;<span class="keyword">self</span>._value.wrappedValue&#125;,</span><br><span class="line">            <span class="keyword">set</span>: &#123;</span><br><span class="line">                <span class="keyword">self</span>._value.wrappedValue = $<span class="number">0</span></span><br><span class="line">                <span class="keyword">self</span>._toAction?($<span class="number">0</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">()</span></span> &#123;</span><br><span class="line">       <span class="built_in">print</span>(<span class="string">"视图重绘"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码仅作为一个例子，可以根据自己的需求任意创建自己所需的功能。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="type">MyState</span> <span class="keyword">var</span> name = <span class="string">"hello"</span>  <span class="comment">//实现和标准@State一样的功能</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="type">MyState</span>&lt;<span class="type">String</span>&gt;(</span><br><span class="line">  wrappedValue: <span class="string">"hello"</span>, </span><br><span class="line">  toAction: &#123;<span class="built_in">print</span>($<span class="number">0</span>)&#125;</span><br><span class="line">) <span class="keyword">var</span> name</span><br><span class="line"><span class="comment">//在每次赋值后（包括通过Binding修改）执行 toAction 定义的函数</span></span><br></pre></td></tr></table></figure>
+<h2 id="接下来">接下来？</h2>
+<p>在响应式编程开始流行的今天，越来越多的人都在使用单一数据源（Single Souce of Truth）的构架方式进行设计和开发。如何使用@State这种作用域范围仅限于当前视图的特性？仅从命名来看，苹果给了他最本质的名称——State。State属于SwiftUI架构，ObservableObject属于Combine架构，SwiftUI明显对于State的优化要好于ObservableObject。如何在满足单一数据源的情况下最大限度享受SwiftUI的优化便利？我将在下一篇文章中进行进一步探讨。</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/observableObject/" data-toggle="tooltip" data-placement="top" title="observableObject研究">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/vapor4-install/" data-toggle="tooltip" data-placement="top" title="Vapor4 的安装与配置">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                    <div class="reward">
+                        <div class="reward-button">赏 <span class="reward-code"> 
+                            <span class="alipay-code"> <img class="alipay-img" src="/img/alipay.jpeg"><b>支付宝打赏</b></span> 
+                            <span class="wechat-code"> <img class="wechat-img" src="/img/weixin.jpeg"><b>微信打赏</b> </span>
+                            </span></div>
+                        <p class="reward-notice">请我喝杯茶</p>
+                    </div>
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+                
+                    <!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC81MTMzMS8yNzgxMg==">
+    <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+    
+           if (typeof LivereTower === 'function') { return; }
+    
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+    
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    <style>
+      span.toc-nav-number{
+        display: none
+      }
+    </style>
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#研究的意义何在"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x7814;&#x7A76;&#x7684;&#x610F;&#x4E49;&#x4F55;&#x5728;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#数据状态驱动"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#xFF08;&#x72B6;&#x6001;&#xFF09;&#x9A71;&#x52A8;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#state如何工作的"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">@State&#x5982;&#x4F55;&#x5DE5;&#x4F5C;&#x7684;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#属性包装器"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">&#x5C5E;&#x6027;&#x5305;&#x88C5;&#x5668;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#binding"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">Binding</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#state-的定义"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">State &#x7684;&#x5B9A;&#x4E49;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#dynamicproperty-的定义"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">DynamicProperty &#x7684;&#x5B9A;&#x4E49;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#工作原理"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">&#x5DE5;&#x4F5C;&#x539F;&#x7406;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#什么时候建立的依赖"><span class="toc-nav-number">3.6.</span> <span class="toc-nav-text">&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x5EFA;&#x7ACB;&#x7684;&#x4F9D;&#x8D56;&#xFF1F;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#打造适合自己的增强型-state"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">&#x6253;&#x9020;&#x9002;&#x5408;&#x81EA;&#x5DF1;&#x7684;&#x589E;&#x5F3A;&#x578B; @State</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#接下来"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">&#x63A5;&#x4E0B;&#x6765;&#xFF1F;</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#SwiftUI" title="SwiftUI">SwiftUI</a>
+                        
+                          <a class="tag" href="/tags/#iOS" title="iOS">iOS</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://zhuanlan.zhihu.com/c_1242412078326702080" target="_blank">肘子的Swift笔记</a></li>
+                    
+                </ul>
+                
+            </div> 
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/fatbobman">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/fatbobman3000">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/fatbobman">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 徐杨 2021  <a href="http://beian.miit.gov.cn">辽ICP备20006550</a>
+                    <br>
+                    Theme by <a href="http://beantech.org">BeanTech</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    re-Ported by <a href="http://www.huweihuang.com">HWH</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=huweihuang&repo=hexo-theme-huweihuang&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.fatbobman.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-165296388-1';
+    var _gaDomain = 'fatbobman.com';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '14e5d60a3ea6276655f9d14c58b1fcd0';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.fatbobman.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

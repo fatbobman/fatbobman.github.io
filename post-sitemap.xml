@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>http://www.fatbobman.com</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/SwiftUIinIpad/</loc>
+        <lastmod>2020-10-29T07:17:06.233Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/CoreDataInSwiftUI/</loc>
+        <lastmod>2020-10-28T03:41:45.844Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/3rdpackage/</loc>
+        <lastmod>2020-10-27T01:38:46.308Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/healthNote2-6/</loc>
+        <lastmod>2020-10-26T03:16:56.659Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/healthnote2-release/</loc>
+        <lastmod>2020-10-26T02:45:04.879Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/healthNote-5/</loc>
+        <lastmod>2020-10-07T22:56:18.147Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/healthNotes2-3/</loc>
+        <lastmod>2020-09-17T11:14:58.232Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/helthNotes2-4/</loc>
+        <lastmod>2020-09-17T11:11:19.921Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/DynamicForm/</loc>
+        <lastmod>2020-09-17T11:09:24.985Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/AllInOneSheet/</loc>
+        <lastmod>2020-09-17T11:09:17.585Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/dismissControlSheet/</loc>
+        <lastmod>2020-09-17T11:03:59.246Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/healthNote2-2/</loc>
+        <lastmod>2020-08-24T08:58:40.096Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/ListAndForEach/</loc>
+        <lastmod>2020-08-24T08:55:55.762Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/healthNote2-1/</loc>
+        <lastmod>2020-08-17T08:30:47.283Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/swiftuioverlaycontainer/</loc>
+        <lastmod>2020-08-12T01:15:23.508Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/swiftuiCell/</loc>
+        <lastmod>2020-08-12T01:10:34.320Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/swift2-new/</loc>
+        <lastmod>2020-07-17T02:49:29.999Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/swiftui2-app2/</loc>
+        <lastmod>2020-07-08T01:26:37.389Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/stateobject/</loc>
+        <lastmod>2020-07-08T01:25:48.045Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/swiftui2-app1/</loc>
+        <lastmod>2020-07-08T01:05:14.815Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/commands/</loc>
+        <lastmod>2020-07-08T00:53:56.108Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/observableObject/</loc>
+        <lastmod>2020-05-26T02:30:33.504Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/vapor4-install/</loc>
+        <lastmod>2020-05-20T00:15:35.960Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/state/</loc>
+        <lastmod>2020-05-17T00:19:10.140Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://www.fatbobman.com/article/firstPost/</loc>
+        <lastmod>2020-05-01T02:07:09.825Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+</urlset>
+<!-- XML Sitemap generated by Hexo SEO Friendly Sitemap Generator -->
