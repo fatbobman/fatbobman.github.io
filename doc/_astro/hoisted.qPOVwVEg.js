@@ -1,1 +1,0 @@
-import"./hoisted.TbP5Y2Ug.js";import"./hoisted.rQmLrVLz.js";var l=document.querySelectorAll("article");l.forEach(function(t){var r=t.querySelectorAll("a");r.forEach(function(e){e.setAttribute("target","_blank")})});
