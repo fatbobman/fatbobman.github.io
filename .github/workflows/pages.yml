@@ -1,0 +1,19 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # 或者你的默认分支名
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          enable_jekyll: false
