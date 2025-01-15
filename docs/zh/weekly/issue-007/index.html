@@ -492,8 +492,7 @@ function copyCode(button, event) {
     }, 3000);
   });
 }
-</script>  <script>(function(){const url = "/ads/zh";
-
+</script>  <!-- <script is:inline define:vars={{ url }}>
   fetch(url)
     .then(response => response.text())
     .then(html => {
@@ -505,7 +504,7 @@ function copyCode(button, event) {
       });
     })
     .catch(error => console.error('Error loading the ad:', error));
-})();</script> <!-- <LeaveFeedback lang={lang} /> --> <!-- <BottomWeeklySubscribe lang={lang} /> -->  <!-- Modal toggle --><button data-modal-target="default-modal" data-modal-toggle="default-modal" class="hidden text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+</script> --> <!-- <LeaveFeedback lang={lang} /> --> <!-- <BottomWeeklySubscribe lang={lang} /> -->  <!-- Modal toggle --><button data-modal-target="default-modal" data-modal-toggle="default-modal" class="hidden text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
 Toggle modal
 </button> <!-- Main modal --> <div id="modal-backdrop" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"> <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden w-full h-full justify-center items-center"> <div class="relative p-4 w-full max-w-2xl"> <!-- Modal content --> <div class="relative bg-white rounded-lg shadow-2xl dark:bg-gray-800 border-gray-200 border dark:border-gray-600"> <!-- Modal header --> <div class="flex items-center justify-between px-4 md:px-5 pt-4 pb-0 rounded-t dark:border-gray-600"> <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal"> <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path> </svg> <span class="sr-only">Close modal</span> </button> </div> <!-- Modal body --> <div class="px-4 md:px-5 pb-4"> <div class="w-full mx-auto text-center px-6 pb-6"> <div class="text-lg font-semibold text-gray-900 dark:text-blue-100 pt-4 pb-8">每周一，与您分享精心筛选的 Swift 与 SwiftUI 开发精华</div> <div id="custom-substack-embed1"></div> <!-- <div class="text-gray-700 dark:text-blue-200 text-xs font-medium pt-4">{bottomTip}</div> --> <script>(function(){const subscribeText = "立刻订阅";
 const placeholder = "输入邮箱订阅周报";
