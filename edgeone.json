@@ -1,0 +1,15 @@
+{
+    "name": "blogsource",
+    "outputDirectory": "./docs",
+    "redirects": [
+        {
+            "source": "$wwwhost",
+            "destination": "$host",
+            "statusCode": 301
+        }
+    ],
+    "rewrites": [
+    ],
+    "headers": [
+    ]
+}
