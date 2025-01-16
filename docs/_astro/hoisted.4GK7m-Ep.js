@@ -1,0 +1,1 @@
+import"./hoisted.TbP5Y2Ug.js";import"./OpenInNewWindowJS.astro_astro_type_script_index_0_lang.5J0muxEY.js";if(window.innerWidth>=768){const e=document.createElement("script");e.src="/js/floatsidebar.js",e.defer=!0,document.head.appendChild(e)}

@@ -10,6 +10,8 @@ const discordAd = `
               alt="Join Discord Logo"
               style="width: 6rem; height: 6rem;"
               class="mr-0 sm:mr-4 mb-4 sm:mb-0 hidden sm:block"
+              loading="lazy"
+              decoding="async"
             />
             <div class="space-y-2 sm:pr-1">
               <span class="text-xl font-bold text-orange-700 dark:text-blue-400 leading-tight">代码相连，创意无限 - 加入我们的开发者社区!</span>
@@ -34,6 +36,8 @@ const visionOS2025Ad = `
               alt="let's visionOS 2025"
               style="width: 6rem; height: 6rem;"
               class="mr-0 sm:mr-4 mb-4 sm:mb-0 hidden sm:block"
+              loading="lazy"
+              decoding="async"
             />
             <div class="space-y-2">
               <style>
@@ -66,12 +70,16 @@ const midstAd = `
               alt="Midst"
               style="width: 6rem; height: 6rem;"
               class="mr-0 sm:mr-4 mb-4 sm:mb-0 hidden sm:block dark:hidden"
+              loading="lazy"
+              decoding="async"
             />
             <img
               src="https://cdn.fatbobman.com/ads/midst-dark.webp"
               alt="Midst"
               style="width: 6rem; height: 6rem;"
               class="mr-0 sm:mr-4 mb-4 sm:mb-0 hidden dark:hidden sm:dark:block"
+              loading="lazy"
+              decoding="async"
             />
             <div class="space-y-2">
               <style>
@@ -107,6 +115,8 @@ const pasteNowAd = `
               alt="PasteNow"
               style="width: 5rem; height: 5rem;"
               class="mr-0 sm:mr-4 mb-4 sm:mb-0 hidden sm:block"
+              loading="lazy"
+              decoding="async"
             />
             <div class="space-y-2">
               <style>
@@ -139,6 +149,8 @@ const zipicAd = `
               alt="Zipic"
               style="width: 5rem; height: 5rem;"
               class="mr-0 sm:mr-4 mb-4 sm:mb-0 hidden sm:block"
+              loading="lazy"
+              decoding="async"
             />
             <div class="space-y-2">
               <style>

@@ -10,6 +10,8 @@ const visionOS2025Ad = `
               alt="let's visionOS 2025"
               style="width: 6rem; height: 6rem;"
               class="mr-0 sm:mr-4 mb-4 sm:mb-0 hidden sm:block"
+              loading="lazy"
+              decoding="async"
             />
             <div class="space-y-2">
               <style>
@@ -59,6 +61,8 @@ const midstAd = `
               alt="Midst"
               style="width: 6rem; height: 6rem;"
               class="mr-0 sm:mr-4 mb-4 sm:mb-0 hidden dark:hidden sm:dark:block"
+              loading="lazy"
+              decoding="async"
             />
             <div class="space-y-2">
               <style>
@@ -101,6 +105,8 @@ const healthNotesAd = `
               alt="Heath Notes Logo"
               style="width: 4.5rem; height: 4.5rem; margin-left: 1.0rem; margin-right: 1.5rem;"
               class="mr-0 mb-4 sm:mb-0 hidden sm:block rounded-lg"
+              loading="lazy"
+              decoding="async"
       />
       <div class="space-y-2 pr-1">
         <span class="text-xl font-bold text-orange-700 dark:text-blue-400 leading-tight">Your Health, Your Data, Your Control</span>
@@ -181,36 +187,36 @@ const endTime = new Date('2024-05-29T00:00:00Z');
 
 export async function onRequest(context) {
   const allowedOrigins = [
-      'http://localhost:4321',
-      'https://fatbobman.com',
-      'https://fatbobman.github.io',
-      'https://blogsource.edgeone.site'
+    'http://localhost:4321',
+    'https://fatbobman.com',
+    'https://fatbobman.github.io',
+    'https://blogsource.edgeone.site'
   ];
 
   const request = context.request;
   const origin = request.headers.get('Origin');
   const now = new Date();
   const headers = new Headers({
-      'content-type': 'text/html; charset=UTF-8',
+    'content-type': 'text/html; charset=UTF-8',
   });
 
   // 动态设置 CORS
   if (allowedOrigins.includes(origin)) {
-      headers.append('Access-Control-Allow-Origin', origin);
-      headers.append('Vary', 'Origin');
+    headers.append('Access-Control-Allow-Origin', origin);
+    headers.append('Vary', 'Origin');
   }
 
   // 判断返回固定广告还是随机广告
   let ad;
   let cacheDuration;
   if (now >= startTime && now <= endTime) {
-      ad = currentAd; // 固定广告
-      cacheDuration = 43200; // 0.5天
-      headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
+    ad = currentAd; // 固定广告
+    cacheDuration = 43200; // 0.5天
+    headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
   } else {
-      ad = getRandomContent(); // 随机广告
-      cacheDuration = 300; // 5分钟
-      headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=60`);
+    ad = getRandomContent(); // 随机广告
+    cacheDuration = 300; // 5分钟
+    headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=60`);
   }
 
   // 生成 ETag
@@ -218,7 +224,7 @@ export async function onRequest(context) {
   const etag = `"${btoa(String.fromCharCode(...new Uint8Array(hash)))}"`;
 
   if (request.headers.get('If-None-Match') === etag) {
-      return new Response(null, { status: 304, headers });
+    return new Response(null, { status: 304, headers });
   }
 
   headers.append('ETag', etag);
