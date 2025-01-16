@@ -176,38 +176,53 @@ const currentAd = `
       </style>
 `
 
+const startTime = new Date('2024-05-28T00:00:00Z');
+const endTime = new Date('2024-05-29T00:00:00Z');
+
 export async function onRequest(context) {
-    const allowedOrigins = [
-        'http://localhost:4321',
-        'https://fatbobman.com',
-        'https://fatbobman.github.io',
-        'https://blogsource.edgeone.site'
-    ];
+  const allowedOrigins = [
+      'http://localhost:4321',
+      'https://fatbobman.com',
+      'https://fatbobman.github.io',
+      'https://blogsource.edgeone.site'
+  ];
 
-    const request = context.request;
-    const origin = request.headers.get('Origin');
-    let headers = new Headers({
-        'content-type': 'text/html; charset=UTF-8',
-        'Access-Control-Allow-Origin': '*',
-    });
+  const request = context.request;
+  const origin = request.headers.get('Origin');
+  const now = new Date();
+  const headers = new Headers({
+      'content-type': 'text/html; charset=UTF-8',
+  });
 
-    // if (allowedOrigins.includes(origin)) {
-    //     headers.append('Access-Control-Allow-Origin', origin);
-    //     headers.append('Vary', 'Origin');
-    // }
+  // 动态设置 CORS
+  if (allowedOrigins.includes(origin)) {
+      headers.append('Access-Control-Allow-Origin', origin);
+      headers.append('Vary', 'Origin');
+  }
 
-    const now = new Date();
-    const startTime = new Date('2024-05-28T00:00:00Z'); // 活动开始时间
-    const endTime = new Date('2024-05-29T00:00:00Z'); // 活动结束时间
+  // 判断返回固定广告还是随机广告
+  let ad;
+  let cacheDuration;
+  if (now >= startTime && now <= endTime) {
+      ad = currentAd; // 固定广告
+      cacheDuration = 43200; // 0.5天
+      headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
+  } else {
+      ad = getRandomContent(); // 随机广告
+      cacheDuration = 300; // 5分钟
+      headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=60`);
+  }
 
-    // 根据当前时间判断应该返回哪个广告
-    const ad = now >= startTime && now <= endTime ? currentAd : getRandomContent();
+  // 生成 ETag
+  const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(ad));
+  const etag = `"${btoa(String.fromCharCode(...new Uint8Array(hash)))}"`;
 
-    // return new Response(ad, { headers });
-    return new Response(ad, {
-        headers: {
-          'content-type': 'text/html; charset=UTF-8',
-          'Access-Control-Allow-Origin': '*',
-        },
-      });
+  if (request.headers.get('If-None-Match') === etag) {
+      return new Response(null, { status: 304, headers });
+  }
+
+  headers.append('ETag', etag);
+
+  // 返回广告内容
+  return new Response(ad, { headers });
 }

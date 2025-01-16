@@ -24,8 +24,8 @@
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-5C7N4MF5');</script> <!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.W-24wY6J.css" />
-<link rel="stylesheet" href="/_astro/about.g78UfH4M.css" />
+  })(window,document,'script','dataLayer','GTM-5C7N4MF5');</script> <!-- End Google Tag Manager --><link rel="stylesheet" href="/_astro/about.-0Aq-vEE.css" />
+<link rel="stylesheet" href="/_astro/about.L1WiT1Xz.css" />
 <link rel="stylesheet" href="/_astro/_slug_.KE54EPLE.css" />
 <style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
 @keyframes rotate360{0%{transform:rotate(0)}to{transform:rotate(360deg)}}.rotate[data-astro-cid-qwm5cfxr]{animation:rotate360 1s linear}
@@ -144,78 +144,7 @@ const enableStickyInMobile = true;
     window.onscroll = checkStickyHeader;
   }
 })();</script>  </header> <main class="w-full mx-auto max-w-3xl p-4 md:p-6 "> <div class="container mx-auto space-y-6 sm:space-y-12">   <div class="mx-auto space-y-4 text-center py-10" style="width:80%"> <div class="flex mx-auto justify-center"> <div class="flex mx-auto justify-center"> <a class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary" href="/en/tags/Swift/">
-#Swift </a> <a class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary" href="/zh/posts/combineandasync/" id="language-switcher-for-topic"> #中文版 </a> </div> </div> <h1 class="text-2xl font-bold leadi md:text-3xl text-heading">Collaboration between Combine and async/await</h1> <p class="text-sm text-default"> <a itemprop="author" href="https://twitter.com/fatbobman" class="hover:text-secondary font-medium">Fatbobman</a> <!-- <time datetime={`${post.data.publishDate.toISOString()}`}>{date}</time> --> </p> <p class="text-xs text-muted"> Published on <time datetime="2021-12-06T00:12:00.000Z">Dec 6, 2021</time>  </p> </div> <div class="w-full mx-auto text-center pb-0 sm:pb-6 pt-0"> <div id="custom-substack-embed"></div> <div class="text-xs font-medium text-heading p-4">Get weekly handpicked updates on Swift and SwiftUI!</div> <script>(function(){const subscribeText = "Join Now";
-const placeholder = "Subscribe with your email";
-
-    window.CustomSubstackWidget = {
-      substackUrl: 'weekly.fatbobman.com',
-      placeholder: placeholder,
-      buttonText: subscribeText,
-      theme: 'custom',
-      colors: {
-        primary: '#F50000',
-        input: '#000000',
-        email: '#777777',
-        text: '#000000',
-      },
-    };
-
-    // 创建一个新的 MutationObserver 实例
-    const observer = new MutationObserver((mutationsList, observer) => {
-      // 遍历所有的 mutations
-      for (let mutation of mutationsList) {
-        // 如果这个 mutation 是一个子节点的添加或删除
-        if (mutation.type === 'childList') {
-          // 查找订阅框
-          const widget = document.querySelector('.custom-substack-widget');
-          if (widget) {
-            // 查找 input 元素
-            const input = widget.querySelector('input');
-            const button = widget.querySelector('button');
-            // 根据当前的颜色方案修改订阅框的样式
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-              // 暗黑模式
-              widget.style.padding = '0.5rem';
-              widget.style.borderRadius = '1.2rem 1.2rem 1.2rem 1.2rem';
-              widget.style.border = '0.1px solid var(--aw-color-text-muted)';
-              input.style.border = '0px solid #000';
-              input.style.backgroundColor = 'var(--aw-background-color)';
-              button.style.backgroundColor = 'var(--subscribe-button-background)';
-              button.style.color = 'var(--subscribe-button-text)';
-              button.style.borderRadius = '0.8rem 0.8rem 0.8rem 0.8rem';
-              button.style.maxWidth = '100px';
-              button.style.fontWeight = 'bold';
-            } else {
-              // 正常模式
-              widget.style.padding = '0.5rem';
-              widget.style.borderRadius = '1.2rem 1.2rem 1.2rem 1.2rem';
-              widget.style.border = '0.1px solid var(--aw-color-text-muted)';
-              input.style.border = '0px solid #000';
-              input.style.backgroundColor = 'var(--aw-background-color)';
-              button.style.backgroundColor = 'var(--subscribe-button-background)';
-              button.style.color = 'var(--subscribe-button-text)';
-              button.style.borderRadius = '0.8rem 0.8rem 0.8rem 0.8rem';
-              button.style.maxWidth = '100px';
-              button.style.fontWeight = 'bold';
-            }
-
-            if (window.matchMedia('(max-width: 640px)').matches) {
-              // 屏幕尺寸小于 640px
-              widget.style.maxWidth = '325px';
-            } else {
-              // 屏幕尺寸大于或等于 640px
-              widget.style.maxWidth = '400px';
-            }
-            // 停止观察
-            observer.disconnect();
-          }
-        }
-      }
-    });
-
-    // 开始观察 #custom-substack-embed 元素的子节点的变化
-    observer.observe(document.getElementById('custom-substack-embed'), { childList: true });
-  })();</script> <script src="https://substackapi.com/widget.js" async></script> </div> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <article class="prose dark:prose-invert mx-auto w-full"> <div> <!-- <AdsBannerTest /> --> 
+#Swift </a> <a class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary" href="/zh/posts/combineandasync/" id="language-switcher-for-topic"> #中文版 </a> </div> </div> <h1 class="text-2xl font-bold leadi md:text-3xl text-heading">Collaboration between Combine and async/await</h1> <p class="text-sm text-default"> <a itemprop="author" href="https://twitter.com/fatbobman" class="hover:text-secondary font-medium">Fatbobman</a> <!-- <time datetime={`${post.data.publishDate.toISOString()}`}>{date}</time> --> </p> <p class="text-xs text-muted"> Published on <time datetime="2021-12-06T00:12:00.000Z">Dec 6, 2021</time>  </p> </div> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <article class="prose dark:prose-invert mx-auto w-full"> <div> 
 
 <p>In Xcode 13.2, Apple has completed the back-deployment of async/await, lowering the minimum system requirement to iOS 13 (macOS Catalina). This move has encouraged more and more developers to try using async/await for development. After encountering AsyncSequence, many people have found that it behaves similarly to Combine, especially considering the lack of significant changes to the Combine framework in the past two years. This has raised questions about whether Apple intends to replace Combine with AsyncSequence and AsyncStream.</p>
 <p>Coincidentally, I recently encountered a scenario in my development work that may require the use of both Combine and async/await. In this article, I will discuss the respective advantages of Combine and async/await, whether they can collaborate, and how to collaborate.</p>
@@ -869,7 +798,53 @@ const placeholder = "Subscribe with your email";
       "url": "https://fatbobman.com/images/blog-card.png"
     }
   }
-}</script> <div class="pt-6 pb-6  dark:border-gray-700"> <!-- <p class="flex justify-center align-center text-sm font-medium text-heading">
+}</script> <div class="w-full mx-auto text-center pb-0 sm:pb-6 pt-8"> <div id="custom-substack-embed"></div> <div class="text-xs font-medium text-heading p-4">Get weekly handpicked updates on Swift and SwiftUI!</div> <script>(function(){const subscribeText = "Join Now";
+const placeholder = "Subscribe with your email";
+
+    window.CustomSubstackWidget = {
+      substackUrl: 'weekly.fatbobman.com',
+      placeholder: placeholder,
+      buttonText: subscribeText,
+      theme: 'custom',
+      colors: {
+        primary: '#F50000',
+        input: '#000000',
+        email: '#777777',
+        text: '#000000',
+      },
+    };
+  
+    const observer = new MutationObserver((mutationsList) => {
+      const widget = document.querySelector('.custom-substack-widget');
+      if (widget) {
+        const input = widget.querySelector('input');
+        const button = widget.querySelector('button');
+  
+        // 设置样式（合并暗黑模式与默认模式逻辑）
+        const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        widget.style.padding = '0.5rem';
+        widget.style.borderRadius = '1.2rem';
+        widget.style.border = '0.1px solid var(--aw-color-text-muted)';
+        input.style.border = '0px solid #000';
+        input.style.backgroundColor = 'var(--aw-background-color)';
+        button.style.backgroundColor = 'var(--subscribe-button-background)';
+        button.style.color = 'var(--subscribe-button-text)';
+        button.style.borderRadius = '0.8rem';
+        button.style.maxWidth = '100px';
+        button.style.fontWeight = 'bold';
+  
+        // 响应式调整
+        widget.style.maxWidth = window.matchMedia('(max-width: 640px)').matches
+          ? '325px'
+          : '400px';
+  
+        observer.disconnect(); // 停止观察
+      }
+    });
+  
+    // 开始观察
+    observer.observe(document.getElementById('custom-substack-embed'), { childList: true });
+  })();</script> <script src="https://substackapi.com/widget.js" defer></script> </div> <div class="pt-6 pb-6  dark:border-gray-700"> <!-- <p class="flex justify-center align-center text-sm font-medium text-heading">
     { lang === Lang.ZH && <SupportMeTextZH /> }
     { lang === Lang.EN && <SupportMeTextEN /> }
   </p> --> <div class="flex flex-col sm:flex-row justify-center items-center mx-auto sm:space-x-8 align-center pt-2"> <button type="button" class="text-gray-900 bg-yellow-200 hover:bg-yellow-300 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-8 py-4 text-center inline-flex items-center dark:focus:ring-gray-600 dark:border-gray-700 me-2 mb-2" onclick="window.open('https://www.buymeacoffee.com/fatbobman')"> <img src="/images/buymeacoffee.svg" alt="Buy me a coffee" class="w-5 h-5 me-2 -ms-1"> <span class="text-black font-medium">Buy me a coffee</span> </button> <div class="pt-4 sm:pt-0">  <button type="button" class="text-orange-400 bg-[#3270e1] hover:bg-blue-700 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-8 py-4 text-center inline-flex items-center dark:focus:ring-gray-600 dark:border-gray-700  me-2 mb-2" onclick="window.open('https://www.paypal.com/paypalme/fatbobman')"> <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="paypal" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="w-4 h-4 me-2 -ms-1"> <path fill="currentColor" d="M111.4 295.9c-3.5 19.2-17.4 108.7-21.5 134-.3 1.8-1 2.5-3 2.5H12.3c-7.6 0-13.1-6.6-12.1-13.9L58.8 46.6c1.5-9.6 10.1-16.9 20-16.9 152.3 0 165.1-3.7 204 11.4 60.1 23.3 65.6 79.5 44 140.3-21.5 62.6-72.5 89.5-140.1 90.3-43.4 .7-69.5-7-75.3 24.2zM357.1 152c-1.8-1.3-2.5-1.8-3 1.3-2 11.4-5.1 22.5-8.8 33.6-39.9 113.8-150.5 103.9-204.5 103.9-6.1 0-10.1 3.3-10.9 9.4-22.6 140.4-27.1 169.7-27.1 169.7-1 7.1 3.5 12.9 10.6 12.9h63.5c8.6 0 15.7-6.3 17.4-14.9 .7-5.4-1.1 6.1 14.4-91.3 4.6-22 14.3-19.7 29.3-19.7 71 0 126.4-28.8 142.9-112.3 6.5-34.8 4.6-71.4-23.8-92.6z"></path> </svg> <span class="text-white font-medium hover:text-yellow-100">Donate via Paypal</span> </button> </div> </div> </div> <!-- <WeeklySubscribe1 lang={lang} top={0} bottom={4}/> --> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">Link copied</div> </div> </div> <style>
@@ -986,7 +961,7 @@ function copyCode(button, event) {
       });
     })
     .catch(error => console.error('Error loading the ad:', error));
-})();</script>  <!-- <LeaveFeedback lang={lang} /> --> <section class="pt-10"><div class="max-w-5xl sm:px-4 py-2 mx-auto"><div class="grid gap-4 sm:gap-2 sm:mx-4 sm:grid-cols-12"><div class="col-span-12 sm:col-span-3 hidden sm:block"><div class="text-center sm:text-left mt-3 mb-14 before:block before:w-24 before:h-1 before:mb-3 before:rounded before:mx-auto sm:before:mx-0 before:bg-secondary"><h3 class="text-lg font-medium text-default">Related Posts</h3></div></div><div class="sm:hidden text-lg font-medium text-heading col-span-12 text-left">Related Posts</div><div class="relative col-span-12 sm:px-4 space-y-6 sm:col-span-9"><div class="col-span-12 space-y-2 relative sm:px-4 sm:col-span-8 sm:space-y-4 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:bg-block"><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/async-await-store/" id="relatedPosts-Rebuilding SwiftUI's Redux-like State Container with Async-Await"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Rebuilding SwiftUI&#39;s Redux-like State Container with Async-Await</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/weekly/issue-037" id="relatedPosts-Weekly #37 - Entering the Era of Futures"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Weekly #37 - Entering the Era of Futures</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/the_composable_architecture/" id="relatedPosts-The Composable Architecture (TCA)"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">The Composable Architecture (TCA)</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/mastering_swiftui_task_modifier/" id="relatedPosts-Mastering the SwiftUI task Modifier"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Mastering the SwiftUI task Modifier</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/viewbuilder1/" id="relatedPosts-ViewBuilder Research: Mastering Result Builders"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">ViewBuilder Research: Mastering Result Builders</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/viewbuilder2/" id="relatedPosts-ViewBuilder Research: Creating a ViewBuilder Imitation"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">ViewBuilder Research: Creating a ViewBuilder Imitation</h3></div></a></div></div></div></div></section> <!-- <BottomWeeklySubscribe lang={lang} /> --> <div><div id="gitalk-container" data-comment-id="聊聊 Combine 和 async/await 之间的合作" data-lang="en"></div><script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script></div><script>
+})();</script>  <!-- <LeaveFeedback lang={lang} /> --> <section class="pt-10"><div class="max-w-5xl sm:px-4 py-2 mx-auto"><div class="grid gap-4 sm:gap-2 sm:mx-4 sm:grid-cols-12"><div class="col-span-12 sm:col-span-3 hidden sm:block"><div class="text-center sm:text-left mt-3 mb-14 before:block before:w-24 before:h-1 before:mb-3 before:rounded before:mx-auto sm:before:mx-0 before:bg-secondary"><h3 class="text-lg font-medium text-default">Related Posts</h3></div></div><div class="sm:hidden text-lg font-medium text-heading col-span-12 text-left">Related Posts</div><div class="relative col-span-12 sm:px-4 space-y-6 sm:col-span-9"><div class="col-span-12 space-y-2 relative sm:px-4 sm:col-span-8 sm:space-y-4 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:bg-block"><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/async-await-store/" id="relatedPosts-Rebuilding SwiftUI's Redux-like State Container with Async-Await"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Rebuilding SwiftUI&#39;s Redux-like State Container with Async-Await</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/the_composable_architecture/" id="relatedPosts-The Composable Architecture (TCA)"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">The Composable Architecture (TCA)</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/weekly/issue-037" id="relatedPosts-Weekly #37 - Entering the Era of Futures"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Weekly #37 - Entering the Era of Futures</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/mastering_swiftui_task_modifier/" id="relatedPosts-Mastering the SwiftUI task Modifier"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Mastering the SwiftUI task Modifier</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/viewbuilder1/" id="relatedPosts-ViewBuilder Research: Mastering Result Builders"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">ViewBuilder Research: Mastering Result Builders</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/viewbuilder2/" id="relatedPosts-ViewBuilder Research: Creating a ViewBuilder Imitation"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">ViewBuilder Research: Creating a ViewBuilder Imitation</h3></div></a></div></div></div></div></section> <!-- <BottomWeeklySubscribe lang={lang} /> --> <div><div id="gitalk-container" data-comment-id="聊聊 Combine 和 async/await 之间的合作" data-lang="en"></div><script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script></div><script>
   document.addEventListener('DOMContentLoaded', async function () {
     console.log('fetching comment is enable');
     const response = await fetch('https://fatbobman.com/status/comment');
