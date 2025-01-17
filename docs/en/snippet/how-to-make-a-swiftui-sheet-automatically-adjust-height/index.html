@@ -323,17 +323,52 @@ function copyCode(button, event) {
 }
 </script> <script>(function(){const url = "https://fatbobman.com/ads/en";
 
-  fetch(url)
-    .then(response => response.text())
-    .then(html => {
-      // 获取所有的广告位元素
-      const adSlots = document.querySelectorAll('.dynamic-ad-container');
-      // 将广告内容填充到每一个广告位中
-      adSlots.forEach(slot => {
-        slot.innerHTML = html;
-      });
+  const adCacheKey = 'dynamicAdCache';
+
+  // 尝试从缓存中获取广告
+  const cachedAd = JSON.parse(localStorage.getItem(adCacheKey));
+  const now = Date.now();
+
+  if (cachedAd && cachedAd.expiresAt > now) {
+    console.log('Using cached ad');
+    console.log(cachedAd.expiresAt - now);
+    // 如果缓存有效，直接使用缓存的广告
+    renderAd(cachedAd.content);
+  } else {
+    console.log('Fetching ad from the server');
+    // 如果缓存无效，从服务器获取广告
+    fetch(url, {
+      headers: {
+        'Accept': 'text/html',
+      },
+      cache: 'default'
     })
-    .catch(error => console.error('Error loading the ad:', error));
+      .then(response => {
+        const maxAgeMatch = response.headers.get('Cache-Control')?.match(/max-age=(\d+)/);
+        const maxAge = maxAgeMatch ? parseInt(maxAgeMatch[1], 10) : 0;
+
+        if (!response.ok || maxAge <= 0) {
+          throw new Error('Invalid response or missing Cache-Control');
+        }
+
+        return response.text().then(adContent => {
+          const expiresAt = now + maxAge * 1000; // 计算失效时间
+          // 缓存广告内容
+          localStorage.setItem(adCacheKey, JSON.stringify({ content: adContent, expiresAt }));
+          // 渲染广告
+          renderAd(adContent);
+        });
+      })
+      .catch(error => console.error('Error loading the ad:', error));
+  }
+
+  // 渲染广告函数
+  function renderAd(html) {
+    const adSlots = document.querySelectorAll('.dynamic-ad-container');
+    adSlots.forEach(slot => {
+      slot.innerHTML = html;
+    });
+  }
 })();</script> <script src="/js/modalsubscribecontroller.js" defer></script> <!-- Modal toggle --><button data-modal-target="default-modal" data-modal-toggle="default-modal" class="hidden text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
 Toggle modal
 </button> <!-- Main modal --> <div id="modal-backdrop" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40"> <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden w-full h-full justify-center items-center"> <div class="relative p-4 w-full max-w-2xl"> <!-- Modal content --> <div class="relative bg-white rounded-lg shadow-2xl dark:bg-gray-800 border-gray-200 border dark:border-gray-600"> <!-- Modal header --> <div class="flex items-center justify-between px-4 md:px-5 pt-4 pb-0 rounded-t dark:border-gray-600"> <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal"> <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path> </svg> <span class="sr-only">Close modal</span> </button> </div> <!-- Modal body --> <div class="px-4 md:px-5 pb-4"> <div class="w-full mx-auto text-center px-6 pb-6"> <div class="text-lg font-semibold text-gray-900 dark:text-blue-100 pt-4 pb-8">Every Monday, sharing handpicked Swift and SwiftUI development highlights with you.</div> <div id="custom-substack-embed1"></div> <!-- <div class="text-gray-700 dark:text-blue-200 text-xs font-medium pt-4">{bottomTip}</div> --> <script>(function(){const subscribeText = "Join Now";
@@ -512,7 +547,7 @@ const placeholder = "Subscribe with your email";
     { lang === Lang.EN && <SupportMeTextEN /> }
   </p> --> <div class="flex flex-col sm:flex-row justify-center items-center mx-auto sm:space-x-8 align-center pt-2"> <button type="button" class="text-gray-900 bg-yellow-200 hover:bg-yellow-300 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-8 py-4 text-center inline-flex items-center dark:focus:ring-gray-600 dark:border-gray-700 me-2 mb-2" onclick="window.open('https://www.buymeacoffee.com/fatbobman')"> <img src="/images/buymeacoffee.svg" alt="Buy me a coffee" class="w-5 h-5 me-2 -ms-1" decoding="async" loading="lazy"> <span class="text-black font-medium">Buy me a coffee</span> </button> <div class="pt-4 sm:pt-0">  <button type="button" class="bg-[#3270e1] hover:bg-blue-700 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-8 py-4 text-center inline-flex items-center dark:focus:ring-gray-600 dark:border-gray-700  me-2 mb-2" onclick="window.open('https://www.paypal.com/paypalme/fatbobman')"> <!-- <svg class="w-4 h-4 me-2 -ms-1" width="337" height="63">
     <use href="/images/paypal.svg#main"></use>
-  </svg> --> <img src="/images/paypal.svg" alt="" width="24" height="24" loading="lazy" decoding="async" class="w-4 h-4 me-2 -ms-1" aria-hidden="true"> <span class="text-white font-medium hover:text-yellow-100">Donate via Paypal</span> </button> </div> </div> </div> </div> <div> <div class="pb-3"> <a href="/en/snippet/" class="text-lg font-bold text-heading hover:text-secondary">More Tips💡</a> </div> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-4 pb-16"> <a class="md:rounded-md py-2 md:p-4 md:bg-block md:border-[1px] border-solid border-black/5 dark:border-gray-300/10 transition-all md:hover:bg-black/10 md:dark:hover:bg-black/20 flex flex-col items-stretch justify-start md:gap-2" href="/en/snippet/swiftui-implicit-vs-explicit-animations/"> <span class="font-semibold text-heading md:font-medium md:text-sm hover:text-secondary md:hover:text-heading md:text-heading">SwiftUI: Implicit vs Explicit Animations</span> </a><a class="md:rounded-md py-2 md:p-4 md:bg-block md:border-[1px] border-solid border-black/5 dark:border-gray-300/10 transition-all md:hover:bg-black/10 md:dark:hover:bg-black/20 flex flex-col items-stretch justify-start md:gap-2" href="/en/snippet/disabling-scroll-in-swiftui-scrollview-when-content-is-smaller-than-container/"> <span class="font-semibold text-heading md:font-medium md:text-sm hover:text-secondary md:hover:text-heading md:text-heading">Disable Scroll in SwiftUI ScrollView for Small Content</span> </a><a class="md:rounded-md py-2 md:p-4 md:bg-block md:border-[1px] border-solid border-black/5 dark:border-gray-300/10 transition-all md:hover:bg-black/10 md:dark:hover:bg-black/20 flex flex-col items-stretch justify-start md:gap-2" href="/en/snippet/resolving-inconsistent-spacing-in-swiftui-vstackhstack-layouts/"> <span class="font-semibold text-heading md:font-medium md:text-sm hover:text-secondary md:hover:text-heading md:text-heading">Fix Uneven Spacing in SwiftUI Stacks</span> </a><a class="md:rounded-md py-2 md:p-4 md:bg-block md:border-[1px] border-solid border-black/5 dark:border-gray-300/10 transition-all md:hover:bg-black/10 md:dark:hover:bg-black/20 flex flex-col items-stretch justify-start md:gap-2" href="/en/snippet/sequential-display-tips-with-tipkit/"> <span class="font-semibold text-heading md:font-medium md:text-sm hover:text-secondary md:hover:text-heading md:text-heading">Sequential Display Tips with TipKit</span> </a><a class="md:rounded-md py-2 md:p-4 md:bg-block md:border-[1px] border-solid border-black/5 dark:border-gray-300/10 transition-all md:hover:bg-black/10 md:dark:hover:bg-black/20 flex flex-col items-stretch justify-start md:gap-2" href="/en/snippet/disable-transition-animations-for-sheet-and-navigationstack-in-swiftui/"> <span class="font-semibold text-heading md:font-medium md:text-sm hover:text-secondary md:hover:text-heading md:text-heading">Disable Transition Animations for Sheet and NavigationStack in SwiftUI</span> </a><a class="md:rounded-md py-2 md:p-4 md:bg-block md:border-[1px] border-solid border-black/5 dark:border-gray-300/10 transition-all md:hover:bg-black/10 md:dark:hover:bg-black/20 flex flex-col items-stretch justify-start md:gap-2" href="/en/snippet/differences-between-gesturestate-and-state-in-swiftui/"> <span class="font-semibold text-heading md:font-medium md:text-sm hover:text-secondary md:hover:text-heading md:text-heading">Differences Between @GestureState and @State in SwiftUI</span> </a> </div> </div> <div><div id="gitalk-container" data-comment-id="how-to-make-a-swiftui-sheet-automatically-adjust-" data-lang="en"></div><script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script></div><script>
+  </svg> --> <img src="/images/paypal.svg" alt="" width="24" height="24" loading="lazy" decoding="async" class="w-4 h-4 me-2 -ms-1" aria-hidden="true"> <span class="text-white font-medium hover:text-yellow-100">Donate via Paypal</span> </button> </div> </div> </div> </div> <div> <div class="pb-3"> <a href="/en/snippet/" class="text-lg font-bold text-heading hover:text-secondary">More Tips💡</a> </div> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-4 pb-16"> <a class="md:rounded-md py-2 md:p-4 md:bg-block md:border-[1px] border-solid border-black/5 dark:border-gray-300/10 transition-all md:hover:bg-black/10 md:dark:hover:bg-black/20 flex flex-col items-stretch justify-start md:gap-2" href="/en/snippet/resolving-inconsistent-spacing-in-swiftui-vstackhstack-layouts/"> <span class="font-semibold text-heading md:font-medium md:text-sm hover:text-secondary md:hover:text-heading md:text-heading">Fix Uneven Spacing in SwiftUI Stacks</span> </a><a class="md:rounded-md py-2 md:p-4 md:bg-block md:border-[1px] border-solid border-black/5 dark:border-gray-300/10 transition-all md:hover:bg-black/10 md:dark:hover:bg-black/20 flex flex-col items-stretch justify-start md:gap-2" href="/en/snippet/sequential-display-tips-with-tipkit/"> <span class="font-semibold text-heading md:font-medium md:text-sm hover:text-secondary md:hover:text-heading md:text-heading">Sequential Display Tips with TipKit</span> </a><a class="md:rounded-md py-2 md:p-4 md:bg-block md:border-[1px] border-solid border-black/5 dark:border-gray-300/10 transition-all md:hover:bg-black/10 md:dark:hover:bg-black/20 flex flex-col items-stretch justify-start md:gap-2" href="/en/snippet/swiftui-implicit-vs-explicit-animations/"> <span class="font-semibold text-heading md:font-medium md:text-sm hover:text-secondary md:hover:text-heading md:text-heading">SwiftUI: Implicit vs Explicit Animations</span> </a><a class="md:rounded-md py-2 md:p-4 md:bg-block md:border-[1px] border-solid border-black/5 dark:border-gray-300/10 transition-all md:hover:bg-black/10 md:dark:hover:bg-black/20 flex flex-col items-stretch justify-start md:gap-2" href="/en/snippet/rules-for-adapting-data-models-to-cloudkit/"> <span class="font-semibold text-heading md:font-medium md:text-sm hover:text-secondary md:hover:text-heading md:text-heading">Rules for Adapting Data Models to CloudKit</span> </a><a class="md:rounded-md py-2 md:p-4 md:bg-block md:border-[1px] border-solid border-black/5 dark:border-gray-300/10 transition-all md:hover:bg-black/10 md:dark:hover:bg-black/20 flex flex-col items-stretch justify-start md:gap-2" href="/en/snippet/swift-testing-differences-between-expect-and-require/"> <span class="font-semibold text-heading md:font-medium md:text-sm hover:text-secondary md:hover:text-heading md:text-heading">Choose Between #expect and #require in Swift Tests</span> </a><a class="md:rounded-md py-2 md:p-4 md:bg-block md:border-[1px] border-solid border-black/5 dark:border-gray-300/10 transition-all md:hover:bg-black/10 md:dark:hover:bg-black/20 flex flex-col items-stretch justify-start md:gap-2" href="/en/snippet/how-to-obtain-view-dimensions-in-swiftui/"> <span class="font-semibold text-heading md:font-medium md:text-sm hover:text-secondary md:hover:text-heading md:text-heading">How to Obtain View Dimensions in SwiftUI</span> </a> </div> </div> <div><div id="gitalk-container" data-comment-id="how-to-make-a-swiftui-sheet-automatically-adjust-" data-lang="en"></div><script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script></div><script>
   document.addEventListener('DOMContentLoaded', function () {
     var container = document.getElementById('gitalk-container');
     if (container) {
