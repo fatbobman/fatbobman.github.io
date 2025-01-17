@@ -2,7 +2,7 @@ const discordAd = `
       <div>
         <a href="https://t.ly/gzxeh" target="_blank" id="ads-wwdc2024">
           <div
-            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 transition duration-300 ease-in-out space-y-0"
+            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 space-y-0"
           >
             <div class="hidden sm:block absolute top-0 right-0 text-secondary text-xs font-bold rounded mt-2 mr-4">Sign Up</div>
             <img
@@ -28,7 +28,7 @@ const visionOS2025Ad = `
       <div>
         <a href="https://t.ly/PNw_l" target="_blank">
           <div
-            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 transition duration-300 ease-in-out space-y-0"
+            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 space-y-0"
           >
             <div class="absolute top-0 right-0 text-secondary text-xs font-bold rounded mt-2 mr-4">立即报名</div>
             <img
@@ -62,7 +62,7 @@ const midstAd = `
   <div>
         <a href="https://t.ly/hym2p" target="_blank">
           <div
-            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 transition duration-300 ease-in-out space-y-0"
+            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 space-y-0"
           >
             <div class="absolute top-0 right-0 text-secondary text-xs font-bold rounded mt-2 mr-4">SPONSOR</div>
             <img
@@ -107,7 +107,7 @@ const pasteNowAd = `
     <div>
         <a href="https://t.ly/0JuSz" target="_blank">
           <div
-            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 transition duration-300 ease-in-out space-y-0"
+            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 space-y-0"
           >
             <div class="absolute top-0 right-0 text-secondary text-xs font-bold rounded mt-2 mr-4">Mac App</div>
             <img
@@ -141,7 +141,7 @@ const zipicAd = `
     <div>
         <a href="https://t.ly/_4Leh" target="_blank">
           <div
-            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 transition duration-300 ease-in-out space-y-0"
+            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 space-y-0"
           >
             <div class="absolute top-0 right-0 text-secondary text-xs font-bold rounded mt-2 mr-4">Mac App</div>
             <img
@@ -250,7 +250,7 @@ export async function onRequest(context) {
   let cacheDuration;
   if (now >= startTime && now <= endTime) {
       ad = currentAd; // 固定广告
-      cacheDuration = 43200; // 0.5天
+      cacheDuration = 1200; // 20 分钟
       headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
   } else {
       ad = getRandomContent(); // 随机广告

@@ -2,7 +2,7 @@ const visionOS2025Ad = `
       <div>
         <a href="https://t.ly/4j2kO" target="_blank">
           <div
-            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 transition duration-300 ease-in-out space-y-0"
+            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 space-y-0"
           >
             <div class="absolute top-0 right-0 text-secondary text-xs font-bold rounded mt-2 mr-4">Join Now</div>
             <img
@@ -47,7 +47,7 @@ const midstAd = `
       <div>
         <a href="https://t.ly/hym2p" target="_blank">
           <div
-            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 transition duration-300 ease-in-out space-y-0"
+            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 space-y-0"
           >
             <div class="absolute top-0 right-0 text-secondary text-xs font-bold rounded mt-2 mr-4">SPONSOR</div>
             <img
@@ -98,7 +98,7 @@ const midstAd = `
 const healthNotesAd = `
 <div>
   <a href="https://t.ly/7Qg6u" target="_blank" id="ads">
-    <div class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 transition duration-300 ease-in-out space-y-0">
+    <div class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 space-y-0">
       <div class="hidden sm:block absolute top-0 right-0 text-secondary text-xs font-bold rounded mt-2 mr-4">App</div>
       <img
               src="https://fatbobman.com/images/healthnotes-logo.svg"
@@ -211,7 +211,7 @@ export async function onRequest(context) {
   let cacheDuration;
   if (now >= startTime && now <= endTime) {
     ad = currentAd; // 固定广告
-    cacheDuration = 43200; // 0.5天
+    cacheDuration = 1200; // 20 分钟
     headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
   } else {
     ad = getRandomContent(); // 随机广告
