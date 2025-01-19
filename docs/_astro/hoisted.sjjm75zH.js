@@ -1,0 +1,7 @@
+import"./hoisted.rlXEn2ga.js";import"./hoisted.ojwYocT8.js";const f="modulepreload",h=function(n){return"/"+n},c={},v=function(d,l,u){let a=Promise.resolve();if(l&&l.length>0){const r=document.getElementsByTagName("link");a=Promise.all(l.map(e=>{if(e=h(e),e in c)return;c[e]=!0;const o=e.endsWith(".css"),m=o?'[rel="stylesheet"]':"";if(!!u)for(let i=r.length-1;i>=0;i--){const s=r[i];if(s.href===e&&(!o||s.rel==="stylesheet"))return}else if(document.querySelector(`link[href="${e}"]${m}`))return;const t=document.createElement("link");if(t.rel=o?"stylesheet":f,o||(t.as="script",t.crossOrigin=""),t.href=e,document.head.appendChild(t),o)return new Promise((i,s)=>{t.addEventListener("load",i),t.addEventListener("error",()=>s(new Error(`Unable to preload CSS for ${e}`)))})}))}return a.then(()=>d()).catch(r=>{const e=new Event("vite:preloadError",{cancelable:!0});if(e.payload=r,window.dispatchEvent(e),!e.defaultPrevented)throw r})};document.addEventListener("DOMContentLoaded",async()=>{try{(await v(()=>import("./modalsubscribecontroller.wfTzURC1.js"),__vite__mapDeps([]))).default.initModal(),console.log("Modal initialized")}catch(n){console.error("Failed to initialize modal:",n)}});export{v as _};
+function __vite__mapDeps(indexes) {
+  if (!__vite__mapDeps.viteFileDeps) {
+    __vite__mapDeps.viteFileDeps = []
+  }
+  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
+}

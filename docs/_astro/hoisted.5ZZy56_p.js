@@ -1,0 +1,1 @@
+import"./hoisted.sjjm75zH.js";import"./hoisted.rlXEn2ga.js";import"./SideBar.astro_astro_type_script_index_0_lang.6F4FZcTO.js";import"./hoisted.ojwYocT8.js";var o=document.querySelectorAll("article");o.forEach(function(t){var r=t.querySelectorAll("a");r.forEach(function(e){e.setAttribute("target","_blank")})});
