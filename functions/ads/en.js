@@ -2,9 +2,9 @@ const visionOS2025Ad = `
       <div>
         <a href="https://t.ly/4j2kO" target="_blank">
           <div
-            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 space-y-0"
+            class="p-4 bg-orange-100/70 dark:bg-blue-800 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0"
           >
-            <div class="absolute top-0 right-0 text-secondary text-xs font-bold rounded mt-2 mr-4">Join Now</div>
+            <div class="absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-2 mr-4">Join Now</div>
             <img
               src="https://cdn.fatbobman.com/ads/wwdc2024.playground.svg"
               alt="let's visionOS 2025"
@@ -19,14 +19,14 @@ const visionOS2025Ad = `
                   vertical-align: 0.1em; /* 调整垂直位置 */
                 }
               </style>
-              <span class="text-xl font-bold text-orange-700 dark:text-blue-400 align-infinity"
+              <span class="text-xl font-bold text-orange-700 dark:text-blue-200 align-infinity"
                 >Spatial Computing + AI + iOS</span
-              ><span class="text-3xl font-bold text-orange-700 dark:text-blue-400"> ∞</span>
+              ><span class="text-3xl font-bold text-orange-700 dark:text-blue-200"> ∞</span>
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal pb-2">
                 Join developers from around the world at the
               
-                <strong class="text-orange-700 dark:text-blue-400 leading-tight">Let's visionOS 2025</strong>, 
-                held in <strong class="text-orange-700 dark:text-blue-400 leading-tight">Shanghai, China, from February 28 to March 2, 2025</strong>.
+                <strong class="text-orange-700 dark:text-blue-200 leading-tight">Let's Vision 2025</strong>, 
+                held in <strong class="text-orange-700 dark:text-blue-200 leading-tight">Shanghai, China, from March 1 to March 2, 2025</strong>.
               </div>
               <!-- <div class="text-sm text-gray-600 dark:text-gray-400 italic leading-loose font-medium">赶快报名，不要错过这场技术盛宴！</div> -->
             </div>
@@ -98,8 +98,8 @@ const midstAd = `
 const healthNotesAd = `
 <div>
   <a href="https://t.ly/7Qg6u" target="_blank" id="ads">
-    <div class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 space-y-0">
-      <div class="hidden sm:block absolute top-0 right-0 text-secondary text-xs font-bold rounded mt-2 mr-4">App</div>
+    <div class="p-4 bg-orange-100/70 dark:bg-blue-800 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0">
+      <div class="hidden sm:block absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-2 mr-4">App</div>
       <img
               src="https://fatbobman.com/images/healthnotes-logo.svg"
               alt="Heath Notes Logo"
@@ -109,11 +109,11 @@ const healthNotesAd = `
               decoding="async"
       />
       <div class="space-y-2 pr-1">
-        <span class="text-xl font-bold text-orange-700 dark:text-blue-400 leading-tight">Your Health, Your Data, Your Control</span>
+        <span class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight">Your Health, Your Data, Your Control</span>
         <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
           Health Notes: A versatile iOS, iPad, and macOS app empowering you to create custom health data types, tailored to your unique life and wellness tracking needs.
         </div>
-        <p class="mt-2 text-sm text-orange-700 dark:text-blue-400 italic font-medium">Download on the App Store</p>
+        <p class="mt-2 text-sm text-orange-700 dark:text-blue-200 italic font-medium">Download on the App Store</p>
       </div>
     </div>
   </a>

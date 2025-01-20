@@ -2,9 +2,9 @@ const discordAd = `
       <div>
         <a href="https://t.ly/gzxeh" target="_blank" id="ads-wwdc2024">
           <div
-            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 space-y-0"
+            class="p-4 bg-orange-100/70 dark:bg-blue-800 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0"
           >
-            <div class="hidden sm:block absolute top-0 right-0 text-secondary text-xs font-bold rounded mt-2 mr-4">Sign Up</div>
+            <div class="hidden sm:block absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-2 mr-4">Sign Up</div>
             <img
               src="http://cdn.fatbobman.com/ads/apple-100.svg"
               alt="Join Discord Logo"
@@ -14,7 +14,7 @@ const discordAd = `
               decoding="async"
             />
             <div class="space-y-2 sm:pr-1">
-              <span class="text-xl font-bold text-orange-700 dark:text-blue-400 leading-tight">代码相连，创意无限 - 加入我们的开发者社区!</span>
+              <span class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight">代码相连，创意无限 - 加入我们的开发者社区!</span>
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
                 加入我们活跃的 Discord 苹果开发者社区! 与众多热情的开发者一起深入探讨 Swift、SwiftUI 和 SwiftData 的最新进展。分享经验，解决难题，共同成长!
               </div>
@@ -28,9 +28,9 @@ const visionOS2025Ad = `
       <div>
         <a href="https://t.ly/PNw_l" target="_blank">
           <div
-            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 space-y-0"
+            class="p-4 bg-orange-100/70 dark:bg-blue-800 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0"
           >
-            <div class="absolute top-0 right-0 text-secondary text-xs font-bold rounded mt-2 mr-4">立即报名</div>
+            <div class="absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-2 mr-4">立即报名</div>
             <img
               src="https://cdn.fatbobman.com/ads/wwdc2024.playground.svg"
               alt="let's vision 2025"
@@ -45,11 +45,11 @@ const visionOS2025Ad = `
                   vertical-align: -0.1em;
                 }
               </style>
-              <span class="text-xl font-bold text-orange-700 dark:text-blue-400">空间计算 + 人工智能 + iOS =</span><span class="text-3xl font-bold text-orange-700 dark:text-blue-400 align-infinity"> ∞</span> 
+              <span class="text-xl font-bold text-orange-700 dark:text-blue-200">空间计算 + 人工智能 + iOS =</span><span class="text-3xl font-bold text-orange-700 dark:text-blue-400 align-infinity"> ∞</span> 
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
                 与全球的开发者一起参加于
 
-                <strong class="text-orange-700 dark:text-blue-400 leading-tight">2025.03.01 - 2025.03.02 中国，上海</strong> 举办的 <strong class="text-orange-700 dark:text-blue-400 leading-tight">Let's visionOS 2025</strong>。
+                <strong class="text-orange-700 dark:text-blue-200 leading-tight">2025.03.01 - 2025.03.02 中国，上海</strong> 举办的 <strong class="text-orange-700 dark:text-blue-400 leading-tight">Let's Vision 2025</strong>。
               </div>
               <!-- <div class="text-sm text-gray-600 dark:text-gray-400 italic leading-loose font-medium">赶快报名，不要错过这场技术盛宴！</div> -->
             </div>
@@ -180,8 +180,8 @@ const ads = [
   discordAd,
   visionOS2025Ad,
   // midstAd,
-  pasteNowAd,
-  zipicAd,
+  // pasteNowAd,
+  // zipicAd,
 ]
 
 const currentAd = `
