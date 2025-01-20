@@ -1,0 +1,605 @@
+<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>周报进展与博客调整 -- 肘子的 Swift 周报 #67</title>
+<meta name="description" content="在上期周报发布的当晚，邮件订阅量突破了 3000。结合其他发布渠道，每期周报在发布当周至少覆盖 6000 名以上的读者。虽然这一成绩谈不上多么卓越，但已远远超出了我创办之初的预期。">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://fatbobman.com/zh/weekly/issue-067/">
+<meta property="og:title" content="周报进展与博客调整 -- 肘子的 Swift 周报 #67">
+<meta property="og:description" content="在上期周报发布的当晚，邮件订阅量突破了 3000。结合其他发布渠道，每期周报在发布当周至少覆盖 6000 名以上的读者。虽然这一成绩谈不上多么卓越，但已远远超出了我创办之初的预期。">
+<meta property="og:url" content="https://fatbobman.com/zh/weekly/issue-067/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cdn.fatbobman.com/weekly/issue67.webp">
+
+<meta property="og:locale" content="zh">
+<meta property="og:site_name" content="fatbobman.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@fatbobman">
+<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><meta name="keywords" content="Swift 编程,Swift Programming,SwiftUI 教程,SwiftUI Tutorials,Core Data 实践,Core Data Practices,SwiftData 应用,SwiftData Applications,iOS 开发,iOS Development,Swift UI 设计,Swift UI Design,Swift 性能优化,Swift Performance Optimization,Swift 编码技巧,Swift Coding Techniques,iOS 应用开发,iOS App Development,Swift 数据管理,Swift Data Management,SwiftUI 布局,SwiftUI Layout,SwiftUI 动画,SwiftUI Animation"><meta name="apple-mobile-web-app-title" content="肘子的博客"><link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/weekly/issue-067/"><link rel="alternate" hreflang="en" href="https://fatbobman.com/en/weekly/issue-067/"><!-- <BasicScripts /> --><!-- <script is:inline>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script> --><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5C7N4MF5');</script> <!-- End Google Tag Manager --><script>
+      // Immediately set theme before page renders
+      if (
+        localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      }
+    </script><link rel="stylesheet" href="/_astro/about.DNDQ7-6L.css">
+<link rel="stylesheet" href="/_astro/about.BlLZqKzn.css">
+<style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
+</style>
+<link rel="stylesheet" href="/_astro/_slug_.Bvjfq7nf.css"></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <div id="blogTitle"> <a href="/zh/"> <div class="flex space-x-4 mx-auto text-center pt-16 sm:pt-12 font-black w-[240px] sm:w-[300px] pb-6 sm:pb-1"> <svg class="text-heading" width="337" height="63"> <use href="/images/title-fatbobman.svg#main"></use> </svg> <svg class="text-primary mt-[-6px] sm:mt-[-5px]" width="130" height="91"> <use href="/images/title-blog.svg#main"></use> </svg> </div> </a> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto p-2 sm:p-0" data-astro-cid-4wsjtibl> <div class="flex space-x-2" data-astro-cid-4wsjtibl> <div id="lang-data" data-lang="zh" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" class="p-2 w-10 h-10 font-medium text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg"> ZH </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <a href="/en/weekly/issue-067/" class="block px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
+English
+<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-2 hidden text-primary" id="EN-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M6.979 3.074a6 6 0 0 1 4.988 1.425l.037 .033l.034 -.03a6 6 0 0 1 4.733 -1.44l.246 .036a6 6 0 0 1 3.364 10.008l-.18 .185l-.048 .041l-7.45 7.379a1 1 0 0 1 -1.313 .082l-.094 -.082l-7.493 -7.422a6 6 0 0 1 3.176 -10.215z" stroke-width="0" fill="currentColor"></path></svg> </div> </a> </li> <li> <a href class="block px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
+中文
+<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-2 hidden text-primary" id="ZH-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M6.979 3.074a6 6 0 0 1 4.988 1.425l.037 .033l.034 -.03a6 6 0 0 1 4.733 -1.44l.246 .036a6 6 0 0 1 3.364 10.008l-.18 .185l-.048 .041l-7.45 7.379a1 1 0 0 1 -1.313 .082l-.094 -.082l-7.493 -7.422a6 6 0 0 1 3.176 -10.215z" stroke-width="0" fill="currentColor"></path></svg> </div> </a> </li> <li> <div class="border-t border-gray-200 dark:border-gray-800 w-4/5 mx-auto my-2"></div> <button class="block px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" id="set-default-lang"> <div class="inline-flex items-center"> 将中文设置为默认 </div> </button> </li> </ul> </div> <script type="module" src="/_astro/LanguageButton.astro_astro_type_script_index_0_lang.D258ff8M.js"></script> <button id="theme-dropdown-button" data-dropdown-toggle="theme-dropdown-menu" type="button" class="group p-2 w-10 h-10 text-default hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center"> <svg viewBox="0 0 24 24" id="theme_icon_system" class="w-5 h-5 text-default fill-current group-hover:text-secondary hidden" astro-icon="tabler:device-laptop"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icon-tabler"><path d="M3 19h18"/><rect width="14" height="10" x="5" y="6" rx="1"/></g></svg> <svg viewBox="0 0 24 24" id="theme_icon_dark" class="w-5 h-5 text-default fill-current group-hover:text-secondary hidden" astro-icon="tabler:moon"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3h.393a7.5 7.5 0 0 0 7.92 12.446A9 9 0 1 1 12 2.992z"/></svg> <svg viewBox="0 0 24 24" id="theme_icon_light" class="w-5 h-5 text-default fill-current group-hover:text-secondary hidden" astro-icon="tabler:sun"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icon-tabler"><circle cx="12" cy="12" r="4"/><path d="M3 12h1m8-9v1m8 8h1m-9 8v1M5.6 5.6l.7.7m12.1-.7-.7.7m0 11.4.7.7m-12.1-.7-.7.7"/></g></svg> </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="theme-dropdown-menu"> <ul class="py-2 font-medium" role="none"> <li class="hover:bg-gray-100 dark:hover:bg-gray-600"> <button class="flex px-4 py-2 text-sm align-text-center dark:hover:text-white text-default" id="theme_button_light"> <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current" astro-icon="tabler:sun"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icon-tabler"><circle cx="12" cy="12" r="4"/><path d="M3 12h1m8-9v1m8 8h1m-9 8v1M5.6 5.6l.7.7m12.1-.7-.7.7m0 11.4.7.7m-12.1-.7-.7.7"/></g></svg> <span class="ml-2 dark:hover:text-white">Light</span> </button> </li> <li class="hover:bg-gray-100 dark:hover:bg-gray-600"> <button class="flex px-4 py-2 text-sm align-text-center dark:hover:text-white text-default" id="theme_button_dark"> <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:moon"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3h.393a7.5 7.5 0 0 0 7.92 12.446A9 9 0 1 1 12 2.992z"/></svg> <span class="ml-2 text-default dark:hover:text-white">Dark</span> </button> </li> <li class="hover:bg-gray-100 dark:hover:bg-gray-600"> <button class="flex px-4 py-2 text-sm align-text-center dark:hover:text-white text-default" id="theme_button_system"> <svg viewBox="0 0 24 24" class="w-5 h-5" astro-icon="tabler:device-laptop"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="icon-tabler"><path d="M3 19h18"/><rect width="14" height="10" x="5" y="6" rx="1"/></g></svg> <span class="ml-2 dark:hover:text-white">System</span> </button> </li> </ul> </div> <script>
+  (async () => {
+    const { setTheme } = await import('/js/theme.js');
+    // Use setTheme here
+    // Change the icons inside the button based on previous settings
+    // 如果 localStorage 里面有设置过 color-theme 的值, 则 themeToggleSystemIcon.classList.remove('hidden')
+    function setThemeButton() {
+      let theme = localStorage.getItem('color-theme');
+      if (theme === 'dark') {
+        themeToggleDarkIcon.classList.remove('hidden');
+        themeToggleLightIcon.classList.add('hidden');
+        themeToggleSystemIcon.classList.add('hidden');
+      } else if (theme === 'light') {
+        themeToggleDarkIcon.classList.add('hidden');
+        themeToggleLightIcon.classList.remove('hidden');
+        themeToggleSystemIcon.classList.add('hidden');
+      } else {
+        themeToggleDarkIcon.classList.add('hidden');
+        themeToggleLightIcon.classList.add('hidden');
+        themeToggleSystemIcon.classList.remove('hidden');
+      }
+    }
+
+    // 监听暗黑模式的变化
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+      setThemeButton();
+    });
+
+    // 保证其他的页面也能够监听到 localStorage 的变化
+    window.addEventListener('storage', function (event) {
+      if (event.key === 'color-theme') {
+        setThemeButton();
+      }
+    });
+
+    function resetTheme() {
+      setTheme();
+      setThemeButton();
+    }
+
+    // 获取按钮
+    var themeButtonLight = document.getElementById('theme_button_light');
+    var themeButtonDark = document.getElementById('theme_button_dark');
+    var themeButtonSystem = document.getElementById('theme_button_system');
+    // 获取图标
+    var themeToggleDarkIcon = document.getElementById('theme_icon_dark');
+    var themeToggleLightIcon = document.getElementById('theme_icon_light');
+    var themeToggleSystemIcon = document.getElementById('theme_icon_system');
+
+    // Listen for clicks on the button themeToggleDarkIcon
+    themeButtonDark.addEventListener('click', function () {
+      localStorage.setItem('color-theme', 'dark');
+      resetTheme();
+    });
+
+    // // Listen for clicks on the button themeToggleLightIcon
+    themeButtonLight.addEventListener('click', function () {
+      localStorage.setItem('color-theme', 'light');
+      resetTheme();
+    });
+
+    // // Listen for clicks on the button themeToggleSystemIcon
+    themeButtonSystem.addEventListener('click', function () {
+      localStorage.removeItem('color-theme');
+      resetTheme();
+    });
+
+    resetTheme();
+  })();
+</script> <div id="docsearch" class="group w-10 h-10 text-default hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center"> <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg> </div> </div> <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 mx-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false" id="navbar-toggle-button"> <span class="sr-only">Open main menu</span> <svg class="w-5 h-5 text-default" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path> </svg> </button> <nav class="hidden w-full md:block md:w-auto px-4 z-40" id="navbar-solid-bg"> <ul class="flex flex-col font-bold mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700"> <a href="/zh/" class="block py-2 px-3 md:p-0 rounded  text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent"> 首页 </a><a href="/zh/posts/" class="block py-2 px-3 md:p-0 rounded  text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent"> 文章 </a><a href="/zh/weekly/" class="block py-2 px-3 md:p-0 rounded text-invert bg-secondary md:bg-transparent md:text-secondary md:dark:bg-transparent" aria-current="page"> 周报 </a><a href="/zh/snippet/" class="block py-2 px-3 md:p-0 rounded  text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent"> 小贴士 </a><a href="/zh/about/" class="block py-2 px-3 md:p-0 rounded  text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent"> 关于 </a> </ul> </nav> <script type="module" src="/_astro/Navbar.astro_astro_type_script_index_0_lang.BaBuaNi4.js"></script> </div> </div> <div id="placeholder" class="hidden" data-astro-cid-4wsjtibl></div> </div> <script>(function(){const enableSticky = true;
+const enableStickyInMobile = true;
+
+  window.onload = function () {
+    checkStickyHeader();
+    stickySetup();
+  };
+
+  window.addEventListener('resize', stickySetup);
+
+  function checkStickyHeader() {
+    const title = document.getElementById('blogTitle');
+    const stickyHeader = document.getElementById('stickyHeader');
+    const placeholder = document.getElementById('placeholder');
+
+    if (title && stickyHeader && placeholder) {
+      const offset = title.offsetTop + title.offsetHeight;
+
+      if (shouldStick() && window.scrollY >= offset) {
+        stickyHeader.classList.add('sticky');
+        placeholder.style.display = 'block';
+        placeholder.style.height = `${stickyHeader.offsetHeight}px`;
+      } else {
+        stickyHeader.classList.remove('sticky');
+        placeholder.style.display = 'none';
+      }
+    }
+  }
+
+  function shouldStick() {
+    if (!enableSticky) return false;
+
+    let isMobile = window.matchMedia('(max-width: 640px)').matches;
+    if (isMobile && !enableStickyInMobile) return false;
+
+    return true;
+  }
+
+  function stickySetup() {
+    window.onscroll = checkStickyHeader;
+  }
+})();</script>  </header> <main class="w-full mx-auto max-w-3xl p-4 md:p-6 "> <div class="container mx-auto space-y-6 sm:space-y-12">   <div class="mx-auto space-y-4 text-center pt-10 pb-6"> <div class="flex mx-auto justify-center"> <a class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary" href="/en/weekly/issue-067/" id="language-switcher-for-topic"> #English </a> </div> <div class="flex mx-auto justify-center" style="width:80%;"> <h1 class="text-2xl font-bold leadi md:text-3xl text-heading"># 67 : 周报进展与博客调整</h1> </div> <p class="text-xs text-muted pt-0 sm:pt-4"> 发表于 <time datetime="2025-01-20T14:00:00.000Z">2025 年 1 月 20 日</time> </p> <div class="space-y-2 pt-2 sm:pt-4"> <picture class="critical-content object-cover w-full"> <!-- 为不同屏幕尺寸提供响应式图片 --> <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/weekly/issue67.webp?imageView2/0/w/300 1x, https://cdn.fatbobman.com/weekly/issue67.webp?imageView2/0/w/400 2x"> <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/weekly/issue67.webp?imageView2/0/w/400 1x, https://cdn.fatbobman.com/weekly/issue67.webp?imageView2/0/w/600 2x"> <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/weekly/issue67.webp?imageView2/0/w/600 1x, https://cdn.fatbobman.com/weekly/issue67.webp?imageView2/0/w/700 2x"> <!-- 默认图片，适配更大的屏幕 --> <img src="https://cdn.fatbobman.com/weekly/issue67.webp?imageView2/1/w/1600" alt="Article Image" class="critical-image object-cover w-full" decoding="async" fetchpriority="high" width="1600" height="900"> </picture> <p class="text-muted text-xs text-center">Photo by <a href="https://unsplash.com/@marcel_eberle?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Marcel Eberle</a> on <a href="https://unsplash.com/photos/white-and-black-stop-sign-S_hj8FHe-y4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p> </div> </div> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h5:font-black prose-h5:text-secondary mb-16"> <div> <!-- <AdsBannerTest /> --> 
+<h3 id="肘子的话">肘子的话</h3>
+<p>在上期周报发布的当晚，邮件订阅量突破了 3000。结合其他发布渠道，每期周报在发布当周至少覆盖 6000 名以上的读者。虽然这一成绩谈不上多么卓越，但已远远超出了我创办之初的预期。</p>
+<p>周报能够获得如此多读者的喜爱，最重要的原因在于社区中不断涌现的优质内容。过去一年中，虽然一些优秀的作者因种种原因减少了分享，但每个月都会有新的作者带来高质量的文章。在大多数情况下，我甚至会因为精彩文章过多而纠结于取舍，这种“幸福的烦恼”让我倍感欣慰。</p>
+<p>当然，读者的支持也是周报持续发展的重要动力。无论是收到读者的正向反馈，还是看到一些作者的文章因周报推荐而获得更多阅读量，都让我感受到这份工作的意义和价值。</p>
+<p>上周，我对博客架构进行了重要调整，将其从传统的云主机 + CDN 模式迁移到 Serverless。此举极大地简化了博客的部署流程和耗时，因此我也趁机优化了一部分代码。在此期间，由于 DNS 刷新的延迟问题，部分读者可能遇到页面无法访问的情况。以下是几种可能的解决办法：</p>
+<ul>
+<li>清空浏览器的缓存，特别是与博客相关的部分；</li>
+<li>将设备的 DNS 设置为更知名的解析服务商，以加快 DNS 刷新；</li>
+<li>访问博客的备份站点：<a href="https://fatbobman.github.io?&utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">fatbobman.github.io</a>。</li>
+</ul>
+<p>此外，我在博客中新增了一个“<a href="/zh/snippet/" target="_blank">小贴士</a>”板块，用于分享内容简短、主题明确的文章。这类文章聚焦于快速解决实际问题，不涉及原理和讨论，方便读者以最快的方式找到答案。</p>
+<p>感谢每一位读者的支持和反馈，期待未来能和大家一同见证更多精彩内容的诞生！</p>
+<div class="dynamic-ad-container pt-2 pb-6"></div>
+<h5 id="原创">原创</h5>
+<ul>
+<li><a href="/zh/snippet/ensuring-full-text-display-in-swiftui-techniques-and-solutions/" target="_blank">✨ SwiftUI 文本截断的解决方法</a></li>
+<li><a href="/zh/snippet/disable-transition-animations-for-sheet-and-navigationstack-in-swiftui/" target="_blank">💡 如何屏蔽 Sheet、NavigationStack 的转场动画</a></li>
+<li><a href="/zh/snippet/sequential-display-tips-with-tipkit/" target="_blank">💭 TipKit 实现按序显示提示</a></li>
+</ul>
+<h5 id="近期推荐">近期推荐</h5>
+<h3 id="-swiftui-高级导航-advanced-navigation-destinations-in-swiftui"><a href="https://t.ly/xb9ut" rel="noreferrer noopener">🪜 SwiftUI 高级导航 (Advanced Navigation Destinations in SwiftUI)</a></h3>
+<p>SwiftUI 自引入 <code>NavigationStack</code> 后，显著提升了导航的灵活性。然而，<code>NavigationPath</code> 和 <code>navigationDestination</code> 的原生实现在实际使用中仍显局限，尤其是每个导航目标都需单独定义处理器，容易导致代码重复和维护困难。为了解决这些问题，<a href="https://www.linkedin.com/in/hmlong/?&utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Michael Long</a> 开发了开源库 <a href="https://github.com/hmlongco/Navigator?&utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Navigator</a>，为 SwiftUI 提供了一套功能更加强大的导航层，支持声明式与命令式导航的无缝切换。在这篇文章中，Long 深入探讨了原生导航方式的不足，以及 Navigator 如何通过枚举导航目标、协调模式和导航检查点等特性改进开发体验，为复杂的应用导航需求提供了优雅的解决方案。</p>
+<h3 id="在-ios-应用中获取-git-修订信息-getting-git-revision-info-within-your-ios-app"><a href="https://t.ly/WSKOJ" rel="noreferrer noopener">在 iOS 应用中获取 Git 修订信息 (Getting Git Revision info within your iOS App)</a></h3>
+<p>在项目快速迭代的过程中，当开发者收到测试员或用户的反馈时，往往难以及时定位问题所在的分支或版本。<a href="https://x.com/richinfante?&utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Rich Infante</a> 分享了一个简单且高效的方法：通过构建脚本，将当前代码库的 Git 提交哈希值、分支名称等信息嵌入到应用中，帮助开发者在调试和发布版本时快速追溯源代码的状态。</p>
+<h3 id="-swiftui-文本动画-bug-的发现与解决-uncovering-and-solving-a-swiftui-text-animation-bug"><a href="https://t.ly/yCRsk" rel="noreferrer noopener">🪜 SwiftUI 文本动画 Bug 的发现与解决 (Uncovering and Solving a SwiftUI Text Animation Bug)</a></h3>
+<p>SwiftUI 因其简洁易用的动画功能而广受开发者喜爱，但有时，即使我们精心调整，视图也未必能按预期实现动画效果。在这篇文章中，<a href="https://www.linkedin.com/in/engomarelsayed/?&utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Omar Elsayed</a> 分享了他在项目中遇到的一个问题：<code>Text</code> 视图的 <code>offset</code> 动画无法正常工作。通过参考开发者 kurtlee93 提出的解决方案，作者利用 <code>GeometryEffect</code> 和 <code>AnimatableData</code> 成功解决了这一问题。</p>
+<blockquote>
+<p>遇到动画失效的问题时，开发者常用 <code>AnimatableData</code> 为视图显式提供动画插值，经常能达到预期效果。不过，我们仍然期待苹果尽快修复这些长期存在的 bug。</p>
+</blockquote>
+<h3 id="xcode-16-的新特性如何帮助我的项目减少-66000-行代码-how-a-new-xcode-16-feature-helped-my-work-project-eliminate-66000-lines-of-code"><a href="https://t.ly/yZ790" rel="noreferrer noopener">Xcode 16 的新特性如何帮助我的项目减少 66,000 行代码 (How a New Xcode 16 Feature Helped My Work Project Eliminate 66,000 Lines of Code)</a></h3>
+<p>Xcode 16 引入了可构建文件夹（buildable folders）特性，通过文件系统直接管理文件，取代了对 <code>pbxproj</code> 文件中复杂引用的依赖。在这篇文章中，<a href="https://x.com/makwanbk?&utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Makwan Barzan</a> 分享了他们团队如何通过细致而卓有成效的努力，成功减少了旧项目 <code>pbxproj</code> 文件中的 66,000 行冗余引用。采用文件夹组织结构不仅降低了合并冲突风险，也显著提升了项目管理效率。</p>
+<h3 id="-使用-swift-vapor-构建天气-api-后端-building-a-weather-api-backend-with-swift-vapor-a-deep-dive"><a href="https://t.ly/migUc" rel="noreferrer noopener">🪜 使用 Swift Vapor 构建天气 API 后端 (Building a Weather API Backend with Swift Vapor: A Deep Dive)</a></h3>
+<p>我想很多 Swift 开发者在构建后端服务时或多或少都会想过尝试一下 Vapor。<a href="https://medium.com/@arrinal?&utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Arrinal</a> 使用 SwiftUI 和 Vapor 构建了一个开源的天气服务<a href="https://github.com/arrinal/ios-clean-architecture-project?&utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">项目</a>。通过两篇文章，他系统地介绍了如何运用 Clean Architecture 的思想构建一个可维护、易扩展的 SwiftUI 应用，并用 Vapor 提供支持其功能的<a href="https://github.com/arrinal/sample-service-swift-vapor?&utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">后端服务</a>。在前端部分，他展示了如何通过依赖注入（Swinject）和 Combine 实现响应式数据流，同时保持架构清晰分层；在后端部分，他采用 Vapor 的现代特性（如 async/await 和中间件）构建了一个高性能、标准化的 API 服务，与 SwiftUI 应用无缝集成。</p>
+<h3 id="swiftui-list使用代码示例详解数据行展示-swiftui-lists-present-rows-of-data-explained-with-code-examples"><a href="https://t.ly/RAkrj" rel="noreferrer noopener">SwiftUI List：使用代码示例详解数据行展示 (SwiftUI Lists: Present Rows of Data Explained with Code Examples)</a></h3>
+<p><code>List</code> 是 SwiftUI 中一个核心组件，不仅能够高效展示数据行，还提供了多种预置的样式以适应不同的 UI 需求。然而，对于每种风格的特点和适用场景，许多开发者可能并不熟悉。<a href="https://x.com/twannl?&utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Antoine van der Lee</a> 在这篇文章中，通过一系列直观的代码示例，系统地介绍了 SwiftUI <code>List</code> 的基本功能、不同风格的应用，以及如何实现分组、选择、多样式背景等功能。这篇文章为开发者全面掌握 <code>List</code> 的使用提供了一份清晰且实用的指南。</p>
+<div class="dynamic-ad-container pt-2 pb-2"></div>
+<h5 id="活动">活动</h5>
+<h3 id="lets-vision-2025-创作者大会火热开票席位有限速来抢购"><a href="https://letsvisionos.swiftgg.team/cn/?&utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">LET’S VISION 2025 创作者大会火热开票，席位有限，速来抢购！</a></h3>
+<p>LET’S VISION 是中国最大、最具国际化的 Apple 生态盛会，被誉为 Apple 生态中的“超级盛典”，犹如 Apple 世界的 TGS、E3 或 ChinaJoy！本届大会将带领你走在 Apple 生态的最前沿，展示最创新、最尖端的产品与技术。无论你是开发者、创业者，还是行业精英，这将是你不可错过的年度盛会！</p>
+<p>📅 <strong>大会日期：2025年3月1日-3月2日</strong><br/>
+📍 <strong>举办地点：上海鲜花港</strong><br/>
+🎯 <strong>本届主题：人工智能 + 空间计算 = 无限♾️</strong></p>
+<p>在一个专为本次大会定制的 10000 平方米户外场地上，我们将为你呈现震撼的活动体验。大会现场不仅有能容纳超过 1000 人的主会场，还有 100+ 展位展示最前沿的技术和创新产品。今年，我们还特别设计了“极客相亲角”环节，为创业者提供与 VC 投资人、合作伙伴、行业领袖面对面交流的机会，帮助你拓展资源、结识合适的合作伙伴和人才。</p>
+<p>🚀 <strong>特别嘉宾阵容：</strong><br/>
+今年我们邀请了全球顶尖行业专家和苹果官方团队亮相——<br/>
+Apple 官方设计布道师 <strong>Sara</strong>，<br/>
+Hacking With Swift 创始人 <strong>Paul</strong>，<br/>
+Apple Design Award 2024 获奖者、Blackbox 创始人 <strong>Ryan</strong>，<br/>
+App Store Award 2024 获奖者、THRASHER 创始人 <strong>Mike</strong>，<br/>
+以及更多重量级嘉宾。</p>
+<p>🎤 <strong>丰富的活动内容：</strong></p>
+<ul>
+<li><strong>30场演讲</strong>，洞察未来科技发展趋势</li>
+<li><strong>7个工作坊</strong>，与专家零距离互动，深度学习</li>
+<li><strong>100个应用展示</strong>，探索最前沿的创新作品</li>
+</ul>
+<p>这不仅是一个技术交流的平台，也是全球 Apple 生态中的创新者、领袖、投资者齐聚的舞台！你将亲身体验到最前沿的人工智能与空间计算技术，并与行业领袖们共同探讨未来科技的无限可能。</p>
+<p>⏳ 仅开放 <strong>1000个名额</strong>，一旦售完将不再补充！快来抢票，和我们一起见证未来科技的巅峰时刻！</p> </div> </article> <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "author": {
+    "@type": "Person",
+    "name": "Fatbobman",
+    "url": "https://twitter.com/fatbobman"
+  },
+  "dateModified": "2025-01-20T14:00:00.000Z",
+  "datePublished": "2025-01-20T14:00:00.000Z",
+  "description": "在上期周报发布的当晚，邮件订阅量突破了 3000。结合其他发布渠道，每期周报在发布当周至少覆盖 6000 名以上的读者。虽然这一成绩谈不上多么卓越，但已远远超出了我创办之初的预期。",
+  "headline": "周报进展与博客调整 -- 肘子的 Swift 周报 #67",
+  "image": [
+    {
+      "url": "https://cdn.fatbobman.com/weekly/issue67.webp"
+    }
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://fatbobman.com/zh/weekly/issue-067/"
+  },
+  "url": "https://fatbobman.com/zh/weekly/issue-067/"
+}</script> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
+  .copy-icon {
+    position: absolute;
+    left: -30px; /* 根据您的布局调整位置 */
+    top: 50%; /* 将图标定位到标题的中间高度 */
+    transform: translateY(-50%); /* 垂直居中对齐图标 */
+    cursor: pointer;
+    transition: opacity 0.6s ease;
+    pointer-events: all; /* 始终响应鼠标事件 */
+  }
+
+  article h2,
+  article h3,
+  article h4,
+  article h5 {
+    position: relative;
+  }
+
+  #copy-alert {
+    position: fixed;
+    bottom: -100px; /* 初始在视窗下方 */
+    right: 20px;
+    transition: bottom 0.5s ease-in-out;
+  }
+
+  /* 进入动画 */
+  @keyframes slideIn {
+    from {
+      bottom: -100px;
+    }
+    to {
+      bottom: 0px;
+    }
+  }
+
+  /* 消失动画 */
+  @keyframes slideOut {
+    from {
+      bottom: 20px;
+    }
+    to {
+      bottom: -100px;
+    }
+  }
+</style> <script>
+  var hideTimeout; // 用于保存自动隐藏定时器的引用
+  document.querySelectorAll('article h2, article h3, article h4, article h5').forEach(function (header) {
+    var copyIcon = document.createElement('span');
+    copyIcon.innerHTML =
+      '<svg fill="currentColor" aria-hidden="true" stroke="currentColor" class="w-5 h-5 hidden md:block hover:text-secondary" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M861.866667 164.266667c-87.466667-87.466667-230.4-89.6-320-2.133334l-68.266667 68.266667c-12.8 12.8-12.8 32 0 44.8s32 12.8 44.8 0l68.266667-68.266667c64-61.866667 166.4-61.866667 230.4 2.133334 64 64 64 168.533333 2.133333 232.533333l-117.333333 119.466667c-34.133333 34.133333-81.066667 51.2-128 49.066666-46.933333-4.266667-91.733333-27.733333-119.466667-66.133333-10.666667-14.933333-29.866667-17.066667-44.8-6.4-14.933333 10.666667-17.066667 29.866667-6.4 44.8 40.533333 53.333333 100.266667 87.466667 166.4 91.733333h17.066667c59.733333 0 119.466667-23.466667 162.133333-68.266666l117.333333-119.466667c83.2-89.6 83.2-234.666667-4.266666-322.133333z"></path><path d="M505.6 750.933333l-66.133333 68.266667c-64 61.866667-166.4 61.866667-230.4-2.133333-64-64-64-168.533333-2.133334-232.533334l117.333334-119.466666c34.133333-34.133333 81.066667-51.2 128-49.066667 46.933333 4.266667 91.733333 27.733333 119.466666 66.133333 10.666667 14.933333 29.866667 17.066667 44.8 6.4 14.933333-10.666667 17.066667-29.866667 6.4-44.8-40.533333-53.333333-100.266667-87.466667-166.4-91.733333-66.133333-4.266667-130.133333 19.2-177.066666 66.133333l-117.333334 119.466667c-85.333333 89.6-85.333333 234.666667 2.133334 322.133333 44.8 44.8 102.4 66.133333 162.133333 66.133334 57.6 0 115.2-21.333333 160-64l66.133333-68.266667c12.8-12.8 12.8-32 0-44.8-14.933333-10.666667-34.133333-10.666667-46.933333 2.133333z"></path></svg>'; // 使用您选择的图标
+    copyIcon.className = 'copy-icon';
+    copyIcon.style.opacity = '0'; // 默认透明
+    header.insertBefore(copyIcon, header.firstChild);
+
+    header.addEventListener('mouseover', function () {
+      copyIcon.style.opacity = '1';
+    });
+    header.addEventListener('mouseout', function () {
+      copyIcon.style.opacity = '0';
+    });
+
+    copyIcon.addEventListener('click', function () {
+        var url = window.location.href.split('#')[0] + '#' + header.id;
+        navigator.clipboard.writeText(url).then(function () {
+            var alertDiv = document.getElementById('copy-alert');
+            if (alertDiv) {
+                alertDiv.classList.remove('hidden'); // 确保提示框是可见的
+                alertDiv.style.display = 'block'; // 显示提示框
+                clearTimeout(hideTimeout); // 清除之前的定时器
+                alertDiv.style.animation = 'none'; // 先清除之前的动画
+                setTimeout(function () {
+                    alertDiv.style.animation = 'slideIn 0.5s forwards'; // 应用新动画
+                }, 10);
+
+                // 设置自动隐藏定时器
+                hideTimeout = setTimeout(function () {
+                    alertDiv.style.animation = 'slideOut 0.5s forwards'; // 应用消失动画
+                    setTimeout(function () {
+                        alertDiv.style.display = 'none';
+                    }, 500);
+                }, 3000);
+            }
+        });
+    });
+  });
+</script> <script>
+function copyCode(button, event) {
+  event.preventDefault();
+  const codeBlock = button.parentNode.nextElementSibling.textContent; // 获取代码内容
+  navigator.clipboard.writeText(codeBlock).then(() => {
+    // 显示 "Copied"
+    button.querySelector('.copy-text').style.display = 'none';
+    button.querySelector('.copied-text').style.display = 'inline';
+
+    // 3秒后恢复
+    setTimeout(() => {
+      button.querySelector('.copy-text').style.display = 'inline';
+      button.querySelector('.copied-text').style.display = 'none';
+    }, 3000);
+  });
+}
+</script> <script type="module">var l=document.querySelectorAll("article");l.forEach(function(t){var e=t.querySelectorAll("a");e.forEach(function(r){r.setAttribute("target","_blank")})});</script> <script>(function(){const url = "https://fatbobman.com/ads/zh";
+
+  // 根据中英文对应不同的 adCacheKey
+  const adCacheKey = 'dynamicAdCache' + (window.location.pathname.includes('/zh/') ? 'ZH' : 'EN');
+
+  // 尝试从缓存中获取广告
+  const cachedAd = JSON.parse(localStorage.getItem(adCacheKey));
+  const now = Date.now();
+
+  if (cachedAd && cachedAd.expiresAt > now) {
+    console.log('Using cached ad');
+    console.log(cachedAd.expiresAt - now);
+    // 如果缓存有效，直接使用缓存的广告
+    renderAd(cachedAd.content);
+  } else {
+    console.log('Fetching ad from the server');
+    // 如果缓存无效，从服务器获取广告
+    fetch(url, {
+      headers: {
+        'Accept': 'text/html',
+      },
+      cache: 'default'
+    })
+      .then(response => {
+        const maxAgeMatch = response.headers.get('Cache-Control')?.match(/max-age=(\d+)/);
+        const maxAge = maxAgeMatch ? parseInt(maxAgeMatch[1], 10) : 0;
+
+        if (!response.ok || maxAge <= 0) {
+          throw new Error('Invalid response or missing Cache-Control');
+        }
+
+        return response.text().then(adContent => {
+          const expiresAt = now + maxAge * 1000; // 计算失效时间
+          // 缓存广告内容
+          localStorage.setItem(adCacheKey, JSON.stringify({ content: adContent, expiresAt }));
+          // 渲染广告
+          renderAd(adContent);
+        });
+      })
+      .catch(error => console.error('Error loading the ad:', error));
+  }
+
+  // 渲染广告函数
+  function renderAd(html) {
+    const adSlots = document.querySelectorAll('.dynamic-ad-container');
+    adSlots.forEach(slot => {
+      slot.innerHTML = html;
+    });
+  }
+})();</script> <!-- <LeaveFeedback lang={lang} /> --> <!-- <BottomWeeklySubscribe lang={lang} /> --> <script type="module" src="/_astro/WeeklySubscribeModal.astro_astro_type_script_index_0_lang.C4utatll.js"></script> <!-- Modal toggle --><button data-modal-target="default-modal" data-modal-toggle="default-modal" class="hidden text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+Toggle modal
+</button> <!-- Modal backdrop with flex centering --> <div id="modal-backdrop" class="hidden fixed inset-0 bg-black bg-opacity-50 z-40 items-center justify-center"> <div id="default-modal" class="hidden relative p-4 w-full max-w-2xl"> <!-- Modal content --> <div class="relative bg-white rounded-lg shadow-2xl dark:bg-gray-800 border-gray-200 border dark:border-gray-600"> <!-- Modal header --> <div class="flex items-center justify-between px-4 md:px-5 pt-4 pb-0 rounded-t dark:border-gray-600"> <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal"> <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path> </svg> <span class="sr-only">Close modal</span> </button> </div> <!-- Modal body --> <div class="px-4 md:px-5 pb-4"> <div class="w-full mx-auto text-center px-6 pb-6"> <div class="text-lg font-semibold text-gray-900 dark:text-blue-100 pt-4 pb-8">每周一，与您分享精心筛选的 Swift 与 SwiftUI 开发精华</div> <div id="custom-substack-embed1"></div> <!-- <div class="text-gray-700 dark:text-blue-200 text-xs font-medium pt-4">{bottomTip}</div> --> <script>(function(){const subscribeText = "立刻订阅";
+const placeholder = "输入邮箱订阅周报";
+
+    window.CustomSubstackWidget = {
+      substackUrl: 'weekly.fatbobman.com',
+      placeholder: placeholder,
+      buttonText: subscribeText,
+      theme: 'custom',
+      colors: {
+        primary: '#F50000',
+        input: '#000000',
+        email: '#777777',
+        text: '#000000',
+      },
+    };
+
+    // 创建一个新的 MutationObserver 实例
+    const observer = new MutationObserver((mutationsList, observer) => {
+      // 遍历所有的 mutations
+      for (let mutation of mutationsList) {
+        // 如果这个 mutation 是一个子节点的添加或删除
+        if (mutation.type === 'childList') {
+          // 查找订阅框
+          const widget = document.querySelector('.custom-substack-widget1');
+          if (widget) {
+            // 查找 input 元素
+            const input = widget.querySelector('input');
+            const button = widget.querySelector('button');
+            // 根据当前的颜色方案修改订阅框的样式
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+              // 暗黑模式
+              widget.style.border = 'var(--subscribe-widget-border)';
+              widget.style.padding = '0.3rem';
+              widget.style.borderRadius = '0.7rem 0.7rem 0.7rem 0.7rem';
+              widget.style.backgroundColor = 'var(--subscribe-input-background)';
+              input.style.border = '0px solid #000';
+              input.style.backgroundColor = 'var(--subscribe-input-background)';
+              input.style.padding = '0.5rem';
+              // input.style.border = '1px solid #E2E8F0';
+              input.style.outline = 'none';
+              button.style.backgroundColor = 'var(--subscribe-button-background)';
+              button.style.color = 'var(--subscribe-button-text)';
+              button.style.fontWeight = 'bold';
+              button.style.padding = '0.5rem 1rem';
+              button.style.borderRadius = '0.5rem 0.5rem 0.5rem 0.5rem';
+              button.style.maxWidth = '100px';
+            } else {
+              // 正常模式
+              widget.style.border = 'var(--subscribe-widget-border)';
+              widget.style.padding = '0.3rem';
+              widget.style.borderRadius = '0.7rem 0.7rem 0.7rem 0.7rem';
+              widget.style.backgroundColor = 'var(--subscribe-input-background)';
+              input.style.border = '0px solid #000';
+              input.style.backgroundColor = 'var(--subscribe-input-background)';
+              input.style.padding = '0.5rem';
+              // input.style.border = '1px solid #E2E8F0';
+              input.style.outline = 'none';
+              button.style.backgroundColor = 'var(--subscribe-button-background)';
+              button.style.color = 'var(--subscribe-button-text)';
+              button.style.fontWeight = 'bold';
+              button.style.padding = '0.5rem 1rem';
+              button.style.borderRadius = '0.5rem 0.5rem 0.5rem 0.5rem';
+              button.style.maxWidth = '100px';
+            }
+
+            if (window.matchMedia('(max-width: 640px)').matches) {
+              // 屏幕尺寸小于 640px
+              widget.style.maxWidth = '325px';
+            } else {
+              // 屏幕尺寸大于或等于 640px
+              widget.style.maxWidth = '600px';
+            }
+            // 停止观察
+            observer.disconnect();
+          }
+        }
+      }
+    });
+
+    // 开始观察 #custom-substack-embed 元素的子节点的变化
+    observer.observe(document.getElementById('custom-substack-embed1'), { childList: true });
+  })();</script> <script src="/js/subscriber.js" async></script> </div> <div class="flex justify-center pb-6"> <button data-modal-hide="default-modal" type="button" class="text-gray-600 dark:text-gray-400 bg-transparent hover:text-gray-800 dark:hover:text-gray-200 font-medium rounded-lg text-sm px-8 py-2.5 text-center transition-colors">继续阅读</button> </div> </div> </div> </div> </div> <div class="w-full mx-auto text-center pb-4 sm:pb-10 pt-0"> <div id="custom-substack-embed"></div> <div class="text-xs font-medium text-heading p-4">为您每周带来有关 Swift 和 SwiftUI 的精选资讯！</div> <script>(function(){const subscribeText = "立刻订阅";
+const placeholder = "输入邮箱订阅周报";
+
+    window.CustomSubstackWidget = {
+      substackUrl: 'weekly.fatbobman.com',
+      placeholder: placeholder,
+      buttonText: subscribeText,
+      theme: 'custom',
+      colors: {
+        primary: '#F50000',
+        input: '#000000',
+        email: '#777777',
+        text: '#000000',
+      },
+    };
+  
+    const observer = new MutationObserver((mutationsList) => {
+      const widget = document.querySelector('.custom-substack-widget');
+      if (widget) {
+        const input = widget.querySelector('input');
+        const button = widget.querySelector('button');
+  
+        // 设置样式（合并暗黑模式与默认模式逻辑）
+        const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        widget.style.padding = '0.5rem';
+        widget.style.borderRadius = '1.2rem';
+        widget.style.border = '0.1px solid var(--aw-color-text-muted)';
+        input.style.border = '0px solid #000';
+        input.style.backgroundColor = 'var(--aw-background-color)';
+        button.style.backgroundColor = 'var(--subscribe-button-background)';
+        button.style.color = 'var(--subscribe-button-text)';
+        button.style.borderRadius = '0.8rem';
+        button.style.maxWidth = '100px';
+        button.style.fontWeight = 'bold';
+  
+        // 响应式调整
+        widget.style.maxWidth = window.matchMedia('(max-width: 640px)').matches
+          ? '325px'
+          : '400px';
+  
+        observer.disconnect(); // 停止观察
+      }
+    });
+  
+    // 开始观察
+    observer.observe(document.getElementById('custom-substack-embed'), { childList: true });
+  })();</script> <script src="https://substackapi.com/widget.js" defer></script> </div> <div class="pt-6 pb-6  dark:border-gray-700"> <!-- <p class="flex justify-center align-center text-sm font-medium text-heading">
+    { lang === Lang.ZH && <SupportMeTextZH /> }
+    { lang === Lang.EN && <SupportMeTextEN /> }
+  </p> --> <div class="flex flex-col sm:flex-row justify-center items-center mx-auto sm:space-x-8 align-center pt-2"> <button type="button" class="text-gray-900 bg-yellow-200 hover:bg-yellow-300 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-8 py-4 text-center inline-flex items-center dark:focus:ring-gray-600 dark:border-gray-700 me-2 mb-2" onclick="window.open('https://www.buymeacoffee.com/fatbobman')"> <img src="/images/buymeacoffee.svg" alt="Buy me a coffee" class="w-5 h-5 me-2 -ms-1" decoding="async" loading="lazy"> <span class="text-black font-bold">Buy me a coffee</span> </button> <div class="pt-4 sm:pt-0"> <button type="button" class="text-red-500 bg-[#3b82f6] hover:bg-blue-700 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-8 py-4 text-center inline-flex items-center dark:focus:ring-gray-600 dark:border-gray-700 me-2 mb-2" onclick="window.open('https://afdian.com/a/fatbobman')"> <img src="/images/aifadian.svg" alt="" width="18" height="18" loading="lazy" decoding="async" class="w-4 h-4 me-2 -ms-1" aria-hidden="true"> <span class="text-white font-bold">爱发电(微信/支付宝)</span> </button>  </div> </div> </div> <!-- <WeeklySubscribe1 lang={lang} top={0} bottom={4}/> --> <section class="pt-10"><div class="max-w-5xl sm:px-4 py-2 mx-auto"><div class="grid gap-4 sm:gap-2 sm:mx-4 sm:grid-cols-12"><div class="col-span-12 sm:col-span-3 hidden sm:block"><div class="text-center sm:text-left mt-3 mb-14 before:block before:w-24 before:h-1 before:mb-3 before:rounded before:mx-auto sm:before:mx-0 before:bg-secondary"><h3 class="text-lg font-medium text-default">更多周报</h3></div></div><div class="sm:hidden text-lg font-medium text-heading col-span-12 text-left">更多周报</div><div class="relative col-span-12 sm:px-4 space-y-6 sm:col-span-9"><div class="col-span-12 space-y-2 relative sm:px-4 sm:col-span-8 sm:space-y-4 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:bg-block"><div class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group" id="relatedPosts-#67 (当前)"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default font-bold">#67 (当前)</h3></div></div><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/weekly/issue-066" target="_self" id="relatedPosts-Weekly #66 - 将 AI 整合至日常工具链"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Weekly #66 - 将 AI 整合至日常工具链</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/weekly/issue-065" target="_self" id="relatedPosts-Weekly #65 - 视角转换：从机场之争看开发者的双重身份"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Weekly #65 - 视角转换：从机场之争看开发者的双重身份</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/weekly/issue-064" target="_self" id="relatedPosts-Weekly #64 - 2025 新年快乐"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Weekly #64 - 2025 新年快乐</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/weekly/issue-063" target="_self" id="relatedPosts-Weekly #63 - 异种肾脏移植取得突破"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Weekly #63 - 异种肾脏移植取得突破</h3></div></a></div></div></div></div></section> <div class="flex justify-between p-4"> <a class="w-32 text-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" href="/zh/weekly/issue-066">上一期</a>  </div> <!-- <TOC lang={lang} post={post}/> --> <div class="hidden md:block md:absolute" id="sidebar" style="right: -50px; top: 0px"> <div class="invisible flex flex-col space-y-4 text-muted items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-out" id="sidebar-content"> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <a href="/zh/weekly/issue-066" data-tooltip-target="tooltip-next-post" data-tooltip-placement="left" id="sidebar-next-post" class> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/images/iconCollection.svg#icon-previous"></use> </svg> </a>  </div> <div id="tooltip-next-post" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>#66 : 将 AI 整合至日常工具链</div> <div class="text-xs text-yellow-200 font-extrabold pt-2">⌥ + ←</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>(function(){const url = "/zh/weekly/issue-066";
+const isHidden = false;
+
+  document.addEventListener('keydown', (e) => {
+    // Check if Alt+RightArrow or just RightArrow was pressed
+    if (e.altKey && e.key === 'ArrowLeft') {
+      // Only navigate if there's a URL and the button isn't hidden
+      if (url && !isHidden) {
+        e.preventDefault(); // Prevent default browser behavior
+        window.location.href = url;
+      }
+    }
+  });
+})();</script> <div class="opacity-50 text-heading hover:opacity-100  hover:opacity-50" style="width:20px; height:20px;">  <a href data-tooltip-target="tooltip-previous-post" data-tooltip-placement="left" id="sidebar-previous-post" class="text-gray-300 dark:text-gray-600 pointer-events-none"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/images/iconCollection.svg#icon-next"></use> <symbol id="icon-next" viewBox="0 0 24 24" fill="currentColor"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M12.089 3.634a2 2 0 0 0 -1.089 1.78l-.001 2.586h-6.999a2 2 0 0 0 -2 2v4l.005 .15a2 2 0 0 0 1.995 1.85l6.999 -.001l.001 2.587a2 2 0 0 0 3.414 1.414l6.586 -6.586a2 2 0 0 0 0 -2.828l-6.586 -6.586a2 2 0 0 0 -2.18 -.434l-.145 .068z" stroke-width="0" fill="currentColor"></path> </symbol> </svg> </a>  </div> <div id="tooltip-previous-post" role="tooltip" class="absolute z-10 hidden inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90">  <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>(function(){const url = "";
+const isHidden = true;
+
+  document.addEventListener('keydown', (e) => {
+    // Check if Alt+RightArrow or just RightArrow was pressed
+    if (e.altKey && e.key === 'ArrowRight') {
+      // Only navigate if there's a URL and the button isn't hidden
+      if (url && !isHidden) {
+        e.preventDefault(); // Prevent default browser behavior
+        window.location.href = url;
+      }
+    }
+  });
+})();</script> <!-- <DictButton lang={lang} post = {post}/> --> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <a href="https://x.com/intent/tweet?text=%E5%91%A8%E6%8A%A5%E8%BF%9B%E5%B1%95%E4%B8%8E%E5%8D%9A%E5%AE%A2%E8%B0%83%E6%95%B4%20-%20%E8%82%98%E5%AD%90%E7%9A%84%20Swift%20%E5%91%A8%E5%88%8A%20%2367%0A&url=https%3A%2F%2Ffatbobman.com%2Fzh%2Fweekly%2Fissue-067%2F%0A&hashtags=ios%2Cswiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter"> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/images/iconCollection.svg#icon-twitter"></use> </svg> </a>  </div> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <a href="https://bsky.app/intent/compose?text=%E5%91%A8%E6%8A%A5%E8%BF%9B%E5%B1%95%E4%B8%8E%E5%8D%9A%E5%AE%A2%E8%B0%83%E6%95%B4%20-%20%E8%82%98%E5%AD%90%E7%9A%84%20Swift%20%E5%91%A8%E5%88%8A%20%2367%0A%0A by %40fatbobman.bsky.social %0Ahttps%3A%2F%2Ffatbobman.com%2Fzh%2Fweekly%2Fissue-067%2F%0A%0A #ios #swift" target="_blank" id="sidebar-share-with-bluesky"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="0.4" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/images/iconCollection.svg#icon-bluesky"></use> </svg> </a>  </div> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <a href="https://www.facebook.com/sharer/sharer.php?u=https%253A%252F%252Ffatbobman.com%252Fzh%252Fweekly%252Fissue-067%252F" target="_blank" id="sidebar-share-with-facebook"> <svg stroke="currentColor" fill="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <use href="/images/iconCollection.svg#icon-facebook"></use> </svg> </a>  </div> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Ffatbobman.com%2Fzh%2Fweekly%2Fissue-067%2F&title=%E5%91%A8%E6%8A%A5%E8%BF%9B%E5%B1%95%E4%B8%8E%E5%8D%9A%E5%AE%A2%E8%B0%83%E6%95%B4-%E8%82%98%E5%AD%90%E7%9A%84%20Swift%20%E5%91%A8%E5%88%8A%20%2367%0A%20%23ios%20%23swift%0A%20by%20%40fatbobman%0A" target="_blank" id="sidebar-share-with-weibo"> <svg fill="currentColor" stroke="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <use href="/images/iconCollection.svg#icon-weibo"></use> </svg> </a>  </div> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:16px; height:16px;">  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ffatbobman.com%2Fzh%2Fweekly%2Fissue-067%2F" target="_blank" id="sidebar-share-with-linkedin"> <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="0.1" viewBox="0 0 15 15"> <use href="/images/iconCollection.svg#icon-linkedin"></use> </svg> </a>  </div> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <a href="mailto:?subject=%E6%96%87%E7%AB%A0%3A%E3%80%90%E5%91%A8%E6%8A%A5%E8%BF%9B%E5%B1%95%E4%B8%8E%E5%8D%9A%E5%AE%A2%E8%B0%83%E6%95%B4%20-%20%E8%82%98%E5%AD%90%E7%9A%84%20Swift%20%E5%91%A8%E5%88%8A%20%2367%E3%80%91&#38;body=%E5%88%86%E4%BA%AB%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E7%BB%99%E4%BD%A0%EF%BC%9A%0A%0A%E5%91%A8%E6%8A%A5%E8%BF%9B%E5%B1%95%E4%B8%8E%E5%8D%9A%E5%AE%A2%E8%B0%83%E6%95%B4%20-%20%E8%82%98%E5%AD%90%E7%9A%84%20Swift%20%E5%91%A8%E5%88%8A%20%2367%0A%0A%E9%93%BE%E6%8E%A5%3A%20https%3A%2F%2Ffatbobman.com%2Fzh%2Fweekly%2Fissue-067%2F" target="_blank" id="sidebar-share-with-email"> <svg fill="currentColor" stroke="currentColor" stroke-width="20" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <use href="/images/iconCollection.svg#icon-email"></use> </svg> </a>  </div> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" stroke-width="20" onclick="scrollToElement()" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <use href="/images/iconCollection.svg#icon-comment"></use> </svg>  </div> <script>
+  var offset = 80
+  function scrollToElement() {
+    var gitalkContainer = document.getElementById('gitalk-container');
+    if (gitalkContainer) {
+      var topPosition = gitalkContainer.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: topPosition, behavior: 'smooth' });
+    }
+  }
+</script> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" onclick="window.scrollTo({top:0,behavior:'smooth'})" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <!-- <path d="M862.464 161.536l-700.928 0c-30.976 0-56.096-25.12-56.096-56.096l0-28.064c0-30.944 25.12-56.064 56.096-56.064l700.896 0c30.976 0 56.096 25.12 56.096 56.064l0 28.032c0 31.008-25.12 56.096-56.096 56.096l0 0 0 0zM138.528 531.68c0 0 306.816-245.792 309.888-248.864 14.304-13.888 31.904-22.368 49.952-25.312 1.76-0.32 3.488-0.608 5.248-0.8 2.816-0.32 5.6-0.352 8.384-0.352 2.816-0.032 5.568 0.032 8.352 0.352 1.792 0.192 3.552 0.48 5.28 0.8 18.048 2.976 35.616 11.424 49.92 25.312 3.104 3.008 309.856 248.864 309.856 248.864 33.152 32.224 30.304 65.44-2.784 97.696s-77.376 3.04-110.496-29.216l-190.08-150.432 0 496.864c0 31.008-25.088 56.096-56.096 56.096l-28 0c-30.976 0-56.096-25.12-56.096-56.096l0-496.864-190.048 150.432c-33.088 32.288-77.408 61.536-110.496 29.216-33.056-32.256-35.872-65.44-2.816-97.696l0 0 0 0z"></path> --> <use href="/images/iconCollection.svg#icon-top"></use> </svg>  </div> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.DxYLTPMj.js"></script> <div><div id="gitalk-container" data-comment-id="weekly - issue 67" data-lang="zh"></div><script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script></div><script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var container = document.getElementById('gitalk-container');
+    if (container) {
+      var commentID = container.getAttribute('data-comment-id');
+      var lang = container.getAttribute('data-lang');
+
+      var gitalk = new Gitalk({
+        clientID: 'fcf61195c7f73253dc8b',
+        clientSecret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
+        repo: 'weeklyComments',
+        owner: 'fatbobman',
+        admin: ['fatbobman'],
+        id: commentID.split('/').pop().substring(0, 49),
+        distractionFreeMode: true,
+        createIssueManually: false,
+        language: lang,
+      });
+
+      gitalk.render('gitalk-container');
+    }
+  });
+</script> </div>   </div> </main> </div> <footer> <footer class="bg-block"> <div class="mx-auto w-full max-w-3xl px-4 md:px-6"> <div class="container flex flex-col items-center pt-10"> <div class="flex flex-row justify-around w-full space-x-3"> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">网站</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium"> <a href="https://apps.apple.com/us/app/id1534513553" class="hover:text-secondary" target="_blank">健康笔记</a> <a href="https://discord.gg/zhou-zi-de-swiftji-shi-ben-967978112509935657" class="hover:text-secondary" target="_blank">Discord</a> <a href="/zh/posts/" class="hover:text-secondary">文章</a> <a href="/zh/tags/" class="hover:text-secondary">标签</a> <a href="/zh/collections/" class="hover:text-secondary">合集</a> <a href="/zh/snippet/" class="hover:text-secondary">小贴士</a> </div> </div> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">关注</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium"> <a href="https://weekly.fatbobman.com" class="hover:text-secondary">周报</a> <a href="https://x.com/intent/follow?screen_name=fatbobman" class="hover:text-secondary" target="_blank">Twitter</a> <a href="https://mastodon.social/@fatbobman" class="hover:text-secondary" target="_blank">Mastodon</a> <a href="https://www.linkedin.com/in/fatbobman/" class="hover:text-secondary" target="_blank">Linkedin</a> <a href="https://bsky.app/profile/fatbobman.bsky.social" class="hover:text-secondary" target="_blank">Blue Sky</a> <a href="https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3" class="hover:text-secondary" target="_blank">
+即刻
+</a> <a href="https://github.com/fatbobman" class="hover:text-secondary" target="_blank">GitHub</a> <a href="/zh/rss.xml" class="hover:text-secondary hover:font-medium" target="_blank">RSS</a> </div> </div> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">信息</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium"> <a href="/zh/about/" class="hover:text-secondary">关于</a>  </div> </div> </div> <div class="pb-0"> <div class="flex items-center justify-center w-full px-6 pt-12 text-sm"> <span class="text-muted text-xs">Copyright © <span>2020-</span> 2025 <a href="https://x.com/fatbobman" class="border-b-secondary border-b-[1px]">Fatbobman Digital Limited</a>. All Rights
+            Reserved.</span> </div> <div class="flex items-center justify-center w-full px-6 pt-2 text-sm pb-10"> <span> <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" class="block text-xs text-muted">
+辽ICP备20006550号-1
+</a> </span> </div> </div> </div> </div> </footer> </footer> </div>   <!-- <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script> --><!-- <script type="module" src="/js/theme.js" defer></script> --><script>(function(){const currentLang = "zh";
+
+  function attachEvent(selector, event, fn) {
+    const matches = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
+    if (matches && matches.length) {
+      matches.forEach((elem) => {
+        elem.addEventListener(event, (e) => fn(e, elem), false);
+      });
+    }
+  }
+
+  // 为每个需要清除 focus 状态的按钮都添加一个 clear-focus 类, 下面的代码将在点击后自动移除 focus 状态
+  document.addEventListener('DOMContentLoaded', (event) => {
+    // 获取所有具有 'clear-focus' 类的按钮
+    const buttons = document.querySelectorAll('.clear-focus');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setTimeout(() => {
+          button.blur();
+        }, 0);
+      });
+    });
+  });
+
+  window.onpageshow = function () {
+    document.documentElement.classList.add('motion-safe:scroll-smooth');
+  };
+})();</script> <div id="docsearch-container-data" data-lang="zh" data-searchtext="搜索..."></div> <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3" defer></script> <script type="module">function r(e,t){const a={button:{buttonText:"搜索",buttonAriaLabel:"搜索"},modal:{searchBox:{resetButtonTitle:"清除搜索关键字",resetButtonAriaLabel:"清除搜索关键字",cancelButtonText:"取消",cancelButtonAriaLabel:"取消"},startScreen:{recentSearchesTitle:"最近搜索",noRecentSearchesText:"当前没有搜索历史记录",saveRecentSearchButtonTitle:"保存本次搜索",removeRecentSearchButtonTitle:"从搜索历史中移除",favoriteSearchesTitle:"收藏夹",removeFavoriteSearchButtonTitle:"从收藏夹移除"},errorScreen:{titleText:"无法获取结果",helpText:"请检查网络连接"},footer:{selectText:"选择",selectKeyAriaLabel:"选择",navigateText:"切换",navigateUpKeyAriaLabel:"Arrow up",navigateDownKeyAriaLabel:"Arrow down",closeText:"退出",closeKeyAriaLabel:"Escape key",searchByText:"引擎支持"},noResultsScreen:{noResultsText:"无法找到对应结果",suggestedQueryText:"可以尝试搜索如下内容",reportMissingResultsText:"确认本次搜索应该返回内容？",reportMissingResultsLinkText:"请告知我们"}}};if(typeof window<"u"){const n=window.docsearch;n({appId:"MVXKD4F4BR",apiKey:"a1b4111c3de8b9f60eeca6da001711da",indexName:"fatbobman",container:"#docsearch",insights:!0,placeholder:t,maxResultsPerGroup:50,translations:e==="zh"?a:void 0,searchParameters:{facetFilters:[`lang:${e}`],hitsPerPage:50}})}}function o(){const e=document.getElementById("docsearch-container-data");if(!e){console.error("Search container not found");return}const t=e.dataset.lang,a=e.dataset.searchtext;r(t,a)}window.addEventListener("load",()=>{document.querySelector('script[src*="docsearch"]')&&o()});</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> </body></html>

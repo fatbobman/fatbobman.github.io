@@ -1,0 +1,1 @@
+import{_ as e}from"./preload-helper.CLcXU_4U.js";document.addEventListener("DOMContentLoaded",async()=>{try{(await e(()=>import("./modalsubscribecontroller.Nvs5BEtV.js"),[])).default.initModal(),console.log("Modal initialized")}catch(o){console.error("Failed to initialize modal:",o)}});

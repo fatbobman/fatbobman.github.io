@@ -33,7 +33,7 @@ const visionOS2025Ad = `
             <div class="absolute top-0 right-0 text-secondary text-xs font-bold rounded mt-2 mr-4">立即报名</div>
             <img
               src="https://cdn.fatbobman.com/ads/wwdc2024.playground.svg"
-              alt="let's visionOS 2025"
+              alt="let's vision 2025"
               style="width: 6rem; height: 6rem;"
               class="mr-0 sm:mr-4 mb-4 sm:mb-0 hidden sm:block"
               loading="lazy"
@@ -49,7 +49,7 @@ const visionOS2025Ad = `
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
                 与全球的开发者一起参加于
 
-                <strong class="text-orange-700 dark:text-blue-400 leading-tight">2025.02.28 - 2025.03.02 中国，上海</strong> 举办的 <strong class="text-orange-700 dark:text-blue-400 leading-tight">Let's visionOS 2025</strong>。
+                <strong class="text-orange-700 dark:text-blue-400 leading-tight">2025.03.01 - 2025.03.02 中国，上海</strong> 举办的 <strong class="text-orange-700 dark:text-blue-400 leading-tight">Let's visionOS 2025</strong>。
               </div>
               <!-- <div class="text-sm text-gray-600 dark:text-gray-400 italic leading-loose font-medium">赶快报名，不要错过这场技术盛宴！</div> -->
             </div>
@@ -179,7 +179,7 @@ const getRandomContent = () => {
 const ads = [
   discordAd,
   visionOS2025Ad,
-  midstAd,
+  // midstAd,
   pasteNowAd,
   zipicAd,
 ]

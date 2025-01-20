@@ -1,0 +1,1 @@
+import{_ as t}from"./preload-helper.CLcXU_4U.js";document.addEventListener("DOMContentLoaded",()=>{window.innerWidth>=768&&t(()=>import("./floatsidebar.DusEajnh.js"),[]).then(e=>{e.initFloatSidebar()}).catch(e=>console.error("Failed to load sidebar:",e))});
