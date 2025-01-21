@@ -24,29 +24,20 @@
             ]
         },
         {
-            "source": "/images/*",
+            "source": "/_astro/*",
             "headers": [
                 {
                     "key": "Cache-Control",
-                    "value": "max-age=15768000"
+                    "value": "max-age=15768000, immutable"
                 }
             ]
         },
         {
-            "source": "/js/*",
+            "source": "/rss/*",
             "headers": [
                 {
                     "key": "Cache-Control",
-                    "value": "max-age=14400"
-                }
-            ]
-        },
-        {
-            "source": "/modal-content",
-            "headers": [
-                {
-                    "key": "Content-Security-Policy",
-                    "value": "frame-ancestors 'self'"
+                    "value": "max-age=15768000, immutable"
                 }
             ]
         }

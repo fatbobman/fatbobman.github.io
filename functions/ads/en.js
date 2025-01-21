@@ -101,7 +101,7 @@ const healthNotesAd = `
     <div class="p-4 bg-orange-100/70 dark:bg-blue-800 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0">
       <div class="hidden sm:block absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-2 mr-4">App</div>
       <img
-              src="https://fatbobman.com/images/healthnotes-logo.svg"
+              src="https://cdn.fatbobman.com/healthnotes-logo.svg"
               alt="Heath Notes Logo"
               style="width: 4.5rem; height: 4.5rem; margin-left: 1.0rem; margin-right: 1.5rem;"
               class="mr-0 mb-4 sm:mb-0 hidden sm:block rounded-lg"
