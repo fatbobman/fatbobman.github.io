@@ -32,7 +32,10 @@
       ) {
         document.documentElement.classList.add('dark');
       }
-    </script><link rel="stylesheet" href="/_astro/style.BwpIl3wN.css"></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <div id="blogTitle"> <a href="/en/"> <div class="flex space-x-4 mx-auto text-center pt-6 sm:pt-6 font-black w-[240px] sm:w-[300px] pb-2 sm:pb-0"> <svg fill="currentColor" class="text-heading" width="500"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </a> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto p-2 sm:p-0" data-astro-cid-4wsjtibl> <div class="flex space-x-2" data-astro-cid-4wsjtibl> <div id="lang-data" data-lang="en" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" class="p-2 w-10 h-10 font-medium text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg"> EN </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <a href class="block px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
+    </script><link rel="stylesheet" href="/_astro/about.CUuUjlP2.css">
+<style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
+</style>
+<link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css"></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <div id="blogTitle"> <a href="/en/"> <div class="flex space-x-4 mx-auto text-center pt-6 sm:pt-6 font-black w-[240px] sm:w-[300px] pb-2 sm:pb-0"> <svg fill="currentColor" class="text-heading" width="500"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </a> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto p-2 sm:p-0" data-astro-cid-4wsjtibl> <div class="flex space-x-2" data-astro-cid-4wsjtibl> <div id="lang-data" data-lang="en" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" class="p-2 w-10 h-10 font-medium text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg"> EN </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <a href class="block px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
 English
 <svg class="w-3.5 h-3.5 ml-2 hidden text-primary" id="EN-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.BDk6xFEU.svg#icon-aifadian"></use> </svg> </div> </a> </li><li> <a href="/zh/weekly/issue-041/" class="block px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
 中文
@@ -452,53 +455,7 @@ const placeholder = "Subscribe with your email";
 
     // 开始观察 #custom-substack-embed 元素的子节点的变化
     observer.observe(document.getElementById('custom-substack-embed1'), { childList: true });
-  })();</script> </div> <div class="flex justify-center pb-6"> <button data-modal-hide="default-modal" type="button" class="text-gray-600 dark:text-gray-400 bg-transparent hover:text-gray-800 dark:hover:text-gray-200 font-medium rounded-lg text-sm px-8 py-2.5 text-center transition-colors">Continue Reading</button> </div> </div> </div> </div> </div> <div class="w-full mx-auto text-center pb-4 sm:pb-10 pt-0"> <div id="custom-substack-embed"></div> <div class="text-xs font-medium text-heading p-4">Get weekly handpicked updates on Swift and SwiftUI!</div> <script>(function(){const subscribeText = "Join Now";
-const placeholder = "Subscribe with your email";
-
-    window.CustomSubstackWidget = {
-      substackUrl: 'weekly.fatbobman.com',
-      placeholder: placeholder,
-      buttonText: subscribeText,
-      theme: 'custom',
-      colors: {
-        primary: '#F50000',
-        input: '#000000',
-        email: '#777777',
-        text: '#000000',
-      },
-    };
-  
-    const observer = new MutationObserver(() => {
-      const widget = document.querySelector('.custom-substack-widget');
-      if (widget) {
-        const input = widget.querySelector('input');
-        const button = widget.querySelector('button');
-  
-        // 设置样式（合并暗黑模式与默认模式逻辑）
-        // const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        widget.style.padding = '0.5rem';
-        widget.style.borderRadius = '1.2rem';
-        widget.style.border = '0.1px solid var(--aw-color-text-muted)';
-        input.style.border = '0px solid #000';
-        input.style.backgroundColor = 'var(--aw-background-color)';
-        button.style.backgroundColor = 'var(--subscribe-button-background)';
-        button.style.color = 'var(--subscribe-button-text)';
-        button.style.borderRadius = '0.8rem';
-        button.style.maxWidth = '100px';
-        button.style.fontWeight = 'bold';
-  
-        // 响应式调整
-        widget.style.maxWidth = window.matchMedia('(max-width: 640px)').matches
-          ? '325px'
-          : '400px';
-  
-        observer.disconnect(); // 停止观察
-      }
-    });
-  
-    // 开始观察
-    observer.observe(document.getElementById('custom-substack-embed'), { childList: true });
-  })();</script> <script src="https://substackapi.com/widget.js" defer></script> </div> <div class="pt-6 pb-6  dark:border-gray-700"> <!-- <p class="flex justify-center align-center text-sm font-medium text-heading">
+  })();</script> </div> <div class="flex justify-center pb-6"> <button data-modal-hide="default-modal" type="button" class="text-gray-600 dark:text-gray-400 bg-transparent hover:text-gray-800 dark:hover:text-gray-200 font-medium rounded-lg text-sm px-8 py-2.5 text-center transition-colors">Continue Reading</button> </div> </div> </div> </div> </div> <div class="w-full mx-auto text-center pb-4 sm:pb-10 pt-0"> <div id="custom-substack-embed" data-subcribeTest="Join Now" data-placeholder="Subscribe with your email" style="opacity: 0; transition: opacity 0.3s; min-height: 58px;"></div> <div class="text-xs font-medium text-heading p-4">Get weekly handpicked updates on Swift and SwiftUI!</div> <script type="module" src="/_astro/WeeklySubscribe.astro_astro_type_script_index_0_lang.DQKrZn3Z.js"></script> </div> <div class="pt-6 pb-6  dark:border-gray-700" id="donate-author"> <!-- <p class="flex justify-center align-center text-sm font-medium text-heading">
     { lang === Lang.ZH && <SupportMeTextZH /> }
     { lang === Lang.EN && <SupportMeTextEN /> }
   </p> --> <div class="flex flex-col sm:flex-row justify-center items-center mx-auto sm:space-x-8 align-center pt-2"> <button type="button" class="text-gray-900 bg-yellow-200 hover:bg-yellow-300 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-8 py-4 text-center inline-flex items-center dark:focus:ring-gray-600 dark:border-gray-700 me-2 mb-2" onclick="window.open('https://www.buymeacoffee.com/fatbobman')"> <svg class="w-5 h-5 me-2 -ms-1" fill="none" stroke="none" xmlns="http://www.w3.org/2000/svg"> <use href="/_astro/iconCollection.BDk6xFEU.svg#icon-buymecoffee"></use> </svg> <span class="text-black font-bold">Buy me a coffee</span> </button> <div class="pt-4 sm:pt-0">  <button type="button" class="bg-[#3b82f6] hover:bg-blue-700 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-8 py-4 text-center inline-flex items-center dark:focus:ring-gray-600 dark:border-gray-700 me-2 mb-2" onclick="window.open('https://www.paypal.com/paypalme/fatbobman')"> <svg width="24" height="24" class="w-4 h-4 me-2 -ms-1" aria-hidden="true" stroke="none"> <use href="/_astro/iconCollection.BDk6xFEU.svg#icon-paypal"></use> </svg> <span class="text-white font-bold hover:text-yellow-100">Donate via Paypal</span> </button> </div> </div> </div> <!-- <WeeklySubscribe1 lang={lang} top={0} bottom={4}/> --> <section class="pt-10"><div class="max-w-5xl sm:px-4 py-2 mx-auto"><div class="grid gap-4 sm:gap-2 sm:mx-4 sm:grid-cols-12"><div class="col-span-12 sm:col-span-3 hidden sm:block"><div class="text-center sm:text-left mt-3 mb-14 before:block before:w-24 before:h-1 before:mb-3 before:rounded before:mx-auto sm:before:mx-0 before:bg-secondary"><h3 class="text-lg font-medium text-default">More Issues</h3></div></div><div class="sm:hidden text-lg font-medium text-heading col-span-12 text-left">More Issues</div><div class="relative col-span-12 sm:px-4 space-y-6 sm:col-span-9"><div class="col-span-12 space-y-2 relative sm:px-4 sm:col-span-8 sm:space-y-4 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:bg-block"><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/weekly/issue-043" target="_self" id="relatedPosts-Weekly #43 - Archiving and Awakening Memories"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Weekly #43 - Archiving and Awakening Memories</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/weekly/issue-042" target="_self" id="relatedPosts-Weekly #42 - Experience is a Double-Edged Sword"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Weekly #42 - Experience is a Double-Edged Sword</h3></div></a><div class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group" id="relatedPosts-#41 Current"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default font-bold">#41 Current</h3></div></div><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/weekly/issue-040" target="_self" id="relatedPosts-Weekly #40 - Ensure &#34;Driverless Cars&#34; Don't Lead to &#34;Jobless Masses&#34;"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Weekly #40 - Ensure &quot;Driverless Cars&quot; Don&#39;t Lead to &quot;Jobless Masses&quot;</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/weekly/issue-039" target="_self" id="relatedPosts-Weekly #39 - New Challenges for Creators' Rights in the AI Era"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Weekly #39 - New Challenges for Creators&#39; Rights in the AI Era</h3></div></a></div></div></div></div></section> <div class="flex justify-between p-4"> <a class="w-32 text-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" href="/en/weekly/issue-040">Previous</a> <a class="w-32 text-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" href="/en/weekly/issue-042">Next</a> </div> <!-- <TOC lang={lang} post={post}/> --> <div class="hidden md:block md:absolute" id="sidebar" style="right: -50px; top: 0px"> <div class="invisible flex flex-col space-y-4 text-muted items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-out" id="sidebar-content"> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <a href="/en/weekly/issue-040" data-tooltip-target="tooltip-next-post" data-tooltip-placement="left" id="sidebar-next-post" class> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.BDk6xFEU.svg#icon-previous"></use> </svg> </a>  </div> <div id="tooltip-next-post" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>#40 : Ensure &quot;Driverless Cars&quot; Don&#39;t Lead to &quot;Jobless Masses&quot;</div> <div class="text-xs text-yellow-200 font-extrabold pt-2">⌥ + ←</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>(function(){const url = "/en/weekly/issue-040";
@@ -542,29 +499,83 @@ const isHidden = false;
       });
     }
   });
-</script> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" onclick="window.scrollTo({top:0,behavior:'smooth'})" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <!-- <path d="M862.464 161.536l-700.928 0c-30.976 0-56.096-25.12-56.096-56.096l0-28.064c0-30.944 25.12-56.064 56.096-56.064l700.896 0c30.976 0 56.096 25.12 56.096 56.064l0 28.032c0 31.008-25.12 56.096-56.096 56.096l0 0 0 0zM138.528 531.68c0 0 306.816-245.792 309.888-248.864 14.304-13.888 31.904-22.368 49.952-25.312 1.76-0.32 3.488-0.608 5.248-0.8 2.816-0.32 5.6-0.352 8.384-0.352 2.816-0.032 5.568 0.032 8.352 0.352 1.792 0.192 3.552 0.48 5.28 0.8 18.048 2.976 35.616 11.424 49.92 25.312 3.104 3.008 309.856 248.864 309.856 248.864 33.152 32.224 30.304 65.44-2.784 97.696s-77.376 3.04-110.496-29.216l-190.08-150.432 0 496.864c0 31.008-25.088 56.096-56.096 56.096l-28 0c-30.976 0-56.096-25.12-56.096-56.096l0-496.864-190.048 150.432c-33.088 32.288-77.408 61.536-110.496 29.216-33.056-32.256-35.872-65.44-2.816-97.696l0 0 0 0z"></path> --> <use href="/_astro/iconCollection.BDk6xFEU.svg#icon-top"></use> </svg>  </div> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.XHrm3OJt.js"></script> <div><div id="gitalk-container" data-comment-id="weekly - issue 41" data-lang="en"></div><script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script></div><script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var container = document.getElementById('gitalk-container');
-    if (container) {
-      var commentID = container.getAttribute('data-comment-id');
-      var lang = container.getAttribute('data-lang');
+</script> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" onclick="window.scrollTo({top:0,behavior:'smooth'})" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <!-- <path d="M862.464 161.536l-700.928 0c-30.976 0-56.096-25.12-56.096-56.096l0-28.064c0-30.944 25.12-56.064 56.096-56.064l700.896 0c30.976 0 56.096 25.12 56.096 56.064l0 28.032c0 31.008-25.12 56.096-56.096 56.096l0 0 0 0zM138.528 531.68c0 0 306.816-245.792 309.888-248.864 14.304-13.888 31.904-22.368 49.952-25.312 1.76-0.32 3.488-0.608 5.248-0.8 2.816-0.32 5.6-0.352 8.384-0.352 2.816-0.032 5.568 0.032 8.352 0.352 1.792 0.192 3.552 0.48 5.28 0.8 18.048 2.976 35.616 11.424 49.92 25.312 3.104 3.008 309.856 248.864 309.856 248.864 33.152 32.224 30.304 65.44-2.784 97.696s-77.376 3.04-110.496-29.216l-190.08-150.432 0 496.864c0 31.008-25.088 56.096-56.096 56.096l-28 0c-30.976 0-56.096-25.12-56.096-56.096l0-496.864-190.048 150.432c-33.088 32.288-77.408 61.536-110.496 29.216-33.056-32.256-35.872-65.44-2.816-97.696l0 0 0 0z"></path> --> <use href="/_astro/iconCollection.BDk6xFEU.svg#icon-top"></use> </svg>  </div> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.XHrm3OJt.js"></script> <div><div id="gitalk-container" data-comment-id="weekly - issue 41" data-lang="en" data-repo="weeklyComments" data-createIssueManually="false"></div></div>
 
-      var gitalk = new Gitalk({
-        clientID: 'fcf61195c7f73253dc8b',
-        clientSecret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
-        repo: 'weeklyComments',
-        owner: 'fatbobman',
-        admin: ['fatbobman'],
-        id: commentID.split('/').pop().substring(0, 49),
-        distractionFreeMode: true,
-        createIssueManually: false,
-        language: lang,
+    <script defer>
+      document.addEventListener('DOMContentLoaded', async function () {
+        // 提前检查是否需要加载评论
+        try {
+          const response = await fetch('https://fatbobman.com/status/comment');
+          const data = await response.text();
+          console.log(data, "comment");
+
+          if (data !== '1') {
+            console.log('评论功能未启用，跳过监控和加载操作。');
+            return; // 提前返回，跳过后续逻辑
+          }
+        } catch (error) {
+          console.error('检查评论状态时出错：', error);
+          return; // 出现错误时也跳过后续逻辑
+        }
+
+        // 如果返回值为 "1"，则启动观察器
+        const observerTarget = document.getElementById('donate-author');
+        if (observerTarget) {
+          const observer = new IntersectionObserver(async (entries, observer) => {
+            const entry = entries[0];
+            if (entry.isIntersecting) {
+              console.log("load comment")
+              // 停止观察，避免重复触发
+              observer.unobserve(observerTarget);
+
+              // 动态加载评论区脚本
+              await loadGitalk();
+            }
+          }, {
+            root: null, // 相对于视口
+            rootMargin: '20%', // 提前 20% 的位置触发
+            threshold: 0.1, // 元素显示 10% 即触发
+          });
+
+          observer.observe(observerTarget);
+        }
+
+        // 动态加载 Gitalk 脚本并初始化评论区
+        async function loadGitalk() {
+          const container = document.getElementById('gitalk-container');
+          if (container) {
+            const commentID = container.getAttribute('data-comment-id');
+            const lang = container.getAttribute('data-lang');
+            const repo = container.getAttribute('data-repo')
+            const createIssueManually = container.getAttribute('data-createIssueManually')
+
+            console.log(repo);
+            console.log(createIssueManually)
+
+            // 动态加载 Gitalk 脚本
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js';
+            script.defer = true;
+            script.onload = () => {
+              const gitalk = new Gitalk({
+                clientID: 'fcf61195c7f73253dc8b',
+                clientSecret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
+                repo: repo,
+                owner: 'fatbobman',
+                admin: ['fatbobman'],
+                id: commentID.split('/').pop().substring(0, 49),
+                distractionFreeMode: true,
+                createIssueManually: createIssueManually,
+                language: lang,
+              });
+
+              gitalk.render('gitalk-container');
+            };
+            document.body.appendChild(script);
+          }
+        }
       });
-
-      gitalk.render('gitalk-container');
-    }
-  });
-</script> </div>   </div> </main> </div> <footer> <footer class="bg-block"> <div class="mx-auto w-full max-w-3xl px-4 md:px-6"> <div class="container flex flex-col items-center pt-10"> <div class="flex flex-row justify-around w-full space-x-3"> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">Website</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium"> <a href="https://apps.apple.com/us/app/id1534513553" class="hover:text-secondary" target="_blank">Health Notes</a> <a href="https://discord.gg/zhou-zi-de-swiftji-shi-ben-967978112509935657" class="hover:text-secondary" target="_blank">Discord</a> <a href="/en/posts/" class="hover:text-secondary">Posts</a> <a href="/en/tags/" class="hover:text-secondary">Tags</a> <a href="/en/collections/" class="hover:text-secondary">Collections</a> <a href="/en/snippet/" class="hover:text-secondary">Quick Tips</a> </div> </div> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">Follow</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium"> <a href="https://weekly.fatbobman.com" class="hover:text-secondary">Newsletter</a> <a href="https://x.com/intent/follow?screen_name=fatbobman" class="hover:text-secondary" target="_blank">Twitter</a> <a href="https://mastodon.social/@fatbobman" class="hover:text-secondary" target="_blank">Mastodon</a> <a href="https://www.linkedin.com/in/fatbobman/" class="hover:text-secondary" target="_blank">Linkedin</a> <a href="https://bsky.app/profile/fatbobman.bsky.social" class="hover:text-secondary" target="_blank">Blue Sky</a>  <a href="https://github.com/fatbobman" class="hover:text-secondary" target="_blank">GitHub</a> <a href="/rss.xml" class="hover:text-secondary hover:font-medium" target="_blank">RSS</a> </div> </div> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">Info</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium"> <a href="/en/about/" class="hover:text-secondary">About</a> <a href="/en/sponsorship/" class="hover:text-secondary"> Sponsor </a> </div> </div> </div> <div class="pb-0"> <div class="flex items-center justify-center w-full px-6 pt-12 text-sm"> <span class="text-muted text-xs">Copyright ©  2025 <a href="https://x.com/fatbobman" class="border-b-secondary border-b-[1px]">Fatbobman Digital Limited</a>. All Rights
+    </script> </div>   </div> </main> </div> <footer> <footer class="bg-block"> <div class="mx-auto w-full max-w-3xl px-4 md:px-6"> <div class="container flex flex-col items-center pt-10"> <div class="flex flex-row justify-around w-full space-x-3"> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">Website</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium"> <a href="https://apps.apple.com/us/app/id1534513553" class="hover:text-secondary" target="_blank">Health Notes</a> <a href="https://discord.gg/zhou-zi-de-swiftji-shi-ben-967978112509935657" class="hover:text-secondary" target="_blank">Discord</a> <a href="/en/posts/" class="hover:text-secondary">Posts</a> <a href="/en/tags/" class="hover:text-secondary">Tags</a> <a href="/en/collections/" class="hover:text-secondary">Collections</a> <a href="/en/snippet/" class="hover:text-secondary">Quick Tips</a> </div> </div> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">Follow</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium"> <a href="https://weekly.fatbobman.com" class="hover:text-secondary">Newsletter</a> <a href="https://x.com/intent/follow?screen_name=fatbobman" class="hover:text-secondary" target="_blank">Twitter</a> <a href="https://mastodon.social/@fatbobman" class="hover:text-secondary" target="_blank">Mastodon</a> <a href="https://www.linkedin.com/in/fatbobman/" class="hover:text-secondary" target="_blank">Linkedin</a> <a href="https://bsky.app/profile/fatbobman.bsky.social" class="hover:text-secondary" target="_blank">Blue Sky</a>  <a href="https://github.com/fatbobman" class="hover:text-secondary" target="_blank">GitHub</a> <a href="/rss.xml" class="hover:text-secondary hover:font-medium" target="_blank">RSS</a> </div> </div> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">Info</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium"> <a href="/en/about/" class="hover:text-secondary">About</a> <a href="/en/sponsorship/" class="hover:text-secondary"> Sponsor </a> </div> </div> </div> <div class="pb-0"> <div class="flex items-center justify-center w-full px-6 pt-12 text-sm"> <span class="text-muted text-xs">Copyright ©  2025 <a href="https://x.com/fatbobman" class="border-b-secondary border-b-[1px]">Fatbobman Digital Limited</a>. All Rights
             Reserved.</span> </div> <div class="flex items-center justify-center w-full px-6 pt-2 text-sm pb-10"> <span> <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank" class="block text-xs text-muted">
 辽ICP备20006550号-1
 </a> </span> </div> </div> </div> </div> </footer> </footer> </div>  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js" async></script> <script>
