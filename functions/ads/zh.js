@@ -6,7 +6,7 @@ const discordAd = `
           >
             <div class="hidden sm:block absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-2 mr-4">Sign Up</div>
             <img
-              src="http://cdn.fatbobman.com/ads/apple-100.svg"
+              src="https://cdn.fatbobman.com/ads/apple-100.svg"
               alt="Join Discord Logo"
               style="width: 6rem; height: 6rem;"
               width="96"
