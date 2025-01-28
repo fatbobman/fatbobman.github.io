@@ -35,7 +35,7 @@ const visionOS2025Ad = `
           </div>
           <div class="flex justify-center py-2">
             <div
-              class="text-default text-xs font-normal hover:text-secondary hover:font-bold cursor-pointer"
+              class="text-secondary transition-all duration-200 text-xs font-semibold hover:text-buttonBg hover:scale-105 hover:font-bold cursor-pointer"
               onclick="window.location.href='/en/sponsorship/';"
             >
               Advertise on Blog & Newsletter &rarr;
@@ -87,7 +87,7 @@ const midstAd = `
           </div>
           <div class="flex justify-center py-2">
             <div
-              class="text-default text-xs font-normal hover:text-secondary hover:font-bold cursor-pointer"
+              class="text-secondary transition-all duration-200 text-xs font-semibold hover:text-buttonBg hover:scale-105 hover:font-bold cursor-pointer"
               onclick="window.location.href='/en/sponsorship/';"
             >
               Advertise on Blog & Newsletter &rarr;
@@ -123,7 +123,7 @@ const healthNotesAd = `
   </a>
   <div class="flex justify-center py-2">
      <div 
-         class="text-default text-xs font-normal hover:text-secondary hover:font-bold cursor-pointer"
+         class="text-secondary transition-all duration-200 text-xs font-semibold hover:text-buttonBg hover:scale-105 hover:font-bold cursor-pointer"
          onclick="window.location.href='/en/sponsorship/';"
      >
      Advertise on Blog & Newsletter &rarr;

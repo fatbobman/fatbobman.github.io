@@ -31,15 +31,6 @@
                     "value": "max-age=15768000, immutable"
                 }
             ]
-        },
-        {
-            "source": "/rss/*",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "max-age=15768000, immutable"
-                }
-            ]
         }
     ]
 }
