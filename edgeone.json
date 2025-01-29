@@ -9,34 +9,14 @@
         },
         {
             "source": "en/tags/Core Data/",
-            "destination": "en/tags/core-data/",
+            "destination": "en/tags/Core-Cata/",
             "statusCode": 301
         },
         {
             "source": "zh/tags/Core Data/",
-            "destination": "zh/tags/core-data/",
+            "destination": "zh/tags/Core-Data/",
             "statusCode": 301
-        },
-        {
-            "source": "zh/tags/SwiftData/",
-            "destination": "zh/tags/swiftdata/",
-            "statusCode": 301
-        },
-        {
-            "source": "en/tags/SwiftData/",
-            "destination": "en/tags/swiftdata/",
-            "statusCode": 301
-        },
-        {
-            "source": "en/tags/CloudKit/",
-            "destination": "en/tags/cloudkit/",
-            "statusCode": 301
-        },
-        {
-            "source": "zh/tags/CloudKit/",
-            "destination": "zh/tags/cloudkit/",
-            "statusCode": 301
-        },
+        }
     ],
     "rewrites": [],
     "headers": [
