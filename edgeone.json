@@ -8,12 +8,12 @@
             "statusCode": 301
         },
         {
-            "source": "en/tags/Core Data/",
-            "destination": "en/tags/Core-Cata/",
+            "source": "en/tags/Cor%20Data/",
+            "destination": "en/tags/Core-Data/",
             "statusCode": 301
         },
         {
-            "source": "zh/tags/Core Data/",
+            "source": "zh/tags/Core%20Data/",
             "destination": "zh/tags/Core-Data/",
             "statusCode": 301
         }
