@@ -12,16 +12,17 @@
 <meta property="og:site_name" content="fatbobman.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@fatbobman">
-<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><meta name="keywords" content="Swift 编程,Swift Programming,SwiftUI 教程,SwiftUI Tutorials,Core Data 实践,Core Data Practices,SwiftData 应用,SwiftData Applications,iOS 开发,iOS Development,Swift UI 设计,Swift UI Design,Swift 性能优化,Swift Performance Optimization,Swift 编码技巧,Swift Coding Techniques,iOS 应用开发,iOS App Development,Swift 数据管理,Swift Data Management,SwiftUI 布局,SwiftUI Layout,SwiftUI 动画,SwiftUI Animation"><link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/weekly/issue-036/">
-<link rel="alternate" hreflang="en" href="https://fatbobman.com/en/weekly/issue-036/"><!-- <script is:inline>
+<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/weekly/issue-036/">
+<link rel="alternate" hreflang="en" href="https://fatbobman.com/en/weekly/issue-036/"><script>
   var _hmt = _hmt || [];
   (function() {
     var hm = document.createElement("script");
+    hm.async = true; // Add async attribute
     hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
-</script> --><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+</script> <!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -33,7 +34,51 @@
       ) {
         document.documentElement.classList.add('dark');
       }
-    </script><link rel="stylesheet" href="/_astro/about.BITFbrMX.css">
+    </script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "author": {
+    "@type": "Person",
+    "name": "Fatbobman(东坡肘子)",
+    "url": "https://fatbobman.com/zh/about/",
+    "jobTitle": "苹果生态开发者",
+    "sameAs": [
+      "https://github.com/fatbobman",
+      "https://twitter.com/fatbobman",
+      "https://www.linkedin.com/in/fatbobman/",
+      "https://bsky.app/profile/fatbobman.bsky.social",
+      "https://mastodon.social/@fatbobman",
+      "https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3"
+    ]
+  },
+  "dateModified": "2024-06-17T14:00:00.000Z",
+  "datePublished": "2024-06-17T14:00:00.000Z",
+  "description": "WWDC 2024 已圆满落幕。在这一周里，苹果向开发者们展示了一系列对未来将产生深远意义的新特性和功能。我将对几个感触较深的方面分享一下看法和感受，回顾这次 WWDC 的亮点。",
+  "headline": "WWDC 2024 观后感 -- 肘子的 Swift 周报 #36",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/weekly/issue36.webp"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://fatbobman.com/zh/weekly/issue-036/"
+  },
+  "url": "https://fatbobman.com/zh/weekly/issue-036/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "肘子的 Swift 周报",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  },
+  "articleSection": [
+    "开发周报",
+    "Swift",
+    "邮件列表"
+  ],
+  "inLanguage": "zh-Hans"
+}</script><link rel="stylesheet" href="/_astro/about.BITFbrMX.css">
 <style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
 </style>
 <link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css"></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <div id="blogTitle"> <a href="/zh/"> <div class="flex space-x-4 mx-auto text-center pt-6 sm:pt-6 font-black w-[240px] sm:w-[300px] pb-2 sm:pb-0"> <svg fill="currentColor" class="text-heading" width="500"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </a> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto p-2 sm:p-0" data-astro-cid-4wsjtibl> <div class="flex space-x-2" data-astro-cid-4wsjtibl> <div id="lang-data" data-lang="zh" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" class="p-2 w-10 h-10 font-medium text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg"> ZH </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <button type="button" onclick="
@@ -191,7 +236,7 @@ const enableStickyInMobile = true;
 <p>我对 WWDC 2024 的满意程度无疑非常高，这种满意是随着我对新功能和新特性的逐步了解与深入体验而逐渐增强的。这种情况在最近几届 WWDC 中相对罕见。</p>
 <p>我也清楚，许多开发者对 WWDC 推出的新功能不甚关心，认为这些新功能短期内与他们无关。然而，了解这些新功能和趋势不仅仅是为了应对未来市场的需求，通过学习新的 API，我们能够吸收许多创新思维和技巧，并将它们应用于当前的开发实践。</p>
 <p>因此，WWDC 不只是观察未来趋势的窗口，它同样是一个促进交流、推动进步和自我提升的重要平台。</p>
-<div class="dynamic-ad-container pt-2 pb-6"></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-2 pb-6"></div></aside>
 <h5 id="与-wwdc-2024-新功能有关的文章">与 WWDC 2024 新功能有关的文章</h5>
 <h3 id="swiftdata">SwiftData</h3>
 <ul>
@@ -265,7 +310,7 @@ const enableStickyInMobile = true;
 <h3 id="探索-wwdc24-上公布的重大更新"><a href="https://t.ly/IMW1e" rel="noreferrer noopener">探索 WWDC24 上公布的重大更新</a></h3>
 <p>苹果将在 <strong>2024 年 7 月 2 日 上午 9:30 – 下午 5:30 (GMT+8)</strong> 举办视频讲座。与广大开发者一起深入了解 WWDC24 上公布的重大更新。将探索主题演讲和 Platforms State of the Union 的关键时刻，探索视频讲座，深入探究新的资源和文档，并展示各项指南将如何帮助你了解所有重大发布。活动语言为简体中文。</p>
 <p>请在 <strong>7 月 1 日晚上 11:45 (GMT+8)</strong> 之前 <a href="https://developer.apple.com/login/?return=%2Fevents%2Fview%2FR8SN9874JK%2Fdashboard?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">注册</a>。</p>
-<div class="dynamic-ad-container pt-2 pb-2"></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-2 pb-2"></div></aside>
 <h3 id="adventurex指引者预告"><a href="https://mp.weixin.qq.com/s/sh75Fd2IvdPMLQhl_nEaAw?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">AdventureX「指引者」预告</a></h3>
 <p>在 AdventureX 2024 你可以在所有的「指引者」上看到你的影子，他们不再是身着西装，似乎遥不可及的“成功人士”。你会与他们面对面交流，在他们的故事中，你会看见曾经的那个热血男孩，艺术青年……如同今天的你一般，或许迷茫过，失意过，但从未变的是对热爱事物的坚定和初心。</p>
 <p>更多「指引者」将在稍后发布。</p>
@@ -274,29 +319,7 @@ const enableStickyInMobile = true;
 <li>🌍 游客注册链接：<a href="https://t.ly/brRri" rel="noreferrer noopener">https://nexus.adventure-x.org</a>（🆓）</li>
 <li>⏰ 时间：2024.7.15 - 7.19</li>
 <li>📍 地点：湖畔创研中心</li>
-</ul> </div> </article> <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "author": {
-    "@type": "Person",
-    "name": "Fatbobman",
-    "url": "https://twitter.com/fatbobman"
-  },
-  "dateModified": "2024-06-17T14:00:00.000Z",
-  "datePublished": "2024-06-17T14:00:00.000Z",
-  "description": "WWDC 2024 已圆满落幕。在这一周里，苹果向开发者们展示了一系列对未来将产生深远意义的新特性和功能。我将对几个感触较深的方面分享一下看法和感受，回顾这次 WWDC 的亮点。",
-  "headline": "WWDC 2024 观后感 -- 肘子的 Swift 周报 #36",
-  "image": [
-    {
-      "url": "https://cdn.fatbobman.com/weekly/issue36.webp"
-    }
-  ],
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://fatbobman.com/zh/weekly/issue-036/"
-  },
-  "url": "https://fatbobman.com/zh/weekly/issue-036/"
-}</script> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
+</ul> </div> </article> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
   .copy-icon {
     position: absolute;
     left: -30px; /* 根据您的布局调整位置 */

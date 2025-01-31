@@ -12,16 +12,17 @@
 <meta property="og:site_name" content="fatbobman.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@fatbobman">
-<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/en/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><meta name="keywords" content="Swift 编程,Swift Programming,SwiftUI 教程,SwiftUI Tutorials,Core Data 实践,Core Data Practices,SwiftData 应用,SwiftData Applications,iOS 开发,iOS Development,Swift UI 设计,Swift UI Design,Swift 性能优化,Swift Performance Optimization,Swift 编码技巧,Swift Coding Techniques,iOS 应用开发,iOS App Development,Swift 数据管理,Swift Data Management,SwiftUI 布局,SwiftUI Layout,SwiftUI 动画,SwiftUI Animation"><link rel="alternate" hreflang="en" href="https://fatbobman.com/en/weekly/issue-020/">
-<link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/weekly/issue-020/"><!-- <script is:inline>
+<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/en/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" hreflang="en" href="https://fatbobman.com/en/weekly/issue-020/">
+<link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/weekly/issue-020/"><script>
   var _hmt = _hmt || [];
   (function() {
     var hm = document.createElement("script");
+    hm.async = true; // Add async attribute
     hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
-</script> --><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+</script> <!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -33,7 +34,52 @@
       ) {
         document.documentElement.classList.add('dark');
       }
-    </script><link rel="stylesheet" href="/_astro/about.BITFbrMX.css">
+    </script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "author": {
+    "@type": "Person",
+    "name": "Fatbobman(Xu Yang)",
+    "url": "https://fatbobman.com/en/about/",
+    "jobTitle": "Apple Developer",
+    "sameAs": [
+      "https://github.com/fatbobman",
+      "https://twitter.com/fatbobman",
+      "https://www.linkedin.com/in/fatbobman/",
+      "https://bsky.app/profile/fatbobman.bsky.social",
+      "https://mastodon.social/@fatbobman",
+      "https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3"
+    ]
+  },
+  "dateModified": "2024-02-27T14:00:00.000Z",
+  "datePublished": "2024-02-27T14:00:00.000Z",
+  "description": "Recently, the Swift community announced the release process for Swift 6. Starting March 15, 2024, the release/6.0 branch will be branched off from the main branch, marking a significant acceleration in the Swift 6 project. It is anticipated to be released alongside the new version of Xcode in the second half of this year.",
+  "headline": "Time to Prepare for Swift 6 -- Fatbobman's Swift Weekly #20",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/weekly/issue20.webp"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://fatbobman.com/en/weekly/issue-020/"
+  },
+  "url": "https://fatbobman.com/en/weekly/issue-020/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fatbobman's Swift Weekly",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  },
+  "articleSection": [
+    "Weekly",
+    " Newsletter",
+    "Swift",
+    "Email"
+  ],
+  "inLanguage": "en"
+}</script><link rel="stylesheet" href="/_astro/about.BITFbrMX.css">
 <style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
 </style>
 <link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css"></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <div id="blogTitle"> <a href="/en/"> <div class="flex space-x-4 mx-auto text-center pt-6 sm:pt-6 font-black w-[240px] sm:w-[300px] pb-2 sm:pb-0"> <svg fill="currentColor" class="text-heading" width="500"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </a> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto p-2 sm:p-0" data-astro-cid-4wsjtibl> <div class="flex space-x-2" data-astro-cid-4wsjtibl> <div id="lang-data" data-lang="en" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" class="p-2 w-10 h-10 font-medium text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg"> EN </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <button type="button" onclick="
@@ -180,7 +226,7 @@ const enableStickyInMobile = true;
 <p>Reflecting on my experience starting to learn the Swift language four years ago, I feel very fortunate because Swift 5 had already been released at that time, achieving ABI stability and thus reducing the learning cost. During the 5.x versions, although the core functionalities of the Swift language had stabilized, the community still added many new features and characteristics, which not only enhanced the functionality and applicability of Swift but inevitably raised the learning threshold for beginners. The plethora of syntactic sugar and new features in Swift can make many beginners feel utterly bewildered when facing complex code.</p>
 <p>Things always have two sides: on one hand, developers hope Swift can become more powerful and adapt to more development scenarios and platforms; on the other hand, everyone also wishes it could be easier to learn and use, allowing developers to enjoy the conveniences of new features without additional learning burdens.</p>
 <p>The introduction of macros attempts to balance this contradiction to some extent by encapsulating complex functions and features into macros, making it easier for more developers to benefit. However, in the current development environment, the use of custom macros not only significantly increases the project’s compile time but also affects Xcode’s response when the macros are complex, often leading to frequent errors in code auto-completion and macro expansion. With the release of Swift 6, it is hoped that Xcode will also improve, offering higher efficiency, stability, and contemporary AI-assisted programming capabilities.</p>
-<div class="dynamic-ad-container pt-2 pb-6"></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-2 pb-6"></div></aside>
 <h5 id="originals">Originals</h5>
 <h3 id="how-to-handle-optional-values-in-swiftdata-predicates"><a href="/en/posts/how-to-handle-optional-values-in-swiftdata-predicates/" target="_blank">How to Handle Optional Values in SwiftData Predicates</a></h3>
 <p><a href="https://twitter.com/fatbobman?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Fatbobman</a></p>
@@ -198,35 +244,13 @@ const enableStickyInMobile = true;
 <h3 id="twitter-vs-x"><a href="https://t.ly/ANDgL" rel="noreferrer noopener">Twitter vs. X</a></h3>
 <p><a href="https://twitter.com/emergetools?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Emerge Tools</a></p>
 <p>This article analyzes the transformation the iOS client app underwent following Elon Musk’s acquisition and renaming of Twitter to X in 2022. Twitter has always been regarded as a mature application, but this purchase and rebranding signified a leap from a state of stable development to a new phase of “acting quickly and embracing disruption.” In the approximately six months since Twitter transformed into X, the size of the iOS app increased by 13.3MB. The article provides a thorough discussion on the various changes between the final version of Twitter (v9.54) and X (v10.25) within the iOS app, focusing on changes in app assets, dynamic frameworks, the SPM migration process, issues of resource duplication, and the introduction of the Grok AI chatbot, among other aspects. Despite changes in name and ownership, the author notes that the app did not undergo substantial changes in its overall architecture. The article also points out that by further optimizing duplicated resources within the app, such as icons, it could be possible to reduce the app’s size by up to 8MB.</p>
-<div class="dynamic-ad-container pt-2 pb-2"></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-2 pb-2"></div></aside>
 <h3 id="custom-core-data-migrations"><a href="https://t.ly/Exo7G" rel="noreferrer noopener">Custom Core Data migrations</a></h3>
 <p><a href="https://twitter.com/polpielladev?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Pol Piella</a></p>
 <p>Core Data migration involves updating the data model from one version to another. While Core Data can automatically handle this migration in many cases, some complex scenarios require developer intervention, guiding the migration process from the source to the target model by providing an exact mapping model. For particularly complex migration needs, writing a custom migration policy inherited from <code>NSEntityMigrationPolicy</code> is also necessary. This article, written by Pol Piella, details the implementation methods of custom Core Data migration, including creating mapping model files and custom migration policy classes. The article uses an application that stores music track information as an example, showing how to address data model expansion issues by introducing new entities and relationships and implementing custom migration strategies.</p>
 <blockquote>
 <p>It’s worth noting that starting with iOS 17, Apple introduced a new migration mode in Core Data—Stage Migration, similar to the migration method in SwiftData, offering developers more flexibility and control. For more information about this new feature, you can refer to <a href="/en/posts/what-s-new-in-core-data-in-wwdc23/#staged-migration" target="_blank">this article</a>.</p>
-</blockquote> </div> </article> <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "author": {
-    "@type": "Person",
-    "name": "Fatbobman",
-    "url": "https://twitter.com/fatbobman"
-  },
-  "dateModified": "2024-02-27T14:00:00.000Z",
-  "datePublished": "2024-02-27T14:00:00.000Z",
-  "description": "Recently, the Swift community announced the release process for Swift 6. Starting March 15, 2024, the release/6.0 branch will be branched off from the main branch, marking a significant acceleration in the Swift 6 project. It is anticipated to be released alongside the new version of Xcode in the second half of this year.",
-  "headline": "Time to Prepare for Swift 6 -- Fatbobman's Swift Weekly #20",
-  "image": [
-    {
-      "url": "https://cdn.fatbobman.com/weekly/issue20.webp"
-    }
-  ],
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://fatbobman.com/en/weekly/issue-020/"
-  },
-  "url": "https://fatbobman.com/en/weekly/issue-020/"
-}</script> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">Link copied</div> </div> </div> <style>
+</blockquote> </div> </article> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">Link copied</div> </div> </div> <style>
   .copy-icon {
     position: absolute;
     left: -30px; /* 根据您的布局调整位置 */

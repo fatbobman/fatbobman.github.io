@@ -1,8 +1,8 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Techniques for Automatic Merging of String Catalogs in Multi-Package Monorepos | Fatbobman&#39;s Blog</title>
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Techniques for Automatic Merging of String Catalogs in Multi-Package Monorepos</title>
 <meta name="description" content="Learn how to automatically merge String Catalogs across Swift packages in a monorepo during your main app&#39;s build, avoiding manual steps. Simplify i18n for Swift apps.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/en/posts/merging-swift-string-catalogs-in-a-multi-package-monorepo/">
-<meta property="og:title" content="Techniques for Automatic Merging of String Catalogs in Multi-Package Monorepos | Fatbobman&#39;s Blog">
+<meta property="og:title" content="Techniques for Automatic Merging of String Catalogs in Multi-Package Monorepos">
 <meta property="og:description" content="Learn how to automatically merge String Catalogs across Swift packages in a monorepo during your main app&#39;s build, avoiding manual steps. Simplify i18n for Swift apps.">
 <meta property="og:url" content="https://fatbobman.com/en/posts/merging-swift-string-catalogs-in-a-multi-package-monorepo/">
 <meta property="og:type" content="article">
@@ -12,16 +12,17 @@
 <meta property="og:site_name" content="fatbobman.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@fatbobman">
-<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/en/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><meta name="keywords" content="Swift 编程,Swift Programming,SwiftUI 教程,SwiftUI Tutorials,Core Data 实践,Core Data Practices,SwiftData 应用,SwiftData Applications,iOS 开发,iOS Development,Swift UI 设计,Swift UI Design,Swift 性能优化,Swift Performance Optimization,Swift 编码技巧,Swift Coding Techniques,iOS 应用开发,iOS App Development,Swift 数据管理,Swift Data Management,SwiftUI 布局,SwiftUI Layout,SwiftUI 动画,SwiftUI Animation"><link rel="alternate" hreflang="en" href="https://fatbobman.com/en/posts/merging-swift-string-catalogs-in-a-multi-package-monorepo/">
-<link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/posts/merging-swift-string-catalogs-in-a-multi-package-monorepo/"><!-- <script is:inline>
+<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/en/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" hreflang="en" href="https://fatbobman.com/en/posts/merging-swift-string-catalogs-in-a-multi-package-monorepo/">
+<link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/posts/merging-swift-string-catalogs-in-a-multi-package-monorepo/"><script>
   var _hmt = _hmt || [];
   (function() {
     var hm = document.createElement("script");
+    hm.async = true; // Add async attribute
     hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
-</script> --><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+</script> <!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -33,7 +34,49 @@
       ) {
         document.documentElement.classList.add('dark');
       }
-    </script><link rel="stylesheet" href="/_astro/about.BITFbrMX.css">
+    </script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "author": {
+    "@type": "Person",
+    "name": "Fatbobman(Xu Yang)",
+    "url": "https://fatbobman.com/en/about/",
+    "jobTitle": "Apple Developer",
+    "sameAs": [
+      "https://github.com/fatbobman",
+      "https://twitter.com/fatbobman",
+      "https://www.linkedin.com/in/fatbobman/",
+      "https://bsky.app/profile/fatbobman.bsky.social",
+      "https://mastodon.social/@fatbobman",
+      "https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3"
+    ]
+  },
+  "dateModified": "2024-07-12T00:12:00.000Z",
+  "datePublished": "2024-07-12T00:12:00.000Z",
+  "description": "Learn how to automatically merge String Catalogs across Swift packages in a monorepo during your main app's build, avoiding manual steps. Simplify i18n for Swift apps.",
+  "headline": "Techniques for Automatic Merging of String Catalogs in Multi-Package Monorepos",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/card/merging-swift-string-catalogs-in-a-multi-package-monorepo-en.png"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://fatbobman.com/en/posts/merging-swift-string-catalogs-in-a-multi-package-monorepo/"
+  },
+  "url": "https://fatbobman.com/en/posts/merging-swift-string-catalogs-in-a-multi-package-monorepo/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fatbobman's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  },
+  "articleSection": [
+    "Swift"
+  ],
+  "inLanguage": "en"
+}</script><link rel="stylesheet" href="/_astro/about.BITFbrMX.css">
 <link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css">
 <style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
 </style></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <div id="blogTitle"> <a href="/en/"> <div class="flex space-x-4 mx-auto text-center pt-6 sm:pt-6 font-black w-[240px] sm:w-[300px] pb-2 sm:pb-0"> <svg fill="currentColor" class="text-heading" width="500"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </a> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto p-2 sm:p-0" data-astro-cid-4wsjtibl> <div class="flex space-x-2" data-astro-cid-4wsjtibl> <div id="lang-data" data-lang="en" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" class="p-2 w-10 h-10 font-medium text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg"> EN </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <button type="button" onclick="
@@ -179,7 +222,7 @@ const enableStickyInMobile = true;
 <blockquote>
 <p>This article is written by my friend and fellow iOS developer, <a href="https://x.com/mesqueeb?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Luca Ban</a>. He will be sharing his unique insights and experiences on Swift Catalogs. Thanks to his contribution, here is this fantastic guest post!</p>
 </blockquote>
-<div class="dynamic-ad-container pt-4"></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-4"></div></aside>
 <h2 id="initial-setup">Initial Setup</h2>
 <p>In this blog post, we will create a simple monorepo containing two localized projects: an Xcode project and a Swift Package. Our goal is to have the following view localized separately (with one string in the host app and one string in the Swift Package) while combining the translations when building our host app.</p>
 <div>
@@ -464,47 +507,14 @@ const enableStickyInMobile = true;
 <p>This solution provides a clean and neat way to merge multiple String Catalogs in a monorepo setup, greatly improving the process over older methods requiring custom scripts. No additional configuration in Xcode is needed.</p>
 <p>Here is my proof of concept monorepo with the same setup as this article: <a href="https://github.com/mesqueeb/SwiftStringCatalogsPOC?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">github.com/mesqueeb/SwiftStringCatalogsPOC</a>. Clone and run it locally to test it out.</p>
 <p>I’m Luca Ban (<code>mesqueeb</code> on GitHub/Twitter), and I hope you enjoyed this article and it helped you out.</p>
-<div class="dynamic-ad-container pt-4"></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-4"></div></aside>
 <h2 id="profile">Profile</h2>
 <p><strong>Luca Ban</strong></p>
 <ul>
 <li>x: <a href="https://x.com/mesqueeb?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">mesqueeb</a></li>
 <li>github: <a href="https://github.com/mesqueeb?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">mesqueeb</a></li>
 <li>I make board games for visionOS! 🎲 Check out <a href="https://craftingtable.studio?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">craftingtable.studio</a></li>
-</ul> </div> </article> <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "author": {
-    "@type": "Person",
-    "name": "Fatbobman",
-    "url": "https://twitter.com/fatbobman"
-  },
-  "dateModified": "2024-07-12T00:12:00.000Z",
-  "datePublished": "2024-07-12T00:12:00.000Z",
-  "description": "Learn how to automatically merge String Catalogs across Swift packages in a monorepo during your main app's build, avoiding manual steps. Simplify i18n for Swift apps.",
-  "headline": "Techniques for Automatic Merging of String Catalogs in Multi-Package Monorepos",
-  "image": {
-    "@type": "ImageObject",
-    "url": [
-      {
-        "url": "https://cdn.fatbobman.com/card/merging-swift-string-catalogs-in-a-multi-package-monorepo-en.png"
-      }
-    ]
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://fatbobman.com/en/posts/merging-swift-string-catalogs-in-a-multi-package-monorepo/"
-  },
-  "url": "https://fatbobman.com/en/posts/merging-swift-string-catalogs-in-a-multi-package-monorepo/",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Fatbobman's Blog",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://fatbobman.com/images/blog-card.png"
-    }
-  }
-}</script> <div class="w-full mx-auto text-center pb-0 sm:pb-6 pt-8"> <div id="custom-substack-embed" data-subcribeTest="Join Now" data-placeholder="Subscribe with your email" style="opacity: 0; transition: opacity 0.3s; min-height: 58px;"></div> <div class="text-xs font-medium text-heading p-4">Get weekly handpicked updates on Swift and SwiftUI!</div> <script type="module" src="/_astro/WeeklySubscribe.astro_astro_type_script_index_0_lang.DQKrZn3Z.js"></script> </div> <div class="pt-6 pb-6  dark:border-gray-700" id="donate-author"> <!-- <p class="flex justify-center align-center text-sm font-medium text-heading">
+</ul> </div> </article> <div class="w-full mx-auto text-center pb-0 sm:pb-6 pt-8"> <div id="custom-substack-embed" data-subcribeTest="Join Now" data-placeholder="Subscribe with your email" style="opacity: 0; transition: opacity 0.3s; min-height: 58px;"></div> <div class="text-xs font-medium text-heading p-4">Get weekly handpicked updates on Swift and SwiftUI!</div> <script type="module" src="/_astro/WeeklySubscribe.astro_astro_type_script_index_0_lang.DQKrZn3Z.js"></script> </div> <div class="pt-6 pb-6  dark:border-gray-700" id="donate-author"> <!-- <p class="flex justify-center align-center text-sm font-medium text-heading">
     { lang === Lang.ZH && <SupportMeTextZH /> }
     { lang === Lang.EN && <SupportMeTextEN /> }
   </p> --> <div class="flex flex-col sm:flex-row justify-center items-center mx-auto sm:space-x-8 align-center pt-2"> <button type="button" class="text-gray-900 bg-yellow-200 hover:bg-yellow-300 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-8 py-4 text-center inline-flex items-center dark:focus:ring-gray-600 dark:border-gray-700 me-2 mb-2" onclick="window.open('https://www.buymeacoffee.com/fatbobman')"> <svg class="w-5 h-5 me-2 -ms-1" fill="none" stroke="none" xmlns="http://www.w3.org/2000/svg"> <use href="/_astro/iconCollection.BuMSwq1O.svg#icon-buymecoffee"></use> </svg> <span class="text-black font-bold">Buy me a coffee</span> </button> <div class="pt-4 sm:pt-0">  <button type="button" class="bg-[#3b82f6] hover:bg-blue-700 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-8 py-4 text-center inline-flex items-center dark:focus:ring-gray-600 dark:border-gray-700 me-2 mb-2" onclick="window.open('https://www.paypal.com/paypalme/fatbobman')"> <svg width="24" height="24" class="w-4 h-4 me-2 -ms-1" aria-hidden="true" stroke="none"> <use href="/_astro/iconCollection.BuMSwq1O.svg#icon-paypal"></use> </svg> <span class="text-white font-bold hover:text-yellow-100">Donate via Paypal</span> </button> </div> </div> </div> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">Link copied</div> </div> </div> <style>
@@ -657,7 +667,7 @@ function copyCode(button, event) {
       slot.innerHTML = html;
     });
   }
-})();</script> <script type="module">var c=document.querySelectorAll("article");c.forEach(function(r){var a=r.querySelectorAll("a");a.forEach(function(e){var t=e.getAttribute("href");t&&t.startsWith("http")&&!t.includes("fatbobman.com")&&!t.includes("fatbobman.github.com")&&!t.includes("localhost")&&e.setAttribute("target","_blank")})});</script> <!-- <LeaveFeedback lang={lang} /> --> <section class="pt-10"><div class="max-w-5xl sm:px-4 py-2 mx-auto"><div class="grid gap-4 sm:gap-2 sm:mx-4 sm:grid-cols-12"><div class="col-span-12 sm:col-span-3 hidden sm:block"><div class="text-center sm:text-left mt-3 mb-14 before:block before:w-24 before:h-1 before:mb-3 before:rounded before:mx-auto sm:before:mx-0 before:bg-secondary"><h3 class="text-lg font-medium text-default">Related Posts</h3></div></div><div class="sm:hidden text-lg font-medium text-heading col-span-12 text-left">Related Posts</div><div class="relative col-span-12 sm:px-4 space-y-6 sm:col-span-9"><div class="col-span-12 space-y-2 relative sm:px-4 sm:col-span-8 sm:space-y-4 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:bg-block"><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/localizationapp-1/" id="relatedPosts-Globalize Your SwiftUI App: A Comprehensive Guide to Localization"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Globalize Your SwiftUI App: A Comprehensive Guide to Localization</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/the_composable_architecture/" id="relatedPosts-The Composable Architecture (TCA)"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">The Composable Architecture (TCA)</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/healthnote2-3rd-package/" id="relatedPosts-Introducing Several Swift or SwiftUI Third-Party Libraries Used in Developing Health Notes 2"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Introducing Several Swift or SwiftUI Third-Party Libraries Used in Developing Health Notes 2</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/weekly/issue-064/" id="relatedPosts-Weekly #64 - Happy New Year 2025"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Weekly #64 - Happy New Year 2025</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/mastering-tipkit-basic/" id="relatedPosts-Mastering TipKit: Basics"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Mastering TipKit: Basics</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/viewbuilder1/" id="relatedPosts-ViewBuilder Research: Mastering Result Builders"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">ViewBuilder Research: Mastering Result Builders</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/xcodeplayground1/" id="relatedPosts-Exploring Xcode Playground (Part 1)"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Exploring Xcode Playground (Part 1)</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/impressions-on-wwdc-2024/" id="relatedPosts-Impressions on WWDC 2024"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Impressions on WWDC 2024</h3></div></a></div></div></div></div></section> <!-- <BottomWeeklySubscribe lang={lang} /> --> <div id="gitalk-container" data-comment-id="合并多包单库中的 Swift 字符串目录" data-lang="en" data-repo="blogComments" data-createIssueManually="true"></div>
+})();</script> <script type="module">var c=document.querySelectorAll("article");c.forEach(function(r){var a=r.querySelectorAll("a");a.forEach(function(e){var t=e.getAttribute("href");t&&t.startsWith("http")&&!t.includes("fatbobman.com")&&!t.includes("fatbobman.github.com")&&!t.includes("localhost")&&e.setAttribute("target","_blank")})});</script> <!-- <LeaveFeedback lang={lang} /> --> <section class="pt-10"><div class="max-w-5xl sm:px-4 py-2 mx-auto"><div class="grid gap-4 sm:gap-2 sm:mx-4 sm:grid-cols-12"><div class="col-span-12 sm:col-span-3 hidden sm:block"><div class="text-center sm:text-left mt-3 mb-14 before:block before:w-24 before:h-1 before:mb-3 before:rounded before:mx-auto sm:before:mx-0 before:bg-secondary"><h3 class="text-lg font-medium text-default">Related Posts</h3></div></div><div class="sm:hidden text-lg font-medium text-heading col-span-12 text-left">Related Posts</div><div class="relative col-span-12 sm:px-4 space-y-6 sm:col-span-9"><div class="col-span-12 space-y-2 relative sm:px-4 sm:col-span-8 sm:space-y-4 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:bg-block"><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/weekly/issue-046/" id="relatedPosts-Weekly #46 - Warning-Free Compilation is Not the Ultimate Goal of Swift 6"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Weekly #46 - Warning-Free Compilation is Not the Ultimate Goal of Swift 6</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/localizationapp-1/" id="relatedPosts-Globalize Your SwiftUI App: A Comprehensive Guide to Localization"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Globalize Your SwiftUI App: A Comprehensive Guide to Localization</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/the_composable_architecture/" id="relatedPosts-The Composable Architecture (TCA)"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">The Composable Architecture (TCA)</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/healthnote2-3rd-package/" id="relatedPosts-Introducing Several Swift or SwiftUI Third-Party Libraries Used in Developing Health Notes 2"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Introducing Several Swift or SwiftUI Third-Party Libraries Used in Developing Health Notes 2</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/mastering-tipkit-basic/" id="relatedPosts-Mastering TipKit: Basics"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Mastering TipKit: Basics</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/viewbuilder1/" id="relatedPosts-ViewBuilder Research: Mastering Result Builders"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">ViewBuilder Research: Mastering Result Builders</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/xcodeplayground1/" id="relatedPosts-Exploring Xcode Playground (Part 1)"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Exploring Xcode Playground (Part 1)</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/en/posts/impressions-on-wwdc-2024/" id="relatedPosts-Impressions on WWDC 2024"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Impressions on WWDC 2024</h3></div></a></div></div></div></div></section> <!-- <BottomWeeklySubscribe lang={lang} /> --> <div id="gitalk-container" data-comment-id="合并多包单库中的 Swift 字符串目录" data-lang="en" data-repo="blogComments" data-createIssueManually="true"></div>
 
     <script defer>
       document.addEventListener('DOMContentLoaded', async function () {

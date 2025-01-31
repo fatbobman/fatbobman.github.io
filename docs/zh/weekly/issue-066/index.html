@@ -12,16 +12,17 @@
 <meta property="og:site_name" content="fatbobman.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@fatbobman">
-<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><meta name="keywords" content="Swift 编程,Swift Programming,SwiftUI 教程,SwiftUI Tutorials,Core Data 实践,Core Data Practices,SwiftData 应用,SwiftData Applications,iOS 开发,iOS Development,Swift UI 设计,Swift UI Design,Swift 性能优化,Swift Performance Optimization,Swift 编码技巧,Swift Coding Techniques,iOS 应用开发,iOS App Development,Swift 数据管理,Swift Data Management,SwiftUI 布局,SwiftUI Layout,SwiftUI 动画,SwiftUI Animation"><link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/weekly/issue-066/">
-<link rel="alternate" hreflang="en" href="https://fatbobman.com/en/weekly/issue-066/"><!-- <script is:inline>
+<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/weekly/issue-066/">
+<link rel="alternate" hreflang="en" href="https://fatbobman.com/en/weekly/issue-066/"><script>
   var _hmt = _hmt || [];
   (function() {
     var hm = document.createElement("script");
+    hm.async = true; // Add async attribute
     hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
-</script> --><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+</script> <!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -33,7 +34,51 @@
       ) {
         document.documentElement.classList.add('dark');
       }
-    </script><link rel="stylesheet" href="/_astro/about.BITFbrMX.css">
+    </script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "author": {
+    "@type": "Person",
+    "name": "Fatbobman(东坡肘子)",
+    "url": "https://fatbobman.com/zh/about/",
+    "jobTitle": "苹果生态开发者",
+    "sameAs": [
+      "https://github.com/fatbobman",
+      "https://twitter.com/fatbobman",
+      "https://www.linkedin.com/in/fatbobman/",
+      "https://bsky.app/profile/fatbobman.bsky.social",
+      "https://mastodon.social/@fatbobman",
+      "https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3"
+    ]
+  },
+  "dateModified": "2025-01-13T14:00:00.000Z",
+  "datePublished": "2025-01-13T14:00:00.000Z",
+  "description": "大语言模型已然成为我日常工作和生活中不可或缺的得力助手。目前，我主要通过对话方式与它互动。虽然随着模型能力的提升，这种交流方式越发流畅自然，但当各类需求混杂在同一会话中时，效率往往难以达到理想状态。为此，我在过去几周开始尝试运用提示词来定制一些面向特定任务的专用会话。",
+  "headline": "将 AI 整合至日常工具链 -- 肘子的 Swift 周报 #66",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/weekly/issue66.webp"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://fatbobman.com/zh/weekly/issue-066/"
+  },
+  "url": "https://fatbobman.com/zh/weekly/issue-066/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "肘子的 Swift 周报",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  },
+  "articleSection": [
+    "开发周报",
+    "Swift",
+    "邮件列表"
+  ],
+  "inLanguage": "zh-Hans"
+}</script><link rel="stylesheet" href="/_astro/about.BITFbrMX.css">
 <style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
 </style>
 <link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css"></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <div id="blogTitle"> <a href="/zh/"> <div class="flex space-x-4 mx-auto text-center pt-6 sm:pt-6 font-black w-[240px] sm:w-[300px] pb-2 sm:pb-0"> <svg fill="currentColor" class="text-heading" width="500"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </a> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto p-2 sm:p-0" data-astro-cid-4wsjtibl> <div class="flex space-x-2" data-astro-cid-4wsjtibl> <div id="lang-data" data-lang="zh" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" class="p-2 w-10 h-10 font-medium text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg"> ZH </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <button type="button" onclick="
@@ -178,7 +223,7 @@ const enableStickyInMobile = true;
 <p>在这个过程中，我没有选择使用流行的 AI 智能体构建工具，而是依托 ChatGPT 提供的 MyGPT 功能展开尝试。虽然具备一定的编程经验，了解如何将复杂任务分解为简单模块（例如函数），但将这种分解思维迁移到 AI 任务中时，我仍面临诸多挑战。如何有效划分任务、确保每个模块输出稳定且符合预期，这些工作并不像编写代码那样直观。可以说，基于大模型的抽象思维与传统编程中的抽象逻辑有着本质区别。在对提示词优化和大模型工作原理理解尚浅的情况下，即便是设计一个简单的 AI 工具，要想生成稳定、准确的结果也绝非易事。对我而言，为工作和生活中打造一系列高效、可靠的 AI 小工具，仍是一个需要持续探索的课题。</p>
 <p>值得期待的是，随着 M4 等高性能设备的普及，以及其他高效 AI 本地推理设备的问世，微调和定制小型模型的成本正在快速下降。若能将专属模型与经过针对性优化的提示词相结合，个人化需求的 AI 小工具开发必将迎来显著突破，性能、稳定性表现也会得到更好的保证。</p>
 <p>我期待在不久的将来，这些稳定可靠的 AI 小工具能够如同我为自己编写的日常小程序一般，自然地融入工作与生活流程中，成为更加得心应手的助手，让效率和体验同步提升。</p>
-<div class="dynamic-ad-container pt-2 pb-6"></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-2 pb-6"></div></aside>
 <h5 id="近期推荐">近期推荐</h5>
 <h3 id="探究-swiftui-preview-的工作原理"><a href="https://t.ly/Ltlls" rel="noreferrer noopener">探究 SwiftUI Preview 的工作原理</a></h3>
 <p>从 Xcode 16 开始，SwiftUI Preview 的工作机制发生了重要变化，其中最显著的改进是：<strong>Build and Run 与 Preview 共享同样的构建产物</strong>，从而提升了 Preview 的构建效率。<a href="https://x.com/spatial_onee?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">御姐 (Onee)</a> 在本文中，深入探讨了 Xcode 16 下 Preview 的工作原理，详细分析了在项目代码不同程度修改的情况下，Preview 如何通过三层重构策略应对变化以提高效率。文章最后还对 SwiftUI Preview 和 Flutter 的 Hot Reload 进行了对比，指出了目前 SwiftUI Preview 机制的不足和改进潜力。</p>
@@ -200,33 +245,11 @@ const enableStickyInMobile = true;
 <h3 id="-swift运行时你的无声伙伴-the-swift-runtime-your-silent-partner"><a href="https://t.ly/405hb" rel="noreferrer noopener">🪜 Swift运行时：你的无声伙伴 (The Swift Runtime: Your Silent Partner)</a></h3>
 <p>Swift 运行时（libswiftCore）是一个与所有 Swift 程序同时运行的 C++ 库，为语言的核心功能提供支持，例如内存管理、错误处理、动态派发以及类型和泛型的处理。<a href="https://x.com/jacobtechtavern?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Jacob Bartlett</a> 从一段简单的 Swift 代码出发，追踪其从编译到执行的全过程，包括 Swift 中间语言（SIL）、LLVM 中间表示（IR），以及运行时 ABI 函数调用，深入解析 Swift 运行时的操作机制及其如何与编译器协作完成核心语言特性的实现。</p>
 <h5 id="活动">活动</h5>
-<div class="dynamic-ad-container pt-2 pb-2"></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-2 pb-2"></div></aside>
 <h3 id="swift-student-challenge-将于-2-月-3-日开放申请"><a href="https://t.ly/Upcbs" rel="noreferrer noopener">Swift Student Challenge 将于 2 月 3 日开放申请</a></h3>
 <p>Swift Student Challenge 为学生开发者提供了展现自身创造力和编程能力的机会。通过使用 Swift Playgrounds 构建并提交项目，学生能够培养将来可在职业生涯中运用的实际技能，同时成为活跃开发者社区中的一员。</p>
 <p>挑战赛提交作品的通道将于 2 月 3 日开始，持续开放三周。抓紧时机，马上开始头脑风暴，并为你的奇思妙进行构建吧。获奖者将获得特别礼物，并有机会在明年夏天到访苹果的库比提诺园区。</p>
-<p><a href="https://t.ly/Upcbs" rel="noreferrer noopener">进一步了解资格条件以及如何准备</a></p> </div> </article> <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "author": {
-    "@type": "Person",
-    "name": "Fatbobman",
-    "url": "https://twitter.com/fatbobman"
-  },
-  "dateModified": "2025-01-13T14:00:00.000Z",
-  "datePublished": "2025-01-13T14:00:00.000Z",
-  "description": "大语言模型已然成为我日常工作和生活中不可或缺的得力助手。目前，我主要通过对话方式与它互动。虽然随着模型能力的提升，这种交流方式越发流畅自然，但当各类需求混杂在同一会话中时，效率往往难以达到理想状态。为此，我在过去几周开始尝试运用提示词来定制一些面向特定任务的专用会话。",
-  "headline": "将 AI 整合至日常工具链 -- 肘子的 Swift 周报 #66",
-  "image": [
-    {
-      "url": "https://cdn.fatbobman.com/weekly/issue66.webp"
-    }
-  ],
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://fatbobman.com/zh/weekly/issue-066/"
-  },
-  "url": "https://fatbobman.com/zh/weekly/issue-066/"
-}</script> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
+<p><a href="https://t.ly/Upcbs" rel="noreferrer noopener">进一步了解资格条件以及如何准备</a></p> </div> </article> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
   .copy-icon {
     position: absolute;
     left: -30px; /* 根据您的布局调整位置 */

@@ -12,16 +12,17 @@
 <meta property="og:site_name" content="fatbobman.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@fatbobman">
-<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/en/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><meta name="keywords" content="Swift 编程,Swift Programming,SwiftUI 教程,SwiftUI Tutorials,Core Data 实践,Core Data Practices,SwiftData 应用,SwiftData Applications,iOS 开发,iOS Development,Swift UI 设计,Swift UI Design,Swift 性能优化,Swift Performance Optimization,Swift 编码技巧,Swift Coding Techniques,iOS 应用开发,iOS App Development,Swift 数据管理,Swift Data Management,SwiftUI 布局,SwiftUI Layout,SwiftUI 动画,SwiftUI Animation"><link rel="alternate" hreflang="en" href="https://fatbobman.com/en/weekly/issue-062/">
-<link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/weekly/issue-062/"><!-- <script is:inline>
+<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/en/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" hreflang="en" href="https://fatbobman.com/en/weekly/issue-062/">
+<link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/weekly/issue-062/"><script>
   var _hmt = _hmt || [];
   (function() {
     var hm = document.createElement("script");
+    hm.async = true; // Add async attribute
     hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
-</script> --><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+</script> <!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -33,7 +34,52 @@
       ) {
         document.documentElement.classList.add('dark');
       }
-    </script><link rel="stylesheet" href="/_astro/about.BITFbrMX.css">
+    </script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "author": {
+    "@type": "Person",
+    "name": "Fatbobman(Xu Yang)",
+    "url": "https://fatbobman.com/en/about/",
+    "jobTitle": "Apple Developer",
+    "sameAs": [
+      "https://github.com/fatbobman",
+      "https://twitter.com/fatbobman",
+      "https://www.linkedin.com/in/fatbobman/",
+      "https://bsky.app/profile/fatbobman.bsky.social",
+      "https://mastodon.social/@fatbobman",
+      "https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3"
+    ]
+  },
+  "dateModified": "2024-12-16T14:00:00.000Z",
+  "datePublished": "2024-12-16T14:00:00.000Z",
+  "description": "Two years ago, a friend asked me for a programming language recommendation for his six-year-old who was showing interest in coding. Considering he already had an iPad and MacBook, I didn't hesitate to recommend Swift Playgrounds. A few days ago, another friend asked me a similar question, and while I still recommended Playgrounds, I wasn’t as certain as I was two years ago. I’m just not so sure about whether Swift is still suitable for beginners these days.",
+  "headline": "Making Swift Stronger, Keeping It Simple -- Fatbobman's Swift Weekly #62",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/weekly/issue62.webp"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://fatbobman.com/en/weekly/issue-062/"
+  },
+  "url": "https://fatbobman.com/en/weekly/issue-062/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fatbobman's Swift Weekly",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  },
+  "articleSection": [
+    "Weekly",
+    " Newsletter",
+    "Swift",
+    "Email"
+  ],
+  "inLanguage": "en"
+}</script><link rel="stylesheet" href="/_astro/about.BITFbrMX.css">
 <style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
 </style>
 <link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css"></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <div id="blogTitle"> <a href="/en/"> <div class="flex space-x-4 mx-auto text-center pt-6 sm:pt-6 font-black w-[240px] sm:w-[300px] pb-2 sm:pb-0"> <svg fill="currentColor" class="text-heading" width="500"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </a> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto p-2 sm:p-0" data-astro-cid-4wsjtibl> <div class="flex space-x-2" data-astro-cid-4wsjtibl> <div id="lang-data" data-lang="en" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" class="p-2 w-10 h-10 font-medium text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg"> EN </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <button type="button" onclick="
@@ -180,7 +226,7 @@ const enableStickyInMobile = true;
 <p>In a <a href="https://github.com/hborla/swift-evolution/blob/approachable-concurrency-vision/visions/approachable-concurrency.md?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">vision document</a> published in November, the development team proposed an idea: allowing developers to choose to compile with default MainActor isolation on a per-module basis. This would create a “single-threaded mode”, thereby resolving some of the false positives caused by Swift 6’s concurrency safety checks. This move will undoubtedly greatly improve the development experience, reducing unnecessary hassles in non-concurrent scenarios.</p>
 <p>The Swift language is gradually becoming more complex, which is almost an inevitable trend for every ambitious language that has developed over time. But this complexity should only increase the ceiling of a programming language’s capabilities. Once such complexity impacts the language’s learning curve, it will shake the very foundation of the language.</p>
 <p>I sincerely hope that while Swift continues to raise its upper limits, it can also maintain its beginner-friendliness and even further reduce its entry barrier. After all, a good programming language should not only solve complex problems but also make it easy for beginners to get started.</p>
-<div class="dynamic-ad-container pt-2 pb-6"></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-2 pb-6"></div></aside>
 <h5 id="originals">Originals</h5>
 <h3 id="model-inheritance-in-core-data"><a href="/en/posts/model-inheritance-in-core-data/" target="_blank">Model Inheritance in Core Data</a></h3>
 <p>One of Core Data’s outstanding features is its ability to allow developers to declare data models in a manner closer to object-oriented programming without worrying about the underlying storage implementation details. Within this framework, model inheritance is a particularly important mechanism. This article delves into the core concepts of model inheritance, including Parent Entity, Sub Entity, and Abstract Entity. We will analyze their advantages and disadvantages and explore how to achieve similar effects without directly using these features.</p>
@@ -203,31 +249,9 @@ const enableStickyInMobile = true;
 <p>As part of Apple Intelligence, Image Playground empowers users to create unique and engaging images directly on their devices. <a href="https://x.com/ella_developer?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Antonella Giugliano</a> provides a detailed guide on seamlessly integrating this feature into SwiftUI and UIKit apps, enabling developers to leverage Apple Intelligence models for quick and creative image generation.</p>
 <h3 id="swift-macro-series"><a href="https://t.ly/6rsYG" rel="noreferrer noopener">Swift Macro Series</a></h3>
 <p>The power of Swift Macros lies in their reliance on the SwiftSyntax library, offering precise control over source code. <a href="https://github.com/kingnight?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Kingnight</a> delves deeply into macro basics and practical operations in this series, guiding readers through manipulating abstract syntax trees (AST) to achieve powerful code generation. This series provides a systematic and in-depth analysis of macro implementation and techniques, making it an invaluable reference for mastering Swift Macros.</p>
-<div class="dynamic-ad-container pt-2 pb-2"></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-2 pb-2"></div></aside>
 <h3 id="exploring-mlx-swift-adding-on-device-inference-to-your-app"><a href="https://t.ly/GAP_k" rel="noreferrer noopener">Exploring MLX Swift: Adding On-Device Inference to Your App</a></h3>
-<p>MLX is a machine learning framework optimized for Apple Silicon, enabling large language models (LLMs) to run on-device, enhancing privacy and supporting offline usage scenarios. <a href="https://x.com/rudrankriyam?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Rudrank Riyam</a> provides a detailed walkthrough of integrating LLM inference into iOS apps using the MLX Swift framework. Through a SwiftUI example, the article demonstrates the entire process—from model loading to text generation—offering a clear guide for developers to get started quickly.</p> </div> </article> <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "author": {
-    "@type": "Person",
-    "name": "Fatbobman",
-    "url": "https://twitter.com/fatbobman"
-  },
-  "dateModified": "2024-12-16T14:00:00.000Z",
-  "datePublished": "2024-12-16T14:00:00.000Z",
-  "description": "Two years ago, a friend asked me for a programming language recommendation for his six-year-old who was showing interest in coding. Considering he already had an iPad and MacBook, I didn't hesitate to recommend Swift Playgrounds. A few days ago, another friend asked me a similar question, and while I still recommended Playgrounds, I wasn’t as certain as I was two years ago. I’m just not so sure about whether Swift is still suitable for beginners these days.",
-  "headline": "Making Swift Stronger, Keeping It Simple -- Fatbobman's Swift Weekly #62",
-  "image": [
-    {
-      "url": "https://cdn.fatbobman.com/weekly/issue62.webp"
-    }
-  ],
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://fatbobman.com/en/weekly/issue-062/"
-  },
-  "url": "https://fatbobman.com/en/weekly/issue-062/"
-}</script> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">Link copied</div> </div> </div> <style>
+<p>MLX is a machine learning framework optimized for Apple Silicon, enabling large language models (LLMs) to run on-device, enhancing privacy and supporting offline usage scenarios. <a href="https://x.com/rudrankriyam?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Rudrank Riyam</a> provides a detailed walkthrough of integrating LLM inference into iOS apps using the MLX Swift framework. Through a SwiftUI example, the article demonstrates the entire process—from model loading to text generation—offering a clear guide for developers to get started quickly.</p> </div> </article> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">Link copied</div> </div> </div> <style>
   .copy-icon {
     position: absolute;
     left: -30px; /* 根据您的布局调整位置 */

@@ -1,8 +1,8 @@
-<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>探讨 SwiftUI 中的属性包装器：@UIApplicationDelegateAdaptor、@AccessibilityFocusState、@FocusedObject、@FocusedValue 和 @FocusedBinding | 肘子的 Swift 记事本</title>
+<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>探讨 SwiftUI 中的属性包装器：@UIApplicationDelegateAdaptor、@AccessibilityFocusState、@FocusedObject、@FocusedValue 和 @FocusedBinding</title>
 <meta name="description" content="探索SwiftUI属性包装器：@UIApplicationDelegateAdaptor、@AccessibilityFocusState、@FocusedObject、@FocusedValue、@FocusedBinding，了解其核心功能及应用场景。">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/zh/posts/exploring-swiftui-property-wrappers-4/">
-<meta property="og:title" content="探讨 SwiftUI 中的属性包装器：@UIApplicationDelegateAdaptor、@AccessibilityFocusState、@FocusedObject、@FocusedValue 和 @FocusedBinding | 肘子的 Swift 记事本">
+<meta property="og:title" content="探讨 SwiftUI 中的属性包装器：@UIApplicationDelegateAdaptor、@AccessibilityFocusState、@FocusedObject、@FocusedValue 和 @FocusedBinding">
 <meta property="og:description" content="探索SwiftUI属性包装器：@UIApplicationDelegateAdaptor、@AccessibilityFocusState、@FocusedObject、@FocusedValue、@FocusedBinding，了解其核心功能及应用场景。">
 <meta property="og:url" content="https://fatbobman.com/zh/posts/exploring-swiftui-property-wrappers-4/">
 <meta property="og:type" content="article">
@@ -12,16 +12,17 @@
 <meta property="og:site_name" content="fatbobman.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@fatbobman">
-<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><meta name="keywords" content="Swift 编程,Swift Programming,SwiftUI 教程,SwiftUI Tutorials,Core Data 实践,Core Data Practices,SwiftData 应用,SwiftData Applications,iOS 开发,iOS Development,Swift UI 设计,Swift UI Design,Swift 性能优化,Swift Performance Optimization,Swift 编码技巧,Swift Coding Techniques,iOS 应用开发,iOS App Development,Swift 数据管理,Swift Data Management,SwiftUI 布局,SwiftUI Layout,SwiftUI 动画,SwiftUI Animation"><link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/posts/exploring-swiftui-property-wrappers-4/">
-<link rel="alternate" hreflang="en" href="https://fatbobman.com/en/posts/exploring-swiftui-property-wrappers-4/"><!-- <script is:inline>
+<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/posts/exploring-swiftui-property-wrappers-4/">
+<link rel="alternate" hreflang="en" href="https://fatbobman.com/en/posts/exploring-swiftui-property-wrappers-4/"><script>
   var _hmt = _hmt || [];
   (function() {
     var hm = document.createElement("script");
+    hm.async = true; // Add async attribute
     hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
-</script> --><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+</script> <!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -33,7 +34,49 @@
       ) {
         document.documentElement.classList.add('dark');
       }
-    </script><link rel="stylesheet" href="/_astro/about.BITFbrMX.css">
+    </script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "author": {
+    "@type": "Person",
+    "name": "Fatbobman(东坡肘子)",
+    "url": "https://fatbobman.com/zh/about/",
+    "jobTitle": "苹果生态开发者",
+    "sameAs": [
+      "https://github.com/fatbobman",
+      "https://twitter.com/fatbobman",
+      "https://www.linkedin.com/in/fatbobman/",
+      "https://bsky.app/profile/fatbobman.bsky.social",
+      "https://mastodon.social/@fatbobman",
+      "https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3"
+    ]
+  },
+  "dateModified": "2024-02-07T04:00:00.000Z",
+  "datePublished": "2024-02-07T04:00:00.000Z",
+  "description": "探索SwiftUI属性包装器：@UIApplicationDelegateAdaptor、@AccessibilityFocusState、@FocusedObject、@FocusedValue、@FocusedBinding，了解其核心功能及应用场景。",
+  "headline": "探讨 SwiftUI 中的属性包装器：@UIApplicationDelegateAdaptor、@AccessibilityFocusState、@FocusedObject、@FocusedValue 和 @FocusedBinding",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/card/exploring-swiftui-property-wrappers-4-zh.png"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://fatbobman.com/zh/posts/exploring-swiftui-property-wrappers-4/"
+  },
+  "url": "https://fatbobman.com/zh/posts/exploring-swiftui-property-wrappers-4/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "肘子的 Swift 笔记",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  },
+  "articleSection": [
+    "SwiftUI"
+  ],
+  "inLanguage": "zh-Hans"
+}</script><link rel="stylesheet" href="/_astro/about.BITFbrMX.css">
 <link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css">
 <style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
 </style></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <div id="blogTitle"> <a href="/zh/"> <div class="flex space-x-4 mx-auto text-center pt-6 sm:pt-6 font-black w-[240px] sm:w-[300px] pb-2 sm:pb-0"> <svg fill="currentColor" class="text-heading" width="500"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </a> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto p-2 sm:p-0" data-astro-cid-4wsjtibl> <div class="flex space-x-2" data-astro-cid-4wsjtibl> <div id="lang-data" data-lang="zh" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" class="p-2 w-10 h-10 font-medium text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg"> ZH </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <button type="button" onclick="
@@ -183,7 +226,7 @@ const enableStickyInMobile = true;
 <li><a href="/zh/posts/exploring-swiftui-property-wrappers-2/" target="_blank">@AppStorage、@SceneStorage、@FocusState、@GestureState、@ScaledMetric</a></li>
 <li><a href="/zh/posts/exploring-swiftui-property-wrappers-3/" target="_blank">@FetchRequest、@SectionedFetchRequest、@Query、@Namespace、@Bindable</a></li>
 </ul>
-<div class="dynamic-ad-container pt-4"></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-4"></div></aside>
 <h2 id="1-uiapplicationdelegateadaptor">1. @UIApplicationDelegateAdaptor</h2>
 <p><code>@UIApplicationDelegateAdaptor</code> 为开发者提供了在以 SwiftUI 生命周期为基础的应用中访问和利用 UIKit 的 AppDelegate 功能的能力，从而处理如推送通知、生命周期事件等 UIKit 特有的任务。</p>
 <h3 id="11-基本用法">1.1 基本用法</h3>
@@ -1062,42 +1105,9 @@ const enableStickyInMobile = true;
 <li><strong>值类型数据专用：</strong> <code>@FocusedBinding</code> 仅用于值类型数据。待 <code>@Observable</code> 的相关问题解决后，无需使用 <code>Binding</code> 便可在观察端直接修改其属性（ 与 <code>@FocusedObject</code> 一样 ）。</li>
 <li><strong>SwiftUI 生命周期兼容性</strong>：当前 <code>@FocusedBinding</code> 仅在使用 SwiftUI 生命周期的应用中有效。</li>
 </ul>
-<div class="dynamic-ad-container pt-4"></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-4"></div></aside>
 <h2 id="总结">总结</h2>
-<p>Swift 语言的属性包装器与 SwiftUI 诞生于同一年。SwiftUI 充分利用这一功能，为开发者提供了一系列属性包装器，极大地简化了开发过程。在这个系列的四篇文章中，我们详细梳理了截至 iOS 17 时期 SwiftUI 所提供的全部属性包装器，旨在帮助开发者更加高效和便捷地使用 SwiftUI。希望这些内容能对大家在使用 SwiftUI 时提供有价值的指导和帮助。</p> </div> </article> <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "author": {
-    "@type": "Person",
-    "name": "Fatbobman",
-    "url": "https://twitter.com/fatbobman"
-  },
-  "dateModified": "2024-02-07T04:00:00.000Z",
-  "datePublished": "2024-02-07T04:00:00.000Z",
-  "description": "探索SwiftUI属性包装器：@UIApplicationDelegateAdaptor、@AccessibilityFocusState、@FocusedObject、@FocusedValue、@FocusedBinding，了解其核心功能及应用场景。",
-  "headline": "探讨 SwiftUI 中的属性包装器：@UIApplicationDelegateAdaptor、@AccessibilityFocusState、@FocusedObject、@FocusedValue 和 @FocusedBinding",
-  "image": {
-    "@type": "ImageObject",
-    "url": [
-      {
-        "url": "https://cdn.fatbobman.com/card/exploring-swiftui-property-wrappers-4-zh.png"
-      }
-    ]
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://fatbobman.com/zh/posts/exploring-swiftui-property-wrappers-4/"
-  },
-  "url": "https://fatbobman.com/zh/posts/exploring-swiftui-property-wrappers-4/",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Fatbobman's Blog",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://fatbobman.com/images/blog-card.png"
-    }
-  }
-}</script> <div class="w-full mx-auto text-center pb-0 sm:pb-6 pt-8"> <div id="custom-substack-embed" data-subcribeTest="立刻订阅" data-placeholder="输入邮箱订阅周报" style="opacity: 0; transition: opacity 0.3s; min-height: 58px;"></div> <div class="text-xs font-medium text-heading p-4">为您每周带来有关 Swift 和 SwiftUI 的精选资讯！</div> <script type="module" src="/_astro/WeeklySubscribe.astro_astro_type_script_index_0_lang.DQKrZn3Z.js"></script> </div> <div class="pt-6 pb-6  dark:border-gray-700" id="donate-author"> <!-- <p class="flex justify-center align-center text-sm font-medium text-heading">
+<p>Swift 语言的属性包装器与 SwiftUI 诞生于同一年。SwiftUI 充分利用这一功能，为开发者提供了一系列属性包装器，极大地简化了开发过程。在这个系列的四篇文章中，我们详细梳理了截至 iOS 17 时期 SwiftUI 所提供的全部属性包装器，旨在帮助开发者更加高效和便捷地使用 SwiftUI。希望这些内容能对大家在使用 SwiftUI 时提供有价值的指导和帮助。</p> </div> </article> <div class="w-full mx-auto text-center pb-0 sm:pb-6 pt-8"> <div id="custom-substack-embed" data-subcribeTest="立刻订阅" data-placeholder="输入邮箱订阅周报" style="opacity: 0; transition: opacity 0.3s; min-height: 58px;"></div> <div class="text-xs font-medium text-heading p-4">为您每周带来有关 Swift 和 SwiftUI 的精选资讯！</div> <script type="module" src="/_astro/WeeklySubscribe.astro_astro_type_script_index_0_lang.DQKrZn3Z.js"></script> </div> <div class="pt-6 pb-6  dark:border-gray-700" id="donate-author"> <!-- <p class="flex justify-center align-center text-sm font-medium text-heading">
     { lang === Lang.ZH && <SupportMeTextZH /> }
     { lang === Lang.EN && <SupportMeTextEN /> }
   </p> --> <div class="flex flex-col sm:flex-row justify-center items-center mx-auto sm:space-x-8 align-center pt-2"> <button type="button" class="text-gray-900 bg-yellow-200 hover:bg-yellow-300 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-8 py-4 text-center inline-flex items-center dark:focus:ring-gray-600 dark:border-gray-700 me-2 mb-2" onclick="window.open('https://www.buymeacoffee.com/fatbobman')"> <svg class="w-5 h-5 me-2 -ms-1" fill="none" stroke="none" xmlns="http://www.w3.org/2000/svg"> <use href="/_astro/iconCollection.BuMSwq1O.svg#icon-buymecoffee"></use> </svg> <span class="text-black font-bold">Buy me a coffee</span> </button> <div class="pt-4 sm:pt-0"> <button type="button" class="text-red-500 bg-[#3b82f6] hover:bg-blue-700 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-8 py-4 text-center inline-flex items-center dark:focus:ring-gray-600 dark:border-gray-700 me-2 mb-2" onclick="window.open('https://afdian.com/a/fatbobman')"> <svg class="w-4 h-4 me-2 -ms-1" aria-hidden="true" stroke-width="2" stroke="none" fill="#fb923c" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24"> <use href="/_astro/iconCollection.BuMSwq1O.svg#icon-aifadian"></use> </svg> <span class="text-white font-bold">爱发电(微信/支付宝)</span> </button>  </div> </div> </div> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
@@ -1250,7 +1260,7 @@ function copyCode(button, event) {
       slot.innerHTML = html;
     });
   }
-})();</script> <script type="module">var c=document.querySelectorAll("article");c.forEach(function(r){var a=r.querySelectorAll("a");a.forEach(function(e){var t=e.getAttribute("href");t&&t.startsWith("http")&&!t.includes("fatbobman.com")&&!t.includes("fatbobman.github.com")&&!t.includes("localhost")&&e.setAttribute("target","_blank")})});</script> <!-- <LeaveFeedback lang={lang} /> --> <section class="pt-10"><div class="max-w-5xl sm:px-4 py-2 mx-auto"><div class="grid gap-4 sm:gap-2 sm:mx-4 sm:grid-cols-12"><div class="col-span-12 sm:col-span-3 hidden sm:block"><div class="text-center sm:text-left mt-3 mb-14 before:block before:w-24 before:h-1 before:mb-3 before:rounded before:mx-auto sm:before:mx-0 before:bg-secondary"><h3 class="text-lg font-medium text-default">相关文章</h3></div></div><div class="sm:hidden text-lg font-medium text-heading col-span-12 text-left">相关文章</div><div class="relative col-span-12 sm:px-4 space-y-6 sm:col-span-9"><div class="col-span-12 space-y-2 relative sm:px-4 sm:col-span-8 sm:space-y-4 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:bg-block"><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/posts/exploring-key-property-wrappers-in-swiftui/" id="relatedPosts-探讨 SwiftUI 中的关键属性包装器：@State、@Binding、@StateObject、@ObservedObject、@EnvironmentObject 和 @Environment"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">探讨 SwiftUI 中的关键属性包装器：@State、@Binding、@StateObject、@ObservedObject、@EnvironmentObject 和 @Environment</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/posts/exploring-swiftui-property-wrappers-2/" id="relatedPosts-探讨 SwiftUI 中的属性包装器：@AppStorage、@SceneStorage、@FocusState、@GestureState 和 @ScaledMetric"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">探讨 SwiftUI 中的属性包装器：@AppStorage、@SceneStorage、@FocusState、@GestureState 和 @ScaledMetric</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/posts/exploring-swiftui-property-wrappers-3/" id="relatedPosts-探讨 SwiftUI 中的属性包装器：@FetchRequest、@SectionedFetchRequest、@Query、@Namespace、@Bindable"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">探讨 SwiftUI 中的属性包装器：@FetchRequest、@SectionedFetchRequest、@Query、@Namespace、@Bindable</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/posts/swiftuilifecycle/" id="relatedPosts-SwiftUI 视图的生命周期研究"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">SwiftUI 视图的生命周期研究</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/weekly/issue-050/" id="relatedPosts-Weekly #50 - 你的 App 被新系统打败了吗？"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Weekly #50 - 你的 App 被新系统打败了吗？</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/posts/focusedbinding/" id="relatedPosts-@FocusedBinding 浅谈"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">@FocusedBinding 浅谈</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/posts/textfield-event-focus-keyboard/" id="relatedPosts-SwiftUI TextField 进阶 —— 事件、焦点、键盘"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">SwiftUI TextField 进阶 —— 事件、焦点、键盘</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/posts/onchange/" id="relatedPosts-了解 SwiftUI 的 onChange"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">了解 SwiftUI 的 onChange</h3></div></a></div></div></div></div></section> <!-- <BottomWeeklySubscribe lang={lang} /> --> <div id="gitalk-container" data-comment-id="Exploring SwiftUI Property Wrappers 4" data-lang="zh" data-repo="blogComments" data-createIssueManually="true"></div>
+})();</script> <script type="module">var c=document.querySelectorAll("article");c.forEach(function(r){var a=r.querySelectorAll("a");a.forEach(function(e){var t=e.getAttribute("href");t&&t.startsWith("http")&&!t.includes("fatbobman.com")&&!t.includes("fatbobman.github.com")&&!t.includes("localhost")&&e.setAttribute("target","_blank")})});</script> <!-- <LeaveFeedback lang={lang} /> --> <section class="pt-10"><div class="max-w-5xl sm:px-4 py-2 mx-auto"><div class="grid gap-4 sm:gap-2 sm:mx-4 sm:grid-cols-12"><div class="col-span-12 sm:col-span-3 hidden sm:block"><div class="text-center sm:text-left mt-3 mb-14 before:block before:w-24 before:h-1 before:mb-3 before:rounded before:mx-auto sm:before:mx-0 before:bg-secondary"><h3 class="text-lg font-medium text-default">相关文章</h3></div></div><div class="sm:hidden text-lg font-medium text-heading col-span-12 text-left">相关文章</div><div class="relative col-span-12 sm:px-4 space-y-6 sm:col-span-9"><div class="col-span-12 space-y-2 relative sm:px-4 sm:col-span-8 sm:space-y-4 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:bg-block"><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/posts/exploring-key-property-wrappers-in-swiftui/" id="relatedPosts-探讨 SwiftUI 中的关键属性包装器：@State、@Binding、@StateObject、@ObservedObject、@EnvironmentObject 和 @Environment"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">探讨 SwiftUI 中的关键属性包装器：@State、@Binding、@StateObject、@ObservedObject、@EnvironmentObject 和 @Environment</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/posts/exploring-swiftui-property-wrappers-2/" id="relatedPosts-探讨 SwiftUI 中的属性包装器：@AppStorage、@SceneStorage、@FocusState、@GestureState 和 @ScaledMetric"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">探讨 SwiftUI 中的属性包装器：@AppStorage、@SceneStorage、@FocusState、@GestureState 和 @ScaledMetric</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/posts/exploring-swiftui-property-wrappers-3/" id="relatedPosts-探讨 SwiftUI 中的属性包装器：@FetchRequest、@SectionedFetchRequest、@Query、@Namespace、@Bindable"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">探讨 SwiftUI 中的属性包装器：@FetchRequest、@SectionedFetchRequest、@Query、@Namespace、@Bindable</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/posts/swiftuilifecycle/" id="relatedPosts-SwiftUI 视图的生命周期研究"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">SwiftUI 视图的生命周期研究</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/posts/focusedbinding/" id="relatedPosts-@FocusedBinding 浅谈"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">@FocusedBinding 浅谈</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/weekly/issue-054/" id="relatedPosts-Weekly #54 - 安全、便利与隐私"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">Weekly #54 - 安全、便利与隐私</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/posts/textfield-event-focus-keyboard/" id="relatedPosts-SwiftUI TextField 进阶 —— 事件、焦点、键盘"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">SwiftUI TextField 进阶 —— 事件、焦点、键盘</h3></div></a><a class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-2 sm:before:h-2 sm:before:rounded-full sm:before:left-[-31px] sm:before:z-[1] before:bg-secondary group cursor-pointer" href="/zh/posts/onchange/" id="relatedPosts-了解 SwiftUI 的 onChange"><div class="flex items-start"><div class="w-[7px] h-[7px] bg-secondary ml-4 mr-2 flex-shrink-0 mt-2 sm:hidden" style="border-radius: 50%;"></div><h3 class="text-default group-hover:text-secondary">了解 SwiftUI 的 onChange</h3></div></a></div></div></div></div></section> <!-- <BottomWeeklySubscribe lang={lang} /> --> <div id="gitalk-container" data-comment-id="Exploring SwiftUI Property Wrappers 4" data-lang="zh" data-repo="blogComments" data-createIssueManually="true"></div>
 
     <script defer>
       document.addEventListener('DOMContentLoaded', async function () {

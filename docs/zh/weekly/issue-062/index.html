@@ -12,16 +12,17 @@
 <meta property="og:site_name" content="fatbobman.com">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@fatbobman">
-<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><meta name="keywords" content="Swift 编程,Swift Programming,SwiftUI 教程,SwiftUI Tutorials,Core Data 实践,Core Data Practices,SwiftData 应用,SwiftData Applications,iOS 开发,iOS Development,Swift UI 设计,Swift UI Design,Swift 性能优化,Swift Performance Optimization,Swift 编码技巧,Swift Coding Techniques,iOS 应用开发,iOS App Development,Swift 数据管理,Swift Data Management,SwiftUI 布局,SwiftUI Layout,SwiftUI 动画,SwiftUI Animation"><link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/weekly/issue-062/">
-<link rel="alternate" hreflang="en" href="https://fatbobman.com/en/weekly/issue-062/"><!-- <script is:inline>
+<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" hreflang="zh" href="https://fatbobman.com/zh/weekly/issue-062/">
+<link rel="alternate" hreflang="en" href="https://fatbobman.com/en/weekly/issue-062/"><script>
   var _hmt = _hmt || [];
   (function() {
     var hm = document.createElement("script");
+    hm.async = true; // Add async attribute
     hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
-</script> --><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+</script> <!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -33,7 +34,51 @@
       ) {
         document.documentElement.classList.add('dark');
       }
-    </script><link rel="stylesheet" href="/_astro/about.BITFbrMX.css">
+    </script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "author": {
+    "@type": "Person",
+    "name": "Fatbobman(东坡肘子)",
+    "url": "https://fatbobman.com/zh/about/",
+    "jobTitle": "苹果生态开发者",
+    "sameAs": [
+      "https://github.com/fatbobman",
+      "https://twitter.com/fatbobman",
+      "https://www.linkedin.com/in/fatbobman/",
+      "https://bsky.app/profile/fatbobman.bsky.social",
+      "https://mastodon.social/@fatbobman",
+      "https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3"
+    ]
+  },
+  "dateModified": "2024-12-16T14:00:00.000Z",
+  "datePublished": "2024-12-16T14:00:00.000Z",
+  "description": "两年前，一位朋友问我，他六岁的孩子对编程产生了兴趣，有什么编程语言可以推荐。考虑到他已经有了 iPad 和 MacBook，我毫不犹豫地推荐了 Swift Playgrounds。几天前，另一位朋友也咨询了类似的问题，尽管我仍然推荐 Playgrounds，但远没有两年前那样坚决。因为如今的 Swift 是否还适合初学者，我有些不确定了。",
+  "headline": "让 Swift 更强，也更简单 -- 肘子的 Swift 周报 #62",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/weekly/issue62.webp"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://fatbobman.com/zh/weekly/issue-062/"
+  },
+  "url": "https://fatbobman.com/zh/weekly/issue-062/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "肘子的 Swift 周报",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  },
+  "articleSection": [
+    "开发周报",
+    "Swift",
+    "邮件列表"
+  ],
+  "inLanguage": "zh-Hans"
+}</script><link rel="stylesheet" href="/_astro/about.BITFbrMX.css">
 <style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
 </style>
 <link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css"></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <div id="blogTitle"> <a href="/zh/"> <div class="flex space-x-4 mx-auto text-center pt-6 sm:pt-6 font-black w-[240px] sm:w-[300px] pb-2 sm:pb-0"> <svg fill="currentColor" class="text-heading" width="500"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </a> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto p-2 sm:p-0" data-astro-cid-4wsjtibl> <div class="flex space-x-2" data-astro-cid-4wsjtibl> <div id="lang-data" data-lang="zh" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" class="p-2 w-10 h-10 font-medium text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg"> ZH </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <button type="button" onclick="
@@ -180,7 +225,7 @@ const enableStickyInMobile = true;
 <p>在 11 月发表的<a href="https://github.com/hborla/swift-evolution/blob/approachable-concurrency-vision/visions/approachable-concurrency.md?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">愿景</a>中，开发团队提出了一个构想：允许开发者以模块为单位，选择默认以 MainActor 隔离的方式进行编译。这将创建一种 “单线程模式”，从而消除一些由 Swift 6 并发安全检查引起的警告。这一举措，无疑能极大地改善开发体验，减少非并发场景下的不必要困扰。</p>
 <p>Swift 语言逐渐走向复杂化，这几乎是每一个发展到一定阶段、并且具有雄心的语言的必然趋势。不过一旦这种复杂化影响了语言的易学性，动摇的将是这门语言的根基。</p>
 <p>真心希望 Swift 能在不断提高自身上限的同时，也能始终保持对初学者的友好，甚至能够进一步降低入门的难度。毕竟，一门好的编程语言，既要能解决复杂的问题，也应该能够让初学者轻松入门。</p>
-<div class="dynamic-ad-container pt-2 pb-6"></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-2 pb-6"></div></aside>
 <h5 id="原创">原创</h5>
 <h3 id="core-data-的模型继承"><a href="/zh/posts/model-inheritance-in-core-data/" target="_blank">Core Data 的模型继承</a></h3>
 <p>Core Data 的一个卓越特点是让开发者能够以更加接近面向对象编程的方式声明数据模型，同时无需关心底层的存储实现细节。在这个框架中，模型继承是一个尤为重要的机制。本文将深入探讨模型继承的核心概念，包括父实体（Parent Entity）、子实体（Sub Entity）和抽象实体（Abstract Entity）；我们将分析它们的优缺点，并探讨在不直接使用这些功能时如何实现类似的效果。</p>
@@ -205,7 +250,7 @@ const enableStickyInMobile = true;
 <p>Swift Macro 的强大之处在于其依托 SwiftSyntax 库，提供了对源代码的精确控制力。<a href="https://github.com/kingnight?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Kingnight</a> 在这一系列文章中，通过深入讲解宏的基础概念和实践操作，带领读者了解如何操控抽象语法树（AST）实现强大的代码生成功能。该系列文章对 Swift 宏的实现原理和使用技巧进行了系统和深入的剖析，是开发者深入学习和掌握 Swift 宏技术的重要参考。</p>
 <h3 id="探索-mlx-swift将设备端推理集成到你的应用中-exploring-mlx-swift-adding-on-device-inference-to-your-app"><a href="https://t.ly/GAP_k" rel="noreferrer noopener">探索 MLX Swift：将设备端推理集成到你的应用中 (Exploring MLX Swift: Adding On-Device Inference to your App)</a></h3>
 <p>MLX 是一个专为 Apple Silicon 优化的机器学习框架，支持大语言模型 (LLMs) 在设备端运行，从而增强隐私保护并支持离线使用场景。<a href="https://x.com/rudrankriyam?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Rudrank Riyam</a> 在文中详细讲解了如何通过 MLX Swift 框架，将 LLM 推理功能集成到 iOS 应用中。他通过一个 SwiftUI 示例，从模型加载到文本生成，完整演示了实现过程，为开发者快速上手提供了清晰的指导。</p>
-<div class="dynamic-ad-container pt-2 pb-2"></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-2 pb-2"></div></aside>
 <h5 id="活动">活动</h5>
 <h2 id="展望未来打造出色的-visionos-app-线下"><a href="https://developer.apple.com/events/view/F7QL84UKJV/dashboard?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">展望未来：打造出色的 visionOS App (线下）</a></h2>
 <p><strong>1月8日上午10:00-下午5:00</strong></p>
@@ -221,29 +266,7 @@ const enableStickyInMobile = true;
 <li>下午 4:00 – 5:00：visionOS App 体验与讨论</li>
 </ul>
 <p><a href="https://developer.apple.com/login/?return=%2Fevents%2Fview%2FF7QL84UKJV%2Fdashboard?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">申请</a></p>
-<p>请在 12 月 26 日晚上 11:45 (GMT+8) 之前提交申请。</p> </div> </article> <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "author": {
-    "@type": "Person",
-    "name": "Fatbobman",
-    "url": "https://twitter.com/fatbobman"
-  },
-  "dateModified": "2024-12-16T14:00:00.000Z",
-  "datePublished": "2024-12-16T14:00:00.000Z",
-  "description": "两年前，一位朋友问我，他六岁的孩子对编程产生了兴趣，有什么编程语言可以推荐。考虑到他已经有了 iPad 和 MacBook，我毫不犹豫地推荐了 Swift Playgrounds。几天前，另一位朋友也咨询了类似的问题，尽管我仍然推荐 Playgrounds，但远没有两年前那样坚决。因为如今的 Swift 是否还适合初学者，我有些不确定了。",
-  "headline": "让 Swift 更强，也更简单 -- 肘子的 Swift 周报 #62",
-  "image": [
-    {
-      "url": "https://cdn.fatbobman.com/weekly/issue62.webp"
-    }
-  ],
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://fatbobman.com/zh/weekly/issue-062/"
-  },
-  "url": "https://fatbobman.com/zh/weekly/issue-062/"
-}</script> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
+<p>请在 12 月 26 日晚上 11:45 (GMT+8) 之前提交申请。</p> </div> </article> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
   .copy-icon {
     position: absolute;
     left: -30px; /* 根据您的布局调整位置 */
