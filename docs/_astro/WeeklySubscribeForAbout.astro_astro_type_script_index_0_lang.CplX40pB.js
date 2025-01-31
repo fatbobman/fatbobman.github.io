@@ -1,0 +1,1 @@
+import{_ as t}from"./preload-helper.CLcXU_4U.js";document.addEventListener("DOMContentLoaded",async function(){try{(await t(()=>import("./loadBottomSubstackWidget.BnyElvPb.js"),[])).loadSubstackWidget()}catch(o){console.error("Failed to load Substack Widget module:",o)}});
