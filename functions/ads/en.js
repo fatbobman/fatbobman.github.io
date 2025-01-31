@@ -1,6 +1,6 @@
 const visionOS2025Ad = `
       <div>
-        <a href="https://t.ly/4j2kO" target="_blank">
+        <a href="https://t.ly/4j2kO" target="_blank" ref="sponsored">
           <div
             class="p-4 bg-orange-100/70 dark:bg-blue-800 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0"
           >
@@ -47,7 +47,7 @@ const visionOS2025Ad = `
 
 const midstAd = `
       <div>
-        <a href="https://t.ly/hym2p" target="_blank">
+        <a href="https://t.ly/hym2p" target="_blank" ref="sponsored">
           <div
             class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 space-y-0"
           >
@@ -99,7 +99,7 @@ const midstAd = `
 
 const healthNotesAd = `
 <div>
-  <a href="https://t.ly/7Qg6u" target="_blank" id="ads">
+  <a href="https://t.ly/7Qg6u" target="_blank" ref="sponsored">
     <div class="p-4 bg-orange-100/70 dark:bg-blue-800 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0">
       <div class="hidden sm:block absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-2 mr-4">App</div>
       <img
