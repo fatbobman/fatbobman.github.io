@@ -340,7 +340,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// Cannot convert value of type &#39;Bool?&#39; to closure result type &#39;Bool&#39;</span></span></code></pre></div>
 <p>因此，在为 SwiftData 构建谓词时，正确处理可选值成为一个重要的考虑因素。</p>
 <h2 id="正确处理-swiftdata-中的可选值">正确处理 SwiftData 中的可选值</h2>
-<p>SwiftData 的谓词构建虽与编写返回布尔值的闭包相似，但开发者仅可以在其中使用<a href="https://developer.apple.com/documentation/foundation/predicate?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">官方文档</a>中列出的操作符和方法，这些操作都将通过宏转换成相应的 <code>PredicateExpressions</code>。对于上文中的可选类型的 <code>name</code> 属性，开发者可以采用以下方法进行处理：</p>
+<p>SwiftData 的谓词构建虽与编写返回布尔值的闭包相似，但开发者仅可以在其中使用<a href="https://developer.apple.com/documentation/foundation/predicate?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">官方文档</a>中列出的操作符和方法，这些操作都将通过宏转换成相应的 <code>PredicateExpressions</code>。对于上文中的可选类型的 <code>name</code> 属性，开发者可以采用以下方法进行处理：</p>
 <h3 id="方法-1使用可选链和空合并运算符">方法 1：使用可选链和空合并运算符</h3>
 <p>通过结合可选链（<code>?.</code>）和空合并运算符（<code>??</code>），可以在属性为 <code>nil</code> 时提供一个默认的布尔值。</p>
 <div>

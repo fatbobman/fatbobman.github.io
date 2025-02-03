@@ -382,7 +382,7 @@ const enableStickyInMobile = true;
 </blockquote>
 <h2 id="实现细节提醒">实现细节提醒</h2>
 <blockquote>
-<p>可在此处获取基于以上分析创建的 <a href="https://github.com/fatbobman/BlogCodes/tree/main/SyncManager?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">演示代码</a></p>
+<p>可在此处获取基于以上分析创建的 <a href="https://github.com/fatbobman/BlogCodes/tree/main/SyncManager?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">演示代码</a></p>
 </blockquote>
 <p>本节将根据演示代码对部分实现细节进行说明</p>
 <h3 id="多个-container-使用同一个-data-model">多个 Container 使用同一个 Data Model</h3>
@@ -541,7 +541,7 @@ const enableStickyInMobile = true;
 <h3 id="在-nspersistentcontainer-实例中响应持久化历史跟踪通知">在 NSPersistentContainer 实例中响应持久化历史跟踪通知</h3>
 <p>当 NSPersistentCloudKitContainer 实例从网络上获取到数据并更新到 SQLite 后，会在 SQLite 中创建 Transaction 并通过 NotificationCenter 发送 NSPersistentStoreRemoteChange 通知。我们需要在 NSPersistentContainer 实例中对该通知进行响应，并将同步数据合并到当前的视图上下文中。</p>
 <blockquote>
-<p>如果像本文例程中一样使用 <a href="https://github.com/fatbobman/PersistentHistoryTrackingKit?utm_source=Fatbobman%20Blog&utm_medium=web&utm_campaign=Fatbobman%20Blog" rel="noreferrer noopener">Persistent History Tracking Kit</a> 处理 Transaction 的话，需要开启 includingCloudKitMirroring 选项以合并由 NSPersistentCloudKitContainer 从网络上获取的变更数据：</p>
+<p>如果像本文例程中一样使用 <a href="https://github.com/fatbobman/PersistentHistoryTrackingKit?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Persistent History Tracking Kit</a> 处理 Transaction 的话，需要开启 includingCloudKitMirroring 选项以合并由 NSPersistentCloudKitContainer 从网络上获取的变更数据：</p>
 </blockquote>
 <div>
         <div class="flex justify-between items-center h-8 font-semibold bg-block border border-gray-200 dark:border-[#4b5563] shadow-md text-heading text-xs rounded-tl-md rounded-tr-md">
