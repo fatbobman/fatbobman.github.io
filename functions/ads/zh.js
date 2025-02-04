@@ -2,9 +2,9 @@ const discordAd = `
       <div>
         <a href="https://t.ly/gzxeh" target="_blank" rel="sponsored">
           <div
-            class="p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0"
+             class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 hover:scale-105 transition-all duration-200"
           >
-            <div class="hidden sm:block absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-3 mr-4">Sign Up</div>
+          <div class="hidden sm:block absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-4 mr-4 dark:bg-black/40 bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl">马上加入</div>
             <img
               src="https://cdn.fatbobman.com/ads/apple-100.svg"
               alt="Join Discord Logo"
@@ -17,7 +17,7 @@ const discordAd = `
             />
             <div class="space-y-2 sm:pr-1">
               <div class="mb-6">
-              <span class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight">代码相连，创意无限 - 加入我们的开发者社区!</span>
+                <span class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight dark:group-hover:text-white group-hover:text-amber-900">代码相连，创意无限 - 加入我们的开发者社区!</span>
               </div>
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
                 加入我们活跃的 Discord 苹果开发者社区! 与众多热情的开发者一起深入探讨 Swift、SwiftUI 和 SwiftData 的最新进展。分享经验，解决难题，共同成长!
@@ -32,9 +32,9 @@ const visionOS2025Ad = `
       <div>
         <a href="https://t.ly/PNw_l" target="_blank" rel="sponsored">
           <div
-            class="p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0"
+             class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 hover:scale-105 transition-all duration-200"
           >
-            <div class="absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-3 mr-4">立即报名</div>
+          <div class="hidden sm:block absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-4 mr-4 dark:bg-black/40 bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl">立即报名</div>
             <img
               src="https://cdn.fatbobman.com/ads/wwdc2024.playground.svg"
               alt="let's vision 2025"
@@ -51,8 +51,8 @@ const visionOS2025Ad = `
                   vertical-align: -0.1em;
                 }
               </style>
-              <div class="mb-6">
-              <span class="text-xl font-bold text-orange-700 dark:text-blue-200">空间计算 + 人工智能 + iOS =</span><span class="text-3xl font-bold text-orange-700 dark:text-blue-400 align-infinity"> ∞</span> 
+              <div class="mb-6 font-bold text-orange-700 dark:text-blue-200 dark:group-hover:text-white group-hover:text-amber-900">
+              <span class="text-xl ">空间计算 + 人工智能 + iOS =</span><span class="text-3xl"> ∞</span> 
               </div>
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
                 与全球的开发者一起参加于
