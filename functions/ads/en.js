@@ -110,16 +110,18 @@ const healthNotesAd = `
               src="https://cdn.fatbobman.com/healthnotes-logo.svg"
               alt="Heath Notes Logo"
               style="width: 4.5rem; height: 4.5rem; margin-left: 1.0rem; margin-right: 1.5rem;"
-              width="72"
-              height="72" 
+              width="80"
+              height="80" 
               class="mr-0 mb-4 sm:mb-0 hidden sm:block rounded-lg"
               loading="lazy"
               decoding="async"
       />
       <div class="space-y-2 pr-1">
+        <div class="mb-4">
         <span class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight">Your Health, Your Data, Your Control</span>
+        </div>
         <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
-          Health Notes: A versatile iOS, iPad, and macOS app empowering you to create custom health data types, tailored to your unique life and wellness tracking needs.
+          Health Notes: Custom health tracking for iOS, iPad, and macOS—tailored to your unique wellness journey.
         </div>
         <p class="mt-2 text-sm text-orange-700 dark:text-blue-200 italic font-medium">Download on the App Store</p>
       </div>
