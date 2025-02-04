@@ -50,7 +50,7 @@ const visionOS2025Ad = `
                 }
               </style>
               <div class="mb-6 font-bold text-orange-700 dark:text-blue-200 dark:group-hover:text-white group-hover:text-amber-900">
-              <span class="text-xl ">空间计算 + 人工智能 + iOS =</span><span class="text-3xl"> ∞</span> 
+              <span class="text-xl ">空间计算 + 人工智能 + iOS = </span><span class="text-3xl">&#8734;</span> 
               </div>
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
                 与全球的开发者一起参加于

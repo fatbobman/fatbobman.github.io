@@ -22,8 +22,8 @@ const visionOS2025Ad = `
               </style>
               <div class="mb-6 font-bold text-orange-700 dark:text-blue-200 dark:group-hover:text-white group-hover:text-amber-900">
               <span class="text-xl align-infinity"
-                >Spatial Computing + AI + iOS</span
-              ><span class="text-3xl"> ∞</span>
+                >Spatial Computing + AI + iOS = </span
+              ><span class="text-3xl">∞</span>
               </div>
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal pb-2">
                 Join developers from around the world at the
