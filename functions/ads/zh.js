@@ -16,7 +16,9 @@ const discordAd = `
               decoding="async"
             />
             <div class="space-y-2 sm:pr-1">
+              <div class="mb-4">
               <span class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight">代码相连，创意无限 - 加入我们的开发者社区!</span>
+              </div>
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
                 加入我们活跃的 Discord 苹果开发者社区! 与众多热情的开发者一起深入探讨 Swift、SwiftUI 和 SwiftData 的最新进展。分享经验，解决难题，共同成长!
               </div>

@@ -21,9 +21,11 @@ const visionOS2025Ad = `
                   vertical-align: 0.1em; /* 调整垂直位置 */
                 }
               </style>
+               <div class="mb-4">
               <span class="text-xl font-bold text-orange-700 dark:text-blue-200 align-infinity"
                 >Spatial Computing + AI + iOS</span
               ><span class="text-3xl font-bold text-orange-700 dark:text-blue-200"> ∞</span>
+              </div>
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal pb-2">
                 Join developers from around the world at the
               
