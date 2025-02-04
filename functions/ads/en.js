@@ -1,8 +1,8 @@
 const visionOS2025Ad = `
       <div>
-        <a href="https://t.ly/4j2kO" target="_blank" ref="sponsored">
+        <a href="https://t.ly/4j2kO" target="_blank" rel="sponsored">
           <div
-            class="p-4 bg-orange-100/70 dark:bg-blue-800 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0"
+            class="p-4 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0"
           >
             <div class="absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-2 mr-4">Join Now</div>
             <img
@@ -33,7 +33,7 @@ const visionOS2025Ad = `
               <!-- <div class="text-sm text-gray-600 dark:text-gray-400 italic leading-loose font-medium">赶快报名，不要错过这场技术盛宴！</div> -->
             </div>
           </div>
-          <div class="flex justify-center py-2">
+          <div class="flex justify-center pt-2">
             <div
               class="text-secondary transition-all duration-200 text-xs font-semibold hover:text-buttonBg hover:scale-105 hover:font-bold cursor-pointer"
               onclick="window.location.href='/en/sponsorship/';"
@@ -47,9 +47,9 @@ const visionOS2025Ad = `
 
 const midstAd = `
       <div>
-        <a href="https://t.ly/hym2p" target="_blank" ref="sponsored">
+        <a href="https://t.ly/hym2p" target="_blank" rel="sponsored">
           <div
-            class="p-4 bg-orange-100/70 dark:bg-blue-900 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-800 space-y-0"
+            class="p-4 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0"
           >
             <div class="absolute top-0 right-0 text-secondary text-xs font-bold rounded mt-2 mr-4">SPONSOR</div>
             <img
@@ -99,8 +99,10 @@ const midstAd = `
 
 const healthNotesAd = `
 <div>
-  <a href="https://t.ly/7Qg6u" target="_blank" ref="sponsored">
-    <div class="p-4 bg-orange-100/70 dark:bg-blue-800 border border-orange-300 dark:border-blue-700 rounded-lg shadow-md mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0">
+  <a href="https://t.ly/7Qg6u" target="_blank" rel="sponsored">
+    <div 
+    class="p-4 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0"
+    >
       <div class="hidden sm:block absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-2 mr-4">App</div>
       <img
               src="https://cdn.fatbobman.com/healthnotes-logo.svg"
@@ -121,7 +123,7 @@ const healthNotesAd = `
       </div>
     </div>
   </a>
-  <div class="flex justify-center py-2">
+  <div class="flex justify-center pt-2">
      <div 
          class="text-secondary transition-all duration-200 text-xs font-semibold hover:text-buttonBg hover:scale-105 hover:font-bold cursor-pointer"
          onclick="window.location.href='/en/sponsorship/';"
