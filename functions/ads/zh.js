@@ -8,10 +8,9 @@ const discordAd = `
             <img
               src="https://cdn.fatbobman.com/ads/apple-100.svg"
               alt="Join Discord Logo"
-              style="width: 6rem; height: 6rem;"
               width="96"
               height="96" 
-              class="mr-0 sm:mr-4 mb-4 sm:mb-0 hidden sm:block"
+              class="mr-0 sm:mr-2 mb-4 sm:mb-0 hidden sm:block"
               loading="lazy"
               decoding="async"
             />
@@ -38,10 +37,9 @@ const visionOS2025Ad = `
             <img
               src="https://cdn.fatbobman.com/ads/wwdc2024.playground.svg"
               alt="let's vision 2025"
-              style="width: 6rem; height: 6rem;"
               width="96"
               height="96" 
-              class="mr-0 sm:mr-4 mb-4 sm:mb-0 hidden sm:block"
+              class="mr-0 sm:mr-2 mb-4 sm:mb-0 hidden sm:block"
               loading="lazy"
               decoding="async"
             />
