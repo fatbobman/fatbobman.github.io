@@ -4,7 +4,7 @@ const discordAd = `
           <div
             class="p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0"
           >
-            <div class="hidden sm:block absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-2 mr-4">Sign Up</div>
+            <div class="hidden sm:block absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-3 mr-4">Sign Up</div>
             <img
               src="https://cdn.fatbobman.com/ads/apple-100.svg"
               alt="Join Discord Logo"
@@ -16,7 +16,7 @@ const discordAd = `
               decoding="async"
             />
             <div class="space-y-2 sm:pr-1">
-              <div class="mb-4">
+              <div class="mb-6">
               <span class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight">代码相连，创意无限 - 加入我们的开发者社区!</span>
               </div>
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
@@ -34,7 +34,7 @@ const visionOS2025Ad = `
           <div
             class="p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0"
           >
-            <div class="absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-2 mr-4">立即报名</div>
+            <div class="absolute top-0 right-0 dark:text-blue-200 text-secondary text-xs font-bold rounded mt-3 mr-4">立即报名</div>
             <img
               src="https://cdn.fatbobman.com/ads/wwdc2024.playground.svg"
               alt="let's vision 2025"
@@ -51,7 +51,9 @@ const visionOS2025Ad = `
                   vertical-align: -0.1em;
                 }
               </style>
+              <div class="mb-6">
               <span class="text-xl font-bold text-orange-700 dark:text-blue-200">空间计算 + 人工智能 + iOS =</span><span class="text-3xl font-bold text-orange-700 dark:text-blue-400 align-infinity"> ∞</span> 
+              </div>
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
                 与全球的开发者一起参加于
 
