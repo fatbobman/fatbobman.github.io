@@ -43,12 +43,7 @@ const visionOS2025Ad = `
               loading="lazy"
               decoding="async"
             />
-            <div class="space-y-2">
-              <style>
-                .align-infinity {
-                  vertical-align: -0.1em;
-                }
-              </style>
+            <div>
               <div class="mb-6 font-bold text-orange-700 dark:text-blue-200 dark:group-hover:text-white group-hover:text-amber-900">
               <span class="text-xl ">空间计算 + 人工智能 + iOS = </span><span class="text-3xl">&#8734;</span> 
               </div>
