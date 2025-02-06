@@ -24,6 +24,14 @@ const discordAd = `
             </div>
           </div>
         </a>
+           <div class="flex justify-center pt-6">
+            <div
+              class="text-secondary transition-all duration-200 text-xs font-semibold dark:hover:text-blue-200 hover:text-red-600 hover:scale-105 hover:font-bold cursor-pointer"
+              onclick="window.location.href='https://t.ly/gzxeh';"
+            >
+            🚀 马上加入，享受交流的快乐 → 
+            </div>
+          </div>
       </div>
       `
 
@@ -56,6 +64,14 @@ const visionOS2025Ad = `
             </div>
           </div>
         </a>
+           <div class="flex justify-center pt-6">
+            <div
+              class="text-secondary transition-all duration-200 text-xs font-semibold dark:hover:text-blue-200 hover:text-red-600 hover:scale-105 hover:font-bold cursor-pointer"
+              onclick="window.location.href='https://t.ly/PNw_l';"
+            >
+            🚀 立刻报名，与来自全球的开发者交流 → 
+            </div>
+          </div>
       </div>
 `
 
