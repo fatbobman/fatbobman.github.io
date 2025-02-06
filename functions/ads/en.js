@@ -28,7 +28,7 @@ const visionOS2025Ad = `
               </div>
             </div>
           </div>
-          <div class="flex justify-center py-6">
+          <div class="flex justify-center pt-6">
             <div
               class="text-secondary transition-all duration-200 text-xs font-semibold dark:hover:text-blue-200 hover:text-red-600 hover:scale-105 hover:font-bold cursor-pointer"
               onclick="window.location.href='/en/sponsorship/';"
