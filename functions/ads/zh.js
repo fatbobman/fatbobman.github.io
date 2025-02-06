@@ -1,5 +1,5 @@
 const discordAd = `
-      <div>
+      <div class="tracking-wide">
         <a href="https://t.ly/gzxeh" target="_blank" rel="sponsored">
           <div
              class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 hover:scale-105 transition-all duration-200"
@@ -28,7 +28,7 @@ const discordAd = `
       `
 
 const visionOS2025Ad = `
-      <div>
+      <div class="tracking-wide">
         <a href="https://t.ly/PNw_l" target="_blank" rel="sponsored">
           <div
              class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 hover:scale-105 transition-all duration-200"
