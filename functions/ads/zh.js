@@ -41,7 +41,7 @@ const visionOS2025Ad = `
           <div
              class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 hover:scale-105 transition-all duration-200"
           >
-          <div class="absolute top-[-30px] sm:top-0 right-0 dark:text-blue-200 text-secondary text-xs font-black rounded mt-4 mr-4 dark:bg-gray-800 bg-white sm:dark:bg-black/40 sm:bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl">立即报名</div>
+          <div class="absolute top-[-30px] sm:top-0 right-0 dark:text-blue-200 text-secondary text-xs font-black rounded mt-4 mr-4 dark:bg-gray-800 bg-white sm:dark:bg-black/40 sm:bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl">抽取满票</div>
             <img
               src="https://cdn.fatbobman.com/ads/wwdc2024.playground.svg"
               alt="let's vision 2025"
@@ -53,7 +53,7 @@ const visionOS2025Ad = `
             />
             <div>
               <div class="mb-6 font-bold text-orange-700 dark:text-blue-200 dark:group-hover:text-white group-hover:text-amber-900">
-              <span class="text-xl ">空间计算 + 人工智能 + iOS = </span><span class="text-3xl">&#8734;</span> 
+              <span class="text-xl ">Let's Vision 2025（门票抽取中）</span> 
               </div>
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
                 与全球的开发者一起参加于
@@ -69,7 +69,7 @@ const visionOS2025Ad = `
               class="text-secondary transition-all duration-200 text-xs font-semibold dark:hover:text-blue-200 hover:text-red-600 hover:scale-105 hover:font-bold cursor-pointer"
               onclick="window.location.href='https://t.ly/PNw_l';"
             >
-            🚀 立刻报名，与来自全球的开发者交流 → 
+            🚀 点击参与活动，赢取大会门票 → 
             </div>
           </div>
       </div>
