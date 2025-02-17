@@ -37,7 +37,7 @@ const discordAd = `
 
 const visionOS2025Ad = `
       <div class="tracking-wide">
-        <a href="https://t.ly/letvision2025" target="_blank">
+        <a href="https://t.ly/letvision2025" target="_blank" rel="sponsored">
           <div
              class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 hover:scale-105 transition-all duration-200"
           >
@@ -53,7 +53,7 @@ const visionOS2025Ad = `
             />
             <div>
               <div class="mb-6 font-bold text-orange-700 dark:text-blue-200 dark:group-hover:text-white group-hover:text-amber-900">
-              <span class="text-xl ">Let's Vision 2025（门票抽取中）</span> 
+              <span class="text-xl ">Let's Vision 2025</span> 
               </div>
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
                 与全球的开发者一起参加于
@@ -69,7 +69,7 @@ const visionOS2025Ad = `
               class="text-secondary transition-all duration-200 text-xs font-semibold dark:hover:text-blue-200 hover:text-red-600 hover:scale-105 hover:font-bold cursor-pointer"
               onclick="window.location.href='https://t.ly/letvision2025';"
             >
-            🚀 点击参与活动，赢取大会门票 → 
+            🚀 九折购买门票通道 → 
             </div>
           </div>
       </div>
