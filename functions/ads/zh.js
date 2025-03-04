@@ -194,8 +194,8 @@ const getRandomContent = () => {
 };
 
 const ads = [
-  // discordAd,
-  visionOS2025Ad,
+  discordAd,
+  // visionOS2025Ad,
   // midstAd,
   // pasteNowAd,
   // zipicAd,
