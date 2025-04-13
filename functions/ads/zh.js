@@ -202,44 +202,64 @@ const ads = [
 ]
 
 const currentAd = `
-    <div class="pt-4 pb-0">
-      <a href="https://t.ly/PNw_l" target="blank" id="ads-wwdc2024">
-      <div
-        class="flex flex-col px-4 py-6 rounded-lg border-orange-400 dark:border-blue-500 bg-block cursor-pointer relative shadow-lg"
-        style="border-width:1.5px;"
-      >
-        <div class="absolute top-0 right-0 bg-secondary text-invert text-xs rounded px-2 py-0.5 mt-2 mr-2 font-bold" style="position: absolute; top: -18px; right: 20px;">WWDC 2024</div>
-        <div class="mb-4">
-          <span
-            class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-purple-600"
-            style="animation: gradient 4s ease infinite; background-size: 150% 200%;"
+    <div>
+        <a href="https://l.fatbobman.com/sb-proxyman" target="_blank" rel="sponsored">
+          <div
+            class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 hover:scale-105 transition-all duration-200"
           >
-          WWDC 24.playground
-          </span>
+            <div
+              class="absolute top-[-30px] sm:top-0 right-0 dark:text-blue-200 text-secondary text-xs font-black rounded mt-4 mr-4 dark:bg-gray-800 bg-white sm:dark:bg-black/40 sm:bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl"
+            >
+              立即试用，你会爱上它！
+            </div>
+            <img
+              src="https://cdn.fatbobman.com/ads/proxyman-icon-red-trim.webp"
+              alt="Proxyman Logo"
+              width="80"
+              height="80"
+              class="mr-0 sm:mr-6 mb-4 sm:mb-0 hidden rounded-lg dark:sm:block"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="https://cdn.fatbobman.com/ads/proxyman-icon-blue-trim.webp"
+              alt="Proxyman Logo"
+              width="80"
+              height="80"
+              class="mr-0 sm:mr-6 mb-4 sm:mb-0 hidden sm:block rounded-lg dark:hidden"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="space-y-2 pr-1">
+              <div class="mb-6">
+                <span
+                  class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight dark:group-hover:text-white group-hover:text-amber-900"
+                >
+                  需要在 iPhone 上调试 HTTPS？
+                </span>
+              </div>
+              <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
+                试试 <span class="font-semibold">Proxyman！</span>这是一款顶级的 macOS 应用，只需点击几下，即可轻松捕获和调试 HTTP(s) 流量。支持 iOS
+                设备和模拟器。
+              </div>
+            </div>
+          </div>
+        </a>
+        <div class="flex justify-center pt-6">
+          <a
+            href="https://l.fatbobman.com/sb-proxyman"
+            class="text-secondary transition-all duration-200 text-xs font-semibold dark:hover:text-blue-200 hover:text-red-600 hover:scale-105 hover:font-bold cursor-pointer"
+            rel="sponsored"
+            target="_blank"
+          >
+            🚀 立即试用 →
+          </a>
         </div>
-        <span class="text-heading text-sm">
-          与 Apple 爱好者一起参加由 SwiftGG、XR基地、少数派、初心资本、清华创客空间、西顾视频 和 超脑 AI 孵化器 于 <span class="font-bold">6 月 10 日</span>在北京、上海，杭州和深圳主办的 WWDC 2024 Watch Party。
-        </span>
       </div>
-      </a>
-      <style>
-        @keyframes gradient {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-        </style>
-    </div>
 `
 
-const startTime = new Date('2024-05-28T00:00:00Z');
-const endTime = new Date('2024-05-29T00:00:00Z');
+const startTime = new Date('2025-04-14T00:00:00Z');
+const endTime = new Date('2025-04-21T14:00:00Z');
 
 export async function onRequest(context) {
   const allowedOrigins = [

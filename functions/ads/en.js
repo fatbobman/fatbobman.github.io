@@ -142,49 +142,64 @@ const ads = [
 
 
 const currentAd = `
-<div class="pt-4 pb-0">
-        <a href="https://t.ly/7Qg6u" target="blank" id="ads-wwdc2024">
-        <div
-          class="flex flex-col px-4 py-6 rounded-lg border-orange-400 dark:border-blue-500 bg-block cursor-pointer relative shadow-lg"
-          style="border-width:1.5px;"
-        >
-          <div class="absolute top-0 right-0 bg-secondary text-invert text-xs rounded px-2 py-0.5 mt-2 mr-2" style="position: absolute; top: -18px; right: 20px;">App</div>
-          <div class="mb-4">
-            <span
-            class="text-2xl font-bold text-transparent bg-clip-text"
-            style="
-            background-image: linear-gradient(to right, #f59e0b, #f87171, #7c3aed);
-            animation: gradient 4s ease infinite;
-            background-size: 150% 200%;
-            "
+<div>
+        <a href="https://l.fatbobman.com/sb-proxyman" target="_blank" rel="sponsored">
+          <div
+            class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 hover:scale-105 transition-all duration-200"
           >
-              HEALTH NOTES
-            </span>
+            <div
+              class="absolute top-[-30px] sm:top-0 right-0 dark:text-blue-200 text-secondary text-xs font-black rounded mt-4 mr-4 dark:bg-gray-800 bg-white sm:dark:bg-black/40 sm:bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl"
+            >
+              Try it, love it!
+            </div>
+            <img
+              src="https://cdn.fatbobman.com/ads/proxyman-icon-red-trim.webp"
+              alt="Proxyman Logo"
+              width="80"
+              height="80"
+              class="mr-0 sm:mr-6 mb-4 sm:mb-0 hidden rounded-lg dark:sm:block"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="https://cdn.fatbobman.com/ads/proxyman-icon-blue-trim.webp"
+              alt="Proxyman Logo"
+              width="80"
+              height="80"
+              class="mr-0 sm:mr-6 mb-4 sm:mb-0 hidden sm:block rounded-lg dark:hidden"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="space-y-2 pr-1">
+              <div class="mb-6">
+                <span
+                  class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight dark:group-hover:text-white group-hover:text-amber-900"
+                >
+                  Need to debug HTTPS on your iPhone?
+                </span>
+              </div>
+              <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
+                Try <span class="font-semibold">Proxyman!</span> The best-in-class macOS that helps you capture/debug HTTP(s) with a few clicks. Support
+                iOS devices and Simulator.
+              </div>
+            </div>
           </div>
-          <span class="text-heading text-sm font-normal">
-            Capture your health journey your way with Health Notes. This iOS, iPad, and macOS app features flexible, user-defined data types for comprehensive health monitoring.
-            <span class="text-secondary font-semibold"> Download on the App Store</span>
-          </span>
-        </div>
         </a>
+        <div class="flex justify-center pt-6">
+          <a
+            href="https://l.fatbobman.com/sb-proxyman"
+            class="text-secondary transition-all duration-200 text-xs font-semibold dark:hover:text-blue-200 hover:text-red-600 hover:scale-105 hover:font-bold cursor-pointer"
+            rel="sponsored"
+            target="_blank"
+          >
+            🚀 Get Started Now →
+          </a>
+        </div>
       </div>
-      <style>
-      @keyframes gradient {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-      </style>
 `
 
-const startTime = new Date('2024-05-28T00:00:00Z');
-const endTime = new Date('2024-05-29T00:00:00Z');
+const startTime = new Date('2025-04-14T00:00:00Z');
+const endTime = new Date('2025-04-21T14:00:00Z');
 
 export async function onRequest(context) {
   const allowedOrigins = [
