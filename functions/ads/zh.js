@@ -266,7 +266,7 @@ export async function onRequest(context) {
       'http://localhost:4321',
       'https://fatbobman.com',
       'https://fatbobman.github.io',
-      'https://blogsource.edgeone.site'
+      'blogsource-8wyy6rcw.edgeone.site'
   ];
 
   const request = context.request;
