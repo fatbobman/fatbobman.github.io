@@ -287,6 +287,9 @@ const enableStickyInMobile = true;
 <li>使用 Mutex 不会强制引入异步调用，因此不会干扰调用栈结构；</li>
 <li>Mutex 本身符合 <code>Sendable</code>，可以很好地融入 Swift 6 的并发模型。</li>
 </ul>
+<blockquote>
+<p><strong>特别提醒</strong>： 感谢读者 Kai 发来的反馈。虽然文章中的 Mutex 和 <code>withLock</code> 本身是正确的工具，<strong>但将其状态通过分离的 <code>get</code> 和 <code>set</code> 计算属性暴露出来仍存在数据竞争风险</strong>。需要注意：像 <code>counter.count += 1</code> 这样的操作，实际上会分别调用 <code>get</code>（加/解锁） 和 <code>set</code>（再次加/解锁），导致读、改、写这三个步骤并非原子性地在单次锁内完成，从而存在数据竞争的风险。更安全的做法是提供一个能在单次锁保护下完成整个读-改-写操作的方法（如文章中原有的 <code>increment()</code> 或类似 swift-concurrency-extras 库中的 <a href="https://github.com/pointfreeco/swift-concurrency-extras/blob/main/Sources/ConcurrencyExtras/LockIsolated.swift?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">withValue</a> 接口），而不是暴露分离的读写访问器。</p>
+</blockquote>
 <h3 id="实现后台下载-keep-downloading-with-a-background-session"><a href="https://l.fatbobman.com/w082-03" rel="noreferrer noopener">实现后台下载 (Keep Downloading with a Background Session)</a></h3>
 <p>从 iOS 7 开始，开发者便可以通过 <code>URLSession</code> 的 <code>background</code> 类型 session 实现断点续传与下载任务恢复。即使到了 Swift 6，Apple 仍未提供基于 <code>async/await</code> 的封装。在本文中，<a href="https://mastodon.social/@williamboles?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">William Boles</a> 详细介绍了 background session 的使用方式，并清楚解释了为什么这类任务不能直接支持 <code>async/await</code>。简单来说，background session 使用系统守护进程（<code>nsurlsessiond</code>）在 app 被挂起或终止后继续处理任务，而 <code>async/await</code> 则依赖于进程内的调用栈与任务树。两者运行机制不同，天然不兼容。</p>
 <h3 id="基于-task-local-构建依赖容器-dependency-container-on-top-of-task-local-values-in-swift"><a href="https://l.fatbobman.com/w082-04" rel="noreferrer noopener">基于 Task Local 构建依赖容器 (Dependency Container on Top of Task Local Values in Swift)</a></h3>
