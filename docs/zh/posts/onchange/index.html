@@ -992,9 +992,9 @@ const enableStickyInMobile = true;
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/zh/posts/mastering_swiftui_task_modifier/" id="relatedPosts-掌握 SwiftUI 的 task 修饰器"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">掌握 SwiftUI 的 task 修饰器</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/zh/posts/tables_and_fields_of_coredata/" id="relatedPosts-Core Data 是如何在 SQLite 中保存数据的"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">Core Data 是如何在 SQLite 中保存数据的</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/zh/posts/onappear-call-timing/" id="relatedPosts-onAppear 的调用时机"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">onAppear 的调用时机</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/zh/posts/tables_and_fields_of_coredata/" id="relatedPosts-Core Data 是如何在 SQLite 中保存数据的"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">Core Data 是如何在 SQLite 中保存数据的</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/zh/posts/open_url_in_swiftui/" id="relatedPosts-在 SwiftUI 视图中打开 URL 的若干方法"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">在 SwiftUI 视图中打开 URL 的若干方法</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
@@ -1126,7 +1126,7 @@ function copyCode(button, event) {
         const maxAgeMatch = response.headers.get('Cache-Control')?.match(/max-age=(\d+)/);
         const maxAge = maxAgeMatch ? parseInt(maxAgeMatch[1], 10) : 0;
 
-        if (!response.ok || maxAge <= 0) {
+        if (!response.ok) { // 暂时移除  `|| maxAge <= 0`
           throw new Error('Invalid response or missing Cache-Control');
         }
 

@@ -554,13 +554,13 @@ const enableStickyInMobile = true;
         For sponsorship inquiries, please check out the <a href="/en/sponsorship/">details here</a>.
 </p></blockquote> </article> <section class="pt-10 pb-10" id="related-posts"><div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 md:gap-4" id="more-tips"><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/en/posts/swiftuioverlaycontainer2/" id="relatedPosts-SwiftUI Overlay Container 2: Customizable, Efficient, and Convenient View Manager"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">SwiftUI Overlay Container 2: Customizable, Efficient, and Convenient View Manager</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/mastering-observation/" id="relatedPosts-A Deep Dive Into Observation: A New Way to Boost SwiftUI Performance"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">A Deep Dive Into Observation: A New Way to Boost SwiftUI Performance</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/userdefaults-and-observation/" id="relatedPosts-UserDefaults and Observation in SwiftUI: How to Achieve Precise Responsiveness"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">UserDefaults and Observation in SwiftUI: How to Achieve Precise Responsiveness</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/developing-an-infinite-four-direction-scrollable-pager-with-swiftui/" id="relatedPosts-Developing an Infinite Four-Direction Scrollable Pager with SwiftUI"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Developing an Infinite Four-Direction Scrollable Pager with SwiftUI</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/en/posts/swiftuioverlaycontainer2/" id="relatedPosts-SwiftUI Overlay Container 2: Customizable, Efficient, and Convenient View Manager"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">SwiftUI Overlay Container 2: Customizable, Efficient, and Convenient View Manager</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             hidden lg:flex" href="/en/posts/core-data-reform-achieving-elegant-concurrency-operations-like-swiftdata/" id="relatedPosts-Core Data Reform: Achieving Elegant Concurrency Operations like SwiftData"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Core Data Reform: Achieving Elegant Concurrency Operations like SwiftData</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
@@ -692,7 +692,7 @@ function copyCode(button, event) {
         const maxAgeMatch = response.headers.get('Cache-Control')?.match(/max-age=(\d+)/);
         const maxAge = maxAgeMatch ? parseInt(maxAgeMatch[1], 10) : 0;
 
-        if (!response.ok || maxAge <= 0) {
+        if (!response.ok) { // 暂时移除  `|| maxAge <= 0`
           throw new Error('Invalid response or missing Cache-Control');
         }
 

@@ -752,7 +752,7 @@ function copyCode(button, event) {
         const maxAgeMatch = response.headers.get('Cache-Control')?.match(/max-age=(\d+)/);
         const maxAge = maxAgeMatch ? parseInt(maxAgeMatch[1], 10) : 0;
 
-        if (!response.ok || maxAge <= 0) {
+        if (!response.ok) { // 暂时移除  `|| maxAge <= 0`
           throw new Error('Invalid response or missing Cache-Control');
         }
 
