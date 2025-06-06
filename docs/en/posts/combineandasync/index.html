@@ -796,11 +796,11 @@ const enableStickyInMobile = true;
         For sponsorship inquiries, please check out the <a href="/en/sponsorship/">details here</a>.
 </p></blockquote> </article> <section class="pt-10 pb-10" id="related-posts"><div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 md:gap-4" id="more-tips"><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/en/posts/viewbuilder1/" id="relatedPosts-ViewBuilder Research: Mastering Result Builders"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">ViewBuilder Research: Mastering Result Builders</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/the_composable_architecture/" id="relatedPosts-The Composable Architecture (TCA)"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">The Composable Architecture (TCA)</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/mastering_swiftui_task_modifier/" id="relatedPosts-Mastering the SwiftUI task Modifier"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Mastering the SwiftUI task Modifier</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/en/posts/viewbuilder1/" id="relatedPosts-ViewBuilder Research: Mastering Result Builders"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">ViewBuilder Research: Mastering Result Builders</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/async-await-store/" id="relatedPosts-Rebuilding SwiftUI's Redux-like State Container with Async-Await"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Rebuilding SwiftUI&#39;s Redux-like State Container with Async-Await</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
@@ -932,7 +932,7 @@ function copyCode(button, event) {
         const maxAgeMatch = response.headers.get('Cache-Control')?.match(/max-age=(\d+)/);
         const maxAge = maxAgeMatch ? parseInt(maxAgeMatch[1], 10) : 0;
 
-        if (!response.ok) { // 暂时移除  `|| maxAge <= 0`
+        if (!response.ok || maxAge <= 0) {
           throw new Error('Invalid response or missing Cache-Control');
         }
 

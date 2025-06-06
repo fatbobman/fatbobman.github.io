@@ -728,9 +728,9 @@ const enableStickyInMobile = true;
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/bug-code-by-state-inject/" id="relatedPosts-Cracking the Code: The Mysterious @State Injection Mechanism"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Cracking the Code: The Mysterious @State Injection Mechanism</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/en/posts/mastering-observation/" id="relatedPosts-A Deep Dive Into Observation: A New Way to Boost SwiftUI Performance"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">A Deep Dive Into Observation: A New Way to Boost SwiftUI Performance</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/memory-usage-optimization/" id="relatedPosts-Memory Optimization Journey for a SwiftUI + Core Data App"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Memory Optimization Journey for a SwiftUI + Core Data App</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/en/posts/mastering-observation/" id="relatedPosts-A Deep Dive Into Observation: A New Way to Boost SwiftUI Performance"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">A Deep Dive Into Observation: A New Way to Boost SwiftUI Performance</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/avoid_repeated_calculations_of_swiftui_views/" id="relatedPosts-How to Avoid Repeating SwiftUI View Updates"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">How to Avoid Repeating SwiftUI View Updates</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
@@ -862,7 +862,7 @@ function copyCode(button, event) {
         const maxAgeMatch = response.headers.get('Cache-Control')?.match(/max-age=(\d+)/);
         const maxAge = maxAgeMatch ? parseInt(maxAgeMatch[1], 10) : 0;
 
-        if (!response.ok) { // 暂时移除  `|| maxAge <= 0`
+        if (!response.ok || maxAge <= 0) {
           throw new Error('Invalid response or missing Cache-Control');
         }
 
