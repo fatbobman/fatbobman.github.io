@@ -33,7 +33,7 @@ const visionOS2025Ad = `
               class="text-secondary transition-all duration-200 text-xs font-semibold dark:hover:text-blue-200 hover:text-red-600 hover:scale-105 hover:font-bold cursor-pointer"
               onclick="window.location.href='/en/sponsorship/';"
             >
-            🚀 Start Promoting Today → 
+            Want to sponsor? We'd love to chat → 
             </div>
           </div>
         </a>
@@ -123,7 +123,7 @@ const healthNotesAd = `
                class="text-secondary transition-all duration-200 text-xs font-semibold dark:hover:text-blue-200 hover:text-red-600 hover:scale-105 hover:font-bold cursor-pointer"
                onclick="window.location.href='/en/sponsorship/';"
            >
-           🚀 Start Promoting Today → 
+           Want to sponsor? We'd love to chat → 
            </div>
         </div>
       </div>
@@ -192,7 +192,7 @@ const currentAd = `
             rel="sponsored"
             target="_blank"
           >
-            🚀 Get Started Now →
+            Want to sponsor? We'd love to chat →
           </a>
         </div>
       </div>
