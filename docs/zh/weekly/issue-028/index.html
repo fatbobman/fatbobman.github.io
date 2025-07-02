@@ -283,23 +283,23 @@ const enableStickyInMobile = true;
 <p><a href="https://x.com/fatbobman?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Fatbobman( 东坡肘子 )</a></p>
 <p>SwiftData，作为 Core Data 的后继者，引入了众多创新和现代化的设计思想。尽管它已经推出一段时间，但许多开发者还未在他们的项目中采用。这种状况部分是因为 SwiftData 对操作系统版本的要求较高，另一方面，由于 SwiftData 在某些功能方面还不够成熟，即便操作系统版本符合要求，开发者也可能因为功能限制而选择继续使用 Core Data。我们是否能将 SwiftData 中的一些卓越设计理念和巧妙实现，融合到 Core Data 的实际使用中呢？本文旨在探讨如何在 Core Data 中引入类似 SwiftData 的优雅和安全的并发操作，以实现一个 <code>@ModelActor</code> 的 Core Data 版本。</p>
 <h2 id="近期推荐">近期推荐</h2>
-<h3 id="is-dynamic-isolation-bad"><a href="https://t.ly/OBhZQ" rel="noreferrer noopener">Is Dynamic Isolation Bad?</a></h3>
+<h3 id="is-dynamic-isolation-bad"><a href="https://l.fatbobman.com/w028-01" rel="noreferrer noopener">Is Dynamic Isolation Bad?</a></h3>
 <p><a href="https://twitter.com/mattie?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Matt Massicotte</a></p>
 <p>在 Swift 编程中，<code>nonisolated</code>、<code>isolated</code> 和 <code>actor</code> 等关键字构成了所谓的静态隔离。这种方法允许开发者通过类型系统明确地向编译器表达隔离需求，大大减少潜在的错误风险。此外，Swift 还提供了动态隔离的工具，以帮助开发者优雅地处理现有的非并发代码。在这篇文章中，Matt Massicotte 深入探讨了使用静态隔离与动态隔离的利弊。最初，他对使用 <code>MainActor.run</code> 进行动态隔离持反对态度。但在接受了 Rob Napier 的详尽反馈后，他对此话题有了更全面的理解和思考。</p>
-<h3 id="how-to-learn-tca"><a href="https://t.ly/UTwtn" rel="noreferrer noopener">How to learn TCA</a></h3>
+<h3 id="how-to-learn-tca"><a href="https://l.fatbobman.com/w028-02" rel="noreferrer noopener">How to learn TCA</a></h3>
 <p><a href="https://twitter.com/twig777?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Andrew Harrison</a></p>
 <p>The Composable Architecture（TCA）是由 Point-Free 推出的一个开源框架，它整合了状态管理、组件组装、副作用处理及测试等工具，旨在帮助开发者构建应用程序。对 TCA 的评价褒贬不一：一些开发者认为它使问题复杂化，而另一些人则视其为与 SwiftUI 搭配使用时的理想选择。不论观点如何，了解该框架无疑能在状态管理、副作用处理、以及测试规划方面为开发者带来显著的益处。在本文中，Andrew Harrison 提供了一个关于如何开始学习 TCA 的指导路径。文章的主旨不在于直接教授 TCA 的使用方法，而是提供一个学习该框架的好的起点。</p>
 <blockquote>
 <p>在上周中，Antoine Lee 也在 <a href="https://twitter.com/twannl/status/1780550283883364384?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Is TCA the new MVVM?</a> 的推文中讨论了与 TCA 相关的话题，感兴趣的朋友可以参与其中。</p>
 </blockquote>
-<h3 id="探索打造以用户为中心的独立应用"><a href="https://t.ly/SkflB" rel="noreferrer noopener">探索打造以用户为中心的独立应用</a></h3>
+<h3 id="探索打造以用户为中心的独立应用"><a href="https://l.fatbobman.com/w028-03" rel="noreferrer noopener">探索打造以用户为中心的独立应用</a></h3>
 <p><a href="https://twitter.com/junpingyi?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Junping</a></p>
 <p>在三月底的北京之行中，我与 Junping 交流了他正在开发中的应用—— <a href="https://apps.apple.com/cn/app/id6477352612?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">语境词典 (Context)</a>。这款应用以其与众不同的交互方式给我留下了深刻印象。《语境词典》是一个快速而精确的多语言词典，通过大型语言模型根据词语的具体上下文来解释新词汇。在这篇文章中，Junping 分享了他在开发该应用时的经验。他强调了以用户为中心设计的重要性，并详细介绍了从灵感来源到产品发布的整个开发流程。尤其珍贵的是，Junping 还分享了他在构思和设计过程中使用的所有<a href="https://jpgy.notion.site/Context-Public-Share-6c50f6f7e62a440cb124f2d40356e75c?pvs=4?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">相关文件</a>，包括设计规划和 Figma 文档，旨在帮助其他开发者更好地理解和应用以用户为中心的设计理念。</p>
-<h3 id="how-to-migrate-an-ios-app-to-bazel"><a href="https://t.ly/UuX4S" rel="noreferrer noopener">How to migrate an iOS app to Bazel</a></h3>
+<h3 id="how-to-migrate-an-ios-app-to-bazel"><a href="https://l.fatbobman.com/w028-04" rel="noreferrer noopener">How to migrate an iOS app to Bazel</a></h3>
 <p><a href="https://hachyderm.io/@brentley?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Brentley Jones</a></p>
 <p>Bazel 是一个开源的多语言构建系统，广泛应用于大型项目和代码库中。它通过利用构建缓存和并行执行任务来提高构建速度、重复使用、可扩展性和多样性。在这篇详尽的指南中，Brentley Jones 介绍了如何将 iOS 应用从 Xcode 迁移到 Bazel。这个过程包括基础的 Bazelisk 安装、定义构建目标、转换 Xcode 项目、以及集成 Xcode。文章以 Mastodon iOS 项目作为实例，涵盖了从使用 <code>swift_library</code> 和 <code>ios_application</code> 等规则到利用远程缓存和执行优化构建性能的多个方面。这篇文章是希望提高其项目构建效率和管理复杂性的 iOS 开发者的宝贵资源。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>
-<h3 id="common-mistakes-to-avoid-when-using-enums-in-swift"><a href="https://t.ly/czrho" rel="noreferrer noopener">Common Mistakes to Avoid When Using Enums in Swift</a></h3>
+<h3 id="common-mistakes-to-avoid-when-using-enums-in-swift"><a href="https://l.fatbobman.com/w028-05" rel="noreferrer noopener">Common Mistakes to Avoid When Using Enums in Swift</a></h3>
 <p><a href="https://twitter.com/Leo_Pugliese?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Leonardo Pugliese</a></p>
 <p>枚举是 Swift 语言中的一个强大工具，具有许多其他编程语言所不具备的特性。Leonardo Pugliese 的这篇文章探讨了 iOS 开发者在使用 Swift 中的枚举时常见的几个错误，包括映射值时缺乏凝聚力、懒惰的 Switch 和默认子句的误用，以及错误地假设自动原始值递增。文章强调了深思熟虑的编码方式、类型安全的价值，以及避免损害代码质量的捷径的重要性。作者提醒读者，良好的编码实践和对细节的关注可以显著提高软件的可靠性和可维护性。</p> </div> </article> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
   .copy-icon {

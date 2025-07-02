@@ -275,29 +275,29 @@ const enableStickyInMobile = true;
 <p>创新的形式可以千变万化，有些创新能立即让使用者眼前一亮，而有些则需要时间来彰显其价值。无论是华为还是苹果，它们都依据自身的市场环境、技术储备和传统优势，持续推出受市场欢迎的产品，展现出强大的创新能力和整合实力。在这个快速变化的科技世界里，创新永远是推动发展的核心动力。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>
 <h2 id="近期推荐">近期推荐</h2>
-<h3 id="我遇到的最奇怪的-core-data-崩溃-the-weirdest-core-data-crash-i-have-seen"><a href="https://t.ly/dhhQq" rel="noreferrer noopener">我遇到的最奇怪的 Core Data 崩溃 (The weirdest Core Data crash I have seen)</a></h3>
+<h3 id="我遇到的最奇怪的-core-data-崩溃-the-weirdest-core-data-crash-i-have-seen"><a href="https://l.fatbobman.com/w049-01" rel="noreferrer noopener">我遇到的最奇怪的 Core Data 崩溃 (The weirdest Core Data crash I have seen)</a></h3>
 <p><a href="https://x.com/nemecek_f?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Filip Němeček</a></p>
 <p>在使用 Core Data 过程中，Filip Němeček 遭遇了一个异常问题：每当尝试为以 <code>new</code> 开头的属性赋值时，应用便发生崩溃。经过一番排查，他找到了这一问题的根源——一个源自苹果系统的较为古老的设定：在自动引用计数（ARC）环境下，属性命名不得以 <code>new</code> 开头。Filip 在本文中记录了这一发现，并分享了相关资料，目的是帮助其他开发者避免在这一问题上浪费时间。</p>
 <blockquote>
 <p>尽管 SwiftData 的默认实现当前基于 Core Data，但由于 SwiftData 没有为 Model 单独声明 <code>NSManagedObject</code> 的子类，因此这一命名约束并不适用，开发者仍可以自由地使用 <code>new</code> 作为属性名称的前缀。</p>
 </blockquote>
-<h3 id="swiftui-的-observable-宏并非-observableobject-的完美替代品-swiftuis-observable-macro-is-not-a-drop-in-replacement-for-observableobject"><a href="https://t.ly/X2ElO" rel="noreferrer noopener">SwiftUI 的 @Observable 宏并非 ObservableObject 的完美替代品 (SwiftUI’s Observable macro is not a drop-in replacement for ObservableObject)</a></h3>
+<h3 id="swiftui-的-observable-宏并非-observableobject-的完美替代品-swiftuis-observable-macro-is-not-a-drop-in-replacement-for-observableobject"><a href="https://l.fatbobman.com/w049-02" rel="noreferrer noopener">SwiftUI 的 @Observable 宏并非 ObservableObject 的完美替代品 (SwiftUI’s Observable macro is not a drop-in replacement for ObservableObject)</a></h3>
 <p><a href="https://x.com/jesse_squires?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">jesse squires</a></p>
 <p>因其更精准的响应机制，<code>@Observable</code> 宏在 SwiftUI 框架中被视为 <code>ObservableObject</code> 的潜在替代品。然而，二者在底层实现和初始化机制上的差异导致在某些情况下表现出显著的行为差异。Jesse Squires 在本文中深入分析了这些差异如何影响应用行为，并通过实际示例揭示了在使用过程中可能遇到的问题。此外，作者还探讨了 SwiftUI 状态管理机制中存在的问题，并提出了采用更合理的架构来避免这些问题的建议，以协助开发者优化他们的 SwiftUI 应用。</p>
-<h3 id="swiftdata-表达式探究-swiftdata-expressions"><a href="https://t.ly/bZsXB" rel="noreferrer noopener">SwiftData 表达式探究 (SwiftData Expressions)</a></h3>
+<h3 id="swiftdata-表达式探究-swiftdata-expressions"><a href="https://l.fatbobman.com/w049-03" rel="noreferrer noopener">SwiftData 表达式探究 (SwiftData Expressions)</a></h3>
 <p><a href="https://x.com/kharrison?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Keith Harrison</a></p>
 <p>SwiftData 在其初版中因缺少类似 <code>NSExpression</code> 的构建能力，而未能提供构建复杂谓词的功能。归功于新引入的 <code>#Expression</code> 宏，这一缺陷在 iOS 18 中得到了改善。在本文中，Keith Harrison 介绍了如何利用这一新 API 构建复合谓词，实现在数据库端的高效筛选。然而，尽管 <code>#Expression</code> 宏理论上扩展了 SwiftData 的表达能力，作者也指出在实际应用中，谓词和表达式的使用仍面临一些限制和挑战。</p>
-<h3 id="从-objective-c-转换到-swiftui-的应用重构-converting-an-app-from-obj-c"><a href="https://t.ly/4OgEm" rel="noreferrer noopener">从 Objective-C 转换到 SwiftUI 的应用重构 (Converting an App from Obj-C)</a></h3>
+<h3 id="从-objective-c-转换到-swiftui-的应用重构-converting-an-app-from-obj-c"><a href="https://l.fatbobman.com/w049-04" rel="noreferrer noopener">从 Objective-C 转换到 SwiftUI 的应用重构 (Converting an App from Obj-C)</a></h3>
 <p><a href="https://mastodon.social/@troz?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Sarah Reichelt</a></p>
 <p>App Store 会对长期未更新的应用程序发出警告，如在给出的最终期限前仍未更新会导致应用被下架。Sarah Reichelt 最近面临了这一挑战。她的应用原先是用 Objective-C 编写的，在本次强制更新中，Reichelt 选择了采用现代的 SwiftUI 框架进行重构。她在文章中分享了这一转换过程中遇到的技术挑战、采用的解决方案，以及她从这次经验中获得的见解和体会。</p>
-<h3 id="swift-testing-使用表现力强的-api-验证你的代码-swift-testing-validate-your-code-using-expressive-apis"><a href="https://t.ly/CRdBp" rel="noreferrer noopener">Swift Testing: 使用表现力强的 API 验证你的代码 (Swift Testing: Validate your code using expressive APIs)</a></h3>
+<h3 id="swift-testing-使用表现力强的-api-验证你的代码-swift-testing-validate-your-code-using-expressive-apis"><a href="https://l.fatbobman.com/w049-05" rel="noreferrer noopener">Swift Testing: 使用表现力强的 API 验证你的代码 (Swift Testing: Validate your code using expressive APIs)</a></h3>
 <p><a href="https://x.com/twannl?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Antoine van der Lee</a></p>
 <p>Swift Testing 框架通过提供清晰且富有表现力的 API，彻底改变了 Swift 中编写测试的方式。这一框架简化了测试代码，使得开发者可以更直观地编写和管理测试。在本文中，Antoine van der Lee 介绍了这一新框架的使用方法，并展示了如何通过全局定义和 <code>#expect</code> 宏来简化测试断言。作者还承诺在未来几周内提供一系列深入探讨的文章，包括如何将现有的 XCTest 迁移到 Swift Testing。</p>
-<h3 id="内存泄漏一部-xcode-侦探故事-the-memory-leak-an-xcode-detective-story"><a href="https://t.ly/ydHuF" rel="noreferrer noopener">内存泄漏：一部 Xcode 侦探故事 (The Memory Leak: An Xcode Detective Story)</a></h3>
+<h3 id="内存泄漏一部-xcode-侦探故事-the-memory-leak-an-xcode-detective-story"><a href="https://l.fatbobman.com/w049-06" rel="noreferrer noopener">内存泄漏：一部 Xcode 侦探故事 (The Memory Leak: An Xcode Detective Story)</a></h3>
 <p><a href="https://x.com/jacobs_handle?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Jacob Bartlett</a></p>
 <p>由于内存泄漏问题，Jacob Bartlett 的应用在响应深链接（deep links）时遇到了一个 Bug，导致导航动画异常地出现两次。在这篇文章中，他详细描述了调试过程，从分析问题到确认问题源头，再到最终的解决方案。此外，他还讨论了 Swift 的内存管理机制，包括强引用、弱引用以及引用计数的工作原理。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>
-<h3 id="visionos-2-portalcomponent更符合期待的传送神器"><a href="https://t.ly/x2Z8v" rel="noreferrer noopener">visionOS 2 PortalComponent：更符合期待的传送神器</a></h3>
+<h3 id="visionos-2-portalcomponent更符合期待的传送神器"><a href="https://l.fatbobman.com/w049-07" rel="noreferrer noopener">visionOS 2 PortalComponent：更符合期待的传送神器</a></h3>
 <p><a href="https://x.com/Clarepuffinw?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Puffinwalker</a></p>
 <p><code>PortalComponent</code> 在现实场景上创建一个视觉上的“门户”，通过这个门户，用户可以看到并与不同的虚拟环境或场景互动。在 visionOS 2 版本中，这项功能得到了进一步的增强。Puffinwalker 在本文中介绍了新增的两种模式：<code>Clipping</code> 和 <code>Crossing</code>，这两种模式显著改善了现实延展效果，使得 Portal 内的模型能够更自然地延伸到外部世界。</p> </div> </article> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
   .copy-icon {

@@ -278,20 +278,20 @@ const enableStickyInMobile = true;
 <p><a href="https://x.com/intent/follow?screen_name=fatbobman" rel="noreferrer noopener">Fatbobman( 东坡肘子 )</a></p>
 <p>由于 SwiftData 更改了数据模型的创建机制，而且谓词创建也采用了基于模型代码的类型安全模式。因此，当开发者在为 SwiftData 构建谓词时会遇到大量的处理可选值的操作。本文将探讨在构建谓词时，处理可选值的一些技巧和注意事项。</p>
 <h2 id="近期推荐">近期推荐</h2>
-<h3 id="how-will-apples-changes-in-the-eu-affect-you"><a href="https://t.ly/tizh2" rel="noreferrer noopener">How will Apple’s changes in the EU affect you?</a></h3>
+<h3 id="how-will-apples-changes-in-the-eu-affect-you"><a href="https://l.fatbobman.com/w020-01" rel="noreferrer noopener">How will Apple’s changes in the EU affect you?</a></h3>
 <p><a href="https://www.linkedin.com/in/gabrielle-earnshaw-29284120/?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Gabrielle Earnshaw</a></p>
 <p>本文深入分析了苹果公司为符合欧盟数字市场法案（DMA）而在欧盟对 App Store 进行的调整，探讨了这些改动如何影响 iOS 应用的推广及其收费模式。Gabrielle Earnshaw 提出了对于那些在欧盟 App Store 中发布应用的开发者来说，仔细评估是否接受新的商业条款是必要的。对绝大多数应用而言，维持现行的业务模式可能是较为理想的选择。文章还强调，尽管当前大部分应用可能不立即从市场替代方案或支付处理变革中获益，但这些变化无疑为 iOS 生态系统带来了振奋人心的进展，有望为开发商和消费者带来创新与优化。</p>
-<h3 id="get-the-biometric-authentication-prompt-for-protected-keychain-items-in-the-ios-simulator"><a href="https://t.ly/vK0Il" rel="noreferrer noopener">Get the biometric authentication prompt for protected keychain items in the iOS simulator</a></h3>
+<h3 id="get-the-biometric-authentication-prompt-for-protected-keychain-items-in-the-ios-simulator"><a href="https://l.fatbobman.com/w020-02" rel="noreferrer noopener">Get the biometric authentication prompt for protected keychain items in the iOS simulator</a></h3>
 <p><a href="https://twitter.com/MarcoEidinger?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Marco Eidinger</a></p>
 <p>本文讲解了如何在 iOS 模拟器上针对受保护的钥匙串项启用生物识别认证提示。由于 Secure Enclave 这一关键的安全组件仅在实体设备上存在，用于执行如指纹匹配等认证过程，其在模拟器中的缺失意味着使用 <code>kSecAttrAccessControl</code> 属性保护的钥匙串项在模拟器上无法触发生物识别认证提示。为弥补这一差异，Marco Eidinger 提供了一种巧妙的解决策略，即在执行钥匙串项读取操作之前，通过显式调用 <code>LAContext.evaluatePolicy(_:localizedReason:)</code> 方法来确保模拟器能够模拟出生物识别认证提示，从而在模拟器中重现与实体设备相似的用户体验。</p>
-<h3 id="modding-plugins-back-into-xcode"><a href="https://t.ly/orhwP" rel="noreferrer noopener">Modding Plugins back into Xcode</a></h3>
+<h3 id="modding-plugins-back-into-xcode"><a href="https://l.fatbobman.com/w020-03" rel="noreferrer noopener">Modding Plugins back into Xcode</a></h3>
 <p><a href="https://twitter.com/brycepauken?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Bryce Pauken</a></p>
 <p>在本篇文章中，Bryce Pauken 深入探讨了如何将传统插件功能重新整合进 Xcode。在 Xcode 8 推出之前，开发者可以通过访问未公开的 API，使用第三方插件来修改和增强 Xcode 的内部功能，赋予了广泛的自定义及扩展能力。这种灵活性允许开发者根据自己的需求高度定制开发环境，尽管这套插件系统并未得到官方的支持与文档说明。随着 Apple 对安全措施的加强，对第三方代码执行和插件加载的限制，传统的插件方式逐渐走向终结（ 从 Xcode 14 开始，Apple 彻底移除了对旧式插件的支持 ）。Pauken 在文章中不仅详尽地介绍了如何实现将旧式插件功能重新融入 Xcode 的关键步骤，还推出了名为 XcodePluginLoader 的工具，旨在迅速恢复对插件的支持，为开发者提供了一种强大的自定义工具。</p>
-<h3 id="twitter-vs-x"><a href="https://t.ly/ANDgL" rel="noreferrer noopener">Twitter vs. X</a></h3>
+<h3 id="twitter-vs-x"><a href="https://l.fatbobman.com/w020-04" rel="noreferrer noopener">Twitter vs. X</a></h3>
 <p><a href="https://twitter.com/emergetools?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Emerge Tools</a></p>
 <p>本文分析了自 Elon Musk 于 2022 年收购并将 Twitter 重命名为 X 之后，iOS 客户端应用所经历的转变。Twitter 一直被视为一个成熟的应用程序，但这次收购和重命名意味着它从稳定发展的状态跳跃到了一种“快速行动并接受打破常规”的新阶段。在 Twitter 转变为 X 的大约六个月时间里，iOS 应用的体积增加了 13.3MB。文章对 Twitter 的最终版本（v9.54）与 X（v10.25）之间 iOS 应用的各项变化进行了详尽的探讨，重点包括应用中的资产变化、动态框架、SPM 迁移过程、资源重复问题，以及 Grok AI 聊天机器人的引入等方面。尽管名称和所有权发生了变化，作者观察到，从整体架构上看，应用并未经历实质性的变化。文章还指出，通过进一步优化应用中重复的资源（如图标），有可能为应用减少高达 8MB 的体积。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>
-<h3 id="custom-core-data-migrations"><a href="https://t.ly/Exo7G" rel="noreferrer noopener">Custom Core Data migrations</a></h3>
+<h3 id="custom-core-data-migrations"><a href="https://l.fatbobman.com/w020-05" rel="noreferrer noopener">Custom Core Data migrations</a></h3>
 <p><a href="https://twitter.com/polpielladev?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Pol Piella</a></p>
 <p>Core Data 迁移涉及将数据模型从一个版本更新至另一个版本的过程。虽然在许多情况下 Core Data 能够自动完成这一迁移，但某些复杂场景则要求开发者手动介入，通过提供精确的映射模型来指导从源模型到目标模型的迁移过程。对于特别复杂的迁移需求，还需编写继承自 <code>NSEntityMigrationPolicy</code> 的自定义迁移策略。本文由 Pol Piella 撰写，详细介绍了自定义 Core Data 迁移的实现方法，包括创建映射模型文件和自定义迁移策略类。文章以存储音乐轨道信息的应用为例，展示了如何通过引入新实体和关系以及实施自定义迁移策略来应对数据模型的扩展问题。</p>
 <blockquote>

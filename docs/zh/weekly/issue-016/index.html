@@ -278,19 +278,19 @@ const enableStickyInMobile = true;
 <p><a href="https://x.com/intent/follow?screen_name=fatbobman" rel="noreferrer noopener">Fatbobman (东坡肘子)</a></p>
 <p>在之前的两篇文章 <a href="/zh/posts/mastering-relationships-in-core-data-fundamentals/" target="_blank">掌握 Core Data 中的关系：基础</a> 和 <a href="/zh/posts/mastering-relationships-in-core-data-practical/" target="_blank">掌握 Core Data 中的关系：实战</a> 中，我们详细探讨了 Core Data 中关系的概念和技巧。虽然这些知识在很大程度上同样适用于 Core Data 的继任者 SwiftData，但 SwiftData 在关系处理上也引入了一些显著的变化。本文将重点介绍 SwiftData 在关系方面发生的变化，以及由此带来的潜在挑战和值得注意的细节。</p>
 <h2 id="近期推荐">近期推荐</h2>
-<h3 id="how-to-pass-references-from-swift-to-c-functions-with-unmanaged-type"><a href="https://t.ly/oBXRx" rel="noreferrer noopener">How to pass References from Swift to C Functions with Unmanaged Type</a></h3>
+<h3 id="how-to-pass-references-from-swift-to-c-functions-with-unmanaged-type"><a href="https://l.fatbobman.com/w016-01" rel="noreferrer noopener">How to pass References from Swift to C Functions with Unmanaged Type</a></h3>
 <p><a href="https://twitter.com/ashidiqidimas?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Dimas Ashidiqi</a></p>
 <p>本文探讨了在 Swift 和 C 语言之间有效传递引用的方法。开发者 Dimas Ashidiqi 在使用 Swift 开发 macOS 应用的过程中，遇到了一个特别的挑战：需要使用 C 函数作为回调，而 C 函数无法像 Swift 的闭包那样捕获依赖项。为了解决这个问题，Ashidiqi 经过深入研究，提出了自己的解决方案：将 Swift 中的 self 引用转换为 <code>UnsafeMutableRawPointer</code>，再传递给 C 函数中的不透明指针参数。在回调函数中，这个 <code>UnsafeMutableRawPointer</code> 可以被转换回其原始类型。这篇文章不仅详细展示了这一过程，而且特别强调了这种方法在处理 macOS 应用程序开发中遇到的特定问题时的有效性和应用价值。</p>
-<h3 id="remove-background-from-image-in-swiftui"><a href="https://t.ly/TE2Er" rel="noreferrer noopener">Remove background from image in SwiftUI</a></h3>
+<h3 id="remove-background-from-image-in-swiftui"><a href="https://l.fatbobman.com/w016-02" rel="noreferrer noopener">Remove background from image in SwiftUI</a></h3>
 <p><a href="https://twitter.com/iosartem?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Artem Novichkov</a></p>
 <p>在 iOS 17 中，苹果引入了一项引人注目的新功能，允许用户通过长按照片或视频中的人物、动物等主体内容，轻松将这些内容从照片中提取出来。这一功能背后的 API 同时也向开发者开放。在这篇文章中，Artem Novichkov 详细地探讨了如何利用 iOS 17 的新 API <code>VNGenerateForegroundInstanceMaskRequest</code> 来在 SwiftUI 中去除图像背景。开发者使用这个强大的工具，可以在他们自己的应用中实现类似的功能。</p>
-<h3 id="app-store-screenshot-requirements-need-to-change"><a href="https://t.ly/zWSKz" rel="noreferrer noopener">App Store screenshot requirements need to change</a></h3>
+<h3 id="app-store-screenshot-requirements-need-to-change"><a href="https://l.fatbobman.com/w016-03" rel="noreferrer noopener">App Store screenshot requirements need to change</a></h3>
 <p><a href="https://twitter.com/jesse_squires?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Jesse Squires</a></p>
 <p>随着 iOS 设备屏幕尺寸和分辨率的不断增加和变化，为 App Store 准备截图已经变得更加复杂和耗时。Jesse Squires 在这篇文章中对 iPhone 和 iPad 的屏幕尺寸历史进行了简要回顾，强调屏幕比例而非设备大小是影响截图最关键的因素。他指出，不同设备的不同屏幕比例意味着显示的内容会有显著差异。Squires 认为，App Store 当前的截图要求对开发者，尤其是独立开发者来说，构成了沉重负担。他特别指出，与 Mac App Store 的要求相比，苹果对于 iOS 应用的截图规定更为严格和繁琐。</p>
-<h3 id="闲话-apple-的-app-review-趣事"><a href="https://t.ly/rVsQV" rel="noreferrer noopener">闲话 APPLE 的 APP REVIEW 趣事</a></h3>
+<h3 id="闲话-apple-的-app-review-趣事"><a href="https://l.fatbobman.com/w016-04" rel="noreferrer noopener">闲话 APPLE 的 APP REVIEW 趣事</a></h3>
 <p><a href="https://twitter.com/sketch?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">张思琦</a></p>
 <p>在 Epic 与 Apple 的官司中，随着更多内幕的披露，Apple 的 App Review 团队的神秘面纱逐渐被揭开。在这篇文章中，张思琦（Sketch）回顾并整理了关于这个团队的一系列有趣信息和冷知识。诸如 App Store 审核团队的工作数据、审核流程、以及 App Review 指南的解读等话题。此外，文章还包括关于应对拒审的实用建议，为开发者在面对 App Store 审核时提供指导。</p>
-<h3 id="notes-on-swiftdata"><a href="https://t.ly/fcY6n" rel="noreferrer noopener">Notes on SwiftData</a></h3>
+<h3 id="notes-on-swiftdata"><a href="https://l.fatbobman.com/w016-05" rel="noreferrer noopener">Notes on SwiftData</a></h3>
 <p><a href="https://twitter.com/lukeharback?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Luke Harback</a></p>
 <p>在这篇文章中，Luke Harback 分享了他在使用 SwiftData 进行开发时的一些笔记和经验。文章介绍了如何有效利用 Swift 包来分离模型和应用代码，从而实现代码的优化和组织。此外，文章还探讨了迁移技巧，以及如何通过类型别名在迁移版本中定义和使用模型等其他内容。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>

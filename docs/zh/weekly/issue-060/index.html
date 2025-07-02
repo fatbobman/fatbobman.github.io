@@ -282,16 +282,16 @@ const enableStickyInMobile = true;
 <p>本文发表后，我陆续收到开发者的反馈，指出在不同场景下也遇到了 <code>onChange</code> 失效的情况。这进一步表明，这可能是一个长期存在且未被充分关注的 Bug。</p>
 </blockquote>
 <h2 id="近期推荐">近期推荐</h2>
-<h3 id="在-mac-catalyst-应用中使用-appkit-using-appkit-in-your-mac-catalyst-app"><a href="https://t.ly/EETxu" rel="noreferrer noopener">在 Mac Catalyst 应用中使用 AppKit (Using AppKit in Your Mac Catalyst App)</a></h3>
+<h3 id="在-mac-catalyst-应用中使用-appkit-using-appkit-in-your-mac-catalyst-app"><a href="https://l.fatbobman.com/w060-01" rel="noreferrer noopener">在 Mac Catalyst 应用中使用 AppKit (Using AppKit in Your Mac Catalyst App)</a></h3>
 <p><a href="https://x.com/SebJVidal?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Seb Vidal</a></p>
 <p>虽然苹果在最近的 SwiftUI 版本中显著提升了 macOS 的原生功能，但许多开发者仍选择通过 Catalyst 将他们的应用快速迁移到 macOS 平台。Catalyst 确实大大简化了适配工作，但它也存在一个显而易见的局限：无法直接使用一些 Catalyst 无法转换的 AppKit 组件。在本文中，Seb Vidal 展示了如何利用私有的 <code>_UINSView</code> 和 AppKit 桥接机制，在 UIKit 应用中灵活引入原生的 AppKit 组件，从而弥补 Catalyst 的不足，并进一步扩展应用功能。</p>
-<h3 id="调用隐藏的-swift-函数-calling-hidden-swift-functions"><a href="https://t.ly/VF0G2" rel="noreferrer noopener">调用隐藏的 Swift 函数 (Calling Hidden Swift Functions)</a></h3>
+<h3 id="调用隐藏的-swift-函数-calling-hidden-swift-functions"><a href="https://l.fatbobman.com/w060-02" rel="noreferrer noopener">调用隐藏的 Swift 函数 (Calling Hidden Swift Functions)</a></h3>
 <p><a href="https://x.com/sond813?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Noah Martin</a></p>
 <p><code>@_spi</code> 是 Swift 中一个功能强大却鲜为人知的属性。简单来说，它赋予了方法“选择性隐藏”的能力，使得这些方法无法通过公开 API 使用，但在了解其方法签名的情况下，仍可通过特定方式引入并调用。苹果在其多个官方框架（如 SwiftUI）中广泛使用此功能，以限制某些功能仅供内部或特定模块使用。在这篇文章中，Noah Martin 深入探讨了如何调用 Swift 框架中隐藏的函数，并详细展示了突破苹果框架限制、使用未公开的系统编程接口（SPI）的多种方法。这不仅揭示了 SPI 的运作机制，也为开发者提供了扩展框架功能的新思路。</p>
 <blockquote>
 <p>EmergeTools 在构建 <a href="https://github.com/EmergeTools/SnapshotPreviews?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">SnapshotPreviews</a> 时使用了该技巧，成功调用了 SwiftUI 框架中未公开的将预览渲染为图片的功能。</p>
 </blockquote>
-<h3 id="使用自然语言框架-working-with-natural-language-framework"><a href="https://t.ly/MMWZ3" rel="noreferrer noopener">使用自然语言框架 (Working with Natural Language Framework)</a></h3>
+<h3 id="使用自然语言框架-working-with-natural-language-framework"><a href="https://l.fatbobman.com/w060-03" rel="noreferrer noopener">使用自然语言框架 (Working with Natural Language Framework)</a></h3>
 <p><a href="https://x.com/iosartem?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Artem Novichkov</a></p>
 <p>苹果的 <a href="https://developer.apple.com/documentation/naturallanguage/?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Natural Language</a> 框架为实时处理自然语言提供了强大的工具。在本文中，Artem Novichkov 展示了 NL 框架的多种实际应用，包括：</p>
 <ul>
@@ -305,13 +305,13 @@ const enableStickyInMobile = true;
 <p><strong>动态背景渐变</strong>：结合情感分数，使用 iOS 的 MeshGradient 技术创建实时更新的视觉效果。</p>
 </li>
 </ul>
-<h3 id="macos-编程技巧线程管理-macos-tips-for-programmers-threading"><a href="https://t.ly/-GJSa" rel="noreferrer noopener">macOS 编程技巧：线程管理 (macOS Tips for Programmers: Threading)</a></h3>
+<h3 id="macos-编程技巧线程管理-macos-tips-for-programmers-threading"><a href="https://l.fatbobman.com/w060-04" rel="noreferrer noopener">macOS 编程技巧：线程管理 (macOS Tips for Programmers: Threading)</a></h3>
 <p><a href="https://github.com/lunacookies?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Luna Razzaghipour</a></p>
 <p>在 macOS 平台上进行开发时，线程管理和优先级设置不仅关乎性能优化，更直接影响系统的能耗和用户体验。在本文中，Luna Razzaghipour 深入解析了 macOS 独特的线程管理机制，强调了 QoS 在任务优先级和资源调度中的核心作用。Luna 指出，通过正确理解 QoS 类别并广泛采用 Dispatch 框架，开发者可以充分利用 macOS 的硬件特性，在保证应用性能的同时实现更高的能效。</p>
-<h3 id="开发者对话-4matt-massicotte-dev-conversations-4-matt-massicotte"><a href="https://t.ly/6AYQR" rel="noreferrer noopener">开发者对话 #4：Matt Massicotte (Dev Conversations #4: Matt Massicotte)</a></h3>
+<h3 id="开发者对话-4matt-massicotte-dev-conversations-4-matt-massicotte"><a href="https://l.fatbobman.com/w060-05" rel="noreferrer noopener">开发者对话 #4：Matt Massicotte (Dev Conversations #4: Matt Massicotte)</a></h3>
 <p><a href="https://x.com/SwiftToolkit?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Natan Rolnik</a> and <a href="https://x.com/mattie?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Matt Massicotte</a></p>
 <p>作为 Swift 并发模型领域的专家，Matt Massicotte 发表了多篇关于这一主题的文章，并亲自参与编写了 <a href="https://www.swift.org/migration/documentation/migrationguide/?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Swift 6 迁移指南</a>。在本期由 Natan Rolnik 主持的访谈中，Matt 分享了他的丰富开发经历以及对 Swift 并发编程的深入见解。</p>
-<h3 id="-调试-swiftui-布局技巧与方法-debugging-swiftui-layouts-tips-tricks-and-techniques"><a href="https://t.ly/7PSQ4" rel="noreferrer noopener">🪜 调试 SwiftUI 布局：技巧与方法 (Debugging SwiftUI Layouts: Tips, Tricks, and Techniques)</a></h3>
+<h3 id="-调试-swiftui-布局技巧与方法-debugging-swiftui-layouts-tips-tricks-and-techniques"><a href="https://l.fatbobman.com/w060-06" rel="noreferrer noopener">🪜 调试 SwiftUI 布局：技巧与方法 (Debugging SwiftUI Layouts: Tips, Tricks, and Techniques)</a></h3>
 <p><a href="https://medium.com/@wesleymatlock/about?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Wesley Matlock</a></p>
 <p>SwiftUI 虽然让构建 UI 变得轻松有趣，但调试布局问题却常常成为开发者的难点。Wesley Matlock 在本文中分享了一系列实用的调试技巧，帮助开发者快速定位和解决 SwiftUI 布局中的常见问题。Matlock 指出，调试 SwiftUI 布局不仅是解决问题的过程，更是深入理解 SwiftUI 布局系统的绝佳机会。通过巧妙利用视觉调试工具、Xcode 的调试功能以及布局分析技术，开发者可以更高效地优化布局，打造质量更高的应用界面。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>

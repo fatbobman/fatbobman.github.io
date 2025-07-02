@@ -274,7 +274,7 @@ const enableStickyInMobile = true;
 <p>总体而言，今年的 WWDC 带来了众多新动向，当前公开的信息显示了极大的潜力，同时也突显了苹果对 AI、Swift、SwiftUI 等技术的全力投入。然而，这些创新是否能实现其预期的效果，我们还需时日来进行验证。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>
 <h2 id="wwdc-2024">WWDC 2024</h2>
-<h3 id="swift-6-新功能介绍--whats-new-in-swift-60"><a href="https://t.ly/yDp7l" rel="noreferrer noopener">Swift 6 新功能介绍 ( What’s new in Swift 6.0? )</a></h3>
+<h3 id="swift-6-新功能介绍--whats-new-in-swift-60"><a href="https://l.fatbobman.com/w035-01" rel="noreferrer noopener">Swift 6 新功能介绍 ( What’s new in Swift 6.0? )</a></h3>
 <p><a href="https://x.com/twostraws?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Paul Hudson</a></p>
 <p>Swift 6.0 带来了众多重大更新，这意味着几乎每个项目都需要进行相应的调整。如同以往，Paul Hudson 第一时间为我们详细介绍了这些变化。Swift 6 的发布不仅带来了新的机遇与挑战，还将帮助开发者更高效地编写并发安全的代码。</p>
 <blockquote>
@@ -283,28 +283,28 @@ const enableStickyInMobile = true;
 <h3 id="wwdc-24-上-swiftui-的新亮点--what-is-new-in-swiftui-after-wwdc-24"><a href="https://twtr.to/d5ygM?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">WWDC 24 上 SwiftUI 的新亮点 ( What is New in SwiftUI After WWDC 24 )</a></h3>
 <p><a href="https://x.com/mecid?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Majid Jabrayilov</a></p>
 <p>WWDC 2024 为 SwiftUI 带来了多项增强功能。Majid Jabrayilov 及时为我们详细介绍了其中几个特别引人注目的新功能，包括自定义容器、全新的 Tab 界面设计、滚动容器的精确位置控制、Entry 宏以及 Previewable 宏等。这些更新旨在进一步优化开发者使用SwiftUI的体验。</p>
-<h3 id="ios-18值得注意的几个新功能--ios-18-notable-uikit-additions"><a href="https://t.ly/SaKD4" rel="noreferrer noopener">iOS 18：值得注意的几个新功能 ( iOS 18: Notable UIKit Additions )</a></h3>
+<h3 id="ios-18值得注意的几个新功能--ios-18-notable-uikit-additions"><a href="https://l.fatbobman.com/w035-02" rel="noreferrer noopener">iOS 18：值得注意的几个新功能 ( iOS 18: Notable UIKit Additions )</a></h3>
 <p><a href="https://x.com/JordanMorgan10?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Jordan Morgan</a></p>
 <p>尽管 SwiftUI 的重要性不断提升，但苹果并未放弃 UIKit。在这篇文章中，Jordan Morgan 详细介绍了 iOS 18 中 UIKit 的几项新功能。</p>
 <h2 id="近期推荐">近期推荐</h2>
-<h3 id="tca-常见问题解答--composable-architecture-frequently-asked-questions"><a href="https://t.ly/pfKl6" rel="noreferrer noopener">TCA 常见问题解答 ( Composable Architecture Frequently Asked Questions )</a></h3>
+<h3 id="tca-常见问题解答--composable-architecture-frequently-asked-questions"><a href="https://l.fatbobman.com/w035-03" rel="noreferrer noopener">TCA 常见问题解答 ( Composable Architecture Frequently Asked Questions )</a></h3>
 <p><a href="https://x.com/pointfreeco?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Point-Free</a></p>
 <p>对于流行的 Composable Architecture (TCA) 框架，业界存在褒贬不一的评论和争议。作为 TCA 的作者，Point-Free 团队认为，应用架构充满了权衡，关键是深入思考每种选择所带来的利弊。为此，他们撰写了这篇文章，系统地解答网络上关于 TCA 的一些常见疑虑和误解。</p>
-<h3 id="swift-并发处理传递非可发送闭包的方法--swift-concurrency-hack-for-passing-non-sendable-closures"><a href="https://t.ly/e24rY" rel="noreferrer noopener">Swift 并发处理传递非可发送闭包的方法 ( Swift Concurrency Hack for Passing non-sendable Closures )</a></h3>
+<h3 id="swift-并发处理传递非可发送闭包的方法--swift-concurrency-hack-for-passing-non-sendable-closures"><a href="https://l.fatbobman.com/w035-04" rel="noreferrer noopener">Swift 并发处理传递非可发送闭包的方法 ( Swift Concurrency Hack for Passing non-sendable Closures )</a></h3>
 <p><a href="https://twitter.com/jesse_squires?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">jesse squires</a></p>
 <p>本文讨论了在 Swift 并发编程中遇到的一个常见警告：“<em>Capture of ‘variable’ with non-sendable type in a <code>@Sendable</code> closure.</em>”。Jesse Squires 在项目中遇到了这个警告，并分享了解决方案。文章中给出了两种解决方案：第一种是通过声明一个 <code>@unchecked Sendable</code> 类型来包装函数；第二种是直接将闭包标记为 <code>@Sendable</code> 和 <code>@MainActor</code>，并使用 <code>MainActor.assumeIsolated { }</code> 来调用闭包。</p>
-<h3 id="core-image基础--core-image-the-basics"><a href="https://t.ly/Q2x7h" rel="noreferrer noopener">Core Image：基础 ( Core Image: The Basics )</a></h3>
+<h3 id="core-image基础--core-image-the-basics"><a href="https://l.fatbobman.com/w035-05" rel="noreferrer noopener">Core Image：基础 ( Core Image: The Basics )</a></h3>
 <p><a href="https://x.com/jacobs_handle?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Jacob Bartlett</a></p>
 <p>Core Image 是一个强大的图像处理框架，通过多核并行处理和 GPU 加速，实现高性能的图像处理。在本文中，Jacob Bartlett 提供了详细的指南，帮助开发者了解并掌握 Core Image 框架，以便在应用中实现高效的图像处理和独特的视觉效果。</p>
-<h3 id="解决-ios-17-中-transferable-协议问题-addressing-and-solving-transferable-protocol-issues-in-ios-17"><a href="https://t.ly/fDNYw" rel="noreferrer noopener">解决 iOS 17 中 Transferable 协议问题 (Addressing and Solving Transferable Protocol Issues in iOS 17)</a></h3>
+<h3 id="解决-ios-17-中-transferable-协议问题-addressing-and-solving-transferable-protocol-issues-in-ios-17"><a href="https://l.fatbobman.com/w035-06" rel="noreferrer noopener">解决 iOS 17 中 Transferable 协议问题 (Addressing and Solving Transferable Protocol Issues in iOS 17)</a></h3>
 <p><a href="https://x.com/JuniperPhoton?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">JuniperPhoton</a></p>
 <p>Apple 在 Core Transferable 框架中引入了一个新的协议 Transferable，以简化跨应用共享的代码。它与 SwiftUI 的 ShareLink 以及其他框架协议如 Codable 深度结合。在本文中，JuniperPhoton 不仅介绍了该 API 的使用方法，还分享了他在 iOS 17 上遇到的一个特定陷阱及其解决方案。</p>
 <h2 id="认证">认证</h2>
-<h3 id="apple-ads-认证"><a href="https://t.ly/HBD6n" rel="noreferrer noopener">Apple Ads 认证</a></h3>
+<h3 id="apple-ads-认证"><a href="https://l.fatbobman.com/w035-07" rel="noreferrer noopener">Apple Ads 认证</a></h3>
 <p>Apple Ads 认证是苹果提供的一个免费的在线培训，可帮助你在 App Store 中有效推广你的 app 并触达更多用户。培训课程包含了丰富的推荐做法，可以有效帮助你提升广告系列效果，每节课程耗时约为 10-20 分钟。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>
 <h2 id="征集">征集</h2>
-<h3 id="wwdc24-内参免费领取及作者审核招募"><a href="https://t.ly/umj1V" rel="noreferrer noopener">《WWDC24 内参》免费领取及作者&amp;审核招募</a></h3>
+<h3 id="wwdc24-内参免费领取及作者审核招募"><a href="https://l.fatbobman.com/w035-08" rel="noreferrer noopener">《WWDC24 内参》免费领取及作者&amp;审核招募</a></h3>
 <p><a href="https://github.com/SwiftOldDriver/iOS-Weekly?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">老司机技术</a></p>
 <p>今年老司机技术会继续和大家一起创作《WWDC24 内参》，他们的目标依旧是创作更多精品的内容。目前以 ChatGPT 为代表的 AI 已经可以完全胜任简单的翻译工作了，因此老司机技术需要一些有实际经验或者资深的开发者，针对今年最新的 WWDC 进行深度解读。就如去年 <a href="https://mp.weixin.qq.com/s?__biz=MzI2NTAxMzg2MA==&mid=2247499233&idx=1&sn=24fd0e4c304e29119be4d4180cc198d3&chksm=eaa162eaddd6ebfca808b63b2915cbb16d919633cfc12bcfdb68800ad805b3ec314a653da87a&token=1115259369&lang=zh_CN&scene=21#wechat_redirect?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">招募稿</a> 中提到的一样『不断新高的付费用户量不是其终极目标』，终极目标是『为支持我们的朋友免费提供高质量的精品内容』。</p>
 <blockquote>

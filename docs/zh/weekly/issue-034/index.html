@@ -284,27 +284,27 @@ const enableStickyInMobile = true;
 <p>在本文的结尾，列举了 SwiftData 首个版本中缺失的一些关键功能、主要存在的问题，以及若干临时的解决方案。</p>
 </blockquote>
 <h2 id="近期推荐">近期推荐</h2>
-<h3 id="解密-attributegraph--untangling-the-attributegraph"><a href="https://t.ly/kdz97" rel="noreferrer noopener">解密 AttributeGraph ( Untangling the AttributeGraph )</a></h3>
+<h3 id="解密-attributegraph--untangling-the-attributegraph"><a href="https://l.fatbobman.com/w034-01" rel="noreferrer noopener">解密 AttributeGraph ( Untangling the AttributeGraph )</a></h3>
 <p><a href="https://www.linkedin.com/in/rens-breur/?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Rens Breur</a></p>
 <p>AttributeGraph 是一个基于 C++ 的私有框架，它在 SwiftUI 的背后默默发挥着关键作用，主要负责跟踪数据依赖关系以确定视图的更新时机。尽管在 SwiftUI 的架构中它扮演着至关重要的角色，相关文献却十分稀少。在本文中，Rens Breur 将展示如何通过堆栈跟踪来阅读和理解 AttributeGraph 的函数，以及如何利用 LLDB 命令行工具来调用和查看 AttributeGraph 的各种打印功能。此外，文章还探讨了如何利用 AttributeGraph 的特性来优化和理解 SwiftUI 中环境变量和偏好（ PreferenceKey ）的更新机制，并提供了一些实用的调试技巧和函数，帮助开发者更深入地理解和使用 AttributeGraph。</p>
-<h3 id="为-ios-应用图标添加动画效果--tricking-ios-into-animating-app-icons"><a href="https://t.ly/vzpF8" rel="noreferrer noopener">为 iOS 应用图标添加动画效果 ( Tricking iOS Into Animating App Icons )</a></h3>
+<h3 id="为-ios-应用图标添加动画效果--tricking-ios-into-animating-app-icons"><a href="https://l.fatbobman.com/w034-02" rel="noreferrer noopener">为 iOS 应用图标添加动画效果 ( Tricking iOS Into Animating App Icons )</a></h3>
 <p><a href="https://www.linkedin.com/in/brycebostwick/?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Bryce Bostwick</a></p>
 <p>在 iOS 系统中，通过替代应用图标系统（Alternate App Icons system），用户可以从预设的静态图像集中选择应用图标。本文中，Bryce Bostwick 探讨了如何通过频繁更换图标来创造动画效果的技术手段。文章详细介绍了如何利用私有 API 进行实现，并且阐释了相关的技术细节。尽管使用私有 API 会导致应用无法通过 App Store 的审核，但开发者仍可以通过这种方式了解到 iOS 系统图标处理机制的内部工作原理，为其他合规的创新应用提供灵感。</p>
-<h3 id="preconcurrency-在-swift-中的应用解析--preconcurrency-usage-in-swift-explained"><a href="https://t.ly/k__Zx" rel="noreferrer noopener">@preconcurrency 在 Swift 中的应用解析 ( @preconcurrency Usage in Swift Explained )</a></h3>
+<h3 id="preconcurrency-在-swift-中的应用解析--preconcurrency-usage-in-swift-explained"><a href="https://l.fatbobman.com/w034-03" rel="noreferrer noopener">@preconcurrency 在 Swift 中的应用解析 ( @preconcurrency Usage in Swift Explained )</a></h3>
 <p><a href="https://twitter.com/donnywals?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Donny Wals</a></p>
 <p>随着 Swift 6 的即将到来，越来越多的开发者在他们的项目中启用了严格的并发检查。在这一过程中，开发者们常常会发现，即便是使用官方框架时，编译器也会发出并发相关的警告。为了抑制这些警告，开发者通常会在导入模块前添加 <code>@preconcurrency</code>。然而，<code>@preconcurrency</code> 的应用远不止于此。在本文中，Donny Wals 将详细介绍 <code>@preconcurrency</code> 的多种用途，<code>@preconcurrency</code> 不仅有助于将旧模块整合进新代码中，也使得新代码能够在旧项目中使用，从而为 Swift 6 的发布做好充分准备。</p>
-<h3 id="swiftui-mac-应用中的场景类型--scenes-types-in-a-swiftui-mac-app"><a href="https://t.ly/4Bo4y" rel="noreferrer noopener">SwiftUI Mac 应用中的场景类型 ( Scenes Types in a SwiftUI Mac App )</a></h3>
+<h3 id="swiftui-mac-应用中的场景类型--scenes-types-in-a-swiftui-mac-app"><a href="https://l.fatbobman.com/w034-04" rel="noreferrer noopener">SwiftUI Mac 应用中的场景类型 ( Scenes Types in a SwiftUI Mac App )</a></h3>
 <p><a href="https://twitter.com/natpanferova?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Natalia Panferova</a></p>
 <p>在使用 SwiftUI 构建 macOS 应用程序时，了解并运用各种场景类型是创建多功能且高效应用的关键。每个窗口在 SwiftUI 中都对应一个场景（Scene），这些场景不仅包括常见的应用窗口（WindowGroup），还包含了 DocumentGroup、Settings、Window，以及位于系统菜单栏中的 MenuBarExtra。在本文中，Natalia Panferova 深入分析了这些场景类型的用途和实现方式，帮助开发者充分利用 SwiftUI 的强大功能，构建出更丰富、更高效的 macOS 应用程序。</p>
-<h3 id="用-weatherkit-构建天气应用"><a href="https://t.ly/yxs6D" rel="noreferrer noopener">用 WeatherKit 构建天气应用</a></h3>
+<h3 id="用-weatherkit-构建天气应用"><a href="https://l.fatbobman.com/w034-05" rel="noreferrer noopener">用 WeatherKit 构建天气应用</a></h3>
 <p><a href="https://twitter.com/stewartLynch?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Stewart Lynch</a></p>
 <p>WeatherKit 是由苹果开发的一个功能强大的天气信息框架，提供了大量的免费调用次数，极大地降低了开发者构建天气应用或为现有项目增添天气信息的门槛。在这一系列教程中，Stewart Lynch 将指导你通过结合 SwiftUI 和 WeatherKit，一步一步地构建一个完整的天气应用。这一系列共包含 7 个视频，不仅涵盖基础知识，还包括一些高级技巧，旨在帮助开发者充分利用这两个强大工具的潜力。</p>
-<h3 id="学习路径--pathways"><a href="https://t.ly/Rv3oJ" rel="noreferrer noopener">学习路径 ( Pathways )</a></h3>
+<h3 id="学习路径--pathways"><a href="https://l.fatbobman.com/w034-06" rel="noreferrer noopener">学习路径 ( Pathways )</a></h3>
 <p>对许多初次接触苹果开发生态的开发者来说，面对苹果提供的丰富而零散的资料常常会感到无从下手。为了解决这个问题，苹果特别设立了 Pathways 页面。这里针对设计、Swift、SwiftUI、游戏、visionOS 和 App Store 分发等多个领域，提供了明确的学习路径，集成了相关的文档、视频和其他资源。无论是初学者还是经验丰富的开发者，都可以在这里找到合适的指南，系统地学习和提升自己的技能。</p>
-<h3 id="swift-并发迁移指南--the-swift-concurrency-migration-guide"><a href="https://t.ly/vhupB" rel="noreferrer noopener">Swift 并发迁移指南 ( The Swift Concurrency Migration Guide )</a></h3>
+<h3 id="swift-并发迁移指南--the-swift-concurrency-migration-guide"><a href="https://l.fatbobman.com/w034-07" rel="noreferrer noopener">Swift 并发迁移指南 ( The Swift Concurrency Migration Guide )</a></h3>
 <p>Swift 6 引入了更加严格的并发检查机制，以彻底消除数据竞争。苹果公司在 GitHub 上发布了这一指南，旨在帮助开发者在启用严格的并发检查后，能够正确编写符合规范的代码。该指南内容全面，包括：详解 Swift 的数据竞争安全模型、指导如何在 Swift 5 项目中开启完整的并发检查、如何渐进式采用并发技术，以及介绍解决常见问题的有效策略。</p>
 <h2 id="活动">活动</h2>
-<h3 id="线下派对与-apple-爱好者一起观看-wwdc24-keynote"><a href="https://t.ly/LTk4I" rel="noreferrer noopener">线下派对：与 Apple 爱好者一起观看 WWDC24 Keynote</a></h3>
+<h3 id="线下派对与-apple-爱好者一起观看-wwdc24-keynote"><a href="https://l.fatbobman.com/w034-08" rel="noreferrer noopener">线下派对：与 Apple 爱好者一起观看 WWDC24 Keynote</a></h3>
 <p>参与由 SwiftGG、XR 基地、少数派、初心资本、清华创客空间、西顾视频、超脑 AI 孵化器共同主办的 WWDC 2024 观看派对。这次活动将在 6 月 10 日同步在北京、上海、杭州和深圳举办，为 Apple 爱好者提供一个线下交流的平台，共同观看并讨论 WWDC 2024 的精彩瞬间。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>
 <h2 id="抽奖公告">抽奖公告</h2>

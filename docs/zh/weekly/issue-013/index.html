@@ -294,20 +294,20 @@ const enableStickyInMobile = true;
 <p><a href="https://x.com/intent/follow?screen_name=fatbobman" rel="noreferrer noopener">Fatbobman(东坡肘子)</a></p>
 <p>一个多月前，我启动了一个大胆的计划：在人工智能的协助下，彻底重塑我的博客站点。终于，即将度过 2023 年之际，这个全新的博客版本终于面世。这篇文章将简要回顾这次博客更新的旅程，记录下其中的关键步骤和个人感悟。</p>
 <h2 id="近期推荐">近期推荐</h2>
-<h3 id="swift-c-interop"><a href="https://t.ly/GPLsN" rel="noreferrer noopener">Swift C++ Interop</a></h3>
+<h3 id="swift-c-interop"><a href="https://l.fatbobman.com/w013-01" rel="noreferrer noopener">Swift C++ Interop</a></h3>
 <p><a href="https://twitter.com/zonble?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">zonble</a></p>
 <p>Swift 5.9 引入了 Swift 与 C++ 之间的双向互操作性支持。这一进展通过生成 C++ 头文件，允许以类似 C++ 接口的形式暴露 Swift API，极大地简化了将 Swift 集成到现有 C++ 代码中的过程。这也是 Swift 团队近年来的重点开发方向。在这篇文章中，zonble 分享了他在实际工作中尝试融合 Swift 和 C++ 的经验和感悟。他指出，虽然 Swift C++ 互操作性在一定程度上是可行的，但目前还不够成熟，无法完全应用于实际工作中。在 Swift 完全支持 C++ 之前，可能还需要通过 Objective-C 作为中间层。</p>
-<h3 id="asyncphoto-for-displaying-large-photos-in-swiftui"><a href="https://t.ly/IUMPt" rel="noreferrer noopener">AsyncPhoto for displaying large photos in SwiftUI</a></h3>
+<h3 id="asyncphoto-for-displaying-large-photos-in-swiftui"><a href="https://l.fatbobman.com/w013-02" rel="noreferrer noopener">AsyncPhoto for displaying large photos in SwiftUI</a></h3>
 <p><a href="https://www.linkedin.com/in/toomas-vahter-0bb00134/?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Toomas Vahter</a></p>
 <p>虽然自 iOS 15 起 SwiftUI 已提供 AsyncImage 视图，但其功能和灵活性的局限性仍驱使开发者寻求额外的第三方解决方案以更好地获取和展示图像。针对这一挑战，Toomas Vahter 在其文章中（ 共两篇）介绍了他为 SwiftUI 定制的 AsyncPhoto 视图。这一解决方案专为展示大型照片而设计，提供了更广泛的灵活性，支持从多样化的数据源加载图像，同时允许进行自定义的图像处理和展示。AsyncPhoto 的推出，为 SwiftUI 中的图像展示提供了一个高效、灵活的新选项。</p>
-<h3 id="苹果-ios-分发和安装-app-的那些趣事"><a href="https://t.ly/tfzFi" rel="noreferrer noopener">苹果 iOS 分发和安装 App 的那些趣事</a></h3>
+<h3 id="苹果-ios-分发和安装-app-的那些趣事"><a href="https://l.fatbobman.com/w013-03" rel="noreferrer noopener">苹果 iOS 分发和安装 App 的那些趣事</a></h3>
 <p><a href="https://twitter.com/iHTCboy?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">iHTCboy</a> (37 手游移动客户端团队)</p>
 <p>这篇文章主要介绍了苹果 iOS 应用的分发和安装过程中的一些有趣的事情和历史演变。iHTCboy 从苹果最初推出 iPhoneOS 时期不支持原生应用开发，到后来推出 App Store 应用商店的转变，详细讲述了苹果如何发展其应用分发生态系统。文章探讨了不同的开发者计划和分发方式，如企业签名、超级签名、TestFlight 签名和 MDM 超级签名，以及开发者模式、企业账号、设备注册限制等方面。此外，文章还涉及了自定 App 和非公开 App 分发的解决方案，并讨论了欧盟的《数字市场法》可能对苹果软件生态造成的影响。文章为读者提供了关于苹果 iOS 应用分发和安装过程的全面而深入的了解。</p>
-<h3 id="comparing-swift-compiler-performance-on-type-inference-part-i"><a href="https://t.ly/ODmGm" rel="noreferrer noopener">Comparing Swift Compiler Performance on Type Inference Part I</a></h3>
+<h3 id="comparing-swift-compiler-performance-on-type-inference-part-i"><a href="https://l.fatbobman.com/w013-04" rel="noreferrer noopener">Comparing Swift Compiler Performance on Type Inference Part I</a></h3>
 <p><a href="https://twitter.com/lucasvandongen?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Lucas van Dongen</a></p>
 <p>在这篇文章中，Lucas van Dongen 深入探讨了 Swift 编译器在类型推断方面的性能，尤其聚焦于不同初始化方法对编译速度的影响。文章起始于作者在工作中遭遇的一个挑战：他负责维护的应用程序中某个代码块编译时间超出了 1000 毫秒的限制，导致持续集成（CI）失败。他发现，问题源于代码中 <code>.init()</code> 的使用，这显著拖慢了编译速度。文章详尽地分析了在 Swift 中不同类型（如字符串、数字、数组、字典）的初始化方式对编译器性能的具体影响。此外，作者还分享了一系列基准测试，展示了不同版本 Swift 编译器性能的比较。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>
-<h3 id="swift-runtime-符号在动态链接库丢失的排查之路"><a href="https://t.ly/_6pjh" rel="noreferrer noopener">Swift Runtime 符号在动态链接库丢失的排查之路</a></h3>
+<h3 id="swift-runtime-符号在动态链接库丢失的排查之路"><a href="https://l.fatbobman.com/w013-05" rel="noreferrer noopener">Swift Runtime 符号在动态链接库丢失的排查之路</a></h3>
 <p><a href="https://twitter.com/DreamingPiggy?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">DreamPiggy</a></p>
 <blockquote>
 <p>DanceCC 是字节 ( ByteDance) Mobile Infra 的一套编译工具链的品牌名，基于 Swift. org 的工具链进行了相关定制，包括调试优化，定制 Clang 插件特性，自研 Pass 做包大小和性能优化等等。</p>

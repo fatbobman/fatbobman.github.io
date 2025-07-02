@@ -316,20 +316,20 @@ const enableStickyInMobile = true;
 <h3 id="crowdstrike-导致的系统崩溃原因分析">CrowdStrike 导致的系统崩溃原因分析</h3>
 <p>近日，网络安全公司 CrowdStrike 的一个技术失误引发了全球范围内的大规模系统崩溃事件，严重影响了多个国家的关键服务领域。</p>
 <ul>
-<li>Zach Vorhies（前谷歌员工，曾披露谷歌“机器学习公平性”，一种审查并控制信息获取的人工智能系统）在其 <a href="https://t.ly/TeXty" rel="noreferrer noopener">推文</a> 中分析了问题的根源。他指出，C++编程中的空指针错误和缺乏有效的质量控制是导致此次灾难的主要原因。Vorhies 建议采用 Rust 等现代编程语言来预防此类问题，并呼吁微软改进驱动程序的回滚策略，以系统层面预防单一驱动问题引发的全面崩溃。此事件突显了在开发高权限系统组件时对编程语言选择和质量控制的重要性。</li>
+<li>Zach Vorhies（前谷歌员工，曾披露谷歌“机器学习公平性”，一种审查并控制信息获取的人工智能系统）在其 <a href="https://l.fatbobman.com/w041-01" rel="noreferrer noopener">推文</a> 中分析了问题的根源。他指出，C++编程中的空指针错误和缺乏有效的质量控制是导致此次灾难的主要原因。Vorhies 建议采用 Rust 等现代编程语言来预防此类问题，并呼吁微软改进驱动程序的回滚策略，以系统层面预防单一驱动问题引发的全面崩溃。此事件突显了在开发高权限系统组件时对编程语言选择和质量控制的重要性。</li>
 <li>Tavis Ormandy（谷歌漏洞研究员）对 Zach Vorhies 的观点提出了异议。他在 <a href="https://x.com/taviso/status/1814762302337654829?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">推文</a> 中指出，问题并非空指针引起的，“这段代码在循环中从表中读取指针，而其中一些指针是无效的。这可能是由于解析配置文件时的错误，导致某些条目未被正确初始化。”</li>
 </ul>
-<h3 id="swift-6"><a href="https://t.ly/DZSnk" rel="noreferrer noopener">Swift 6</a></h3>
+<h3 id="swift-6"><a href="https://l.fatbobman.com/w041-02" rel="noreferrer noopener">Swift 6</a></h3>
 <p><a href="https://x.com/a_grebenyuk?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Alex Grebenyuk</a></p>
 <p>在 Swift 6 中，数据竞争安全特性本应助力开发者自动化地识别并解决难以追踪的并发问题，然而 Alex Grebenyuk 在文章中表达了对此的担忧和质疑。他指出，这一特性实际上把大量工作转移给了开发者，尤其是在启用 Swift 6 模式后，原先的警告将转变为编译错误，这可能导致处理大量代码库时面临数千个错误。因此，Alex 建议将并发错误处理为警告，并使这些警告可选，脱离 Swift 6 模式的强制性绑定，并支持持续的迭代改进，而非过早地确定设计方案。他还批评了 Swift 近年来在新特性开发方面的方向，质疑这些变化是否真正提升了开发效率。文章呼吁 Apple 应回归 Swift 的初衷——保持语言的简洁快速，专注于提升开发者的生产力，而非增加他们的工作负担。Alex 的分析反映了一部分资深 Swift 开发者对于语言未来发展的期望和顾虑。</p>
-<h3 id="一些有关-xcode-16-的讨论"><a href="https://t.ly/blgeB" rel="noreferrer noopener">一些有关 Xcode 16 的讨论</a></h3>
+<h3 id="一些有关-xcode-16-的讨论"><a href="https://l.fatbobman.com/w041-03" rel="noreferrer noopener">一些有关 Xcode 16 的讨论</a></h3>
 <p><a href="https://x.com/mjtsai?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Michael Tsai</a></p>
 <p>在这篇综述中，Michael Tsai 汇集了开发者社区对 WWDC 2024 推出的 Xcode 16 的多方面反馈。新版本带来了备受关注的 AI 驱动代码自动补全（Swift Assist）等创新功能，但也引发了一些争议。开发者们对 AI 功能的评价不一，既有赞赏其上下文感知能力的声音，也有批评其产生幻觉代码的意见。文章还涉及了显式构建 Swift 模块、EditorConfig 支持等其他更新，以及一些遗留问题的修复和新出现的兼容性问题。</p>
-<h3 id="ipados-18-手写与计算新功能深度解析--chris-lawleys-in-depth-interview-about-smart-script-and-math-notes"><a href="https://t.ly/VU7N2" rel="noreferrer noopener">iPadOS 18 手写与计算新功能深度解析🪜 ( Chris Lawley’s In-Depth Interview About Smart Script and Math Notes )</a></h3>
+<h3 id="ipados-18-手写与计算新功能深度解析--chris-lawleys-in-depth-interview-about-smart-script-and-math-notes"><a href="https://l.fatbobman.com/w041-04" rel="noreferrer noopener">iPadOS 18 手写与计算新功能深度解析🪜 ( Chris Lawley’s In-Depth Interview About Smart Script and Math Notes )</a></h3>
 <p><a href="https://bento.me/chrislawley?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Christopher Lawley</a></p>
 <p>Chris Lawley 与苹果公司的输入体验工程经理 Jenny Chen 和系统体验产品经理 Ty Jordan 进行了深度对话，探讨 iPadOS 18 中的两大创新功能：Smart Script 和 Math Notes。Smart Script 运用设备端机器学习技术优化手写体验，使手写文本媲美打字文本。Math Notes 则支持手写数学方程并即时计算，还能设置变量和创建图表。这次采访不仅详细讨论了这些功能的技术原理和应用场景，还揭示了 WWDC 主题演讲中未涉及的细节，展现了 iPadOS 18 在提升用户效率和体验方面的重大进步。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>
-<h3 id="mastering-scrollview-in-swiftui"><a href="https://t.ly/s3ZxB" rel="noreferrer noopener">Mastering ScrollView in SwiftUI</a></h3>
+<h3 id="mastering-scrollview-in-swiftui"><a href="https://l.fatbobman.com/w041-05" rel="noreferrer noopener">Mastering ScrollView in SwiftUI</a></h3>
 <p><a href="https://twitter.com/mecid?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Majid Jabrayilov</a></p>
 <p>继去年的重大更新之后，苹果在 WWDC 2024 中再次为 SwiftUI 的 ScrollView 注入了大量新功能，进一步增强了其能力。Majid Jabrayilov 通过多篇文章探讨这些新增特性，为开发者提供全面的指南。文章涵盖 Scroll Offset、Scroll Geometry、Scroll Phases 和 Scroll Visibility 等关键概念，旨在帮助开发者全面掌握 ScrollView 的新功能，从而在 SwiftUI 应用中创造更加流畅和交互丰富的滚动体验。</p> </div> </article> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
   .copy-icon {

@@ -277,30 +277,30 @@ const enableStickyInMobile = true;
 <p><a href="https://x.com/fatbobman?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Fatbobman(东坡肘子)</a></p>
 <p>在 SwiftUI 中，视图的自动刷新机制让我们能够轻松构建响应式的用户界面。但有时，视图可能并不会按照我们的预期进行更新。本文将通过一个看似简单但颇具代表性的 <code>TimelineView</code> 刷新问题，探讨 SwiftUI 的视图刷新机制。</p>
 <h2 id="近期推荐">近期推荐</h2>
-<h3 id="深入探索-docc-代码-code-spelunking-in-docc"><a href="https://t.ly/3YWcA" rel="noreferrer noopener">深入探索 DocC 代码 (Code Spelunking in DocC)</a></h3>
+<h3 id="深入探索-docc-代码-code-spelunking-in-docc"><a href="https://l.fatbobman.com/w058-01" rel="noreferrer noopener">深入探索 DocC 代码 (Code Spelunking in DocC)</a></h3>
 <p><a href="https://x.com/heckj?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Joseph Heck</a></p>
 <p>Joseph Heck 在为 Swift 文档工具 DocC 的代码片段功能编写文档时，遇到了预览功能时而失效的问题。尽管这个间歇性问题难以稳定复现，但他通过系统的分析和不懈的努力，最终定位到问题根源并提出了修复方案。在这篇文章中，Heck 详细记录了整个调试过程中的每一个关键步骤。</p>
 <blockquote>
 <p>虽然限于技术背景，我对文章中的许多技术细节难以完全理解，但这丝毫不影响我对这篇文章的喜爱。让我印象深刻的不仅是 Heck 展现出的专业技术功底和严谨的调试思维，更是他积极参与开源社区、详实记录解决方案的分享精神。</p>
 </blockquote>
-<h3 id="attributegraph-笔记"><a href="https://t.ly/09mj-" rel="noreferrer noopener">AttributeGraph 笔记</a></h3>
+<h3 id="attributegraph-笔记"><a href="https://l.fatbobman.com/w058-02" rel="noreferrer noopener">AttributeGraph 笔记</a></h3>
 <p><a href="https://m.objc.io/@chris?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Chris Eidhof</a></p>
 <p>AttributeGraph 是 SwiftUI 框架背后的基础组件之一，用于处理视图与数据源之间的复杂依赖关系及动态更新。这篇笔记基于从 AttributeGraph 提取的命名符号，通过 LLM 分析对其进行了技术拆解。</p>
 <blockquote>
 <p>在阅读这篇笔记后，我立即联系了 <a href="https://github.com/OpenSwiftUIProject/OpenGraph?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">OpenGraph</a>（AG 的开源复刻版本）作者 <a href="https://x.com/KyleSwifter?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Kyle Ye</a>（他已与 Eidhof 建立了联系）。希望在这些优秀开发者以及更多人的共同努力下，能进一步揭开 AG 的神秘面纱，从而加深我们对 SwiftUI 框架的理解，提升应用性能，并有效避免因 AG 错误引发的问题。</p>
 </blockquote>
-<h3 id="小心使用-unchecked-sendable警惕隐式-actor-隔离的反直觉行为-beware-unchecked-sendable-or-watch-out-for-counterintuitive-implicit-actor-isolation"><a href="https://t.ly/JJvk0" rel="noreferrer noopener">小心使用 @unchecked Sendable，警惕隐式 Actor 隔离的反直觉行为 (Beware @unchecked Sendable, or Watch Out for Counterintuitive Implicit Actor-Isolation)</a></h3>
+<h3 id="小心使用-unchecked-sendable警惕隐式-actor-隔离的反直觉行为-beware-unchecked-sendable-or-watch-out-for-counterintuitive-implicit-actor-isolation"><a href="https://l.fatbobman.com/w058-03" rel="noreferrer noopener">小心使用 @unchecked Sendable，警惕隐式 Actor 隔离的反直觉行为 (Beware @unchecked Sendable, or Watch Out for Counterintuitive Implicit Actor-Isolation)</a></h3>
 <p><a href="mailto:desk@jaredsinclair.com?utm_source=Fatbobman%20Blog&#38;utm_medium=web" rel="noreferrer noopener">Jared Sinclair</a></p>
 <p>在切换到 Swift 6 语言模式后，许多旧代码不再能通过编译。为绕过并发检查，一些开发者会选择使用 <code>@unchecked Sendable</code> 来向编译器声明代码不存在并发问题。然而，这种做法也彻底放弃了编译器提供的检查和保护。Jared Sinclair 在开发中遭遇了因 <code>@unchecked Sendable</code> 的使用与隐式 Actor 隔离行为的不一致而导致的应用崩溃。</p>
 <p>在本文中，Sinclair 不仅详细展示了崩溃的成因，还提出了基于 Actor 的改进方案，并深入分析了 <code>~Copyable</code> 协议和 <code>consuming</code> 关键字在并发场景中的作用，说明它们如何改进编译时检查，提升代码的并发安全性。</p>
-<h3 id="在-ios-中集成实时活动和动态岛-integrating-live-activity-and-dynamic-island-in-ios-a-complete-guide"><a href="https://t.ly/-zi9h" rel="noreferrer noopener">在 iOS 中集成实时活动和动态岛 (Integrating Live Activity and Dynamic Island in iOS: A Complete Guide)</a></h3>
+<h3 id="在-ios-中集成实时活动和动态岛-integrating-live-activity-and-dynamic-island-in-ios-a-complete-guide"><a href="https://l.fatbobman.com/w058-04" rel="noreferrer noopener">在 iOS 中集成实时活动和动态岛 (Integrating Live Activity and Dynamic Island in iOS: A Complete Guide)</a></h3>
 <p><a href="https://x.com/radhika_saliya?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Radhika saliya</a></p>
 <p>随着 Live Activities 和 Dynamic Island 在 iOS 应用中的广泛应用，它们已成为用户获取实时动态信息的一种流行方式。Radhika Saliya 在这篇文章中详细讲解了如何将这两项功能集成到 iOS 应用中。从基础概念到设计指南，再到代码实现，文章内容详尽且条理清晰，为开发者提供了全面的实践指导。</p>
-<h3 id="用渲染排序解决-realitykit-中的透明物体嵌套问题"><a href="https://t.ly/iCWHH" rel="noreferrer noopener">用渲染排序解决 RealityKit 中的透明物体嵌套问题</a></h3>
+<h3 id="用渲染排序解决-realitykit-中的透明物体嵌套问题"><a href="https://l.fatbobman.com/w058-05" rel="noreferrer noopener">用渲染排序解决 RealityKit 中的透明物体嵌套问题</a></h3>
 <p><a href="https://x.com/XanderARKit?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Xander(苹果 API 搬运工)</a></p>
 <p>透明物体的渲染问题一直是 3D 场景开发中的难点。在 RealityKit 中，当多个半透明物体嵌套或交错时，默认的渲染顺序可能导致显示异常，如物体轮廓消失或叠加颜色错误。Xander 通过上下两篇文章，详细分析了问题的原因，并提供了利用 ModelSortingGroup 和 Depth Pass 来优化透明物体渲染效果的解决方案。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>
-<h3 id="swift-并发提案索引-swift-concurrency-proposal-index"><a href="https://t.ly/Svn5f" rel="noreferrer noopener">Swift 并发提案索引 (Swift Concurrency Proposal Index)</a></h3>
+<h3 id="swift-并发提案索引-swift-concurrency-proposal-index"><a href="https://l.fatbobman.com/w058-06" rel="noreferrer noopener">Swift 并发提案索引 (Swift Concurrency Proposal Index)</a></h3>
 <p>Quinn</p>
 <p>Swift 并发机制是 Swift 语言中的重要组成部分，也是一个复杂而广泛的领域。在苹果开发者论坛的这篇帖子中，苹果工程师 Quinn 系统整理了 Swift Evolution 中与并发设计相关的提案，涵盖了 Swift 6.0 已实现的核心特性以及部分正在开发中的功能。这份索引为开发者提供了一个便捷的参考工具，帮助快速查找并理解与 Swift 并发相关的提案内容。</p> </div> </article> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
   .copy-icon {

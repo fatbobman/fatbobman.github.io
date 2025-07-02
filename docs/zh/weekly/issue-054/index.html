@@ -281,20 +281,20 @@ const enableStickyInMobile = true;
 <p><a href="https://x.com/fatbobman?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Fatbobman(东坡肘子)</a></p>
 <p>在现代应用开发中，高效的持久化框架至关重要。SwiftData 的出现，曾让众多 Core Data 开发者眼前一亮，大家期待着一个融合现代编程理念的新时代到来。本篇文章将探讨如何在 Core Data 中应用 SwiftData 的思维方式，重点关注数据建模和并发编程。</p>
 <h2 id="近期推荐">近期推荐</h2>
-<h3 id="写时复制及-swift-cowbox-宏-copy-on-write-and-the-swift-cowbox-macro"><a href="https://t.ly/jmaMK" rel="noreferrer noopener">写时复制及 Swift-CowBox 宏 (Copy On Write and the Swift-CowBox Macro)</a></h3>
+<h3 id="写时复制及-swift-cowbox-宏-copy-on-write-and-the-swift-cowbox-macro"><a href="https://l.fatbobman.com/w054-01" rel="noreferrer noopener">写时复制及 Swift-CowBox 宏 (Copy On Write and the Swift-CowBox Macro)</a></h3>
 <p><a href="https://x.com/natanrolnik?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Natan Rolnik</a></p>
 <p>写时复制（Copy On Write, COW）是一种通过延迟复制来优化内存使用的技术：只有在修改内容时才进行数据复制，未修改时则共享引用，从而提升性能和减少内存占用。Swift 广泛使用值类型，在此过程中 COW 成为提高效率的关键机制。Natan Rolnik 详细解析了 COW 的原理，并介绍了 Rick Van Voorden 开发的 <a href="https://github.com/Swift-CowBox/Swift-CowBox?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Swift-CowBox</a> 宏，该宏简化了为自定义类型实现 COW 的过程，减少了重复代码的编写负担。</p>
-<h3 id="swift-的-preconcurrency-属性解析-so-how-does-this-whole-preconcurrency-thing-work"><a href="https://t.ly/zUVxn" rel="noreferrer noopener">Swift 的 @preconcurrency 属性解析 (So how does this whole @preconcurrency thing work?)</a></h3>
+<h3 id="swift-的-preconcurrency-属性解析-so-how-does-this-whole-preconcurrency-thing-work"><a href="https://l.fatbobman.com/w054-02" rel="noreferrer noopener">Swift 的 @preconcurrency 属性解析 (So how does this whole @preconcurrency thing work?)</a></h3>
 <p><a href="https://x.com/mattie?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Matt Massicotte</a></p>
 <p>许多开发者在转向 Swift 6 后发现现有代码难以满足新编译器的并发要求。这时，<code>@preconcurrency</code> 成为一种简化并发代码、提升 API 兼容性的有力工具。Matt Massicotte 在本文中深入解析了 <code>@preconcurrency</code> 的三大主要用途及其在实际开发中的应用场景。Massicotte 强调，尽管该工具在处理协议隔离、旧 API 兼容性以及跨模块导入等方面非常有效，但开发者需谨慎使用，以免掩盖潜在的设计缺陷，使问题在后期更难排查和修复。</p>
-<h3 id="swiftui-动画的图解说明"><a href="https://t.ly/ejTGo" rel="noreferrer noopener">SwiftUI 动画的图解说明</a></h3>
+<h3 id="swiftui-动画的图解说明"><a href="https://l.fatbobman.com/w054-03" rel="noreferrer noopener">SwiftUI 动画的图解说明</a></h3>
 <p><a href="https://x.com/y_lsisa?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">よぺ</a></p>
 <p>SwiftUI 的动画曲线主要分为两大模型：UnitCurve 和 Spring。UnitCurve 基于 (0,0) 和 (1,1) 两点之间的曲线，通过控制曲线形状来调节动画速度，如 <code>linear</code> 和 <code>ease</code> 系列动画。Spring 则模拟弹簧的运动，使用质量、刚度和阻尼等参数实现更自然的动态效果。よぺ 详细解析了这两种动画模型的原理与实现，并通过代码和动图展示了如何灵活运用它们。作者强调，在需要模拟自然运动时，Spring 模型优于传统的 <code>linear</code> 和 <code>ease</code> 系列动画，建议开发者优先使用。</p>
-<h3 id="探索-cursor-exploring-cursor"><a href="https://t.ly/LUfZk" rel="noreferrer noopener">探索 Cursor (Exploring Cursor)</a></h3>
+<h3 id="探索-cursor-exploring-cursor"><a href="https://l.fatbobman.com/w054-04" rel="noreferrer noopener">探索 Cursor (Exploring Cursor)</a></h3>
 <p><a href="https://x.com/rudrankriyam?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Rudrank Riyam</a></p>
 <p>作为一款以 AI 辅助为核心特色的代码编辑器，<a href="https://www.cursor.com?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Cursor</a> 自发布以来迅速吸引了大量开发者的关注。借助插件和第三方库，苹果生态的开发者如今也可以使用 Cursor 构建包括 iOS 项目在内的应用，并体验 AI 带来的高效开发体验。Rudrank Riyam 在其系列文章中详细介绍了如何使用 Cursor 优化开发工作流，提供了实用的设置指南和时间管理等技巧，帮助开发者减少上下文切换，提高工作效率。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>
-<h3 id="谨防-userdefaults隐藏错误与数据丢失的故事-beware-userdefaults-a-tale-of-hard-to-find-bugs-and-lost-data"><a href="https://t.ly/BfKsR" rel="noreferrer noopener">谨防 UserDefaults：隐藏错误与数据丢失的故事 (Beware UserDefaults: a tale of hard to find bugs, and lost data)</a></h3>
+<h3 id="谨防-userdefaults隐藏错误与数据丢失的故事-beware-userdefaults-a-tale-of-hard-to-find-bugs-and-lost-data"><a href="https://l.fatbobman.com/w054-05" rel="noreferrer noopener">谨防 UserDefaults：隐藏错误与数据丢失的故事 (Beware UserDefaults: a tale of hard to find bugs, and lost data)</a></h3>
 <p><a href="https://x.com/christianselig?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Christian Selig</a></p>
 <p>UserDefaults 提供了简单且线程安全的 API，支持数据的持久化和序列化，因此被广泛用于存储非敏感和非大量数据。然而，Christian Selig 在本文中通过亲身经历警告开发者：尽管 UserDefaults 有诸多优势，但如使用不当可能引发严重的错误和数据丢失。Selig 指出，随着 iOS 系统的不断演进（如预热机制和 Live Activities 的引入），UserDefaults 的行为变得越来越复杂且难以预测。因此，开发者应深入了解其潜在风险，以减少错误并避免数据丢失。</p> </div> </article> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
   .copy-icon {
