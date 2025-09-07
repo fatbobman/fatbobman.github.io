@@ -135,10 +135,10 @@ const getRandomContent = () => {
 };
 
 const ads = [
-  // healthNotesAd,
+  healthNotesAd,
   // visionOS2025Ad,
   // midstAd,
-  currentAd
+  // currentAd
 ]
 
 
@@ -199,8 +199,8 @@ const currentAd = `
       </div>
 `
 
-const startTime = new Date('2025-04-13T16:00:00Z');
-const endTime = new Date('2025-04-21T02:00:00Z');
+const startTime = new Date('2025-09-07T00:00:00Z');
+const endTime = new Date('2025-09-15T00:00:00Z');
 
 export async function onRequest(context) {
   const allowedOrigins = [
