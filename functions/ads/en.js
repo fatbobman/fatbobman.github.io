@@ -135,9 +135,10 @@ const getRandomContent = () => {
 };
 
 const ads = [
-  healthNotesAd,
+  // healthNotesAd,
   // visionOS2025Ad,
   // midstAd,
+  currentAd
 ]
 
 
