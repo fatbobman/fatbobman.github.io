@@ -226,16 +226,16 @@ export async function onRequest(context) {
   // 判断返回固定广告还是随机广告
   let ad = currentAd;
   let cacheDuration = 1200;
-  headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
-  // if (now >= startTime && now <= endTime) {
-  //   ad = currentAd; // 固定广告
-  //   cacheDuration = 1200; // 20 分钟
-  //   headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
-  // } else {
-  //   ad = getRandomContent(); // 随机广告
-  //   cacheDuration = 300; // 5分钟
-  //   headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=60`);
-  // }
+  // headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
+  if (now >= startTime && now <= endTime) {
+    ad = currentAd; // 固定广告
+    cacheDuration = 1200; // 20 分钟
+    headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
+  } else {
+    ad = getRandomContent(); // 随机广告
+    cacheDuration = 300; // 5分钟
+    headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=60`);
+  }
 
   // 生成 ETag
   const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(ad));
