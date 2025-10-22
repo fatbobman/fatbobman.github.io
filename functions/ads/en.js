@@ -93,38 +93,69 @@ const midstAd = `
 `
 
 const healthNotesAd = `
-<div>
-        <a href="https://t.ly/7Qg6u" target="_blank" rel="sponsored">
-          <div 
-          class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 hover:scale-105 transition-all duration-200"
-          >
-            <div class="absolute top-[-30px] sm:top-0 right-0 dark:text-blue-200 text-secondary text-xs font-black rounded mt-4 mr-4 dark:bg-gray-800 bg-white sm:dark:bg-black/40 sm:bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl">Start Tracking</div>
-            <img
-                    src="https://cdn.fatbobman.com/healthnotes-logo.svg"
-                    alt="Heath Notes Logo"
-                    width="80"
-                    height="80" 
-                    class="mr-0 sm:mr-3 mb-4 sm:mb-0 hidden sm:block rounded-lg"
-                    loading="lazy"
-                    decoding="async"
-            />
-            <div class="space-y-2 pr-1">
-              <div class="mb-6">
-              <span class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight dark:group-hover:text-white group-hover:text-amber-900">Your Health, Your Data, Your Control</span>
+      <div>
+        <!-- 广告卡片容器 - 改为 overflow-visible 允许按钮溢出 -->
+        <div class="relative rounded-lg overflow-visible shadow-lg mt-8 sm:mt-0">
+          <!-- 广告内容 -->
+          <a href="https://apps.apple.com/us/app/id1534513553" target="_blank" rel="sponsored">
+            <div
+              class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-t-lg flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 transition-all duration-200"
+            >
+              <!-- Start Tracking 按钮 - 添加 z-20 确保在最上层 -->
+              <div
+                class="absolute top-[-30px] sm:top-0 right-0 dark:text-blue-200 text-secondary text-xs font-black rounded mt-4 mr-4 dark:bg-gray-800 bg-white sm:dark:bg-black/40 sm:bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl z-20"
+              >
+                Start Tracking
               </div>
-              <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
-                Health Notes: Custom health tracking for iOS, iPad, and macOS—tailored to your unique wellness journey.
+
+              <img
+                src="https://cdn.fatbobman.com/healthnotes-logo.svg"
+                alt="Heath Notes Logo"
+                width="80"
+                height="80"
+                class="mr-0 sm:mr-3 mb-4 sm:mb-0 hidden sm:block rounded-lg"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="space-y-2 pr-1">
+                <div class="mb-6">
+                  <span
+                    class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight dark:group-hover:text-white group-hover:text-amber-900"
+                  >
+                    Your Health, Your Data, Your Control
+                  </span>
+                </div>
+                <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
+                  Health Notes: Custom health tracking for iOS, iPad, and macOS—tailored to your unique wellness
+                  journey.
+                </div>
               </div>
             </div>
+          </a>
+
+          <!-- 广告卡片按钮 -->
+          <div
+            class="bg-orange-200/60 dark:bg-blue-900/50 backdrop-blur-sm px-4 sm:px-8 py-4 sm:py-3 cursor-pointer hover:bg-orange-300/70 dark:hover:bg-blue-900/70 transition-all group border-[1.5px] border-t-0 border-orange-500/60 dark:border-blue-500/70 rounded-b-lg relative z-10"
+            onclick="window.location.href='/en/sponsorship/';"
+          >
+            <div
+              class="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between gap-2 sm:gap-0"
+            >
+              <span class="text-orange-800 dark:text-blue-100 text-sm font-medium text-center sm:text-left">
+                Reach 50,000+ Swift developers weekly
+              </span>
+              <span
+                class="text-orange-800 dark:text-blue-100 text-sm font-semibold flex items-center gap-2 group-hover:gap-3 transition-all"
+              >
+                Become a sponsor
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  ></path>
+                </svg>
+              </span>
+            </div>
           </div>
-        </a>
-        <div class="flex justify-center pt-6">
-           <div 
-               class="text-secondary transition-all duration-200 text-xs font-semibold dark:hover:text-blue-200 hover:text-red-600 hover:scale-105 hover:font-bold cursor-pointer"
-               onclick="window.location.href='/en/sponsorship/';"
-           >
-           Want to sponsor? We'd love to chat → 
-           </div>
+          
         </div>
       </div>
 `;
