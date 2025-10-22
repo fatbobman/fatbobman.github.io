@@ -125,7 +125,7 @@
     }
   },
   "@id": "#author"
-}</script><link rel="stylesheet" href="/_astro/about.CIFm0WVW.css">
+}</script><link rel="stylesheet" href="/_astro/about.Cvgtx4-A.css">
 <style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
 </style>
 <link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css">
@@ -296,7 +296,15 @@ const enableStickyInMobile = true;
 <p>Core Data 迁移涉及将数据模型从一个版本更新至另一个版本的过程。虽然在许多情况下 Core Data 能够自动完成这一迁移，但某些复杂场景则要求开发者手动介入，通过提供精确的映射模型来指导从源模型到目标模型的迁移过程。对于特别复杂的迁移需求，还需编写继承自 <code>NSEntityMigrationPolicy</code> 的自定义迁移策略。本文由 Pol Piella 撰写，详细介绍了自定义 Core Data 迁移的实现方法，包括创建映射模型文件和自定义迁移策略类。文章以存储音乐轨道信息的应用为例，展示了如何通过引入新实体和关系以及实施自定义迁移策略来应对数据模型的扩展问题。</p>
 <blockquote>
 <p>值得一提的是，从 iOS 17 起，Apple 在 Core Data 中引入了一种新的迁移模式——阶段迁移（Stage Migration），这与 SwiftData 的迁移方法类似，为开发者提供了更多灵活性和控制力。想了解更多关于这一新特性的信息，可以参考 <a href="/zh/posts/what-s-new-in-core-data-in-wwdc23/#%E9%98%B6%E6%AE%B5%E5%BC%8F%E8%BF%81%E7%A7%BB-staged-migration" target="_blank">此篇文章</a>。</p>
-</blockquote> </div> </article> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
+</blockquote> </div> <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4"><a href="https://www.buymeacoffee.com/fatbobman" target="_blank" rel="noopener" class="block p-5 bg-orange-50/80 dark:bg-blue-900/30 border-2 border-orange-200 dark:border-blue-700 rounded-xl hover:shadow-lg hover:scale-[1.02] transition-all group"><div class="flex items-start gap-3"><div class="text-3xl">☕️</div><div class="flex-1"><div class="text-base font-bold text-heading mb-1 group-hover:text-orange-700 dark:group-hover:text-blue-200 transition-colors">
+买杯咖啡支持
+</div><div class="text-sm text-default">
+如果这篇文章对你有帮助，请考虑请我喝杯咖啡
+</div></div><svg class="w-5 h-5 text-orange-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg></div></a><a href="https://discord.com/invite/7FedN5E2QQ" target="_blank" rel="noopener" class="block p-5 bg-orange-50/80 dark:bg-blue-900/30 border-2 border-orange-200 dark:border-blue-700 rounded-xl hover:shadow-lg hover:scale-[1.02] transition-all group"><div class="flex items-start gap-3"><div class="text-3xl">💬</div><div class="flex-1"><div class="text-base font-bold text-heading mb-1 group-hover:text-orange-700 dark:group-hover:text-blue-200 transition-colors">
+加入 Discord 社区
+</div><div class="text-sm text-default">
+与 2000+ 苹果生态开发者交流
+</div></div><svg class="w-5 h-5 text-orange-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg></div></a></div> </article> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
   .copy-icon {
     position: absolute;
     left: -30px; /* 根据您的布局调整位置 */
