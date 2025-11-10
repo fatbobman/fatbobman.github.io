@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>用新的方式记录生活 -- 肘子的 Swift 周报 #11</title>
-<meta name="description" content="上周，苹果发布了 iOS 的最新更新版本 17.2。在这个版本中，苹果终于推出了此前在 WWDC 2023 上预告的“手记”（Journaling）应用。由于其简洁的设计和看似有限的功能，“手记”并未能在第一时间给大部分用户留下深刻印象。自 17.2 beta 1 版本起我便开始使用“手记”。最初与大多数用户一样，我也对苹果花费如此长时间开发这样一个“简单”的应用感到疑惑。但随着使用的深入，我逐渐意识到这背后的野心：一个基于本地设备和 AI 算法的信息自动收集、汇总工具。“手记”不仅仅是一个日记应用，它更是一个生活日志工具。通过 Journaling Suggestions API，开发者可以将应用中的数据作为“手记”的内容推荐给用户。预计不久的将来，“手记”将会整合更多的应用数据，自动整理用户的日常活动，并在获得用户许可后保存这些内容。">
+<meta name="description" content="探讨 iOS 17.2 手记应用、macOS 14.2 中文输入法修复、iCloud Documents 高级功能、ChatGPT 软件工程应用、Maestro UI 测试以及掌握 Swift 中的 final 关键字 — 由肘子的 Swift 周报精选呈现">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/zh/weekly/issue-011/">
 <meta property="og:title" content="用新的方式记录生活 -- 肘子的 Swift 周报 #11">
-<meta property="og:description" content="上周，苹果发布了 iOS 的最新更新版本 17.2。在这个版本中，苹果终于推出了此前在 WWDC 2023 上预告的“手记”（Journaling）应用。由于其简洁的设计和看似有限的功能，“手记”并未能在第一时间给大部分用户留下深刻印象。自 17.2 beta 1 版本起我便开始使用“手记”。最初与大多数用户一样，我也对苹果花费如此长时间开发这样一个“简单”的应用感到疑惑。但随着使用的深入，我逐渐意识到这背后的野心：一个基于本地设备和 AI 算法的信息自动收集、汇总工具。“手记”不仅仅是一个日记应用，它更是一个生活日志工具。通过 Journaling Suggestions API，开发者可以将应用中的数据作为“手记”的内容推荐给用户。预计不久的将来，“手记”将会整合更多的应用数据，自动整理用户的日常活动，并在获得用户许可后保存这些内容。">
+<meta property="og:description" content="探讨 iOS 17.2 手记应用、macOS 14.2 中文输入法修复、iCloud Documents 高级功能、ChatGPT 软件工程应用、Maestro UI 测试以及掌握 Swift 中的 final 关键字 — 由肘子的 Swift 周报精选呈现">
 <meta property="og:url" content="https://fatbobman.com/zh/weekly/issue-011/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://cdn.fatbobman.com/weekly/issue11.webp">
@@ -44,7 +44,7 @@
   },
   "dateModified": "2023-12-19T14:00:00.000Z",
   "datePublished": "2023-12-19T14:00:00.000Z",
-  "description": "上周，苹果发布了 iOS 的最新更新版本 17.2。在这个版本中，苹果终于推出了此前在 WWDC 2023 上预告的“手记”（Journaling）应用。由于其简洁的设计和看似有限的功能，“手记”并未能在第一时间给大部分用户留下深刻印象。自 17.2 beta 1 版本起我便开始使用“手记”。最初与大多数用户一样，我也对苹果花费如此长时间开发这样一个“简单”的应用感到疑惑。但随着使用的深入，我逐渐意识到这背后的野心：一个基于本地设备和 AI 算法的信息自动收集、汇总工具。“手记”不仅仅是一个日记应用，它更是一个生活日志工具。通过 Journaling Suggestions API，开发者可以将应用中的数据作为“手记”的内容推荐给用户。预计不久的将来，“手记”将会整合更多的应用数据，自动整理用户的日常活动，并在获得用户许可后保存这些内容。",
+  "description": "探讨 iOS 17.2 手记应用、macOS 14.2 中文输入法修复、iCloud Documents 高级功能、ChatGPT 软件工程应用、Maestro UI 测试以及掌握 Swift 中的 final 关键字 — 由肘子的 Swift 周报精选呈现",
   "headline": "用新的方式记录生活 -- 肘子的 Swift 周报 #11",
   "image": {
     "@type": "ImageObject",

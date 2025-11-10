@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Keynote 精彩纷呈，实际应用尚需时日 -- 肘子的 Swift 周报 #35</title>
-<meta name="description" content="昨天，WWDC 2024 如期举行。在首场 Keynote 中，人工智能成为了最耀眼的明星。苹果以一种较为自然的方式，将 AI 技术融入系统的各个领域，同时保持现有用户习惯不受影响，并充分利用了设备提供的上下文信息。为了更好地保护用户隐私，除非设备的本地 AI 能力不足，否则不会依赖云端 AI 算力。即便需要访问网络，苹果也承诺将严格保护用户隐私。苹果在拥抱 AI 的同时，并没有放松其对隐私的一贯重视。">
+<meta name="description" content="WWDC 2024 主题演讲展示隐私优先的 AI 集成和重大平台更新。本期周报还精选 Swift 6.0 新特性与并发改进、WWDC 24 后 SwiftUI 增强功能、Swift Concurrency 非可发送闭包处理,以及 TCA 常见问题解答等内容,由肘子的 Swift 周报精选呈现。">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/zh/weekly/issue-035/">
 <meta property="og:title" content="Keynote 精彩纷呈，实际应用尚需时日 -- 肘子的 Swift 周报 #35">
-<meta property="og:description" content="昨天，WWDC 2024 如期举行。在首场 Keynote 中，人工智能成为了最耀眼的明星。苹果以一种较为自然的方式，将 AI 技术融入系统的各个领域，同时保持现有用户习惯不受影响，并充分利用了设备提供的上下文信息。为了更好地保护用户隐私，除非设备的本地 AI 能力不足，否则不会依赖云端 AI 算力。即便需要访问网络，苹果也承诺将严格保护用户隐私。苹果在拥抱 AI 的同时，并没有放松其对隐私的一贯重视。">
+<meta property="og:description" content="WWDC 2024 主题演讲展示隐私优先的 AI 集成和重大平台更新。本期周报还精选 Swift 6.0 新特性与并发改进、WWDC 24 后 SwiftUI 增强功能、Swift Concurrency 非可发送闭包处理,以及 TCA 常见问题解答等内容,由肘子的 Swift 周报精选呈现。">
 <meta property="og:url" content="https://fatbobman.com/zh/weekly/issue-035/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://cdn.fatbobman.com/weekly/issue35.webp">
@@ -44,7 +44,7 @@
   },
   "dateModified": "2024-06-11T14:00:00.000Z",
   "datePublished": "2024-06-11T14:00:00.000Z",
-  "description": "昨天，WWDC 2024 如期举行。在首场 Keynote 中，人工智能成为了最耀眼的明星。苹果以一种较为自然的方式，将 AI 技术融入系统的各个领域，同时保持现有用户习惯不受影响，并充分利用了设备提供的上下文信息。为了更好地保护用户隐私，除非设备的本地 AI 能力不足，否则不会依赖云端 AI 算力。即便需要访问网络，苹果也承诺将严格保护用户隐私。苹果在拥抱 AI 的同时，并没有放松其对隐私的一贯重视。",
+  "description": "WWDC 2024 主题演讲展示隐私优先的 AI 集成和重大平台更新。本期周报还精选 Swift 6.0 新特性与并发改进、WWDC 24 后 SwiftUI 增强功能、Swift Concurrency 非可发送闭包处理,以及 TCA 常见问题解答等内容,由肘子的 Swift 周报精选呈现。",
   "headline": "Keynote 精彩纷呈，实际应用尚需时日 -- 肘子的 Swift 周报 #35",
   "image": {
     "@type": "ImageObject",

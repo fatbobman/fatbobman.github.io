@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Swift，超越苹果生态！ -- 肘子的 Swift 周报 #26</title>
-<meta name="description" content="自 2014 年正式亮相以来，Swift 已步入其发展的第十个年头。虽然自 2015 年末起 Swift 便开始支持 Linux，但长期以来，其在非苹果平台上的推广和应用进展缓慢，许多人仍旧将 Swift 视作苹果生态下的专属语言。">
+<meta name="description" content="Swift 跨平台发展演进、OpenSwiftUI AttributeGraph 实现、解析 Observation 和 SwiftData 框架、ABI 稳定性与库演进模式、Claude 3 Haiku 流式处理、自适应文本颜色、Xcode Playground 图像处理、NSTableView 流畅滚动优化 — 由肘子的 Swift 周报精选呈现">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/zh/weekly/issue-026/">
 <meta property="og:title" content="Swift，超越苹果生态！ -- 肘子的 Swift 周报 #26">
-<meta property="og:description" content="自 2014 年正式亮相以来，Swift 已步入其发展的第十个年头。虽然自 2015 年末起 Swift 便开始支持 Linux，但长期以来，其在非苹果平台上的推广和应用进展缓慢，许多人仍旧将 Swift 视作苹果生态下的专属语言。">
+<meta property="og:description" content="Swift 跨平台发展演进、OpenSwiftUI AttributeGraph 实现、解析 Observation 和 SwiftData 框架、ABI 稳定性与库演进模式、Claude 3 Haiku 流式处理、自适应文本颜色、Xcode Playground 图像处理、NSTableView 流畅滚动优化 — 由肘子的 Swift 周报精选呈现">
 <meta property="og:url" content="https://fatbobman.com/zh/weekly/issue-026/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://cdn.fatbobman.com/weekly/issue26.webp">
@@ -44,7 +44,7 @@
   },
   "dateModified": "2024-04-09T14:00:00.000Z",
   "datePublished": "2024-04-09T14:00:00.000Z",
-  "description": "自 2014 年正式亮相以来，Swift 已步入其发展的第十个年头。虽然自 2015 年末起 Swift 便开始支持 Linux，但长期以来，其在非苹果平台上的推广和应用进展缓慢，许多人仍旧将 Swift 视作苹果生态下的专属语言。",
+  "description": "Swift 跨平台发展演进、OpenSwiftUI AttributeGraph 实现、解析 Observation 和 SwiftData 框架、ABI 稳定性与库演进模式、Claude 3 Haiku 流式处理、自适应文本颜色、Xcode Playground 图像处理、NSTableView 流畅滚动优化 — 由肘子的 Swift 周报精选呈现",
   "headline": "Swift，超越苹果生态！ -- 肘子的 Swift 周报 #26",
   "image": {
     "@type": "ImageObject",
@@ -493,7 +493,7 @@ function copyCode(button, event) {
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/zh/weekly/issue-028/" id="relatedPosts-用 iPhone 感受像素的游戏的快乐！"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#28</span> 用 iPhone 感受像素的游戏的快乐！ </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/zh/weekly/issue-027/" id="relatedPosts-苹果助你成为一日“百万富翁”"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#27</span> 苹果助你成为一日“百万富翁” </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            " href="/zh/weekly/issue-027/" id="relatedPosts-苹果助你成为一日&#34;百万富翁&#34;"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#27</span> 苹果助你成为一日&quot;百万富翁&quot; </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/zh/weekly/issue-025/" id="relatedPosts-Let's VisionOS, Let's rock and roll!"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#25</span> Let&#39;s VisionOS, Let&#39;s rock and roll! </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
@@ -528,7 +528,7 @@ const isHidden = false;
       } catch (e) {
         console.log('Navigation failed:', e);
       }
-    " data-tooltip-target="tooltip-previous-post" data-tooltip-placement="left" id="sidebar-previous-post" class="cursor-pointer" aria-label="Previous post"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-next"></use> </svg> </button>  </div> <div id="tooltip-previous-post" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>#27 : 苹果助你成为一日“百万富翁”</div> <div class="text-xs text-yellow-200 font-extrabold pt-2">⌥ + →</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>(function(){const url = "/zh/weekly/issue-027";
+    " data-tooltip-target="tooltip-previous-post" data-tooltip-placement="left" id="sidebar-previous-post" class="cursor-pointer" aria-label="Previous post"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-next"></use> </svg> </button>  </div> <div id="tooltip-previous-post" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>#27 : 苹果助你成为一日&quot;百万富翁&quot;</div> <div class="text-xs text-yellow-200 font-extrabold pt-2">⌥ + →</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>(function(){const url = "/zh/weekly/issue-027";
 const isHidden = false;
 
   document.addEventListener('keydown', (e) => {

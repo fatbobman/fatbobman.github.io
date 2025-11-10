@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>用 iPhone 感受像素的游戏的快乐！ -- 肘子的 Swift 周报 #28</title>
-<meta name="description" content="苹果公司最近更新了“应用商店审核指南”，现在允许模拟器应用进入 App Store。就在几天前，名为 Delta 的模拟器应用登陆了应用商店。Delta 是一款为 iOS 设计的综合模拟器，支持多种任天堂掌机游戏。这款应用其实很早以前就已经开发完成，但之前由于政策限制，只能以非商店形式提供给用户。">
+<meta name="description" content="App Store 允许 Delta 模拟器上架、SwiftIO Playground Kit 嵌入式 Swift 开发板、Core Data 实现 @ModelActor 优雅并发操作、动态隔离与静态隔离辩论、TCA 框架学习路径、语境词典以用户为中心的独立应用设计、Bazel iOS 迁移指南、Swift 枚举常见错误 — 由肘子的 Swift 周报精选呈现">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/zh/weekly/issue-028/">
 <meta property="og:title" content="用 iPhone 感受像素的游戏的快乐！ -- 肘子的 Swift 周报 #28">
-<meta property="og:description" content="苹果公司最近更新了“应用商店审核指南”，现在允许模拟器应用进入 App Store。就在几天前，名为 Delta 的模拟器应用登陆了应用商店。Delta 是一款为 iOS 设计的综合模拟器，支持多种任天堂掌机游戏。这款应用其实很早以前就已经开发完成，但之前由于政策限制，只能以非商店形式提供给用户。">
+<meta property="og:description" content="App Store 允许 Delta 模拟器上架、SwiftIO Playground Kit 嵌入式 Swift 开发板、Core Data 实现 @ModelActor 优雅并发操作、动态隔离与静态隔离辩论、TCA 框架学习路径、语境词典以用户为中心的独立应用设计、Bazel iOS 迁移指南、Swift 枚举常见错误 — 由肘子的 Swift 周报精选呈现">
 <meta property="og:url" content="https://fatbobman.com/zh/weekly/issue-028/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://cdn.fatbobman.com/weekly/issue28.webp">
@@ -44,7 +44,7 @@
   },
   "dateModified": "2024-04-22T14:00:00.000Z",
   "datePublished": "2024-04-22T14:00:00.000Z",
-  "description": "苹果公司最近更新了“应用商店审核指南”，现在允许模拟器应用进入 App Store。就在几天前，名为 Delta 的模拟器应用登陆了应用商店。Delta 是一款为 iOS 设计的综合模拟器，支持多种任天堂掌机游戏。这款应用其实很早以前就已经开发完成，但之前由于政策限制，只能以非商店形式提供给用户。",
+  "description": "App Store 允许 Delta 模拟器上架、SwiftIO Playground Kit 嵌入式 Swift 开发板、Core Data 实现 @ModelActor 优雅并发操作、动态隔离与静态隔离辩论、TCA 框架学习路径、语境词典以用户为中心的独立应用设计、Bazel iOS 迁移指南、Swift 枚举常见错误 — 由肘子的 Swift 周报精选呈现",
   "headline": "用 iPhone 感受像素的游戏的快乐！ -- 肘子的 Swift 周报 #28",
   "image": {
     "@type": "ImageObject",
@@ -483,7 +483,7 @@ function copyCode(button, event) {
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/zh/weekly/issue-029/" id="relatedPosts-博客提速和苹果的新 AI 模型"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#29</span> 博客提速和苹果的新 AI 模型 </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/zh/weekly/issue-027/" id="relatedPosts-苹果助你成为一日“百万富翁”"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#27</span> 苹果助你成为一日“百万富翁” </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            " href="/zh/weekly/issue-027/" id="relatedPosts-苹果助你成为一日&#34;百万富翁&#34;"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#27</span> 苹果助你成为一日&quot;百万富翁&quot; </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             hidden lg:flex" href="/zh/weekly/issue-026/" id="relatedPosts-Swift，超越苹果生态！"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#26</span> Swift，超越苹果生态！ </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
@@ -495,7 +495,7 @@ function copyCode(button, event) {
       } catch (e) {
         console.log('Navigation failed:', e);
       }
-    " data-tooltip-target="tooltip-next-post" data-tooltip-placement="left" id="sidebar-next-post" class="cursor-pointer" aria-label="Next post"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-previous"></use> </svg> </button>  </div> <div id="tooltip-next-post" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>#27 : 苹果助你成为一日“百万富翁”</div> <div class="text-xs text-yellow-200 font-extrabold pt-2">⌥ + ←</div> </div> </div> <script>(function(){const url = "/zh/weekly/issue-027";
+    " data-tooltip-target="tooltip-next-post" data-tooltip-placement="left" id="sidebar-next-post" class="cursor-pointer" aria-label="Next post"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-previous"></use> </svg> </button>  </div> <div id="tooltip-next-post" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>#27 : 苹果助你成为一日&quot;百万富翁&quot;</div> <div class="text-xs text-yellow-200 font-extrabold pt-2">⌥ + ←</div> </div> </div> <script>(function(){const url = "/zh/weekly/issue-027";
 const isHidden = false;
 
   document.addEventListener('keydown', (e) => {

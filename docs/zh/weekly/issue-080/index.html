@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>更短的有效期和更长的保质期 -- 肘子的 Swift 周报 #80</title>
-<meta name="description" content="在上周一，我的博客的 HTTPS 证书出现了短暂的失效。好在失效后五分钟，就有热心网友提醒了我。联系云服务商后发现，是对方处理 SSL 证书自动续签的代码出现了故障。经过两个小时的排查，问题得以解除，网站恢复了正常。">
+<meta name="description" content="探讨 SSL 证书生命周期变化及其对开发者的影响。本期还包括改进 Xcode 以适应现代开发、SwiftUI Color 高级技巧、Swift reduce 函数式编程,以及在 VSCode 中测试 Core Data，由肘子的 Swift 周报精选呈现。">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/zh/weekly/issue-080/">
 <meta property="og:title" content="更短的有效期和更长的保质期 -- 肘子的 Swift 周报 #80">
-<meta property="og:description" content="在上周一，我的博客的 HTTPS 证书出现了短暂的失效。好在失效后五分钟，就有热心网友提醒了我。联系云服务商后发现，是对方处理 SSL 证书自动续签的代码出现了故障。经过两个小时的排查，问题得以解除，网站恢复了正常。">
+<meta property="og:description" content="探讨 SSL 证书生命周期变化及其对开发者的影响。本期还包括改进 Xcode 以适应现代开发、SwiftUI Color 高级技巧、Swift reduce 函数式编程,以及在 VSCode 中测试 Core Data，由肘子的 Swift 周报精选呈现。">
 <meta property="og:url" content="https://fatbobman.com/zh/weekly/issue-080/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://cdn.fatbobman.com/weekly/issue80.webp">
@@ -44,7 +44,7 @@
   },
   "dateModified": "2025-04-21T14:00:00.000Z",
   "datePublished": "2025-04-21T14:00:00.000Z",
-  "description": "在上周一，我的博客的 HTTPS 证书出现了短暂的失效。好在失效后五分钟，就有热心网友提醒了我。联系云服务商后发现，是对方处理 SSL 证书自动续签的代码出现了故障。经过两个小时的排查，问题得以解除，网站恢复了正常。",
+  "description": "探讨 SSL 证书生命周期变化及其对开发者的影响。本期还包括改进 Xcode 以适应现代开发、SwiftUI Color 高级技巧、Swift reduce 函数式编程,以及在 VSCode 中测试 Core Data，由肘子的 Swift 周报精选呈现。",
   "headline": "更短的有效期和更长的保质期 -- 肘子的 Swift 周报 #80",
   "image": {
     "@type": "ImageObject",
@@ -477,11 +477,11 @@ function copyCode(button, event) {
   }
 })();</script> <div class="pb-16 sm:pb-24" id="weekly-bottom-navigator"> <div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 md:gap-4" id="more-tips"> <a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/zh/weekly/issue-083/" id="relatedPosts-别让 Vibe Coding 阻碍了你的技术成长"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#83</span> 别让 Vibe Coding 阻碍了你的技术成长 </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            " href="/zh/weekly/issue-083/" id="relatedPosts-别让 Vibe Coding 阻碍技术成长"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#83</span> 别让 Vibe Coding 阻碍技术成长 </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/zh/weekly/issue-082/" id="relatedPosts-苹果为傲慢付出了代价"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#82</span> 苹果为傲慢付出了代价 </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            " href="/zh/weekly/issue-082/" id="relatedPosts-苹果为傲慢付出代价"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#82</span> 苹果为傲慢付出代价 </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/zh/weekly/issue-081/" id="relatedPosts-Chrome 会成为 OpenAI 的下一个目标？"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#81</span> Chrome 会成为 OpenAI 的下一个目标？ </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            " href="/zh/weekly/issue-081/" id="relatedPosts-从开放平台到受控生态：谷歌宣布 Android 开发者验证政策"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#81</span> 从开放平台到受控生态：谷歌宣布 Android 开发者验证政策 </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/zh/weekly/issue-079/" id="relatedPosts-微软收紧插件、谷歌发力云端，Xcode 何去何从？"> <span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black"> <span class="mr-1">#79</span> 微软收紧插件、谷歌发力云端，Xcode 何去何从？ </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
@@ -516,7 +516,7 @@ const isHidden = false;
       } catch (e) {
         console.log('Navigation failed:', e);
       }
-    " data-tooltip-target="tooltip-previous-post" data-tooltip-placement="left" id="sidebar-previous-post" class="cursor-pointer" aria-label="Previous post"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-next"></use> </svg> </button>  </div> <div id="tooltip-previous-post" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>#81 : Chrome 会成为 OpenAI 的下一个目标？</div> <div class="text-xs text-yellow-200 font-extrabold pt-2">⌥ + →</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>(function(){const url = "/zh/weekly/issue-081";
+    " data-tooltip-target="tooltip-previous-post" data-tooltip-placement="left" id="sidebar-previous-post" class="cursor-pointer" aria-label="Previous post"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-next"></use> </svg> </button>  </div> <div id="tooltip-previous-post" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>#81 : 从开放平台到受控生态：谷歌宣布 Android 开发者验证政策</div> <div class="text-xs text-yellow-200 font-extrabold pt-2">⌥ + →</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>(function(){const url = "/zh/weekly/issue-081";
 const isHidden = false;
 
   document.addEventListener('keydown', (e) => {
