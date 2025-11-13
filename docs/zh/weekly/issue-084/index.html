@@ -127,7 +127,7 @@
     }
   },
   "@id": "#author"
-}</script><link rel="stylesheet" href="/_astro/about.CibBr_uP.css">
+}</script><link rel="stylesheet" href="/_astro/about.8k1dE3AA.css">
 <style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
 </style>
 <link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css">
@@ -285,7 +285,7 @@ const enableStickyInMobile = true;
 </blockquote>
 <h3 id="图表对齐之谜终于解开了-finally-fixing-my-swift-charts-alignment-problem"><a href="https://l.fatbobman.com/w084-02" rel="noreferrer noopener">图表对齐之谜，终于解开了 (Finally Fixing My Swift Charts Alignment Problem)</a></h3>
 <p>在使用 Swift Charts 时，<a href="https://bsky.app/profile/chriswu.com?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Chris Wu</a> 遇到了一个奇怪的问题：基于 <code>LineMark</code> 绘制的图表始终无法精确对齐午夜，往往略晚开始、略早结束。经过长时间查阅文档、向 AI 求助无果后，最终他在 Stack Overflow 中一条仅有两赞的评论中找到了关键线索。</p>
-<p>问题出在 <code>.value(_:unit:)</code> 的 <code>unit</code> 参数上——它会让绘图点落在两个单位之间的中点（例如 <code>.hour</code> 会将 8:00 显示在 8:30），这虽然适用于柱状图，却会使折线图产生对齐偏差。移除 <code>unit:</code> 和 <code>calendar:</code> 后，图表终于与午夜轴线完美对齐。</p>
+<p>问题出在 <code>.value(_:unit:)</code> 的 <code>unit</code> 参数上——它会让绘图点落在两个单位之间的中点（例如 <code>.hour</code> 会将 8<span class="mdx-00"></span> 显示在 8<span class="mdx-30"></span>），这虽然适用于柱状图，却会使折线图产生对齐偏差。移除 <code>unit:</code> 和 <code>calendar:</code> 后，图表终于与午夜轴线完美对齐。</p>
 <blockquote>
 <p>AI 的知识边界受限于语料覆盖面，对于这种缺乏广泛讨论的问题，反而不如一个冷门但关键的手动搜索来得管用。</p>
 </blockquote>
