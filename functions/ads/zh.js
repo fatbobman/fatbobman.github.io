@@ -259,8 +259,8 @@ const currentAd = `
       </div>
 `
 
-const startTime = new Date('2025-09-07T00:00:00Z');
-const endTime = new Date('2025-09-15T00:00:00Z');
+const startTime = new Date('2025-11-23T14:00:00Z');
+const endTime = new Date('2025-11-30T20:00:00Z');
 
 export async function onRequest(context) {
   const allowedOrigins = [
