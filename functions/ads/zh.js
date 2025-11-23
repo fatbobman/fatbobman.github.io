@@ -259,7 +259,7 @@ const currentAd = `
       </div>
 `
 
-const startTime = new Date('2025-11-23T14:00:00Z');
+const startTime = new Date('2025-11-23T10:00:00Z');
 const endTime = new Date('2025-11-30T20:00:00Z');
 
 export async function onRequest(context) {
