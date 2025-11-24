@@ -277,6 +277,9 @@ const currentAd = `
             />
 
           <div class="space-y-2 pr-1">
+            <div class="text-sm font-semibold text-red-600 dark:text-red-400 mb-2">
+              🎉 Black Friday Offer – 30% OFF this week only!
+            </div>
             <div class="mb-6">
               <span
                 class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight group-hover:text-amber-900 dark:group-hover:text-white"
