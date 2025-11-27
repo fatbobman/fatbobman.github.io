@@ -277,7 +277,7 @@ const currentAd = `
             />
 
           <div class="space-y-2 pr-1">
-             <div class="inline-flex items-center gap-2 text-sm font-black tracking-wide text-red-700 bg-white/90 px-3 py-1 rounded-full border border-red-500 shadow-sm">
+             <div class="text-sm font-semibold text-red-600 dark:text-red-400 mb-2">
               🎉 Black Friday Offer – 30% OFF this week only!
             </div>
             <div class="mb-6">
