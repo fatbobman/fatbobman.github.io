@@ -244,7 +244,7 @@ const ads = [
 
 
 const currentAd = `
- <div class="relative rounded-lg overflow-visible shadow-lg mt-8 sm:mt-0">
+        <div class="relative rounded-lg overflow-visible shadow-lg mt-8 sm:mt-0">
       <!-- 上半部分（赞助展示区域） -->
       <a href="https://l.fatbobman.com/sb-proxyman" target="_blank" rel="sponsored">
         <div
@@ -277,9 +277,7 @@ const currentAd = `
             />
 
           <div class="space-y-2 pr-1">
-             <div class="text-sm font-semibold text-red-600 dark:text-red-400 mb-2">
-              🎉 Black Friday Offer – 30% OFF this week only!
-            </div>
+
             <div class="mb-6">
               <span
                 class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight group-hover:text-amber-900 dark:group-hover:text-white"
@@ -291,32 +289,36 @@ const currentAd = `
               Try <span class="font-semibold">Proxyman!</span> The best-in-class macOS that helps you capture/debug
               HTTP(s) with a few clicks. Support iOS devices and Simulator.
             </div>
+            <div class="px-3 py-1.5 mb-2 text-sm font-bold text-red-700 dark:text-orange-400 bg-orange-100 dark:bg-orange-950/40 rounded-md border-l-4 border-red-600 dark:border-orange-500">
+              🎉 Black Friday Offer – 30% OFF this week only!
+            </div>
           </div>
         </div>
       </a>
 
-      <!-- 下半部分（Become a sponsor CTA） -->
-      <div
-        class="bg-orange-200/60 dark:bg-blue-900/50 backdrop-blur-sm px-4 sm:px-8 py-4 sm:py-3 cursor-pointer hover:bg-orange-300/70 dark:hover:bg-blue-900/70 transition-all group border-[1.5px] border-t-0 border-orange-500/60 dark:border-blue-500/70 rounded-b-lg relative z-10"
-        onclick="window.location.href='/en/sponsorship/';"
-      >
+        <!-- 下半部分（Become a sponsor CTA） -->
+      <a href="/en/sponsorship/" target="_blank" class="block">
         <div
-          class="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between gap-2 sm:gap-0"
+          class="bg-orange-100/40 dark:bg-blue-950/30 backdrop-blur-sm px-4 sm:px-8 py-3 sm:py-2.5 cursor-pointer hover:bg-orange-100/60 dark:hover:bg-blue-950/40 transition-all group border-[1px] border-t-0 border-orange-300/40 dark:border-blue-700/40 rounded-b-lg relative z-10"
         >
-          <span class="text-orange-800 dark:text-blue-100 text-sm font-medium text-center sm:text-left">
-            Reaching 50,000+ Swift developers monthly
-          </span>
-          <span
-            class="text-orange-800 dark:text-blue-100 text-sm font-semibold flex items-center gap-2 group-hover:gap-3 transition-all"
+          <div
+            class="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between gap-2 sm:gap-0"
           >
-            Become a sponsor
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"
-              ></path>
-            </svg>
-          </span>
+            <span class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-normal text-center sm:text-left">
+              Reaching 50,000+ Swift developers monthly
+            </span>
+            <span
+              class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2 group-hover:gap-3 transition-all"
+            >
+              Become a sponsor
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"
+                ></path>
+              </svg>
+            </span>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 `

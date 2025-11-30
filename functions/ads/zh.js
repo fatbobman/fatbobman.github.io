@@ -232,9 +232,6 @@ const currentAd = `
               decoding="async"
             />
             <div class="space-y-2 pr-1">
-               <div class="text-sm font-semibold text-red-600 dark:text-red-400 mb-2">
-                🎉 黑五特惠 – 本周限时七折！
-              </div>
               <div class="mb-6">
                 <span
                   class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight dark:group-hover:text-white group-hover:text-amber-900"
@@ -245,6 +242,9 @@ const currentAd = `
               <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
                 试试 <span class="font-semibold">Proxyman！</span>这是一款顶级的 macOS 应用，只需点击几下，即可轻松捕获和调试 HTTP(s) 流量。支持 iOS
                 设备和模拟器。
+              </div>
+              <div class="text-sm font-semibold text-red-600 dark:text-red-400 mb-2">
+                🎉 黑五特惠 – 本周限时七折！
               </div>
             </div>
           </div>
