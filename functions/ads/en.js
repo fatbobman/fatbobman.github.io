@@ -297,7 +297,7 @@ const currentAd = `
       </a>
 
         <!-- 下半部分（Become a sponsor CTA） -->
-      <a href="/en/sponsorship/" target="_blank" class="block no-underline">
+      <a href="/en/sponsorship/" target="_blank" class="block not-prose">
         <div
       class="bg-orange-100/40 dark:bg-blue-950/30 backdrop-blur-sm px-4 sm:px-8 py-3 sm:py-2.5 cursor-pointer hover:bg-orange-100/60 dark:hover:bg-blue-950/40 transition-all group rounded-b-lg relative z-10"
     >
