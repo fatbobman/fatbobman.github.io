@@ -243,22 +243,35 @@ const currentAd = `
                 试试 <span class="font-semibold">Proxyman！</span>这是一款顶级的 macOS 应用，只需点击几下，即可轻松捕获和调试 HTTP(s) 流量。支持 iOS
                 设备和模拟器。
               </div>
-              <div class="text-sm font-semibold text-red-600 dark:text-red-400 mb-2">
+              <div class="px-3 py-1.5 mb-2 text-sm font-bold text-red-700 dark:text-orange-400 bg-orange-100 dark:bg-orange-950/40 rounded-md border-l-4 border-red-600 dark:border-orange-500">
                 🎉 黑五特惠 – 本周限时七折！
               </div>
             </div>
           </div>
         </a>
-        <div class="flex justify-center pt-6">
-          <a
-            href="https://l.fatbobman.com/sb-proxyman"
-            class="text-secondary transition-all duration-200 text-xs font-semibold dark:hover:text-blue-200 hover:text-red-600 hover:scale-105 hover:font-bold cursor-pointer"
-            rel="sponsored"
-            target="_blank"
+    <!-- 下半部分（Become a sponsor CTA） -->
+    <a href="https://discord.com/invite/7FedN5E2QQ" target="_blank" rel="sponsored" class="block not-prose">
+      <div
+      class="bg-orange-100/40 dark:bg-blue-950/30 backdrop-blur-sm px-4 sm:px-8 py-3 sm:py-2.5 cursor-pointer hover:bg-orange-100/60 dark:hover:bg-blue-950/40 transition-all group rounded-b-lg relative z-10"
+    >
+        <div
+          class="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between gap-2 sm:gap-0"
+        >
+          <span class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-normal text-center sm:text-left">
+            与 2000+ 开发者一起讨论 iOS 开发
+          </span>
+          <span
+            class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2 group-hover:gap-3 transition-all"
           >
-            🚀 立即试用 →
-          </a>
+            加入 Discord 社区
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"
+              ></path>
+            </svg>
+          </span>
         </div>
+      </div>
+    </a>
       </div>
 `
 
