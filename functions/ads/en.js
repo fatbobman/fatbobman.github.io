@@ -337,21 +337,21 @@ export async function onRequest(context) {
 
   // 动态设置 CORS
   if (allowedOrigins.includes(origin)) {
-    headers.append('Access-Control-Allow-Origin', origin);
+    headers.append('Access-Control-Allow-Origin', '*'); // origin 为请求的源地址
     headers.append('Vary', 'Origin');
   }
 
   // 判断返回固定广告还是随机广告
   let ad = currentAd;
-  let cacheDuration = 1200;
+  let cacheDuration = 30; // 1200秒 20分钟
   // headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
   if (now >= startTime && now <= endTime) {
     ad = currentAd; // 固定广告
-    cacheDuration = 1200; // 20 分钟
+    cacheDuration = 30; // 20 分钟 1200
     headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
   } else {
     ad = getRandomContent(); // 随机广告
-    cacheDuration = 300; // 5分钟
+    cacheDuration = 30; // 5分钟 300
     headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=60`);
   }
 
