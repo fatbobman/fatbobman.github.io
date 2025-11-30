@@ -248,12 +248,12 @@ const currentAd = `
       <!-- 上半部分（赞助展示区域） -->
       <a href="https://l.fatbobman.com/sb-proxyman" target="_blank" rel="sponsored">
         <div
-            class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 transition-all duration-200"
-          >
-          <!-- 右上角按钮：Sponsored Example -->
-<div
-        class="absolute top-[-30px] sm:top-0 right-0 dark:text-blue-200 text-secondary text-xs font-black rounded mt-4 mr-4 dark:bg-gray-800 bg-white sm:dark:bg-black/40 sm:bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl"
+        class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 transition-all duration-200"
       >
+          <!-- 右上角按钮：Sponsored Example -->
+          <div
+          class="absolute top-[-30px] sm:top-0 right-0 dark:text-blue-200 text-secondary text-xs font-black rounded mt-4 mr-4 dark:bg-gray-800 bg-white sm:dark:bg-black/40 sm:bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl"
+        >
           Try it, love it!
           </div>
 
@@ -297,28 +297,28 @@ const currentAd = `
       </a>
 
         <!-- 下半部分（Become a sponsor CTA） -->
-      <a href="/en/sponsorship/" target="_blank" class="block not-prose">
-        <div
-      class="bg-orange-100/40 dark:bg-blue-950/30 backdrop-blur-sm px-4 sm:px-8 py-3 sm:py-2.5 cursor-pointer hover:bg-orange-100/60 dark:hover:bg-blue-950/40 transition-all group rounded-b-lg relative z-10"
-    >
+        <a href="/en/sponsorship/" target="_blank" class="block not-prose" rel="sponsored">
           <div
-            class="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between gap-2 sm:gap-0"
-          >
-            <span class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-normal text-center sm:text-left group-hover:text-orange-900 dark:group-hover:text-blue-100">
-              Reaching 50,000+ Swift developers monthly
-            </span>
-            <span
-              class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all group-hover:text-orange-900 dark:group-hover:text-blue-100"
+          class="bg-orange-100/40 dark:bg-blue-950/30 backdrop-blur-sm px-4 sm:px-8 py-3 sm:py-2.5 cursor-pointer hover:bg-orange-100/60 dark:hover:bg-blue-950/40 transition-all group rounded-b-lg relative z-10"
+        >
+            <div
+              class="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between gap-2 sm:gap-0"
             >
-              Become a sponsor
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"
-                ></path>
-              </svg>
-            </span>
+              <span class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-normal text-center sm:text-left group-hover:text-orange-900 dark:group-hover:text-blue-100">
+                Reaching 50,000+ Swift developers monthly
+              </span>
+              <span
+                class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all group-hover:text-orange-900 dark:group-hover:text-blue-100"
+              >
+                Become a sponsor
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  ></path>
+                </svg>
+              </span>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
     </div>
   </div>
 `

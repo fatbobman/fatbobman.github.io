@@ -203,76 +203,76 @@ const ads = [
 ]
 
 const currentAd = `
-    <div>
-        <a href="https://l.fatbobman.com/sb-proxyman" target="_blank" rel="sponsored">
-          <div
-            class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 transition-all duration-200"
-          >
+    <div class="relative rounded-lg overflow-visible shadow-lg mt-8 sm:mt-0">
+  <a href="https://l.fatbobman.com/sb-proxyman" target="_blank" rel="sponsored">
+    <div
+    class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 transition-all duration-200"
+  >
       <div
         class="absolute top-[-30px] sm:top-0 right-0 dark:text-blue-200 text-secondary text-xs font-black rounded mt-4 mr-4 dark:bg-gray-800 bg-white sm:dark:bg-black/40 sm:bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl"
       >
-              立即试用，你会爱上它！
-            </div>
-            <img
-              src="https://cdn.fatbobman.com/ads/proxyman-icon-red-trim.webp"
-              alt="Proxyman Logo"
-              width="80"
-              height="80"
-              class="mr-0 sm:mr-6 mb-4 sm:mb-0 hidden rounded-lg dark:sm:block"
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              src="https://cdn.fatbobman.com/ads/proxyman-icon-blue-trim.webp"
-              alt="Proxyman Logo"
-              width="80"
-              height="80"
-              class="mr-0 sm:mr-6 mb-4 sm:mb-0 hidden sm:block rounded-lg dark:hidden"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="space-y-2 pr-1">
-              <div class="mb-6">
-                <span
-                  class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight dark:group-hover:text-white group-hover:text-amber-900"
-                >
-                  需要在 iPhone 上调试 HTTPS？
-                </span>
-              </div>
-              <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
-                试试 <span class="font-semibold">Proxyman！</span>这是一款顶级的 macOS 应用，只需点击几下，即可轻松捕获和调试 HTTP(s) 流量。支持 iOS
-                设备和模拟器。
-              </div>
-              <div class="px-3 py-1.5 mb-2 text-sm font-bold text-red-700 dark:text-orange-400 bg-orange-100 dark:bg-orange-950/40 rounded-md border-l-4 border-red-600 dark:border-orange-500">
-                🎉 黑五特惠 – 本周限时七折！
-              </div>
-            </div>
-          </div>
-        </a>
-    <!-- 下半部分（Become a sponsor CTA） -->
-    <a href="https://discord.com/invite/7FedN5E2QQ" target="_blank" rel="sponsored" class="block not-prose">
-      <div
-      class="bg-orange-100/40 dark:bg-blue-950/30 backdrop-blur-sm px-4 sm:px-8 py-3 sm:py-2.5 cursor-pointer hover:bg-orange-100/60 dark:hover:bg-blue-950/40 transition-all group rounded-b-lg relative z-10"
-    >
-        <div
-          class="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between gap-2 sm:gap-0"
-        >
-          <span class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-normal text-center sm:text-left group-hover:text-orange-900 dark:group-hover:text-blue-100">
-            与 2000+ 开发者一起讨论 iOS 开发
-          </span>
+        立即试用，你会爱上它！
+      </div>
+      <img
+        src="https://cdn.fatbobman.com/ads/proxyman-icon-red-trim.webp"
+        alt="Proxyman Logo"
+        width="80"
+        height="80"
+        class="mr-0 sm:mr-6 mb-4 sm:mb-0 hidden rounded-lg dark:sm:block"
+        loading="lazy"
+        decoding="async"
+      />
+      <img
+        src="https://cdn.fatbobman.com/ads/proxyman-icon-blue-trim.webp"
+        alt="Proxyman Logo"
+        width="80"
+        height="80"
+        class="mr-0 sm:mr-6 mb-4 sm:mb-0 hidden sm:block rounded-lg dark:hidden"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="space-y-2 pr-1">
+        <div class="mb-6">
           <span
-            class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2  transition-all group-hover:text-orange-900 dark:group-hover:text-blue-100"
+            class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight dark:group-hover:text-white group-hover:text-amber-900"
           >
-            加入 Discord 社区
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"
-              ></path>
-            </svg>
+            需要在 iPhone 上调试 HTTPS？
           </span>
         </div>
+        <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
+          试试 <span class="font-semibold">Proxyman！</span>这是一款顶级的 macOS 应用，只需点击几下，即可轻松捕获和调试 HTTP(s) 流量。支持 iOS
+          设备和模拟器。
+        </div>
+        <div class="px-3 py-1.5 mb-2 text-sm font-bold text-red-700 dark:text-orange-400 bg-orange-100 dark:bg-orange-950/40 rounded-md border-l-4 border-red-600 dark:border-orange-500">
+          🎉 黑五特惠 – 本周限时七折！
+        </div>
       </div>
-    </a>
-      </div>
+    </div>
+  </a>
+<!-- 下半部分（Become a sponsor CTA） -->
+<a href="https://discord.com/invite/7FedN5E2QQ" target="_blank" rel="sponsored" class="block not-prose">
+<div
+class="bg-orange-100/40 dark:bg-blue-950/30 backdrop-blur-sm px-4 sm:px-8 py-3 sm:py-2.5 cursor-pointer hover:bg-orange-100/60 dark:hover:bg-blue-950/40 transition-all group rounded-b-lg relative z-10"
+>
+  <div
+    class="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between gap-2 sm:gap-0"
+  >
+    <span class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-normal text-center sm:text-left group-hover:text-orange-900 dark:group-hover:text-blue-100">
+      与 2000+ 开发者一起讨论 iOS 开发
+    </span>
+    <span
+      class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all group-hover:text-orange-900 dark:group-hover:text-blue-100"
+    >
+      加入 Discord 社区
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"
+        ></path>
+      </svg>
+    </span>
+  </div>
+</div>
+</a>
+</div>
 `
 
 const startTime = new Date('2025-11-23T10:00:00Z');
