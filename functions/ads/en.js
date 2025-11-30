@@ -246,7 +246,7 @@ const ads = [
 const currentAd = `
         <div class="relative rounded-lg overflow-visible shadow-lg mt-8 sm:mt-0">
       <!-- 上半部分（赞助展示区域） -->
-      <a href="https://l.fatbobman.com/sb-proxyman" target="_blank" rel="sponsored">
+      <a href="https://l.fatbobman.com/sb-boltai" target="_blank" rel="sponsored">
         <div
         class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 transition-all duration-200"
       >
@@ -254,77 +254,71 @@ const currentAd = `
           <div
           class="absolute top-[-30px] sm:top-0 right-0 dark:text-blue-200 text-secondary text-xs font-black rounded mt-4 mr-4 dark:bg-gray-800 bg-white sm:dark:bg-black/40 sm:bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl"
         >
-          Try it, love it!
+            Try BoltAI today!
           </div>
 
           <img
-              src="https://cdn.fatbobman.com/ads/proxyman-icon-red-trim.webp"
-              alt="Proxyman Logo"
-              width="80"
-              height="80"
-              class="mr-0 sm:mr-6 mb-4 sm:mb-0 hidden rounded-lg dark:sm:block"
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              src="https://cdn.fatbobman.com/ads/proxyman-icon-blue-trim.webp"
-              alt="Proxyman Logo"
-              width="80"
-              height="80"
-              class="mr-0 sm:mr-6 mb-4 sm:mb-0 hidden sm:block rounded-lg dark:hidden"
-              loading="lazy"
-              decoding="async"
-            />
+            src="https://cdn.fatbobman.com/sb-boltai-White512@2x.png"
+            alt="BoltAI Logo"
+            width="80"
+            height="80"
+            class="mr-0 sm:mr-3 mb-4 sm:mb-0 hidden sm:block rounded-lg
+opacity-90
+dark:opacity-80 dark:saturate-75 dark:brightness-90 dark:contrast-90"
+            loading="lazy"
+            decoding="async"
+          />
 
           <div class="space-y-2 pr-1">
+
 
             <div class="mb-6">
               <span
                 class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight group-hover:text-amber-900 dark:group-hover:text-white"
               >
-              Need to debug HTTPS on your iPhone?
+              All-in-one AI chat app for Mac <br> native, ultra-fast, 100+ pro features.
               </span>
             </div>
             <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
-              Try <span class="font-semibold">Proxyman!</span> The best-in-class macOS that helps you capture/debug
-              HTTP(s) with a few clicks. Support iOS devices and Simulator.
+              Try <span class="font-semibold">BoltAI!</span> The best AI client for macOS: get instant help from AI with code, writing, and research in one clean, native workspace.
             </div>
+
             <div class="px-3 py-1.5 mb-2 text-sm font-bold text-red-700 dark:text-orange-400 bg-orange-100 dark:bg-orange-950/40 rounded-md border-l-4 border-red-600 dark:border-orange-500">
-              🎉 Black Friday Offer – 30% OFF this week only!
+              🎉 Friday offer: 51% OFF with code BFCM25
             </div>
           </div>
         </div>
       </a>
 
-        <!-- 下半部分（Become a sponsor CTA） -->
-        <a href="/en/sponsorship/" target="_blank" class="block not-prose" rel="sponsored">
+      <!-- 下半部分（Become a sponsor CTA） -->
+      <a href="/en/sponsorship/" target="_blank" class="block not-prose">
+        <div
+        class="bg-orange-100/40 dark:bg-blue-950/30 backdrop-blur-sm px-4 sm:px-8 py-3 sm:py-2.5 cursor-pointer hover:bg-orange-100/60 dark:hover:bg-blue-950/40 transition-all group rounded-b-lg relative z-10"
+      >
           <div
-          class="bg-orange-100/40 dark:bg-blue-950/30 backdrop-blur-sm px-4 sm:px-8 py-3 sm:py-2.5 cursor-pointer hover:bg-orange-100/60 dark:hover:bg-blue-950/40 transition-all group rounded-b-lg relative z-10"
-        >
-            <div
-              class="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between gap-2 sm:gap-0"
+            class="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between gap-2 sm:gap-0"
+          >
+            <span class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-normal text-center sm:text-left group-hover:text-orange-900 dark:group-hover:text-blue-100">
+              Reaching 50,000+ Swift developers monthly
+            </span>
+            <span
+              class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all group-hover:text-orange-900 dark:group-hover:text-blue-100"
             >
-              <span class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-normal text-center sm:text-left group-hover:text-orange-900 dark:group-hover:text-blue-100">
-                Reaching 50,000+ Swift developers monthly
-              </span>
-              <span
-                class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all group-hover:text-orange-900 dark:group-hover:text-blue-100"
-              >
-                Become a sponsor
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  ></path>
-                </svg>
-              </span>
-            </div>
+              Become a sponsor
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"
+                ></path>
+              </svg>
+            </span>
           </div>
-        </a>
+        </div>
+      </a>
     </div>
   </div>
 `
 
-const startTime = new Date('2025-11-23T10:00:00Z');
-const endTime = new Date('2025-11-30T20:00:00Z');
+const startTime = new Date('2025-12-01T00:00:00Z');
+const endTime = new Date('2025-12-08T10:00:00Z');
 
 export async function onRequest(context) {
   const allowedOrigins = [
