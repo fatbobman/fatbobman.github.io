@@ -208,9 +208,9 @@ const currentAd = `
           <div
             class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 transition-all duration-200"
           >
-            <div
-              class="absolute top-[-30px] sm:top-0 right-0 dark:text-blue-200 text-secondary text-xs font-black rounded mt-4 mr-4 dark:bg-gray-800 bg-white sm:dark:bg-black/40 sm:bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl"
-            >
+      <div
+        class="absolute top-[-30px] sm:top-0 right-0 dark:text-blue-200 text-secondary text-xs font-black rounded mt-4 mr-4 dark:bg-gray-800 bg-white sm:dark:bg-black/40 sm:bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl"
+      >
               立即试用，你会爱上它！
             </div>
             <img
@@ -257,11 +257,11 @@ const currentAd = `
         <div
           class="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between gap-2 sm:gap-0"
         >
-          <span class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-normal text-center sm:text-left">
+          <span class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-normal text-center sm:text-left group-hover:text-orange-900 dark:group-hover:text-blue-100">
             与 2000+ 开发者一起讨论 iOS 开发
           </span>
           <span
-            class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2  transition-all"
+            class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2  transition-all group-hover:text-orange-900 dark:group-hover:text-blue-100"
           >
             加入 Discord 社区
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -280,23 +280,23 @@ const endTime = new Date('2025-11-30T20:00:00Z');
 
 export async function onRequest(context) {
   const allowedOrigins = [
-      'http://localhost:4321',
-      'https://fatbobman.com',
-      'https://fatbobman.github.io',
-      'blogsource-8wyy6rcw.edgeone.site'
+    'http://localhost:4321',
+    'https://fatbobman.com',
+    'https://fatbobman.github.io',
+    'blogsource-8wyy6rcw.edgeone.site'
   ];
 
   const request = context.request;
   const origin = request.headers.get('Origin');
   const now = new Date();
   const headers = new Headers({
-      'content-type': 'text/html; charset=UTF-8',
+    'content-type': 'text/html; charset=UTF-8',
   });
 
   // 动态设置 CORS
   if (allowedOrigins.includes(origin)) {
-      headers.append('Access-Control-Allow-Origin', origin);
-      headers.append('Vary', 'Origin');
+    headers.append('Access-Control-Allow-Origin', origin);
+    headers.append('Vary', 'Origin');
   }
 
   // 判断返回固定广告还是随机广告
@@ -304,13 +304,13 @@ export async function onRequest(context) {
   let cacheDuration = 1200;
   // headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
   if (now >= startTime && now <= endTime) {
-      ad = currentAd; // 固定广告
-      cacheDuration = 1200; // 20 分钟
-      headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
+    ad = currentAd; // 固定广告
+    cacheDuration = 1200; // 20 分钟
+    headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
   } else {
-      ad = getRandomContent(); // 随机广告
-      cacheDuration = 300; // 5分钟
-      headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=60`);
+    ad = getRandomContent(); // 随机广告
+    cacheDuration = 300; // 5分钟
+    headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=60`);
   }
 
 
@@ -319,7 +319,7 @@ export async function onRequest(context) {
   const etag = `"${btoa(String.fromCharCode(...new Uint8Array(hash)))}"`;
 
   if (request.headers.get('If-None-Match') === etag) {
-      return new Response(null, { status: 304, headers });
+    return new Response(null, { status: 304, headers });
   }
 
   headers.append('ETag', etag);

@@ -248,12 +248,12 @@ const currentAd = `
       <!-- 上半部分（赞助展示区域） -->
       <a href="https://l.fatbobman.com/sb-proxyman" target="_blank" rel="sponsored">
         <div
-          class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-t-lg flex flex-col sm:flex-row items-center hover:bg-orange-200 dark:hover:bg-blue-700 transition-all duration-200"
-        >
-          <!-- 右上角按钮：Sponsored Example -->
-          <div
-            class="absolute top-[-30px] sm:top-0 right-0 text-secondary text-xs font-black rounded mt-4 mr-4 bg-white/90 dark:bg-gray-800/70 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl z-20"
+            class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 transition-all duration-200"
           >
+          <!-- 右上角按钮：Sponsored Example -->
+<div
+        class="absolute top-[-30px] sm:top-0 right-0 dark:text-blue-200 text-secondary text-xs font-black rounded mt-4 mr-4 dark:bg-gray-800 bg-white sm:dark:bg-black/40 sm:bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl"
+      >
           Try it, love it!
           </div>
 
@@ -304,11 +304,11 @@ const currentAd = `
           <div
             class="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between gap-2 sm:gap-0"
           >
-            <span class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-normal text-center sm:text-left">
+            <span class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-normal text-center sm:text-left group-hover:text-orange-900 dark:group-hover:text-blue-100">
               Reaching 50,000+ Swift developers monthly
             </span>
             <span
-              class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all"
+              class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all group-hover:text-orange-900 dark:group-hover:text-blue-100"
             >
               Become a sponsor
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
