@@ -308,7 +308,7 @@ const currentAd = `
               Reaching 50,000+ Swift developers monthly
             </span>
             <span
-              class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2 group-hover:gap-3 transition-all"
+              class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all"
             >
               Become a sponsor
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
