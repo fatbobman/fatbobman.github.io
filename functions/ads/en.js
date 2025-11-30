@@ -317,7 +317,7 @@ dark:opacity-80 dark:saturate-75 dark:brightness-90 dark:contrast-90"
   </div>
 `
 
-const startTime = new Date('2025-12-01T00:00:00Z');
+const startTime = new Date('2025-12-01T05:00:00Z');
 const endTime = new Date('2025-12-08T10:00:00Z');
 
 export async function onRequest(context) {
