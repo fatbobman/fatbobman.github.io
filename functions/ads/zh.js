@@ -302,15 +302,18 @@ export async function onRequest(context) {
   let ad = currentAd;
   let cacheDuration = 1200;
   // headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
-  if (now >= startTime && now <= endTime) {
-    ad = currentAd; // 固定广告
-    cacheDuration = 30; // 20 分钟 1200
-    headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
-  } else {
-    ad = getRandomContent(); // 随机广告
-    cacheDuration = 30; // 5分钟 300
-    headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=60`);
-  }
+  // if (now >= startTime && now <= endTime) {
+  //   ad = currentAd; // 固定广告
+  //   cacheDuration = 30; // 20 分钟 1200
+  //   headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
+  // } else {
+  //   ad = getRandomContent(); // 随机广告
+  //   cacheDuration = 30; // 5分钟 300
+  //   headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=60`);
+  // }
+  ad = currentAd;
+  cacheDuration = 30; // 20 分钟 1200
+  headers.append('Cache-Control', `public, max-age=${cacheDuration}, stale-while-revalidate=3600`);
 
 
   // 生成 ETag
