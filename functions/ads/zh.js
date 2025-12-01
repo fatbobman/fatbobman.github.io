@@ -205,7 +205,7 @@ const ads = [
 const currentAd = `
     <div class="relative rounded-lg overflow-visible shadow-lg mt-8 sm:mt-0">
     <!-- 上半部分（赞助展示区域） -->
-    <a href="https://l.fatbobman.com/sb-boltai" target="_blank" rel="sponsored">
+    <a href="https://l.fatbobman.com/sb-boltai-zh" target="_blank" rel="sponsored">
       <div
       class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 transition-all duration-200"
     >
@@ -235,13 +235,13 @@ dark:opacity-80 dark:saturate-75 dark:brightness-90 dark:contrast-90"
             <span
               class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight group-hover:text-amber-900 dark:group-hover:text-white"
             >
-            Mac 专属 AI 聊天工具<br>原生开发 · 极速体验 · 100+ 强大功能
+            聚合 GPT、Claude、Gemini 及本地最新模型
           </div>
           <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
-            体验 <span class="font-semibold">BoltAI！</span>专为 macOS 打造的最佳 AI 助手：在统一的原生界面中，让 AI 帮你搞定代码、写作和资料搜集。
+            <span class="font-semibold">BoltAI</span> 将 GPT、Claude、Gemini 以及 Ollama 本地模型无缝集成到你的开发工作流中。无论模型如何迭代，你都能第一时间在原生界面中调用最强能力。支持<span class="font-semibold">屏幕上下文感知</span>、<span class="font-semibold">代码解释与重构</span>，是真正属于开发者的 Mac 原生 AI 神器。
           </div>
           <div class="px-3 py-1.5 mb-2 text-sm font-bold text-red-700 dark:text-orange-400 bg-orange-100 dark:bg-orange-950/40 rounded-md border-l-4 border-red-600 dark:border-orange-500">
-            🎉 黑五特惠：使用优惠码 BFCM25 立享五折
+            🎉 周报&博客读者限时福利：凭代码 <span class="bg-blue-400/30 dark:bg-blue-yellow-400/30 text-heading rounded-lg">BFCM25</span> 可享 <span class="text-secondary font-black">51% OFF</span>
           </div>
         </div>
       </div>
