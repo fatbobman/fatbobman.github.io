@@ -672,13 +672,13 @@ Sponsorship
 Reach 50,000+ Swift developers
 </div></div><svg class="w-5 h-5 text-orange-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg></div></a></div> </article> <section class="pt-10 pb-10" id="related-posts"><div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 md:gap-4" id="more-tips"><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/en/posts/countincoredata/" id="relatedPosts-Count Queries in Core Data: The Master Guide"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Count Queries in Core Data: The Master Guide</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/en/posts/modern-core-data-data-definition/" id="relatedPosts-SwiftUI and Core Data: Data Definition"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">SwiftUI and Core Data: Data Definition</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/coredatawithcloudkit-6/" id="relatedPosts-Core Data with CloudKit: Sharing Data in the iCloud"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Core Data with CloudKit: Sharing Data in the iCloud</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/en/posts/countincoredata/" id="relatedPosts-Count Queries in Core Data: The Master Guide"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Count Queries in Core Data: The Master Guide</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/core-data-of-ask-apple-2022-2/" id="relatedPosts-Ask Apple 2022 Q&#38;A Related on Core Data (Part 2)"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Ask Apple 2022 Q&amp;A Related on Core Data (Part 2)</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/en/posts/modern-core-data-data-definition/" id="relatedPosts-SwiftUI and Core Data: Data Definition"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">SwiftUI and Core Data: Data Definition</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             hidden lg:flex" href="/en/posts/relationships-in-swiftdata-changes-and-considerations/" id="relatedPosts-Relationships in SwiftData: Changes and Considerations"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Relationships in SwiftData: Changes and Considerations</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
@@ -791,8 +791,10 @@ function copyCode(button, event) {
   // 尝试从缓存中获取广告
   const cachedAd = JSON.parse(localStorage.getItem(adCacheKey));
   const now = Date.now();
+  const maxAllowedExpiresAt = now + 5 * 60 * 1000; // 当前时间 + 5分钟
 
-  if (cachedAd && cachedAd.expiresAt > now) {
+  // 检查缓存是否有效：1. 存在 2. 未过期 3. 过期时间不超过5分钟
+  if (cachedAd && cachedAd.expiresAt > now && cachedAd.expiresAt <= maxAllowedExpiresAt) {
     console.log('Using cached ad');
     console.log(cachedAd.expiresAt - now);
     // 如果缓存有效，直接使用缓存的广告

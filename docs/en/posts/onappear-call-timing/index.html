@@ -524,9 +524,9 @@ Reach 50,000+ Swift developers
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/onchange/" id="relatedPosts-Understanding SwiftUI's onChange"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Understanding SwiftUI&#39;s onChange</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/en/posts/mastering_swiftui_task_modifier/" id="relatedPosts-Mastering the SwiftUI task Modifier"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Mastering the SwiftUI task Modifier</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/memory-usage-optimization/" id="relatedPosts-Memory Optimization Journey for a SwiftUI + Core Data App"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Memory Optimization Journey for a SwiftUI + Core Data App</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/en/posts/mastering_swiftui_task_modifier/" id="relatedPosts-Mastering the SwiftUI task Modifier"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Mastering the SwiftUI task Modifier</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/layout-alignment/" id="relatedPosts-Alignment in SwiftUI: Everything You Need to Know"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Alignment in SwiftUI: Everything You Need to Know</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
@@ -639,8 +639,10 @@ function copyCode(button, event) {
   // 尝试从缓存中获取广告
   const cachedAd = JSON.parse(localStorage.getItem(adCacheKey));
   const now = Date.now();
+  const maxAllowedExpiresAt = now + 5 * 60 * 1000; // 当前时间 + 5分钟
 
-  if (cachedAd && cachedAd.expiresAt > now) {
+  // 检查缓存是否有效：1. 存在 2. 未过期 3. 过期时间不超过5分钟
+  if (cachedAd && cachedAd.expiresAt > now && cachedAd.expiresAt <= maxAllowedExpiresAt) {
     console.log('Using cached ad');
     console.log(cachedAd.expiresAt - now);
     // 如果缓存有效，直接使用缓存的广告

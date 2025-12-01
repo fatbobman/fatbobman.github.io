@@ -401,8 +401,10 @@ function copyCode(button, event) {
   // 尝试从缓存中获取广告
   const cachedAd = JSON.parse(localStorage.getItem(adCacheKey));
   const now = Date.now();
+  const maxAllowedExpiresAt = now + 5 * 60 * 1000; // 当前时间 + 5分钟
 
-  if (cachedAd && cachedAd.expiresAt > now) {
+  // 检查缓存是否有效：1. 存在 2. 未过期 3. 过期时间不超过5分钟
+  if (cachedAd && cachedAd.expiresAt > now && cachedAd.expiresAt <= maxAllowedExpiresAt) {
     console.log('Using cached ad');
     console.log(cachedAd.expiresAt - now);
     // 如果缓存有效，直接使用缓存的广告
