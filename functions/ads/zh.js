@@ -203,74 +203,93 @@ const ads = [
 ]
 
 const currentAd = `
-    <div class="relative rounded-lg overflow-visible shadow-lg mt-8 sm:mt-0">
-    <!-- 上半部分（赞助展示区域） -->
-    <a href="https://l.fatbobman.com/sb-boltai-zh" target="_blank" rel="sponsored">
-      <div
-      class="group p-4 sm:py-6 sm:px-8 bg-orange-100/70 dark:bg-blue-800 border-[1.5px] border-orange-500/60 dark:border-blue-500/70 rounded-lg shadow-lg mt-0 flex flex-col sm:flex-row items-center relative hover:bg-orange-200 dark:hover:bg-blue-700 space-y-0 transition-all duration-200"
-    >
-        <!-- 右上角按钮：Sponsored Example -->
-        <div
-        class="absolute top-[-30px] sm:top-0 right-0 dark:text-blue-200 text-secondary text-xs font-black rounded mt-4 mr-4 dark:bg-gray-800 bg-white sm:dark:bg-black/40 sm:bg-white/80 py-1 px-2 border-orange-500 dark:border-blue-600 border-[1px] group-hover:shadow-xl"
-      >
-        立即试用 BoltAI！
+    <div class="relative my-12 not-prose font-sans group">
+  
+  <!-- 核心广告卡片 -->
+  <a href="https://l.fatbobman.com/sb-boltai-zh" target="_blank" rel="sponsored" class="block not-prose">
+    <div class="
+      relative overflow-hidden rounded-xl
+      border border-gray-200 dark:border-gray-700/60
+      bg-white dark:bg-slate-900/40
+      p-4 sm:p-5
+      transition-all duration-300
+      hover:border-orange-400/50 dark:hover:border-blue-500/50
+      hover:shadow-md dark:hover:shadow-none
+      hover:bg-gray-50 dark:hover:bg-slate-800/60
+    ">
+      
+      <div class="flex items-start gap-4">
+        <!-- Logo: 限制尺寸，圆角处理 -->
+        <div class="shrink-0">
+          <img 
+            src="https://cdn.fatbobman.com/sb-boltai-White512@2x.png" 
+            alt="BoltAI Logo" 
+            class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 dark:bg-transparent object-cover"
+            loading="lazy"
+          />
         </div>
 
-        <img
-          src="https://cdn.fatbobman.com/sb-boltai-White512@2x.png"
-          alt="BoltAI Logo"
-          width="80"
-          height="80"
-          class="mr-0 sm:mr-3 mb-4 sm:mb-0 hidden sm:block rounded-lg
-opacity-90
-dark:opacity-80 dark:saturate-75 dark:brightness-90 dark:contrast-90"
-          loading="lazy"
-          decoding="async"
-        />
-
-        <div class="space-y-2 pr-1">
-
-
-          <div class="mb-6">
-            <span
-              class="text-xl font-bold text-orange-700 dark:text-blue-200 leading-tight group-hover:text-amber-900 dark:group-hover:text-white"
-            >
-            聚合 GPT、Claude、Gemini 及本地最新模型
+        <!-- 内容区域 -->
+        <div class="flex-1 min-w-0 pt-0.5">
+          <!-- 顶部行：标题 + 标签 -->
+          <div class="flex items-start justify-between gap-3 mb-1.5">
+            <h4 class="text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100 leading-snug group-hover:text-orange-600 dark:group-hover:text-blue-400 transition-colors">
+              Mac 原生 AI 客户端：聚合 GPT、Claude 及本地模型
+            </h4>
+            
+            <!-- Sponsor 标签：极简风格 -->
+            <span class="shrink-0 text-[10px] font-bold tracking-wide uppercase text-gray-400/80 dark:text-gray-500 border border-gray-200 dark:border-gray-700 rounded px-1.5 py-0.5 select-none">
+              Sponsor
+            </span>
           </div>
-          <div class="text-gray-700 dark:text-gray-300 leading-normal font-normal">
-            <span class="font-semibold">BoltAI</span> 将 GPT、Claude、Gemini 以及 Ollama 本地模型无缝集成到你的开发工作流中。无论模型如何迭代，你都能第一时间在原生界面中调用最强能力。支持<span class="font-semibold">屏幕上下文感知</span>、<span class="font-semibold">代码解释与重构</span>，是真正属于开发者的 Mac 原生 AI 神器。
-          </div>
-          <div class="px-3 py-1.5 mb-2 text-sm font-bold text-red-700 dark:text-orange-400 bg-orange-100 dark:bg-orange-950/40 rounded-md border-l-4 border-red-600 dark:border-orange-500">
-            🎉 周报&博客读者限时福利：凭代码 <span class="bg-blue-400/30 dark:bg-blue-yellow-400/30 text-heading rounded-lg">BFCM25</span> 可享 <span class="text-secondary font-black">51% OFF</span>
+
+          <!-- 描述文字：限制行数，防止过长 -->
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2 sm:line-clamp-none">
+            BoltAI 将 GPT、Claude、Gemini 和 Ollama 本地模型集成到你的工作流中。支持屏幕感知与代码重构，真正属于开发者的原生神器。
+          </p>
+
+          <!-- 底部行：优惠码 + 引导箭头 -->
+          <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm">
+            <!-- 优惠高亮块 -->
+            <div class="
+              inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md
+              bg-orange-50 dark:bg-blue-500/10 
+              text-orange-700 dark:text-blue-300
+              border border-orange-100 dark:border-blue-500/20
+              font-medium
+            ">
+              <span>🎉 优惠码:</span>
+              <span class="font-bold font-mono">BFCM25</span>
+              <span class="opacity-80">(51% OFF)</span>
+            </div>
+
+            <!-- 引导文字 -->
+            <div class="ml-auto flex items-center gap-1 text-gray-400 group-hover:text-orange-500 dark:group-hover:text-blue-400 transition-colors font-medium">
+              立即试用
+              <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- 下半部分（Become a sponsor CTA） -->
-    <a href="https://discord.com/invite/7FedN5E2QQ" target="_blank" rel="sponsored" class="block not-prose">
-      <div
-      class="bg-orange-100/40 dark:bg-blue-950/30 backdrop-blur-sm px-4 sm:px-8 py-3 sm:py-2.5 cursor-pointer hover:bg-orange-100/60 dark:hover:bg-blue-950/40 transition-all group rounded-b-lg relative z-10"
-    >
-        <div
-          class="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-between gap-2 sm:gap-0"
-        >
-          <span class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-normal text-center sm:text-left group-hover:text-orange-900 dark:group-hover:text-blue-100">
-            与 2000+ 开发者一起讨论 iOS 开发
-          </span>
-          <span
-            class="text-orange-700/70 dark:text-blue-200/60 text-xs sm:text-sm font-medium flex items-center gap-2 transition-all group-hover:text-orange-900 dark:group-hover:text-blue-100"
-          >
-            加入 Discord 社区
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"
-              ></path>
-            </svg>
-          </span>
-        </div>
-      </div>
+  <!-- 外部链接：招商 (放在卡片右下方，低调处理) -->
+  <div class="flex justify-end mt-2 mr-1">
+    <a href="/en/sponsorship/" target="_blank" class="
+      group/link flex items-center gap-1 
+      text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 
+      transition-colors not-prose
+    ">
+      Become a sponsor
+      <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
     </a>
   </div>
+
 </div>
 `
 
