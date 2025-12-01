@@ -241,7 +241,7 @@ dark:opacity-80 dark:saturate-75 dark:brightness-90 dark:contrast-90"
             体验 <span class="font-semibold">BoltAI！</span>专为 macOS 打造的最佳 AI 助手：在统一的原生界面中，让 AI 帮你搞定代码、写作和资料搜集。
           </div>
           <div class="px-3 py-1.5 mb-2 text-sm font-bold text-red-700 dark:text-orange-400 bg-orange-100 dark:bg-orange-950/40 rounded-md border-l-4 border-red-600 dark:border-orange-500">
-            🎉 黑五特惠：使用优惠码 BFCM25 立享 51% 折扣
+            🎉 黑五特惠：使用优惠码 BFCM25 立享五折
           </div>
         </div>
       </div>
