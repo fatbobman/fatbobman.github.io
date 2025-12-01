@@ -94,7 +94,7 @@
       "url": "https://fatbobman.com/images/blog-card.png"
     }
   }
-}</script><link rel="stylesheet" href="/_astro/about.BObLgg5B.css">
+}</script><link rel="stylesheet" href="/_astro/about.lOgi7nDu.css">
 <link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css">
 <style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
 </style></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <div id="blogTitle"> <a href="/zh/"> <div class="flex space-x-4 mx-auto text-center pt-6 sm:pt-6 font-black w-[240px] sm:w-[300px] pb-2 sm:pb-0"> <svg fill="currentColor" class="text-heading" width="500"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </a> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto p-2 sm:p-0" data-astro-cid-4wsjtibl> <div class="flex space-x-2" data-astro-cid-4wsjtibl> <div id="lang-data" data-lang="zh" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" class="p-2 w-10 h-10 font-medium text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg"> ZH </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <button type="button" onclick="
@@ -239,7 +239,7 @@ const enableStickyInMobile = true;
 <blockquote>
 <p>请不要被本文的名称所误导。本文撰写于 SwiftUI 问世的第二年，内容主旨是探讨在当时的情况下，如何减少因 ObservableObject 所带来的不必要的视图更新，后面我还创作了另外两篇有关优化方面的内容：<a href="/zh/posts/avoid_repeated_calculations_of_swiftui_views/" target="_blank">避免 SwiftUI 视图的重复计算</a>、<a href="/zh/posts/mastering-observation/" target="_blank">深度解读 Observation —— SwiftUI 性能提升的新途径</a></p>
 </blockquote>
-<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container"></div></aside>
 <h2 id="单一数据源">单一数据源</h2>
 <p>我是在去年阅读王巍写的 <a href="https://objccn.io/products/swift-ui?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">《SwiftUI 与 Combine 编程》</a> 才第一次接触到<strong>单一数据源</strong>这一概念的。</p>
 <ul>
@@ -1003,7 +1003,7 @@ const enableStickyInMobile = true;
       <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">ObservedPublisher</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">publisher</span><span style="color:#AB5959;--shiki-dark:#F286C4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> store.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">state</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">title</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, initial</span><span style="color:#AB5959;--shiki-dark:#F286C4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#1E754F;--shiki-dark:#F286C4"> var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> title</span></span></code></pre></div>
 <p>至此，我们进一步的减少了代码量，并且基本消除了由于漏写。onReceive 而可能出现的问题。</p>
 <p>上述代码我已经放到了 <a href="https://github.com/fatbobman/MySingleSoureOfTruthDemo?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Github</a></p>
-<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-8"></div></aside>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container"></div></aside>
 <h2 id="总结">总结</h2>
 <p>之所以进行这方面的探讨是由于我的 app 出现了响应的粘滞（和我心目中 iOS 平台上该有的丝滑感有落差）。在研究学习的过程中也让我对 SwiftUI 的有了进一步的认识。无论我提出的思路是否正确，至少整个过程让我获益匪浅。</p>
 <p>在我做这方面学习的过程中，恰好也发现了另外一位朋友提出了类似的观点，并提出了他的解决方案。由于他之前有 RxSwift 上开发大型项目的经验，他的解决方案使用了快照（SnapShot）的概念。注入方式采用 EnvironmetKey，对于 State 元素的无效修改（比如说和原值相同）做了比较好的过滤。可以到 <a href="https://nalexn.github.io/swiftui-observableobject/?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">他的博客</a> 查看该文。</p>

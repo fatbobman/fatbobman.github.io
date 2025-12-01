@@ -100,7 +100,7 @@
       "url": "https://fatbobman.com/images/blog-card.png"
     }
   }
-}</script><link rel="stylesheet" href="/_astro/about.BObLgg5B.css">
+}</script><link rel="stylesheet" href="/_astro/about.lOgi7nDu.css">
 <style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
 </style>
 <link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css">
@@ -245,7 +245,7 @@ const enableStickyInMobile = true;
 
 <p>AirDrop 让使用者可以在各种不同类型的苹果设备上高效、无损的数据传输，它一直是苹果生态的专属且核心功能。但，这种情况现在出现了“奇怪”的变化。几天前，谷歌宣布在 Pixel 10 中，在没有苹果的参与下，为 Quick Share 提供了 AirDrop 的兼容机制，实现了安卓手机与苹果手机基于 AirDrop 的无线互通。</p>
 <p>随后，高通也宣布其搭载 Snapdragon 的 Android 设备“很快就会”支持这一路线，也就是说这不再是 Pixel 的专属功能，而有望扩展到更广泛的 Android 手机阵营。</p>
-<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-6 pb-6"></div></aside>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container"></div></aside>
 <p>除了谷歌的技术能力外，本次互通的最大推手或许正是 DMA(欧盟《数字市场法案》)。AirDrop 依赖的技术是 AWDL (Apple Wireless Direct Link)，即便到现在也是私有的。但是 DMA 的要求下，苹果从 iOS 26 开始引入了对 Wi-Fi Aware 支持，这大幅降低了本次“强行兼容”的难度。安卓手机可以直接发出标准的 Wi-Fi Aware 信号去寻找 iPhone，并且由于走的是官方标准协议，连接极其稳定，发现速度极快，而且苹果很难有理由去封杀。</p>
 <p>从厂商提供跨端应用实现无线互联，到部分厂商主动适配苹果的 livePhoto，这些年从安卓阵营发起的对苹果的主动兼容屡见不鲜。这一方面表现出了苹果的很多实现和体验确有过人之处，另一方面也展现出安卓厂商更愿意为了获取苹果生态的用户而主动出击，在体验上对齐。DMA 这种在某些方面看起来过分苛刻的法规，又恰如其分的促使了苹果的“开放”，从而创造出更多的跨平台无缝体验，满足了相当一部分消费者的需求。</p>
 <p>对于苹果来说，在法律攻防战外，只有不断地推出更具吸引力的新功能才能保持苹果生态的“优势”。一旦某一天，这种“强行兼容”不再有需求，那么就意味着苹果的“独特性”衰落了。相比起现在的情况来说，我想苹果更不想看到这样的场景出现。</p>
@@ -291,7 +291,7 @@ const enableStickyInMobile = true;
 <hr/>
 <h3 id="教-ai-读懂-xcode-构建-teaching-ai-to-read-xcode-builds"><a href="https://l.fatbobman.com/w0113-09" rel="noreferrer noopener">教 AI 读懂 Xcode 构建 (Teaching AI to Read Xcode Builds)</a></h3>
 <p>如果说当下 AI 在“写代码”这件事上未必优于经验丰富的开发者，那么在“看数据、拆问题”上，它几乎一定强过大多数人类，而且输入的信息越多、越结构化，优势越明显。苹果开源 swift-build 之后，Tuist 团队得以直接从构建服务中获取详尽的构建事件数据，并将其以结构化的方式写入 SQLite，让 AI 代理能够真正“理解”一次构建，而不只是被动解析 <code>xcodebuild</code> 的文本输出。在本文中，<a href="https://x.com/pepicrft?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Pedro Piñera</a> 详细介绍了这一尝试的实现路径，并通过在 Wikipedia iOS、Tuist 等真实项目上的实测，展示了 AI 如何基于这些结构化数据做出远超“读日志”的诊断和优化建议，为未来的实时构建可观测性以及真正“懂构建”的 AI 助手描绘出一条相当清晰的技术路线。</p>
-<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container pt-6 pb-2"></div></aside>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container"></div></aside>
 <h2 id="工具">工具</h2>
 <h3 id="swiftui-popover-支持-watchos-的气泡提示库"><a href="https://l.fatbobman.com/w0113-07" rel="noreferrer noopener">SwiftUI-Popover: 支持 watchOS 的气泡提示库</a></h3>
 <p>尽管 SwiftUI 提供了 <code>.popover</code> 修饰器，但它在不同平台上的表现并不一致：iPhone 上会降级为 sheet，watchOS 则完全不支持。<a href="https://github.com/qusc?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Quirin Schweigert</a> 开发的 SwiftUI-Popover 是一个轻量级、纯 SwiftUI 实现的 Popover 库，提供跨平台一致的气泡提示功能，支持包括 watchOS 在内的所有 SwiftUI 平台。该库的特色在于箭头会自动跟随附着点位置，且可以灵活嵌入到任何视图层级中。</p>
