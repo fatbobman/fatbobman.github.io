@@ -224,7 +224,7 @@ const currentAd = `
           <img 
             src="https://cdn.fatbobman.com/sb-boltai-White512@2x.png" 
             alt="BoltAI Logo" 
-            class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 dark:bg-transparent object-cover"
+            class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 dark:bg-transparent object-cover"
             loading="lazy"
           />
         </div>
