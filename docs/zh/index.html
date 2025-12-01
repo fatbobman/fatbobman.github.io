@@ -377,7 +377,7 @@ Issue #113 </span> </div> <div class="text-muted dark:text-gray-400/90 py-6 text
   // 尝试从缓存中获取广告
   const cachedAd = JSON.parse(localStorage.getItem(adCacheKey));
   const now = Date.now();
-  const maxAllowedExpiresAt = now + 5 * 60 * 1000; // 当前时间 + 5分钟
+  const maxAllowedExpiresAt = now + 3 * 60 * 1000; // 当前时间 + 5分钟
 
   // 检查缓存是否有效：1. 存在 2. 未过期 3. 过期时间不超过5分钟
   if (cachedAd && cachedAd.expiresAt > now && cachedAd.expiresAt <= maxAllowedExpiresAt) {
@@ -392,7 +392,7 @@ Issue #113 </span> </div> <div class="text-muted dark:text-gray-400/90 py-6 text
       headers: {
         'Accept': 'text/html',
       },
-      cache: 'default'
+      cache: 'no-cache'
     })
       .then(response => {
         const maxAgeMatch = response.headers.get('Cache-Control')?.match(/max-age=(\d+)/);
