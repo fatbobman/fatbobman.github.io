@@ -244,7 +244,7 @@ const currentAd = `
           </div>
 
           <!-- 描述文字：限制行数，防止过长 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2 sm:line-clamp-none">
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none">
             BoltAI 将 GPT、Claude、Gemini 和 Ollama 本地模型集成到你的工作流中。支持屏幕感知与代码重构，真正属于开发者的原生神器。
           </p>
 

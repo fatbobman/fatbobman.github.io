@@ -286,7 +286,7 @@ const currentAd = `
           </div>
 
           <!-- 描述文字：限制行数，防止过长 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2 sm:line-clamp-none">
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none">
             BoltAI integrates GPT, Claude, Gemini, and Ollama local models directly into your workflow. Features screen context awareness and code refactoring—built for developers.
           </p>
 
