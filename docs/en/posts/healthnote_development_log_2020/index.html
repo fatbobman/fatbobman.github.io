@@ -394,9 +394,9 @@ Sponsorship
 Reach 50,000+ Swift developers
 </div></div><svg class="w-5 h-5 text-orange-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg></div></a></div> </article> <section class="pt-10 pb-10" id="related-posts"><div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 md:gap-4" id="more-tips"><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/en/posts/healthnote2-release/" id="relatedPosts-Health Notes 2.0 Official Version is Complete!"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Health Notes 2.0 Official Version is Complete!</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/healthnote2-development-memo-1/" id="relatedPosts-Development Musings for Health Notes 2.0 (Part 1)"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Development Musings for Health Notes 2.0 (Part 1)</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/en/posts/healthnote2-release/" id="relatedPosts-Health Notes 2.0 Official Version is Complete!"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Health Notes 2.0 Official Version is Complete!</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/5th-anniversary-of-kidney-transplant/" id="relatedPosts-Five Years Since the Transplant"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Five Years Since the Transplant</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
@@ -535,18 +535,21 @@ function copyCode(button, event) {
         return response.text().then(adContent => {
           // const expiresAt = now + maxAge * 1000; // 计算失效时间
           // 解析 max-age
-          const cc = response.headers.get('Cache-Control') || '';
-          const maxAge = parseInt((cc.match(/(?:^|,)\s*max-age=(\d+)/)?.[1] ?? '0'), 10);
+          // const cc = response.headers.get('Cache-Control') || '';
+          // const maxAge = parseInt((cc.match(/(?:^|,)\s*max-age=(\d+)/)?.[1] ?? '0'), 10);
 
-          // 读取 CDN Age 与服务端时间
-          const age = parseInt(response.headers.get('Age') || '0', 10);
-          // const serverDate = response.headers.get('Date');
+          // // 读取 CDN Age 与服务端时间
+          // const age = parseInt(response.headers.get('Age') || '0', 10);
+          // // const serverDate = response.headers.get('Date');
 
-          // 计算剩余 TTL（优先用 Age 抵扣）
-          const ttlLeftMs = Math.max(0, (maxAge - age) * 1000);
+          // // 计算剩余 TTL（优先用 Age 抵扣）
+          // const ttlLeftMs = Math.max(0, (maxAge - age) * 1000);
 
-          // 失效时间：以当前本地时间加剩余 TTL（若要完全按服务端时间，可用 serverDate 做基线）
-          const expiresAt = Date.now() + ttlLeftMs;
+          // // 失效时间：以当前本地时间加剩余 TTL（若要完全按服务端时间，可用 serverDate 做基线）
+          // const expiresAt = Date.now() + ttlLeftMs;
+
+          // 失效时间：固定5分钟
+          const expiresAt = Date.now() + 5 * 60 * 1000; // 5分钟
 
           // 缓存广告内容
           localStorage.setItem(adCacheKey, JSON.stringify({ content: adContent, expiresAt }));
