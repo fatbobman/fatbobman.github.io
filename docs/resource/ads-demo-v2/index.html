@@ -1,0 +1,1141 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Ads Demo V2 - JSON Driven Ads</title>
+<meta name="description" content="使用 AdRenderer 组件和 JSON 数据的广告预览页面">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://fatbobman.com/resource/ads-demo-v2/">
+<meta property="og:title" content="Fatbobman&#39;s Blog - A Blog About Swift, SwiftUI, and More">
+<meta property="og:description" content="使用 AdRenderer 组件和 JSON 数据的广告预览页面">
+<meta property="og:url" content="https://fatbobman.com/resource/ads-demo-v2/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://fatbobman.com/images/blog-card.png">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="fatbobman.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@fatbobman">
+<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/en/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><!-- 其他路径的 hreflang -->
+  <link rel="alternate" hreflang="en" href="https://fatbobman.com/resource/ads-demo-v2/">
+  <link rel="alternate" hreflang="zh-CN" href="https://fatbobman.com/resource/ads-demo-v2/">
+  <link rel="alternate" hreflang="x-default" href="https://fatbobman.com/resource/ads-demo-v2/"><script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.async = true; // Add async attribute
+    hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script> <!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5C7N4MF5');</script> <!-- End Google Tag Manager --><script>
+      // Immediately set theme before page renders
+      if (
+        localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      }
+    </script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "#author",
+  "name": "东坡肘子 (徐杨)",
+  "alternateName": "Fatbobman (Xu Yang)",
+  "jobTitle": "Apple Developer",
+  "description": "苹果生态开发者，专注 Swift 和 SwiftUI 开发。Fatbobman's Blog 作者。",
+  "url": "https://fatbobman.com",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/FatWithBoys.png"
+  },
+  "sameAs": [
+    "https://github.com/fatbobman",
+    "https://x.com/fatbobman",
+    "https://www.linkedin.com/in/fatbobman/",
+    "https://bsky.app/profile/fatbobman.com",
+    "https://mastodon.social/@fatbobman",
+    "https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3",
+    "https://fatbobman.com/zh/about/",
+    "https://fatbobman.com/en/about/"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Fatbobman's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  }
+}</script><link rel="stylesheet" href="/_astro/about.Gm0eHNnZ.css">
+<style>code[data-astro-cid-jhwx4wuq]{font-family:Courier New,monospace}
+.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
+</style></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <div id="blogTitle"> <a href="/en/"> <div class="flex space-x-4 mx-auto text-center pt-6 sm:pt-6 font-black w-[240px] sm:w-[300px] pb-2 sm:pb-0"> <svg fill="currentColor" class="text-heading" width="500"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </a> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto p-2 sm:p-0" data-astro-cid-4wsjtibl> <div class="flex space-x-2" data-astro-cid-4wsjtibl> <div id="lang-data" data-lang="en" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" class="p-2 w-10 h-10 font-medium text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg"> EN </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <button type="button" onclick="
+            try {
+                if ('#' !== '#') {
+                    window.location.href = '#';
+                }
+            } catch (e) {
+                console.log('Navigation failed:', e);
+            }
+        " class="w-full text-left px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
+English
+<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-2 hidden text-primary" id="EN-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-aifadian"></use> </svg> </div> </button> </li><li> <button type="button" onclick="
+              try {
+                  if ('/resource/ads-demo-v2/' !== '#') {
+                      window.location.href = '/resource/ads-demo-v2/';
+                  }
+              } catch (e) {
+                  console.log('Navigation failed:', e);
+              }
+          " class="w-full text-left px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
+中文
+<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-2 hidden text-primary" id="ZH-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-aifadian"></use> </svg> </div> </button> </li> <li> <div class="border-t border-gray-200 dark:border-gray-800 w-4/5 mx-auto my-2"></div> <button class="block px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" id="set-default-lang"> <div class="inline-flex items-center"> Set English as Default </div> </button> </li> </ul> <script type="module">function a(){const t=localStorage.getItem("lang"),e=document.getElementById("EN-check"),n=document.getElementById("ZH-check");e!==null&&n!==null&&(t==="en"?(e.classList.remove("hidden"),n.classList.add("hidden")):t==="zh"&&(n.classList.remove("hidden"),e.classList.add("hidden")))}document.addEventListener("DOMContentLoaded",()=>{a()});const l=document.getElementById("set-default-lang");l?.addEventListener("click",()=>{const t=document.getElementById("lang-data");if(t!=null){const e=t.dataset.lang;e!=null&&(localStorage.setItem("lang",e),a())}});</script> </div> <button id="theme-dropdown-button" data-dropdown-toggle="theme-dropdown-menu" type="button" class="group p-2 w-10 h-10 text-default hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center"> <svg viewBox="0 0 1024 1024" stroke="currentColor" class="w-5 h-5 text-default fill-current group-hover:text-secondary hidden" id="theme_icon_system"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-computer"></use> </svg> <svg viewBox="0 0 1024 1024" stroke="currentColor" class="w-5 h-5 text-default fill-current group-hover:text-secondary hidden" id="theme_icon_dark"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-moon"></use> </svg> <svg viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 text-default fill-current group-hover:text-secondary hidden" id="theme_icon_light"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-sun"></use> </svg> </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="theme-dropdown-menu"> <ul class="py-2 font-medium" role="none"> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex px-4 py-2 text-sm align-text-center" id="theme_button_light"> <svg class="w-5 h-5" viewBox="0 0 1024 1024" stroke-width="2" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-sun"></use> </svg> <span class="ml-2 dark:hover:text-white">Light</span> </button> </li> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex px-4 py-2 text-sm align-text-center " id="theme_button_dark"> <svg class="w-5 h-5"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-moon"></use> </svg> <span class="ml-2">Dark</span> </button> </li> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex px-4 py-2 text-sm align-text-center " id="theme_button_system"> <svg class="w-5 h-5"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-computer"></use> </svg> <span class="ml-2 dark:hover:text-white">System</span> </button> </li> </ul> </div> <script>
+  // 获取按钮
+  var themeButtonLight = document.getElementById('theme_button_light');
+  var themeButtonDark = document.getElementById('theme_button_dark');
+  var themeButtonSystem = document.getElementById('theme_button_system');
+  // 获取图标
+  var themeToggleDarkIcon = document.getElementById('theme_icon_dark');
+  var themeToggleLightIcon = document.getElementById('theme_icon_light');
+  var themeToggleSystemIcon = document.getElementById('theme_icon_system');
+
+  function setTheme() {
+    if (
+      localStorage.getItem('color-theme') === 'dark' ||
+      (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
+  function setThemeButton() {
+    let theme = localStorage.getItem('color-theme');
+    if (theme === 'dark') {
+      themeToggleDarkIcon.classList.remove('hidden');
+      themeToggleLightIcon.classList.add('hidden');
+      themeToggleSystemIcon.classList.add('hidden');
+    } else if (theme === 'light') {
+      themeToggleDarkIcon.classList.add('hidden');
+      themeToggleLightIcon.classList.remove('hidden');
+      themeToggleSystemIcon.classList.add('hidden');
+    } else {
+      themeToggleDarkIcon.classList.add('hidden');
+      themeToggleLightIcon.classList.add('hidden');
+      themeToggleSystemIcon.classList.remove('hidden');
+    }
+  }
+
+  function resetTheme() {
+    setTheme();
+    setThemeButton();
+  }
+
+  resetTheme();
+
+  // 监听暗黑模式的变化
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    resetTheme();
+  });
+
+  // 保证其他的页面也能够监听到 localStorage 的变化
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'color-theme') {
+      resetTheme();
+    }
+  });
+
+
+  // Listen for clicks on the button themeToggleDarkIcon
+  themeButtonDark.addEventListener('click', function () {
+    localStorage.setItem('color-theme', 'dark');
+    resetTheme();
+  });
+
+  // // Listen for clicks on the button themeToggleLightIcon
+  themeButtonLight.addEventListener('click', function () {
+    localStorage.setItem('color-theme', 'light');
+    resetTheme();
+  });
+
+  // // Listen for clicks on the button themeToggleSystemIcon
+  themeButtonSystem.addEventListener('click', function () {
+    localStorage.removeItem('color-theme');
+    resetTheme();
+  });
+</script> <div id="docsearch" class="group w-10 h-10 text-default hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center"> <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg> </div> </div> <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 mx-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false" id="navbar-toggle-button"> <span class="sr-only">Open main menu</span> <svg class="w-5 h-5 text-default" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path> </svg> </button> <nav class="hidden w-full md:block md:w-auto px-4 z-40" id="navbar-solid-bg"> <ul class="flex flex-col font-bold mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700"> <a href="/en/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent "> Home </a><a href="/en/posts/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent "> Articles </a><a href="/en/weekly/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent "> Weekly </a><a href="/en/snippet/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent "> Tips </a><a href="/en/sponsorship/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent "> Sponsorship </a><a href="/en/about/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent "> About </a> </ul> </nav> </div> </div> <div id="placeholder" class="hidden" data-astro-cid-4wsjtibl></div> </div> <script>(function(){const enableSticky = true;
+const enableStickyInMobile = true;
+
+  window.onload = function () {
+    checkStickyHeader();
+    stickySetup();
+  };
+
+  window.addEventListener('resize', stickySetup);
+
+  function checkStickyHeader() {
+    const title = document.getElementById('blogTitle');
+    const stickyHeader = document.getElementById('stickyHeader');
+    const placeholder = document.getElementById('placeholder');
+
+    if (title && stickyHeader && placeholder) {
+      const offset = title.offsetTop + title.offsetHeight;
+
+      if (shouldStick() && window.scrollY >= offset) {
+        stickyHeader.classList.add('sticky');
+        placeholder.style.display = 'block';
+        placeholder.style.height = `${stickyHeader.offsetHeight}px`;
+      } else {
+        stickyHeader.classList.remove('sticky');
+        placeholder.style.display = 'none';
+      }
+    }
+  }
+
+  function shouldStick() {
+    if (!enableSticky) return false;
+
+    let isMobile = window.matchMedia('(max-width: 640px)').matches;
+    if (isMobile && !enableStickyInMobile) return false;
+
+    return true;
+  }
+
+  function stickySetup() {
+    window.onscroll = checkStickyHeader;
+  }
+})();</script>  </header> <h1 class="sr-only">Ads Demo V2 - JSON Driven</h1> <main class="w-full mx-auto max-w-3xl p-4 md:p-6 "> <div class="container mx-auto space-y-6 sm:space-y-12">   <main data-astro-cid-jhwx4wuq> <section class="container max-w-5xl mx-auto px-4 py-8 space-y-12" data-astro-cid-jhwx4wuq> <!-- 说明部分 --> <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6" data-astro-cid-jhwx4wuq> <h2 class="text-2xl font-bold mb-4 text-blue-900 dark:text-blue-100" data-astro-cid-jhwx4wuq>
+📋 关于此页面
+</h2> <div class="space-y-2 text-gray-700 dark:text-gray-300" data-astro-cid-jhwx4wuq> <p data-astro-cid-jhwx4wuq> <strong data-astro-cid-jhwx4wuq>这是新的广告演示系统</strong>,使用 <code class="bg-blue-100 dark:bg-blue-800 px-2 py-1 rounded" data-astro-cid-jhwx4wuq>AdRenderer</code> 组件 和 JSON 数据驱动。
+</p> <ul class="list-disc list-inside space-y-1 ml-4" data-astro-cid-jhwx4wuq> <li data-astro-cid-jhwx4wuq>✅ 模板统一: Astro 预览和 Edge Functions 使用相同的渲染函数</li> <li data-astro-cid-jhwx4wuq>✅ 数据驱动: 所有样式从 JSON 配置,无需手写 HTML</li> <li data-astro-cid-jhwx4wuq>✅ 支持 HTML: 标题、描述、特性都支持 HTML 样式</li> <li data-astro-cid-jhwx4wuq>✅ 深色模式: 支持独立的 dark logo</li> </ul> <p class="mt-4 text-sm" data-astro-cid-jhwx4wuq>
+数据来源: <code class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded" data-astro-cid-jhwx4wuq>docs/ads-kv-example-v2.json</code> </p> </div> </div> <!-- 中文广告 --> <div data-astro-cid-jhwx4wuq> <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100" data-astro-cid-jhwx4wuq>
+中文广告 (Chinese Ads)
+</h2> <div class="space-y-8" data-astro-cid-jhwx4wuq> <div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
+Variant ID: boltai-zh-v1 </div> <!-- Render the ad HTML directly --><div class="relative my-12 not-prose font-sans ">
+  <!-- 核心广告卡片 -->
+  <a href="https://l.fatbobman.com/sb-boltai-zh" target="_blank" rel="sponsored" class="block not-prose">
+    <div class="group
+      relative overflow-hidden rounded-xl
+      border border-gray-200/80 dark:border-gray-700/70
+      bg-white/95 dark:bg-slate-900/40
+      p-4 sm:p-5
+      shadow-sm
+      transition-colors duration-200">
+
+      <div class="flex items-start gap-4">
+        <!-- Logo -->
+        <div class="shrink-0">
+          
+    <img
+      src="https://cdn.fatbobman.com/sb-boltai-White512@2x.png"
+      alt="Sponsor Logo"
+      class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 dark:bg-transparent object-cover"
+      loading="lazy"
+    />
+  
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="flex-1 min-w-0 pt-0.5">
+          <!-- 顶部行：标题 + 标签 -->
+          <div class="flex items-start justify-between gap-3 mb-1.5">
+            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+              Mac 原生 AI 客户端：聚合 GPT、Claude 及本地模型
+            </h4>
+
+            <!-- Sponsor 标签 -->
+            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+              text-gray-400 dark:text-gray-500
+              border border-gray-200/60 dark:border-gray-700/60
+              bg-white/60 dark:bg-slate-900/50
+              rounded px-1.5 py-0.5 select-none">
+              Sponsor
+            </span>
+          </div>
+
+          <!-- 描述文字 -->
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+            BoltAI 将 GPT、Claude、Gemini 和 Ollama 本地模型集成到你的工作流中。支持屏幕感知与代码重构，真正属于开发者的原生神器。
+          </p>
+
+          <!-- 底部行：Features + CTA -->
+          
+          <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
+            <!-- Features -->
+            
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md
+          bg-orange-50/85 dark:bg-blue-500/10
+          text-orange-700 dark:text-blue-300
+          border border-orange-100/70 dark:border-blue-500/20
+          font-medium ">
+          🎉 优惠码: <span class="font-bold font-mono">BFCM25</span> <span class="opacity-80">(51% OFF)</span>
+        </div>
+      
+
+            <!-- 引导文字 -->
+            <div class="ml-auto flex items-center gap-1
+              text-gray-500 dark:text-gray-500
+              transition-all duration-200 font-medium
+              group-hover:text-secondary dark:group-hover:text-secondary">
+              立即试用
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </a>
+
+  
+  <!-- 外部链接：招商 -->
+  <div class="flex justify-end mt-2 mr-1">
+    <a href="/zh/sponsorship/" target="_blank"
+      class="group/link flex items-center gap-1
+      text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
+      transition-colors not-prose">
+      成为赞助商
+      <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+    </a>
+  </div>
+  
+</div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
+Variant ID: boltai-zh-v2 </div> <!-- Render the ad HTML directly --><div class="relative my-12 not-prose font-sans ">
+  <!-- 核心广告卡片 -->
+  <a href="https://l.fatbobman.com/sb-boltai-zh" target="_blank" rel="sponsored" class="block not-prose">
+    <div class="group
+      relative overflow-hidden rounded-xl
+      border border-gray-200/80 dark:border-gray-700/70
+      bg-white/95 dark:bg-slate-900/40
+      p-4 sm:p-5
+      shadow-sm
+      transition-colors duration-200">
+
+      <div class="flex items-start gap-4">
+        <!-- Logo -->
+        <div class="shrink-0">
+          
+    <img
+      src="https://cdn.fatbobman.com/sb-boltai-White512@2x.png"
+      alt="Sponsor Logo"
+      class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 dark:bg-transparent object-cover"
+      loading="lazy"
+    />
+  
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="flex-1 min-w-0 pt-0.5">
+          <!-- 顶部行：标题 + 标签 -->
+          <div class="flex items-start justify-between gap-3 mb-1.5">
+            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+              BoltAI - <span class="text-orange-700 dark:text-blue-300">开发者的 AI 神器</span>
+            </h4>
+
+            <!-- Sponsor 标签 -->
+            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+              text-gray-400 dark:text-gray-500
+              border border-gray-200/60 dark:border-gray-700/60
+              bg-white/60 dark:bg-slate-900/50
+              rounded px-1.5 py-0.5 select-none">
+              Sponsor
+            </span>
+          </div>
+
+          <!-- 描述文字 -->
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+            原生 macOS 应用，无缝整合多个 AI 模型。一键重构代码，智能理解屏幕内容，让 AI 真正成为你的编程助手。
+          </p>
+
+          <!-- 底部行：Features + CTA -->
+          
+          <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
+            <!-- Features -->
+            
+      <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md
+        bg-orange-50/85 dark:bg-blue-500/10
+        text-orange-700 dark:text-blue-300
+        border border-orange-100/70 dark:border-blue-500/20
+        font-medium">
+        🚀 限时优惠 51% OFF
+      </div>
+    
+
+            <!-- 引导文字 -->
+            <div class="ml-auto flex items-center gap-1
+              text-gray-500 dark:text-gray-500
+              transition-all duration-200 font-medium
+              group-hover:text-secondary dark:group-hover:text-secondary">
+              免费下载
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </a>
+
+  
+  <!-- 外部链接：招商 -->
+  <div class="flex justify-end mt-2 mr-1">
+    <a href="/zh/sponsorship/" target="_blank"
+      class="group/link flex items-center gap-1
+      text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
+      transition-colors not-prose">
+      成为赞助商
+      <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+    </a>
+  </div>
+  
+</div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
+Variant ID: proxyman-zh-v1 </div> <!-- Render the ad HTML directly --><div class="relative my-12 not-prose font-sans ">
+  <!-- 核心广告卡片 -->
+  <a href="https://l.fatbobman.com/sb-proxyman-zh" target="_blank" rel="sponsored" class="block not-prose">
+    <div class="group
+      relative overflow-hidden rounded-xl
+      border border-gray-200/80 dark:border-gray-700/70
+      bg-white/95 dark:bg-slate-900/40
+      p-4 sm:p-5
+      shadow-sm
+      transition-colors duration-200">
+
+      <div class="flex items-start gap-4">
+        <!-- Logo -->
+        <div class="shrink-0">
+          
+    <!-- Light mode logo -->
+    <img
+      src="https://cdn.fatbobman.com/ads/proxyman-icon-blue-trim.webp"
+      alt="Sponsor Logo"
+      class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 object-cover dark:hidden"
+      loading="lazy"
+    />
+    <!-- Dark mode logo -->
+    <img
+      src="https://cdn.fatbobman.com/ads/proxyman-icon-red-trim.webp"
+      alt="Sponsor Logo"
+      class="hidden dark:block w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-transparent object-cover"
+      loading="lazy"
+    />
+  
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="flex-1 min-w-0 pt-0.5">
+          <!-- 顶部行：标题 + 标签 -->
+          <div class="flex items-start justify-between gap-3 mb-1.5">
+            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+              Proxyman - 原生 macOS 网络调试代理
+            </h4>
+
+            <!-- Sponsor 标签 -->
+            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+              text-gray-400 dark:text-gray-500
+              border border-gray-200/60 dark:border-gray-700/60
+              bg-white/60 dark:bg-slate-900/50
+              rounded px-1.5 py-0.5 select-none">
+              Sponsor
+            </span>
+          </div>
+
+          <!-- 描述文字 -->
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+            告别手动证书配置。Proxyman 使用 <strong class="text-orange-700 dark:text-blue-400">Atlantis 框架</strong>自动捕获和解密 HTTPs 流量。原生应用，高性能，专为 Apple Silicon 打造。
+          </p>
+
+          <!-- 底部行：Features + CTA -->
+          
+          <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
+            <!-- Features -->
+            
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md
+          bg-orange-50/85 dark:bg-blue-500/10
+          text-orange-700 dark:text-blue-300
+          border border-orange-100/70 dark:border-blue-500/20
+          font-medium ">
+          🚀 功能: 零配置调试
+        </div>
+      
+
+            <!-- 引导文字 -->
+            <div class="ml-auto flex items-center gap-1
+              text-gray-500 dark:text-gray-500
+              transition-all duration-200 font-medium
+              group-hover:text-secondary dark:group-hover:text-secondary">
+              免费下载
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </a>
+
+  
+  <!-- 外部链接：招商 -->
+  <div class="flex justify-end mt-2 mr-1">
+    <a href="/zh/sponsorship/" target="_blank"
+      class="group/link flex items-center gap-1
+      text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
+      transition-colors not-prose">
+      成为赞助商
+      <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+    </a>
+  </div>
+  
+</div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
+Variant ID: example-zh-v1 </div> <!-- Render the ad HTML directly --><div class="relative my-12 not-prose font-sans ">
+  <!-- 核心广告卡片 -->
+  <a href="/zh/sponsorship/" target="_blank" rel="sponsored" class="block not-prose">
+    <div class="group
+      relative overflow-hidden rounded-xl
+      border border-gray-200/80 dark:border-gray-700/70
+      bg-white/95 dark:bg-slate-900/40
+      p-4 sm:p-5
+      shadow-sm
+      transition-colors duration-200">
+
+      <div class="flex items-start gap-4">
+        <!-- Logo -->
+        <div class="shrink-0">
+          
+    <img
+      src="https://cdn.fatbobman.com/placeholder-tools.svg"
+      alt="Sponsor Logo"
+      class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 dark:bg-transparent object-cover"
+      loading="lazy"
+    />
+  
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="flex-1 min-w-0 pt-0.5">
+          <!-- 顶部行：标题 + 标签 -->
+          <div class="flex items-start justify-between gap-3 mb-1.5">
+            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+              示例产品 - 无促销活动
+            </h4>
+
+            <!-- Sponsor 标签 -->
+            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+              text-gray-400 dark:text-gray-500
+              border border-gray-200/60 dark:border-gray-700/60
+              bg-white/60 dark:bg-slate-900/50
+              rounded px-1.5 py-0.5 select-none">
+              Sponsor
+            </span>
+          </div>
+
+          <!-- 描述文字 -->
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+            这是一个没有特殊促销信息的广告示例。依然保持简洁优雅的展示效果。
+          </p>
+
+          <!-- 底部行：Features + CTA -->
+          
+          <!-- No features, show only CTA -->
+          <div class="mt-3 flex items-center gap-1 text-xs sm:text-sm
+            text-gray-500 dark:text-gray-500
+            transition-all duration-200 font-medium
+            group-hover:text-secondary dark:group-hover:text-secondary ">
+            了解更多
+            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </a>
+
+  
+</div> </div> </div> </div> <!-- 英文广告 --> <div data-astro-cid-jhwx4wuq> <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100" data-astro-cid-jhwx4wuq>
+英文广告 (English Ads)
+</h2> <div class="space-y-8" data-astro-cid-jhwx4wuq> <div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
+Variant ID: boltai-en-v1 </div> <!-- Render the ad HTML directly --><div class="relative my-12 not-prose font-sans ">
+  <!-- 核心广告卡片 -->
+  <a href="https://l.fatbobman.com/sb-boltai" target="_blank" rel="sponsored" class="block not-prose">
+    <div class="group
+      relative overflow-hidden rounded-xl
+      border border-gray-200/80 dark:border-gray-700/70
+      bg-white/95 dark:bg-slate-900/40
+      p-4 sm:p-5
+      shadow-sm
+      transition-colors duration-200">
+
+      <div class="flex items-start gap-4">
+        <!-- Logo -->
+        <div class="shrink-0">
+          
+    <img
+      src="https://cdn.fatbobman.com/sb-boltai-White512@2x.png"
+      alt="Sponsor Logo"
+      class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 dark:bg-transparent object-cover"
+      loading="lazy"
+    />
+  
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="flex-1 min-w-0 pt-0.5">
+          <!-- 顶部行：标题 + 标签 -->
+          <div class="flex items-start justify-between gap-3 mb-1.5">
+            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+              Native macOS AI Client: GPT, Claude, Gemini &amp; Local Models
+            </h4>
+
+            <!-- Sponsor 标签 -->
+            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+              text-gray-400 dark:text-gray-500
+              border border-gray-200/60 dark:border-gray-700/60
+              bg-white/60 dark:bg-slate-900/50
+              rounded px-1.5 py-0.5 select-none">
+              SPONSOR
+            </span>
+          </div>
+
+          <!-- 描述文字 -->
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+            BoltAI integrates GPT, Claude, Gemini, and Ollama local models directly into your workflow. Features screen context awareness and code refactoring — built for developers.
+          </p>
+
+          <!-- 底部行：Features + CTA -->
+          
+          <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
+            <!-- Features -->
+            
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md
+          bg-orange-50/85 dark:bg-blue-500/10
+          text-orange-700 dark:text-blue-300
+          border border-orange-100/70 dark:border-blue-500/20
+          font-medium ">
+          🎉 Code: <span class="font-bold font-mono">BFCM25</span> <span class="opacity-80">(51% OFF)</span>
+        </div>
+      
+
+            <!-- 引导文字 -->
+            <div class="ml-auto flex items-center gap-1
+              text-gray-500 dark:text-gray-500
+              transition-all duration-200 font-medium
+              group-hover:text-secondary dark:group-hover:text-secondary">
+              Try it now
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </a>
+
+  
+  <!-- 外部链接：招商 -->
+  <div class="flex justify-end mt-2 mr-1">
+    <a href="/en/sponsorship/" target="_blank"
+      class="group/link flex items-center gap-1
+      text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
+      transition-colors not-prose">
+      Become a sponsor
+      <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+    </a>
+  </div>
+  
+</div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
+Variant ID: boltai-en-v2 </div> <!-- Render the ad HTML directly --><div class="relative my-12 not-prose font-sans ">
+  <!-- 核心广告卡片 -->
+  <a href="https://l.fatbobman.com/sb-boltai" target="_blank" rel="sponsored" class="block not-prose">
+    <div class="group
+      relative overflow-hidden rounded-xl
+      border border-gray-200/80 dark:border-gray-700/70
+      bg-white/95 dark:bg-slate-900/40
+      p-4 sm:p-5
+      shadow-sm
+      transition-colors duration-200">
+
+      <div class="flex items-start gap-4">
+        <!-- Logo -->
+        <div class="shrink-0">
+          
+    <img
+      src="https://cdn.fatbobman.com/sb-boltai-White512@2x.png"
+      alt="Sponsor Logo"
+      class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 dark:bg-transparent object-cover"
+      loading="lazy"
+    />
+  
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="flex-1 min-w-0 pt-0.5">
+          <!-- 顶部行：标题 + 标签 -->
+          <div class="flex items-start justify-between gap-3 mb-1.5">
+            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+              BoltAI - AI Assistant for Developers
+            </h4>
+
+            <!-- Sponsor 标签 -->
+            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+              text-gray-400 dark:text-gray-500
+              border border-gray-200/60 dark:border-gray-700/60
+              bg-white/60 dark:bg-slate-900/50
+              rounded px-1.5 py-0.5 select-none">
+              SPONSOR
+            </span>
+          </div>
+
+          <!-- 描述文字 -->
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+            Native macOS app that brings multiple AI models to your fingertips. Refactor code with one click, understand screen context intelligently.
+          </p>
+
+          <!-- 底部行：Features + CTA -->
+          
+          <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
+            <!-- Features -->
+            
+      <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md
+        bg-orange-50/85 dark:bg-blue-500/10
+        text-orange-700 dark:text-blue-300
+        border border-orange-100/70 dark:border-blue-500/20
+        font-medium">
+        🚀 Limited Offer: 51% OFF
+      </div>
+    
+
+            <!-- 引导文字 -->
+            <div class="ml-auto flex items-center gap-1
+              text-gray-500 dark:text-gray-500
+              transition-all duration-200 font-medium
+              group-hover:text-secondary dark:group-hover:text-secondary">
+              Free Download
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </a>
+
+  
+  <!-- 外部链接：招商 -->
+  <div class="flex justify-end mt-2 mr-1">
+    <a href="/en/sponsorship/" target="_blank"
+      class="group/link flex items-center gap-1
+      text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
+      transition-colors not-prose">
+      Become a sponsor
+      <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+    </a>
+  </div>
+  
+</div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
+Variant ID: proxyman-en-v1 </div> <!-- Render the ad HTML directly --><div class="relative my-12 not-prose font-sans ">
+  <!-- 核心广告卡片 -->
+  <a href="https://l.fatbobman.com/sb-proxyman" target="_blank" rel="sponsored" class="block not-prose">
+    <div class="group
+      relative overflow-hidden rounded-xl
+      border border-gray-200/80 dark:border-gray-700/70
+      bg-white/95 dark:bg-slate-900/40
+      p-4 sm:p-5
+      shadow-sm
+      transition-colors duration-200">
+
+      <div class="flex items-start gap-4">
+        <!-- Logo -->
+        <div class="shrink-0">
+          
+    <!-- Light mode logo -->
+    <img
+      src="https://cdn.fatbobman.com/ads/proxyman-icon-blue-trim.webp"
+      alt="Sponsor Logo"
+      class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 object-cover dark:hidden"
+      loading="lazy"
+    />
+    <!-- Dark mode logo -->
+    <img
+      src="https://cdn.fatbobman.com/ads/proxyman-icon-red-trim.webp"
+      alt="Sponsor Logo"
+      class="hidden dark:block w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-transparent object-cover"
+      loading="lazy"
+    />
+  
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="flex-1 min-w-0 pt-0.5">
+          <!-- 顶部行：标题 + 标签 -->
+          <div class="flex items-start justify-between gap-3 mb-1.5">
+            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+              Native macOS Web Debugging Proxy
+            </h4>
+
+            <!-- Sponsor 标签 -->
+            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+              text-gray-400 dark:text-gray-500
+              border border-gray-200/60 dark:border-gray-700/60
+              bg-white/60 dark:bg-slate-900/50
+              rounded px-1.5 py-0.5 select-none">
+              SPONSOR
+            </span>
+          </div>
+
+          <!-- 描述文字 -->
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+            Stop manual certificate configuration. Proxyman uses the <strong class="text-orange-700 dark:text-blue-400">Atlantis framework</strong> to capture and decrypt HTTPs traffic automatically. Native, high-performance, and built for Apple Silicon.
+          </p>
+
+          <!-- 底部行：Features + CTA -->
+          
+          <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
+            <!-- Features -->
+            
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md
+          bg-orange-50/85 dark:bg-blue-500/10
+          text-orange-700 dark:text-blue-300
+          border border-orange-100/70 dark:border-blue-500/20
+          font-medium ">
+          🚀 Feature: Zero-Config Debugging
+        </div>
+      
+
+            <!-- 引导文字 -->
+            <div class="ml-auto flex items-center gap-1
+              text-gray-500 dark:text-gray-500
+              transition-all duration-200 font-medium
+              group-hover:text-secondary dark:group-hover:text-secondary">
+              Free Download
+              <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </a>
+
+  
+  <!-- 外部链接：招商 -->
+  <div class="flex justify-end mt-2 mr-1">
+    <a href="/en/sponsorship/" target="_blank"
+      class="group/link flex items-center gap-1
+      text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
+      transition-colors not-prose">
+      Become a sponsor
+      <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+    </a>
+  </div>
+  
+</div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
+Variant ID: example-en-v1 </div> <!-- Render the ad HTML directly --><div class="relative my-12 not-prose font-sans ">
+  <!-- 核心广告卡片 -->
+  <a href="/en/sponsorship/" target="_blank" rel="sponsored" class="block not-prose">
+    <div class="group
+      relative overflow-hidden rounded-xl
+      border border-gray-200/80 dark:border-gray-700/70
+      bg-white/95 dark:bg-slate-900/40
+      p-4 sm:p-5
+      shadow-sm
+      transition-colors duration-200">
+
+      <div class="flex items-start gap-4">
+        <!-- Logo -->
+        <div class="shrink-0">
+          
+    <img
+      src="https://cdn.fatbobman.com/placeholder-tools.svg"
+      alt="Sponsor Logo"
+      class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 dark:bg-transparent object-cover"
+      loading="lazy"
+    />
+  
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="flex-1 min-w-0 pt-0.5">
+          <!-- 顶部行：标题 + 标签 -->
+          <div class="flex items-start justify-between gap-3 mb-1.5">
+            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+              Example Product - No Promotion
+            </h4>
+
+            <!-- Sponsor 标签 -->
+            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+              text-gray-400 dark:text-gray-500
+              border border-gray-200/60 dark:border-gray-700/60
+              bg-white/60 dark:bg-slate-900/50
+              rounded px-1.5 py-0.5 select-none">
+              SPONSOR
+            </span>
+          </div>
+
+          <!-- 描述文字 -->
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+            This is an example ad without special promotional features. Still maintains a clean and elegant display.
+          </p>
+
+          <!-- 底部行：Features + CTA -->
+          
+          <!-- No features, show only CTA -->
+          <div class="mt-3 flex items-center gap-1 text-xs sm:text-sm
+            text-gray-500 dark:text-gray-500
+            transition-all duration-200 font-medium
+            group-hover:text-secondary dark:group-hover:text-secondary ">
+            Learn More
+            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </a>
+
+  
+</div> </div> </div> </div> <!-- 默认广告 --> <div data-astro-cid-jhwx4wuq> <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100" data-astro-cid-jhwx4wuq>
+默认广告 (Default Fallback Ads)
+</h2> <div class="space-y-8" data-astro-cid-jhwx4wuq> <div class="border-2 border-dashed border-orange-300 dark:border-orange-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-orange-600 dark:text-orange-400" data-astro-cid-jhwx4wuq>
+Default ZH: default-zh </div> <!-- Render the ad HTML directly --><div class="relative my-12 not-prose font-sans ">
+  <!-- 核心广告卡片 -->
+  <a href="/zh/sponsorship/" target="_blank" rel="sponsored" class="block not-prose">
+    <div class="group
+      relative overflow-hidden rounded-xl
+      border border-gray-200/80 dark:border-gray-700/70
+      bg-white/95 dark:bg-slate-900/40
+      p-4 sm:p-5
+      shadow-sm
+      transition-colors duration-200">
+
+      <div class="flex items-start gap-4">
+        <!-- Logo -->
+        <div class="shrink-0">
+          
+    <img
+      src="https://cdn.fatbobman.com/placeholder-tools.svg"
+      alt="Sponsor Logo"
+      class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 dark:bg-transparent object-cover"
+      loading="lazy"
+    />
+  
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="flex-1 min-w-0 pt-0.5">
+          <!-- 顶部行：标题 + 标签 -->
+          <div class="flex items-start justify-between gap-3 mb-1.5">
+            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+              在此投放广告，触达 Swift 开发者
+            </h4>
+
+            <!-- Sponsor 标签 -->
+            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+              text-gray-400 dark:text-gray-500
+              border border-gray-200/60 dark:border-gray-700/60
+              bg-white/60 dark:bg-slate-900/50
+              rounded px-1.5 py-0.5 select-none">
+              示例赞助商
+            </span>
+          </div>
+
+          <!-- 描述文字 -->
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+            在博客和周刊中推广您的框架、工具、服务或应用，精准触达高度专注的 iOS 和 Swift 开发者受众。
+          </p>
+
+          <!-- 底部行：Features + CTA -->
+          
+          <!-- No features, show only CTA -->
+          <div class="mt-3 flex items-center gap-1 text-xs sm:text-sm
+            text-gray-500 dark:text-gray-500
+            transition-all duration-200 font-medium
+            group-hover:text-secondary dark:group-hover:text-secondary ">
+            成为赞助商
+            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </a>
+
+  
+  <!-- 外部链接：招商 -->
+  <div class="flex justify-end mt-2 mr-1">
+    <a href="/zh/sponsorship/" target="_blank"
+      class="group/link flex items-center gap-1
+      text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
+      transition-colors not-prose">
+      成为赞助商
+      <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+    </a>
+  </div>
+  
+</div> </div> <div class="border-2 border-dashed border-orange-300 dark:border-orange-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-orange-600 dark:text-orange-400" data-astro-cid-jhwx4wuq>
+Default EN: default-en </div> <!-- Render the ad HTML directly --><div class="relative my-12 not-prose font-sans ">
+  <!-- 核心广告卡片 -->
+  <a href="/en/sponsorship/" target="_blank" rel="sponsored" class="block not-prose">
+    <div class="group
+      relative overflow-hidden rounded-xl
+      border border-gray-200/80 dark:border-gray-700/70
+      bg-white/95 dark:bg-slate-900/40
+      p-4 sm:p-5
+      shadow-sm
+      transition-colors duration-200">
+
+      <div class="flex items-start gap-4">
+        <!-- Logo -->
+        <div class="shrink-0">
+          
+    <img
+      src="https://cdn.fatbobman.com/placeholder-tools.svg"
+      alt="Sponsor Logo"
+      class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 dark:bg-transparent object-cover"
+      loading="lazy"
+    />
+  
+        </div>
+
+        <!-- 内容区域 -->
+        <div class="flex-1 min-w-0 pt-0.5">
+          <!-- 顶部行：标题 + 标签 -->
+          <div class="flex items-start justify-between gap-3 mb-1.5">
+            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+              Reach Swift Developers. Share Your Product.
+            </h4>
+
+            <!-- Sponsor 标签 -->
+            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+              text-gray-400 dark:text-gray-500
+              border border-gray-200/60 dark:border-gray-700/60
+              bg-white/60 dark:bg-slate-900/50
+              rounded px-1.5 py-0.5 select-none">
+              Example Sponsor
+            </span>
+          </div>
+
+          <!-- 描述文字 -->
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+            Promote your framework, tool, service, or app to a highly targeted iOS &amp; Swift developer audience across blog and newsletter placements.
+          </p>
+
+          <!-- 底部行：Features + CTA -->
+          
+          <!-- No features, show only CTA -->
+          <div class="mt-3 flex items-center gap-1 text-xs sm:text-sm
+            text-gray-500 dark:text-gray-500
+            transition-all duration-200 font-medium
+            group-hover:text-secondary dark:group-hover:text-secondary ">
+            Become a sponsor
+            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+              fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </a>
+
+  
+  <!-- 外部链接：招商 -->
+  <div class="flex justify-end mt-2 mr-1">
+    <a href="/en/sponsorship/" target="_blank"
+      class="group/link flex items-center gap-1
+      text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
+      transition-colors not-prose">
+      Become a sponsor
+      <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
+        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+    </a>
+  </div>
+  
+</div> </div> </div> </div> <!-- 技术说明 --> <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6" data-astro-cid-jhwx4wuq> <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100" data-astro-cid-jhwx4wuq>
+🔧 技术架构
+</h2> <div class="space-y-3 text-sm text-gray-700 dark:text-gray-300" data-astro-cid-jhwx4wuq> <div data-astro-cid-jhwx4wuq> <strong data-astro-cid-jhwx4wuq>1. 共享模板函数</strong> <code class="block bg-gray-100 dark:bg-gray-900 px-3 py-2 rounded mt-1 text-xs" data-astro-cid-jhwx4wuq>
+functions/_shared/ad-renderer.js → renderAd(adData, lang)
+</code> </div> <div data-astro-cid-jhwx4wuq> <strong data-astro-cid-jhwx4wuq>2. Astro 组件封装</strong> <code class="block bg-gray-100 dark:bg-gray-900 px-3 py-2 rounded mt-1 text-xs" data-astro-cid-jhwx4wuq>
+src/components/widgets/AdRenderer.astro
+</code> </div> <div data-astro-cid-jhwx4wuq> <strong data-astro-cid-jhwx4wuq>3. Edge Function 测试页</strong> <code class="block bg-gray-100 dark:bg-gray-900 px-3 py-2 rounded mt-1 text-xs" data-astro-cid-jhwx4wuq>
+http://localhost:8089/test-ad-render?variant=0&lang=zh
+</code> </div> <div class="mt-4 pt-4 border-t border-gray-300 dark:border-gray-600" data-astro-cid-jhwx4wuq> <strong data-astro-cid-jhwx4wuq>下一步:</strong> <ul class="list-disc list-inside ml-4 mt-2 space-y-1" data-astro-cid-jhwx4wuq> <li data-astro-cid-jhwx4wuq>实现 /ads-v2 Edge Function (带日期调度逻辑)</li> <li data-astro-cid-jhwx4wuq>在 KV 中存储广告数据</li> <li data-astro-cid-jhwx4wuq>更新前端 AdsLoader 调用新 API</li> </ul> </div> </div> </div> </section> </main>   </div> </main> </div> <footer> <footer class="bg-block "> <div class="mx-auto w-full max-w-3xl px-4 md:px-6"> <div class="container flex flex-col items-center pt-10"> <div class="flex flex-row justify-around w-full space-x-3"> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">Explore</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium"> <a href="/en/snippet/" class="hover:text-secondary">Quick Tips</a> <a href="/en/posts/" class="hover:text-secondary">Posts</a> <a href="/en/tags/" class="hover:text-secondary">Tags</a> <a href="/en/collections/" class="hover:text-secondary">Collections</a> </div> </div> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">Subscribe</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium"> <a href="https://weekly.fatbobman.com/welcome" class="hover:text-secondary" target="_blank">Newsletter</a> <a href="/rss.xml" class="hover:text-secondary hover:font-medium" target="_blank">RSS</a> </div> </div> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">Connect &amp; Support</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium"> <a href="/en/sponsorship/" class="hover:text-secondary" rel="sponsored"> Promote on Blog </a> <a href="/en/about/#contact" class="hover:text-secondary">Contact Me</a> <a href="https://www.buymeacoffee.com/fatbobman" class="hover:text-secondary" target="_blank">Buy Me a Coffee ☕️</a> </div> </div> </div> <div class="pb-0"> <div class="flex items-center justify-center w-full px-6 pt-12 text-sm"> <span class="text-muted text-xs tracking-normal">Copyright ©  2025
+Fatbobman Digital Limited. All Rights
+            Reserved.</span> </div> <div class="flex items-center justify-center w-full px-6 pt-2 text-sm pb-10"> <button type="button" onclick="
+        try {
+          window.open('https://beian.miit.gov.cn/#/Integrated/index', '_blank');
+        } catch (e) {
+          console.log('Failed to open ICP link:', e);
+        }
+      " class="text-xxs hover:underline text-muted tracking-wide" aria-label="ICP Registration Information">
+辽ICP备20006550号-1
+</button> </div> </div> </div> </div> </footer> </footer> </div> <section> <div id="weekly-modal" data-subscribeText="Join Now" data-placeholder="Subscribe with your email"> <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"> <!-- Modal content --> <div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-lg shadow-2xl border-gray-200 border dark:border-gray-600"> <!-- Modal header --> <div class="flex items-center justify-between px-4 md:px-5 pt-4 pb-0 rounded-t dark:border-gray-600"> <button id="popup-modal-close-button" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"> <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path> </svg> <span class="sr-only">Close modal</span> </button> </div> <!-- Modal body --> <div class="px-4 md:px-5 pb-4 md:w-[480px] sm:w-80 mx-auto"> <div class="sm:hidden md:block text-base text-center font-bold text-gray-900 dark:text-blue-100 pt-4 pb-2 ">Weekly Swift &amp; SwiftUI Highlights - Every Monday</div> <iframe class="mx-auto sm:w-[320px] md:w-[480px] sm:h-[200px] md:h-[320px] dark:opacity-80 dark:rounded-lg dark:shadow-2xl dark:border-gray-600" src="https://weekly.fatbobman.com/embed" style="border:0px solid #EEE; background:white; width: 100%; max-width: 480px;"></iframe> </div> </div> </div> </div> </section> <script type="module" src="/_astro/WeeklyModalLoader.astro_astro_type_script_index_0_lang.CmhzHyOM.js"></script>  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js" async></script> <script src="https://analytics.ahrefs.com/analytics.js" data-key="KF0NNRpbcfyJPzijzZEiOw" async></script> <script>
+  // 为每个需要清除 focus 状态的按钮都添加一个 clear-focus 类, 下面的代码将在点击后自动移除 focus 状态
+  document.addEventListener('DOMContentLoaded', () => {
+    // 获取所有具有 'clear-focus' 类的按钮
+    const buttons = document.querySelectorAll('.clear-focus');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setTimeout(() => {
+          button.blur();
+        }, 0);
+      });
+    });
+  });
+
+  window.onpageshow = function () {
+    document.documentElement.classList.add('motion-safe:scroll-smooth');
+  };
+</script> <div id="docsearch-container-data" data-lang="zh" data-searchtext="搜索..."></div> <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.3" defer></script> <script type="module">function r(e,t){const a={button:{buttonText:"搜索",buttonAriaLabel:"搜索"},modal:{searchBox:{resetButtonTitle:"清除搜索关键字",resetButtonAriaLabel:"清除搜索关键字",cancelButtonText:"取消",cancelButtonAriaLabel:"取消"},startScreen:{recentSearchesTitle:"最近搜索",noRecentSearchesText:"当前没有搜索历史记录",saveRecentSearchButtonTitle:"保存本次搜索",removeRecentSearchButtonTitle:"从搜索历史中移除",favoriteSearchesTitle:"收藏夹",removeFavoriteSearchButtonTitle:"从收藏夹移除"},errorScreen:{titleText:"无法获取结果",helpText:"请检查网络连接"},footer:{selectText:"选择",selectKeyAriaLabel:"选择",navigateText:"切换",navigateUpKeyAriaLabel:"Arrow up",navigateDownKeyAriaLabel:"Arrow down",closeText:"退出",closeKeyAriaLabel:"Escape key",searchByText:"引擎支持"},noResultsScreen:{noResultsText:"无法找到对应结果",suggestedQueryText:"可以尝试搜索如下内容",reportMissingResultsText:"确认本次搜索应该返回内容？",reportMissingResultsLinkText:"请告知我们"}}};if(typeof window<"u"){const n=window.docsearch;n({appId:"MVXKD4F4BR",apiKey:"a1b4111c3de8b9f60eeca6da001711da",indexName:"fatbobman",container:"#docsearch",insights:!0,placeholder:t,maxResultsPerGroup:50,translations:e==="zh"?a:void 0,searchParameters:{facetFilters:[`lang:${e}`],hitsPerPage:50}})}}function o(){const e=document.getElementById("docsearch-container-data");if(!e){console.error("Search container not found");return}const t=e.dataset.lang,a=e.dataset.searchtext;r(t,a)}window.addEventListener("load",()=>{document.querySelector('script[src*="docsearch"]')&&o()});</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <!--Magic Fix 解决在 Safari 下搜索框取消后会滚动到页面底部--> <div class="fixed"> <input type="text"> </div> </body></html> 

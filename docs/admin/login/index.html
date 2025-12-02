@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Admin Login</title>
+<meta name="description" content="Administrator login page for ads management">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://fatbobman.com/admin/login/">
+<meta property="og:title" content="Fatbobman&#39;s Blog - A Blog About Swift, SwiftUI, and More">
+<meta property="og:description" content="Administrator login page for ads management">
+<meta property="og:url" content="https://fatbobman.com/admin/login/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://fatbobman.com/images/blog-card.png">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="fatbobman.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@fatbobman">
+<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/en/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><!-- 其他路径的 hreflang -->
+  <link rel="alternate" hreflang="en" href="https://fatbobman.com/admin/login/">
+  <link rel="alternate" hreflang="zh-CN" href="https://fatbobman.com/admin/login/">
+  <link rel="alternate" hreflang="x-default" href="https://fatbobman.com/admin/login/"><script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.async = true; // Add async attribute
+    hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script> <!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5C7N4MF5');</script> <!-- End Google Tag Manager --><script>
+      // Immediately set theme before page renders
+      if (
+        localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      }
+    </script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "#author",
+  "name": "东坡肘子 (徐杨)",
+  "alternateName": "Fatbobman (Xu Yang)",
+  "jobTitle": "Apple Developer",
+  "description": "苹果生态开发者，专注 Swift 和 SwiftUI 开发。Fatbobman's Blog 作者。",
+  "url": "https://fatbobman.com",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/FatWithBoys.png"
+  },
+  "sameAs": [
+    "https://github.com/fatbobman",
+    "https://x.com/fatbobman",
+    "https://www.linkedin.com/in/fatbobman/",
+    "https://bsky.app/profile/fatbobman.com",
+    "https://mastodon.social/@fatbobman",
+    "https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3",
+    "https://fatbobman.com/zh/about/",
+    "https://fatbobman.com/en/about/"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Fatbobman's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  }
+}</script><link rel="stylesheet" href="/_astro/about.Gm0eHNnZ.css"></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header>  </header> <h1 class="sr-only">Admin Login</h1> <main class="w-full mx-auto max-w-3xl p-4 md:p-6 "> <div class="container mx-auto space-y-6 sm:space-y-12">  <main class="container max-w-md mx-auto px-4 py-16"> <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8"> <h1 class="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+🔐 Admin Access
+</h1> <form id="loginForm" class="space-y-4"> <div> <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+Password
+</label> <input type="password" id="password" name="password" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
+                   bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100
+                   focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter admin password"> </div> <div id="errorMessage" class="hidden p-3 bg-red-100 dark:bg-red-900/30 border border-red-400 dark:border-red-700 rounded-lg text-red-700 dark:text-red-400 text-sm"></div> <button type="submit" id="loginButton" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg
+                 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed">
+Login
+</button> </form> <div class="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700"> <p class="text-sm text-gray-600 dark:text-gray-400"> <strong>Note:</strong> This is a protected admin area. Only authorized users should access this page.
+</p> </div> </div> </main> <script type="module">const d=document.getElementById("loginForm"),i=document.getElementById("password"),e=document.getElementById("errorMessage"),t=document.getElementById("loginButton");d.addEventListener("submit",async s=>{s.preventDefault();const a=i.value;e.classList.add("hidden"),t.disabled=!0,t.textContent="Logging in...";try{const n=await fetch("/api/admin/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({password:a})}),o=await n.json();n.ok&&o.success?window.location.href="/admin/ads-manager":(e.textContent=o.error||"Login failed",e.classList.remove("hidden"))}catch{e.textContent="Network error. Please try again.",e.classList.remove("hidden")}finally{t.disabled=!1,t.textContent="Login"}});</script>  </div> </main> </div> <footer>  </footer> </div> <section> <div id="weekly-modal" data-subscribeText="Join Now" data-placeholder="Subscribe with your email"> <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"> <!-- Modal content --> <div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-lg shadow-2xl border-gray-200 border dark:border-gray-600"> <!-- Modal header --> <div class="flex items-center justify-between px-4 md:px-5 pt-4 pb-0 rounded-t dark:border-gray-600"> <button id="popup-modal-close-button" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"> <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path> </svg> <span class="sr-only">Close modal</span> </button> </div> <!-- Modal body --> <div class="px-4 md:px-5 pb-4 md:w-[480px] sm:w-80 mx-auto"> <div class="sm:hidden md:block text-base text-center font-bold text-gray-900 dark:text-blue-100 pt-4 pb-2 ">Weekly Swift &amp; SwiftUI Highlights - Every Monday</div> <iframe class="mx-auto sm:w-[320px] md:w-[480px] sm:h-[200px] md:h-[320px] dark:opacity-80 dark:rounded-lg dark:shadow-2xl dark:border-gray-600" src="https://weekly.fatbobman.com/embed" style="border:0px solid #EEE; background:white; width: 100%; max-width: 480px;"></iframe> </div> </div> </div> </div> </section> <script type="module" src="/_astro/WeeklyModalLoader.astro_astro_type_script_index_0_lang.CmhzHyOM.js"></script>  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js" async></script> <script src="https://analytics.ahrefs.com/analytics.js" data-key="KF0NNRpbcfyJPzijzZEiOw" async></script> <script>
+  // 为每个需要清除 focus 状态的按钮都添加一个 clear-focus 类, 下面的代码将在点击后自动移除 focus 状态
+  document.addEventListener('DOMContentLoaded', () => {
+    // 获取所有具有 'clear-focus' 类的按钮
+    const buttons = document.querySelectorAll('.clear-focus');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setTimeout(() => {
+          button.blur();
+        }, 0);
+      });
+    });
+  });
+
+  window.onpageshow = function () {
+    document.documentElement.classList.add('motion-safe:scroll-smooth');
+  };
+</script> <div id="docsearch-container-data" data-lang="zh" data-searchtext="搜索..."></div> <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.3" defer></script> <script type="module">function r(e,t){const a={button:{buttonText:"搜索",buttonAriaLabel:"搜索"},modal:{searchBox:{resetButtonTitle:"清除搜索关键字",resetButtonAriaLabel:"清除搜索关键字",cancelButtonText:"取消",cancelButtonAriaLabel:"取消"},startScreen:{recentSearchesTitle:"最近搜索",noRecentSearchesText:"当前没有搜索历史记录",saveRecentSearchButtonTitle:"保存本次搜索",removeRecentSearchButtonTitle:"从搜索历史中移除",favoriteSearchesTitle:"收藏夹",removeFavoriteSearchButtonTitle:"从收藏夹移除"},errorScreen:{titleText:"无法获取结果",helpText:"请检查网络连接"},footer:{selectText:"选择",selectKeyAriaLabel:"选择",navigateText:"切换",navigateUpKeyAriaLabel:"Arrow up",navigateDownKeyAriaLabel:"Arrow down",closeText:"退出",closeKeyAriaLabel:"Escape key",searchByText:"引擎支持"},noResultsScreen:{noResultsText:"无法找到对应结果",suggestedQueryText:"可以尝试搜索如下内容",reportMissingResultsText:"确认本次搜索应该返回内容？",reportMissingResultsLinkText:"请告知我们"}}};if(typeof window<"u"){const n=window.docsearch;n({appId:"MVXKD4F4BR",apiKey:"a1b4111c3de8b9f60eeca6da001711da",indexName:"fatbobman",container:"#docsearch",insights:!0,placeholder:t,maxResultsPerGroup:50,translations:e==="zh"?a:void 0,searchParameters:{facetFilters:[`lang:${e}`],hitsPerPage:50}})}}function o(){const e=document.getElementById("docsearch-container-data");if(!e){console.error("Search container not found");return}const t=e.dataset.lang,a=e.dataset.searchtext;r(t,a)}window.addEventListener("load",()=>{document.querySelector('script[src*="docsearch"]')&&o()});</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <!--Magic Fix 解决在 Safari 下搜索框取消后会滚动到页面底部--> <div class="fixed"> <input type="text"> </div> </body></html>
