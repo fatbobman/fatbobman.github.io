@@ -102,12 +102,24 @@ export async function onRequest(context) {
 }
 
 async function handleRead(kv, key) {
-  const value = await kv.get(key, { type: 'json' });
+  // Try to get as text first
+  const rawValue = await kv.get(key, { type: 'text' });
+
+  // Try to parse as JSON if it looks like JSON
+  let value = rawValue;
+  if (rawValue && (rawValue.startsWith('{') || rawValue.startsWith('['))) {
+    try {
+      value = JSON.parse(rawValue);
+    } catch (e) {
+      // Keep as text if JSON parsing fails
+      value = rawValue;
+    }
+  }
 
   return {
     action: 'read',
     key: key,
-    found: value !== null,
+    found: rawValue !== null,
     value: value,
     timestamp: new Date().toISOString()
   };

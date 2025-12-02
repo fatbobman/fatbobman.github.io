@@ -1,6 +1,7 @@
 {
     "name": "blogsource",
     "outputDirectory": "./docs",
+    "proxy": 4321,
     "kv_namespaces": [
         {
             "binding": "test1",
