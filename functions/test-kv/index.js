@@ -54,6 +54,14 @@ export async function onRequest(context) {
           namespace: 'fatblog (ns-z9VoO3Bn2kL6)',
           boundAs: env.fatblog ? 'fatblog' : (env.test1 ? 'test1' : 'mock'),
           note: usingMock ? 'Using in-memory mock KV for local development' : 'Connected to EdgeOne KV storage',
+          debug: {
+            envKeys: Object.keys(env || {}),
+            hasTest1: !!env.test1,
+            hasFatblog: !!env.fatblog,
+            envType: typeof env,
+            test1Type: typeof env.test1,
+            fatblogType: typeof env.fatblog
+          },
           availableActions: [
             'read - Read a key value',
             'write - Write test data',
