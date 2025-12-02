@@ -1,6 +1,12 @@
 {
     "name": "blogsource",
     "outputDirectory": "./docs",
+    "kv_namespaces": [
+        {
+            "binding": "test1",
+            "id": "ns-z9VoO3Bn2kL6"
+        }
+    ],
     "redirects": [
         {
             "source": "$wwwhost",
