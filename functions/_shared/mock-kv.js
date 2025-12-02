@@ -193,14 +193,19 @@ const mockKVInstance = new MockKV();
 
 /**
  * Get KV instance - returns real KV in production, mock KV in development
- * @param {Object} env - EdgeOne environment object
+ * @param {Object} env - EdgeOne environment object (not used for EdgeOne Pages)
  * @param {boolean} autoInit - Auto-initialize mock data in development
  * @returns {Promise<Object>} KV instance
  */
 export async function getKV(env, autoInit = true) {
-  // Try to get real KV binding (production or properly configured local env)
-  const realKV = env.fatblog || env.test1;
+  // EdgeOne Pages binds KV as global variables (not in env object)
+  // Check if test1 global variable exists (our KV binding variable name)
+  if (typeof test1 !== 'undefined') {
+    return test1;
+  }
 
+  // Fallback: also check env object (in case binding method changes)
+  const realKV = env?.fatblog || env?.test1;
   if (realKV) {
     return realKV;
   }
@@ -219,5 +224,10 @@ export async function getKV(env, autoInit = true) {
  * @returns {boolean}
  */
 export function isMockKV(env) {
-  return !(env.fatblog || env.test1);
+  // Check global variable first
+  if (typeof test1 !== 'undefined') {
+    return false;
+  }
+  // Fallback to env check
+  return !(env?.fatblog || env?.test1);
 }
