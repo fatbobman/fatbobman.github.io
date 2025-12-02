@@ -4,10 +4,18 @@
  * Body: { password: "xxx" }
  */
 
-import { verifyPassword, createSessionCookie, generateSessionToken } from '../../_shared/auth.js';
+import { verifyPassword, createSessionCookie } from '../../_shared/auth.js';
 
-export async function onRequestPost(context) {
+export async function onRequest(context) {
   const { request, env } = context;
+
+  // Only allow POST requests
+  if (request.method !== 'POST') {
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
 
   try {
     const body = await request.json();

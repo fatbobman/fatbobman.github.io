@@ -7,8 +7,16 @@
 
 import { requireAuth } from '../../_shared/auth.js';
 
-export async function onRequestGet(context) {
+export async function onRequest(context) {
   const { request } = context;
+
+  // Only allow GET requests
+  if (request.method !== 'GET') {
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
 
   // Check authentication
   const authError = requireAuth(request);
