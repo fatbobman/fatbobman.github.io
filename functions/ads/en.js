@@ -244,95 +244,109 @@ const ads = [
 
 
 const currentAd = `
-       <div class="relative my-12 not-prose font-sans group">
-  
-  <!-- 核心广告卡片 -->
-  <!-- 注意：链接后缀我去掉了 -zh，改为通用或英文链接，请根据您的追踪设置确认 -->
-  <a href="https://l.fatbobman.com/sb-boltai" target="_blank" rel="sponsored" class="block not-prose">
-    <div class="
-      relative overflow-hidden rounded-xl
-      border border-gray-200 dark:border-gray-700/60
-      bg-white dark:bg-slate-900/40
-      p-4 sm:p-5
-      transition-all duration-300
-      hover:border-orange-400/50 dark:hover:border-blue-500/50
-      hover:shadow-md dark:hover:shadow-none
-      hover:bg-gray-50 dark:hover:bg-slate-800/60
-    ">
-      
-      <div class="flex items-start gap-4">
-        <!-- Logo: 限制尺寸，圆角处理 -->
-        <div class="shrink-0">
-          <img 
-            src="https://cdn.fatbobman.com/sb-boltai-White512@2x.png" 
-            alt="BoltAI Logo" 
-            class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 dark:bg-transparent object-cover"
-            loading="lazy"
-          />
-        </div>
+<div class="relative my-12 not-prose font-sans">
 
-        <!-- 内容区域 -->
-        <div class="flex-1 min-w-0 pt-0.5">
-          <!-- 顶部行：标题 + 标签 -->
-          <div class="flex items-start justify-between gap-3 mb-1.5">
-            <h4 class="text-base sm:text-lg font-bold text-gray-900 dark:text-gray-100 leading-snug group-hover:text-orange-600 dark:group-hover:text-blue-400 transition-colors">
-              Native macOS AI Client: GPT, Claude, Gemini & Local Models
-            </h4>
+        <!-- group 移到卡片内部！ -->
+        <a href="https://l.fatbobman.com/sb-boltai" target="_blank" rel="sponsored" class="block not-prose">
+          <div class="group
+            relative overflow-hidden rounded-xl
+            border border-gray-200/80 dark:border-gray-700/70
+            bg-white/95 dark:bg-slate-900/40
+            p-4 sm:p-5
+            shadow-sm
+            transition-colors duration-200
+          ">
             
-            <!-- Sponsor 标签：极简风格 -->
-            <span class="shrink-0 text-[10px] font-bold tracking-wide uppercase text-gray-400/80 dark:text-gray-500 border border-gray-200 dark:border-gray-700 rounded px-1.5 py-0.5 select-none">
-              Sponsor
-            </span>
-          </div>
-
-          <!-- 描述文字：限制行数，防止过长 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none">
-            BoltAI integrates GPT, Claude, Gemini, and Ollama local models directly into your workflow. Features screen context awareness and code refactoring—built for developers.
-          </p>
-
-          <!-- 底部行：优惠码 + 引导箭头 -->
-          <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm">
-            <!-- 优惠高亮块 -->
-            <div class="
-              inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md
-              bg-orange-50 dark:bg-blue-500/10 
-              text-orange-700 dark:text-blue-300
-              border border-orange-100 dark:border-blue-500/20
-              font-medium
-            ">
-              <span>🎉 Code:</span>
-              <span class="font-bold font-mono">BFCM25</span>
-              <span class="opacity-80">(51% OFF)</span>
+            <div class="flex items-start gap-4">
+      
+              <!-- Logo -->
+              <div class="shrink-0">
+                <img 
+                  src="https://cdn.fatbobman.com/sb-boltai-White512@2x.png" 
+                  alt="BoltAI Logo" 
+                  class="w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-gray-50 dark:bg-transparent object-cover"
+                  loading="lazy"
+                />
+              </div>
+      
+              <!-- Content -->
+              <div class="flex-1 min-w-0 pt-0.5">
+      
+                <div class="flex items-start justify-between gap-3 mb-1.5">
+                  <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug">
+                    Native macOS AI Client: GPT, Claude, Gemini & Local Models
+                  </h4>
+      
+                  <span class="
+                    shrink-0 text-[10px] font-semibold tracking-wide uppercase
+                    text-gray-400 dark:text-gray-500
+                    border border-gray-200/60 dark:border-gray-700/60
+                    bg-white/60 dark:bg-slate-900/50
+                    rounded px-1.5 py-0.5 select-none
+                  ">
+                    Sponsor
+                  </span>
+                </div>
+      
+                <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none">
+                  BoltAI integrates GPT, Claude, Gemini, and Ollama local models directly into your workflow. Features screen context awareness and code refactoring — built for developers.
+                </p>
+      
+                <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm">
+      
+                  <!-- Discount -->
+                  <div class="
+                    inline-flex items-center gap-2 px-2.5 py-1 rounded-md
+                    bg-orange-50/85 dark:bg-blue-500/10 
+                    text-orange-700 dark:text-blue-300
+                    border border-orange-100/70 dark:border-blue-500/20
+                    font-medium
+                  ">
+                    <span>🎉 Code:</span>
+                    <span class="font-bold font-mono">BFCM25</span>
+                    <span class="opacity-80">(51% OFF)</span>
+                  </div>
+      
+                  <!-- CTA（仅卡片悬停触发，不会被 sponsor link 触发） -->
+                  <div
+                    class="
+                      ml-auto flex items-center gap-1
+                      text-gray-500 dark:text-gray-500
+                      transition-all duration-200 font-medium
+                      group-hover:text-secondary dark:group-hover:text-secondary
+                    "
+                  >
+                    Try it now
+                    <svg
+                      class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
+                      fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </div>
+      
+                </div>
+      
+              </div>
             </div>
-
-            <!-- 引导文字 -->
-            <div class="ml-auto flex items-center gap-1 text-gray-400 group-hover:text-orange-500 dark:group-hover:text-blue-400 transition-colors font-medium">
-              Try it now
-              <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </div>
           </div>
+        </a>
+      
+        <!-- Sponsor link 不属于 group，Hover 不会影响 CTA -->
+        <div class="flex justify-end mt-2 mr-1">
+          <a href="/en/sponsorship/" target="_blank" class="
+            group/link flex items-center gap-1 
+            text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 
+            transition-colors not-prose
+          ">
+            Become a sponsor
+            <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
+      
       </div>
-    </div>
-  </a>
-
-  <!-- 外部链接：招商 (放在卡片右下方，低调处理) -->
-  <div class="flex justify-end mt-2 mr-1">
-    <a href="/en/sponsorship/" target="_blank" class="
-      group/link flex items-center gap-1 
-      text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 
-      transition-colors not-prose
-    ">
-      Become a sponsor
-      <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-      </svg>
-    </a>
-  </div>
-
-</div>
 `
 
 const startTime = new Date('2025-12-01T05:00:00Z');

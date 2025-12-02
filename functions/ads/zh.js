@@ -203,11 +203,11 @@ const ads = [
 ]
 
 const currentAd = `
-         <div class="relative my-12 not-prose font-sans group">
+<div class="relative my-12 not-prose font-sans">
   
         <!-- 核心广告卡片 -->
         <a href="https://l.fatbobman.com/sb-boltai-zh" target="_blank" rel="sponsored" class="block not-prose">
-          <div class="
+          <div class="group
             relative overflow-hidden rounded-xl
             border border-gray-200/80 dark:border-gray-700/70
             bg-white/95 dark:bg-slate-900/40
