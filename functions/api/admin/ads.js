@@ -20,7 +20,15 @@ export async function onRequest(context) {
   // Get KV instance
   const kv = await getKV(env, true);
 
+  const url = new URL(request.url);
+  const action = url.searchParams.get('action');
+
   try {
+    // Handle default/fallback ad management separately
+    if (action === 'update-default') {
+      return await handleUpdateDefault(kv, request);
+    }
+
     switch (request.method) {
       case 'GET':
         return await handleList(kv);
@@ -130,10 +138,12 @@ async function handleCreate(kv, request) {
     });
   }
 
-  // Validate variants structure
-  if (!variants.zh || !variants.en || !Array.isArray(variants.zh) || !Array.isArray(variants.en)) {
+  // Validate variants structure and content
+  const variantsValidation = validateVariants(variants);
+  if (!variantsValidation.valid) {
     return new Response(JSON.stringify({
-      error: 'Invalid variants structure. Must have zh and en arrays'
+      error: 'Invalid variants data',
+      details: variantsValidation.errors
     }), {
       status: 400,
       headers: { 'Content-Type': 'application/json' }
@@ -273,6 +283,20 @@ async function handleUpdate(kv, request) {
     });
   }
 
+  // Validate variants if provided
+  if (updates.variants) {
+    const variantsValidation = validateVariants(updates.variants);
+    if (!variantsValidation.valid) {
+      return new Response(JSON.stringify({
+        error: 'Invalid variants data',
+        details: variantsValidation.errors
+      }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+  }
+
   // Update schedule with provided fields
   adsData.schedules[scheduleIndex] = {
     ...adsData.schedules[scheduleIndex],
@@ -367,6 +391,178 @@ async function handleDelete(kv, request) {
     status: 200,
     headers: { 'Content-Type': 'application/json' }
   });
+}
+
+/**
+ * PUT - Update default/fallback advertisement
+ * Body: { zh: {...}, en: {...} }
+ */
+async function handleUpdateDefault(kv, request) {
+  const body = await request.json();
+  const { zh, en } = body;
+
+  // Validate required fields
+  if (!zh || !en) {
+    return new Response(JSON.stringify({
+      error: 'Missing required fields: zh and en default ads'
+    }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  // Validate zh default ad
+  const zhValidation = validateAdVariant(zh, 'zh');
+  if (!zhValidation.valid) {
+    return new Response(JSON.stringify({
+      error: `Invalid zh default ad: ${zhValidation.errors.join(', ')}`
+    }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  // Validate en default ad
+  const enValidation = validateAdVariant(en, 'en');
+  if (!enValidation.valid) {
+    return new Response(JSON.stringify({
+      error: `Invalid en default ad: ${enValidation.errors.join(', ')}`
+    }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  // Get existing data
+  const rawData = await kv.get(ADS_KEY, { type: 'text' });
+  let adsData;
+
+  if (rawData) {
+    try {
+      adsData = JSON.parse(rawData);
+    } catch (e) {
+      return new Response(JSON.stringify({
+        error: 'Failed to parse existing ads data'
+      }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+  } else {
+    adsData = {
+      schedules: [],
+      default: {},
+      metadata: {
+        lastUpdated: new Date().toISOString(),
+        version: '1.0'
+      }
+    };
+  }
+
+  // Update default ads
+  adsData.default = { zh, en };
+  adsData.metadata.lastUpdated = new Date().toISOString();
+
+  // Save to KV
+  await kv.put(ADS_KEY, JSON.stringify(adsData));
+
+  return new Response(JSON.stringify({
+    success: true,
+    message: 'Default advertisement updated successfully',
+    data: adsData.default,
+    timestamp: new Date().toISOString()
+  }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' }
+  });
+}
+
+/**
+ * Validate advertisement variant structure
+ * @param {Object} variant - The ad variant to validate
+ * @param {string} lang - Language code for better error messages
+ * @returns {Object} { valid: boolean, errors: string[] }
+ */
+function validateAdVariant(variant, lang = '') {
+  const errors = [];
+  const prefix = lang ? `[${lang}] ` : '';
+
+  // Check required fields
+  if (!variant.id) errors.push(`${prefix}Missing field: id`);
+  if (!variant.title) errors.push(`${prefix}Missing field: title`);
+  if (!variant.description) errors.push(`${prefix}Missing field: description`);
+  if (!variant.cta) errors.push(`${prefix}Missing field: cta`);
+  if (!variant.link) errors.push(`${prefix}Missing field: link`);
+  if (!variant.logo) errors.push(`${prefix}Missing field: logo`);
+  if (!variant.badge) errors.push(`${prefix}Missing field: badge`);
+
+  // Check features array
+  if (!variant.features) {
+    errors.push(`${prefix}Missing field: features`);
+  } else if (!Array.isArray(variant.features)) {
+    errors.push(`${prefix}Field 'features' must be an array`);
+  }
+
+  // Validate URL formats
+  if (variant.link && !isValidURL(variant.link)) {
+    errors.push(`${prefix}Invalid URL format: link`);
+  }
+  if (variant.logo && !isValidURL(variant.logo)) {
+    errors.push(`${prefix}Invalid URL format: logo`);
+  }
+  if (variant.logoDark && !isValidURL(variant.logoDark)) {
+    errors.push(`${prefix}Invalid URL format: logoDark`);
+  }
+
+  return {
+    valid: errors.length === 0,
+    errors
+  };
+}
+
+/**
+ * Validate variants structure for schedules
+ * @param {Object} variants - The variants object with zh and en arrays
+ * @returns {Object} { valid: boolean, errors: string[] }
+ */
+function validateVariants(variants) {
+  const errors = [];
+
+  if (!variants.zh || !Array.isArray(variants.zh)) {
+    errors.push('Missing or invalid zh variants array');
+  } else {
+    variants.zh.forEach((variant, index) => {
+      const validation = validateAdVariant(variant, `zh[${index}]`);
+      errors.push(...validation.errors);
+    });
+  }
+
+  if (!variants.en || !Array.isArray(variants.en)) {
+    errors.push('Missing or invalid en variants array');
+  } else {
+    variants.en.forEach((variant, index) => {
+      const validation = validateAdVariant(variant, `en[${index}]`);
+      errors.push(...validation.errors);
+    });
+  }
+
+  return {
+    valid: errors.length === 0,
+    errors
+  };
+}
+
+/**
+ * Simple URL validation
+ */
+function isValidURL(string) {
+  try {
+    new URL(string);
+    return true;
+  } catch (_) {
+    // Check if it's a relative path (starts with /)
+    return string.startsWith('/');
+  }
 }
 
 /**
