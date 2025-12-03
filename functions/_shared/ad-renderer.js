@@ -87,12 +87,12 @@ function renderFeature(feature) {
 }
 
 /**
- * Render advertisement HTML
+ * Render advertisement HTML (Primary Style)
  * @param {object} adData - AdVariant data object
  * @param {string} lang - Language code (zh/en)
  * @returns {string} Complete HTML for the advertisement
  */
-export function renderAd(adData, lang = 'zh') {
+export function renderAdPrimary(adData, lang = 'zh') {
   const {
     title,
     description,
@@ -235,4 +235,96 @@ export function renderAd(adData, lang = 'zh') {
   ` : ''}
 </div>
   `.trim();
+}
+
+/**
+ * Render advertisement HTML (Secondary Style - Article Inline)
+ * Designed to blend seamlessly with article content
+ * @param {object} adData - AdVariant data object
+ * @param {string} lang - Language code (zh/en)
+ * @returns {string} Complete HTML for the advertisement
+ */
+export function renderAdSecondary(adData, lang = 'zh') {
+  const {
+    title,
+    description,
+    cta,
+    link,
+    logo,
+    logoDark,
+    badge = lang === 'zh' ? '本期赞助' : 'SPONSOR'
+  } = adData;
+
+  const titleHtml = renderRichText(title);
+  const descriptionHtml = renderRichText(description);
+  const ctaHtml = cta ? renderRichText(cta) : '';
+
+  // Chinese language tracking
+  const trackingClass = lang === 'zh' ? 'tracking-wide' : '';
+
+  // Logo HTML with optional dark mode support
+  const logoHtml = logo ? (
+    logoDark ? `
+      <img src="${logo}" alt="icon" class="inline-block w-4 h-4 rounded-sm mr-1.5 -mt-0.5 opacity-80 align-middle dark:hidden">
+      <img src="${logoDark}" alt="icon" class="inline-block w-4 h-4 rounded-sm mr-1.5 -mt-0.5 opacity-80 align-middle hidden dark:inline-block">
+    ` : `
+      <img src="${logo}" alt="icon" class="inline-block w-4 h-4 rounded-sm mr-1.5 -mt-0.5 opacity-80 align-middle">
+    `
+  ) : '';
+
+  return `
+<!-- 顶部原生文字广告容器 -->
+<div class="relative my-8 not-prose font-sans">
+  <a href="${link}" target="_blank" rel="sponsored" class="group block">
+    <!-- 核心布局：左侧边框 + 文字内容 -->
+    <div class="
+      relative pl-4 sm:pl-5 py-1
+      border-l-[3px] border-orange-500 dark:border-blue-500
+      hover:border-orange-400 dark:hover:border-blue-400
+      transition-colors duration-200
+    ">
+
+      <!-- 第一行：Sponsor 标识 + 标题 -->
+      <div class="flex items-baseline gap-2 mb-1.5 flex-wrap ${trackingClass}">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 select-none">
+          ${escapeHtml(badge)}
+        </span>
+        <h4 class="text-base font-bold text-gray-900 dark:text-gray-100 group-hover:text-orange-700 dark:group-hover:text-blue-300 transition-colors">
+          ${titleHtml}
+        </h4>
+      </div>
+
+      <!-- 正文内容：像博主的一句话推荐 -->
+      <p class="text-[15px] leading-relaxed text-gray-700 dark:text-gray-300 ${trackingClass}">
+        ${logoHtml}${descriptionHtml}${ctaHtml ? `
+        <span class="ml-1 font-bold text-orange-700 dark:text-blue-300 border-b-[1.3px] border-orange-500/60 dark:border-blue-400/60 group-hover:border-b-[2.3px] group-hover:border-orange-500 dark:group-hover:border-blue-400 transition-all">
+          ${ctaHtml}
+        </span>` : ''}
+      </p>
+
+    </div>
+  </a>
+</div>
+  `.trim();
+}
+
+/**
+ * Render advertisement by style
+ * @param {object} adData - AdVariant data object
+ * @param {string} lang - Language code (zh/en)
+ * @param {number} style - Style type (1=primary, 2=secondary)
+ * @returns {string} Complete HTML for the advertisement
+ */
+export function renderAdByStyle(adData, lang = 'zh', style = 1) {
+  if (style === 2) {
+    return renderAdSecondary(adData, lang);
+  }
+  return renderAdPrimary(adData, lang);
+}
+
+/**
+ * Backward compatibility: default export uses primary style
+ */
+export function renderAd(adData, lang = 'zh') {
+  return renderAdPrimary(adData, lang);
 }

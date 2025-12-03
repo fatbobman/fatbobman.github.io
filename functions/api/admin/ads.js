@@ -541,6 +541,13 @@ function validateScheduleVariant(variant, lang = '', sponsorId = '') {
     errors.push(`${prefix}Field 'version' must be a positive integer`);
   }
 
+  // Validate style field (optional, must be 1 or 2 if provided)
+  if (variant.style !== undefined) {
+    if (!Number.isInteger(variant.style) || (variant.style !== 1 && variant.style !== 2)) {
+      errors.push(`${prefix}Field 'style' must be 1 (primary) or 2 (secondary)`);
+    }
+  }
+
   if (!variant.title) errors.push(`${prefix}Missing field: title`);
   if (!variant.description) errors.push(`${prefix}Missing field: description`);
   if (!variant.cta) errors.push(`${prefix}Missing field: cta`);
