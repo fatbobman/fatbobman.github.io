@@ -496,11 +496,9 @@ function validateAdVariant(variant, lang = '') {
   if (!variant.logo) errors.push(`${prefix}Missing field: logo`);
   if (!variant.badge) errors.push(`${prefix}Missing field: badge`);
 
-  // Check features array
-  if (!variant.features) {
-    errors.push(`${prefix}Missing field: features`);
-  } else if (!Array.isArray(variant.features)) {
-    errors.push(`${prefix}Field 'features' must be an array`);
+  // Check features array (optional, but if provided must be array)
+  if (variant.features !== undefined && !Array.isArray(variant.features)) {
+    errors.push(`${prefix}Field 'features' must be an array (or omit it)`);
   }
 
   // Validate URL formats

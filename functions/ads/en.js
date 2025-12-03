@@ -247,7 +247,7 @@ const currentAd = `
 <div class="relative my-12 not-prose font-sans">
 
         <!-- group 移到卡片内部！ -->
-        <a href="https://l.fatbobman.com/sb-boltai" target="_blank" rel="sponsored" class="block not-prose">
+        <a href="https://l.fatbobman.com/sb-boltai?utm_source=en_blog" target="_blank" rel="sponsored" class="block not-prose">
           <div class="group
             relative overflow-hidden rounded-xl
             border border-gray-200/80 dark:border-gray-700/70
