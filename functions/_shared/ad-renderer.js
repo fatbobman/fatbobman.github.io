@@ -278,8 +278,8 @@ export function renderAdSecondary(adData, lang = 'zh') {
   <a href="${link}" target="_blank" rel="sponsored" class="group block">
     <!-- 核心布局：左侧边框 + 文字内容 -->
     <div class="
-      relative pl-4 sm:pl-5 py-1
-      border-l-[3px] border-orange-500 dark:border-blue-500
+      relative pl-4 py-1
+      border-l-4 border-secondary
     ">
 
       <!-- 第一行：Sponsor 标识 + 标题 -->
