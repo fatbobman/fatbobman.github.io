@@ -122,24 +122,24 @@ async function handleList(kv) {
 
 /**
  * POST - Create new advertisement schedule
- * Body: { sponsor, startDate, endDate, enabled, variants, notes }
+ * Body: { sponsorId, startDate, endDate, enabled, variants, notes }
  */
 async function handleCreate(kv, request) {
   const body = await request.json();
-  const { sponsor, startDate, endDate, enabled = true, variants, notes = '' } = body;
+  const { sponsorId, startDate, endDate, enabled = true, variants, notes = '' } = body;
 
   // Validate required fields
-  if (!sponsor || !startDate || !endDate || !variants) {
+  if (!sponsorId || !startDate || !endDate || !variants) {
     return new Response(JSON.stringify({
-      error: 'Missing required fields: sponsor, startDate, endDate, variants'
+      error: 'Missing required fields: sponsorId, startDate, endDate, variants'
     }), {
       status: 400,
       headers: { 'Content-Type': 'application/json' }
     });
   }
 
-  // Validate variants structure and content
-  const variantsValidation = validateVariants(variants);
+  // Validate variants structure and content, auto-generate IDs
+  const variantsValidation = validateVariants(variants, sponsorId);
   if (!variantsValidation.valid) {
     return new Response(JSON.stringify({
       error: 'Invalid variants data',
@@ -199,14 +199,14 @@ async function handleCreate(kv, request) {
   // Generate UUID for new schedule
   const id = generateUUID();
 
-  // Create new schedule
+  // Create new schedule with processed variants (IDs auto-generated)
   const newSchedule = {
     id,
-    sponsor,
+    sponsorId,
     startDate,
     endDate,
     enabled,
-    variants,
+    variants: variantsValidation.processedVariants,  // Use processed variants with auto-generated IDs
     notes
   };
 
@@ -232,7 +232,7 @@ async function handleCreate(kv, request) {
 
 /**
  * PUT - Update existing advertisement schedule
- * Body: { id, sponsor?, startDate?, endDate?, enabled?, variants?, notes? }
+ * Body: { id, sponsorId?, startDate?, endDate?, enabled?, variants?, notes? }
  */
 async function handleUpdate(kv, request) {
   const body = await request.json();
@@ -283,9 +283,12 @@ async function handleUpdate(kv, request) {
     });
   }
 
-  // Validate variants if provided
+  // Determine sponsorId to use for validation
+  const sponsorId = updates.sponsorId || adsData.schedules[scheduleIndex].sponsorId;
+
+  // Validate variants if provided and auto-generate IDs
   if (updates.variants) {
-    const variantsValidation = validateVariants(updates.variants);
+    const variantsValidation = validateVariants(updates.variants, sponsorId);
     if (!variantsValidation.valid) {
       return new Response(JSON.stringify({
         error: 'Invalid variants data',
@@ -295,6 +298,8 @@ async function handleUpdate(kv, request) {
         headers: { 'Content-Type': 'application/json' }
       });
     }
+    // Use processed variants with auto-generated IDs
+    updates.variants = variantsValidation.processedVariants;
   }
 
   // Update schedule with provided fields
@@ -478,7 +483,7 @@ async function handleUpdateDefault(kv, request) {
 }
 
 /**
- * Validate advertisement variant structure
+ * Validate advertisement variant structure (for DEFAULT ads, which still use id)
  * @param {Object} variant - The ad variant to validate
  * @param {string} lang - Language code for better error messages
  * @returns {Object} { valid: boolean, errors: string[] }
@@ -487,7 +492,7 @@ function validateAdVariant(variant, lang = '') {
   const errors = [];
   const prefix = lang ? `[${lang}] ` : '';
 
-  // Check required fields
+  // Check required fields (DEFAULT ads use 'id' field)
   if (!variant.id) errors.push(`${prefix}Missing field: id`);
   if (!variant.title) errors.push(`${prefix}Missing field: title`);
   if (!variant.description) errors.push(`${prefix}Missing field: description`);
@@ -519,19 +524,85 @@ function validateAdVariant(variant, lang = '') {
 }
 
 /**
- * Validate variants structure for schedules
- * @param {Object} variants - The variants object with zh and en arrays
- * @returns {Object} { valid: boolean, errors: string[] }
+ * Validate schedule variant structure (uses sponsorId + version)
+ * @param {Object} variant - The ad variant to validate
+ * @param {string} lang - Language code for better error messages
+ * @param {string} sponsorId - The sponsor ID to generate full id
+ * @returns {Object} { valid: boolean, errors: string[], id?: string }
  */
-function validateVariants(variants) {
+function validateScheduleVariant(variant, lang = '', sponsorId = '') {
   const errors = [];
+  const prefix = lang ? `[${lang}] ` : '';
+
+  // Check required fields (schedules use 'version' instead of 'id')
+  if (!variant.version) {
+    errors.push(`${prefix}Missing field: version`);
+  } else if (!Number.isInteger(variant.version) || variant.version <= 0) {
+    errors.push(`${prefix}Field 'version' must be a positive integer`);
+  }
+
+  if (!variant.title) errors.push(`${prefix}Missing field: title`);
+  if (!variant.description) errors.push(`${prefix}Missing field: description`);
+  if (!variant.cta) errors.push(`${prefix}Missing field: cta`);
+  if (!variant.link) errors.push(`${prefix}Missing field: link`);
+  if (!variant.logo) errors.push(`${prefix}Missing field: logo`);
+  if (!variant.badge) errors.push(`${prefix}Missing field: badge`);
+
+  // Check features array (optional, but if provided must be array)
+  if (variant.features !== undefined && !Array.isArray(variant.features)) {
+    errors.push(`${prefix}Field 'features' must be an array (or omit it)`);
+  }
+
+  // Validate URL formats
+  if (variant.link && !isValidURL(variant.link)) {
+    errors.push(`${prefix}Invalid URL format: link`);
+  }
+  if (variant.logo && !isValidURL(variant.logo)) {
+    errors.push(`${prefix}Invalid URL format: logo`);
+  }
+  if (variant.logoDark && !isValidURL(variant.logoDark)) {
+    errors.push(`${prefix}Invalid URL format: logoDark`);
+  }
+
+  // Generate full ID if validation passes
+  let generatedId = '';
+  if (sponsorId && lang && variant.version && Number.isInteger(variant.version)) {
+    generatedId = `${sponsorId}-${lang}-v${variant.version}`;
+  }
+
+  return {
+    valid: errors.length === 0,
+    errors,
+    id: generatedId
+  };
+}
+
+/**
+ * Validate variants structure for schedules and auto-generate IDs
+ * @param {Object} variants - The variants object with zh and en arrays
+ * @param {string} sponsorId - The sponsor ID to generate full IDs
+ * @returns {Object} { valid: boolean, errors: string[], processedVariants?: Object }
+ */
+function validateVariants(variants, sponsorId = '') {
+  const errors = [];
+  const processedVariants = { zh: [], en: [] };
 
   if (!variants.zh || !Array.isArray(variants.zh)) {
     errors.push('Missing or invalid zh variants array');
   } else {
     variants.zh.forEach((variant, index) => {
-      const validation = validateAdVariant(variant, `zh[${index}]`);
+      const validation = validateScheduleVariant(variant, `zh[${index}]`, sponsorId);
       errors.push(...validation.errors);
+
+      // Add generated ID to variant
+      if (validation.valid && validation.id) {
+        processedVariants.zh.push({
+          ...variant,
+          id: validation.id  // Auto-generated: {sponsorId}-zh-v{version}
+        });
+      } else {
+        processedVariants.zh.push(variant);
+      }
     });
   }
 
@@ -539,14 +610,25 @@ function validateVariants(variants) {
     errors.push('Missing or invalid en variants array');
   } else {
     variants.en.forEach((variant, index) => {
-      const validation = validateAdVariant(variant, `en[${index}]`);
+      const validation = validateScheduleVariant(variant, `en[${index}]`, sponsorId);
       errors.push(...validation.errors);
+
+      // Add generated ID to variant
+      if (validation.valid && validation.id) {
+        processedVariants.en.push({
+          ...variant,
+          id: validation.id  // Auto-generated: {sponsorId}-en-v{version}
+        });
+      } else {
+        processedVariants.en.push(variant);
+      }
     });
   }
 
   return {
     valid: errors.length === 0,
-    errors
+    errors,
+    processedVariants: errors.length === 0 ? processedVariants : undefined
   };
 }
 
