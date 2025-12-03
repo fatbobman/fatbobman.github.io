@@ -9,6 +9,7 @@
  *   - version: 1 or 2 (optional, default: 1)
  *   - sponsorId: specific sponsor ID to display (optional, for testing)
  *   - scheduleId: specific schedule UUID (optional, for testing)
+ *   - adId: 'default' to force return default ad (optional, for preview)
  */
 
 import { getKV } from '../_shared/mock-kv.js';
@@ -25,6 +26,7 @@ export async function onRequest(context) {
   const requestedVersion = parseInt(url.searchParams.get('version') || '1');
   const requestedSponsorId = url.searchParams.get('sponsorId');
   const requestedScheduleId = url.searchParams.get('scheduleId');
+  const adId = url.searchParams.get('adId'); // 'default' to force default ad
 
   // Validate lang parameter
   if (!['zh', 'en'].includes(lang)) {
@@ -66,6 +68,18 @@ export async function onRequest(context) {
 
     const adsData = JSON.parse(rawData);
 
+    // Force default ad if adId parameter is 'default'
+    if (adId === 'default') {
+      const defaultAd = getDefaultAd(adsData.default?.[lang], lang, requestedVersion);
+      if (!defaultAd) {
+        return fallbackResponse(headers, lang);
+      }
+
+      const html = renderAdByStyle(defaultAd, lang, defaultAd.style || 1);
+      headers.append('Cache-Control', 'public, max-age=300, stale-while-revalidate=600');
+      return new Response(html, { headers });
+    }
+
     // Get current UTC time for date comparison
     const now = new Date();
 
@@ -97,13 +111,12 @@ export async function onRequest(context) {
 
     // If no active schedule, use default ad
     if (!activeSchedule) {
-      const defaultAd = adsData.default?.[lang];
+      const defaultAd = getDefaultAd(adsData.default?.[lang], lang, requestedVersion);
       if (!defaultAd) {
         return fallbackResponse(headers, lang);
       }
 
-      // Default ad always uses primary style (style=1)
-      const html = renderAdByStyle(defaultAd, lang, 1);
+      const html = renderAdByStyle(defaultAd, lang, defaultAd.style || 1);
       headers.append('Cache-Control', 'public, max-age=300, stale-while-revalidate=600');
       return new Response(html, { headers });
     }
@@ -116,12 +129,12 @@ export async function onRequest(context) {
 
     // If still no variant, use default ad
     if (!selectedVariant) {
-      const defaultAd = adsData.default?.[lang];
+      const defaultAd = getDefaultAd(adsData.default?.[lang], lang, requestedVersion);
       if (!defaultAd) {
         return fallbackResponse(headers, lang);
       }
 
-      const html = renderAdByStyle(defaultAd, lang, 1);
+      const html = renderAdByStyle(defaultAd, lang, defaultAd.style || 1);
       headers.append('Cache-Control', 'public, max-age=300, stale-while-revalidate=600');
       return new Response(html, { headers });
     }
@@ -172,6 +185,27 @@ function findVariantWithFallback(variants, requestedVersion) {
 
   // Priority 3: Return first available variant
   return variants[0];
+}
+
+/**
+ * Get default ad with dual-version support and backward compatibility
+ * Supports both old format (single object) and new format (array of versions)
+ *
+ * @param {Object|Array} defaultData - Default ad data (object or array)
+ * @param {string} lang - Language code
+ * @param {number} requestedVersion - Requested version number
+ * @returns {Object|null} - Selected default ad variant or null
+ */
+function getDefaultAd(defaultData, lang, requestedVersion) {
+  if (!defaultData) return null;
+
+  // New format: array of versions
+  if (Array.isArray(defaultData)) {
+    return findVariantWithFallback(defaultData, requestedVersion);
+  }
+
+  // Old format: single object (backward compatibility)
+  return defaultData;
 }
 
 /**

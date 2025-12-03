@@ -416,8 +416,23 @@ async function handleUpdateDefault(kv, request) {
     });
   }
 
-  // Validate zh default ad
-  const zhValidation = validateAdVariant(zh, 'zh');
+  // Validate zh default ad (support both array and object formats)
+  let zhValidation;
+  if (Array.isArray(zh)) {
+    // New format: array of versions
+    const errors = [];
+    for (let i = 0; i < zh.length; i++) {
+      const v = validateScheduleVariant(zh[i], `zh[${i}]`, 'default');
+      if (!v.valid) {
+        errors.push(...v.errors);
+      }
+    }
+    zhValidation = { valid: errors.length === 0, errors };
+  } else {
+    // Old format: single object
+    zhValidation = validateAdVariant(zh, 'zh');
+  }
+
   if (!zhValidation.valid) {
     return new Response(JSON.stringify({
       error: `Invalid zh default ad: ${zhValidation.errors.join(', ')}`
@@ -427,8 +442,23 @@ async function handleUpdateDefault(kv, request) {
     });
   }
 
-  // Validate en default ad
-  const enValidation = validateAdVariant(en, 'en');
+  // Validate en default ad (support both array and object formats)
+  let enValidation;
+  if (Array.isArray(en)) {
+    // New format: array of versions
+    const errors = [];
+    for (let i = 0; i < en.length; i++) {
+      const v = validateScheduleVariant(en[i], `en[${i}]`, 'default');
+      if (!v.valid) {
+        errors.push(...v.errors);
+      }
+    }
+    enValidation = { valid: errors.length === 0, errors };
+  } else {
+    // Old format: single object
+    enValidation = validateAdVariant(en, 'en');
+  }
+
   if (!enValidation.valid) {
     return new Response(JSON.stringify({
       error: `Invalid en default ad: ${enValidation.errors.join(', ')}`

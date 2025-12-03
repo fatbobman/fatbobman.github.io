@@ -443,11 +443,23 @@ function copyCode(button, event) {
 </script> <script>(function(){const baseUrl = "https://fatbobman.com/ads/";
 const langSuffix = "zh";
 
+  // 读取 URL 参数用于测试和预览
+  const urlParams = new URLSearchParams(window.location.search);
+  const adIdParam = urlParams.get('adid') || urlParams.get('adId'); // 支持 adid 和 adId
+  const sponsorIdParam = urlParams.get('sponsorId');
+  const scheduleIdParam = urlParams.get('scheduleId');
+
   // 根据语言确定缓存键前缀
-  const cacheKeyCard = 'dynamicAdCard' + langSuffix;    // 主样式（version 1）缓存
-  const cacheKeyInline = 'dynamicAdInline' + langSuffix; // 副样式（version 2）缓存
+  // 如果有测试参数，添加到缓存键中以避免冲突
+  const cacheKeySuffix = langSuffix + (adIdParam || sponsorIdParam || scheduleIdParam || '');
+  const cacheKeyCard = 'dynamicAdCard' + cacheKeySuffix;    // 主样式（version 1）缓存
+  const cacheKeyInline = 'dynamicAdInline' + cacheKeySuffix; // 副样式（version 2）缓存
 
   const CACHE_DURATION = 20 * 60 * 1000; // 20分钟
+
+  // 如果有预览参数，使用较短的缓存时间
+  const isPreviewMode = !!(adIdParam || sponsorIdParam || scheduleIdParam);
+  const effectiveCacheDuration = isPreviewMode ? 60 * 1000 : CACHE_DURATION; // 预览模式 1 分钟缓存
 
   /**
    * 从缓存加载广告
@@ -485,9 +497,10 @@ const langSuffix = "zh";
    */
   function saveToCache(cacheKey, content) {
     try {
-      const expiresAt = Date.now() + CACHE_DURATION;
+      const expiresAt = Date.now() + effectiveCacheDuration;
       localStorage.setItem(cacheKey, JSON.stringify({ content, expiresAt }));
-      console.log(`[AdsLoader] Saved to cache: ${cacheKey}`);
+      const cacheMinutes = Math.round(effectiveCacheDuration / 60000);
+      console.log(`[AdsLoader] Saved to cache: ${cacheKey} (${cacheMinutes} min)`);
     } catch (e) {
       console.warn(`[AdsLoader] Failed to save cache: ${cacheKey}`, e);
     }
@@ -500,9 +513,21 @@ const langSuffix = "zh";
    * @param {string} containerSelector - 容器选择器
    */
   function fetchAd(version, cacheKey, containerSelector) {
-    const url = `${baseUrl}?lang=${langSuffix}&version=${version}`;
+    // 构建 URL，添加测试参数
+    const params = new URLSearchParams({
+      lang: langSuffix,
+      version: version.toString()
+    });
 
-    console.log(`[AdsLoader] Fetching ad: ${url}`);
+    // 添加测试/预览参数（如果存在）
+    if (adIdParam) params.append('adId', adIdParam);
+    if (sponsorIdParam) params.append('sponsorId', sponsorIdParam);
+    if (scheduleIdParam) params.append('scheduleId', scheduleIdParam);
+
+    const url = `${baseUrl}?${params.toString()}`;
+
+    const previewTag = isPreviewMode ? ' [PREVIEW MODE]' : '';
+    console.log(`[AdsLoader] Fetching ad: ${url}${previewTag}`);
 
     fetch(url, {
       headers: {
@@ -574,6 +599,16 @@ const langSuffix = "zh";
   // 初始化：加载两种样式的广告
   function initAds() {
     console.log('[AdsLoader] Initializing ad loading...');
+
+    // 如果是预览模式，显示提示信息
+    if (isPreviewMode) {
+      const params = [];
+      if (adIdParam) params.push(`adId=${adIdParam}`);
+      if (sponsorIdParam) params.push(`sponsorId=${sponsorIdParam}`);
+      if (scheduleIdParam) params.push(`scheduleId=${scheduleIdParam}`);
+      console.log(`[AdsLoader] 🔍 PREVIEW MODE: ${params.join(', ')}`);
+      console.log('[AdsLoader] Cache duration: 1 minute (preview mode)');
+    }
 
     // 加载主样式广告（version 1）到 .dynamic-ad-card
     loadAd(1, cacheKeyCard, '.dynamic-ad-card');
@@ -653,17 +688,17 @@ const isHidden = false;
   });
 </script> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" onclick="window.scrollTo({top:0,behavior:'smooth'})" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" data-tooltip-target="tooltip-back-to-top" data-tooltip-placement="left"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-top"></use> </svg>  </div> <div id="tooltip-back-to-top" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-28 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Back to Top</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.DVW0R156.js"></script> <div class="pb-16 sm:pb-24"> <div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 md:gap-4" id="more-tips"> <a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
           hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-          " href="/zh/snippet/resolving-inconsistent-spacing-in-swiftui-vstackhstack-layouts/" id="relatedPosts-修复 SwiftUI Stack 布局中的不规则间距"> <span class="font-medium text-sm text-heading tracking-wide group-hover:dark:text-white group-hover:text-black"> <span class="hidden sm:inline-block text-xs mr-2 md:mr-1"> 🔦 </span> 修复 SwiftUI Stack 布局中的不规则间距 </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+          " href="/zh/snippet/controlling-access-within-a-swift-package/" id="relatedPosts-将访问权限控制在 Swift Package 内"> <span class="font-medium text-sm text-heading tracking-wide group-hover:dark:text-white group-hover:text-black"> <span class="hidden sm:inline-block text-xs mr-2 md:mr-1"> 🔥 </span> 将访问权限控制在 Swift Package 内 </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+          hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+          " href="/zh/snippet/fixing-swiftlint-configuration-not-working-in-monorepo-projects/" id="relatedPosts-解决在 Monorepo 项目中 SwiftLint 配置文件无效"> <span class="font-medium text-sm text-heading tracking-wide group-hover:dark:text-white group-hover:text-black"> <span class="hidden sm:inline-block text-xs mr-2 md:mr-1"> 🔦 </span> 解决在 Monorepo 项目中 SwiftLint 配置文件无效 </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
           hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
           " href="/zh/snippet/resolving-incomplete-icloud-data-sync-in-ios-development-using-initializecloudkitschema/" id="relatedPosts-修复 iCloud 同步：使用 initializeCloudKitSchema"> <span class="font-medium text-sm text-heading tracking-wide group-hover:dark:text-white group-hover:text-black"> <span class="hidden sm:inline-block text-xs mr-2 md:mr-1"> 🔦 </span> 修复 iCloud 同步：使用 initializeCloudKitSchema </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
           hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-          " href="/zh/snippet/swift-testing-differences-between-expect-and-require/" id="relatedPosts-Swift 测试：#expect 和 #require 的使用场景"> <span class="font-medium text-sm text-heading tracking-wide group-hover:dark:text-white group-hover:text-black"> <span class="hidden sm:inline-block text-xs mr-2 md:mr-1"> 🔦 </span> Swift 测试：#expect 和 #require 的使用场景 </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+          " href="/zh/snippet/disabling-scroll-in-swiftui-scrollview-when-content-is-smaller-than-container/" id="relatedPosts-当内容小于容器时禁用 SwiftUI ScrollView 滚动"> <span class="font-medium text-sm text-heading tracking-wide group-hover:dark:text-white group-hover:text-black"> <span class="hidden sm:inline-block text-xs mr-2 md:mr-1"> 🔋 </span> 当内容小于容器时禁用 SwiftUI ScrollView 滚动 </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
           hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-          " href="/zh/snippet/how-to-make-a-swiftui-sheet-automatically-adjust-height/" id="relatedPosts-让 SwiftUI Sheet 自动调整高度以适应内容"> <span class="font-medium text-sm text-heading tracking-wide group-hover:dark:text-white group-hover:text-black"> <span class="hidden sm:inline-block text-xs mr-2 md:mr-1"> 🛎️ </span> 让 SwiftUI Sheet 自动调整高度以适应内容 </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+          hidden lg:flex" href="/zh/snippet/resolving-inconsistent-spacing-in-swiftui-vstackhstack-layouts/" id="relatedPosts-修复 SwiftUI Stack 布局中的不规则间距"> <span class="font-medium text-sm text-heading tracking-wide group-hover:dark:text-white group-hover:text-black"> <span class="hidden sm:inline-block text-xs mr-2 md:mr-1"> 🔦 </span> 修复 SwiftUI Stack 布局中的不规则间距 </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
           hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-          hidden lg:flex" href="/zh/snippet/enable-multi-finger-tap-gestures-in-swiftui/" id="relatedPosts-让 SwiftUI 视图支持多指点击"> <span class="font-medium text-sm text-heading tracking-wide group-hover:dark:text-white group-hover:text-black"> <span class="hidden sm:inline-block text-xs mr-2 md:mr-1"> 🔋 </span> 让 SwiftUI 视图支持多指点击 </span> </a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-          hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-          hidden lg:flex" href="/zh/snippet/ensuring-full-text-display-in-swiftui-techniques-and-solutions/" id="relatedPosts-SwiftUI 文本截断的解决方法"> <span class="font-medium text-sm text-heading tracking-wide group-hover:dark:text-white group-hover:text-black"> <span class="hidden sm:inline-block text-xs mr-2 md:mr-1"> 🔥 </span> SwiftUI 文本截断的解决方法 </span> </a> </div> </div> <div class="w-full mx-auto text-center pb-4 sm:pb-10 pt-0"> <div id="custom-substack-embed" data-subscribeText="订阅周报" data-placeholder="请输入邮箱" data-anchor="more-tips" style="opacity: 0; transition: opacity 0.3s;"></div> <iframe class="sm:w-80 w-[480px] mx-auto dark:opacity-80 dark:rounded-lg dark:shadow-2xl dark:border-gray-600" src="https://weekly.fatbobman.com/embed" height="320" style="border:1px solid #EEE; background:white; width: 100%; max-width: 480px;"></iframe> <div class="text-xs font-medium text-heading p-4 font-wide">每周精选 Swift 与 SwiftUI 精华！</div> </div> <!-- <Author lang={lang} /> --> <div class="hidden lg:block w-32 xl:w-44 lg:absolute" id="toc" style="left: -30px; top: 0px"> <div class="text-muted items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-out" id="toc-content"> <div class="w-full flex justify-end pb-2" id="toc-float-button"> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" id="toc-list-switcher"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-toc"></use> </svg> <svg fill="currentColor" stroke="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" id="toc-list-close" class="hidden"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-toc-close"></use> </svg>  </div> </div> <div class="text-default text-xxs xl:text-xs hidden" id="toc-list"> <ul> <li class=" pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#问题" class="inline-block hover:text-secondary text-heading font-medium relative before:hidden xl:before:block before:content-[&#34;▪&#34;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-1 break-words"> 问题 </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#解决方案" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> 解决方案 </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#1-使用-scrollclipdisabled适用于-ios-17" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> 1. 使用 scrollClipDisabled（适用于 iOS 17+） </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#2-使用-introspect适用于低版本-ios" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> 2. 使用 Introspect（适用于低版本 iOS） </a> </div> </li><li class=" pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#延伸阅读" class="inline-block hover:text-secondary text-heading font-medium relative before:hidden xl:before:block before:content-[&#34;▪&#34;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-1 break-words"> 延伸阅读 </a> </div> </li>  </ul> </div> </div> </div> <script type="module" src="/_astro/TOC.astro_astro_type_script_index_0_lang.ARhKvemZ.js"></script> </div> <div id="gitalk-container" data-comment-id="preventing-scrollview-content-clipping-in-swiftui" data-lang="zh" data-repo="TipComments" data-createIssueManually="false" data-anchor="more-tips" class="pb-16"></div>
+          hidden lg:flex" href="/zh/snippet/fix-synchronization-issues-for-macos-apps-using-core-dataswiftdata/" id="relatedPosts-修复 macOS 应用使用 Core Data/SwiftData 无法同步的问题"> <span class="font-medium text-sm text-heading tracking-wide group-hover:dark:text-white group-hover:text-black"> <span class="hidden sm:inline-block text-xs mr-2 md:mr-1"> 🛎️ </span> 修复 macOS 应用使用 Core Data/SwiftData 无法同步的问题 </span> </a> </div> </div> <div class="w-full mx-auto text-center pb-4 sm:pb-10 pt-0"> <div id="custom-substack-embed" data-subscribeText="订阅周报" data-placeholder="请输入邮箱" data-anchor="more-tips" style="opacity: 0; transition: opacity 0.3s;"></div> <iframe class="sm:w-80 w-[480px] mx-auto dark:opacity-80 dark:rounded-lg dark:shadow-2xl dark:border-gray-600" src="https://weekly.fatbobman.com/embed" height="320" style="border:1px solid #EEE; background:white; width: 100%; max-width: 480px;"></iframe> <div class="text-xs font-medium text-heading p-4 font-wide">每周精选 Swift 与 SwiftUI 精华！</div> </div> <!-- <Author lang={lang} /> --> <div class="hidden lg:block w-32 xl:w-44 lg:absolute" id="toc" style="left: -30px; top: 0px"> <div class="text-muted items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-out" id="toc-content"> <div class="w-full flex justify-end pb-2" id="toc-float-button"> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" id="toc-list-switcher"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-toc"></use> </svg> <svg fill="currentColor" stroke="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" id="toc-list-close" class="hidden"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-toc-close"></use> </svg>  </div> </div> <div class="text-default text-xxs xl:text-xs hidden" id="toc-list"> <ul> <li class=" pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#问题" class="inline-block hover:text-secondary text-heading font-medium relative before:hidden xl:before:block before:content-[&#34;▪&#34;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-1 break-words"> 问题 </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#解决方案" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> 解决方案 </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#1-使用-scrollclipdisabled适用于-ios-17" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> 1. 使用 scrollClipDisabled（适用于 iOS 17+） </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#2-使用-introspect适用于低版本-ios" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> 2. 使用 Introspect（适用于低版本 iOS） </a> </div> </li><li class=" pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#延伸阅读" class="inline-block hover:text-secondary text-heading font-medium relative before:hidden xl:before:block before:content-[&#34;▪&#34;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-1 break-words"> 延伸阅读 </a> </div> </li>  </ul> </div> </div> </div> <script type="module" src="/_astro/TOC.astro_astro_type_script_index_0_lang.ARhKvemZ.js"></script> </div> <div id="gitalk-container" data-comment-id="preventing-scrollview-content-clipping-in-swiftui" data-lang="zh" data-repo="TipComments" data-createIssueManually="false" data-anchor="more-tips" class="pb-16"></div>
 
     <script defer>
       document.addEventListener('DOMContentLoaded', async function () {
