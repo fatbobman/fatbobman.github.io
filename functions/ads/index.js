@@ -1,11 +1,12 @@
 /**
  * Unified Dynamic Advertisement Endpoint
  *
- * Fetches ads from KV storage and returns based on schedule, version, and style
+ * Fetches ads from KV storage and returns based on schedule and version
+ * The style is determined by the variant data itself, not by request parameter
+ *
  * Query parameters:
  *   - lang: zh | en (required)
  *   - version: 1 or 2 (optional, default: 1)
- *   - style: 1 (primary) or 2 (secondary) (optional, default: 1)
  *   - sponsorId: specific sponsor ID to display (optional, for testing)
  *   - scheduleId: specific schedule UUID (optional, for testing)
  */
@@ -22,7 +23,6 @@ export async function onRequest(context) {
   // Get query parameters
   const lang = url.searchParams.get('lang') || 'zh';
   const requestedVersion = parseInt(url.searchParams.get('version') || '1');
-  const requestedStyle = parseInt(url.searchParams.get('style') || '1');
   const requestedSponsorId = url.searchParams.get('sponsorId');
   const requestedScheduleId = url.searchParams.get('scheduleId');
 
@@ -104,12 +104,8 @@ export async function onRequest(context) {
     // Get variants for the requested language
     const variants = activeSchedule.variants?.[lang] || [];
 
-    // Find variant with fallback logic
-    let selectedVariant = findVariantWithFallback(
-      variants,
-      requestedVersion,
-      requestedStyle
-    );
+    // Find variant with fallback logic (only by version)
+    let selectedVariant = findVariantWithFallback(variants, requestedVersion);
 
     // If still no variant, use default ad
     if (!selectedVariant) {
@@ -148,45 +144,26 @@ export async function onRequest(context) {
 }
 
 /**
- * Find variant with comprehensive fallback logic
+ * Find variant with fallback logic
  * Priority:
- * 1. Requested version + requested style
- * 2. Requested version + style 1
- * 3. Version 1 + requested style
- * 4. Version 1 + style 1
+ * 1. Requested version (with its defined style)
+ * 2. Version 1 (with its defined style)
+ * 3. First available variant
  */
-function findVariantWithFallback(variants, requestedVersion, requestedStyle) {
+function findVariantWithFallback(variants, requestedVersion) {
   if (variants.length === 0) return null;
 
-  // Priority 1: Exact match
-  let variant = variants.find(v =>
-    v.version === requestedVersion && (v.style || 1) === requestedStyle
-  );
+  // Priority 1: Find requested version
+  let variant = variants.find(v => v.version === requestedVersion);
   if (variant) return variant;
 
-  // Priority 2: Requested version + primary style
-  if (requestedStyle !== 1) {
-    variant = variants.find(v =>
-      v.version === requestedVersion && (v.style || 1) === 1
-    );
-    if (variant) return variant;
-  }
-
-  // Priority 3: Version 1 + requested style
+  // Priority 2: Fallback to version 1
   if (requestedVersion !== 1) {
-    variant = variants.find(v =>
-      v.version === 1 && (v.style || 1) === requestedStyle
-    );
+    variant = variants.find(v => v.version === 1);
     if (variant) return variant;
   }
 
-  // Priority 4: Version 1 + primary style
-  variant = variants.find(v =>
-    v.version === 1 && (v.style || 1) === 1
-  );
-  if (variant) return variant;
-
-  // Last resort: return first variant
+  // Priority 3: Return first available variant
   return variants[0];
 }
 

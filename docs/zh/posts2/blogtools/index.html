@@ -1,0 +1,798 @@
+<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>我正在使用中的博客创作工具</title>
+<meta name="description" content="本文介绍博主两年博客创作中使用的工具，涵盖资料整理、文本编辑、截图录屏、格式转换、图片编辑及图床管理等方面，提升创作效率。">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://fatbobman.com/zh/posts/blogtools/">
+<meta property="og:title" content="我正在使用中的博客创作工具">
+<meta property="og:description" content="本文介绍博主两年博客创作中使用的工具，涵盖资料整理、文本编辑、截图录屏、格式转换、图片编辑及图床管理等方面，提升创作效率。">
+<meta property="og:url" content="https://fatbobman.com/zh/posts/blogtools/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://cdn.fatbobman.com/oc/blogTools.png">
+
+<meta property="og:locale" content="zh">
+<meta property="og:site_name" content="fatbobman.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@fatbobman">
+<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><!-- 其他路径的 hreflang -->
+  <link rel="alternate" hreflang="zh-CN" href="https://fatbobman.com/zh/posts2/blogtools/">
+  <link rel="alternate" hreflang="en" href="https://fatbobman.com/en/posts2/blogtools/">
+  <link rel="alternate" hreflang="x-default" href="https://fatbobman.com/en/posts2/blogtools/"><script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.async = true; // Add async attribute
+    hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script> <!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5C7N4MF5');</script> <!-- End Google Tag Manager --><script>
+      // Immediately set theme before page renders
+      if (
+        localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      }
+    </script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "author": {
+    "@id": "#author"
+  },
+  "dateModified": "2022-05-05T00:20:00.000Z",
+  "datePublished": "2022-05-05T00:20:00.000Z",
+  "description": "本文介绍博主两年博客创作中使用的工具，涵盖资料整理、文本编辑、截图录屏、格式转换、图片编辑及图床管理等方面，提升创作效率。",
+  "headline": "我正在使用中的博客创作工具",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/oc/blogTools.png"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://fatbobman.com/zh/posts/blogtools/"
+  },
+  "url": "https://fatbobman.com/zh/posts/blogtools/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fatbobman's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  },
+  "articleSection": [
+    "Web"
+  ],
+  "inLanguage": "zh-Hans"
+}</script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "#author",
+  "name": "东坡肘子 (徐杨)",
+  "alternateName": "Fatbobman (Xu Yang)",
+  "jobTitle": "Apple Developer",
+  "description": "苹果生态开发者，专注 Swift 和 SwiftUI 开发。Fatbobman's Blog 作者。",
+  "url": "https://fatbobman.com",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/FatWithBoys.png"
+  },
+  "sameAs": [
+    "https://github.com/fatbobman",
+    "https://x.com/fatbobman",
+    "https://www.linkedin.com/in/fatbobman/",
+    "https://bsky.app/profile/fatbobman.com",
+    "https://mastodon.social/@fatbobman",
+    "https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3",
+    "https://fatbobman.com/zh/about/",
+    "https://fatbobman.com/en/about/"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Fatbobman's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  }
+}</script><link rel="stylesheet" href="/_astro/about.CYtaoxTz.css">
+<link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css">
+<style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
+</style></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <div id="blogTitle"> <a href="/zh/"> <div class="flex space-x-4 mx-auto text-center pt-6 sm:pt-6 font-black w-[240px] sm:w-[300px] pb-2 sm:pb-0"> <svg fill="currentColor" class="text-heading" width="500"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </a> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto p-2 sm:p-0" data-astro-cid-4wsjtibl> <div class="flex space-x-2" data-astro-cid-4wsjtibl> <div id="lang-data" data-lang="zh" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" class="p-2 w-10 h-10 font-medium text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg"> ZH </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <button type="button" onclick="
+            try {
+                if ('/en/posts2/blogtools/' !== '#') {
+                    window.location.href = '/en/posts2/blogtools/';
+                }
+            } catch (e) {
+                console.log('Navigation failed:', e);
+            }
+        " class="w-full text-left px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
+English
+<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-2 hidden text-primary" id="EN-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-aifadian"></use> </svg> </div> </button> </li><li> <button type="button" onclick="
+              try {
+                  if ('#' !== '#') {
+                      window.location.href = '#';
+                  }
+              } catch (e) {
+                  console.log('Navigation failed:', e);
+              }
+          " class="w-full text-left px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
+中文
+<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-2 hidden text-primary" id="ZH-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-aifadian"></use> </svg> </div> </button> </li> <li> <div class="border-t border-gray-200 dark:border-gray-800 w-4/5 mx-auto my-2"></div> <button class="block px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" id="set-default-lang"> <div class="inline-flex items-center"> 将中文设置为默认 </div> </button> </li> </ul> <script type="module">function a(){const t=localStorage.getItem("lang"),e=document.getElementById("EN-check"),n=document.getElementById("ZH-check");e!==null&&n!==null&&(t==="en"?(e.classList.remove("hidden"),n.classList.add("hidden")):t==="zh"&&(n.classList.remove("hidden"),e.classList.add("hidden")))}document.addEventListener("DOMContentLoaded",()=>{a()});const l=document.getElementById("set-default-lang");l?.addEventListener("click",()=>{const t=document.getElementById("lang-data");if(t!=null){const e=t.dataset.lang;e!=null&&(localStorage.setItem("lang",e),a())}});</script> </div> <button id="theme-dropdown-button" data-dropdown-toggle="theme-dropdown-menu" type="button" class="group p-2 w-10 h-10 text-default hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center"> <svg viewBox="0 0 1024 1024" stroke="currentColor" class="w-5 h-5 text-default fill-current group-hover:text-secondary hidden" id="theme_icon_system"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-computer"></use> </svg> <svg viewBox="0 0 1024 1024" stroke="currentColor" class="w-5 h-5 text-default fill-current group-hover:text-secondary hidden" id="theme_icon_dark"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-moon"></use> </svg> <svg viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 text-default fill-current group-hover:text-secondary hidden" id="theme_icon_light"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-sun"></use> </svg> </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="theme-dropdown-menu"> <ul class="py-2 font-medium" role="none"> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex px-4 py-2 text-sm align-text-center" id="theme_button_light"> <svg class="w-5 h-5" viewBox="0 0 1024 1024" stroke-width="2" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-sun"></use> </svg> <span class="ml-2 dark:hover:text-white">Light</span> </button> </li> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex px-4 py-2 text-sm align-text-center " id="theme_button_dark"> <svg class="w-5 h-5"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-moon"></use> </svg> <span class="ml-2">Dark</span> </button> </li> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex px-4 py-2 text-sm align-text-center " id="theme_button_system"> <svg class="w-5 h-5"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-computer"></use> </svg> <span class="ml-2 dark:hover:text-white">System</span> </button> </li> </ul> </div> <script>
+  // 获取按钮
+  var themeButtonLight = document.getElementById('theme_button_light');
+  var themeButtonDark = document.getElementById('theme_button_dark');
+  var themeButtonSystem = document.getElementById('theme_button_system');
+  // 获取图标
+  var themeToggleDarkIcon = document.getElementById('theme_icon_dark');
+  var themeToggleLightIcon = document.getElementById('theme_icon_light');
+  var themeToggleSystemIcon = document.getElementById('theme_icon_system');
+
+  function setTheme() {
+    if (
+      localStorage.getItem('color-theme') === 'dark' ||
+      (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
+  function setThemeButton() {
+    let theme = localStorage.getItem('color-theme');
+    if (theme === 'dark') {
+      themeToggleDarkIcon.classList.remove('hidden');
+      themeToggleLightIcon.classList.add('hidden');
+      themeToggleSystemIcon.classList.add('hidden');
+    } else if (theme === 'light') {
+      themeToggleDarkIcon.classList.add('hidden');
+      themeToggleLightIcon.classList.remove('hidden');
+      themeToggleSystemIcon.classList.add('hidden');
+    } else {
+      themeToggleDarkIcon.classList.add('hidden');
+      themeToggleLightIcon.classList.add('hidden');
+      themeToggleSystemIcon.classList.remove('hidden');
+    }
+  }
+
+  function resetTheme() {
+    setTheme();
+    setThemeButton();
+  }
+
+  resetTheme();
+
+  // 监听暗黑模式的变化
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    resetTheme();
+  });
+
+  // 保证其他的页面也能够监听到 localStorage 的变化
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'color-theme') {
+      resetTheme();
+    }
+  });
+
+
+  // Listen for clicks on the button themeToggleDarkIcon
+  themeButtonDark.addEventListener('click', function () {
+    localStorage.setItem('color-theme', 'dark');
+    resetTheme();
+  });
+
+  // // Listen for clicks on the button themeToggleLightIcon
+  themeButtonLight.addEventListener('click', function () {
+    localStorage.setItem('color-theme', 'light');
+    resetTheme();
+  });
+
+  // // Listen for clicks on the button themeToggleSystemIcon
+  themeButtonSystem.addEventListener('click', function () {
+    localStorage.removeItem('color-theme');
+    resetTheme();
+  });
+</script> <div id="docsearch" class="group w-10 h-10 text-default hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center"> <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" class="DocSearch-Search-Icon"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg> </div> </div> <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 mx-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false" id="navbar-toggle-button"> <span class="sr-only">Open main menu</span> <svg class="w-5 h-5 text-default" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path> </svg> </button> <nav class="hidden w-full md:block md:w-auto px-4 z-40" id="navbar-solid-bg"> <ul class="flex flex-col font-bold mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700"> <a href="/zh/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent tracking-widest"> 首页 </a><a href="/zh/posts/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent tracking-widest"> 文章 </a><a href="/zh/weekly/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent tracking-widest"> 周报 </a><a href="/zh/snippet/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent tracking-widest"> 小贴士 </a><a href="/zh/about/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent tracking-widest"> 关于 </a> </ul> </nav> </div> </div> <div id="placeholder" class="hidden" data-astro-cid-4wsjtibl></div> </div> <script>(function(){const enableSticky = true;
+const enableStickyInMobile = true;
+
+  window.onload = function () {
+    checkStickyHeader();
+    stickySetup();
+  };
+
+  window.addEventListener('resize', stickySetup);
+
+  function checkStickyHeader() {
+    const title = document.getElementById('blogTitle');
+    const stickyHeader = document.getElementById('stickyHeader');
+    const placeholder = document.getElementById('placeholder');
+
+    if (title && stickyHeader && placeholder) {
+      const offset = title.offsetTop + title.offsetHeight;
+
+      if (shouldStick() && window.scrollY >= offset) {
+        stickyHeader.classList.add('sticky');
+        placeholder.style.display = 'block';
+        placeholder.style.height = `${stickyHeader.offsetHeight}px`;
+      } else {
+        stickyHeader.classList.remove('sticky');
+        placeholder.style.display = 'none';
+      }
+    }
+  }
+
+  function shouldStick() {
+    if (!enableSticky) return false;
+
+    let isMobile = window.matchMedia('(max-width: 640px)').matches;
+    if (isMobile && !enableStickyInMobile) return false;
+
+    return true;
+  }
+
+  function stickySetup() {
+    window.onscroll = checkStickyHeader;
+  }
+})();</script>  </header>  <main class="w-full mx-auto max-w-3xl p-4 md:p-6 "> <div class="container mx-auto space-y-6 sm:space-y-12">   <div class="mx-auto space-y-4 text-center py-10 tracking-wide" style="width:80%"> <div class="flex mx-auto justify-center"> <div class="flex mx-auto justify-center"> <a class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal" href="/zh/tags/Web/">
+#Web </a> <a class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary " href="/en/posts/blogtools/" id="language-switcher-for-topic"> #English </a> </div> </div> <h1 class="text-2xl font-bold leadi md:text-3xl text-heading tracking-wide">我正在使用中的博客创作工具</h1> <p class="text-sm text-default"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="hover:text-secondary font-medium">东坡肘子</a> <!-- <time datetime={`${post.data.publishDate.toISOString()}`}>{date}</time> --> </p> <p class="text-xs text-muted"> 发表于 <time datetime="2022-05-05T00:20:00.000Z">2022 年 5 月 5 日</time>  </p> </div> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <article class="prose dark:prose-invert mx-auto w-full prose-headings:tracking-wide prose-p:tracking-wide prose-a:tracking-wide"> <div> 
+<p>从 2020 年 4 月开始，截至本月，我的博客【肘子的 Swift 记事本】已创建 2 年了。这期间，使用过不少的工具以协助博客的创作。本文将对我正在使用中的应用工具（包含资料收集整理、文本编辑、截图及录屏、格式转换、图片编辑、图床管理等方面）做以介绍。</p>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container"></div></aside>
+<h2 id="资料收集整理">资料收集整理</h2>
+<h3 id="印象笔记">印象笔记</h3>
+<blockquote>
+<p>高级账户 148 元/年</p>
+</blockquote>
+<p>让我坚持使用 <a href="https://www.yinxiang.com?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">印象笔记</a> 的动力便是它提供的 web clipper 工具——<a href="https://www.yinxiang.com/product/webclipper1/?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">剪藏</a>。剪藏让用户可以只保存部分的网页内容并且提供了保存自动翻译后的页面能力。我将印象笔记作为网络内容资料库，保存了大量有价值的内容，供日后查询和整理。遗憾的是，剪藏目前并没有提供 iOS 版本插件。</p>
+<p>有一点需要吐槽，作为高级账户成员，印象笔记仍总是不断地提示我升级到专业版本，略影响使用感受。如果你每个月保存的内容不太多且无需在超过 2 台设备上登录，免费版应该可以满足大多数人的需求了。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429091144548.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429091144548.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429091144548.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429091144548.png" alt="image-20220429091144548" loading="lazy" decoding="async"/>
+                  </picture></p>
+<h3 id="onenote">OneNote</h3>
+<blockquote>
+<p>Office 365 家庭版，不到 400 元/年 （优惠后）</p>
+</blockquote>
+<p>在 Office 365 提供的所有软件中，OneNote 对我来说是最有用的工具。无论是做学习笔记还是知识整理，几年来，我在 OneNote 中记录、整理了不少的内容。遗憾的是 macOS 版本无法使用 markdown 插件，因此我会以截图的方式记录代码片段（此种方式对空间的占用较大，幸好 OneDriver 提供了 1TB 的容量），并将保存完整的源代码文件以附件的形式添加在笔记中。由于 OneNote 对图片内文本的搜索准确度很好，因此并不会带来查找上的困难。</p>
+<p>近几年 OneNote 基本上没有增加什么新的功能，不知道是不是微软将更多的精力都放在了即将发布的 Loop 上面。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429091230243.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429091230243.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429091230243.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429091230243.png" alt="image-20220429091230243" loading="lazy" decoding="async"/>
+                  </picture></p>
+<h2 id="文本编辑">文本编辑</h2>
+<h3 id="typora">Typora</h3>
+<blockquote>
+<p>89 元</p>
+</blockquote>
+<p><a href="https://typora.io?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Typora</a> 的最大优势便是沉浸感。作为一个所见即所得的 Markdown 格式编辑器，Typora 为创作者提供了更加专注的写作环境。</p>
+<p>Typora 转入收费模式后，在网络上引起了一些讨论，对我而言，当前的价格是对得起它的品质的。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429090947550.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429090947550.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429090947550.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429090947550.png" alt="image-20220429090947550" loading="lazy" decoding="async"/>
+                  </picture></p>
+<h3 id="vscode">VSCode</h3>
+<blockquote>
+<p>免费</p>
+</blockquote>
+<p>由于 Typora 缺乏插件机制以及 Git 版本控制能力（当前的版本管理是基于时间机器的），因此我使用 <a href="https://visualstudio.microsoft.com" rel="noreferrer noopener">VSCode</a> 作为 markdown 文本的格式校验以及文件管理工具。</p>
+<p>有两个 VSCode 的插件对我的帮助很大：</p>
+<ul>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint" rel="noreferrer noopener">markdownlint</a></p>
+<p>检查 markdown 文件中的语法错误</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=xlthu.Pangu-Markdown" rel="noreferrer noopener">Pangu-Markdown</a></p>
+<p>自动为英文添加空格，改善中英文的混排格式</p>
+</li>
+</ul>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429090832604.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429090832604.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429090832604.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429090832604.png" alt="image-20220429090832604" loading="lazy" decoding="async"/>
+                  </picture></p>
+<h2 id="截图及录屏">截图及录屏</h2>
+<h3 id="quicktime">QuickTime</h3>
+<blockquote>
+<p>免费</p>
+</blockquote>
+<p>QuickTime 作为 macOS 的内置应用，提供了不错的截图和录屏能力。遗憾的是较少的选项和附加功能限制了它的能力上限。但通过它以原生分辨率（5K、6K）录制的屏幕视频，效果十分惊人。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429091343815.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429091343815.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429091343815.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429091343815.png" alt="image-20220429091343815" loading="lazy" decoding="async"/>
+                  </picture></p>
+<p>另外，我也会使用 QuickTime 作为视频的剪裁和格式转换工具。</p>
+<h3 id="ishot">iShot</h3>
+<blockquote>
+<p>29 元 / 年</p>
+</blockquote>
+<p><a href="https://www.better365.cn/ishot.html?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">iShot</a> 是一个十分优秀的国产截屏软件，提供了截屏美化（阴影、设备边框）、即时标注等功能。它是我目前使用率最高的截屏工具。其免费版本提供的功能已经能够满足绝大多数使用者的需求了。本文中的截图都是使用 iShot 来完成的。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429091417362.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429091417362.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429091417362.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429091417362.png" alt="image-20220429091417362" loading="lazy" decoding="async"/>
+                  </picture></p>
+<h3 id="xcode-simulator">Xcode Simulator</h3>
+<blockquote>
+<p>免费</p>
+</blockquote>
+<p>在仅需获取模拟器截图或不需要录制设备外框的情况下，Simulator 是非常好的选择。不过由于缺乏定制能力，我几乎不会使用它的 Gif 动图录制功能。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429091437825.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429091437825.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429091437825.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429091437825.png" alt="image-20220429091437825" loading="lazy" decoding="async"/>
+                  </picture></p>
+<h3 id="rocketsim-pro">RocketSim PRO</h3>
+<blockquote>
+<p>99 美元/年</p>
+</blockquote>
+<p><a href="https://www.rocketsim.app?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">RocketSim PRO</a> 是知名 Swift 博主 <a href="https://www.avanderlee.com?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Antoine van der Lee</a> 开发的工具。最初的版本仅拥有模拟器录屏能力，经过快速的迭代升级（当前为 7.0 版本），目前则是添加了 UI 比对、Deep link 测试、模拟器应用权限设置等众多功能。正常情况下，免费版提供的功能已够不少开发者使用了，之所以购买了收费版本，一是为了获得更好的视频录制能力（可以集成录制设备边框），另外也是对该作者长期以来提供的优秀文章的感谢。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429091543718.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429091543718.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429091543718.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429091543718.png" alt="image-20220429091543718" loading="lazy" decoding="async"/>
+                  </picture></p>
+<h3 id="codeshot">CodeShot</h3>
+<blockquote>
+<p>5.99 美元</p>
+</blockquote>
+<p><a href="https://codeshotapp.com?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">CodeShot</a> 是另一位优秀的 Swift 博主 <a href="https://sarunw.com?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Sarun</a> 开发的 mac 应用。它可以将代码片段转换成漂亮的图片以便在文章或社交媒体上分享。虽然已经有提供类似功能的网站，但我更喜欢使用原生的应用版本。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429093740171.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429093740171.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429093740171.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429093740171.png" alt="image-20220429093740171" loading="lazy" decoding="async"/>
+                  </picture></p>
+<h2 id="格式转换">格式转换</h2>
+<h3 id="gif-brewery">Gif Brewery</h3>
+<blockquote>
+<p>4.99 美元</p>
+</blockquote>
+<p><a href="https://apps.apple.com/us/app/gif-brewery-3-by-gfycat/id1081413713?mt=12&uo=4&app=apps?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">GIF Brewery</a> 是动图网站 gfcat 提供的 Gif 动图制作工具。尽管已经 3 年没有更新了，但即便在当前也难觅敌手。除了可以将视频转换成 Gif 动图外，还支持添加文字、标识编辑、视频录制、动图管理等众多功能。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429091657780.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429091657780.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429091657780.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429091657780.png" alt="image-20220429091657780" loading="lazy" decoding="async"/>
+                  </picture></p>
+<h3 id="handbrake">handBrake</h3>
+<blockquote>
+<p>免费且开源</p>
+</blockquote>
+<p><a href="https://handbrake.fr?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">handBrake</a> 是一款支持众多音视频格式的编解码工具。高效、小巧且免费，几乎找不到缺点。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429091833320.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429091833320.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429091833320.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429091833320.png" alt="image-20220429091833320" loading="lazy" decoding="async"/>
+                  </picture></p>
+<h2 id="图片编辑">图片编辑</h2>
+<h3 id="预览">预览</h3>
+<blockquote>
+<p>免费</p>
+</blockquote>
+<p>macOS 系统的内置应用——预览是我使用率最高的图片编辑工具。大多数情况下，它都是我更改视图尺寸的首选。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429092834814.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429092834814.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429092834814.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429092834814.png" alt="image-20220429092834814" loading="lazy" decoding="async"/>
+                  </picture></p>
+<h3 id="figma">Figma</h3>
+<blockquote>
+<p>个人免费版</p>
+</blockquote>
+<p><a href="https://www.figma.com?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Figma</a> 是我用来制作 Twitter card 和其他出现在博客中的矢量图的主要工具。免费版本已经完全能够满足我的需求。随着国内类似产品的不断完善，我最近正逐步切换到 pixso 上。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429092949936.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429092949936.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429092949936.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429092949936.png" alt="image-20220429092949936" loading="lazy" decoding="async"/>
+                  </picture></p>
+<h3 id="affinity-photo">Affinity Photo</h3>
+<blockquote>
+<p>168 元（疫情打折时价格）</p>
+</blockquote>
+<p>疫情初期购买了 Affinity 的三件套（绝对良心价格 168 * 3）。我主要用 <a href="https://affinity.serif.com/en-gb/photo/?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Affinity Photo</a> 对位图进行编辑和处理。相较于 Pixelmator Pro，Affinity Photo 的功能设定和 UI 布局更接近于 PS 的使用习惯。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429093111762.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429093111762.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429093111762.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429093111762.png" alt="image-20220429093111762" loading="lazy" decoding="async"/>
+                  </picture></p>
+<h2 id="图床管理">图床管理</h2>
+<h3 id="picgo">picGo</h3>
+<p><a href="https://github.com/Molunerfinn/PicGo?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">PicGo</a> 是一个用于快速上传图片并获取图片 URL 链接的工具，Typora 对其提供了完美的支持。事实上，在 PicGo 中完成了图床的设定后，我就没有再单独地开启过这个软件了。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429093145410.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429093145410.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429093145410.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429093145410.png" alt="image-20220429093145410" loading="lazy" decoding="async"/>
+                  </picture></p>
+<h3 id="kodo-browser">kodo Browser</h3>
+<p><a href="https://www.qiniu.com?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">七牛</a> 提供的官方文件管理器，仅在批量上传图片时使用。</p>
+<p><picture>
+                    <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20220429093219705.png?imageView2/0/w/500"/>
+                    <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20220429093219705.png?imageView2/0/w/768"/>
+                    <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20220429093219705.png?imageView2/0/w/1024"/>
+                    <img src="https://cdn.fatbobman.com/image-20220429093219705.png" alt="image-20220429093219705" loading="lazy" decoding="async"/>
+                  </picture></p>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container"></div></aside>
+<h2 id="总结">总结</h2>
+<p>工欲善其事，必先利其器。趁手的工具可以帮助使用者做到事半功倍。</p> </div> <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4"><a href="https://www.buymeacoffee.com/fatbobman" target="_blank" rel="noopener" class="block p-5 bg-orange-50/80 dark:bg-blue-900/30 border-2 border-orange-200 dark:border-blue-700 rounded-xl hover:shadow-lg hover:scale-[1.02] transition-all group"><div class="flex items-start gap-3"><div class="text-3xl">☕️</div><div class="flex-1"><div class="text-base font-bold text-heading mb-1 group-hover:text-orange-700 dark:group-hover:text-blue-200 transition-colors">
+买杯咖啡支持
+</div><div class="text-sm text-default">
+如果这篇文章对你有帮助，请考虑请我喝杯咖啡
+</div></div><svg class="w-5 h-5 text-orange-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg></div></a><a href="https://discord.com/invite/7FedN5E2QQ" target="_blank" rel="noopener" class="block p-5 bg-orange-50/80 dark:bg-blue-900/30 border-2 border-orange-200 dark:border-blue-700 rounded-xl hover:shadow-lg hover:scale-[1.02] transition-all group"><div class="flex items-start gap-3"><div class="text-3xl">💬</div><div class="flex-1"><div class="text-base font-bold text-heading mb-1 group-hover:text-orange-700 dark:group-hover:text-blue-200 transition-colors">
+加入 Discord 社区
+</div><div class="text-sm text-default">
+与 2000+ 苹果生态开发者交流
+</div></div><svg class="w-5 h-5 text-orange-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg></div></a></div> </article> <section class="pt-10 pb-10" id="related-posts"><div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 md:gap-4" id="more-tips"><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/zh/posts/publish-3/" id="relatedPosts-用 Publish 创建博客（三）—— 插件开发"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">用 Publish 创建博客（三）—— 插件开发</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/zh/posts/publish-1/" id="relatedPosts-用 Publish 创建博客（一）—— 入门"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">用 Publish 创建博客（一）—— 入门</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/zh/posts/experience_of_macbook_pro/" id="relatedPosts-MacBook Pro 使用体验"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">MacBook Pro 使用体验</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/zh/posts/blogupgrade/" id="relatedPosts-博客更新记"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">博客更新记</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            hidden lg:flex" href="/zh/posts/publish-2/" id="relatedPosts-用 Publish 创建博客（二）—— 主题开发"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">用 Publish 创建博客（二）—— 主题开发</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            hidden lg:flex" href="/zh/posts/vapor4/" id="relatedPosts-Vapor4 的安装与配置"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">Vapor4 的安装与配置</span></a></div></section> <div class="w-full mx-auto text-center pb-0 sm:pb-6 pt-8"> <div id="custom-substack-embed" data-subscribeText="订阅周报" data-placeholder="请输入邮箱" data-anchor="related-posts" style="opacity: 0; transition: opacity 0.3s;"></div> <iframe class="sm:w-80 w-[480px] mx-auto dark:opacity-80 dark:rounded-lg dark:shadow-2xl dark:border-gray-600" src="https://weekly.fatbobman.com/embed" height="320" style="border:1px solid #EEE; background:white; width: 100%; max-width: 480px;"></iframe> <div class="text-xs font-medium text-heading p-4 font-wide">每周精选 Swift 与 SwiftUI 精华！</div> </div> <!-- <Author lang={lang} /> --> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
+  .copy-icon {
+    position: absolute;
+    left: -30px; /* 根据您的布局调整位置 */
+    top: 50%; /* 将图标定位到标题的中间高度 */
+    transform: translateY(-50%); /* 垂直居中对齐图标 */
+    cursor: pointer;
+    transition: opacity 0.6s ease;
+    pointer-events: all; /* 始终响应鼠标事件 */
+  }
+
+  article h2,
+  article h3,
+  article h4,
+  article h5 {
+    position: relative;
+  }
+
+  #copy-alert {
+    position: fixed;
+    bottom: -100px; /* 初始在视窗下方 */
+    right: 20px;
+    transition: bottom 0.5s ease-in-out;
+  }
+
+  /* 进入动画 */
+  @keyframes slideIn {
+    from {
+      bottom: -100px;
+    }
+    to {
+      bottom: 0px;
+    }
+  }
+
+  /* 消失动画 */
+  @keyframes slideOut {
+    from {
+      bottom: 20px;
+    }
+    to {
+      bottom: -100px;
+    }
+  }
+</style> <script defer>
+  var hideTimeout; // 用于保存自动隐藏定时器的引用
+  document.querySelectorAll('article h2, article h3, article h4, article h5').forEach(function (header) {
+    var copyIcon = document.createElement('span');
+    copyIcon.innerHTML =
+      '<svg fill="currentColor" aria-hidden="true" stroke="currentColor" class="w-5 h-5 hidden md:block hover:text-secondary" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M861.866667 164.266667c-87.466667-87.466667-230.4-89.6-320-2.133334l-68.266667 68.266667c-12.8 12.8-12.8 32 0 44.8s32 12.8 44.8 0l68.266667-68.266667c64-61.866667 166.4-61.866667 230.4 2.133334 64 64 64 168.533333 2.133333 232.533333l-117.333333 119.466667c-34.133333 34.133333-81.066667 51.2-128 49.066666-46.933333-4.266667-91.733333-27.733333-119.466667-66.133333-10.666667-14.933333-29.866667-17.066667-44.8-6.4-14.933333 10.666667-17.066667 29.866667-6.4 44.8 40.533333 53.333333 100.266667 87.466667 166.4 91.733333h17.066667c59.733333 0 119.466667-23.466667 162.133333-68.266666l117.333333-119.466667c83.2-89.6 83.2-234.666667-4.266666-322.133333z"></path><path d="M505.6 750.933333l-66.133333 68.266667c-64 61.866667-166.4 61.866667-230.4-2.133333-64-64-64-168.533333-2.133334-232.533334l117.333334-119.466666c34.133333-34.133333 81.066667-51.2 128-49.066667 46.933333 4.266667 91.733333 27.733333 119.466666 66.133333 10.666667 14.933333 29.866667 17.066667 44.8 6.4 14.933333-10.666667 17.066667-29.866667 6.4-44.8-40.533333-53.333333-100.266667-87.466667-166.4-91.733333-66.133333-4.266667-130.133333 19.2-177.066666 66.133333l-117.333334 119.466667c-85.333333 89.6-85.333333 234.666667 2.133334 322.133333 44.8 44.8 102.4 66.133333 162.133333 66.133334 57.6 0 115.2-21.333333 160-64l66.133333-68.266667c12.8-12.8 12.8-32 0-44.8-14.933333-10.666667-34.133333-10.666667-46.933333 2.133333z"></path></svg>'; // 使用您选择的图标
+    copyIcon.className = 'copy-icon';
+    copyIcon.style.opacity = '0'; // 默认透明
+    header.insertBefore(copyIcon, header.firstChild);
+
+    header.addEventListener('mouseover', function () {
+      copyIcon.style.opacity = '1';
+    });
+    header.addEventListener('mouseout', function () {
+      copyIcon.style.opacity = '0';
+    });
+
+    copyIcon.addEventListener('click', function () {
+        var url = window.location.href.split('#')[0] + '#' + header.id;
+        navigator.clipboard.writeText(url).then(function () {
+            var alertDiv = document.getElementById('copy-alert');
+            if (alertDiv) {
+                alertDiv.classList.remove('hidden'); // 确保提示框是可见的
+                alertDiv.style.display = 'block'; // 显示提示框
+                clearTimeout(hideTimeout); // 清除之前的定时器
+                alertDiv.style.animation = 'none'; // 先清除之前的动画
+                setTimeout(function () {
+                    alertDiv.style.animation = 'slideIn 0.5s forwards'; // 应用新动画
+                }, 10);
+
+                // 设置自动隐藏定时器
+                hideTimeout = setTimeout(function () {
+                    alertDiv.style.animation = 'slideOut 0.5s forwards'; // 应用消失动画
+                    setTimeout(function () {
+                        alertDiv.style.display = 'none';
+                    }, 500);
+                }, 3000);
+            }
+        });
+    });
+  });
+</script> <script>
+function copyCode(button, event) {
+  event.preventDefault();
+  const codeBlock = button.parentNode.nextElementSibling.textContent; // 获取代码内容
+  navigator.clipboard.writeText(codeBlock).then(() => {
+    // 显示 "Copied"
+    button.querySelector('.copy-text').style.display = 'none';
+    button.querySelector('.copied-text').style.display = 'inline';
+
+    // 3秒后恢复
+    setTimeout(() => {
+      button.querySelector('.copy-text').style.display = 'inline';
+      button.querySelector('.copied-text').style.display = 'none';
+    }, 3000);
+  });
+}
+</script> <script>(function(){const url = "https://fatbobman.com/ads/zh";
+
+  // 根据中英文对应不同的 adCacheKey
+  const adCacheKey = 'dynamicAdCache' + (window.location.pathname.includes('/zh/') ? 'ZH' : 'EN');
+
+  // 尝试从缓存中获取广告
+  const cachedAd = JSON.parse(localStorage.getItem(adCacheKey));
+  const now = Date.now();
+  const maxAllowedExpiresAt = now + 3 * 60 * 1000; // 当前时间 + 5分钟
+
+  // 检查缓存是否有效：1. 存在 2. 未过期 3. 过期时间不超过5分钟
+  if (cachedAd && cachedAd.expiresAt > now && cachedAd.expiresAt <= maxAllowedExpiresAt) {
+    console.log('Using cached ad');
+    console.log(cachedAd.expiresAt - now);
+    // 如果缓存有效，直接使用缓存的广告
+    renderAd(cachedAd.content);
+  } else {
+    console.log('Fetching ad from the server');
+    // 如果缓存无效，从服务器获取广告
+    fetch(url, {
+      headers: {
+        'Accept': 'text/html',
+      },
+      cache: 'no-cache'
+    })
+      .then(response => {
+        const maxAgeMatch = response.headers.get('Cache-Control')?.match(/max-age=(\d+)/);
+        const maxAge = maxAgeMatch ? parseInt(maxAgeMatch[1], 10) : 0;
+
+        if (!response.ok || maxAge <= 0) {
+          throw new Error('Invalid response or missing Cache-Control');
+        }
+
+        return response.text().then(adContent => {
+          // const expiresAt = now + maxAge * 1000; // 计算失效时间
+          // 解析 max-age
+          // const cc = response.headers.get('Cache-Control') || '';
+          // const maxAge = parseInt((cc.match(/(?:^|,)\s*max-age=(\d+)/)?.[1] ?? '0'), 10);
+
+          // // 读取 CDN Age 与服务端时间
+          // const age = parseInt(response.headers.get('Age') || '0', 10);
+          // // const serverDate = response.headers.get('Date');
+
+          // // 计算剩余 TTL（优先用 Age 抵扣）
+          // const ttlLeftMs = Math.max(0, (maxAge - age) * 1000);
+
+          // // 失效时间：以当前本地时间加剩余 TTL（若要完全按服务端时间，可用 serverDate 做基线）
+          // const expiresAt = Date.now() + ttlLeftMs;
+
+          // 失效时间：固定5分钟
+          const expiresAt = Date.now() + 5 * 60 * 1000; // 5分钟
+
+          // 缓存广告内容
+          localStorage.setItem(adCacheKey, JSON.stringify({ content: adContent, expiresAt }));
+          // 渲染广告
+          renderAd(adContent);
+        });
+      })
+      .catch(error => console.error('Error loading the ad:', error));
+  }
+
+  // 渲染广告函数
+  function renderAd(html) {
+    const adSlots = document.querySelectorAll('.dynamic-ad-container');
+    adSlots.forEach(slot => {
+      slot.innerHTML = html;
+    });
+  }
+})();</script> <script type="module">var c=document.querySelectorAll("article");c.forEach(function(r){var a=r.querySelectorAll("a");a.forEach(function(e){var t=e.getAttribute("href");t&&t.startsWith("http")&&!t.includes("fatbobman.com")&&!t.includes("fatbobman.github.com")&&!t.includes("localhost")&&e.setAttribute("target","_blank")})});</script> <!-- <LeaveFeedback lang={lang} /> --> <!-- <BottomWeeklySubscribe lang={lang} /> --> <div id="gitalk-container" data-comment-id="我正在使用中的博客创作工具" data-lang="zh" data-repo="blogComments" data-createIssueManually="true" data-anchor="related-posts" class="pb-16"></div>
+
+    <script defer>
+      document.addEventListener('DOMContentLoaded', async function () {
+      const container = document.getElementById('custom-substack-embed');
+      let anchor = '';
+      if (container) {
+        anchor = container.getAttribute('data-anchor') || '';
+      }
+        // 提前检查是否需要加载评论
+        try {
+          const response = await fetch('https://fatbobman.com/status/comment');
+          const data = await response.text();
+          console.log(data, "comment");
+
+          if (data !== '1') {
+            console.log('评论功能未启用，跳过监控和加载操作。');
+            return; // 提前返回，跳过后续逻辑
+          }
+        } catch (error) {
+          console.error('检查评论状态时出错：', error);
+          return; // 出现错误时也跳过后续逻辑
+        }
+
+        // 如果返回值为 "1"，则启动观察器
+        const observerTarget = document.getElementById(anchor);
+        if (observerTarget) {
+          const observer = new IntersectionObserver(async (entries, observer) => {
+            const entry = entries[0];
+            if (entry.isIntersecting) {
+              console.log("load comment")
+              // 停止观察，避免重复触发
+              observer.unobserve(observerTarget);
+
+              // 动态加载评论区脚本
+              await loadGitalk();
+            }
+          }, {
+            root: null, // 相对于视口
+            rootMargin: '20%', // 提前 20% 的位置触发
+            threshold: 0.1, // 元素显示 10% 即触发
+          });
+
+          observer.observe(observerTarget);
+        }
+
+        // 动态加载 Gitalk 脚本并初始化评论区
+        async function loadGitalk() {
+          const container = document.getElementById('gitalk-container');
+          if (container) {
+            const commentID = container.getAttribute('data-comment-id');
+            const lang = container.getAttribute('data-lang');
+            const repo = container.getAttribute('data-repo')
+            const createIssueManually = container.getAttribute('data-createIssueManually')
+
+            console.log(repo);
+            console.log(createIssueManually)
+
+            // 动态加载 Gitalk 脚本
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js';
+            script.defer = true;
+            script.onload = () => {
+              const gitalk = new Gitalk({
+                clientID: 'fcf61195c7f73253dc8b',
+                clientSecret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
+                repo: repo,
+                owner: 'fatbobman',
+                admin: ['fatbobman'],
+                id: commentID.split('/').pop().substring(0, 49),
+                distractionFreeMode: true,
+                createIssueManually: createIssueManually,
+                language: lang,
+              });
+
+              gitalk.render('gitalk-container');
+            };
+            document.body.appendChild(script);
+          }
+        }
+      });
+    </script> <div class="hidden lg:block w-32 xl:w-44 lg:absolute" id="toc" style="left: -30px; top: 0px"> <div class="text-muted items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-out" id="toc-content"> <div class="w-full flex justify-end pb-2" id="toc-float-button"> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" id="toc-list-switcher"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-toc"></use> </svg> <svg fill="currentColor" stroke="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" id="toc-list-close" class="hidden"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-toc-close"></use> </svg>  </div> </div> <div class="text-default text-xxs xl:text-xs hidden" id="toc-list"> <ul> <li class=" pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#资料收集整理" class="inline-block hover:text-secondary text-heading font-medium relative before:hidden xl:before:block before:content-[&#34;▪&#34;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-1 break-words"> 资料收集整理 </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#印象笔记" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> 印象笔记 </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#onenote" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> OneNote </a> </div> </li><li class=" pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#文本编辑" class="inline-block hover:text-secondary text-heading font-medium relative before:hidden xl:before:block before:content-[&#34;▪&#34;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-1 break-words"> 文本编辑 </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#typora" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> Typora </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#vscode" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> VSCode </a> </div> </li><li class=" pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#截图及录屏" class="inline-block hover:text-secondary text-heading font-medium relative before:hidden xl:before:block before:content-[&#34;▪&#34;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-1 break-words"> 截图及录屏 </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#quicktime" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> QuickTime </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#ishot" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> iShot </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#xcode-simulator" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> Xcode Simulator </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#rocketsim-pro" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> RocketSim PRO </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#codeshot" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> CodeShot </a> </div> </li><li class=" pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#格式转换" class="inline-block hover:text-secondary text-heading font-medium relative before:hidden xl:before:block before:content-[&#34;▪&#34;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-1 break-words"> 格式转换 </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#gif-brewery" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> Gif Brewery </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#handbrake" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> handBrake </a> </div> </li><li class=" pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#图片编辑" class="inline-block hover:text-secondary text-heading font-medium relative before:hidden xl:before:block before:content-[&#34;▪&#34;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-1 break-words"> 图片编辑 </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#预览" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> 预览 </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#figma" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> Figma </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#affinity-photo" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> Affinity Photo </a> </div> </li><li class=" pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#图床管理" class="inline-block hover:text-secondary text-heading font-medium relative before:hidden xl:before:block before:content-[&#34;▪&#34;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-1 break-words"> 图床管理 </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#picgo" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> picGo </a> </div> </li><li class="xl:pl-4 pl-1 pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#kodo-browser" class="inline-block font-normal relative before:content-[&#34;-&#34;] before:hidden xl:before:block before:absolute before:left-[-10px] before:text-default before:w-0 break-words"> kodo Browser </a> </div> </li><li class=" pb-1"> <div class="text-muted hover:text-secondary hover:font-black"> <a href="#总结" class="inline-block hover:text-secondary text-heading font-medium relative before:hidden xl:before:block before:content-[&#34;▪&#34;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-1 break-words"> 总结 </a> </div> </li>  </ul> </div> </div> </div> <script type="module" src="/_astro/TOC.astro_astro_type_script_index_0_lang.ARhKvemZ.js"></script> <div class="hidden md:block md:absolute" id="sidebar" style="right: -50px; top: 0px"> <div class="invisible flex flex-col space-y-4 text-muted items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-out" id="sidebar-content"> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <button type="button" onclick="
+      try {
+        if ('/zh/posts/optimize_the_response_efficiency_of_list/' !== '#') {
+          window.location.href = '/zh/posts/optimize_the_response_efficiency_of_list/';
+        }
+      } catch (e) {
+        console.log('Navigation failed:', e);
+      }
+    " data-tooltip-target="tooltip-next-post" data-tooltip-placement="left" id="sidebar-next-post" class="cursor-pointer" aria-label="Next post"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-previous"></use> </svg> </button>  </div> <div id="tooltip-next-post" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>优化在 SwiftUI List 中显示大数据集的响应效率</div> <div class="text-xs text-yellow-200 font-extrabold pt-2">⌥ + ←</div> </div> </div> <script>(function(){const url = "/zh/posts/optimize_the_response_efficiency_of_list/";
+const isHidden = false;
+
+  document.addEventListener('keydown', (e) => {
+    // Check if Alt+RightArrow or just RightArrow was pressed
+    if (e.altKey && e.key === 'ArrowLeft') {
+      // Only navigate if there's a URL and the button isn't hidden
+      if (url && !isHidden) {
+        e.preventDefault(); // Prevent default browser behavior
+        window.location.href = url;
+      }
+    }
+  });
+})();</script> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <button type="button" onclick="
+      try {
+        if ('/zh/posts/the_animation_mechanism_of_swiftui/' !== '#') {
+          window.location.href = '/zh/posts/the_animation_mechanism_of_swiftui/';
+        }
+      } catch (e) {
+        console.log('Navigation failed:', e);
+      }
+    " data-tooltip-target="tooltip-previous-post" data-tooltip-placement="left" id="sidebar-previous-post" class="cursor-pointer" aria-label="Previous post"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-next"></use> </svg> </button>  </div> <div id="tooltip-previous-post" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>SwiftUI 的动画机制</div> <div class="text-xs text-yellow-200 font-extrabold pt-2">⌥ + →</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>(function(){const url = "/zh/posts/the_animation_mechanism_of_swiftui/";
+const isHidden = false;
+
+  document.addEventListener('keydown', (e) => {
+    // Check if Alt+RightArrow or just RightArrow was pressed
+    if (e.altKey && e.key === 'ArrowRight') {
+      // Only navigate if there's a URL and the button isn't hidden
+      if (url && !isHidden) {
+        e.preventDefault(); // Prevent default browser behavior
+        window.location.href = url;
+      }
+    }
+  });
+})();</script> <!-- <DictButton lang={lang} post = {post}/> --> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <a href="https://x.com/intent/tweet?text=%E6%88%91%E6%AD%A3%E5%9C%A8%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%88%9B%E4%BD%9C%E5%B7%A5%E5%85%B7&url=https%3A%2F%2Ffatbobman.com%2Fzh%2Fposts%2Fblogtools%2F&hashtags=ios%2Cswiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" data-tooltip-target="tooltip-share-with-twitter" data-tooltip-placement="left"> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-twitter"></use> </svg> </a>  </div> <div id="tooltip-share-with-twitter" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-32 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Share on X</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <button type="button" onclick="
+      try {
+        window.open('https://bsky.app/intent/compose?text=%E6%88%91%E6%AD%A3%E5%9C%A8%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%88%9B%E4%BD%9C%E5%B7%A5%E5%85%B7%0A by %40fatbobman.com %0Ahttps%3A%2F%2Ffatbobman.com%2Fzh%2Fposts%2Fblogtools%2F%0A #ios #swift', '_blank');
+      } catch (e) {
+        console.log('Failed to open BlueSky share');
+      }
+    " id="sidebar-share-with-bluesky" data-tooltip-target="tooltip-share-with-bluesky" data-tooltip-placement="left" class="cursor-pointer" aria-label="Share on BlueSky"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="0.4" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-bluesky"></use> </svg> </button>  </div> <div id="tooltip-share-with-bluesky" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-40 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Share on BlueSky</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <a href="https://www.facebook.com/sharer/sharer.php?u=https%253A%252F%252Ffatbobman.com%252Fzh%252Fposts%252Fblogtools%252F" target="_blank" id="sidebar-share-with-facebook" data-tooltip-target="tooltip-share-with-facebook" data-tooltip-placement="left"> <svg stroke="currentColor" fill="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-facebook"></use> </svg> </a>  </div> <div id="tooltip-share-with-facebook" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Share on Facebook</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <a href="https://service.weibo.com/share/share.php?url=https%3A%2F%2Ffatbobman.com%2Fzh%2Fposts%2Fblogtools%2F&title=%E6%88%91%E6%AD%A3%E5%9C%A8%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%88%9B%E4%BD%9C%E5%B7%A5%E5%85%B7%0A%20%23ios%20%23swift%0A%20by%20%40fatbobman%0A" target="_blank" id="sidebar-share-with-weibo" data-tooltip-target="tooltip-share-with-weibo" data-tooltip-placement="left"> <svg fill="currentColor" stroke="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-weibo"></use> </svg> </a>  </div> <div id="tooltip-share-with-weibo" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-40 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Share on Weibo</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:16px; height:16px;">  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ffatbobman.com%2Fzh%2Fposts%2Fblogtools%2F" target="_blank" id="sidebar-share-with-linkedin" data-tooltip-target="tooltip-share-with-linkedin" data-tooltip-placement="left"> <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="0.1" viewBox="0 0 15 15"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-linkedin"></use> </svg> </a>  </div> <div id="tooltip-share-with-linkedin" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-40 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Share on Linkedin</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <a href="mailto:?subject=%E6%96%87%E7%AB%A0%3A%E3%80%90%E6%88%91%E6%AD%A3%E5%9C%A8%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%88%9B%E4%BD%9C%E5%B7%A5%E5%85%B7%E3%80%91&#38;body=%E5%88%86%E4%BA%AB%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E7%BB%99%E4%BD%A0%EF%BC%9A%0A%0A%E6%88%91%E6%AD%A3%E5%9C%A8%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%88%9B%E4%BD%9C%E5%B7%A5%E5%85%B7%0A%0A%E9%93%BE%E6%8E%A5%3A%20https%3A%2F%2Ffatbobman.com%2Fzh%2Fposts%2Fblogtools%2F" target="_blank" id="sidebar-share-with-email" data-tooltip-target="tooltip-share-with-email" data-tooltip-placement="left"> <svg fill="currentColor" stroke="currentColor" stroke-width="20" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-email"></use> </svg> </a>  </div> <div id="tooltip-share-with-email" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-40 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Share via Email</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" stroke-width="20" id="comment-button" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" data-tooltip-target="tooltip-share-with-comment" data-tooltip-placement="left"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-comment"></use> </svg>  </div> <div id="tooltip-share-with-comment" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Share Your Thoughts</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>
+  const SCROLL_OFFSET = 80;
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    const commentButton = document.getElementById('comment-button');
+    if (commentButton) {
+      commentButton.addEventListener('click', function() {
+        const gitalkContainer = document.getElementById('gitalk-container');
+        if (gitalkContainer) {
+          const topPosition = gitalkContainer.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
+          window.scrollTo({ top: topPosition, behavior: 'smooth' });
+        }
+      });
+    }
+  });
+</script> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" onclick="window.scrollTo({top:0,behavior:'smooth'})" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" data-tooltip-target="tooltip-back-to-top" data-tooltip-placement="left"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-top"></use> </svg>  </div> <div id="tooltip-back-to-top" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-28 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Back to Top</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.DVW0R156.js"></script> </div>   </div> </main> </div> <footer> <footer class="bg-block tracking-widest"> <div class="mx-auto w-full max-w-3xl px-4 md:px-6"> <div class="container flex flex-col items-center pt-10"> <div class="flex flex-row justify-around w-full space-x-3"> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">探索</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium"> <a href="/zh/snippet/" class="hover:text-secondary">小贴士</a> <a href="/zh/posts/" class="hover:text-secondary">文章</a> <a href="/zh/tags/" class="hover:text-secondary">标签</a> <a href="/zh/collections/" class="hover:text-secondary">合集</a> </div> </div> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">订阅</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium"> <a href="https://weekly.fatbobman.com/welcome" class="hover:text-secondary" target="_blank">周报订阅</a> <a href="/zh/rss.xml" class="hover:text-secondary hover:font-medium" target="_blank">RSS 订阅</a> </div> </div> <div class="flex flex-col space-y-4"> <h2 class="font-bold text-heading">合作与支持</h2> <div class="flex flex-col space-y-2 text-sm text-default font-medium">  <a href="/zh/about/#contact" class="hover:text-secondary">联系我</a> <a href="https://afdian.com/a/fatbobman" class="hover:text-secondary" target="_blank">请肘子喝茶 ☕️</a> </div> </div> </div> <div class="pb-0"> <div class="flex items-center justify-center w-full px-6 pt-12 text-sm"> <span class="text-muted text-xs tracking-normal">Copyright © <span>2020-</span> 2025
+Fatbobman Digital Limited. All Rights
+            Reserved.</span> </div> <div class="flex items-center justify-center w-full px-6 pt-2 text-sm pb-10"> <button type="button" onclick="
+        try {
+          window.open('https://beian.miit.gov.cn/#/Integrated/index', '_blank');
+        } catch (e) {
+          console.log('Failed to open ICP link:', e);
+        }
+      " class="text-xxs hover:underline text-muted tracking-wide" aria-label="ICP Registration Information">
+辽ICP备20006550号-1
+</button> </div> </div> </div> </div> </footer> </footer> </div> <section> <div id="weekly-modal" data-subscribeText="订阅周报" data-placeholder="输入你的邮箱"> <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"> <!-- Modal content --> <div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-lg shadow-2xl border-gray-200 border dark:border-gray-600"> <!-- Modal header --> <div class="flex items-center justify-between px-4 md:px-5 pt-4 pb-0 rounded-t dark:border-gray-600"> <button id="popup-modal-close-button" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"> <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path> </svg> <span class="sr-only">Close modal</span> </button> </div> <!-- Modal body --> <div class="px-4 md:px-5 pb-4 md:w-[480px] sm:w-80 mx-auto"> <div class="sm:hidden md:block text-base text-center font-bold text-gray-900 dark:text-blue-100 pt-4 pb-2 font-wide">每周一，与全球开发者共享 Swift 与 SwiftUI 开发精华</div> <iframe class="mx-auto sm:w-[320px] md:w-[480px] sm:h-[200px] md:h-[320px] dark:opacity-80 dark:rounded-lg dark:shadow-2xl dark:border-gray-600" src="https://weekly.fatbobman.com/embed" style="border:0px solid #EEE; background:white; width: 100%; max-width: 480px;"></iframe> </div> </div> </div> </div> </section> <script type="module" src="/_astro/WeeklyModalLoader.astro_astro_type_script_index_0_lang.CmhzHyOM.js"></script>  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js" async></script> <script src="https://analytics.ahrefs.com/analytics.js" data-key="KF0NNRpbcfyJPzijzZEiOw" async></script> <script>
+  // 为每个需要清除 focus 状态的按钮都添加一个 clear-focus 类, 下面的代码将在点击后自动移除 focus 状态
+  document.addEventListener('DOMContentLoaded', () => {
+    // 获取所有具有 'clear-focus' 类的按钮
+    const buttons = document.querySelectorAll('.clear-focus');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setTimeout(() => {
+          button.blur();
+        }, 0);
+      });
+    });
+  });
+
+  window.onpageshow = function () {
+    document.documentElement.classList.add('motion-safe:scroll-smooth');
+  };
+</script> <div id="docsearch-container-data" data-lang="zh" data-searchtext="搜索..."></div> <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.3" defer></script> <script type="module">function r(e,t){const a={button:{buttonText:"搜索",buttonAriaLabel:"搜索"},modal:{searchBox:{resetButtonTitle:"清除搜索关键字",resetButtonAriaLabel:"清除搜索关键字",cancelButtonText:"取消",cancelButtonAriaLabel:"取消"},startScreen:{recentSearchesTitle:"最近搜索",noRecentSearchesText:"当前没有搜索历史记录",saveRecentSearchButtonTitle:"保存本次搜索",removeRecentSearchButtonTitle:"从搜索历史中移除",favoriteSearchesTitle:"收藏夹",removeFavoriteSearchButtonTitle:"从收藏夹移除"},errorScreen:{titleText:"无法获取结果",helpText:"请检查网络连接"},footer:{selectText:"选择",selectKeyAriaLabel:"选择",navigateText:"切换",navigateUpKeyAriaLabel:"Arrow up",navigateDownKeyAriaLabel:"Arrow down",closeText:"退出",closeKeyAriaLabel:"Escape key",searchByText:"引擎支持"},noResultsScreen:{noResultsText:"无法找到对应结果",suggestedQueryText:"可以尝试搜索如下内容",reportMissingResultsText:"确认本次搜索应该返回内容？",reportMissingResultsLinkText:"请告知我们"}}};if(typeof window<"u"){const n=window.docsearch;n({appId:"MVXKD4F4BR",apiKey:"a1b4111c3de8b9f60eeca6da001711da",indexName:"fatbobman",container:"#docsearch",insights:!0,placeholder:t,maxResultsPerGroup:50,translations:e==="zh"?a:void 0,searchParameters:{facetFilters:[`lang:${e}`],hitsPerPage:50}})}}function o(){const e=document.getElementById("docsearch-container-data");if(!e){console.error("Search container not found");return}const t=e.dataset.lang,a=e.dataset.searchtext;r(t,a)}window.addEventListener("load",()=>{document.querySelector('script[src*="docsearch"]')&&o()});</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <!--Magic Fix 解决在 Safari 下搜索框取消后会滚动到页面底部--> <div class="fixed"> <input type="text"> </div> </body></html>
