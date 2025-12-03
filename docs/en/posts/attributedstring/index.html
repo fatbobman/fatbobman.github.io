@@ -1937,9 +1937,9 @@ Reach 50,000+ Swift developers
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/localizationapp-1/" id="relatedPosts-Globalize Your SwiftUI App: A Comprehensive Guide to Localization"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Globalize Your SwiftUI App: A Comprehensive Guide to Localization</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/en/posts/textfield-event-focus-keyboard/" id="relatedPosts-Advanced SwiftUI TextField: Events, Focus, Keyboard"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Advanced SwiftUI TextField: Events, Focus, Keyboard</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/mixing_text_and_graphics_with_text_in_swiftui/" id="relatedPosts-Mixing Text and Image in SwiftUI"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Mixing Text and Image in SwiftUI</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/en/posts/textfield-event-focus-keyboard/" id="relatedPosts-Advanced SwiftUI TextField: Events, Focus, Keyboard"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Advanced SwiftUI TextField: Events, Focus, Keyboard</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/en/posts/textfield-1/" id="relatedPosts-Advanced SwiftUI TextField: Formatting and Validation"><span class="font-medium text-sm text-heading  group-hover:dark:text-white group-hover:text-black">Advanced SwiftUI TextField: Formatting and Validation</span></a></div></section> <div class="w-full mx-auto text-center pb-0 sm:pb-6 pt-8"> <div id="custom-substack-embed" data-subscribeText="Subscribe" data-placeholder="Enter email" data-anchor="related-posts" style="opacity: 0; transition: opacity 0.3s;"></div> <iframe class="sm:w-80 w-[480px] mx-auto dark:opacity-80 dark:rounded-lg dark:shadow-2xl dark:border-gray-600" src="https://weekly.fatbobman.com/embed" height="320" style="border:1px solid #EEE; background:white; width: 100%; max-width: 480px;"></iframe> <div class="text-xs font-medium text-heading p-4 ">Weekly Swift &amp; SwiftUI highlights!</div> </div> <!-- <Author lang={lang} /> --> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">Link copied</div> </div> </div> <style>
   .copy-icon {
@@ -2048,12 +2048,19 @@ function copyCode(button, event) {
   const adCacheKey = 'dynamicAdCache' + (window.location.pathname.includes('/zh/') ? 'ZH' : 'EN');
 
   // 尝试从缓存中获取广告
-  const cachedAd = JSON.parse(localStorage.getItem(adCacheKey));
+  let cachedAd = null;
+  try {
+    const cachedData = localStorage.getItem(adCacheKey);
+    if (cachedData) {
+      cachedAd = JSON.parse(cachedData);
+    }
+  } catch (e) {
+    console.warn('Failed to parse cached ad:', e);
+  }
   const now = Date.now();
-  const maxAllowedExpiresAt = now + 3 * 60 * 1000; // 当前时间 + 5分钟
 
-  // 检查缓存是否有效：1. 存在 2. 未过期 3. 过期时间不超过5分钟
-  if (cachedAd && cachedAd.expiresAt > now && cachedAd.expiresAt <= maxAllowedExpiresAt) {
+  // 检查缓存是否有效：1. 存在 2. 未过期
+  if (cachedAd && cachedAd.expiresAt && cachedAd.expiresAt > now) {
     console.log('Using cached ad');
     console.log(cachedAd.expiresAt - now);
     // 如果缓存有效，直接使用缓存的广告
@@ -2091,8 +2098,8 @@ function copyCode(button, event) {
           // // 失效时间：以当前本地时间加剩余 TTL（若要完全按服务端时间，可用 serverDate 做基线）
           // const expiresAt = Date.now() + ttlLeftMs;
 
-          // 失效时间：固定5分钟
-          const expiresAt = Date.now() + 5 * 60 * 1000; // 5分钟
+          // 失效时间：固定20分钟
+          const expiresAt = Date.now() + 20 * 60 * 1000; // 20分钟
 
           // 缓存广告内容
           localStorage.setItem(adCacheKey, JSON.stringify({ content: adContent, expiresAt }));

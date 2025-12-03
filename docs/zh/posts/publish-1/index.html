@@ -883,9 +883,9 @@ const enableStickyInMobile = true;
 与 2000+ 苹果生态开发者交流
 </div></div><svg class="w-5 h-5 text-orange-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg></div></a></div> </article> <section class="pt-10 pb-10" id="related-posts"><div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 md:gap-4" id="more-tips"><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/zh/posts/publish-2/" id="relatedPosts-用 Publish 创建博客（二）—— 主题开发"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">用 Publish 创建博客（二）—— 主题开发</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/zh/posts/swift-in-linux/" id="relatedPosts-在 Linux 系统上搭建 Swift 开发调试环境"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">在 Linux 系统上搭建 Swift 开发调试环境</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/zh/posts/publish-2/" id="relatedPosts-用 Publish 创建博客（二）—— 主题开发"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">用 Publish 创建博客（二）—— 主题开发</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/zh/posts/publish-3/" id="relatedPosts-用 Publish 创建博客（三）—— 插件开发"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">用 Publish 创建博客（三）—— 插件开发</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
@@ -996,12 +996,19 @@ function copyCode(button, event) {
   const adCacheKey = 'dynamicAdCache' + (window.location.pathname.includes('/zh/') ? 'ZH' : 'EN');
 
   // 尝试从缓存中获取广告
-  const cachedAd = JSON.parse(localStorage.getItem(adCacheKey));
+  let cachedAd = null;
+  try {
+    const cachedData = localStorage.getItem(adCacheKey);
+    if (cachedData) {
+      cachedAd = JSON.parse(cachedData);
+    }
+  } catch (e) {
+    console.warn('Failed to parse cached ad:', e);
+  }
   const now = Date.now();
-  const maxAllowedExpiresAt = now + 3 * 60 * 1000; // 当前时间 + 5分钟
 
-  // 检查缓存是否有效：1. 存在 2. 未过期 3. 过期时间不超过5分钟
-  if (cachedAd && cachedAd.expiresAt > now && cachedAd.expiresAt <= maxAllowedExpiresAt) {
+  // 检查缓存是否有效：1. 存在 2. 未过期
+  if (cachedAd && cachedAd.expiresAt && cachedAd.expiresAt > now) {
     console.log('Using cached ad');
     console.log(cachedAd.expiresAt - now);
     // 如果缓存有效，直接使用缓存的广告
@@ -1039,8 +1046,8 @@ function copyCode(button, event) {
           // // 失效时间：以当前本地时间加剩余 TTL（若要完全按服务端时间，可用 serverDate 做基线）
           // const expiresAt = Date.now() + ttlLeftMs;
 
-          // 失效时间：固定5分钟
-          const expiresAt = Date.now() + 5 * 60 * 1000; // 5分钟
+          // 失效时间：固定20分钟
+          const expiresAt = Date.now() + 20 * 60 * 1000; // 20分钟
 
           // 缓存广告内容
           localStorage.setItem(adCacheKey, JSON.stringify({ content: adContent, expiresAt }));

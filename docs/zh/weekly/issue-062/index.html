@@ -404,12 +404,19 @@ function copyCode(button, event) {
   const adCacheKey = 'dynamicAdCache' + (window.location.pathname.includes('/zh/') ? 'ZH' : 'EN');
 
   // 尝试从缓存中获取广告
-  const cachedAd = JSON.parse(localStorage.getItem(adCacheKey));
+  let cachedAd = null;
+  try {
+    const cachedData = localStorage.getItem(adCacheKey);
+    if (cachedData) {
+      cachedAd = JSON.parse(cachedData);
+    }
+  } catch (e) {
+    console.warn('Failed to parse cached ad:', e);
+  }
   const now = Date.now();
-  const maxAllowedExpiresAt = now + 3 * 60 * 1000; // 当前时间 + 5分钟
 
-  // 检查缓存是否有效：1. 存在 2. 未过期 3. 过期时间不超过5分钟
-  if (cachedAd && cachedAd.expiresAt > now && cachedAd.expiresAt <= maxAllowedExpiresAt) {
+  // 检查缓存是否有效：1. 存在 2. 未过期
+  if (cachedAd && cachedAd.expiresAt && cachedAd.expiresAt > now) {
     console.log('Using cached ad');
     console.log(cachedAd.expiresAt - now);
     // 如果缓存有效，直接使用缓存的广告
@@ -447,8 +454,8 @@ function copyCode(button, event) {
           // // 失效时间：以当前本地时间加剩余 TTL（若要完全按服务端时间，可用 serverDate 做基线）
           // const expiresAt = Date.now() + ttlLeftMs;
 
-          // 失效时间：固定5分钟
-          const expiresAt = Date.now() + 5 * 60 * 1000; // 5分钟
+          // 失效时间：固定20分钟
+          const expiresAt = Date.now() + 20 * 60 * 1000; // 20分钟
 
           // 缓存广告内容
           localStorage.setItem(adCacheKey, JSON.stringify({ content: adContent, expiresAt }));
