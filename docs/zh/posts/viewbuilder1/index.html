@@ -98,7 +98,7 @@
       "url": "https://fatbobman.com/images/blog-card.png"
     }
   }
-}</script><link rel="stylesheet" href="/_astro/about.CYtaoxTz.css">
+}</script><link rel="stylesheet" href="/_astro/about.B6gYGn02.css">
 <link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css">
 <style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%}
 </style></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <div id="blogTitle"> <a href="/zh/"> <div class="flex space-x-4 mx-auto text-center pt-6 sm:pt-6 font-black w-[240px] sm:w-[300px] pb-2 sm:pb-0"> <svg fill="currentColor" class="text-heading" width="500"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </a> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto p-2 sm:p-0" data-astro-cid-4wsjtibl> <div class="flex space-x-2" data-astro-cid-4wsjtibl> <div id="lang-data" data-lang="zh" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" class="p-2 w-10 h-10 font-medium text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg"> ZH </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <button type="button" onclick="
@@ -241,7 +241,7 @@ const enableStickyInMobile = true;
 #SwiftUI </a> <a class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary " href="/en/posts/viewbuilder1/" id="language-switcher-for-topic"> #English </a> </div> </div> <h1 class="text-2xl font-bold leadi md:text-3xl text-heading tracking-wide">ViewBuilder 研究（上）—— 掌握 Result builders</h1> <p class="text-sm text-default"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="hover:text-secondary font-medium">东坡肘子</a> <!-- <time datetime={`${post.data.publishDate.toISOString()}`}>{date}</time> --> </p> <p class="text-xs text-muted"> 发表于 <time datetime="2022-04-06T00:20:00.000Z">2022 年 4 月 6 日</time>  </p> </div> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <article class="prose dark:prose-invert mx-auto w-full prose-headings:tracking-wide prose-p:tracking-wide prose-a:tracking-wide"> <div> 
 <p>作为一个严重依赖 SwiftUI 的开发者，同视图打交道是最平常不过的事情了。从第一次接触 SwiftUI 的声明式编程方式开始，我便喜欢上了这种写代码的感觉。但接触地越多，碰到的问题也越多。起初，我单纯地将很多问题称之为灵异现象，认为大概率是由于 SwiftUI 的不成熟导致的。随着不断地学习和探索，发现其中有相当部分的问题还是因为自己的认知不够所导致的，完全可以改善或避免。</p>
 <p>我将通过上下两篇博文，对构建 SwiftUI 视图的 ViewBuilder 进行探讨。上篇将介绍 ViewBuilder 背后的实现者 —— result builders ; 下篇将通过对 ViewBuilder 的仿制，进一步地探寻 SwiftUI 视图的秘密。</p>
-<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container"></div></aside>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
 <h2 id="本文希望达成的目标">本文希望达成的目标</h2>
 <p>希望在阅读完两篇文章后能消除或减轻你对下列疑问的困惑：</p>
 <ul>
@@ -2065,7 +2065,7 @@ const enableStickyInMobile = true;
 <p>对于 DSL 来说，引入速记词是很常见的情况，当前为构建器创建 component ，只能采用创建新的数据类型（例如上文中的：Container、Paragraph ）或全局函数的形式。希望将来可以让这些命名仅限制在上下文之内，不将其引入全局范围。</p>
 </li>
 </ul>
-<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-container"></div></aside>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-card"></div></aside>
 <h2 id="后续">后续</h2>
 <p>Result builders 的基本功能非常简单，上文中，我们仅有少量的代码是有关构建器方法的。但想创建一个好用、易用的 DSL 则需要付出巨大的工作量，开发者应根据自己的实际需求来衡量使用 result builders 的得失。</p>
 <p>在下篇中，我们将尝试复制一个与 ViewBuilder 基本形态一致的构建器，相信复制的过程能让你对 ViewBuilder 以及 SwiftUI 视图有更深的理解和认识。</p> </div> <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4"><a href="https://www.buymeacoffee.com/fatbobman" target="_blank" rel="noopener" class="block p-5 bg-orange-50/80 dark:bg-blue-900/30 border-2 border-orange-200 dark:border-blue-700 rounded-xl hover:shadow-lg hover:scale-[1.02] transition-all group"><div class="flex items-start gap-3"><div class="text-3xl">☕️</div><div class="flex-1"><div class="text-base font-bold text-heading mb-1 group-hover:text-orange-700 dark:group-hover:text-blue-200 transition-colors">
@@ -2080,11 +2080,11 @@ const enableStickyInMobile = true;
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/zh/posts/async-await-store/" id="relatedPosts-用 Async-Await 重建 SwiftUI 的 Redux-like 状态容器"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">用 Async-Await 重建 SwiftUI 的 Redux-like 状态容器</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
+            " href="/zh/posts/attributedstring/" id="relatedPosts-AttributedString —— 不仅仅让文字更漂亮"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">AttributedString —— 不仅仅让文字更漂亮</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
             " href="/zh/posts/avoid_repeated_calculations_of_swiftui_views/" id="relatedPosts-避免 SwiftUI 视图的重复计算"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">避免 SwiftUI 视图的重复计算</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
             hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/zh/posts/viewbuilder2/" id="relatedPosts-ViewBuilder 研究（下） —— 从模仿中学习"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">ViewBuilder 研究（下） —— 从模仿中学习</span></a><a class="group rounded-md py-3 px-4 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-            hover:bg-gray-200 dark:hover:bg-gray-700 active:bg-gray-300 dark:active:bg-gray-600 flex items-stretch gap-2
-            " href="/zh/posts/attributedstring/" id="relatedPosts-AttributedString —— 不仅仅让文字更漂亮"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">AttributedString —— 不仅仅让文字更漂亮</span></a></div></section> <div class="w-full mx-auto text-center pb-0 sm:pb-6 pt-8"> <div id="custom-substack-embed" data-subscribeText="订阅周报" data-placeholder="请输入邮箱" data-anchor="related-posts" style="opacity: 0; transition: opacity 0.3s;"></div> <iframe class="sm:w-80 w-[480px] mx-auto dark:opacity-80 dark:rounded-lg dark:shadow-2xl dark:border-gray-600" src="https://weekly.fatbobman.com/embed" height="320" style="border:1px solid #EEE; background:white; width: 100%; max-width: 480px;"></iframe> <div class="text-xs font-medium text-heading p-4 font-wide">每周精选 Swift 与 SwiftUI 精华！</div> </div> <!-- <Author lang={lang} /> --> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
+            " href="/zh/posts/viewbuilder2/" id="relatedPosts-ViewBuilder 研究（下） —— 从模仿中学习"><span class="font-medium text-sm text-heading font-wide group-hover:dark:text-white group-hover:text-black">ViewBuilder 研究（下） —— 从模仿中学习</span></a></div></section> <div class="w-full mx-auto text-center pb-0 sm:pb-6 pt-8"> <div id="custom-substack-embed" data-subscribeText="订阅周报" data-placeholder="请输入邮箱" data-anchor="related-posts" style="opacity: 0; transition: opacity 0.3s;"></div> <iframe class="sm:w-80 w-[480px] mx-auto dark:opacity-80 dark:rounded-lg dark:shadow-2xl dark:border-gray-600" src="https://weekly.fatbobman.com/embed" height="320" style="border:1px solid #EEE; background:white; width: 100%; max-width: 480px;"></iframe> <div class="text-xs font-medium text-heading p-4 font-wide">每周精选 Swift 与 SwiftUI 精华！</div> </div> <!-- <Author lang={lang} /> --> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
   .copy-icon {
     position: absolute;
     left: -30px; /* 根据您的布局调整位置 */
@@ -2185,32 +2185,70 @@ function copyCode(button, event) {
     }, 3000);
   });
 }
-</script> <script>(function(){const url = "https://fatbobman.com/ads/zh";
+</script> <script>(function(){const baseUrl = "https://fatbobman.com/ads/";
+const langSuffix = "zh";
 
-  // 根据中英文对应不同的 adCacheKey
-  const adCacheKey = 'dynamicAdCache' + (window.location.pathname.includes('/zh/') ? 'ZH' : 'EN');
+  // 根据语言确定缓存键前缀
+  const cacheKeyCard = 'dynamicAdCard' + langSuffix;    // 主样式（version 1）缓存
+  const cacheKeyInline = 'dynamicAdInline' + langSuffix; // 副样式（version 2）缓存
 
-  // 尝试从缓存中获取广告
-  let cachedAd = null;
-  try {
-    const cachedData = localStorage.getItem(adCacheKey);
-    if (cachedData) {
-      cachedAd = JSON.parse(cachedData);
+  const CACHE_DURATION = 20 * 60 * 1000; // 20分钟
+
+  /**
+   * 从缓存加载广告
+   * @param {string} cacheKey - 缓存键
+   * @returns {Object|null} - 缓存的广告数据或 null
+   */
+  function loadFromCache(cacheKey) {
+    try {
+      const cachedData = localStorage.getItem(cacheKey);
+      if (!cachedData) return null;
+
+      const cached = JSON.parse(cachedData);
+      const now = Date.now();
+
+      // 检查是否过期
+      if (cached.expiresAt && cached.expiresAt > now) {
+        console.log(`[AdsLoader] Using cached ad: ${cacheKey} (expires in ${Math.round((cached.expiresAt - now) / 1000)}s)`);
+        return cached.content;
+      } else {
+        console.log(`[AdsLoader] Cache expired: ${cacheKey}`);
+        localStorage.removeItem(cacheKey);
+        return null;
+      }
+    } catch (e) {
+      console.warn(`[AdsLoader] Failed to parse cached ad: ${cacheKey}`, e);
+      localStorage.removeItem(cacheKey);
+      return null;
     }
-  } catch (e) {
-    console.warn('Failed to parse cached ad:', e);
   }
-  const now = Date.now();
 
-  // 检查缓存是否有效：1. 存在 2. 未过期
-  if (cachedAd && cachedAd.expiresAt && cachedAd.expiresAt > now) {
-    console.log('Using cached ad');
-    console.log(cachedAd.expiresAt - now);
-    // 如果缓存有效，直接使用缓存的广告
-    renderAd(cachedAd.content);
-  } else {
-    console.log('Fetching ad from the server');
-    // 如果缓存无效，从服务器获取广告
+  /**
+   * 保存广告到缓存
+   * @param {string} cacheKey - 缓存键
+   * @param {string} content - 广告HTML内容
+   */
+  function saveToCache(cacheKey, content) {
+    try {
+      const expiresAt = Date.now() + CACHE_DURATION;
+      localStorage.setItem(cacheKey, JSON.stringify({ content, expiresAt }));
+      console.log(`[AdsLoader] Saved to cache: ${cacheKey}`);
+    } catch (e) {
+      console.warn(`[AdsLoader] Failed to save cache: ${cacheKey}`, e);
+    }
+  }
+
+  /**
+   * 从服务器获取广告
+   * @param {number} version - 广告版本（1 或 2）
+   * @param {string} cacheKey - 缓存键
+   * @param {string} containerSelector - 容器选择器
+   */
+  function fetchAd(version, cacheKey, containerSelector) {
+    const url = `${baseUrl}?lang=${langSuffix}&version=${version}`;
+
+    console.log(`[AdsLoader] Fetching ad: ${url}`);
+
     fetch(url, {
       headers: {
         'Accept': 'text/html',
@@ -2218,47 +2256,82 @@ function copyCode(button, event) {
       cache: 'no-cache'
     })
       .then(response => {
-        const maxAgeMatch = response.headers.get('Cache-Control')?.match(/max-age=(\d+)/);
-        const maxAge = maxAgeMatch ? parseInt(maxAgeMatch[1], 10) : 0;
-
-        if (!response.ok || maxAge <= 0) {
-          throw new Error('Invalid response or missing Cache-Control');
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
         }
-
-        return response.text().then(adContent => {
-          // const expiresAt = now + maxAge * 1000; // 计算失效时间
-          // 解析 max-age
-          // const cc = response.headers.get('Cache-Control') || '';
-          // const maxAge = parseInt((cc.match(/(?:^|,)\s*max-age=(\d+)/)?.[1] ?? '0'), 10);
-
-          // // 读取 CDN Age 与服务端时间
-          // const age = parseInt(response.headers.get('Age') || '0', 10);
-          // // const serverDate = response.headers.get('Date');
-
-          // // 计算剩余 TTL（优先用 Age 抵扣）
-          // const ttlLeftMs = Math.max(0, (maxAge - age) * 1000);
-
-          // // 失效时间：以当前本地时间加剩余 TTL（若要完全按服务端时间，可用 serverDate 做基线）
-          // const expiresAt = Date.now() + ttlLeftMs;
-
-          // 失效时间：固定20分钟
-          const expiresAt = Date.now() + 20 * 60 * 1000; // 20分钟
-
-          // 缓存广告内容
-          localStorage.setItem(adCacheKey, JSON.stringify({ content: adContent, expiresAt }));
-          // 渲染广告
-          renderAd(adContent);
-        });
+        return response.text();
       })
-      .catch(error => console.error('Error loading the ad:', error));
+      .then(adContent => {
+        // 保存到缓存
+        saveToCache(cacheKey, adContent);
+
+        // 渲染广告
+        renderAd(adContent, containerSelector);
+      })
+      .catch(error => {
+        console.error(`[AdsLoader] Error loading ad (version ${version}):`, error);
+      });
   }
 
-  // 渲染广告函数
-  function renderAd(html) {
-    const adSlots = document.querySelectorAll('.dynamic-ad-container');
-    adSlots.forEach(slot => {
-      slot.innerHTML = html;
+  /**
+   * 渲染广告到指定容器
+   * @param {string} html - 广告HTML
+   * @param {string} containerSelector - 容器选择器
+   */
+  function renderAd(html, containerSelector) {
+    const containers = document.querySelectorAll(containerSelector);
+    if (containers.length === 0) {
+      console.warn(`[AdsLoader] No containers found: ${containerSelector}`);
+      return;
+    }
+
+    containers.forEach(container => {
+      container.innerHTML = html;
     });
+
+    console.log(`[AdsLoader] Rendered ad to ${containers.length} container(s): ${containerSelector}`);
+  }
+
+  /**
+   * 加载指定版本的广告
+   * @param {number} version - 广告版本
+   * @param {string} cacheKey - 缓存键
+   * @param {string} containerSelector - 容器选择器
+   */
+  function loadAd(version, cacheKey, containerSelector) {
+    // 检查容器是否存在
+    const containers = document.querySelectorAll(containerSelector);
+    if (containers.length === 0) {
+      console.log(`[AdsLoader] No containers found for ${containerSelector}, skipping version ${version}`);
+      return;
+    }
+
+    // 尝试从缓存加载
+    const cachedContent = loadFromCache(cacheKey);
+    if (cachedContent) {
+      renderAd(cachedContent, containerSelector);
+    } else {
+      // 从服务器获取
+      fetchAd(version, cacheKey, containerSelector);
+    }
+  }
+
+  // 初始化：加载两种样式的广告
+  function initAds() {
+    console.log('[AdsLoader] Initializing ad loading...');
+
+    // 加载主样式广告（version 1）到 .dynamic-ad-card
+    loadAd(1, cacheKeyCard, '.dynamic-ad-card');
+
+    // 加载副样式广告（version 2）到 .dynamic-ad-inline
+    loadAd(2, cacheKeyInline, '.dynamic-ad-inline');
+  }
+
+  // 页面加载完成后初始化
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAds);
+  } else {
+    initAds();
   }
 })();</script> <script type="module">var c=document.querySelectorAll("article");c.forEach(function(r){var a=r.querySelectorAll("a");a.forEach(function(e){var t=e.getAttribute("href");t&&t.startsWith("http")&&!t.includes("fatbobman.com")&&!t.includes("fatbobman.github.com")&&!t.includes("localhost")&&e.setAttribute("target","_blank")})});</script> <!-- <LeaveFeedback lang={lang} /> --> <!-- <BottomWeeklySubscribe lang={lang} /> --> <div id="gitalk-container" data-comment-id="ViewBuilder 研究（上）—— 掌握 Result builders" data-lang="zh" data-repo="blogComments" data-createIssueManually="true" data-anchor="related-posts" class="pb-16"></div>
 

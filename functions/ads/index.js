@@ -65,6 +65,8 @@ export async function onRequest(context) {
     }
 
     const adsData = JSON.parse(rawData);
+
+    // Get current UTC time for date comparison
     const now = new Date();
 
     // Find active schedule
@@ -79,11 +81,16 @@ export async function onRequest(context) {
         s.sponsorId === requestedSponsorId && s.enabled
       );
     } else {
-      // Production mode: find schedule active now
+      // Production mode: find schedule active now (UTC time)
       activeSchedule = adsData.schedules.find(s => {
         if (!s.enabled) return false;
-        const startDate = new Date(s.startDate);
-        const endDate = new Date(s.endDate);
+
+        // Parse dates as UTC (full day coverage)
+        // startDate: "2025-12-01" -> UTC 2025-12-01 00:00:00
+        // endDate: "2025-12-07" -> UTC 2025-12-07 23:59:59
+        const startDate = new Date(s.startDate + 'T00:00:00Z');
+        const endDate = new Date(s.endDate + 'T23:59:59Z');
+
         return now >= startDate && now <= endDate;
       });
     }

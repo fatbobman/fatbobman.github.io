@@ -274,30 +274,28 @@ export function renderAdSecondary(adData, lang = 'zh') {
 
   return `
 <!-- 顶部原生文字广告容器 -->
-<div class="relative my-8 not-prose font-sans">
+<div class="relative not-prose font-sans">
   <a href="${link}" target="_blank" rel="sponsored" class="group block">
     <!-- 核心布局：左侧边框 + 文字内容 -->
     <div class="
       relative pl-4 sm:pl-5 py-1
       border-l-[3px] border-orange-500 dark:border-blue-500
-      hover:border-orange-400 dark:hover:border-blue-400
-      transition-colors duration-200
     ">
 
       <!-- 第一行：Sponsor 标识 + 标题 -->
-      <div class="flex items-baseline gap-2 mb-1.5 flex-wrap ${trackingClass}">
+      <div class="flex items-baseline gap-2 mb-2 flex-wrap ${trackingClass}">
         <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 select-none">
           ${escapeHtml(badge)}
         </span>
-        <h4 class="text-base font-bold text-gray-900 dark:text-gray-100 group-hover:text-orange-700 dark:group-hover:text-blue-300 transition-colors">
+        <div class="text-base font-bold text-heading">
           ${titleHtml}
-        </h4>
+        </div>
       </div>
 
       <!-- 正文内容：像博主的一句话推荐 -->
-      <p class="text-[15px] leading-relaxed text-gray-700 dark:text-gray-300 ${trackingClass}">
+      <p class="text-base leading-relaxed text-body ${trackingClass}">
         ${logoHtml}${descriptionHtml}${ctaHtml ? `
-        <span class="ml-1 font-bold text-orange-700 dark:text-blue-300 border-b-[1.3px] border-orange-500/60 dark:border-blue-400/60 group-hover:border-b-[2.3px] group-hover:border-orange-500 dark:group-hover:border-blue-400 transition-all">
+        <span class="ml-1 font-medium text-secondary group-hover:underline decoration-text-secondary underline-offset-2">
           ${ctaHtml}
         </span>` : ''}
       </p>
