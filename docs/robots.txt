@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /zh/posts2/
 Sitemap: https://fatbobman.com/sitemap-index.xml
