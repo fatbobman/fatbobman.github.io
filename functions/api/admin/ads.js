@@ -8,7 +8,7 @@
 import { requireAuth } from '../../_shared/auth.js';
 import { getKV } from '../../_shared/mock-kv.js';
 
-const ADS_KEY = 'ads-schedule';
+const ADS_KEY = 'adsSchedule';
 
 export async function onRequest(context) {
   const { request, env } = context;

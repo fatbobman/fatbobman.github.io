@@ -215,7 +215,7 @@ class MockKV {
       }
     };
 
-    await this.put('ads-schedule', JSON.stringify(sampleData));
+    await this.put('adsSchedule', JSON.stringify(sampleData));
     this.initialized = true;
   }
 }

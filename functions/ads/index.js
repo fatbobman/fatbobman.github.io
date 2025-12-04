@@ -15,8 +15,8 @@
 import { getKV } from '../_shared/mock-kv.js';
 import { renderAdByStyle } from '../_shared/ad-renderer.js';
 
-const ADS_KEY = 'ads-schedule';
-const BUILD_NUMBER = '20251204-001'; // Update this with each deployment
+const ADS_KEY = 'adsSchedule';
+const BUILD_NUMBER = '20251204-003'; // Update this with each deployment
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -70,6 +70,22 @@ export async function onRequest(context) {
     }
 
     const adsData = JSON.parse(rawData);
+
+    // Debug logging
+    console.log('[Ads Debug] Current UTC time:', new Date().toISOString());
+    console.log('[Ads Debug] Schedules count:', adsData.schedules?.length || 0);
+    if (adsData.schedules?.length > 0) {
+      adsData.schedules.forEach((s, i) => {
+        console.log(`[Ads Debug] Schedule ${i}:`, {
+          id: s.id,
+          sponsorId: s.sponsorId,
+          enabled: s.enabled,
+          startDate: s.startDate,
+          endDate: s.endDate,
+          hasVariants: !!(s.variants?.zh && s.variants?.en)
+        });
+      });
+    }
 
     // Force default ad if adId parameter is 'default'
     if (adId === 'default') {
