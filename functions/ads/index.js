@@ -27,6 +27,7 @@ export async function onRequest(context) {
   const requestedSponsorId = url.searchParams.get('sponsorId');
   const requestedScheduleId = url.searchParams.get('scheduleId');
   const adId = url.searchParams.get('adId'); // 'default' to force default ad
+  const forceUpdate = url.searchParams.get('adForceUpdate') === 'true'; // Force UI refresh for debugging
 
   // Validate lang parameter
   if (!['zh', 'en'].includes(lang)) {
@@ -76,6 +77,17 @@ export async function onRequest(context) {
       }
 
       const html = renderAdByStyle(defaultAd, lang, defaultAd.style || 1);
+
+      // Add metadata headers for SWR
+      addMetadataHeaders(headers, {
+        sponsorId: 'default',
+        adId: `default-${lang}-v${requestedVersion}`,
+        version: requestedVersion,
+        lang: lang,
+        lastUpdated: adsData.metadata?.lastUpdated || new Date().toISOString(),
+        forceUpdate: forceUpdate
+      });
+
       headers.append('Cache-Control', 'public, max-age=300, stale-while-revalidate=600');
       return new Response(html, { headers });
     }
@@ -117,6 +129,17 @@ export async function onRequest(context) {
       }
 
       const html = renderAdByStyle(defaultAd, lang, defaultAd.style || 1);
+
+      // Add metadata headers for SWR
+      addMetadataHeaders(headers, {
+        sponsorId: 'default',
+        adId: `default-${lang}-v${requestedVersion}`,
+        version: requestedVersion,
+        lang: lang,
+        lastUpdated: adsData.metadata?.lastUpdated || new Date().toISOString(),
+        forceUpdate: forceUpdate
+      });
+
       headers.append('Cache-Control', 'public, max-age=300, stale-while-revalidate=600');
       return new Response(html, { headers });
     }
@@ -135,12 +158,36 @@ export async function onRequest(context) {
       }
 
       const html = renderAdByStyle(defaultAd, lang, defaultAd.style || 1);
+
+      // Add metadata headers for SWR
+      addMetadataHeaders(headers, {
+        sponsorId: 'default',
+        adId: `default-${lang}-v${requestedVersion}`,
+        version: requestedVersion,
+        lang: lang,
+        lastUpdated: adsData.metadata?.lastUpdated || new Date().toISOString(),
+        forceUpdate: forceUpdate
+      });
+
       headers.append('Cache-Control', 'public, max-age=300, stale-while-revalidate=600');
       return new Response(html, { headers });
     }
 
     // Generate HTML for the selected variant
     const html = renderAdByStyle(selectedVariant, lang, selectedVariant.style || 1);
+
+    // Generate ad ID (e.g., boltai-zh-v1)
+    const adId = `${activeSchedule.sponsorId}-${lang}-v${selectedVariant.version}`;
+
+    // Add metadata headers for SWR
+    addMetadataHeaders(headers, {
+      sponsorId: activeSchedule.sponsorId,
+      adId: adId,
+      version: selectedVariant.version,
+      lang: lang,
+      lastUpdated: adsData.metadata?.lastUpdated || new Date().toISOString(),
+      forceUpdate: forceUpdate
+    });
 
     // Cache for 30 seconds for sponsored ads
     headers.append('Cache-Control', 'public, max-age=30, stale-while-revalidate=3600');
@@ -206,6 +253,25 @@ function getDefaultAd(defaultData, lang, requestedVersion) {
 
   // Old format: single object (backward compatibility)
   return defaultData;
+}
+
+/**
+ * Add metadata headers for SWR (Stale-While-Revalidate) support
+ * These headers help the client make smart caching decisions
+ *
+ * @param {Headers} headers - Response headers object
+ * @param {Object} metadata - Ad metadata
+ */
+function addMetadataHeaders(headers, metadata) {
+  headers.append('X-Ad-Id', metadata.adId);
+  headers.append('X-Sponsor-Id', metadata.sponsorId);
+  headers.append('X-Ad-Version', metadata.version.toString());
+  headers.append('X-Ad-Lang', metadata.lang);
+  headers.append('Last-Modified', metadata.lastUpdated);
+
+  if (metadata.forceUpdate) {
+    headers.append('X-Force-Update', 'true');
+  }
 }
 
 /**

@@ -142,7 +142,7 @@ export function renderAdPrimary(adData, lang = 'zh') {
   `;
 
   return `
-<div class="relative my-12 not-prose font-sans ${customStyles.containerClass || ''}">
+<div class="relative my-6 not-prose font-sans ${customStyles.containerClass || ''}">
   <!-- 核心广告卡片 -->
   <a href="${link}" target="_blank" rel="sponsored" class="block not-prose">
     <div class="group
