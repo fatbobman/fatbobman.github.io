@@ -682,7 +682,7 @@ function isValidURL(string) {
     return true;
   } catch (_) {
     // Check if it's a relative path (starts with /)
-    return string.startsWith('/');
+    return string.startsWith('/') || string.startsWith('#');
   }
 }
 
