@@ -68,14 +68,15 @@ class MockKV {
       schedules: [
         {
           id: '550e8400-e29b-41d4-a716-446655440001',
-          sponsor: 'BoltAI',
+          sponsorId: 'boltai',
           startDate: '2025-12-01',
           endDate: '2025-12-07',
           enabled: true,
           variants: {
             zh: [
               {
-                id: 'boltai-zh-v1',
+                version: 1,
+                style: 1,
                 title: 'Mac 原生 AI 客户端：聚合 GPT、Claude 及本地模型',
                 description: 'BoltAI 将 GPT、Claude、Gemini 和 Ollama 本地模型集成到你的工作流中。支持屏幕感知与代码重构，真正属于开发者的原生神器。',
                 cta: '立即试用',
@@ -85,7 +86,8 @@ class MockKV {
                 badge: 'Sponsor'
               },
               {
-                id: 'boltai-zh-v2',
+                version: 2,
+                style: 2,
                 title: 'BoltAI - 开发者的 AI 神器',
                 description: '原生 macOS 应用，无缝整合多个 AI 模型。一键重构代码，智能理解屏幕内容，让 AI 真正成为你的编程助手。',
                 cta: '免费下载',
@@ -97,7 +99,8 @@ class MockKV {
             ],
             en: [
               {
-                id: 'boltai-en-v1',
+                version: 1,
+                style: 1,
                 title: 'Native macOS AI Client: GPT, Claude, Gemini & Local Models',
                 description: 'BoltAI integrates GPT, Claude, Gemini, and Ollama local models directly into your workflow. Features screen context awareness and code refactoring — built for developers.',
                 cta: 'Try it now',
@@ -107,7 +110,8 @@ class MockKV {
                 badge: 'Sponsor'
               },
               {
-                id: 'boltai-en-v2',
+                version: 2,
+                style: 2,
                 title: 'BoltAI - AI Assistant for Developers',
                 description: 'Native macOS app that brings multiple AI models to your fingertips. Refactor code with one click, understand screen context intelligently.',
                 cta: 'Free Download',
@@ -122,14 +126,15 @@ class MockKV {
         },
         {
           id: '550e8400-e29b-41d4-a716-446655440002',
-          sponsor: 'Proxyman',
+          sponsorId: 'proxyman',
           startDate: '2025-12-08',
           endDate: '2025-12-14',
           enabled: true,
           variants: {
             zh: [
               {
-                id: 'proxyman-zh-v1',
+                version: 1,
+                style: 1,
                 title: 'Proxyman - 原生 macOS 网络调试代理',
                 description: '告别手动证书配置。Proxyman 使用 Atlantis 框架自动捕获和解密 HTTPs 流量。原生应用，高性能，专为 Apple Silicon 打造。',
                 cta: '免费下载',
@@ -142,7 +147,8 @@ class MockKV {
             ],
             en: [
               {
-                id: 'proxyman-en-v1',
+                version: 1,
+                style: 1,
                 title: 'Native macOS Web Debugging Proxy',
                 description: 'Stop manual certificate configuration. Proxyman uses the Atlantis framework to capture and decrypt HTTPs traffic automatically. Native, high-performance, and built for Apple Silicon.',
                 cta: 'Free Download',
@@ -158,24 +164,50 @@ class MockKV {
         }
       ],
       default: {
-        zh: {
-          id: 'default-zh',
-          title: '在此投放广告，触达 Swift 开发者',
-          description: '在博客和周刊中推广您的框架、工具、服务或应用，精准触达高度专注的 iOS 和 Swift 开发者受众。',
-          cta: '成为赞助商',
-          link: '/zh/sponsorship/',
-          logo: 'https://cdn.fatbobman.com/placeholder-tools.svg',
-          badge: '示例赞助商'
-        },
-        en: {
-          id: 'default-en',
-          title: 'Reach Swift Developers. Share Your Product.',
-          description: 'Promote your framework, tool, service, or app to a highly targeted iOS & Swift developer audience across blog and newsletter placements.',
-          cta: 'Become a sponsor',
-          link: '/en/sponsorship/',
-          logo: 'https://cdn.fatbobman.com/placeholder-tools.svg',
-          badge: 'Example Sponsor'
-        }
+        zh: [
+          {
+            version: 1,
+            style: 1,
+            title: '在此投放广告，触达 Swift 开发者',
+            description: '在博客和周刊中推广您的框架、工具、服务或应用，精准触达高度专注的 iOS 和 Swift 开发者受众。',
+            cta: '成为赞助商',
+            link: '/zh/sponsorship/',
+            logo: 'https://cdn.fatbobman.com/placeholder-tools.svg',
+            badge: '示例赞助商'
+          },
+          {
+            version: 2,
+            style: 2,
+            title: '在此投放广告，触达 Swift 开发者',
+            description: '在博客和周刊中推广您的框架、工具、服务或应用，精准触达高度专注的 iOS 和 Swift 开发者受众。',
+            cta: '成为赞助商',
+            link: '/zh/sponsorship/',
+            logo: 'https://cdn.fatbobman.com/placeholder-tools.svg',
+            badge: '示例赞助商'
+          }
+        ],
+        en: [
+          {
+            version: 1,
+            style: 1,
+            title: 'Reach Swift Developers. Share Your Product.',
+            description: 'Promote your framework, tool, service, or app to a highly targeted iOS & Swift developer audience across blog and newsletter placements.',
+            cta: 'Become a sponsor',
+            link: '/en/sponsorship/',
+            logo: 'https://cdn.fatbobman.com/placeholder-tools.svg',
+            badge: 'Example Sponsor'
+          },
+          {
+            version: 2,
+            style: 2,
+            title: 'Reach Swift Developers. Share Your Product.',
+            description: 'Promote your framework, tool, service, or app to a highly targeted iOS & Swift developer audience across blog and newsletter placements.',
+            cta: 'Become a sponsor',
+            link: '/en/sponsorship/',
+            logo: 'https://cdn.fatbobman.com/placeholder-tools.svg',
+            badge: 'Example Sponsor'
+          }
+        ]
       },
       metadata: {
         lastUpdated: new Date().toISOString(),
