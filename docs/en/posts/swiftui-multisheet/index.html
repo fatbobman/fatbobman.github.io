@@ -689,19 +689,33 @@ const langSuffix = "en";
   // ========================================
 
   /**
+   * Check if two timestamps are on the same UTC calendar day
+   * @param {number} timestamp1 - First timestamp (milliseconds)
+   * @param {number} timestamp2 - Second timestamp (milliseconds)
+   * @returns {boolean} - True if same UTC day
+   */
+  function isSameUTCDay(timestamp1, timestamp2) {
+    const d1 = new Date(timestamp1);
+    const d2 = new Date(timestamp2);
+    return d1.getUTCFullYear() === d2.getUTCFullYear() &&
+           d1.getUTCMonth() === d2.getUTCMonth() &&
+           d1.getUTCDate() === d2.getUTCDate();
+  }
+
+  /**
    * Decide if UI should be refreshed based on cache age and ad changes
    * @param {Object|null} cached - Cached ad data with metadata
    * @param {Object} newMetadata - New ad metadata from server
    * @returns {boolean} - True if UI should be refreshed
    */
   function shouldRefreshUI(cached, newMetadata) {
-    // No cache -> always render (first load)
+    // Rule 1: No cache -> always render (first load)
     if (!cached || !cached.metadata) {
       console.log('[AdsLoader SWR] No cache, will render immediately');
       return true;
     }
 
-    // Force update parameter -> always refresh
+    // Rule 2: Force update parameter -> always refresh
     if (forceUpdateParam || newMetadata.forceUpdate) {
       console.log('[AdsLoader SWR] Force update detected, will refresh UI');
       return true;
@@ -710,30 +724,33 @@ const langSuffix = "en";
     const cachedMeta = cached.metadata;
     const cacheAge = Date.now() - cachedMeta.fetchedAt;
 
-    // Sponsor changed -> always refresh (different advertiser)
+    // Rule 3: Sponsor changed -> always refresh (different advertiser)
     if (cachedMeta.sponsorId !== newMetadata.sponsorId) {
       console.log(`[AdsLoader SWR] Sponsor changed: ${cachedMeta.sponsorId} → ${newMetadata.sponsorId}, will refresh UI`);
       return true;
     }
 
-    // Ad ID changed (same sponsor, different version or variant) -> refresh if old
-    if (cachedMeta.adId !== newMetadata.adId) {
-      if (cacheAge > STALE_THRESHOLD) {
-        console.log(`[AdsLoader SWR] Ad changed and cache stale (${Math.round(cacheAge / 3600000)}h old), will refresh UI`);
-        return true;
-      } else {
-        console.log(`[AdsLoader SWR] Ad changed but cache fresh, will update silently`);
-        return false;
-      }
+    // Rule 4: UTC date changed -> always refresh (ad schedule switches by calendar day)
+    if (!isSameUTCDay(cachedMeta.fetchedAt, Date.now())) {
+      const cachedDate = new Date(cachedMeta.fetchedAt).toISOString().split('T')[0];
+      const currentDate = new Date().toISOString().split('T')[0];
+      console.log(`[AdsLoader SWR] UTC date changed: ${cachedDate} → ${currentDate}, will refresh UI`);
+      return true;
     }
 
-    // Same ad, check if cache is very old
+    // Rule 5: Cache older than 24 hours -> always refresh
     if (cacheAge > STALE_THRESHOLD) {
       console.log(`[AdsLoader SWR] Cache very old (${Math.round(cacheAge / 3600000)}h), will refresh UI`);
       return true;
     }
 
-    // Default: silent update
+    // Rule 6: Ad ID changed (same sponsor, different version) -> refresh if old, else silent update
+    if (cachedMeta.adId !== newMetadata.adId) {
+      console.log(`[AdsLoader SWR] Ad changed but cache fresh (${Math.round(cacheAge / 60000)}min), will update silently`);
+      return false; // Silent update
+    }
+
+    // Rule 7: Default - silent update
     console.log(`[AdsLoader SWR] Cache fresh (${Math.round(cacheAge / 60000)}min old), will update silently`);
     return false;
   }
@@ -792,8 +809,18 @@ const langSuffix = "en";
         cache: 'no-cache'
       });
 
+      // Validate HTTP status
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      // Validate required metadata headers
+      const sponsorId = response.headers.get('X-Sponsor-Id');
+      const adId = response.headers.get('X-Ad-Id');
+
+      if (!sponsorId || !adId || sponsorId === 'null' || adId === 'null') {
+        console.warn('[AdsLoader SWR] Invalid response: missing or null metadata headers');
+        throw new Error('Invalid ad response: missing metadata headers');
       }
 
       const content = await response.text();
@@ -816,6 +843,22 @@ const langSuffix = "en";
 
     } catch (error) {
       console.error(`[AdsLoader SWR] Error loading ad (version ${version}):`, error);
+
+      // Smart fallback strategy based on cached ad type
+      if (cached && cached.metadata) {
+        if (cached.metadata.sponsorId === 'default') {
+          // Default ad: keep displaying cached content (own content, safe to show when stale)
+          console.log('[AdsLoader SWR] Fetch failed, keeping default ad cache');
+          // UI already shows cached content, no action needed
+        } else {
+          // Sponsored ad: clear display (avoid showing expired paid ads)
+          console.log('[AdsLoader SWR] Fetch failed, clearing sponsored ad to avoid showing stale content');
+          renderAd('', containerSelector, 'error-clear');
+        }
+      } else {
+        // No cache: leave blank
+        console.log('[AdsLoader SWR] Fetch failed with no cache, leaving blank');
+      }
     }
   }
 

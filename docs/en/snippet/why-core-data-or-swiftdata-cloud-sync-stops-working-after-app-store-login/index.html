@@ -500,19 +500,33 @@ const langSuffix = "en";
   // ========================================
 
   /**
+   * Check if two timestamps are on the same UTC calendar day
+   * @param {number} timestamp1 - First timestamp (milliseconds)
+   * @param {number} timestamp2 - Second timestamp (milliseconds)
+   * @returns {boolean} - True if same UTC day
+   */
+  function isSameUTCDay(timestamp1, timestamp2) {
+    const d1 = new Date(timestamp1);
+    const d2 = new Date(timestamp2);
+    return d1.getUTCFullYear() === d2.getUTCFullYear() &&
+           d1.getUTCMonth() === d2.getUTCMonth() &&
+           d1.getUTCDate() === d2.getUTCDate();
+  }
+
+  /**
    * Decide if UI should be refreshed based on cache age and ad changes
    * @param {Object|null} cached - Cached ad data with metadata
    * @param {Object} newMetadata - New ad metadata from server
    * @returns {boolean} - True if UI should be refreshed
    */
   function shouldRefreshUI(cached, newMetadata) {
-    // No cache -> always render (first load)
+    // Rule 1: No cache -> always render (first load)
     if (!cached || !cached.metadata) {
       console.log('[AdsLoader SWR] No cache, will render immediately');
       return true;
     }
 
-    // Force update parameter -> always refresh
+    // Rule 2: Force update parameter -> always refresh
     if (forceUpdateParam || newMetadata.forceUpdate) {
       console.log('[AdsLoader SWR] Force update detected, will refresh UI');
       return true;
@@ -521,30 +535,33 @@ const langSuffix = "en";
     const cachedMeta = cached.metadata;
     const cacheAge = Date.now() - cachedMeta.fetchedAt;
 
-    // Sponsor changed -> always refresh (different advertiser)
+    // Rule 3: Sponsor changed -> always refresh (different advertiser)
     if (cachedMeta.sponsorId !== newMetadata.sponsorId) {
       console.log(`[AdsLoader SWR] Sponsor changed: ${cachedMeta.sponsorId} → ${newMetadata.sponsorId}, will refresh UI`);
       return true;
     }
 
-    // Ad ID changed (same sponsor, different version or variant) -> refresh if old
-    if (cachedMeta.adId !== newMetadata.adId) {
-      if (cacheAge > STALE_THRESHOLD) {
-        console.log(`[AdsLoader SWR] Ad changed and cache stale (${Math.round(cacheAge / 3600000)}h old), will refresh UI`);
-        return true;
-      } else {
-        console.log(`[AdsLoader SWR] Ad changed but cache fresh, will update silently`);
-        return false;
-      }
+    // Rule 4: UTC date changed -> always refresh (ad schedule switches by calendar day)
+    if (!isSameUTCDay(cachedMeta.fetchedAt, Date.now())) {
+      const cachedDate = new Date(cachedMeta.fetchedAt).toISOString().split('T')[0];
+      const currentDate = new Date().toISOString().split('T')[0];
+      console.log(`[AdsLoader SWR] UTC date changed: ${cachedDate} → ${currentDate}, will refresh UI`);
+      return true;
     }
 
-    // Same ad, check if cache is very old
+    // Rule 5: Cache older than 24 hours -> always refresh
     if (cacheAge > STALE_THRESHOLD) {
       console.log(`[AdsLoader SWR] Cache very old (${Math.round(cacheAge / 3600000)}h), will refresh UI`);
       return true;
     }
 
-    // Default: silent update
+    // Rule 6: Ad ID changed (same sponsor, different version) -> refresh if old, else silent update
+    if (cachedMeta.adId !== newMetadata.adId) {
+      console.log(`[AdsLoader SWR] Ad changed but cache fresh (${Math.round(cacheAge / 60000)}min), will update silently`);
+      return false; // Silent update
+    }
+
+    // Rule 7: Default - silent update
     console.log(`[AdsLoader SWR] Cache fresh (${Math.round(cacheAge / 60000)}min old), will update silently`);
     return false;
   }
@@ -603,8 +620,18 @@ const langSuffix = "en";
         cache: 'no-cache'
       });
 
+      // Validate HTTP status
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      // Validate required metadata headers
+      const sponsorId = response.headers.get('X-Sponsor-Id');
+      const adId = response.headers.get('X-Ad-Id');
+
+      if (!sponsorId || !adId || sponsorId === 'null' || adId === 'null') {
+        console.warn('[AdsLoader SWR] Invalid response: missing or null metadata headers');
+        throw new Error('Invalid ad response: missing metadata headers');
       }
 
       const content = await response.text();
@@ -627,6 +654,22 @@ const langSuffix = "en";
 
     } catch (error) {
       console.error(`[AdsLoader SWR] Error loading ad (version ${version}):`, error);
+
+      // Smart fallback strategy based on cached ad type
+      if (cached && cached.metadata) {
+        if (cached.metadata.sponsorId === 'default') {
+          // Default ad: keep displaying cached content (own content, safe to show when stale)
+          console.log('[AdsLoader SWR] Fetch failed, keeping default ad cache');
+          // UI already shows cached content, no action needed
+        } else {
+          // Sponsored ad: clear display (avoid showing expired paid ads)
+          console.log('[AdsLoader SWR] Fetch failed, clearing sponsored ad to avoid showing stale content');
+          renderAd('', containerSelector, 'error-clear');
+        }
+      } else {
+        // No cache: leave blank
+        console.log('[AdsLoader SWR] Fetch failed with no cache, leaving blank');
+      }
     }
   }
 
@@ -756,21 +799,21 @@ const isHidden = false;
       });
     }
   });
-</script> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" onclick="window.scrollTo({top:0,behavior:'smooth'})" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" data-tooltip-target="tooltip-back-to-top" data-tooltip-placement="left"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-top"></use> </svg>  </div> <div id="tooltip-back-to-top" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-28 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Back to Top</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.DVW0R156.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/swiftui-implicit-vs-explicit-animations/" id="relatedPosts-SwiftUI: Implicit vs Explicit Animations" class="
+</script> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" onclick="window.scrollTo({top:0,behavior:'smooth'})" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" data-tooltip-target="tooltip-back-to-top" data-tooltip-placement="left"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-top"></use> </svg>  </div> <div id="tooltip-back-to-top" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-28 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Back to Top</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.DVW0R156.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/sequential-display-tips-with-tipkit/" id="relatedPosts-Sequential Display Tips with TipKit" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>SwiftUI: Implicit vs Explicit Animations</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/ensuring-full-text-display-in-swiftui-techniques-and-solutions/" id="relatedPosts-Avoid Text Truncation in SwiftUI" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>Sequential Display Tips with TipKit</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/disable-transition-animations-for-sheet-and-navigationstack-in-swiftui/" id="relatedPosts-Disable Transition Animations for Sheet and NavigationStack in SwiftUI" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>Avoid Text Truncation in SwiftUI</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/fix-synchronization-issues-for-macos-apps-using-core-dataswiftdata/" id="relatedPosts-Fix Synchronization Issues for macOS Apps Using Core Data/SwiftData" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>Disable Transition Animations for Sheet and NavigationStack in SwiftUI</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/fix-synchronization-issues-for-macos-apps-using-core-dataswiftdata/" id="relatedPosts-Fix Synchronization Issues for macOS Apps Using Core Data/SwiftData" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl

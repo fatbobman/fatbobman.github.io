@@ -16,7 +16,7 @@ import { getKV } from '../_shared/mock-kv.js';
 import { renderAdByStyle } from '../_shared/ad-renderer.js';
 
 const ADS_KEY = 'adsSchedule';
-const BUILD_NUMBER = '20251204-007'; // Update this with each deployment
+const BUILD_NUMBER = '20251204-009'; // Update this with each deployment
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -71,27 +71,8 @@ export async function onRequest(context) {
 
     const adsData = JSON.parse(rawData);
 
-    // Debug info via headers
+    // Get current UTC time for date comparison
     const now = new Date();
-    headers.append('X-Debug-UTC-Time', now.toISOString());
-    headers.append('X-Debug-Schedules-Count', String(adsData.schedules?.length || 0));
-
-    if (adsData.schedules?.length > 0) {
-      const s = adsData.schedules[0];
-      headers.append('X-Debug-Schedule-Id', s.id || 'missing');
-      headers.append('X-Debug-SponsorId', s.sponsorId || 'missing');
-      headers.append('X-Debug-Enabled', String(s.enabled));
-      headers.append('X-Debug-StartDate', s.startDate || 'missing');
-      headers.append('X-Debug-EndDate', s.endDate || 'missing');
-      headers.append('X-Debug-Has-Variants', String(!!(s.variants?.zh && s.variants?.en)));
-
-      // Date comparison debug
-      const startDate = new Date(s.startDate + 'T00:00:00Z');
-      const endDate = new Date(s.endDate + 'T23:59:59Z');
-      headers.append('X-Debug-Date-Match', String(now >= startDate && now <= endDate));
-      headers.append('X-Debug-Start-Parsed', startDate.toISOString());
-      headers.append('X-Debug-End-Parsed', endDate.toISOString());
-    }
 
     // Force default ad if adId parameter is 'default'
     if (adId === 'default') {
@@ -116,25 +97,19 @@ export async function onRequest(context) {
       return new Response(html, { headers });
     }
 
-    // Find active schedule (now already defined above for debug headers)
+    // Find active schedule
     let activeSchedule = null;
-
-    headers.append('X-Debug-Request-SponsorId', String(requestedSponsorId || 'none'));
-    headers.append('X-Debug-Request-ScheduleId', String(requestedScheduleId || 'none'));
 
     if (requestedScheduleId) {
       // Test mode: find specific schedule by ID (ignore date)
       activeSchedule = adsData.schedules.find(s => s.id === requestedScheduleId);
-      headers.append('X-Debug-Match-Mode', 'scheduleId');
     } else if (requestedSponsorId) {
       // Test mode: find specific sponsor (ignore date)
       activeSchedule = adsData.schedules.find(s =>
         s.sponsorId === requestedSponsorId && s.enabled
       );
-      headers.append('X-Debug-Match-Mode', 'sponsorId');
     } else {
       // Production mode: find schedule active now (UTC time)
-      headers.append('X-Debug-Match-Mode', 'date-range');
       activeSchedule = adsData.schedules.find(s => {
         if (!s.enabled) return false;
 
@@ -148,11 +123,8 @@ export async function onRequest(context) {
       });
     }
 
-    headers.append('X-Debug-ActiveSchedule-Found', String(!!activeSchedule));
-
     // If no active schedule, use default ad
     if (!activeSchedule) {
-      headers.append('X-Debug-Fallback-Reason', 'no-active-schedule');
       const defaultAd = getDefaultAd(adsData.default?.[lang], lang, requestedVersion);
       if (!defaultAd) {
         return fallbackResponse(headers, lang);
@@ -177,19 +149,8 @@ export async function onRequest(context) {
     // Get variants for the requested language
     const variants = activeSchedule.variants?.[lang] || [];
 
-    // Debug: variant selection
-    headers.append('X-Debug-Variants-Count', String(variants.length));
-    headers.append('X-Debug-Requested-Version', String(requestedVersion));
-
     // Find variant with fallback logic (only by version)
     let selectedVariant = findVariantWithFallback(variants, requestedVersion);
-
-    // Debug: variant found
-    headers.append('X-Debug-Variant-Found', String(!!selectedVariant));
-    if (selectedVariant) {
-      headers.append('X-Debug-Selected-Version', String(selectedVariant.version));
-      headers.append('X-Debug-Selected-Style', String(selectedVariant.style));
-    }
 
     // If still no variant, use default ad
     if (!selectedVariant) {
@@ -317,6 +278,11 @@ function addMetadataHeaders(headers, metadata) {
 
 /**
  * Fallback response when no ad data available
+ *
+ * IMPORTANT: This function intentionally does NOT add X-Sponsor-Id or X-Ad-Id headers.
+ * This ensures the frontend validation (AdsNewLoader.astro) will reject this response
+ * and trigger appropriate error handling, preventing the fallback from being displayed
+ * as a valid ad (which caused issues in previous bugs).
  */
 function fallbackResponse(headers, lang) {
   const text = lang === 'zh' ? '广告位招租' : 'Ad space available';
@@ -328,6 +294,8 @@ function fallbackResponse(headers, lang) {
 </div>
   `.trim();
 
+  // Only add Cache-Control, NO metadata headers (X-Sponsor-Id, X-Ad-Id)
+  // Frontend will detect missing headers and handle as error
   headers.append('Cache-Control', 'public, max-age=60, stale-while-revalidate=120');
   return new Response(html, { headers });
 }
