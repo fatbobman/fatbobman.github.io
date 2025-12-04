@@ -16,7 +16,7 @@ import { getKV } from '../_shared/mock-kv.js';
 import { renderAdByStyle } from '../_shared/ad-renderer.js';
 
 const ADS_KEY = 'adsSchedule';
-const BUILD_NUMBER = '20251204-003'; // Update this with each deployment
+const BUILD_NUMBER = '20251204-004'; // Update this with each deployment
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -71,20 +71,26 @@ export async function onRequest(context) {
 
     const adsData = JSON.parse(rawData);
 
-    // Debug logging
-    console.log('[Ads Debug] Current UTC time:', new Date().toISOString());
-    console.log('[Ads Debug] Schedules count:', adsData.schedules?.length || 0);
+    // Debug info via headers
+    const now = new Date();
+    headers.append('X-Debug-UTC-Time', now.toISOString());
+    headers.append('X-Debug-Schedules-Count', String(adsData.schedules?.length || 0));
+
     if (adsData.schedules?.length > 0) {
-      adsData.schedules.forEach((s, i) => {
-        console.log(`[Ads Debug] Schedule ${i}:`, {
-          id: s.id,
-          sponsorId: s.sponsorId,
-          enabled: s.enabled,
-          startDate: s.startDate,
-          endDate: s.endDate,
-          hasVariants: !!(s.variants?.zh && s.variants?.en)
-        });
-      });
+      const s = adsData.schedules[0];
+      headers.append('X-Debug-Schedule-Id', s.id || 'missing');
+      headers.append('X-Debug-SponsorId', s.sponsorId || 'missing');
+      headers.append('X-Debug-Enabled', String(s.enabled));
+      headers.append('X-Debug-StartDate', s.startDate || 'missing');
+      headers.append('X-Debug-EndDate', s.endDate || 'missing');
+      headers.append('X-Debug-Has-Variants', String(!!(s.variants?.zh && s.variants?.en)));
+
+      // Date comparison debug
+      const startDate = new Date(s.startDate + 'T00:00:00Z');
+      const endDate = new Date(s.endDate + 'T23:59:59Z');
+      headers.append('X-Debug-Date-Match', String(now >= startDate && now <= endDate));
+      headers.append('X-Debug-Start-Parsed', startDate.toISOString());
+      headers.append('X-Debug-End-Parsed', endDate.toISOString());
     }
 
     // Force default ad if adId parameter is 'default'
