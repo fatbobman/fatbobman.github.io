@@ -16,7 +16,7 @@ import { getKV } from '../_shared/mock-kv.js';
 import { renderAdByStyle } from '../_shared/ad-renderer.js';
 
 const ADS_KEY = 'adsSchedule';
-const BUILD_NUMBER = '20251204-006'; // Update this with each deployment
+const BUILD_NUMBER = '20251204-007'; // Update this with each deployment
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -119,16 +119,22 @@ export async function onRequest(context) {
     // Find active schedule (now already defined above for debug headers)
     let activeSchedule = null;
 
+    headers.append('X-Debug-Request-SponsorId', String(requestedSponsorId || 'none'));
+    headers.append('X-Debug-Request-ScheduleId', String(requestedScheduleId || 'none'));
+
     if (requestedScheduleId) {
       // Test mode: find specific schedule by ID (ignore date)
       activeSchedule = adsData.schedules.find(s => s.id === requestedScheduleId);
+      headers.append('X-Debug-Match-Mode', 'scheduleId');
     } else if (requestedSponsorId) {
       // Test mode: find specific sponsor (ignore date)
       activeSchedule = adsData.schedules.find(s =>
         s.sponsorId === requestedSponsorId && s.enabled
       );
+      headers.append('X-Debug-Match-Mode', 'sponsorId');
     } else {
       // Production mode: find schedule active now (UTC time)
+      headers.append('X-Debug-Match-Mode', 'date-range');
       activeSchedule = adsData.schedules.find(s => {
         if (!s.enabled) return false;
 
@@ -142,8 +148,11 @@ export async function onRequest(context) {
       });
     }
 
+    headers.append('X-Debug-ActiveSchedule-Found', String(!!activeSchedule));
+
     // If no active schedule, use default ad
     if (!activeSchedule) {
+      headers.append('X-Debug-Fallback-Reason', 'no-active-schedule');
       const defaultAd = getDefaultAd(adsData.default?.[lang], lang, requestedVersion);
       if (!defaultAd) {
         return fallbackResponse(headers, lang);
@@ -209,12 +218,12 @@ export async function onRequest(context) {
     const html = renderAdByStyle(selectedVariant, lang, selectedVariant.style || 1);
 
     // Generate ad ID (e.g., boltai-zh-v1)
-    const adId = `${activeSchedule.sponsorId}-${lang}-v${selectedVariant.version}`;
+    const generatedAdId = `${activeSchedule.sponsorId}-${lang}-v${selectedVariant.version}`;
 
     // Add metadata headers for SWR
     addMetadataHeaders(headers, {
       sponsorId: activeSchedule.sponsorId,
-      adId: adId,
+      adId: generatedAdId,
       version: selectedVariant.version,
       lang: lang,
       lastUpdated: adsData.metadata?.lastUpdated || new Date().toISOString(),
