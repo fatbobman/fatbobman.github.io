@@ -92,7 +92,7 @@ async function handleList(kv) {
           title: '在此投放广告，触达 Swift 开发者',
           description: '在博客和周刊中推广您的框架、工具、服务或应用，精准触达高度专注的 iOS 和 Swift 开发者受众。',
           cta: '成为赞助商',
-          link: '/zh/sponsorship/',
+          link: '/en/sponsorship/',
           logo: 'https://cdn.fatbobman.com/placeholder-tools.svg',
           badge: '示例赞助商'
         },
@@ -179,7 +179,7 @@ async function handleCreate(kv, request) {
           title: '在此投放广告，触达 Swift 开发者',
           description: '在博客和周刊中推广您的框架、工具、服务或应用，精准触达高度专注的 iOS 和 Swift 开发者受众。',
           cta: '成为赞助商',
-          link: '/zh/sponsorship/',
+          link: '/en/sponsorship/',
           logo: 'https://cdn.fatbobman.com/placeholder-tools.svg',
           badge: '示例赞助商'
         },
