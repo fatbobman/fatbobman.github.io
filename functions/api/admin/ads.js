@@ -532,7 +532,10 @@ function validateAdVariant(variant, lang = '') {
   if (!variant.description) errors.push(`${prefix}Missing field: description`);
   if (!variant.cta) errors.push(`${prefix}Missing field: cta`);
   if (!variant.link) errors.push(`${prefix}Missing field: link`);
-  if (!variant.logo) errors.push(`${prefix}Missing field: logo`);
+  const styleValue = Number.isInteger(variant.style) ? variant.style : 1;
+  if (!variant.logo && styleValue !== 2) {
+    errors.push(`${prefix}Missing field: logo`);
+  }
   if (!variant.badge) errors.push(`${prefix}Missing field: badge`);
 
   // Check features array (optional, but if provided must be array)
@@ -586,7 +589,10 @@ function validateScheduleVariant(variant, lang = '', sponsorId = '') {
   if (!variant.description) errors.push(`${prefix}Missing field: description`);
   if (!variant.cta) errors.push(`${prefix}Missing field: cta`);
   if (!variant.link) errors.push(`${prefix}Missing field: link`);
-  if (!variant.logo) errors.push(`${prefix}Missing field: logo`);
+  const styleValue = Number.isInteger(variant.style) ? variant.style : 1;
+  if (!variant.logo && styleValue !== 2) {
+    errors.push(`${prefix}Missing field: logo`);
+  }
   if (!variant.badge) errors.push(`${prefix}Missing field: badge`);
 
   // Check features array (optional, but if provided must be array)
