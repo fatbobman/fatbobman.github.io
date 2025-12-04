@@ -16,6 +16,7 @@ import { getKV } from '../_shared/mock-kv.js';
 import { renderAdByStyle } from '../_shared/ad-renderer.js';
 
 const ADS_KEY = 'ads-schedule';
+const BUILD_NUMBER = '20251204-001'; // Update this with each deployment
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -49,6 +50,7 @@ export async function onRequest(context) {
   const origin = request.headers.get('Origin');
   const headers = new Headers({
     'content-type': 'text/html; charset=UTF-8',
+    'X-Build-Number': BUILD_NUMBER,
   });
 
   if (allowedOrigins.includes(origin)) {
