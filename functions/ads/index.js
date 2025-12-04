@@ -16,7 +16,7 @@ import { getKV } from '../_shared/mock-kv.js';
 import { renderAdByStyle } from '../_shared/ad-renderer.js';
 
 const ADS_KEY = 'adsSchedule';
-const BUILD_NUMBER = '20251204-005'; // Update this with each deployment
+const BUILD_NUMBER = '20251204-006'; // Update this with each deployment
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -168,8 +168,19 @@ export async function onRequest(context) {
     // Get variants for the requested language
     const variants = activeSchedule.variants?.[lang] || [];
 
+    // Debug: variant selection
+    headers.append('X-Debug-Variants-Count', String(variants.length));
+    headers.append('X-Debug-Requested-Version', String(requestedVersion));
+
     // Find variant with fallback logic (only by version)
     let selectedVariant = findVariantWithFallback(variants, requestedVersion);
+
+    // Debug: variant found
+    headers.append('X-Debug-Variant-Found', String(!!selectedVariant));
+    if (selectedVariant) {
+      headers.append('X-Debug-Selected-Version', String(selectedVariant.version));
+      headers.append('X-Debug-Selected-Style', String(selectedVariant.style));
+    }
 
     // If still no variant, use default ad
     if (!selectedVariant) {

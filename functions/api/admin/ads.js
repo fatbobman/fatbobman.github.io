@@ -24,9 +24,13 @@ export async function onRequest(context) {
   const action = url.searchParams.get('action');
 
   try {
-    // Handle default/fallback ad management separately
+    // Handle special actions
     if (action === 'update-default') {
       return await handleUpdateDefault(kv, request);
+    }
+
+    if (action === 'import') {
+      return await handleImport(kv, request);
     }
 
     switch (request.method) {
@@ -690,5 +694,54 @@ function generateUUID() {
     const r = Math.random() * 16 | 0;
     const v = c === 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
+  });
+}
+
+/**
+ * POST - Import entire ad data (schedules + default ads)
+ * Body: { schedules: [...], default: {...}, metadata: {...} }
+ */
+async function handleImport(kv, request) {
+  const body = await request.json();
+
+  // Validate structure
+  if (!body.schedules || !Array.isArray(body.schedules)) {
+    return new Response(JSON.stringify({
+      error: 'Invalid data: missing schedules array'
+    }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  if (!body.default || !body.default.zh || !body.default.en) {
+    return new Response(JSON.stringify({
+      error: 'Invalid data: missing default ads (zh and en required)'
+    }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  // Update metadata timestamp
+  const importData = {
+    ...body,
+    metadata: {
+      ...(body.metadata || {}),
+      lastUpdated: new Date().toISOString(),
+      version: '1.0'
+    }
+  };
+
+  // Save to KV
+  await kv.put(ADS_KEY, JSON.stringify(importData));
+
+  return new Response(JSON.stringify({
+    success: true,
+    message: `Imported ${body.schedules.length} schedules and default ads`,
+    timestamp: new Date().toISOString()
+  }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' }
   });
 }
