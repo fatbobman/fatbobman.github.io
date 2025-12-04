@@ -16,7 +16,7 @@ import { getKV } from '../_shared/mock-kv.js';
 import { renderAdByStyle } from '../_shared/ad-renderer.js';
 
 const ADS_KEY = 'adsSchedule';
-const BUILD_NUMBER = '20251204-004'; // Update this with each deployment
+const BUILD_NUMBER = '20251204-005'; // Update this with each deployment
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -116,10 +116,7 @@ export async function onRequest(context) {
       return new Response(html, { headers });
     }
 
-    // Get current UTC time for date comparison
-    const now = new Date();
-
-    // Find active schedule
+    // Find active schedule (now already defined above for debug headers)
     let activeSchedule = null;
 
     if (requestedScheduleId) {
