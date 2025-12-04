@@ -111,6 +111,10 @@ export function renderAdPrimary(adData, lang = 'zh') {
   const descriptionHtml = renderRichText(description);
   const featuresHtml = features.map(f => renderFeature(f)).filter(Boolean).join('\n');
   const hasSponsorFeatures = features.length > 0;
+  const isAnchorLink = typeof link === 'string' && link.startsWith('#');
+  const targetAttr = isAnchorLink ? '' : ' target="_blank"';
+  const relAttr = isAnchorLink ? '' : ' rel="sponsored"';
+  const anchorAttributes = `${targetAttr}${relAttr}`;
 
   // Sponsor link text with fallback
   const finalSponsorLinkText = sponsorLinkText || (lang === 'zh' ? '成为赞助商' : 'Become a sponsor');
@@ -144,7 +148,7 @@ export function renderAdPrimary(adData, lang = 'zh') {
   return `
 <div class="relative my-6 not-prose font-sans ${customStyles.containerClass || ''}">
   <!-- 核心广告卡片 -->
-  <a href="${link}" target="_blank" rel="sponsored" class="block not-prose">
+  <a href="${link}"${anchorAttributes} class="block not-prose">
     <div class="group
       relative overflow-hidden rounded-xl
       border border-gray-200/80 dark:border-gray-700/70
@@ -258,6 +262,10 @@ export function renderAdSecondary(adData, lang = 'zh') {
   const titleHtml = renderRichText(title);
   const descriptionHtml = renderRichText(description);
   const ctaHtml = cta ? renderRichText(cta) : '';
+  const isAnchorLink = typeof link === 'string' && link.startsWith('#');
+  const targetAttr = isAnchorLink ? '' : ' target="_blank"';
+  const relAttr = isAnchorLink ? '' : ' rel="sponsored"';
+  const anchorAttributes = `${targetAttr}${relAttr}`;
 
   // Chinese language tracking
   const trackingClass = lang === 'zh' ? 'tracking-wide' : '';
@@ -275,7 +283,7 @@ export function renderAdSecondary(adData, lang = 'zh') {
   return `
 <!-- 顶部原生文字广告容器 -->
 <div class="relative not-prose font-sans">
-  <a href="${link}" target="_blank" rel="sponsored" class="group block">
+  <a href="${link}"${anchorAttributes} class="group block">
     <!-- 核心布局：左侧边框 + 文字内容 -->
     <div class="
       relative pl-4 py-1
