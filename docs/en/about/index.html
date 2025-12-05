@@ -242,21 +242,24 @@ If you'd like to support my work in creating high-quality content, you're welcom
           w-full sm:w-auto inline-block text-center
         "> Subscribe Now </a> </div> <!-- 右侧：功能按钮组 --> <!-- 适配逻辑：移动端堆叠(grid-cols-1)，平板以上并排(sm:grid-cols-2) --> <!-- w-full lg:w-auto 保证移动端撑满，桌面端紧凑 --> <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full lg:w-auto min-w-[320px]"> <!-- 咖啡按钮 --> <a href="https://www.buymeacoffee.com/fatbobman" target="_blank" rel="noopener" class="group flex items-center justify-center lg:justify-start gap-3 px-5 py-3 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl shadow-sm hover:shadow-md hover:border-orange-200 dark:hover:border-orange-900 transition-all"> <span class="text-2xl group-hover:scale-110 transition-transform">☕️</span> <div class="text-left"> <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Support</div> <div class="text-sm font-bold text-gray-800 dark:text-gray-100">Buy me a Coffee</div> </div> </a> <!-- Discord 按钮 --> <a href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" rel="noopener" class="group flex items-center justify-center lg:justify-start gap-3 px-5 py-3 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl shadow-sm hover:shadow-md hover:border-blue-200 dark:hover:border-blue-900 transition-all"> <span class="text-2xl group-hover:scale-110 transition-transform">💬</span> <div class="text-left"> <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">CONNECT</div> <div class="text-sm font-bold text-gray-800 dark:text-gray-100">Follow on X</div> </div> </a> </div> </div> </div> <script>(function(){const lang = "en";
 
-  // Track newsletter subscription button click
+  // Track newsletter subscription button click via GTM dataLayer
   document.addEventListener('DOMContentLoaded', () => {
     const subscribeBtn = document.getElementById('subscribe-bottom-btn');
     if (!subscribeBtn) return;
 
     subscribeBtn.addEventListener('click', () => {
-      // Check if gtag is available
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'subscribe_click', {
-          content_type: 'newsletter_subscribe',
-          click_location: 'bottom',
-          lang: lang
-        });
-        console.log('[Subscribe Tracking] Bottom subscribe button clicked');
-      }
+      // Initialize dataLayer if not exists
+      window.dataLayer = window.dataLayer || [];
+
+      // Push event to dataLayer for GTM
+      window.dataLayer.push({
+        event: 'subscribe_click',
+        content_type: 'newsletter_subscribe',
+        click_location: 'bottom',
+        lang: lang
+      });
+
+      console.log('[Subscribe Tracking] Bottom subscribe button clicked (dataLayer)');
     });
   });
 })();</script> <h2 class="text-xl font-semibold text-heading">Sponsorship</h2> <p class="pt-4 leading-relaxed">

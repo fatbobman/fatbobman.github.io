@@ -652,39 +652,37 @@ const utmTerm = "weekly86";
   // ========================================
 
   /**
-   * Track ad click in Google Analytics 4
+   * Track ad click in Google Analytics 4 via GTM dataLayer
    * @param {string} destinationUrl - Click destination URL
    * @param {Object} metadata - Ad metadata
    */
   function trackAdClick(destinationUrl, metadata) {
-    // Check if gtag is available
-    if (typeof window.gtag !== 'function') {
-      console.warn('[AdsLoader SWR] gtag not available, skipping analytics');
-      return;
-    }
+    // Initialize dataLayer if not exists
+    window.dataLayer = window.dataLayer || [];
 
-    // Build event parameters based on ad type
-    const eventParams = {
+    // Build event data based on ad type
+    const eventData = {
+      event: 'ad_click',
       destination_url: destinationUrl
     };
 
     if (metadata.sponsorId === 'default') {
       // Default ad: simple tracking with position only
-      eventParams.content_type = 'default_ad';
-      eventParams.ad_position = metadata.version === 2 ? 'post-header' : 'post-footer';
+      eventData.content_type = 'default_ad';
+      eventData.ad_position = metadata.version === 2 ? 'post-header' : 'post-footer';
     } else {
       // Sponsored ad: detailed tracking
-      eventParams.content_type = 'sponsored_ad';
-      eventParams.ad_position = metadata.version === 2 ? 'post-header' : 'post-footer';
-      eventParams.sponsor_id = metadata.sponsorId;
-      eventParams.ad_id = metadata.adId;
-      eventParams.ad_version = metadata.version;
-      eventParams.ad_lang = metadata.lang;
+      eventData.content_type = 'sponsored_ad';
+      eventData.ad_position = metadata.version === 2 ? 'post-header' : 'post-footer';
+      eventData.sponsor_id = metadata.sponsorId;
+      eventData.ad_id = metadata.adId;
+      eventData.ad_version = metadata.version;
+      eventData.ad_lang = metadata.lang;
     }
 
-    // Send event to GA4
-    window.gtag('event', 'ad_click', eventParams);
-    console.log('[AdsLoader SWR] Ad click tracked:', eventParams);
+    // Push event to dataLayer for GTM
+    window.dataLayer.push(eventData);
+    console.log('[AdsLoader SWR] Ad click tracked (dataLayer):', eventData);
   }
 
   /**
@@ -943,21 +941,24 @@ const utmTerm = "weekly86";
           w-full sm:w-auto inline-block text-center
         "> Subscribe Now </a> </div> <!-- 右侧：功能按钮组 --> <!-- 适配逻辑：移动端堆叠(grid-cols-1)，平板以上并排(sm:grid-cols-2) --> <!-- w-full lg:w-auto 保证移动端撑满，桌面端紧凑 --> <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full lg:w-auto min-w-[320px]"> <!-- 咖啡按钮 --> <a href="https://www.buymeacoffee.com/fatbobman" target="_blank" rel="noopener" class="group flex items-center justify-center lg:justify-start gap-3 px-5 py-3 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl shadow-sm hover:shadow-md hover:border-orange-200 dark:hover:border-orange-900 transition-all"> <span class="text-2xl group-hover:scale-110 transition-transform">☕️</span> <div class="text-left"> <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Support</div> <div class="text-sm font-bold text-gray-800 dark:text-gray-100">Buy me a Coffee</div> </div> </a> <!-- Discord 按钮 --> <a href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" rel="noopener" class="group flex items-center justify-center lg:justify-start gap-3 px-5 py-3 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl shadow-sm hover:shadow-md hover:border-blue-200 dark:hover:border-blue-900 transition-all"> <span class="text-2xl group-hover:scale-110 transition-transform">💬</span> <div class="text-left"> <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">CONNECT</div> <div class="text-sm font-bold text-gray-800 dark:text-gray-100">Follow on X</div> </div> </a> </div> </div> </div> <script>(function(){const lang = "en";
 
-  // Track newsletter subscription button click
+  // Track newsletter subscription button click via GTM dataLayer
   document.addEventListener('DOMContentLoaded', () => {
     const subscribeBtn = document.getElementById('subscribe-bottom-btn');
     if (!subscribeBtn) return;
 
     subscribeBtn.addEventListener('click', () => {
-      // Check if gtag is available
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'subscribe_click', {
-          content_type: 'newsletter_subscribe',
-          click_location: 'bottom',
-          lang: lang
-        });
-        console.log('[Subscribe Tracking] Bottom subscribe button clicked');
-      }
+      // Initialize dataLayer if not exists
+      window.dataLayer = window.dataLayer || [];
+
+      // Push event to dataLayer for GTM
+      window.dataLayer.push({
+        event: 'subscribe_click',
+        content_type: 'newsletter_subscribe',
+        click_location: 'bottom',
+        lang: lang
+      });
+
+      console.log('[Subscribe Tracking] Bottom subscribe button clicked (dataLayer)');
     });
   });
 })();</script> <!-- <LeaveFeedback lang={lang} /> --> <!-- <BottomWeeklySubscribe lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} top={0} bottom={4} anchor='weekly-bottom-navigator'/> --> <!-- <Author lang={lang} /> --> <!-- <RelatedWeeklys lang={lang} currentIssue={post.data.issue} /> --> <div class="hidden lg:block w-32 xl:w-44 lg:absolute" id="toc" style="left: -30px; top: 0px"> <div class="text-muted items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-out" id="toc-content"> <div class="w-full flex justify-end pb-2" id="toc-float-button"> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" id="toc-list-switcher"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-toc"></use> </svg> <svg fill="currentColor" stroke="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" id="toc-list-close" class="hidden"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-toc-close"></use> </svg>  </div> </div> <div class="text-default text-xxs xl:text-xs hidden" id="toc-list"> <ul>  <li class="xl:pl-4 pl-1"> <div class="text-default hover:text-secondary hover:font-bold"> <a href="#swift-6-refactoring-in-a-camera-app---slit_studio-development-log" class="inline-block hover:text-secondary font-medium relative before:hidden xl:before:block before:content-[&quot;▪&quot;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-2 break-words"> Swift 6 Refactoring in a Camera App - SLIT_STUDIO Development Log </a> </div> </li><li class="xl:pl-4 pl-1"> <div class="text-default hover:text-secondary hover:font-bold"> <a href="#making-your-ios-app-more-accessible-with-dynamic-type" class="inline-block hover:text-secondary font-medium relative before:hidden xl:before:block before:content-[&quot;▪&quot;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-2 break-words"> Making Your iOS App More Accessible with Dynamic Type </a> </div> </li><li class="xl:pl-4 pl-1"> <div class="text-default hover:text-secondary hover:font-bold"> <a href="#forming-an-opinion-on-swiftui-forms" class="inline-block hover:text-secondary font-medium relative before:hidden xl:before:block before:content-[&quot;▪&quot;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-2 break-words"> Forming an Opinion on SwiftUI Forms </a> </div> </li><li class="xl:pl-4 pl-1"> <div class="text-default hover:text-secondary hover:font-bold"> <a href="#microapps-architecture-in-swift-scaling" class="inline-block hover:text-secondary font-medium relative before:hidden xl:before:block before:content-[&quot;▪&quot;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-2 break-words"> Microapps Architecture in Swift: Scaling </a> </div> </li><li class="xl:pl-4 pl-1"> <div class="text-default hover:text-secondary hover:font-bold"> <a href="#tips-and-tricks-for-when-using-swiftuis-viewbuilder" class="inline-block hover:text-secondary font-medium relative before:hidden xl:before:block before:content-[&quot;▪&quot;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-2 break-words"> Tips and Tricks for When Using SwiftUI’s ViewBuilder </a> </div> </li><li class="xl:pl-4 pl-1"> <div class="text-default hover:text-secondary hover:font-bold"> <a href="#swift-enums-vs-structs---picking-the-best-tool-for-the-job" class="inline-block hover:text-secondary font-medium relative before:hidden xl:before:block before:content-[&quot;▪&quot;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-2 break-words"> Swift Enums vs Structs - Picking the Best Tool for the Job </a> </div> </li><li class="xl:pl-4 pl-1"> <div class="text-default hover:text-secondary hover:font-bold"> <a href="#billing-grace-period-explained-how-it-works-and-why-it-matters" class="inline-block hover:text-secondary font-medium relative before:hidden xl:before:block before:content-[&quot;▪&quot;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-2 break-words"> Billing Grace Period Explained: How It Works and Why It Matters </a> </div> </li><li class="xl:pl-4 pl-1"> <div class="text-default hover:text-secondary hover:font-bold"> <a href="#swift-static-secrets" class="inline-block hover:text-secondary font-medium relative before:hidden xl:before:block before:content-[&quot;▪&quot;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-2 break-words"> Swift Static Secrets </a> </div> </li><li class="xl:pl-4 pl-1"> <div class="text-default hover:text-secondary hover:font-bold"> <a href="#skylightwindow--keep-your-view-always-on-top" class="inline-block hover:text-secondary font-medium relative before:hidden xl:before:block before:content-[&quot;▪&quot;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-2 break-words"> SkyLightWindow – Keep Your View Always on Top </a> </div> </li><li class="xl:pl-4 pl-1"> <div class="text-default hover:text-secondary hover:font-bold"> <a href="#cimetalcompilerplugin--core-image-metal-shaders-in-swift-packages" class="inline-block hover:text-secondary font-medium relative before:hidden xl:before:block before:content-[&quot;▪&quot;] before:absolute before:left-[-15px] before:text-heading before:w-0 py-2 break-words"> CIMetalCompilerPlugin – Core Image Metal Shaders in Swift Packages </a> </div> </li> </ul> </div> </div> </div> <script type="module" src="/_astro/TOC.astro_astro_type_script_index_0_lang.ARhKvemZ.js"></script> <div class="hidden md:block md:absolute" id="sidebar" style="right: -50px; top: 0px"> <div class="invisible flex flex-col space-y-4 text-muted items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-out" id="sidebar-content"> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <button type="button" onclick="
@@ -1010,21 +1011,24 @@ const isHidden = false;
       }
     " id="sidebar-share-with-bluesky" data-tooltip-target="tooltip-share-with-bluesky" data-tooltip-placement="left" class="cursor-pointer" aria-label="Share on BlueSky"> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="0.4" stroke="currentColor" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-bluesky"></use> </svg> </button>  </div> <div id="tooltip-share-with-bluesky" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-40 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Share on BlueSky</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <a href="https://www.facebook.com/sharer/sharer.php?u=https%253A%252F%252Ffatbobman.com%252Fen%252Fweekly%252Fissue-086%252F" target="_blank" id="sidebar-share-with-facebook" data-tooltip-target="tooltip-share-with-facebook" data-tooltip-placement="left"> <svg stroke="currentColor" fill="currentColor" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-facebook"></use> </svg> </a>  </div> <div id="tooltip-share-with-facebook" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Share on Facebook</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div>  <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:16px; height:16px;">  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ffatbobman.com%2Fen%2Fweekly%2Fissue-086%2F" target="_blank" id="sidebar-share-with-linkedin" data-tooltip-target="tooltip-share-with-linkedin" data-tooltip-placement="left"> <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="0.1" viewBox="0 0 15 15"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-linkedin"></use> </svg> </a>  </div> <div id="tooltip-share-with-linkedin" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-40 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Share on Linkedin</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <a href="#subscript" id="sidebar-share-with-subscribe" data-tooltip-target="tooltip-share-with-email" data-tooltip-placement="left"> <svg fill="currentColor" stroke="currentColor" stroke-width="20" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-email"></use> </svg> </a>  </div> <div id="tooltip-share-with-email" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-40 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Subscribe to Newsletter</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>(function(){const lang = "en";
 
-  // Track newsletter subscription button click from sidebar
+  // Track newsletter subscription button click from sidebar via GTM dataLayer
   document.addEventListener('DOMContentLoaded', () => {
     const subscribeBtn = document.getElementById('sidebar-share-with-subscribe');
     if (!subscribeBtn) return;
 
     subscribeBtn.addEventListener('click', () => {
-      // Check if gtag is available
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'subscribe_click', {
-          content_type: 'newsletter_subscribe',
-          click_location: 'sidebar',
-          lang: lang
-        });
-        console.log('[Subscribe Tracking] Sidebar subscribe button clicked');
-      }
+      // Initialize dataLayer if not exists
+      window.dataLayer = window.dataLayer || [];
+
+      // Push event to dataLayer for GTM
+      window.dataLayer.push({
+        event: 'subscribe_click',
+        content_type: 'newsletter_subscribe',
+        click_location: 'sidebar',
+        lang: lang
+      });
+
+      console.log('[Subscribe Tracking] Sidebar subscribe button clicked (dataLayer)');
     });
   });
 })();</script> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" stroke-width="20" id="comment-button" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" data-tooltip-target="tooltip-share-with-comment" data-tooltip-placement="left"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-comment"></use> </svg>  </div> <div id="tooltip-share-with-comment" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Share Your Thoughts</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>

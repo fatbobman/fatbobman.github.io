@@ -610,39 +610,37 @@ const utmTerm = "homepage";
   // ========================================
 
   /**
-   * Track ad click in Google Analytics 4
+   * Track ad click in Google Analytics 4 via GTM dataLayer
    * @param {string} destinationUrl - Click destination URL
    * @param {Object} metadata - Ad metadata
    */
   function trackAdClick(destinationUrl, metadata) {
-    // Check if gtag is available
-    if (typeof window.gtag !== 'function') {
-      console.warn('[AdsLoader SWR] gtag not available, skipping analytics');
-      return;
-    }
+    // Initialize dataLayer if not exists
+    window.dataLayer = window.dataLayer || [];
 
-    // Build event parameters based on ad type
-    const eventParams = {
+    // Build event data based on ad type
+    const eventData = {
+      event: 'ad_click',
       destination_url: destinationUrl
     };
 
     if (metadata.sponsorId === 'default') {
       // Default ad: simple tracking with position only
-      eventParams.content_type = 'default_ad';
-      eventParams.ad_position = metadata.version === 2 ? 'post-header' : 'post-footer';
+      eventData.content_type = 'default_ad';
+      eventData.ad_position = metadata.version === 2 ? 'post-header' : 'post-footer';
     } else {
       // Sponsored ad: detailed tracking
-      eventParams.content_type = 'sponsored_ad';
-      eventParams.ad_position = metadata.version === 2 ? 'post-header' : 'post-footer';
-      eventParams.sponsor_id = metadata.sponsorId;
-      eventParams.ad_id = metadata.adId;
-      eventParams.ad_version = metadata.version;
-      eventParams.ad_lang = metadata.lang;
+      eventData.content_type = 'sponsored_ad';
+      eventData.ad_position = metadata.version === 2 ? 'post-header' : 'post-footer';
+      eventData.sponsor_id = metadata.sponsorId;
+      eventData.ad_id = metadata.adId;
+      eventData.ad_version = metadata.version;
+      eventData.ad_lang = metadata.lang;
     }
 
-    // Send event to GA4
-    window.gtag('event', 'ad_click', eventParams);
-    console.log('[AdsLoader SWR] Ad click tracked:', eventParams);
+    // Push event to dataLayer for GTM
+    window.dataLayer.push(eventData);
+    console.log('[AdsLoader SWR] Ad click tracked (dataLayer):', eventData);
   }
 
   /**
