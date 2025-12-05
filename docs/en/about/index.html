@@ -260,7 +260,7 @@ If you'd like to support my work in creating high-quality content, you're welcom
       });
 
       console.log('[Subscribe Tracking] Bottom subscribe button clicked (dataLayer)');
-    });
+    }, { capture: true });  // 使用捕获阶段，确保在其他监听器之前执行
   });
 })();</script> <h2 class="text-xl font-semibold text-heading">Sponsorship</h2> <p class="pt-4 leading-relaxed">
 If you're interested in promoting your product to the Swift and iOS developer community, advertising on my blog

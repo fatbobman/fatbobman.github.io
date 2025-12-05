@@ -567,7 +567,7 @@ const enableStickyInMobile = true;
       });
 
       console.log('[Subscribe Tracking] Bottom subscribe button clicked (dataLayer)');
-    });
+    }, { capture: true });  // 使用捕获阶段，确保在其他监听器之前执行
   });
 })();</script> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
   .copy-icon {
@@ -1340,7 +1340,7 @@ const isHidden = false;
       });
 
       console.log('[Subscribe Tracking] Sidebar subscribe button clicked (dataLayer)');
-    });
+    }, { capture: true });  // 使用捕获阶段，确保在其他监听器之前执行
   });
 })();</script> <div class="opacity-50 text-heading hover:opacity-100 hover:text-secondary " style="width:20px; height:20px;">  <svg fill="currentColor" stroke="currentColor" stroke-width="20" id="comment-button" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" data-tooltip-target="tooltip-share-with-comment" data-tooltip-placement="left"> <use href="/_astro/iconCollection.C9WNJL2e.svg#icon-comment"></use> </svg>  </div> <div id="tooltip-share-with-comment" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 w-44 text-sm font-medium text-gray-200 bg-gray-600/90 rounded-lg shadow-sm transition-opacity duration-300 tooltip dark:bg-gray-700/90"> <div> <div>Share Your Thoughts</div> </div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>
   const SCROLL_OFFSET = 80;
