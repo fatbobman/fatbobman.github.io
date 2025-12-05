@@ -391,6 +391,12 @@ const utmTerm = "homepage";
   const isPreviewMode = !!(adIdParam || sponsorIdParam || scheduleIdParam);
   const effectiveCacheDuration = isPreviewMode ? 60 * 1000 : CACHE_DURATION;
 
+  // Store current ad metadata for click tracking
+  const currentAdMetadata = {
+    version1: null,  // .dynamic-ad-card metadata
+    version2: null   // .dynamic-ad-inline metadata
+  };
+
   // ========================================
   // Cache Management Functions
   // ========================================
@@ -600,6 +606,77 @@ const utmTerm = "homepage";
   }
 
   // ========================================
+  // GA4 Click Tracking
+  // ========================================
+
+  /**
+   * Track ad click in Google Analytics 4
+   * @param {string} destinationUrl - Click destination URL
+   * @param {Object} metadata - Ad metadata
+   */
+  function trackAdClick(destinationUrl, metadata) {
+    // Check if gtag is available
+    if (typeof window.gtag !== 'function') {
+      console.warn('[AdsLoader SWR] gtag not available, skipping analytics');
+      return;
+    }
+
+    // Build event parameters based on ad type
+    const eventParams = {
+      destination_url: destinationUrl
+    };
+
+    if (metadata.sponsorId === 'default') {
+      // Default ad: simple tracking with position only
+      eventParams.content_type = 'default_ad';
+      eventParams.ad_position = metadata.version === 2 ? 'post-header' : 'post-footer';
+    } else {
+      // Sponsored ad: detailed tracking
+      eventParams.content_type = 'sponsored_ad';
+      eventParams.ad_position = metadata.version === 2 ? 'post-header' : 'post-footer';
+      eventParams.sponsor_id = metadata.sponsorId;
+      eventParams.ad_id = metadata.adId;
+      eventParams.ad_version = metadata.version;
+      eventParams.ad_lang = metadata.lang;
+    }
+
+    // Send event to GA4
+    window.gtag('event', 'ad_click', eventParams);
+    console.log('[AdsLoader SWR] Ad click tracked:', eventParams);
+  }
+
+  /**
+   * Attach click tracking to ad links (reads metadata dynamically from currentAdMetadata)
+   * @param {string} containerSelector - Container selector
+   * @param {string} version - 'version1' or 'version2' key in currentAdMetadata
+   */
+  function attachClickTracking(containerSelector, version) {
+    const containers = document.querySelectorAll(containerSelector);
+    if (containers.length === 0) return;
+
+    containers.forEach(container => {
+      // Use event delegation to handle dynamically loaded ads
+      container.addEventListener('click', (event) => {
+        // Find the clicked link (or parent link)
+        const link = event.target.closest('a[href]');
+        if (!link) return;
+
+        // Get current metadata dynamically (always up-to-date)
+        const metadata = currentAdMetadata[version];
+        if (!metadata) {
+          console.warn(`[AdsLoader SWR] No metadata available for ${version}, skipping tracking`);
+          return;
+        }
+
+        // Track the click
+        trackAdClick(link.href, metadata);
+      }, { capture: false, passive: true });
+    });
+
+    console.log(`[AdsLoader SWR] Click tracking attached to ${containers.length} container(s): ${containerSelector}`);
+  }
+
+  // ========================================
   // Ad Loading & Rendering
   // ========================================
 
@@ -607,9 +684,10 @@ const utmTerm = "homepage";
    * Render ad to containers
    * @param {string} html - Ad HTML content
    * @param {string} containerSelector - Container selector
+   * @param {Object} metadata - Ad metadata for tracking
    * @param {string} reason - Reason for rendering (for logging)
    */
-  function renderAd(html, containerSelector, reason = 'unknown') {
+  function renderAd(html, containerSelector, metadata, reason = 'unknown') {
     const containers = document.querySelectorAll(containerSelector);
     if (containers.length === 0) {
       console.warn(`[AdsLoader SWR] No containers found: ${containerSelector}`);
@@ -619,6 +697,13 @@ const utmTerm = "homepage";
     containers.forEach(container => {
       container.innerHTML = html;
     });
+
+    // Store metadata for this version
+    if (containerSelector === '.dynamic-ad-card') {
+      currentAdMetadata.version1 = metadata;
+    } else if (containerSelector === '.dynamic-ad-inline') {
+      currentAdMetadata.version2 = metadata;
+    }
 
     console.log(`[AdsLoader SWR] Rendered ad to ${containers.length} container(s): ${containerSelector} (${reason})`);
   }
@@ -683,7 +768,7 @@ const utmTerm = "homepage";
 
       // Conditionally refresh UI (with UTM-enhanced content)
       if (shouldRefresh) {
-        renderAd(processedContent, containerSelector, shouldRefresh === true && !cached ? 'initial load' : 'smart refresh');
+        renderAd(processedContent, containerSelector, metadata, shouldRefresh === true && !cached ? 'initial load' : 'smart refresh');
       } else {
         console.log(`[AdsLoader SWR] UI kept as-is, updated cache for next visit`);
       }
@@ -700,7 +785,8 @@ const utmTerm = "homepage";
         } else {
           // Sponsored ad: clear display (avoid showing expired paid ads)
           console.log('[AdsLoader SWR] Fetch failed, clearing sponsored ad to avoid showing stale content');
-          renderAd('', containerSelector, 'error-clear');
+          const emptyMetadata = { sponsorId: 'error', version: version };
+          renderAd('', containerSelector, emptyMetadata, 'error-clear');
         }
       } else {
         // No cache: leave blank
@@ -729,7 +815,7 @@ const utmTerm = "homepage";
       console.log(`[AdsLoader SWR] Displaying cached ad: ${cacheKey}`, cached.metadata);
       // Inject UTM parameters to cached content (in case it's from old cache without UTM)
       const processedCachedContent = injectUTMParameters(cached.content, cached.metadata);
-      renderAd(processedCachedContent, containerSelector, 'from cache');
+      renderAd(processedCachedContent, containerSelector, cached.metadata, 'from cache');
     } else {
       console.log(`[AdsLoader SWR] No cache available for ${cacheKey}, will show blank until loaded`);
     }
@@ -766,6 +852,11 @@ const utmTerm = "homepage";
     // Load both ad versions
     loadAd(1, cacheKeyCard, '.dynamic-ad-card');
     loadAd(2, cacheKeyInline, '.dynamic-ad-inline');
+
+    // Attach click tracking event listeners (after ads are loaded)
+    // These will dynamically read metadata from currentAdMetadata
+    attachClickTracking('.dynamic-ad-card', 'version1');
+    attachClickTracking('.dynamic-ad-inline', 'version2');
   }
 
   // Start loading when page is ready
