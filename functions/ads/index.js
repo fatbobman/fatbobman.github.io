@@ -16,7 +16,7 @@ import { getKV } from '../_shared/mock-kv.js';
 import { renderAdByStyle } from '../_shared/ad-renderer.js';
 
 const ADS_KEY = 'adsSchedule';
-const BUILD_NUMBER = '20251204-011'; // Update this with each deployment
+const BUILD_NUMBER = '20251204-012'; // Update this with each deployment
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -58,6 +58,19 @@ export async function onRequest(context) {
   if (origin && allowedOrigins.includes(origin)) {
     headers.append('Access-Control-Allow-Origin', origin);
     headers.append('Vary', 'Origin');
+
+    // Expose custom headers to JavaScript (required for CORS)
+    headers.append('Access-Control-Expose-Headers',
+      'X-Build-Number, X-Ad-Id, X-Sponsor-Id, X-Ad-Version, X-Ad-Lang, X-UTM-Campaign, X-Force-Update, Last-Modified'
+    );
+  }
+
+  // Handle CORS preflight requests
+  if (request.method === 'OPTIONS') {
+    headers.append('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    headers.append('Access-Control-Allow-Headers', 'Accept, Content-Type');
+    headers.append('Access-Control-Max-Age', '86400'); // Cache preflight for 24 hours
+    return new Response(null, { status: 204, headers });
   }
 
   try {
