@@ -391,6 +391,7 @@ function copyCode(button, event) {
 }
 </script> <script type="module">var l=document.querySelectorAll("article");l.forEach(function(t){var e=t.querySelectorAll("a");e.forEach(function(r){r.setAttribute("target","_blank")})});</script> <script>(function(){const baseUrl = "https://fatbobman.com/ads/";
 const langSuffix = "en";
+const utmTerm = undefined;
 
   // ========================================
   // Configuration & Constants
@@ -475,7 +476,8 @@ const langSuffix = "en";
       version: parseInt(response.headers.get('X-Ad-Version') || '1'),
       lang: response.headers.get('X-Ad-Lang') || langSuffix,
       lastUpdated: response.headers.get('Last-Modified') || new Date().toISOString(),
-      forceUpdate: response.headers.get('X-Force-Update') === 'true'
+      forceUpdate: response.headers.get('X-Force-Update') === 'true',
+      campaign: response.headers.get('X-UTM-Campaign') || null // Optional UTM campaign
     };
   }
 
@@ -551,6 +553,72 @@ const langSuffix = "en";
   }
 
   // ========================================
+  // UTM Parameters Injection
+  // ========================================
+
+  /**
+   * Inject UTM parameters to all links in ad HTML
+   * Only applies to non-default ads (sponsored ads)
+   * @param {string} html - Ad HTML content
+   * @param {Object} metadata - Ad metadata (sponsorId, campaign, version, etc.)
+   * @returns {string} - Modified HTML with UTM parameters
+   */
+  function injectUTMParameters(html, metadata) {
+    // Skip UTM injection for default ads
+    if (metadata.sponsorId === 'default') {
+      return html;
+    }
+
+    // Create temporary container to parse HTML
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+
+    // Find all links
+    const links = tempDiv.querySelectorAll('a[href]');
+
+    if (links.length === 0) {
+      return html; // No links found, return original HTML
+    }
+
+    // Build UTM parameters
+    const utmParams = {
+      utm_source: 'fatbobman',
+      utm_medium: 'blog',
+      utm_content: metadata.version === 2 ? 'post-header' : 'post-footer'
+    };
+
+    // Add campaign if available
+    if (metadata.campaign) {
+      utmParams.utm_campaign = metadata.campaign;
+    }
+
+    // Add term if available
+    if (utmTerm) {
+      utmParams.utm_term = utmTerm;
+    }
+
+    // Inject UTM parameters to each link
+    links.forEach(link => {
+      try {
+        const url = new URL(link.href);
+
+        // Add each UTM parameter
+        Object.entries(utmParams).forEach(([key, value]) => {
+          url.searchParams.set(key, value);
+        });
+
+        link.href = url.toString();
+      } catch (e) {
+        // Invalid URL, skip
+        console.warn('[AdsLoader SWR] Skipping invalid URL:', link.href, e);
+      }
+    });
+
+    console.log('[AdsLoader SWR] Injected UTM parameters:', utmParams, `(${links.length} link(s))`);
+    return tempDiv.innerHTML;
+  }
+
+  // ========================================
   // Ad Loading & Rendering
   // ========================================
 
@@ -621,17 +689,20 @@ const langSuffix = "en";
       const content = await response.text();
       const metadata = extractMetadata(response);
 
+      // Inject UTM parameters for sponsored ads
+      const processedContent = injectUTMParameters(content, metadata);
+
       console.log('[AdsLoader SWR] Server response metadata:', metadata);
 
       // Decide if UI should be refreshed
       const shouldRefresh = shouldRefreshUI(cached, metadata);
 
-      // Always update cache
-      saveToCache(cacheKey, content, metadata);
+      // Always update cache (with UTM-enhanced content)
+      saveToCache(cacheKey, processedContent, metadata);
 
-      // Conditionally refresh UI
+      // Conditionally refresh UI (with UTM-enhanced content)
       if (shouldRefresh) {
-        renderAd(content, containerSelector, shouldRefresh === true && !cached ? 'initial load' : 'smart refresh');
+        renderAd(processedContent, containerSelector, shouldRefresh === true && !cached ? 'initial load' : 'smart refresh');
       } else {
         console.log(`[AdsLoader SWR] UI kept as-is, updated cache for next visit`);
       }
@@ -675,7 +746,9 @@ const langSuffix = "en";
     const cached = loadFromCache(cacheKey);
     if (cached && cached.content) {
       console.log(`[AdsLoader SWR] Displaying cached ad: ${cacheKey}`, cached.metadata);
-      renderAd(cached.content, containerSelector, 'from cache');
+      // Inject UTM parameters to cached content (in case it's from old cache without UTM)
+      const processedCachedContent = injectUTMParameters(cached.content, cached.metadata);
+      renderAd(processedCachedContent, containerSelector, 'from cache');
     } else {
       console.log(`[AdsLoader SWR] No cache available for ${cacheKey}, will show blank until loaded`);
     }

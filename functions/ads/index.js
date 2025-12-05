@@ -16,7 +16,7 @@ import { getKV } from '../_shared/mock-kv.js';
 import { renderAdByStyle } from '../_shared/ad-renderer.js';
 
 const ADS_KEY = 'adsSchedule';
-const BUILD_NUMBER = '20251204-009'; // Update this with each deployment
+const BUILD_NUMBER = '20251204-011'; // Update this with each deployment
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -38,10 +38,12 @@ export async function onRequest(context) {
     });
   }
 
-  // CORS headers
+  // CORS headers - allow development environments
   const allowedOrigins = [
     'http://localhost:4321',
     'http://localhost:8788',
+    'http://dev.fatbobman.com:4321',
+    'http://dev.fatbobman.com:8788',
     'https://fatbobman.com',
     'https://fatbobman.github.io',
     'blogsource-8wyy6rcw.edgeone.site'
@@ -53,8 +55,8 @@ export async function onRequest(context) {
     'X-Build-Number': BUILD_NUMBER,
   });
 
-  if (allowedOrigins.includes(origin)) {
-    headers.append('Access-Control-Allow-Origin', '*');
+  if (origin && allowedOrigins.includes(origin)) {
+    headers.append('Access-Control-Allow-Origin', origin);
     headers.append('Vary', 'Origin');
   }
 
@@ -188,7 +190,8 @@ export async function onRequest(context) {
       version: selectedVariant.version,
       lang: lang,
       lastUpdated: adsData.metadata?.lastUpdated || new Date().toISOString(),
-      forceUpdate: forceUpdate
+      forceUpdate: forceUpdate,
+      campaign: activeSchedule.campaign // Optional UTM campaign parameter
     });
 
     // Cache for 30 seconds for sponsored ads
@@ -270,6 +273,11 @@ function addMetadataHeaders(headers, metadata) {
   headers.append('X-Ad-Version', metadata.version.toString());
   headers.append('X-Ad-Lang', metadata.lang);
   headers.append('Last-Modified', metadata.lastUpdated);
+
+  // Add UTM campaign if available (for tracking purposes)
+  if (metadata.campaign) {
+    headers.append('X-UTM-Campaign', metadata.campaign);
+  }
 
   if (metadata.forceUpdate) {
     headers.append('X-Force-Update', 'true');
