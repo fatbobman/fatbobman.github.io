@@ -247,7 +247,7 @@ const enableStickyInMobile = true;
 <p>Read “<a href="/en/posts/tips-and-considerations-for-using-lazy-containers-in-swiftui/#the-impact-of-the-id-modifier-on-lists-lazy-loading-mechanism" target="_blank">Tips and Considerations for Using Lazy Containers in SwiftUI</a>” for more details.</p>
 </blockquote>
 <p>Although combining <code>id</code> with <code>List</code> is harmful, we can’t always avoid it. Normally that is tolerable, because creating a SwiftUI view struct is lightweight; the extra initializations are often acceptable.</p>
-<video src="https://cdn.fatbobman.com/swiftui-list-with-id-iShot_2025-04-27_13.00.34.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/swiftui-list-with-id-iShot_2025-04-27_13.00.34.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>However, once we drop a <code>NavigationLink</code> into the same scenario, everything deteriorates rapidly.</p>
 <p><code>NavigationLink</code> has an irritating default: <strong>it is pre-built</strong>. After a view instance is created, SwiftUI immediately evaluates its child view’s <code>body</code>. In the example below, even though all <code>NavigationLink</code>s live inside a lazy container (<code>List</code>), SwiftUI constructs all child views in one go (triggering both <code>init</code> and <code>body</code>), leading to severe hitching.</p>
 <div>
@@ -296,7 +296,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/swiftui-list-id-navigationlink-iShot_2025-04-27_13.06.35.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/swiftui-list-id-navigationlink-iShot_2025-04-27_13.06.35.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>Obviously this is unacceptable. To avoid pre-building, many developers jettison <code>NavigationLink</code> entirely and handle navigation manually:</p>
 <div>
         <div class="flex justify-between items-center h-8 font-semibold bg-block border border-gray-200 dark:border-[#4b5563] shadow-md text-heading text-xs rounded-tl-md rounded-tr-md">
@@ -352,7 +352,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/swiftui-navigationPath-iShot_2025-04-27_13.13.20.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/swiftui-navigationPath-iShot_2025-04-27_13.13.20.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>But swapping <code>NavigationLink</code> out for <code>Button</code> sacrifices the default button styling and interactive feedback—hardly ideal. Is there a best-of-both-worlds solution?</p>
 <p>By happy accident I discovered one: keep <code>NavigationLink</code>, yet stop the pre-evaluation of invisible rows by wrapping the row in <code>.equatable()</code>.</p>
 <blockquote>
@@ -418,7 +418,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">        return</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> lhs.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">i</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> rhs.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">i</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/swiftui-view-equatable-demo-1-iShot_2025-04-27_10.50.00.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/swiftui-view-equatable-demo-1-iShot_2025-04-27_10.50.00.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>Once the view explicitly conforms to Equatable, SwiftUI may use your custom comparison — and in this example, it does:</p>
 <div>
         <div class="flex justify-between items-center h-8 font-semibold bg-block border border-gray-200 dark:border-[#4b5563] shadow-md text-heading text-xs rounded-tl-md rounded-tr-md">
@@ -442,11 +442,11 @@ const enableStickyInMobile = true;
         </button>
         </div>
       <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">extension</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> ChildView</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#998418;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> Equatable</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/swifui-view-euqutable-demo2-iShot_2025-04-27_10.52.08.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/swifui-view-euqutable-demo2-iShot_2025-04-27_10.52.08.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p><strong>Note</strong>: If a view conforms to <code>Equatable</code>, SwiftUI <em>may</em> choose to use your custom <code>==</code> implementation, but this is not guaranteed—it depends on SwiftUI’s internal heuristic strategy. For views that contain only ordinary stored properties (such as <code>let</code> or <code>var</code>), SwiftUI may still prefer more efficient strategies—like memory comparison (memcmp) or field-by-field structural comparison—rather than invoking <code>==</code>. Whether SwiftUI actually uses your custom equality logic depends on several factors, including the view’s property structure, the presence of stateful properties (such as <code>@State</code> or <code>@Binding</code>), and the view’s type characteristics.</p>
 <p>Therefore, if you want to <strong>ensure</strong> that SwiftUI uses your custom <code>==</code> for diffing, you <strong>must explicitly</strong> apply <code>.equatable()</code> (or wrap the view in <code>EquatableView</code>) to force SwiftUI into the <code>==</code>-based comparison path.</p>
 <p>In the example above, even though <code>.equatable()</code> was not applied, the view’s more complex structure combined with its custom <code>==</code> implementation led SwiftUI’s heuristic system to choose the <code>==</code> path instead of falling back to its default memory-comparison strategy.</p>
-<video src="https://cdn.fatbobman.com/swiftui-equatable-view-demo3-iShot_2025-04-27_11.01.56.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/swiftui-equatable-view-demo3-iShot_2025-04-27_11.01.56.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <blockquote>
 <p>More real-world examples: “<a href="/en/posts/say-goodbye-to-dismiss/#optimizing-the-binding-scenario" target="_blank">Say Goodbye to dismiss: A State-Driven Path to More Maintainable SwiftUI</a>” and “<a href="/en/posts/avoid_repeated_calculations_of_swiftui_views/#making-views-conform-to-the-equatable-protocol-to-customize-comparison-rules" target="_blank">How to Avoid Repeating SwiftUI View Updates</a>”.</p>
 </blockquote>
@@ -509,7 +509,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/swiftui-navigationlink-equatable-iShot_2025-04-27_13.27.59.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/swiftui-navigationlink-equatable-iShot_2025-04-27_13.27.59.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>Invisible rows now skip their <code>body</code> evaluation, and scrolling stays smooth.</p>
 <h2 id="why-does-this-work">Why Does This Work? 🤔</h2>
 <p>I haven’t fully unraveled the secret sauce, but current evidence suggests:</p>
@@ -546,14 +546,14 @@ const enableStickyInMobile = true;
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">Building Stable Preview Views: How SwiftUI Previews Work</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/posts/animatable-protocol-taming-unruly-swiftui-animation/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">Building Stable Preview Views: How SwiftUI Previews Work</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/posts/understanding-swiftui-view-update-mechanism/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">Animatable Protocol: Taming Unruly SwiftUI Animations</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">Understanding SwiftUI&#39;s View Update Mechanism: Starting from a TimelineView Update Issue</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" class="
           bg-black dark:bg-white text-white dark:text-black 
           font-bold text-sm px-8 py-3 rounded-xl 
           hover:opacity-80 hover:scale-105 active:scale-95
@@ -1236,4 +1236,54 @@ Fatbobman Digital Limited. All Rights
   window.onpageshow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');
   };
+
+  if (typeof window !== 'undefined') {
+    const videos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+
+            if (entry.isIntersecting) {
+              // 进入视窗 -> 尝试播放（浏览器会根据策略决定是否允许）
+              video.play().catch(() => {
+                // 某些情况下（浏览器策略）可能会失败，静默即可
+              });
+            } else {
+              // 离开视窗 -> 暂停，节省 CPU & 带宽
+              video.pause();
+            }
+          });
+        },
+        {
+          threshold: 0.1, // 至少有 10% 出现在视窗里时触发
+        }
+      );
+
+      videos.forEach((video) => observer.observe(video));
+
+      // 清理逻辑：页面卸载时取消所有观察
+      window.addEventListener('beforeunload', () => {
+        videos.forEach((video) => observer.unobserve(video));
+        observer.disconnect();
+      });
+
+      // 处理 bfcache 情况
+      window.addEventListener('pageshow', (event) => {
+        // 如果是从 bfcache 恢复，重新初始化
+        if (event.persisted) {
+          const newVideos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+          newVideos.forEach((video) => {
+            if (!videos.includes(video)) {
+              observer.observe(video);
+            }
+          });
+        }
+      });
+    } else {
+      // 老浏览器的降级策略：什么都不做，用户手动播放
+    }
+  }
 </script> <div id="docsearch-container-data" data-lang="en" data-searchtext="Search..."></div> <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.3" defer></script> <script type="module">function r(e,t){const a={button:{buttonText:"搜索",buttonAriaLabel:"搜索"},modal:{searchBox:{resetButtonTitle:"清除搜索关键字",resetButtonAriaLabel:"清除搜索关键字",cancelButtonText:"取消",cancelButtonAriaLabel:"取消"},startScreen:{recentSearchesTitle:"最近搜索",noRecentSearchesText:"当前没有搜索历史记录",saveRecentSearchButtonTitle:"保存本次搜索",removeRecentSearchButtonTitle:"从搜索历史中移除",favoriteSearchesTitle:"收藏夹",removeFavoriteSearchButtonTitle:"从收藏夹移除"},errorScreen:{titleText:"无法获取结果",helpText:"请检查网络连接"},footer:{selectText:"选择",selectKeyAriaLabel:"选择",navigateText:"切换",navigateUpKeyAriaLabel:"Arrow up",navigateDownKeyAriaLabel:"Arrow down",closeText:"退出",closeKeyAriaLabel:"Escape key",searchByText:"引擎支持"},noResultsScreen:{noResultsText:"无法找到对应结果",suggestedQueryText:"可以尝试搜索如下内容",reportMissingResultsText:"确认本次搜索应该返回内容？",reportMissingResultsLinkText:"请告知我们"}}};if(typeof window<"u"){const n=window.docsearch;n({appId:"MVXKD4F4BR",apiKey:"a1b4111c3de8b9f60eeca6da001711da",indexName:"fatbobman",container:"#docsearch",insights:!0,placeholder:t,maxResultsPerGroup:50,translations:e==="zh"?a:void 0,searchParameters:{facetFilters:[`lang:${e}`],hitsPerPage:50}})}}function o(){const e=document.getElementById("docsearch-container-data");if(!e){console.error("Search container not found");return}const t=e.dataset.lang,a=e.dataset.searchtext;r(t,a)}window.addEventListener("load",()=>{document.querySelector('script[src*="docsearch"]')&&o()});</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <!--Magic Fix 解决在 Safari 下搜索框取消后会滚动到页面底部--> <div class="fixed"> <input type="text"> </div> </body></html>

@@ -247,7 +247,7 @@ const enableStickyInMobile = true;
 <p>请阅读 <a href="/zh/posts/tips-and-considerations-for-using-lazy-containers-in-swiftui/#id-%E4%BF%AE%E9%A5%B0%E5%99%A8%E5%AF%B9-list-%E6%87%92%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%E7%9A%84%E5%BD%B1%E5%93%8D" target="_blank">几个在 SwiftUI 中使用惰性容器的技巧和注意事项</a> 了解更详细的信息。</p>
 </blockquote>
 <p>尽管 <code>id</code> 与 <code>List</code> 的组合会产生不良的后果，但在某些场景中，我们仍然无法完全避免这种用法。不过考虑到构建 SwiftUI 的视图实例本身是个十分轻量级的操作，有时候所产生的后果（增加了构建的子视图数量）在性能上是可接受的。</p>
-<video src="https://cdn.fatbobman.com/swiftui-list-with-id-iShot_2025-04-27_13.00.34.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/swiftui-list-with-id-iShot_2025-04-27_13.00.34.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>然而，当我们在上述场景中再添加一个 <code>NavigationLink</code> 后，情况就会急剧恶化。</p>
 <p><code>NavigationLink</code> 有一个令人头疼的特性，那就是在默认情况下会被预创建。这意味着视图实体被创建后，SwiftUI 会直接调用子视图的 <code>body</code> 进行求值。比如下面的代码，尽管所有的 <code>NavigationLink</code> 都在一个惰性容器（<code>List</code>）中，但 SwiftUI 仍然会一次性构建所有子视图（触发 <code>init</code> 和 <code>body</code> 的调用），导致视图渲染严重卡顿。</p>
 <div>
@@ -296,7 +296,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/swiftui-list-id-navigationlink-iShot_2025-04-27_13.06.35.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/swiftui-list-id-navigationlink-iShot_2025-04-27_13.06.35.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>很显然，这种情况对开发者来说是完全无法接受的。为了避免视图被预创建，通常开发者的选择是完全避开 <code>NavigationLink</code>，而使用如下方案：</p>
 <div>
         <div class="flex justify-between items-center h-8 font-semibold bg-block border border-gray-200 dark:border-[#4b5563] shadow-md text-heading text-xs rounded-tl-md rounded-tr-md">
@@ -352,7 +352,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/swiftui-navigationPath-iShot_2025-04-27_13.13.20.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/swiftui-navigationPath-iShot_2025-04-27_13.13.20.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>但是，使用 <code>Button</code> 替换 <code>NavigationLink</code> 会失去 SwiftUI 默认提供的跳转按钮样式和交互反馈，这并非最佳方案。有没有两全其美的解决办法呢？</p>
 <p>在一次偶然的尝试中，我发现了一个可以继续使用 <code>NavigationLink</code> 而又不触发预计算（不对非可见项的 <code>body</code> 求值）的方法，那就是使用 <code>equatable()</code> 修饰器。</p>
 <blockquote>
@@ -418,7 +418,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
 <p>在上面的代码中，尽管我们声明了 <code>func==</code> 方法，但由于没有正式让 <code>ChildView</code> 符合 <code>Equatable</code> 协议，SwiftUI 在比较时仍然使用默认的 diff 方式，不会调用我们自定义的比较方法。</p>
-<video src="https://cdn.fatbobman.com/swiftui-view-equatable-demo-1-iShot_2025-04-27_10.50.00.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/swiftui-view-equatable-demo-1-iShot_2025-04-27_10.50.00.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>但如果我们明确让 <code>ChildView</code> 符合 <code>Equatable</code> 协议：</p>
 <div>
         <div class="flex justify-between items-center h-8 font-semibold bg-block border border-gray-200 dark:border-[#4b5563] shadow-md text-heading text-xs rounded-tl-md rounded-tr-md">
@@ -442,13 +442,13 @@ const enableStickyInMobile = true;
         </button>
         </div>
       <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">extension</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> ChildView</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#998418;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> Equatable</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/swifui-view-euqutable-demo2-iShot_2025-04-27_10.52.08.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/swifui-view-euqutable-demo2-iShot_2025-04-27_10.52.08.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>SwiftUI 将会转为使用我们自定义的比较方法来进行视图的前后值比对。</p>
 <p>这表明 SwiftUI 在进行 diff 时，会首先检查当前视图是否符合 Equatable 协议，然后根据内部启发式规则选择最合适的比较策略。</p>
 <p><strong>这里需要特别注意的是</strong>：即便视图实现了 <code>Equatable</code>，也并不意味着 SwiftUI 一定会调用你自定义的 <code>==</code> 方法。对于仅包含普通 stored properties（如 <code>let／var</code>）的视图，SwiftUI 仍可能优先使用更高效的内存比较（如 memcmp）或字段比较，而不是采用 <code>==</code>。是否调用自定义比较逻辑，取决于视图的属性结构、是否包含状态（如 <code>@State</code>／<code>@Binding</code>）、类型特点等多种因素。</p>
 <p>因此，如果你希望确保 SwiftUI 使用自定义的 <code>==</code> 进行 diff，就必须显式调用 <code>.equatable()</code>（或使用 <code>EquatableView</code>）来强制启用基于 <code>==</code> 的比较方式。</p>
 <p>在上面的示例代码中，虽然没有显式调用 <code>.equatable()</code>，但由于视图结构较为复杂且实现了自定义 <code>==</code>，SwiftUI 的启发式策略最终选择了调用 <code>==</code>，而不是继续沿用默认的内存比较方式。</p>
-<video src="https://cdn.fatbobman.com/swiftui-equatable-view-demo3-iShot_2025-04-27_11.01.56.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/swiftui-equatable-view-demo3-iShot_2025-04-27_11.01.56.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>从这个行为特征中，我们可以推断 SwiftUI 的默认比较方案绝非简单的 memcmp 方式，而是会精确提取视图中<strong>需要比对的关键数据</strong>，进行有针对性的<strong>字段逐一比对</strong>。</p>
 <blockquote>
 <p>请阅读 <a href="/zh/posts/say-goodbye-to-dismiss/#%E4%BC%98%E5%8C%96-binding-%E5%9C%BA%E6%99%AF" target="_blank">远离 dismiss，拥抱状态驱动</a>，<a href="/zh/posts/avoid_repeated_calculations_of_swiftui_views/#%E8%AE%A9%E8%A7%86%E5%9B%BE%E7%AC%A6%E5%90%88-equatable-%E5%8D%8F%E8%AE%AE%E4%BB%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E6%AF%94%E5%AF%B9%E8%A7%84%E5%88%99" target="_blank">避免 SwiftUI 视图的重复计算</a> 中使用 <code>Equatable</code> 来优化视图性能的案例，了解更多优化方法。</p>
@@ -512,7 +512,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span>
 <span class="line"></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/swiftui-navigationlink-equatable-iShot_2025-04-27_13.27.59.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/swiftui-navigationlink-equatable-iShot_2025-04-27_13.27.59.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>通过这种方式，我们成功地避免了非可视区域中 <code>NavigationLink</code> 的预构建问题，使应用性能得到显著提升。</p>
 <h2 id="为什么">为什么？？？？</h2>
 <p>说实话，我也没有彻底想通这个现象背后的原理，但根据目前观察到的行为，我们可以大致整理出如下的信息：</p>
@@ -534,28 +534,28 @@ const enableStickyInMobile = true;
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">远离 dismiss，拥抱状态驱动</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/swiftui-environment-concepts-and-practice/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">远离 dismiss，拥抱状态驱动</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/the-anomaly-of-onchange-in-swiftui-multi-layer-navigation/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">SwiftUI Environment：理念与实践</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/optimize_the_response_efficiency_of_list/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">有意为之还是技术缺陷？SwiftUI 多层导航中的 onChange 异常</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/understanding-swiftui-view-update-mechanism/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">优化在 SwiftUI List 中显示大数据集的响应效率</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/how-swiftui-preview-works/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">理解 SwiftUI 的视图刷新机制：从 TimelineView 刷新问题谈起</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/avoid_repeated_calculations_of_swiftui_views/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">构建稳定的预览视图 —— SwiftUI 预览的工作原理</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">避免 SwiftUI 视图的重复计算</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" class="
           bg-black dark:bg-white text-white dark:text-black 
           font-bold text-sm px-8 py-3 rounded-xl 
           hover:opacity-80 hover:scale-105 active:scale-95
@@ -1238,4 +1238,54 @@ Fatbobman Digital Limited. All Rights
   window.onpageshow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');
   };
+
+  if (typeof window !== 'undefined') {
+    const videos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+
+            if (entry.isIntersecting) {
+              // 进入视窗 -> 尝试播放（浏览器会根据策略决定是否允许）
+              video.play().catch(() => {
+                // 某些情况下（浏览器策略）可能会失败，静默即可
+              });
+            } else {
+              // 离开视窗 -> 暂停，节省 CPU & 带宽
+              video.pause();
+            }
+          });
+        },
+        {
+          threshold: 0.1, // 至少有 10% 出现在视窗里时触发
+        }
+      );
+
+      videos.forEach((video) => observer.observe(video));
+
+      // 清理逻辑：页面卸载时取消所有观察
+      window.addEventListener('beforeunload', () => {
+        videos.forEach((video) => observer.unobserve(video));
+        observer.disconnect();
+      });
+
+      // 处理 bfcache 情况
+      window.addEventListener('pageshow', (event) => {
+        // 如果是从 bfcache 恢复，重新初始化
+        if (event.persisted) {
+          const newVideos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+          newVideos.forEach((video) => {
+            if (!videos.includes(video)) {
+              observer.observe(video);
+            }
+          });
+        }
+      });
+    } else {
+      // 老浏览器的降级策略：什么都不做，用户手动播放
+    }
+  }
 </script> <div id="docsearch-container-data" data-lang="zh" data-searchtext="搜索..."></div> <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.3" defer></script> <script type="module">function r(e,t){const a={button:{buttonText:"搜索",buttonAriaLabel:"搜索"},modal:{searchBox:{resetButtonTitle:"清除搜索关键字",resetButtonAriaLabel:"清除搜索关键字",cancelButtonText:"取消",cancelButtonAriaLabel:"取消"},startScreen:{recentSearchesTitle:"最近搜索",noRecentSearchesText:"当前没有搜索历史记录",saveRecentSearchButtonTitle:"保存本次搜索",removeRecentSearchButtonTitle:"从搜索历史中移除",favoriteSearchesTitle:"收藏夹",removeFavoriteSearchButtonTitle:"从收藏夹移除"},errorScreen:{titleText:"无法获取结果",helpText:"请检查网络连接"},footer:{selectText:"选择",selectKeyAriaLabel:"选择",navigateText:"切换",navigateUpKeyAriaLabel:"Arrow up",navigateDownKeyAriaLabel:"Arrow down",closeText:"退出",closeKeyAriaLabel:"Escape key",searchByText:"引擎支持"},noResultsScreen:{noResultsText:"无法找到对应结果",suggestedQueryText:"可以尝试搜索如下内容",reportMissingResultsText:"确认本次搜索应该返回内容？",reportMissingResultsLinkText:"请告知我们"}}};if(typeof window<"u"){const n=window.docsearch;n({appId:"MVXKD4F4BR",apiKey:"a1b4111c3de8b9f60eeca6da001711da",indexName:"fatbobman",container:"#docsearch",insights:!0,placeholder:t,maxResultsPerGroup:50,translations:e==="zh"?a:void 0,searchParameters:{facetFilters:[`lang:${e}`],hitsPerPage:50}})}}function o(){const e=document.getElementById("docsearch-container-data");if(!e){console.error("Search container not found");return}const t=e.dataset.lang,a=e.dataset.searchtext;r(t,a)}window.addEventListener("load",()=>{document.querySelector('script[src*="docsearch"]')&&o()});</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <!--Magic Fix 解决在 Safari 下搜索框取消后会滚动到页面底部--> <div class="fixed"> <input type="text"> </div> </body></html>

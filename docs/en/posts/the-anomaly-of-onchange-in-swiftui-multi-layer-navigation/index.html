@@ -317,9 +317,9 @@ const enableStickyInMobile = true;
 <p>This code allows us to easily build arbitrary navigation levels. By clicking “Goto Next Level”, we can enter new levels and display the current level number; clicking “Count++” increments <code>viewModel.count</code>, which intuitively should trigger the <code>onChange</code> closures in all views.</p>
 <h2 id="the-pattern-of-onchange">The Pattern of onChange</h2>
 <p>Running the above code, when the navigation levels are one or two layers deep, both the <code>update</code> and <code>onChange</code> are triggered as we expect.</p>
-<video src="https://cdn.fatbobman.com/onChange-iShot_2024-11-26_16.57.48-1.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/onChange-iShot_2024-11-26_16.57.48-1.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>However, when the navigation levels extend beyond two layers (3+ layers), a significant change occurs. In the navigation stack, all levels’ <code>update</code> are triggered, but <strong>only the <code>onChange</code> closures in the bottom-most and top-most views</strong> are called.</p>
-<video src="https://cdn.fatbobman.com/onChange-multilayer-iShot_2024-11-26_17.03.14-1.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/onChange-multilayer-iShot_2024-11-26_17.03.14-1.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>If we consider the pattern that “only the <code>onChange</code> in the bottom-most and top-most views are triggered,” we find that this model also applies to navigation stack scenarios with one or two layers.</p>
 <h2 id="taskid-and-onreceive">task(id:) and onReceive</h2>
 <p>In many scenarios, developers often use <code>task(id:)</code> as an alternative to the combination of <code>onAppear</code> + <code>onChange</code>. After replacing <code>onChange</code> with <code>task(id:)</code> in the code, a new abnormal phenomenon emerges.</p>
@@ -347,7 +347,7 @@ const enableStickyInMobile = true;
       <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">task</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">id</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> viewModel.</span><span style="color:#998418;--shiki-dark:#BF9EEE">count</span><span style="color:#999999;--shiki-dark:#F6F6F4">){</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    print</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Level *</span><span style="color:#999999;--shiki-dark:#F286C4">\(</span><span style="color:#B56959;--shiki-dark:#E7EE98">level</span><span style="color:#B56959;--shiki-dark:#F286C4">)</span><span style="color:#B56959;--shiki-dark:#E7EE98">* onChanged in task(id:)</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/task-iShot_2024-11-26_17.09.45-1.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/task-iShot_2024-11-26_17.09.45-1.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>In the navigation stack, when the observed value changes, <strong>only the topmost view’s</strong> <code>task(id:)</code> will be triggered.</p>
 <p>Considering that we are currently using <code>ObservableObject</code> to declare the state, what would happen if we use <code>onReceive</code> to respond to state changes? Replacing <code>task(id:)</code> with <code>onReceive</code>:</p>
 <div>
@@ -374,7 +374,7 @@ const enableStickyInMobile = true;
       <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">onReceive</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">viewModel.$count</span><span style="color:#999999;--shiki-dark:#F6F6F4">){</span><span style="color:#998418;--shiki-dark:#BF9EEE"> _</span><span style="color:#1E754F;--shiki-dark:#F286C4"> in</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    print</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Level *</span><span style="color:#999999;--shiki-dark:#F286C4">\(</span><span style="color:#B56959;--shiki-dark:#E7EE98">level</span><span style="color:#B56959;--shiki-dark:#F286C4">)</span><span style="color:#B56959;--shiki-dark:#E7EE98">* receive count notification</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/onReceive-iShot_2024-11-26_17.15.32-1.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/onReceive-iShot_2024-11-26_17.15.32-1.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>Unlike <code>onChange</code> and <code>task(id:)</code>, the <code>onReceive</code> in all levels of the navigation stack accurately responds to each notification generated by the change, which fully meets our expectations.</p>
 <h2 id="intentional-design-or-bug">Intentional Design or Bug?</h2>
 <p>By now, we can summarize the response patterns of views at different levels in the navigation stack based on the phenomena described above:</p>
@@ -386,21 +386,7 @@ const enableStickyInMobile = true;
 <p>Although we have clarified these behavior patterns, a fundamental question still lingers: Is this an intentional design by Apple (By Design), or a long-standing technical flaw?</p>
 <p>When I thought this might be a design behavior similar to <a href="/en/posts/tips-and-considerations-for-using-lazy-containers-in-swiftui/#swiftui-only-retains-the-top-level-state-of-foreach-subviews-in-lazy-containers" target="_blank">SwiftUI Only Retains the Top-Level State of ForEach Subviews in Lazy Containers</a>, I retested the above code as a macOS application on macOS 15.1.</p>
 <p>In macOS, regardless of how many levels the navigation stack has, the <code>onChange</code> and <code>task(id:)</code> in each level are called as expected. This makes the abnormal phenomenon more like a long-standing bug in the iOS system.</p>
-<p>I have reported this issue to Apple (FB15963726). However, regardless of the final investigation result, for developers, when building multi-layer navigation containers (especially on iOS systems), it is necessary to anticipate and address the possibility that <code>onChange</code> and <code>task(id:)</code> may not be triggered, to avoid falling into technical dilemmas caused by this issue.</p> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/en/tags/SwiftUI/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>SwiftUI </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Recommended Reading</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/posts/mastering_swiftui_task_modifier/" class="
-                group relative flex flex-col justify-center px-5 py-4 h-full
-                bg-white dark:bg-gray-900/50 
-                border border-gray-200 dark:border-gray-700/60 rounded-xl
-                hover:border-orange-400/50 dark:hover:border-blue-500/50
-                hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
-                transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">Mastering the SwiftUI task Modifier</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/posts/bug-code-by-state-inject/" class="
-                group relative flex flex-col justify-center px-5 py-4 h-full
-                bg-white dark:bg-gray-900/50 
-                border border-gray-200 dark:border-gray-700/60 rounded-xl
-                hover:border-orange-400/50 dark:hover:border-blue-500/50
-                hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
-                transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">Cracking the Code: The Mysterious @State Injection Mechanism</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/posts/understanding-swiftui-view-update-mechanism/" class="
+<p>I have reported this issue to Apple (FB15963726). However, regardless of the final investigation result, for developers, when building multi-layer navigation containers (especially on iOS systems), it is necessary to anticipate and address the possibility that <code>onChange</code> and <code>task(id:)</code> may not be triggered, to avoid falling into technical dilemmas caused by this issue.</p> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/en/tags/SwiftUI/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>SwiftUI </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Recommended Reading</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/posts/understanding-swiftui-view-update-mechanism/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
@@ -414,7 +400,21 @@ const enableStickyInMobile = true;
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">Nested Grid Layout Anomaly: Analysis Approach and Resolution Strategies for SwiftUI Layout Issues</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">Nested Grid Layout Anomaly: Analysis Approach and Resolution Strategies for SwiftUI Layout Issues</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/posts/bug-code-by-state-inject/" class="
+                group relative flex flex-col justify-center px-5 py-4 h-full
+                bg-white dark:bg-gray-900/50 
+                border border-gray-200 dark:border-gray-700/60 rounded-xl
+                hover:border-orange-400/50 dark:hover:border-blue-500/50
+                hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
+                transition-all duration-300
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">Cracking the Code: The Mysterious @State Injection Mechanism</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/posts/mastering_swiftui_task_modifier/" class="
+                group relative flex flex-col justify-center px-5 py-4 h-full
+                bg-white dark:bg-gray-900/50 
+                border border-gray-200 dark:border-gray-700/60 rounded-xl
+                hover:border-orange-400/50 dark:hover:border-blue-500/50
+                hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
+                transition-all duration-300
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">Mastering the SwiftUI task Modifier</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" class="
           bg-black dark:bg-white text-white dark:text-black 
           font-bold text-sm px-8 py-3 rounded-xl 
           hover:opacity-80 hover:scale-105 active:scale-95
@@ -1097,4 +1097,54 @@ Fatbobman Digital Limited. All Rights
   window.onpageshow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');
   };
+
+  if (typeof window !== 'undefined') {
+    const videos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+
+            if (entry.isIntersecting) {
+              // 进入视窗 -> 尝试播放（浏览器会根据策略决定是否允许）
+              video.play().catch(() => {
+                // 某些情况下（浏览器策略）可能会失败，静默即可
+              });
+            } else {
+              // 离开视窗 -> 暂停，节省 CPU & 带宽
+              video.pause();
+            }
+          });
+        },
+        {
+          threshold: 0.1, // 至少有 10% 出现在视窗里时触发
+        }
+      );
+
+      videos.forEach((video) => observer.observe(video));
+
+      // 清理逻辑：页面卸载时取消所有观察
+      window.addEventListener('beforeunload', () => {
+        videos.forEach((video) => observer.unobserve(video));
+        observer.disconnect();
+      });
+
+      // 处理 bfcache 情况
+      window.addEventListener('pageshow', (event) => {
+        // 如果是从 bfcache 恢复，重新初始化
+        if (event.persisted) {
+          const newVideos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+          newVideos.forEach((video) => {
+            if (!videos.includes(video)) {
+              observer.observe(video);
+            }
+          });
+        }
+      });
+    } else {
+      // 老浏览器的降级策略：什么都不做，用户手动播放
+    }
+  }
 </script> <div id="docsearch-container-data" data-lang="en" data-searchtext="Search..."></div> <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.3" defer></script> <script type="module">function r(e,t){const a={button:{buttonText:"搜索",buttonAriaLabel:"搜索"},modal:{searchBox:{resetButtonTitle:"清除搜索关键字",resetButtonAriaLabel:"清除搜索关键字",cancelButtonText:"取消",cancelButtonAriaLabel:"取消"},startScreen:{recentSearchesTitle:"最近搜索",noRecentSearchesText:"当前没有搜索历史记录",saveRecentSearchButtonTitle:"保存本次搜索",removeRecentSearchButtonTitle:"从搜索历史中移除",favoriteSearchesTitle:"收藏夹",removeFavoriteSearchButtonTitle:"从收藏夹移除"},errorScreen:{titleText:"无法获取结果",helpText:"请检查网络连接"},footer:{selectText:"选择",selectKeyAriaLabel:"选择",navigateText:"切换",navigateUpKeyAriaLabel:"Arrow up",navigateDownKeyAriaLabel:"Arrow down",closeText:"退出",closeKeyAriaLabel:"Escape key",searchByText:"引擎支持"},noResultsScreen:{noResultsText:"无法找到对应结果",suggestedQueryText:"可以尝试搜索如下内容",reportMissingResultsText:"确认本次搜索应该返回内容？",reportMissingResultsLinkText:"请告知我们"}}};if(typeof window<"u"){const n=window.docsearch;n({appId:"MVXKD4F4BR",apiKey:"a1b4111c3de8b9f60eeca6da001711da",indexName:"fatbobman",container:"#docsearch",insights:!0,placeholder:t,maxResultsPerGroup:50,translations:e==="zh"?a:void 0,searchParameters:{facetFilters:[`lang:${e}`],hitsPerPage:50}})}}function o(){const e=document.getElementById("docsearch-container-data");if(!e){console.error("Search container not found");return}const t=e.dataset.lang,a=e.dataset.searchtext;r(t,a)}window.addEventListener("load",()=>{document.querySelector('script[src*="docsearch"]')&&o()});</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <!--Magic Fix 解决在 Safari 下搜索框取消后会滚动到页面底部--> <div class="fixed"> <input type="text"> </div> </body></html>

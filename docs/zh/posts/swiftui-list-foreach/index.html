@@ -362,7 +362,7 @@ const enableStickyInMobile = true;
 <p>基于以上的区别，我在大多数的时候均采用 ForEach 在 List 中装填列表内容，并且都取得了预想的效果。</p>
 <p>但是在最近我在开发一个类似于 iOS 邮件 app 的列表时发生了让我无语的状态——列表卡顿到完全无法忍耐。</p>
 <p>通过下面的视频可以看到让我痛苦的 app 表现</p>
-<center><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10ForEach.mp4" autoplay loop muted="true" loading="lazy" playsInline controls></video></center>
+<center><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10ForEach.mp4" loop muted="true" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video></center>
 <p>只有十条记录时的状态。非常丝滑</p>
 <div>
         <div class="flex justify-between items-center h-8 font-semibold bg-block border border-gray-200 dark:border-[#4b5563] shadow-md text-heading text-xs rounded-tl-md rounded-tr-md">
@@ -392,7 +392,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">          .</span><span style="color:#998418;--shiki-dark:#97E1F1">swipeCell</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">cellPosition</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">both</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">leftSlot</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> slot1, </span><span style="color:#998418;--shiki-dark:#97E1F1">rightSlot</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> slot1</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span></code></pre></div>
-<center><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10000MyList.mp4" autoplay loop muted="true" loading="lazy" playsInline controls></video></center>
+<center><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10000MyList.mp4" loop muted="true" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video></center>
 <p>10000 条记录的样子</p>
 <p>在 10 条记录时一切都很完美，但当记录设置为 10000 条时，完全卡成了 ppt 的状态。尤其是 View 初始化便占有了大量的时间。</p>
 <p>起初我认为可能是我写的滑动菜单的问题，但在自己检查代码后排出了这个选项。为了更好的了解在 List 中 Cell 的生命周期状态，写了下面的测试代码。</p>
@@ -481,7 +481,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">          .</span><span style="color:#998418;--shiki-dark:#97E1F1">listRowInsets</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">EdgeInsets</span><span style="color:#999999;--shiki-dark:#F6F6F4">())</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">          .</span><span style="color:#998418;--shiki-dark:#97E1F1">swipeCell</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">cellPosition</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">both</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">leftSlot</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> slot1, </span><span style="color:#998418;--shiki-dark:#97E1F1">rightSlot</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> slot1</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span></code></pre></div>
-<center><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10000withoutForEach.mp4" autoplay loop muted="true" loading="lazy" playsInline controls></video></center>
+<center><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10000withoutForEach.mp4" loop muted="true" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video></center>
 <p>熟悉的丝滑又回来了。</p>
 <p>**ForEach 要预先处理所有数据，提前准备 View. 并且初始化后，并不自动释放这些 View（即使不可见）! **具体可以使用上面的测试代码通过 Debug 来分析。</p>
 <p>不流畅的原因已经找到了，不过由于 List 处理的数据源并不能设置 listRowInsets, 尤其在 iOS 14 下，苹果非常奇怪的屏蔽了不少通过 UITableView 来设置 List 的属性的途径，所以为了既能保证性能，又能保证显示需求，只好通过自己包装 UITableView 来同时满足上述两个条件。</p>
@@ -513,7 +513,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">           .</span><span style="color:#998418;--shiki-dark:#97E1F1">listRowInsets</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">EdgeInsets</span><span style="color:#999999;--shiki-dark:#F6F6F4">())</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">           .</span><span style="color:#998418;--shiki-dark:#97E1F1">swipeCell</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">cellPosition</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">both</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">leftSlot</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> slot1, </span><span style="color:#998418;--shiki-dark:#97E1F1">rightSlot</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> slot1</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">       }</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">edgesIgnoringSafeArea</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">all</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span></code></pre></div>
-<center><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10000MyList.mp4" autoplay loop muted="true" loading="lazy" playsInline controls></video></center>
+<center><video src="https://cdn.fatbobman.com/swiftui-list-foreach-10000MyList.mp4" loop muted="true" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video></center>
 <p>通过这次碰到的问题，我知道了可以在什么情况下使用 ForEach. 通过这篇文章记录下来，希望其他人少走这样的弯路。</p>
 <p><strong>后记：</strong></p>
 <p>我已经向苹果反馈了这个问题，希望他们能够进行调整吧（最近苹果对于开发者的 feedback 回应还是挺及时的，Xcode 12 发布后，我提交了 5 个 feedback, 已经有 4 个获得了反馈，3 个在最新版得到了解决）.</p>
@@ -1201,4 +1201,54 @@ Fatbobman Digital Limited. All Rights
   window.onpageshow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');
   };
+
+  if (typeof window !== 'undefined') {
+    const videos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+
+            if (entry.isIntersecting) {
+              // 进入视窗 -> 尝试播放（浏览器会根据策略决定是否允许）
+              video.play().catch(() => {
+                // 某些情况下（浏览器策略）可能会失败，静默即可
+              });
+            } else {
+              // 离开视窗 -> 暂停，节省 CPU & 带宽
+              video.pause();
+            }
+          });
+        },
+        {
+          threshold: 0.1, // 至少有 10% 出现在视窗里时触发
+        }
+      );
+
+      videos.forEach((video) => observer.observe(video));
+
+      // 清理逻辑：页面卸载时取消所有观察
+      window.addEventListener('beforeunload', () => {
+        videos.forEach((video) => observer.unobserve(video));
+        observer.disconnect();
+      });
+
+      // 处理 bfcache 情况
+      window.addEventListener('pageshow', (event) => {
+        // 如果是从 bfcache 恢复，重新初始化
+        if (event.persisted) {
+          const newVideos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+          newVideos.forEach((video) => {
+            if (!videos.includes(video)) {
+              observer.observe(video);
+            }
+          });
+        }
+      });
+    } else {
+      // 老浏览器的降级策略：什么都不做，用户手动播放
+    }
+  }
 </script> <div id="docsearch-container-data" data-lang="zh" data-searchtext="搜索..."></div> <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.3" defer></script> <script type="module">function r(e,t){const a={button:{buttonText:"搜索",buttonAriaLabel:"搜索"},modal:{searchBox:{resetButtonTitle:"清除搜索关键字",resetButtonAriaLabel:"清除搜索关键字",cancelButtonText:"取消",cancelButtonAriaLabel:"取消"},startScreen:{recentSearchesTitle:"最近搜索",noRecentSearchesText:"当前没有搜索历史记录",saveRecentSearchButtonTitle:"保存本次搜索",removeRecentSearchButtonTitle:"从搜索历史中移除",favoriteSearchesTitle:"收藏夹",removeFavoriteSearchButtonTitle:"从收藏夹移除"},errorScreen:{titleText:"无法获取结果",helpText:"请检查网络连接"},footer:{selectText:"选择",selectKeyAriaLabel:"选择",navigateText:"切换",navigateUpKeyAriaLabel:"Arrow up",navigateDownKeyAriaLabel:"Arrow down",closeText:"退出",closeKeyAriaLabel:"Escape key",searchByText:"引擎支持"},noResultsScreen:{noResultsText:"无法找到对应结果",suggestedQueryText:"可以尝试搜索如下内容",reportMissingResultsText:"确认本次搜索应该返回内容？",reportMissingResultsLinkText:"请告知我们"}}};if(typeof window<"u"){const n=window.docsearch;n({appId:"MVXKD4F4BR",apiKey:"a1b4111c3de8b9f60eeca6da001711da",indexName:"fatbobman",container:"#docsearch",insights:!0,placeholder:t,maxResultsPerGroup:50,translations:e==="zh"?a:void 0,searchParameters:{facetFilters:[`lang:${e}`],hitsPerPage:50}})}}function o(){const e=document.getElementById("docsearch-container-data");if(!e){console.error("Search container not found");return}const t=e.dataset.lang,a=e.dataset.searchtext;r(t,a)}window.addEventListener("load",()=>{document.querySelector('script[src*="docsearch"]')&&o()});</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <!--Magic Fix 解决在 Safari 下搜索框取消后会滚动到页面底部--> <div class="fixed"> <input type="text"> </div> </body></html>

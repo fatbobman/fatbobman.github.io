@@ -307,7 +307,7 @@ const enableStickyInMobile = true;
 <span class="line"></span>
 <span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">  func</span><span style="color:#59873A;--shiki-dark:#62E884"> updateNSView</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#62E884;--shiki-dark-font-style:italic">_</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: WKWebView, </span><span style="color:#59873A;--shiki-dark:#62E884">context</span><span style="color:#393A34;font-style:inherit;--shiki-dark:#FFB86C;--shiki-dark-font-style:italic"> _</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: Context</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {}</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/iShot_2024-04-04_09.28.53-1.mp4" autoplay loop muted="true" loading="lazy" playsInline controls></video>
+<video src="https://cdn.fatbobman.com/iShot_2024-04-04_09.28.53-1.mp4" loop muted="true" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video>
 <p>但是，当将上面这段简单的代码转换成 Observation 模式后，问题就出现了。所有的窗口都共用同一个 <code>WebViewManager</code> 实例（ 为了能将问题表现的更加的清晰，我在 WebViewManager 中声明了一个 UUID ，并在视图中将其显示了出来）：</p>
 <div>
         <div class="flex justify-between items-center h-8 font-semibold bg-block border border-gray-200 dark:border-[#4b5563] shadow-md text-heading text-xs rounded-tl-md rounded-tr-md">
@@ -370,7 +370,7 @@ const enableStickyInMobile = true;
 <span class="line"></span>
 <span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">  func</span><span style="color:#59873A;--shiki-dark:#62E884"> updateNSView</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#62E884;--shiki-dark-font-style:italic">_</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: WKWebView, </span><span style="color:#59873A;--shiki-dark:#62E884">context</span><span style="color:#393A34;font-style:inherit;--shiki-dark:#FFB86C;--shiki-dark-font-style:italic"> _</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: Context</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {}</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/iShot_2024-04-04_09.34.54-1.mp4" autoplay loop muted="true" loading="lazy" playsInline controls></video>
+<video src="https://cdn.fatbobman.com/iShot_2024-04-04_09.34.54-1.mp4" loop muted="true" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video>
 <p>在最初看到这个提问后我也感觉十分的奇怪，根据我对 Observation 框架的理解，不应该出现这种情况。但是当我看到在 <code>ContentView</code> 中是通过 <code>@State</code> 来声明这个可观察对象的时候，让我想起了一年前碰到的类似的问题。</p>
 <h2 id="state-在多窗口模式下引发的动态值一致性问题">@State 在多窗口模式下引发的动态值一致性问题</h2>
 <p>去年，在北京举行的 <a href="/zh/posts/attended-swiftui-salon-in-beijing/" target="_blank">SwiftUI 技术沙龙 </a>中，我展示了一个名为 <a href="https://github.com/fatbobman/MovieHunter?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Movie Hunter</a> 的项目，用以演示 SwiftUI 的跨平台开发能力。项目中利用了我自己开发的 <a href="https://github.com/fatbobman/SwiftUIOverlayContainer?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">SwiftUI Overlay Container</a>，这是一个可定制的覆盖视图管理库。为了区分每个覆盖容器，我采用 <code>UUID().uuidString</code> 作为每个窗口的覆盖容器的唯一标识符。</p>
@@ -452,7 +452,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">padding</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">  }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/iShot_2024-04-04_10.49.34-1.mp4" autoplay loop muted="true" loading="lazy" playsInline controls></video>
+<video src="https://cdn.fatbobman.com/iShot_2024-04-04_10.49.34-1.mp4" loop muted="true" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video>
 <p>通过上面的视频可以看到，在根视图中，通过 <code>@State</code>、<code>@SceneStorage</code>、<code>@GestureState</code> 等声明的动态状态（ UUID、随机数、当前日期 ），每个窗口中都是一样的。</p>
 <p>一系列测试揭示了以下规律：</p>
 <ul>
@@ -496,7 +496,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">State</span><span style="color:#1E754F;--shiki-dark:#F286C4"> var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> object </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#998418;--shiki-dark:#97E1F1"> ObservableID</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">ObservableID </span><span style="color:#999999;--shiki-dark:#F286C4">\(</span><span style="color:#B56959;--shiki-dark:#E7EE98">object.</span><span style="color:#B56959;--shiki-dark:#F6F6F4">id</span><span style="color:#B56959;--shiki-dark:#F286C4">)</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/iShot_2024-04-04_11.25.14-1.mp4" autoplay loop muted="true" loading="lazy" playsInline controls></video>
+<video src="https://cdn.fatbobman.com/iShot_2024-04-04_11.25.14-1.mp4" loop muted="true" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video>
 <p>结果显示，所有窗口都在使用同一个可观察对象实例，对于需要为每个窗口提供独立状态容器的应用来说，这种情况是不可接受的。</p>
 <h2 id="临时解决策略">临时解决策略</h2>
 <p>尽管我们无法完全搞清楚问题具体出现在哪个层面（ <code>@State</code> 优化机制、窗口根视图的构造机制 ），但毕竟我们已经掌握出现问题的规律，因此就可以采用一些简单的方式来进行规避。</p>
@@ -565,7 +565,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">  ...</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
 <p>采用上述任一方法，都能够成功规避多窗口环境下状态一致性的问题，当然也同样能够解决本文开篇中 revblaze 所遇到的情况。</p>
-<video src="https://cdn.fatbobman.com/iShot_2024-04-04_11.36.18-1.mp4" autoplay loop muted="true" loading="lazy" playsInline controls></video>
+<video src="https://cdn.fatbobman.com/iShot_2024-04-04_11.36.18-1.mp4" loop muted="true" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video>
 <blockquote>
 <p>此外，若场景的根视图每次被创建时能够接收到来自外部的不同参数值，或者采用了如 <code>WindowGroup(for: Item.self)</code> 等场景构造方法，这样有时能够避开此问题，但并不能保证绝对有效。我已向苹果提交了反馈（<code>FB13707448</code>），期待它们能够在不久的将来提供修复。</p>
 </blockquote>
@@ -685,35 +685,35 @@ const enableStickyInMobile = true;
                     <img src="https://cdn.fatbobman.com/image-20240405202541019-zipic.png" alt="image-20240405202541019" loading="lazy" decoding="async"/>
                   </picture></p>
 <p>随后，问题得以解决。</p>
-<p>从开始测试问题代码到问题解决，整个过程用了不到十分钟的时间，这也验证了本文想要传达的核心信息：当遇到问题时，深入探究其本质，往往能够使解决问题变得更为简单。</p> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/SwiftUI/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>SwiftUI </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/mastering-observation/" class="
+<p>从开始测试问题代码到问题解决，整个过程用了不到十分钟的时间，这也验证了本文想要传达的核心信息：当遇到问题时，深入探究其本质，往往能够使解决问题变得更为简单。</p> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/SwiftUI/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>SwiftUI </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/stateobject_and_observedobject/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">深度解读 Observation —— SwiftUI 性能提升的新途径</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/bug-code-by-state-inject/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">StateObject 与 ObservedObject</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/serious-issues-caused-by-delayed-state-updates-in-swiftui/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">一段因 @State 注入机制所产生的“灵异代码”</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/swiftuilifecycle/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">解析 SwiftUI 中两处由状态更新滞后引发的严重 Bug</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/swiftuilifecycle/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">SwiftUI 视图的生命周期研究</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/swiftui-state/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">SwiftUI 视图的生命周期研究</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/mastering-observation/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">@State 研究</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">深度解读 Observation —— SwiftUI 性能提升的新途径</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" class="
           bg-black dark:bg-white text-white dark:text-black 
           font-bold text-sm px-8 py-3 rounded-xl 
           hover:opacity-80 hover:scale-105 active:scale-95
@@ -1396,4 +1396,54 @@ Fatbobman Digital Limited. All Rights
   window.onpageshow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');
   };
+
+  if (typeof window !== 'undefined') {
+    const videos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+
+            if (entry.isIntersecting) {
+              // 进入视窗 -> 尝试播放（浏览器会根据策略决定是否允许）
+              video.play().catch(() => {
+                // 某些情况下（浏览器策略）可能会失败，静默即可
+              });
+            } else {
+              // 离开视窗 -> 暂停，节省 CPU & 带宽
+              video.pause();
+            }
+          });
+        },
+        {
+          threshold: 0.1, // 至少有 10% 出现在视窗里时触发
+        }
+      );
+
+      videos.forEach((video) => observer.observe(video));
+
+      // 清理逻辑：页面卸载时取消所有观察
+      window.addEventListener('beforeunload', () => {
+        videos.forEach((video) => observer.unobserve(video));
+        observer.disconnect();
+      });
+
+      // 处理 bfcache 情况
+      window.addEventListener('pageshow', (event) => {
+        // 如果是从 bfcache 恢复，重新初始化
+        if (event.persisted) {
+          const newVideos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+          newVideos.forEach((video) => {
+            if (!videos.includes(video)) {
+              observer.observe(video);
+            }
+          });
+        }
+      });
+    } else {
+      // 老浏览器的降级策略：什么都不做，用户手动播放
+    }
+  }
 </script> <div id="docsearch-container-data" data-lang="zh" data-searchtext="搜索..."></div> <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.3" defer></script> <script type="module">function r(e,t){const a={button:{buttonText:"搜索",buttonAriaLabel:"搜索"},modal:{searchBox:{resetButtonTitle:"清除搜索关键字",resetButtonAriaLabel:"清除搜索关键字",cancelButtonText:"取消",cancelButtonAriaLabel:"取消"},startScreen:{recentSearchesTitle:"最近搜索",noRecentSearchesText:"当前没有搜索历史记录",saveRecentSearchButtonTitle:"保存本次搜索",removeRecentSearchButtonTitle:"从搜索历史中移除",favoriteSearchesTitle:"收藏夹",removeFavoriteSearchButtonTitle:"从收藏夹移除"},errorScreen:{titleText:"无法获取结果",helpText:"请检查网络连接"},footer:{selectText:"选择",selectKeyAriaLabel:"选择",navigateText:"切换",navigateUpKeyAriaLabel:"Arrow up",navigateDownKeyAriaLabel:"Arrow down",closeText:"退出",closeKeyAriaLabel:"Escape key",searchByText:"引擎支持"},noResultsScreen:{noResultsText:"无法找到对应结果",suggestedQueryText:"可以尝试搜索如下内容",reportMissingResultsText:"确认本次搜索应该返回内容？",reportMissingResultsLinkText:"请告知我们"}}};if(typeof window<"u"){const n=window.docsearch;n({appId:"MVXKD4F4BR",apiKey:"a1b4111c3de8b9f60eeca6da001711da",indexName:"fatbobman",container:"#docsearch",insights:!0,placeholder:t,maxResultsPerGroup:50,translations:e==="zh"?a:void 0,searchParameters:{facetFilters:[`lang:${e}`],hitsPerPage:50}})}}function o(){const e=document.getElementById("docsearch-container-data");if(!e){console.error("Search container not found");return}const t=e.dataset.lang,a=e.dataset.searchtext;r(t,a)}window.addEventListener("load",()=>{document.querySelector('script[src*="docsearch"]')&&o()});</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <!--Magic Fix 解决在 Safari 下搜索框取消后会滚动到页面底部--> <div class="fixed"> <input type="text"> </div> </body></html>

@@ -249,7 +249,7 @@ const enableStickyInMobile = true;
 <p>社区的反应迅速而热烈。很快，一位热心的开发者提出了基于 UIKit 的解决方案，利用 <code>UICollectionView</code> 并在其手势处理逻辑中添加自定义代码。然而，当讨论转向 SwiftUI 实现时，普遍观点认为这在 SwiftUI 中实现起来困难重重，甚至可能无法实现。</p>
 <p>当我关注到这个讨论时，UIKit 的方案已经成型。虽然我同意在 SwiftUI 中实现这个功能确实存在一定挑战，但我认为这并非不可能。关键在于改变思维方式，跳出传统实现的框框，以 SwiftUI 特有的声明式和响应式编程范式来重新思考问题。这正是 SwiftUI 的魅力所在——它不仅是一个新的框架，更是一种全新的编程思维。</p>
 <p>下面是基于 Infinite4Pager 的实现演示：</p>
-<video class="mx-auto" src="https://cdn.fatbobman.com/infinity4pager-demo1.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video class="mx-auto" src="https://cdn.fatbobman.com/infinity4pager-demo1.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <h2 id="swiftui-的挑战">SwiftUI 的挑战</h2>
 <p>如果我们尝试直接将 UIKit 的实现逻辑迁移到 SwiftUI，我们将面临几个主要的挑战：</p>
 <h3 id="scrollview-的有限定制性">ScrollView 的有限定制性</h3>
@@ -511,35 +511,35 @@ const enableStickyInMobile = true;
 <p>结合使用上述两种方法，在保证性能的同时，为开发者提供了足够的灵活性来处理复杂的动画开启和数据加载逻辑。</p>
 <h2 id="总结">总结</h2>
 <p>深入理解 SwiftUI 的局限性不仅有助于我们及早规避潜在问题，更能激发我们寻找创新解决方案的灵感。正是在这些挑战中，我们得以深化对框架的理解，并推动其应用边界。</p>
-<p>本文旨在探讨如何充分利用 SwiftUI 的特性和布局逻辑来构建自定义组件。尽管 SwiftUI 在某些方面仍有待改进，但通过灵活运用其响应式编程模型和声明式语法，我们能有少量的代码便快速构建出在大多数场景中实现令人可以接受的解决方案。希望本文能够启发更多开发者，在 SwiftUI 的世界里不断创新，挖掘这一强大工具的全部潜力。</p> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/SwiftUI/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>SwiftUI </a><a href="/zh/tags/Frameworks/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>Frameworks </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/swiftuioverlaycontainer2/" class="
+<p>本文旨在探讨如何充分利用 SwiftUI 的特性和布局逻辑来构建自定义组件。尽管 SwiftUI 在某些方面仍有待改进，但通过灵活运用其响应式编程模型和声明式语法，我们能有少量的代码便快速构建出在大多数场景中实现令人可以接受的解决方案。希望本文能够启发更多开发者，在 SwiftUI 的世界里不断创新，挖掘这一强大工具的全部潜力。</p> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/SwiftUI/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>SwiftUI </a><a href="/zh/tags/Frameworks/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>Frameworks </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/list-or-lazyvstack/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">SwiftUI Overlay Container 2 —— 可定制、高效、便捷的视图管理器</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/swiftui-dismiss-sheet/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">List 还是 LazyVStack：SwiftUI 中的惰性容器选择</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/navigationviewkit/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">在 SwiftUI 中制作可以控制取消手势的 Sheet</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/the-evolution-of-swiftui-scroll-control-apis/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">用 NavigationViewKit 增强 SwiftUI 的导航视图</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/the-evolution-of-swiftui-scroll-control-apis/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">SwiftUI 滚动控制 API 的发展历程与 WWDC 2024 的新亮点</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/list-or-lazyvstack/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">SwiftUI 滚动控制 API 的发展历程与 WWDC 2024 的新亮点</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/swiftui-input-form/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">List 还是 LazyVStack：SwiftUI 中的惰性容器选择</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">如何在 SwiftUI 中创建一个实时响应的 Form</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" class="
           bg-black dark:bg-white text-white dark:text-black 
           font-bold text-sm px-8 py-3 rounded-xl 
           hover:opacity-80 hover:scale-105 active:scale-95
@@ -1222,4 +1222,54 @@ Fatbobman Digital Limited. All Rights
   window.onpageshow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');
   };
+
+  if (typeof window !== 'undefined') {
+    const videos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+
+            if (entry.isIntersecting) {
+              // 进入视窗 -> 尝试播放（浏览器会根据策略决定是否允许）
+              video.play().catch(() => {
+                // 某些情况下（浏览器策略）可能会失败，静默即可
+              });
+            } else {
+              // 离开视窗 -> 暂停，节省 CPU & 带宽
+              video.pause();
+            }
+          });
+        },
+        {
+          threshold: 0.1, // 至少有 10% 出现在视窗里时触发
+        }
+      );
+
+      videos.forEach((video) => observer.observe(video));
+
+      // 清理逻辑：页面卸载时取消所有观察
+      window.addEventListener('beforeunload', () => {
+        videos.forEach((video) => observer.unobserve(video));
+        observer.disconnect();
+      });
+
+      // 处理 bfcache 情况
+      window.addEventListener('pageshow', (event) => {
+        // 如果是从 bfcache 恢复，重新初始化
+        if (event.persisted) {
+          const newVideos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+          newVideos.forEach((video) => {
+            if (!videos.includes(video)) {
+              observer.observe(video);
+            }
+          });
+        }
+      });
+    } else {
+      // 老浏览器的降级策略：什么都不做，用户手动播放
+    }
+  }
 </script> <div id="docsearch-container-data" data-lang="zh" data-searchtext="搜索..."></div> <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.3" defer></script> <script type="module">function r(e,t){const a={button:{buttonText:"搜索",buttonAriaLabel:"搜索"},modal:{searchBox:{resetButtonTitle:"清除搜索关键字",resetButtonAriaLabel:"清除搜索关键字",cancelButtonText:"取消",cancelButtonAriaLabel:"取消"},startScreen:{recentSearchesTitle:"最近搜索",noRecentSearchesText:"当前没有搜索历史记录",saveRecentSearchButtonTitle:"保存本次搜索",removeRecentSearchButtonTitle:"从搜索历史中移除",favoriteSearchesTitle:"收藏夹",removeFavoriteSearchButtonTitle:"从收藏夹移除"},errorScreen:{titleText:"无法获取结果",helpText:"请检查网络连接"},footer:{selectText:"选择",selectKeyAriaLabel:"选择",navigateText:"切换",navigateUpKeyAriaLabel:"Arrow up",navigateDownKeyAriaLabel:"Arrow down",closeText:"退出",closeKeyAriaLabel:"Escape key",searchByText:"引擎支持"},noResultsScreen:{noResultsText:"无法找到对应结果",suggestedQueryText:"可以尝试搜索如下内容",reportMissingResultsText:"确认本次搜索应该返回内容？",reportMissingResultsLinkText:"请告知我们"}}};if(typeof window<"u"){const n=window.docsearch;n({appId:"MVXKD4F4BR",apiKey:"a1b4111c3de8b9f60eeca6da001711da",indexName:"fatbobman",container:"#docsearch",insights:!0,placeholder:t,maxResultsPerGroup:50,translations:e==="zh"?a:void 0,searchParameters:{facetFilters:[`lang:${e}`],hitsPerPage:50}})}}function o(){const e=document.getElementById("docsearch-container-data");if(!e){console.error("Search container not found");return}const t=e.dataset.lang,a=e.dataset.searchtext;r(t,a)}window.addEventListener("load",()=>{document.querySelector('script[src*="docsearch"]')&&o()});</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <!--Magic Fix 解决在 Safari 下搜索框取消后会滚动到页面底部--> <div class="fixed"> <input type="text"> </div> </body></html>

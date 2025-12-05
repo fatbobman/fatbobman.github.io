@@ -292,7 +292,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/iShot_2024-11-08_08.32.09-1.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/iShot_2024-11-08_08.32.09-1.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>This code exhibits a strange phenomenon: the emoji on the left continuously updates over time (randomly switching within the emoji array), while the emoji on the right (encapsulated in the <code>RightEmoji</code> view) remains static. Interestingly, if we add an apparently unrelated random variable in <code>RightEmoji</code> (even if we don’t use it), the right emoji starts updating normally.</p>
 <p>Although I’ve mentioned the principles behind similar issues in previous articles, I notice that readers still feel confused. Given that such questions are quite common in the community, I find it necessary to delve into this typical case to explore SwiftUI’s response and update mechanisms and understand what exactly causes this phenomenon.</p>
 <h2 id="analyzing-view-concepts-in-swiftui">Analyzing View Concepts in SwiftUI</h2>
@@ -527,7 +527,7 @@ const enableStickyInMobile = true;
 <li>Developers use the <code>onTapGesture</code> method to inject response code through the SwiftUI framework.</li>
 <li>When the user taps “Tap Me,” this code is called, and “hello world” is printed to the console.</li>
 </ul>
-<video src="https://cdn.fatbobman.com/iShot_2024-11-08_10.25.02-1.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/iShot_2024-11-08_10.25.02-1.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>However, after running the code, we find that apart from the initial load (when SwiftUI calls the <code>body</code> property of <code>OnTapDemo</code> to get the view declaration value), the <code>body</code> is not called again, no matter how many times we tap. This is because, in the <code>onTapGesture</code> closure, we did not perform operations recognized by SwiftUI that would affect the result of the view declaration value.</p>
 <p>The following code injects response code to a timer <code>Publisher</code> through <code>onReceive</code>. Similar to the code above, although “hello” is continuously printed to the console, it does not cause the view declaration value to be recalculated.</p>
 <div>
@@ -602,7 +602,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/iShot_2024-11-08_10.40.37-1.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/iShot_2024-11-08_10.40.37-1.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>Now, when a tap event occurs, since <code>count</code> (based on <code>@State</code>) has changed, it meets the conditions for SwiftUI to re-evaluate the view declaration value. We can see that the <code>body</code> of the view is called again, and the Count displayed on the screen changes.</p>
 <p>In SwiftUI, computing the view declaration value is a recursive process. It starts from the current view and traverses down the view tree in order unless a branch explicitly indicates that it does not need to continue computing downwards.</p>
 <p>For example, in <code>OnTapDemo</code>, when re-evaluating its declaration value, <code>print(&quot;Evaluating View Declaration Value&quot;)</code> will inevitably execute, but this does not mean that all child views will have their declaration values re-computed.</p>
@@ -668,7 +668,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Count Changes: </span><span style="color:#999999;--shiki-dark:#F286C4">\(</span><span style="color:#B56959;--shiki-dark:#E7EE98">count</span><span style="color:#B56959;--shiki-dark:#F286C4">)</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/iShot_2024-11-08_10.57.41-1.mp4" autoplay loop muted="true" playsInline loading="lazy" controls></video>
+<video src="https://cdn.fatbobman.com/iShot_2024-11-08_10.57.41-1.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <p>By observing the console output of this code, we can clearly see how SwiftUI evaluates whether to re-compute the declaration value of child views:</p>
 <ul>
 <li>When a tap event occurs, the <code>count</code> in <code>OnTapDemo</code> changes, causing SwiftUI to re-evaluate its view declaration value.</li>
@@ -750,35 +750,35 @@ const enableStickyInMobile = true;
 <li><strong>Optimize the computation process of the view declaration value</strong>: The computation of the view declaration value is a recursive process. By appropriate optimization, such as reducing unnecessary nested computations, you can effectively reduce computational overhead.</li>
 <li><strong>Rationally split the view structure</strong>: Encapsulating the view declaration in a separate view type allows SwiftUI to better identify which views do not need to be re-computed, thereby improving the efficiency of view updates.</li>
 </ul>
-<p>Familiarity with these internal working mechanisms of SwiftUI will help developers write higher-performance and more robust SwiftUI applications. Interested readers can refer to related articles at the bottom to further understand the implementation details and optimization techniques of SwiftUI.</p> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/en/tags/SwiftUI/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>SwiftUI </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Recommended Reading</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/posts/avoid_repeated_calculations_of_swiftui_views/" class="
+<p>Familiarity with these internal working mechanisms of SwiftUI will help developers write higher-performance and more robust SwiftUI applications. Interested readers can refer to related articles at the bottom to further understand the implementation details and optimization techniques of SwiftUI.</p> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/en/tags/SwiftUI/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>SwiftUI </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Recommended Reading</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/posts/exploring-key-property-wrappers-in-swiftui/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">How to Avoid Repeating SwiftUI View Updates</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/posts/swiftuilifecycle/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">Exploring Key Property Wrappers in SwiftUI: @State, @Binding, @StateObject, @ObservedObject, @EnvironmentObject, and @Environment</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/posts/tips-and-considerations-for-using-lazy-containers-in-swiftui/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">Lifecycle of SwiftUI Views</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/posts/stateobject_and_observedobject/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">Tips and Considerations for Using Lazy Containers in SwiftUI</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/posts/avoid_repeated_calculations_of_swiftui_views/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">SwiftUI’s StateObject and ObservedObject: The Key Differences</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/posts/mastering-observation/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">How to Avoid Repeating SwiftUI View Updates</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/posts/stateobject_and_observedobject/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">A Deep Dive Into Observation: A New Way to Boost SwiftUI Performance</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors ">SwiftUI’s StateObject and ObservedObject: The Key Differences</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" class="
           bg-black dark:bg-white text-white dark:text-black 
           font-bold text-sm px-8 py-3 rounded-xl 
           hover:opacity-80 hover:scale-105 active:scale-95
@@ -1461,4 +1461,54 @@ Fatbobman Digital Limited. All Rights
   window.onpageshow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');
   };
+
+  if (typeof window !== 'undefined') {
+    const videos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+
+            if (entry.isIntersecting) {
+              // 进入视窗 -> 尝试播放（浏览器会根据策略决定是否允许）
+              video.play().catch(() => {
+                // 某些情况下（浏览器策略）可能会失败，静默即可
+              });
+            } else {
+              // 离开视窗 -> 暂停，节省 CPU & 带宽
+              video.pause();
+            }
+          });
+        },
+        {
+          threshold: 0.1, // 至少有 10% 出现在视窗里时触发
+        }
+      );
+
+      videos.forEach((video) => observer.observe(video));
+
+      // 清理逻辑：页面卸载时取消所有观察
+      window.addEventListener('beforeunload', () => {
+        videos.forEach((video) => observer.unobserve(video));
+        observer.disconnect();
+      });
+
+      // 处理 bfcache 情况
+      window.addEventListener('pageshow', (event) => {
+        // 如果是从 bfcache 恢复，重新初始化
+        if (event.persisted) {
+          const newVideos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+          newVideos.forEach((video) => {
+            if (!videos.includes(video)) {
+              observer.observe(video);
+            }
+          });
+        }
+      });
+    } else {
+      // 老浏览器的降级策略：什么都不做，用户手动播放
+    }
+  }
 </script> <div id="docsearch-container-data" data-lang="en" data-searchtext="Search..."></div> <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.3" defer></script> <script type="module">function r(e,t){const a={button:{buttonText:"搜索",buttonAriaLabel:"搜索"},modal:{searchBox:{resetButtonTitle:"清除搜索关键字",resetButtonAriaLabel:"清除搜索关键字",cancelButtonText:"取消",cancelButtonAriaLabel:"取消"},startScreen:{recentSearchesTitle:"最近搜索",noRecentSearchesText:"当前没有搜索历史记录",saveRecentSearchButtonTitle:"保存本次搜索",removeRecentSearchButtonTitle:"从搜索历史中移除",favoriteSearchesTitle:"收藏夹",removeFavoriteSearchButtonTitle:"从收藏夹移除"},errorScreen:{titleText:"无法获取结果",helpText:"请检查网络连接"},footer:{selectText:"选择",selectKeyAriaLabel:"选择",navigateText:"切换",navigateUpKeyAriaLabel:"Arrow up",navigateDownKeyAriaLabel:"Arrow down",closeText:"退出",closeKeyAriaLabel:"Escape key",searchByText:"引擎支持"},noResultsScreen:{noResultsText:"无法找到对应结果",suggestedQueryText:"可以尝试搜索如下内容",reportMissingResultsText:"确认本次搜索应该返回内容？",reportMissingResultsLinkText:"请告知我们"}}};if(typeof window<"u"){const n=window.docsearch;n({appId:"MVXKD4F4BR",apiKey:"a1b4111c3de8b9f60eeca6da001711da",indexName:"fatbobman",container:"#docsearch",insights:!0,placeholder:t,maxResultsPerGroup:50,translations:e==="zh"?a:void 0,searchParameters:{facetFilters:[`lang:${e}`],hitsPerPage:50}})}}function o(){const e=document.getElementById("docsearch-container-data");if(!e){console.error("Search container not found");return}const t=e.dataset.lang,a=e.dataset.searchtext;r(t,a)}window.addEventListener("load",()=>{document.querySelector('script[src*="docsearch"]')&&o()});</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <!--Magic Fix 解决在 Safari 下搜索框取消后会滚动到页面底部--> <div class="fixed"> <input type="text"> </div> </body></html>

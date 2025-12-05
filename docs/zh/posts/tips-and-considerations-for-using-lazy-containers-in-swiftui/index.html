@@ -423,7 +423,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">  }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/dynamicDataLoaderDemo-1.mp4" autoplay loop muted="true" playsinline style="display:block; margin:auto;" loading="lazy" playsInline controls></video>
+<video src="https://cdn.fatbobman.com/dynamicDataLoaderDemo-1.mp4" loop muted="true" playsinline style="display:block; margin:auto;" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video>
 <p>通过上述方法，我们成功实现了动态数据加载逻辑与视图渲染逻辑的分离，从而使代码结构更加清晰和易于维护。这种实现模式的适用性极广，不仅可以用于数据模拟，还能轻松扩展以适应更多实际需求，如从网络加载数据、实现数据的分页加载。</p>
 <h2 id="id-修饰器对-list-懒加载机制的影响">id 修饰器对 List 懒加载机制的影响</h2>
 <p>在 SwiftUI 中，List 视图依赖懒加载机制来优化性能和用户体验。懒加载机制确保只有在子视图即将出现在可视区域时，SwiftUI 才会创建这些视图的实例并将它们加载到视图树中。然而，在一些特定情况下，这一优化机制可能会被意外破坏，尤其是当子视图使用了 <code>id</code> 修饰器时。</p>
@@ -474,7 +474,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">      .</span><span style="color:#998418;--shiki-dark:#97E1F1">frame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">height</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 30</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">  }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/id-List-demo_2024-03-08_12.07.49.mp4" autoplay loop muted="true" playsinline style="display:block; margin:auto;" loading="lazy" playsInline controls></video>
+<video src="https://cdn.fatbobman.com/id-List-demo_2024-03-08_12.07.49.mp4" loop muted="true" playsinline style="display:block; margin:auto;" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video>
 <p>尽管 List 的懒加载机制仅对可见视图渲染，但在数据量庞大时，立即实例化所有子视图会导致巨大的性能开销，严重影响应用的初始加载效率。</p>
 <blockquote>
 <p>在 <code>ScrollViewReader</code> + <code>List</code> 的应用场景中，应考虑让 <code>ForEach</code> 的迭代数据同时符合 <code>Identifiable</code> 和 <code>Hashable</code> 协议，以避免使用 <code>id</code> 来显式标注标识符。</p>
@@ -535,7 +535,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">  }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/loss-state-demo1-2024-03-08-720.mp4" autoplay loop muted="true" playsinline style="display:block; margin:auto;" loading="lazy" playsInline controls></video>
+<video src="https://cdn.fatbobman.com/loss-state-demo1-2024-03-08-720.mp4" loop muted="true" playsinline style="display:block; margin:auto;" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video>
 <p>我最初认为这种行为应该是 Bug，但根据与苹果工程师的交流反馈，这实际上是一种有意为之的设计决策。从 SwiftUI 的设计哲学来看，这种选择有其合理性。为了在渲染效率和资源消耗之间取得平衡，保持子视图树中所有状态对于拥有复杂视图树和大量子视图的惰性容器来说，可能会大大降低效率。因此，决定仅维护最顶层子视图的状态，算是一种合理的设计选择。</p>
 <p>因此，对于拥有多层且状态丰富的子视图结构，推荐的做法是将所有相关状态提升到顶层视图中，以确保状态的正确保持：</p>
 <div>
@@ -580,7 +580,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">  }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/loss-state-demo2_2024-03-08-720.mp4" autoplay loop muted="true" playsinline style="display:block; margin:auto;" loading="lazy" playsInline controls></video>
+<video src="https://cdn.fatbobman.com/loss-state-demo2_2024-03-08-720.mp4" loop muted="true" playsinline style="display:block; margin:auto;" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video>
 <p>这样的做法不仅遵循 SwiftUI 的设计原则，还确保了即使在复杂的视图层次中，应用的状态也能被正确管理和保留。</p>
 <h2 id="针对特定类型的状态-swiftui-释放内存资源不够积极">针对特定类型的状态, SwiftUI 释放内存资源不够积极</h2>
 <p>在 Swift 开发者的普遍认识中，将可选值类型的变量设置为 <code>nil</code> 应当能够触发系统回收原有数据占用的资源。因此，一些开发者在面对可能造成重大资源占用的惰性视图时, 尝试利用此机制来节省内存。下面的示例展示了这种做法：</p>
@@ -652,7 +652,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    return</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> image</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">  }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/memory-save-demo1-2024-03-08_15.18.31.mp4" autoplay loop muted="true" playsinline style="display:block; margin:auto;" loading="lazy" playsInline controls></video>
+<video src="https://cdn.fatbobman.com/memory-save-demo1-2024-03-08_15.18.31.mp4" loop muted="true" playsinline style="display:block; margin:auto;" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video>
 <p>尽管状态被设置为 <code>nil</code>，但在惰性容器中，某些特定类型的数据（如 <code>Image</code>、<code>UIImage</code> 等）并不会立即释放其占用的内存空间，除非完全离开该惰性容器视图。这种情况下，通过转换状态类型，可以改善资源回收的积极性：</p>
 <div>
         <div class="flex justify-between items-center h-8 font-semibold bg-block border border-gray-200 dark:border-[#4b5563] shadow-md text-heading text-xs rounded-tl-md rounded-tr-md">
@@ -711,7 +711,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    return</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> image</span><span style="color:#AB5959;--shiki-dark:#F286C4">?</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">pngData</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">  }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre></div>
-<video src="https://cdn.fatbobman.com/memory-save-demo2-2024-03-08-720.mp4" autoplay loop muted="true" playsinline style="display:block; margin:auto;" loading="lazy" playsInline controls></video>
+<video src="https://cdn.fatbobman.com/memory-save-demo2-2024-03-08-720.mp4" loop muted="true" playsinline style="display:block; margin:auto;" playsInline preload="none" data-autoplay="lazy" class="lazy-video"></video>
 <p>在上述代码中，通过改变状态持有的类型为 <code>Optional&lt;Data&gt;</code>，使得在状态设为 <code>nil</code> 后系统能够正常回收占用的资源，从而改善了内存使用情况。</p>
 <blockquote>
 <p>详细的分析和问题探讨可以参见 <a href="/zh/posts/memory-usage-optimization/" target="_blank">SwiftUI + Core Data App 的内存占用优化之旅</a>。</p>
@@ -852,28 +852,28 @@ const enableStickyInMobile = true;
                     <img src="https://cdn.fatbobman.com/image-20240822111940838.webp" alt="image-20240822111940838" loading="lazy" decoding="async"/>
                   </picture></p>
 <h2 id="总结">总结</h2>
-<p>虽然 SwiftUI 为开发者提供了极大的便利，使得创建动态和响应式的用户界面变得更加简单，但正确地理解和利用其惰性布局容器的工作机制，仍然是开发高效、性能优异的 SwiftUI 应用的关键。希望本文能够帮助开发者更好地掌握这些技巧，优化 SwiftUI 应用，确保既能提供丰富的功能，又能保持流畅的用户体验和高效的资源使用。</p> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/SwiftUI/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>SwiftUI </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/avoid_repeated_calculations_of_swiftui_views/" class="
+<p>虽然 SwiftUI 为开发者提供了极大的便利，使得创建动态和响应式的用户界面变得更加简单，但正确地理解和利用其惰性布局容器的工作机制，仍然是开发高效、性能优异的 SwiftUI 应用的关键。希望本文能够帮助开发者更好地掌握这些技巧，优化 SwiftUI 应用，确保既能提供丰富的功能，又能保持流畅的用户体验和高效的资源使用。</p> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/SwiftUI/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>SwiftUI </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/optimize_the_response_efficiency_of_list/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">避免 SwiftUI 视图的重复计算</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/stateobject_and_observedobject/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">优化在 SwiftUI List 中显示大数据集的响应效率</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/avoid_repeated_calculations_of_swiftui_views/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">StateObject 与 ObservedObject</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/bug-code-by-state-inject/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">避免 SwiftUI 视图的重复计算</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/swiftuilifecycle/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">一段因 @State 注入机制所产生的“灵异代码”</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/memory-usage-optimization/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">SwiftUI 视图的生命周期研究</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/memory-usage-optimization/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
@@ -1563,4 +1563,54 @@ Fatbobman Digital Limited. All Rights
   window.onpageshow = function () {
     document.documentElement.classList.add('motion-safe:scroll-smooth');
   };
+
+  if (typeof window !== 'undefined') {
+    const videos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+
+            if (entry.isIntersecting) {
+              // 进入视窗 -> 尝试播放（浏览器会根据策略决定是否允许）
+              video.play().catch(() => {
+                // 某些情况下（浏览器策略）可能会失败，静默即可
+              });
+            } else {
+              // 离开视窗 -> 暂停，节省 CPU & 带宽
+              video.pause();
+            }
+          });
+        },
+        {
+          threshold: 0.1, // 至少有 10% 出现在视窗里时触发
+        }
+      );
+
+      videos.forEach((video) => observer.observe(video));
+
+      // 清理逻辑：页面卸载时取消所有观察
+      window.addEventListener('beforeunload', () => {
+        videos.forEach((video) => observer.unobserve(video));
+        observer.disconnect();
+      });
+
+      // 处理 bfcache 情况
+      window.addEventListener('pageshow', (event) => {
+        // 如果是从 bfcache 恢复，重新初始化
+        if (event.persisted) {
+          const newVideos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+          newVideos.forEach((video) => {
+            if (!videos.includes(video)) {
+              observer.observe(video);
+            }
+          });
+        }
+      });
+    } else {
+      // 老浏览器的降级策略：什么都不做，用户手动播放
+    }
+  }
 </script> <div id="docsearch-container-data" data-lang="zh" data-searchtext="搜索..."></div> <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.3" defer></script> <script type="module">function r(e,t){const a={button:{buttonText:"搜索",buttonAriaLabel:"搜索"},modal:{searchBox:{resetButtonTitle:"清除搜索关键字",resetButtonAriaLabel:"清除搜索关键字",cancelButtonText:"取消",cancelButtonAriaLabel:"取消"},startScreen:{recentSearchesTitle:"最近搜索",noRecentSearchesText:"当前没有搜索历史记录",saveRecentSearchButtonTitle:"保存本次搜索",removeRecentSearchButtonTitle:"从搜索历史中移除",favoriteSearchesTitle:"收藏夹",removeFavoriteSearchButtonTitle:"从收藏夹移除"},errorScreen:{titleText:"无法获取结果",helpText:"请检查网络连接"},footer:{selectText:"选择",selectKeyAriaLabel:"选择",navigateText:"切换",navigateUpKeyAriaLabel:"Arrow up",navigateDownKeyAriaLabel:"Arrow down",closeText:"退出",closeKeyAriaLabel:"Escape key",searchByText:"引擎支持"},noResultsScreen:{noResultsText:"无法找到对应结果",suggestedQueryText:"可以尝试搜索如下内容",reportMissingResultsText:"确认本次搜索应该返回内容？",reportMissingResultsLinkText:"请告知我们"}}};if(typeof window<"u"){const n=window.docsearch;n({appId:"MVXKD4F4BR",apiKey:"a1b4111c3de8b9f60eeca6da001711da",indexName:"fatbobman",container:"#docsearch",insights:!0,placeholder:t,maxResultsPerGroup:50,translations:e==="zh"?a:void 0,searchParameters:{facetFilters:[`lang:${e}`],hitsPerPage:50}})}}function o(){const e=document.getElementById("docsearch-container-data");if(!e){console.error("Search container not found");return}const t=e.dataset.lang,a=e.dataset.searchtext;r(t,a)}window.addEventListener("load",()=>{document.querySelector('script[src*="docsearch"]')&&o()});</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <!--Magic Fix 解决在 Safari 下搜索框取消后会滚动到页面底部--> <div class="fixed"> <input type="text"> </div> </body></html>
