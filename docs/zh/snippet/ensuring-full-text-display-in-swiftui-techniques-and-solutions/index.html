@@ -99,7 +99,7 @@
       "url": "https://fatbobman.com/images/blog-card.png"
     }
   }
-}</script><link rel="stylesheet" href="/_astro/about.sOqopnWC.css">
+}</script><link rel="stylesheet" href="/_astro/about.CFVz4fBC.css">
 <style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);background-color:#ffffffe6}.dark .sticky[data-astro-cid-4wsjtibl]{background-color:#171717e6}.sticky[data-astro-cid-4wsjtibl] .sticky-logo[data-astro-cid-4wsjtibl]{width:2rem;opacity:1;margin-right:.75rem}
 </style>
 <link rel="stylesheet" href="/_astro/_slug_.BRLGXoDU.css"><script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":true});c[f]=(c[f]||[]).concat(["dataLayer.push","gtag"])})(window,'partytown','forward');/* Partytown 0.11.2 - MIT QwikDev */
@@ -460,15 +460,37 @@ const enableStickyInMobile = true;
       document.body.removeChild(textArea);
     }
   }
-</script> <div id="copy-alert" class="hidden fixed bottom-28 right-5"> <div id="alert-1" class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50/90 dark:bg-gray-800/90 dark:text-blue-400" role="alert"> <div class="text-sm font-medium">链接已复制</div> </div> </div> <style>
+</script> <!-- 
+  提示框容器 (Toast Container)
+  z-index: 确保在最上层
+--><div id="copy-alert" class="hidden fixed bottom-10 right-5 z-50"> <div id="alert-1" class="
+      flex items-center px-6 py-3 rounded-full shadow-lg border backdrop-blur-md
+      transition-all duration-300 transform
+      
+      /* === Light Mode (Red Theme) === */
+      /* 白底 + 红色文字 + 红色边框，阴影带红 */
+      bg-white/95 text-red-600 border-red-100 shadow-red-500/10
+      
+      /* === Dark Mode (Blue Theme) === */
+      /* 深蓝底 + 蓝色文字 + 蓝色边框，阴影带蓝 */
+      dark:bg-slate-800/90 dark:text-blue-400 dark:border-blue-500/30 dark:shadow-blue-500/20
+    " role="alert"> <!-- 图标 (可选，增加精致感) --> <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path> <polyline points="22 4 12 14.01 9 11.01"></polyline> </svg> <div class="text-sm font-bold tracking-wide">链接已复制</div> </div> </div> <style>
+  /* 保持原有的图标定位逻辑 */
   .copy-icon {
     position: absolute;
-    left: -30px; /* 根据您的布局调整位置 */
-    top: 50%; /* 将图标定位到标题的中间高度 */
-    transform: translateY(-50%); /* 垂直居中对齐图标 */
+    left: -30px; 
+    top: 50%;
+    transform: translateY(-50%);
     cursor: pointer;
-    transition: opacity 0.6s ease;
-    pointer-events: all; /* 始终响应鼠标事件 */
+    transition: opacity 0.3s ease;
+    pointer-events: all;
+    /* 给图标加一点颜色过渡 */
+    color: #9ca3af; /* gray-400 */
+  }
+  
+  /* Hover 时图标变色 (JS里添加了 hover:text-secondary 类，这里作为兜底) */
+  .copy-icon:hover {
+    color: var(--aw-color-primary); /* 使用 CSS 变量响应主题 */
   }
 
   article h2,
@@ -478,74 +500,68 @@ const enableStickyInMobile = true;
     position: relative;
   }
 
+  /* 提示框动画 */
   #copy-alert {
-    position: fixed;
-    bottom: -100px; /* 初始在视窗下方 */
-    right: 20px;
-    transition: bottom 0.5s ease-in-out;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* 弹性动画 */
+    transform: translateY(100px);
+    opacity: 0;
   }
-
-  /* 进入动画 */
-  @keyframes slideIn {
-    from {
-      bottom: -100px;
-    }
-    to {
-      bottom: 0px;
-    }
+  
+  #copy-alert.show {
+    transform: translateY(0);
+    opacity: 1;
   }
+</style> <script>(function(){const lang = "zh";
 
-  /* 消失动画 */
-  @keyframes slideOut {
-    from {
-      bottom: 20px;
-    }
-    to {
-      bottom: -100px;
-    }
-  }
-</style> <script defer>
-  var hideTimeout; // 用于保存自动隐藏定时器的引用
-  document.querySelectorAll('article h2, article h3, article h4, article h5').forEach(function (header) {
-    var copyIcon = document.createElement('span');
-    copyIcon.innerHTML =
-      '<svg fill="currentColor" aria-hidden="true" stroke="currentColor" class="w-5 h-5 hidden md:block hover:text-secondary" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M861.866667 164.266667c-87.466667-87.466667-230.4-89.6-320-2.133334l-68.266667 68.266667c-12.8 12.8-12.8 32 0 44.8s32 12.8 44.8 0l68.266667-68.266667c64-61.866667 166.4-61.866667 230.4 2.133334 64 64 64 168.533333 2.133333 232.533333l-117.333333 119.466667c-34.133333 34.133333-81.066667 51.2-128 49.066666-46.933333-4.266667-91.733333-27.733333-119.466667-66.133333-10.666667-14.933333-29.866667-17.066667-44.8-6.4-14.933333 10.666667-17.066667 29.866667-6.4 44.8 40.533333 53.333333 100.266667 87.466667 166.4 91.733333h17.066667c59.733333 0 119.466667-23.466667 162.133333-68.266666l117.333333-119.466667c83.2-89.6 83.2-234.666667-4.266666-322.133333z"></path><path d="M505.6 750.933333l-66.133333 68.266667c-64 61.866667-166.4 61.866667-230.4-2.133333-64-64-64-168.533333-2.133334-232.533334l117.333334-119.466666c34.133333-34.133333 81.066667-51.2 128-49.066667 46.933333 4.266667 91.733333 27.733333 119.466666 66.133333 10.666667 14.933333 29.866667 17.066667 44.8 6.4 14.933333-10.666667 17.066667-29.866667 6.4-44.8-40.533333-53.333333-100.266667-87.466667-166.4-91.733333-66.133333-4.266667-130.133333 19.2-177.066666 66.133333l-117.333334 119.466667c-85.333333 89.6-85.333333 234.666667 2.133334 322.133333 44.8 44.8 102.4 66.133333 162.133333 66.133334 57.6 0 115.2-21.333333 160-64l66.133333-68.266667c12.8-12.8 12.8-32 0-44.8-14.933333-10.666667-34.133333-10.666667-46.933333 2.133333z"></path></svg>'; // 使用您选择的图标
-    copyIcon.className = 'copy-icon';
-    copyIcon.style.opacity = '0'; // 默认透明
-    header.insertBefore(copyIcon, header.firstChild);
+  // 使用 defer 或 load 事件确保 DOM 就绪
+  document.addEventListener('DOMContentLoaded', () => {
+    let hideTimeout;
+    const alertDiv = document.getElementById('copy-alert');
 
-    header.addEventListener('mouseover', function () {
-      copyIcon.style.opacity = '1';
-    });
-    header.addEventListener('mouseout', function () {
+    // 绑定标题图标
+    document.querySelectorAll('article h2, article h3, article h4, article h5').forEach((header) => {
+      // 创建图标容器
+      const copyIcon = document.createElement('span');
+      // 使用更简洁的 Link 图标 SVG
+      copyIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>`;
+      copyIcon.className = 'copy-icon';
       copyIcon.style.opacity = '0';
-    });
+      
+      header.insertBefore(copyIcon, header.firstChild);
 
-    copyIcon.addEventListener('click', function () {
-        var url = window.location.href.split('#')[0] + '#' + header.id;
-        navigator.clipboard.writeText(url).then(function () {
-            var alertDiv = document.getElementById('copy-alert');
-            if (alertDiv) {
-                alertDiv.classList.remove('hidden'); // 确保提示框是可见的
-                alertDiv.style.display = 'block'; // 显示提示框
-                clearTimeout(hideTimeout); // 清除之前的定时器
-                alertDiv.style.animation = 'none'; // 先清除之前的动画
-                setTimeout(function () {
-                    alertDiv.style.animation = 'slideIn 0.5s forwards'; // 应用新动画
-                }, 10);
+      // 悬停显示逻辑
+      header.addEventListener('mouseover', () => copyIcon.style.opacity = '1');
+      header.addEventListener('mouseout', () => copyIcon.style.opacity = '0');
 
-                // 设置自动隐藏定时器
-                hideTimeout = setTimeout(function () {
-                    alertDiv.style.animation = 'slideOut 0.5s forwards'; // 应用消失动画
-                    setTimeout(function () {
-                        alertDiv.style.display = 'none';
-                    }, 500);
-                }, 3000);
-            }
+      // 点击复制逻辑
+      copyIcon.addEventListener('click', () => {
+        const url = window.location.href.split('#')[0] + '#' + header.id;
+        
+        navigator.clipboard.writeText(url).then(() => {
+          if (alertDiv) {
+            // 显示动画
+            alertDiv.classList.remove('hidden');
+            // 强制重绘以触发 transition
+            void alertDiv.offsetWidth; 
+            alertDiv.classList.add('show');
+
+            // 清除旧定时器
+            if (hideTimeout) clearTimeout(hideTimeout);
+
+            // 3秒后隐藏
+            hideTimeout = setTimeout(() => {
+              alertDiv.classList.remove('show');
+              // 等待动画结束后再 hidden
+              setTimeout(() => {
+                alertDiv.classList.add('hidden');
+              }, 500);
+            }, 3000);
+          }
         });
+      });
     });
   });
-</script> <script>(function(){const baseUrl = "https://fatbobman.com/ads/";
+})();</script> <script>(function(){const baseUrl = "https://fatbobman.com/ads/";
 const langSuffix = "zh";
 const utmTerm = "snippetzh/ensuring-full-text-display-in-swiftui-techniques-and-solutions";
 
@@ -1286,35 +1302,35 @@ const utmTerm = "snippetzh/ensuring-full-text-display-in-swiftui-techniques-and-
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.DgEmobiE.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">相关提示</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/snippet/resolving-inconsistent-spacing-in-swiftui-vstackhstack-layouts/" id="relatedPosts-修复 SwiftUI Stack 布局中的不规则间距" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.DgEmobiE.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">相关提示</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/snippet/swiftui-implicit-vs-explicit-animations/" id="relatedPosts-SwiftUI：隐式动画与显式动画的区别" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>修复 SwiftUI Stack 布局中的不规则间距</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/preventing-scrollview-content-clipping-in-swiftui/" id="relatedPosts-解决 SwiftUI ScrollView 内容截剪问题" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🛎️</span>SwiftUI：隐式动画与显式动画的区别</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/swift-testing-differences-between-expect-and-require/" id="relatedPosts-Swift 测试：#expect 和 #require 的使用场景" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>解决 SwiftUI ScrollView 内容截剪问题</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/differences-between-gesturestate-and-state-in-swiftui/" id="relatedPosts-@GestureState 与 @State 的区别及适用场景" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>Swift 测试：#expect 和 #require 的使用场景</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/fixing-swiftlint-configuration-not-working-in-monorepo-projects/" id="relatedPosts-解决在 Monorepo 项目中 SwiftLint 配置文件无效" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>@GestureState 与 @State 的区别及适用场景</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/speed-up-compilation-with-prebuilt-swift-syntax/" id="relatedPosts-使用 Swift-Syntax 的预构建版本，加快编译速度" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>解决在 Monorepo 项目中 SwiftLint 配置文件无效</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/fix-algolia-search-box-auto-scrolling-issue-in-safari/" id="relatedPosts-修复 Algolia 搜索框在 Safari 下关闭后自动滚动的问题" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>使用 Swift-Syntax 的预构建版本，加快编译速度</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🛎️</span>修复 Algolia 搜索框在 Safari 下关闭后自动滚动的问题</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95
