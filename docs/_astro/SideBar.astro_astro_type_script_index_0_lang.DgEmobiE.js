@@ -1,0 +1,1 @@
+import{_ as e}from"./preload-helper.CLcXU_4U.js";window.innerWidth>=768&&e(()=>import("./floatsidebar.BiS7WK6s.js"),[]).then(i=>{i.initFloatSidebar("right")}).catch(i=>console.error("Failed to load sidebar:",i));
