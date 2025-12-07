@@ -369,6 +369,30 @@ Fatbobman's <span class="text-primary">Blog</span> </span> </div> <p class="text
   if (typeof window !== 'undefined') {
     const videos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
 
+    const disableTooltipsOnTouch = () => {
+      const isTouch =
+        'ontouchstart' in window ||
+        (navigator && navigator.maxTouchPoints > 0) ||
+        (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+      if (!isTouch) {
+        return;
+      }
+      const triggers = document.querySelectorAll('[data-tooltip-target]');
+      triggers.forEach((trigger) => {
+        const tooltipId = trigger.getAttribute('data-tooltip-target');
+        trigger.removeAttribute('data-tooltip-target');
+        trigger.removeAttribute('data-tooltip-placement');
+        if (tooltipId) {
+          const tooltipEl = document.getElementById(tooltipId);
+          if (tooltipEl && tooltipEl.parentNode) {
+            tooltipEl.parentNode.removeChild(tooltipEl);
+          }
+        }
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', disableTooltipsOnTouch);
+
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver(
         (entries) => {

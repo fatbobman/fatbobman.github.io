@@ -375,8 +375,22 @@ Issue #29 </span>  <h1 class="
   }
 </style> <script>(function(){const lang = "en";
 
+  const isTouchDevice = () => {
+    if (typeof window === 'undefined') return false;
+    return (
+      'ontouchstart' in window ||
+      (navigator && navigator.maxTouchPoints > 0) ||
+      window.matchMedia('(pointer: coarse)').matches
+    );
+  };
+
   // 使用 defer 或 load 事件确保 DOM 就绪
   document.addEventListener('DOMContentLoaded', () => {
+    if (isTouchDevice()) {
+      // 触摸设备不启用复制功能，避免与点击行为冲突
+      return;
+    }
+
     let hideTimeout;
     const alertDiv = document.getElementById('copy-alert');
 
@@ -1065,7 +1079,7 @@ const utmTerm = "weekly29";
   " aria-label="Toggle Table of Contents"> <!-- 
     单一图标
     group-[.active]:rotate-90 -> 当父容器有 active 类时，图标旋转 90 度
-  --> <svg class="w-5 h-5 transition-transform duration-300 group-[.active]:rotate-90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-toc"></use> </svg> </div> </div> <!-- 列表内容 --> <div class="text-default text-xxs xl:text-xs hidden max-h-[70vh] overflow-y-auto" id="toc-list" data-source-type="weekly" aria-live="polite" style="scroll-behavior: smooth;"></div> </div> </div> <script type="module" src="/_astro/TOC.astro_astro_type_script_index_0_lang.DRlVCDx9.js"></script> <div class="hidden md:block md:absolute" id="sidebar" style="right: -50px; top: 0px"> <div class="invisible flex flex-col space-y-4 text-muted items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-out" id="sidebar-content"> <!-- <PreviousPost lang={lang} post = {post} source = {source}/> --> <!-- <NextPost lang={lang} post = {post} source = {source} /> --> <!-- <DictButton lang={lang} post = {post}/> --> <!-- <ShareWithBlueSky lang={lang} post = {post} source = {source}/> --> <!-- <ShareWithFacebook lang={lang} post = {post} source = {source}/> --> <!-- { lang === Lang.ZH &&
+  --> <svg class="w-5 h-5 transition-transform duration-300 group-[.active]:rotate-90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-toc"></use> </svg> </div> </div> <!-- 列表内容 --> <div class="text-default text-xxs xl:text-xs hidden max-h-[70vh] overflow-y-auto" id="toc-list" data-source-type="weekly" aria-live="polite" style="scroll-behavior: smooth;"></div> </div> </div> <script type="module" src="/_astro/TOC.astro_astro_type_script_index_0_lang.B1ErLf9O.js"></script> <div class="hidden md:block md:absolute" id="sidebar" style="right: -50px; top: 0px"> <div class="invisible flex flex-col space-y-4 text-muted items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-out" id="sidebar-content"> <!-- <PreviousPost lang={lang} post = {post} source = {source}/> --> <!-- <NextPost lang={lang} post = {post} source = {source} /> --> <!-- <DictButton lang={lang} post = {post}/> --> <!-- <ShareWithBlueSky lang={lang} post = {post} source = {source}/> --> <!-- <ShareWithFacebook lang={lang} post = {post} source = {source}/> --> <!-- { lang === Lang.ZH &&
     <ShareWithWeibo lang={lang} post = {post} source = {source}/>
     } --> <!-- <ShareWithLinkedin lang={lang} post = {post} source = {source}/> --> <a href="#subscript" id="sidebar-subscribe-btn" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
@@ -1281,7 +1295,13 @@ const utmTerm = "weekly29";
     if (topBtn) {
       // 1. 点击事件
       topBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const header = document.getElementById('wholeHeader');
+        if (header) {
+          const target = header.offsetTop + header.offsetHeight;
+          window.scrollTo({ top: target, behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       });
 
       // 2. 滚动监听
@@ -1424,6 +1444,30 @@ Fatbobman's <span class="text-primary">Blog</span> </span> </div> <p class="text
 
   if (typeof window !== 'undefined') {
     const videos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+
+    const disableTooltipsOnTouch = () => {
+      const isTouch =
+        'ontouchstart' in window ||
+        (navigator && navigator.maxTouchPoints > 0) ||
+        (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+      if (!isTouch) {
+        return;
+      }
+      const triggers = document.querySelectorAll('[data-tooltip-target]');
+      triggers.forEach((trigger) => {
+        const tooltipId = trigger.getAttribute('data-tooltip-target');
+        trigger.removeAttribute('data-tooltip-target');
+        trigger.removeAttribute('data-tooltip-placement');
+        if (tooltipId) {
+          const tooltipEl = document.getElementById(tooltipId);
+          if (tooltipEl && tooltipEl.parentNode) {
+            tooltipEl.parentNode.removeChild(tooltipEl);
+          }
+        }
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', disableTooltipsOnTouch);
 
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver(
