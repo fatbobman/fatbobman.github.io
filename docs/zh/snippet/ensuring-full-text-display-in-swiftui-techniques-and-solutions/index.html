@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>SwiftUI 文本截断的解决方法</title>
-<meta name="description" content="避免 SwiftUI 中 Text 截断问题。使用 fixedSize、minimumScaleFactor 和 ViewThatFits 动态调整布局，或用 ScrollView 显示完整内容。">
+<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>SwiftUI 文本截断指南：从自动缩小到 ViewThatFits 自适应布局</title>
+<meta name="description" content="Text 显示不全怎么办？4种方案彻底解决 SwiftUI 文本截断问题：fixedSize 强制展开、minimumScaleFactor 自动缩放、ViewThatFits 智能切换及 ScrollView 滚动。">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/zh/snippet/ensuring-full-text-display-in-swiftui-techniques-and-solutions/">
-<meta property="og:title" content="SwiftUI 文本截断的解决方法">
-<meta property="og:description" content="避免 SwiftUI 中 Text 截断问题。使用 fixedSize、minimumScaleFactor 和 ViewThatFits 动态调整布局，或用 ScrollView 显示完整内容。">
+<meta property="og:title" content="SwiftUI 文本截断指南：从自动缩小到 ViewThatFits 自适应布局">
+<meta property="og:description" content="Text 显示不全怎么办？4种方案彻底解决 SwiftUI 文本截断问题：fixedSize 强制展开、minimumScaleFactor 自动缩放、ViewThatFits 智能切换及 ScrollView 滚动。">
 <meta property="og:url" content="https://fatbobman.com/zh/snippet/ensuring-full-text-display-in-swiftui-techniques-and-solutions/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/question-and-answer.webp">
@@ -38,14 +38,27 @@
       }
     </script><script type='application/ld+json'>{
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
+  "@type": "TechArticle",
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2025-01-02T00:20:00.000Z",
+  "dateModified": "2025-12-11T00:00:00.000Z",
   "datePublished": "2025-01-02T00:20:00.000Z",
-  "description": "避免 SwiftUI 中 Text 截断问题。使用 fixedSize、minimumScaleFactor 和 ViewThatFits 动态调整布局，或用 ScrollView 显示完整内容。",
-  "headline": "SwiftUI 文本截断的解决方法",
+  "proficiencyLevel": "Beginner",
+  "programmingLanguage": "Swift",
+  "dependencies": "SwiftUI, iOS 13+, iOS 16+",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "SwiftUI Layout"
+    },
+    {
+      "@type": "Thing",
+      "name": "Typography"
+    }
+  ],
+  "description": "Text 显示不全怎么办？4种方案彻底解决 SwiftUI 文本截断问题：fixedSize 强制展开、minimumScaleFactor 自动缩放、ViewThatFits 智能切换及 ScrollView 滚动。",
+  "headline": "SwiftUI 文本截断指南：从自动缩小到 ViewThatFits 自适应布局",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/question-and-answer.webp"
@@ -64,9 +77,9 @@
     }
   },
   "articleSection": [
-    "提示、技巧",
-    "SwiftUI"
+    "提示、技巧"
   ],
+  "keywords": "SwiftUI, Text truncation, fixedSize, minimumScaleFactor, ViewThatFits, 文本截断, 自动缩小, SwiftUI layout, multiline text",
   "inLanguage": "zh-Hans"
 }</script><script type='application/ld+json'>{
   "@context": "https://schema.org",
@@ -275,49 +288,50 @@ const enableStickyInMobile = true;
       flex items-center justify-center w-16 h-16 text-4xl rounded-2xl shadow-sm
       bg-gray-50 border border-gray-100
       dark:bg-slate-800 dark:border-slate-700
-    "> 🔥 </span> </div>  <h1 class="
+    "> 🔦 </span> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-wider
-    "> SwiftUI 文本截断的解决方法 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 tracking-wide"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 东坡肘子 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-02T00:20:00.000Z"> 2025 年 1 月 2 日 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
-<p>当 SwiftUI 中的 <code>Text</code> 因空间不足被截断时，可使用 <code>fixedSize</code> 忽略约束、<code>minimumScaleFactor</code> 缩小字体、<code>ViewThatFits</code> 动态选择合适视图，或通过 <code>ScrollView</code> 实现滚动，确保完整显示文本。</p>
+    "> SwiftUI 文本截断指南：从自动缩小到 ViewThatFits 自适应布局 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 tracking-wide"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 东坡肘子 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-02T00:20:00.000Z"> 2025 年 1 月 2 日 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
+<div class="mdx-intro"><p><strong>核心速览</strong>：当 SwiftUI 的 <code>Text</code> 出现省略号（截断）时，通常是因为父视图提供的尺寸不足。若需强迫不换行请用 <code>.fixedSize(horizontal: false, vertical: true)</code>；若需单行缩小字号请用 <code>.minimumScaleFactor</code>；若需根据空间动态切换布局，iOS 16+ 的 <code>ViewThatFits</code> 是最佳选择。</p></div>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
-<h2 id="问题">问题</h2>
-<p>在 SwiftUI 中，当视图空间不足以显示 <code>Text</code> 内容时，系统会默认对文字进行截断。这种情况下，如何确保 <code>Text</code> 的内容完整显示呢？</p>
-<h2 id="原因">原因</h2>
-<p><code>Text</code> 是一个自适应组件，它根据父视图提供的尺寸调整显示状态。当父视图的空间不足时，<code>Text</code> 会优先进行截断，而非自动换行或缩放。</p>
+<h2 id="问题描述">问题描述</h2>
+<p>在 SwiftUI 中，<code>Text</code> 组件默认遵循“自适应”原则。当父视图提供的空间（Proposed Size）小于文本所需的实际尺寸时，<code>Text</code> 会优先截断内容（显示 <code>...</code>），而不是自动撑开布局或缩小字体。</p>
 <h2 id="解决方案">解决方案</h2>
-<h3 id="1-使用-fixedsize-修饰器">1. 使用 fixedSize 修饰器</h3>
-<p><code>fixedSize</code> 可以让 <code>Text</code> 忽略父视图在特定轴向上的约束，从而占用足够的空间完整显示内容。</p>
-<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
-  <span class="select-none">Swift</span>
-  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
-    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </div>
-    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </div>
-  </button>
-</div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">This is a very long text that might be truncated.</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">fixedSize</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 忽略横向和纵向约束</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">This is a very long text that might be truncated.</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">fixedSize</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">horizontal</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> true</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">vertical</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> false</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 忽略横向约束</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">This is a very long text that might be truncated.</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">fixedSize</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">horizontal</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> false</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">vertical</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> true</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 忽略纵向约束</span></span></code></pre>
+<p>针对不同的业务场景，有以下 4 种标准解决方案：</p>
+<h3 id="1-强制展开fixedsize">1. 强制展开：fixedSize</h3>
+<p><code>fixedSize</code> 告诉 SwiftUI：“忽略父视图的建议尺寸，请给我足够的空间来显示完整内容”。</p>
 <ul>
-<li>如果设置 <code>.fixedSize(horizontal: true, vertical: false)</code>，<code>Text</code> 将在横向完整显示内容（即使超出屏幕）。</li>
-<li>使用 <code>.fixedSize(horizontal: false, vertical: true)</code>，<code>Text</code> 会自动换行，直到内容全部显示完毕。</li>
+<li><strong>场景</strong>：多行文本在 <code>List</code> 或 <code>VStack</code> 中显示不全。</li>
 </ul>
-<h3 id="2-使用-minimumscalefactor-缩小字体">2. 使用 minimumScaleFactor 缩小字体</h3>
-<p>通过 <code>minimumScaleFactor</code>，可以让 <code>Text</code> 在空间不足时自动缩小字体尺寸，而不是截断内容。</p>
+<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
+  <span class="select-none">Swift</span>
+  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
+    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    </div>
+    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+  </button>
+</div>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// 情况 A：忽略所有约束（可能导致超出屏幕边界）</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">这是一段非常长的文本...</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">fixedSize</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> </span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// 情况 B：标准多行文本模式（推荐）</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// 宽度遵循父视图约束，高度自动撑开以容纳所有文字</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">这是一段需要自动换行的长文本...</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">fixedSize</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">horizontal</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> false</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">vertical</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> true</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> </span></span></code></pre>
+<h3 id="2-自动缩放minimumscalefactor">2. 自动缩放：minimumScaleFactor</h3>
+<p>允许文本在空间不足时自动缩小字号，直到达到指定的最小比例。</p>
+<ul>
+<li><strong>场景</strong>：标题栏、卡片副标题，希望保持单行显示但允许字体变小。</li>
+</ul>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -335,13 +349,15 @@ const enableStickyInMobile = true;
   </button>
 </div>
 <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">This is a very long text that might be truncated.</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">lineLimit</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">1</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 限制为单行</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">minimumScaleFactor</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">0.5</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 最小缩放比例为 50%</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">lineLimit</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">1</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // 限制为单行</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">minimumScaleFactor</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">0.5</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 允许缩小到原字体的 50%</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">frame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">width</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 200</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span></code></pre>
-<p><img src="https://cdn.fatbobman.com/viewThatFits-Text-demo3-minimumScaleFactor_2023-11-05_17.55.33.2023-11-05%2017_56_16.gif" alt="minimumScaleFactor"/></p>
-<p>这种方法适用于希望内容显示在单行内，但字体大小可以调整的场景。</p>
-<h3 id="3-使用-viewthatfits">3. 使用 ViewThatFits</h3>
-<p><code>ViewThatFits</code> 提供了一种灵活的方式，可以根据父视图的可用空间选择合适的子视图，确保内容完整显示。</p>
+<p><img src="https://cdn.fatbobman.com/viewThatFits-Text-demo3-minimumScaleFactor_2023-11-05_17.55.33.2023-11-05%2017_56_16.gif" alt="minimumScaleFactor 效果演示"/></p>
+<h3 id="3-智能切换viewthatfits-ios-16">3. 智能切换：ViewThatFits (iOS 16+)</h3>
+<p><code>ViewThatFits</code> 是现代 SwiftUI 布局的神器。它会依次评估子视图，选择第一个“能完整放入可用空间”的视图。</p>
+<ul>
+<li><strong>场景</strong>：空间够大时显示完整长文，空间不足时显示精简版或图标。</li>
+</ul>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -358,27 +374,28 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> TextDemo</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F286C4">    @</span><span style="color:#AB5959;--shiki-dark:#F286C4">State</span><span style="color:#1E754F;--shiki-dark:#F286C4"> private</span><span style="color:#1E754F;--shiki-dark:#F286C4"> var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> width: CGFloat </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 100</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> AdaptiveTextDemo</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> body: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        VStack</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            Slider</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">value</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> $width, </span><span style="color:#998418;--shiki-dark:#97E1F1">in</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 50</span><span style="color:#AB5959;--shiki-dark:#F286C4">...</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">300</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                .</span><span style="color:#998418;--shiki-dark:#97E1F1">padding</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            ViewThatFits</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">This is a very long text that might be truncated.</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">This is a long text.</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Short text.</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">frame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">width</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> width</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">border</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">red</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        ViewThatFits</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">in</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">horizontal</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // 优先尝试显示完整长文本</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">This is a very long text that might be truncated.</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            </span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // 如果放不下，尝试显示短文本</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">This is a long text.</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            </span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // 最后兜底方案</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Short.</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        .</span><span style="color:#998418;--shiki-dark:#97E1F1">frame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">width</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 200</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 模拟容器宽度限制</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        .</span><span style="color:#998418;--shiki-dark:#97E1F1">border</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">red</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<p><img src="https://cdn.fatbobman.com/viewThatFits-Text-Demo_2023-11-05_17.26.17.2023-11-05%2017_27_16.gif" alt="ViewThatFits"/></p>
-<p>当父视图空间不足时，<code>ViewThatFits</code> 会选择可以完整显示的子视图。</p>
-<h3 id="4-使用滚动视图scrollview">4. 使用滚动视图（ScrollView）</h3>
-<p>如果内容较多且空间有限，可以将 <code>Text</code> 放在可滚动容器 （<code>ScrollView</code> 、<code>List</code>）中，使其可滚动显示。</p>
+<p><img src="https://cdn.fatbobman.com/viewThatFits-Text-Demo_2023-11-05_17.26.17.2023-11-05%2017_27_16.gif" alt="ViewThatFits 效果演示"/></p>
+<h3 id="4-滚动展示scrollview">4. 滚动展示：ScrollView</h3>
+<p>当内容长度不可控且空间绝对有限时，滚动是唯一的选择。</p>
+<ul>
+<li><strong>场景</strong>：用户协议、长篇说明。</li>
+</ul>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -396,14 +413,46 @@ const enableStickyInMobile = true;
   </button>
 </div>
 <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">ScrollView</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">This is a very long text that might be truncated.</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">This is a very long text...</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        .</span><span style="color:#998418;--shiki-dark:#97E1F1">frame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">maxWidth</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#998418;--shiki-dark:#BF9EEE">infinity</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">alignment</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">leading</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
+<h2 id="总结">总结</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th style="text-align:left">方案</th><th style="text-align:left">关键词</th><th style="text-align:left">适用场景</th></tr></thead><tbody><tr><td style="text-align:left"><strong>fixedSize</strong></td><td style="text-align:left">强制换行</td><td style="text-align:left">必须在一行中完整表达</td></tr><tr><td style="text-align:left"><strong>minimumScaleFactor</strong></td><td style="text-align:left">自动缩小</td><td style="text-align:left">仪表盘数值、单行标题、对字体大小不统一不敏感</td></tr><tr><td style="text-align:left"><strong>ViewThatFits</strong></td><td style="text-align:left">自适应布局</td><td style="text-align:left">响应式设计，不同宽度显示不同内容</td></tr><tr><td style="text-align:left"><strong>ScrollView</strong></td><td style="text-align:left">滚动</td><td style="text-align:left">内容极长的文章</td></tr></tbody></table>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
-<li><a href="/zh/posts/mastering-viewthatfits/" target="_blank">掌握 ViewThatFits</a></li>
-<li><a href="/zh/posts/layout-dimensions-1/" target="_blank">fixedSize 工作原理</a></li>
-</ul>
-<p>通过以上方法，可以根据不同场景选择合适的方案，确保 <code>Text</code> 的内容完整显示。</p> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <script type="module">var l=document.querySelectorAll("article");l.forEach(function(t){var e=t.querySelectorAll("a");e.forEach(function(r){r.setAttribute("target","_blank")})});</script> <script>
+<li><a href="/zh/posts/mastering-viewthatfits/" target="_blank">掌握 ViewThatFits：SwiftUI 自适应布局指南</a></li>
+<li><a href="/zh/posts/layout-dimensions-1/" target="_blank">SwiftUI 布局原理：尺寸协商机制</a></li>
+</ul> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <script type="module">var l=document.querySelectorAll("article");l.forEach(function(t){var e=t.querySelectorAll("a");e.forEach(function(r){r.setAttribute("target","_blank")})});</script> <script>
   window.copyCode = function(button, event) {
     if (event) event.preventDefault();
 
@@ -1158,7 +1207,7 @@ const utmTerm = "snippetzh/ensuring-full-text-display-in-swiftui-techniques-and-
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=%E5%B0%8F%E8%B4%B4%E5%A3%AB%EF%BC%9ASwiftUI%20%E6%96%87%E6%9C%AC%E6%88%AA%E6%96%AD%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%0A&url=%2Fzh%2Fsnippet%2Fensuring-full-text-display-in-swiftui-techniques-and-solutions%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=%E5%B0%8F%E8%B4%B4%E5%A3%AB%EF%BC%9ASwiftUI%20%E6%96%87%E6%9C%AC%E6%88%AA%E6%96%AD%E6%8C%87%E5%8D%97%EF%BC%9A%E4%BB%8E%E8%87%AA%E5%8A%A8%E7%BC%A9%E5%B0%8F%E5%88%B0%20ViewThatFits%20%E8%87%AA%E9%80%82%E5%BA%94%E5%B8%83%E5%B1%80%0A&url=%2Fzh%2Fsnippet%2Fensuring-full-text-display-in-swiftui-techniques-and-solutions%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
@@ -1335,35 +1384,35 @@ const utmTerm = "snippetzh/ensuring-full-text-display-in-swiftui-techniques-and-
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">相关提示</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/snippet/why-core-data-or-swiftdata-cloud-sync-stops-working-after-app-store-login/" id="relatedPosts-修复 Core Data/SwiftData 上架后的云同步问题" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">相关提示</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/snippet/speed-up-compilation-with-prebuilt-swift-syntax/" id="relatedPosts-使用 Swift-Syntax 的预构建版本，加快编译速度" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>修复 Core Data/SwiftData 上架后的云同步问题</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/swiftui-implicit-vs-explicit-animations/" id="relatedPosts-SwiftUI：隐式动画与显式动画的区别" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>使用 Swift-Syntax 的预构建版本，加快编译速度</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/why-core-data-or-swiftdata-cloud-sync-stops-working-after-app-store-login/" id="relatedPosts-修复 Core Data/SwiftData 上架后的云同步问题" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🛎️</span>SwiftUI：隐式动画与显式动画的区别</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/fixing-swiftlint-configuration-not-working-in-monorepo-projects/" id="relatedPosts-解决在 Monorepo 项目中 SwiftLint 配置文件无效" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>修复 Core Data/SwiftData 上架后的云同步问题</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/swift-testing-differences-between-expect-and-require/" id="relatedPosts-Swift 测试：#expect 和 #require 的使用场景" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>解决在 Monorepo 项目中 SwiftLint 配置文件无效</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/disable-transition-animations-for-sheet-and-navigationstack-in-swiftui/" id="relatedPosts-如何屏蔽 Sheet、NavigationStack 的转场动画" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>Swift 测试：#expect 和 #require 的使用场景</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/how-to-forward-custom-tag-events-to-gtm-running-inside-partytown/" id="relatedPosts-如何让主线程向 Partytown 中运行的 GTM 正常转发事件" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>如何屏蔽 Sheet、NavigationStack 的转场动画</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>如何让主线程向 Partytown 中运行的 GTM 正常转发事件</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95

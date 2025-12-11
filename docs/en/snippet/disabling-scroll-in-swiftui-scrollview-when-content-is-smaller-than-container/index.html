@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Disable Scroll in SwiftUI ScrollView for Small Content</title>
-<meta name="description" content="Prevent scrolling in SwiftUI ScrollView when content is smaller. Use scrollBounceBehavior, ViewThatFits, or Introspect to enhance user experience.">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>How to Disable Scrolling in SwiftUI When Content Fits</title>
+<meta name="description" content="Prevent your ScrollView from bouncing when content is too short. Learn how to use `scrollBounceBehavior(.basedOnSize)` and `ViewThatFits` for adaptive scrolling layouts.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/en/snippet/disabling-scroll-in-swiftui-scrollview-when-content-is-smaller-than-container/">
-<meta property="og:title" content="Disable Scroll in SwiftUI ScrollView for Small Content">
-<meta property="og:description" content="Prevent scrolling in SwiftUI ScrollView when content is smaller. Use scrollBounceBehavior, ViewThatFits, or Introspect to enhance user experience.">
+<meta property="og:title" content="How to Disable Scrolling in SwiftUI When Content Fits">
+<meta property="og:description" content="Prevent your ScrollView from bouncing when content is too short. Learn how to use `scrollBounceBehavior(.basedOnSize)` and `ViewThatFits` for adaptive scrolling layouts.">
 <meta property="og:url" content="https://fatbobman.com/en/snippet/disabling-scroll-in-swiftui-scrollview-when-content-is-smaller-than-container/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/question-and-answer.webp">
@@ -38,14 +38,27 @@
       }
     </script><script type='application/ld+json'>{
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
+  "@type": "TechArticle",
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2025-01-01T00:20:00.000Z",
+  "dateModified": "2025-12-11T00:00:00.000Z",
   "datePublished": "2025-01-01T00:20:00.000Z",
-  "description": "Prevent scrolling in SwiftUI ScrollView when content is smaller. Use scrollBounceBehavior, ViewThatFits, or Introspect to enhance user experience.",
-  "headline": "Disable Scroll in SwiftUI ScrollView for Small Content",
+  "proficiencyLevel": "Beginner",
+  "programmingLanguage": "Swift",
+  "dependencies": "SwiftUI, iOS 16+, Swift 6",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "SwiftUI Layout"
+    },
+    {
+      "@type": "Thing",
+      "name": "User Experience"
+    }
+  ],
+  "description": "Prevent your ScrollView from bouncing when content is too short. Learn how to use `scrollBounceBehavior(.basedOnSize)` and `ViewThatFits` for adaptive scrolling layouts.",
+  "headline": "How to Disable Scrolling in SwiftUI When Content Fits",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/question-and-answer.webp"
@@ -64,9 +77,9 @@
     }
   },
   "articleSection": [
-    "Quick Tips",
-    "SwiftUI"
+    "Tips and Tricks, Quick Tips"
   ],
+  "keywords": "SwiftUI, ScrollView, scrollBounceBehavior, ViewThatFits, disable scrolling, iOS 16.4, basedOnSize, conditional scrolling",
   "inLanguage": "en"
 }</script><script type='application/ld+json'>{
   "@context": "https://schema.org",
@@ -275,18 +288,19 @@ const enableStickyInMobile = true;
       flex items-center justify-center w-16 h-16 text-4xl rounded-2xl shadow-sm
       bg-gray-50 border border-gray-100
       dark:bg-slate-800 dark:border-slate-700
-    "> 🔦 </span> </div>  <h1 class="
+    "> 🔋 </span> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-tight
-    "> Disable Scroll in SwiftUI ScrollView for Small Content </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-01T00:20:00.000Z"> Jan 1, 2025 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
-<p>In SwiftUI, avoid unnecessary scrolling in ScrollView when content is smaller than the container. Use <code>scrollBounceBehavior(.basedOnSize)</code> for iOS 16.4+, <code>ViewThatFits</code> for iOS 16+, and <code>Introspect</code> for older iOS versions to dynamically control scrolling behavior.</p>
+    "> How to Disable Scrolling in SwiftUI When Content Fits </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-01T00:20:00.000Z"> Jan 1, 2025 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
+<div class="mdx-intro"><p><strong>TL;DR</strong>: In iOS 16.4+ (and iOS 26), the optimal solution to fix “non-scrolling content” behavior is the <code>.scrollBounceBehavior(.basedOnSize)</code> modifier. For more complex scenarios requiring layout switching, <code>ViewThatFits</code> is the recommended approach.</p></div>
+<p>By default, a SwiftUI <code>ScrollView</code> always allows the user to drag and bounce the content, even if the content height is smaller than the screen height. In many UI designs, this “always-on” bounce can feel unpolished. This article explores three solutions ranging from native APIs to layout tricks.</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
-<h2 id="problem-description">Problem Description</h2>
-<p>By default, <code>ScrollView</code> allows scrolling regardless of whether the content size is smaller than the container. This can lead to unnecessary interactions and detract from the user experience.</p>
-<h2 id="solutions">Solutions</h2>
-<p>Here are methods to address this issue across different iOS versions:</p>
-<h3 id="1-using-scrollbouncebehavior-ios-164">1. Using scrollBounceBehavior (iOS 16.4+)</h3>
-<p><code>scrollBounceBehavior</code>, introduced in iOS 16.4, dynamically controls scrolling behavior based on content size. Setting it to <code>.basedOnSize</code> disables scrolling when the content size is smaller than the container.</p>
+<h2 id="solution-1-the-native-gold-standard-ios-164">Solution 1: The Native Gold Standard (iOS 16.4+)</h2>
+<p>This is currently the standard practice. Using the <code>scrollBounceBehavior</code> modifier, the system automatically detects the relationship between the content size and the container size.</p>
+<ul>
+<li><strong>Use Case</strong>: Most standard lists and scroll views.</li>
+<li><strong>Pros</strong>: One line of code, system-level support, optimal performance.</li>
+</ul>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -305,114 +319,133 @@ const enableStickyInMobile = true;
 </div>
 <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> BasedOnSizeView</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> body: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        HStack</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // Scrolling is enabled when content exceeds the container size</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            ScrollView</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                ForEach</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">0</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ..&lt;</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 50</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> idx </span><span style="color:#1E754F;--shiki-dark:#F286C4">in</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                    Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">\(</span><span style="color:#B56959;--shiki-dark:#E7EE98">idx</span><span style="color:#B56959;--shiki-dark:#F286C4">)</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">frame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">maxWidth</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#998418;--shiki-dark:#BF9EEE">infinity</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">                }</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                .</span><span style="color:#998418;--shiki-dark:#97E1F1">border</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">Color.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">blue</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // Scrolling is disabled when content is smaller than the container</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            List</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">0</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ..&lt;</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 4</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> idx </span><span style="color:#1E754F;--shiki-dark:#F286C4">in</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">\(</span><span style="color:#B56959;--shiki-dark:#E7EE98">idx</span><span style="color:#B56959;--shiki-dark:#F286C4">)</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">border</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">Color.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">green</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        .</span><span style="color:#998418;--shiki-dark:#97E1F1">scrollBounceBehavior</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">basedOnSize</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        .</span><span style="color:#998418;--shiki-dark:#97E1F1">frame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">width</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 400</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">height</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 500</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<h3 id="2-using-viewthatfits-ios-16">2. Using ViewThatFits (iOS 16+)</h3>
-<p><code>ViewThatFits</code> dynamically selects between multiple view configurations based on available space. By providing both scrollable and non-scrollable configurations, the system automatically chooses the appropriate view based on content size.</p>
-<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
-  <span class="select-none">Swift</span>
-  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
-    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </div>
-    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </div>
-  </button>
-</div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> ScrollViewDemo</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F286C4">    @</span><span style="color:#AB5959;--shiki-dark:#F286C4">State</span><span style="color:#1E754F;--shiki-dark:#F286C4"> var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> step: CGFloat </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 3</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> count: </span><span style="color:#998418;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic">Int</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#998418;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> Int</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">step</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> }</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> body: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        VStack</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">alignment</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">leading</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Count: </span><span style="color:#999999;--shiki-dark:#F286C4">\(</span><span style="color:#B56959;--shiki-dark:#E7EE98">count</span><span style="color:#B56959;--shiki-dark:#F286C4">)</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            Slider</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">value</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> $step, </span><span style="color:#998418;--shiki-dark:#97E1F1">in</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 3</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ...</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 20</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">step</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 1</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            ViewThatFits</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                content</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                ScrollView</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">horizontal</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">showsIndicators</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> true</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    content</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">                }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        .</span><span style="color:#998418;--shiki-dark:#97E1F1">frame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">width</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 300</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        .</span><span style="color:#998418;--shiki-dark:#97E1F1">border</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">red</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> content: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        HStack</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            ForEach</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">0</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ..&lt;</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> count, </span><span style="color:#998418;--shiki-dark:#97E1F1">id</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> \.</span><span style="color:#1E754F;--shiki-dark:#F286C4">self</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> i </span><span style="color:#1E754F;--shiki-dark:#F286C4">in</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Rectangle</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    .</span><span style="color:#998418;--shiki-dark:#97E1F1">fill</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">orange</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">gradient</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    .</span><span style="color:#998418;--shiki-dark:#97E1F1">frame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">width</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 30</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">height</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 30</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    .</span><span style="color:#998418;--shiki-dark:#97E1F1">overlay</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                        Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">i, </span><span style="color:#998418;--shiki-dark:#97E1F1">format</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">number</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">foregroundStyle</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">white</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">                    )</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<h3 id="3-using-introspect-for-older-ios-versions">3. Using Introspect (For Older iOS Versions)</h3>
-<p><a href="https://github.com/siteline/swiftui-introspect?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Introspect</a> is a third-party library that provides access to UIKit components. It allows disabling scrolling on older iOS versions by manipulating <code>UIScrollView</code> properties.</p>
-<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
-  <span class="select-none">Swift</span>
-  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
-    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </div>
-    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </div>
-  </button>
-</div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> BaseOnSizeTest</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> body: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        ScrollView</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            ForEach</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">0</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ..&lt;</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 10</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">\(</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic">$0</span><span style="color:#B56959;--shiki-dark:#F286C4">)</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            VStack</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                ForEach</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">0</span><span style="color:#AB5959;--shiki-dark:#F286C4">..&lt;</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">5</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> idx </span><span style="color:#1E754F;--shiki-dark:#F286C4">in</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                    Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Item </span><span style="color:#999999;--shiki-dark:#F286C4">\(</span><span style="color:#B56959;--shiki-dark:#E7EE98">idx</span><span style="color:#B56959;--shiki-dark:#F286C4">)</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                        .</span><span style="color:#998418;--shiki-dark:#97E1F1">frame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">maxWidth</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#998418;--shiki-dark:#BF9EEE">infinity</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                        .</span><span style="color:#998418;--shiki-dark:#97E1F1">padding</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">                }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        .</span><span style="color:#998418;--shiki-dark:#97E1F1">introspect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">scrollView</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">on</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#998418;--shiki-dark:#97E1F1">iOS</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">v16</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">v17</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">v18</span><span style="color:#999999;--shiki-dark:#F6F6F4">))</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> scrollView </span><span style="color:#1E754F;--shiki-dark:#F286C4">in</span></span>
-<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // Disable scrolling if content size is smaller than the container size</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">            if</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> scrollView.contentSize.height </span><span style="color:#AB5959;--shiki-dark:#F286C4">&lt;</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> scrollView.bounds.height </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                scrollView.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">isScrollEnabled</span><span style="color:#AB5959;--shiki-dark:#F286C4"> =</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> false</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">        // Key code: Allow scroll bounce only when content exceeds container size</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        .</span><span style="color:#998418;--shiki-dark:#97E1F1">scrollBounceBehavior</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">basedOnSize</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">axes</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">vertical</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<h2 id="additional-resources">Additional Resources</h2>
+<h2 id="solution-2-layout-switching-viewthatfits">Solution 2: Layout Switching (ViewThatFits)</h2>
+<p>If you want to completely change the view structure when content is sparse (e.g., centering the content using a <code>VStack</code> when it fits, but using a <code>ScrollView</code> when it overflows), <code>ViewThatFits</code> is the best choice.</p>
+<ul>
+<li><strong>Use Case</strong>: Scenarios requiring completely different layouts for scrolling vs. non-scrolling states.</li>
+<li><strong>Mechanism</strong>: It attempts to render the views provided in the closure in order, selecting the first one that “fits” within the available space.</li>
+</ul>
+<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
+  <span class="select-none">Swift</span>
+  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
+    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    </div>
+    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+  </button>
+</div>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> AdaptiveScrollView</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> contentString: </span><span style="color:#998418;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic">String</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> body: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">        // 1. Try presenting content directly first (no scrolling)</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">        // 2. Fallback to ScrollView if height overflows</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        ViewThatFits</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">in</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">vertical</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            textContent</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            </span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            ScrollView</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                textContent</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        .</span><span style="color:#998418;--shiki-dark:#97E1F1">frame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">height</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 200</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        .</span><span style="color:#998418;--shiki-dark:#97E1F1">border</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">gray</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> textContent: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">contentString</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">padding</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">fixedSize</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">horizontal</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> false</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">vertical</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> true</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // Ensure text expands vertically</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
+<h2 id="solution-3-low-level-control-introspect">Solution 3: Low-Level Control (Introspect)</h2>
+<p>In rare scenarios where you need granular control via underlying <code>UIScrollView</code> properties (such as completely disabling gesture interaction via <code>isScrollEnabled = false</code> rather than just disabling the bounce), you can use the Introspect library.</p>
+<blockquote>
+<p><strong>Note</strong>: In the era of Swift 6 and iOS 26, the first two native solutions cover 99% of requirements. This should be considered a last resort.</p>
+</blockquote>
+<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
+  <span class="select-none">Swift</span>
+  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
+    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    </div>
+    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+  </button>
+</div>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">import</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> SwiftUIIntrospect</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">ScrollView</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    // Content...</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">introspect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">scrollView</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">on</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#998418;--shiki-dark:#97E1F1">iOS</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">v16</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">v17</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">v18</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">v26</span><span style="color:#999999;--shiki-dark:#F6F6F4">))</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> scrollView </span><span style="color:#1E754F;--shiki-dark:#F286C4">in</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    // Manual logic to check content size vs bounds</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    if</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> scrollView.contentSize.height </span><span style="color:#AB5959;--shiki-dark:#F286C4">&lt;=</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> scrollView.bounds.height </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        scrollView.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">isScrollEnabled</span><span style="color:#AB5959;--shiki-dark:#F286C4"> =</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> false</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span><span style="color:#1E754F;--shiki-dark:#F286C4"> else</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        scrollView.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">isScrollEnabled</span><span style="color:#AB5959;--shiki-dark:#F286C4"> =</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> true</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
+<h2 id="summary">Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th style="text-align:left">Approach</th><th style="text-align:left">API Requirement</th><th style="text-align:left">Complexity</th><th style="text-align:left">Recommendation</th></tr></thead><tbody><tr><td style="text-align:left"><strong>scrollBounceBehavior</strong></td><td style="text-align:left">iOS 16.4+</td><td style="text-align:left">⭐</td><td style="text-align:left">⭐⭐⭐⭐⭐</td></tr><tr><td style="text-align:left"><strong>ViewThatFits</strong></td><td style="text-align:left">iOS 16.0+</td><td style="text-align:left">⭐⭐</td><td style="text-align:left">⭐⭐⭐⭐</td></tr><tr><td style="text-align:left"><strong>Introspect</strong></td><td style="text-align:left">3rd Party Lib</td><td style="text-align:left">⭐⭐⭐</td><td style="text-align:left">⭐⭐</td></tr></tbody></table>
+<h2 id="further-reading">Further Reading</h2>
 <ul>
 <li><a href="/en/posts/mastering-viewthatfits/" target="_blank">Mastering ViewThatFits</a></li>
-<li><a href="/en/posts/new-features-of-scrollview-in-swiftui5/" target="_blank">New Features of ScrollView in SwiftUI 5</a></li>
-<li><a href="/en/posts/how_to_judge_scrollview_is_scrolling/" target="_blank">How to Determine If ScrollView or List is Scrolling</a></li>
+<li><a href="/en/posts/new-features-of-scrollview-in-swiftui5/" target="_blank">New Features in SwiftUI ScrollView</a></li>
 </ul> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <script type="module">var l=document.querySelectorAll("article");l.forEach(function(t){var e=t.querySelectorAll("a");e.forEach(function(r){r.setAttribute("target","_blank")})});</script> <script>
   window.copyCode = function(button, event) {
     if (event) event.preventDefault();
@@ -1168,7 +1201,7 @@ const utmTerm = "snippeten/disabling-scroll-in-swiftui-scrollview-when-content-i
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=Tip%3A%20Disable%20Scroll%20in%20SwiftUI%20ScrollView%20for%20Small%20Content%0A&url=%2Fen%2Fsnippet%2Fdisabling-scroll-in-swiftui-scrollview-when-content-is-smaller-than-container%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=Tip%3A%20How%20to%20Disable%20Scrolling%20in%20SwiftUI%20When%20Content%20Fits%0A&url=%2Fen%2Fsnippet%2Fdisabling-scroll-in-swiftui-scrollview-when-content-is-smaller-than-container%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
@@ -1345,35 +1378,35 @@ const utmTerm = "snippeten/disabling-scroll-in-swiftui-scrollview-when-content-i
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/how-to-make-a-swiftui-sheet-automatically-adjust-height/" id="relatedPosts-Auto-Adjust SwiftUI Sheet Height to Fit Content" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/ensuring-full-text-display-in-swiftui-techniques-and-solutions/" id="relatedPosts-Fixing Text Truncation in SwiftUI: From fixedSize to ViewThatFits" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>Auto-Adjust SwiftUI Sheet Height to Fit Content</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/sequential-display-tips-with-tipkit/" id="relatedPosts-Sequential Display Tips with TipKit" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔍</span>Fixing Text Truncation in SwiftUI: From fixedSize to ViewThatFits</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/fixing-swiftlint-configuration-not-working-in-monorepo-projects/" id="relatedPosts-Fixing SwiftLint Configuration Not Working in Monorepo Projects" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>Sequential Display Tips with TipKit</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/enable-multi-finger-tap-gestures-in-swiftui/" id="relatedPosts-Enable Multi-Finger Tap Gestures in SwiftUI" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>Fixing SwiftLint Configuration Not Working in Monorepo Projects</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/sequential-display-tips-with-tipkit/" id="relatedPosts-Sequential Display Tips with TipKit" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Enable Multi-Finger Tap Gestures in SwiftUI</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/preventing-scrollview-content-clipping-in-swiftui/" id="relatedPosts-Fix Clipping Issues in SwiftUI ScrollView" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>Sequential Display Tips with TipKit</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/extending-supported-data-types-for-appstorage/" id="relatedPosts-Using SwiftUI's @AppStorage with Arrays, Dates, and Custom Types" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🛎️</span>Fix Clipping Issues in SwiftUI ScrollView</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Using SwiftUI&#39;s @AppStorage with Arrays, Dates, and Custom Types</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95

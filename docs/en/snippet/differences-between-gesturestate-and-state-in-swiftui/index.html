@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Differences Between @GestureState and @State in SwiftUI</title>
-<meta name="description" content="Understand the differences between `@GestureState` and `@State` in SwiftUI. Learn how `@GestureState` simplifies gesture handling with automatic resets, while `@State` provides flexibility for broader use cases.">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Fixing Gesture Interruptions: @GestureState vs @State</title>
+<meta name="description" content="Ever had your UI freeze when a gesture is interrupted? Discover why `onEnded` fails you and how `@GestureState` automatically handles system interruptions for smooth interactions.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/en/snippet/differences-between-gesturestate-and-state-in-swiftui/">
-<meta property="og:title" content="Differences Between @GestureState and @State in SwiftUI">
-<meta property="og:description" content="Understand the differences between `@GestureState` and `@State` in SwiftUI. Learn how `@GestureState` simplifies gesture handling with automatic resets, while `@State` provides flexibility for broader use cases.">
+<meta property="og:title" content="Fixing Gesture Interruptions: @GestureState vs @State">
+<meta property="og:description" content="Ever had your UI freeze when a gesture is interrupted? Discover why `onEnded` fails you and how `@GestureState` automatically handles system interruptions for smooth interactions.">
 <meta property="og:url" content="https://fatbobman.com/en/snippet/differences-between-gesturestate-and-state-in-swiftui/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/question-and-answer.webp">
@@ -38,14 +38,27 @@
       }
     </script><script type='application/ld+json'>{
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
+  "@type": "TechArticle",
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2025-01-12T08:20:00.000Z",
-  "datePublished": "2025-01-12T08:20:00.000Z",
-  "description": "Understand the differences between `@GestureState` and `@State` in SwiftUI. Learn how `@GestureState` simplifies gesture handling with automatic resets, while `@State` provides flexibility for broader use cases.",
-  "headline": "Differences Between @GestureState and @State in SwiftUI",
+  "dateModified": "2025-12-11T00:00:00.000Z",
+  "datePublished": "2025-01-12T08:21:01.000Z",
+  "proficiencyLevel": "Intermediate",
+  "programmingLanguage": "Swift",
+  "dependencies": "SwiftUI, iOS 13+",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "SwiftUI Gestures"
+    },
+    {
+      "@type": "Thing",
+      "name": "State Management"
+    }
+  ],
+  "description": "Ever had your UI freeze when a gesture is interrupted? Discover why `onEnded` fails you and how `@GestureState` automatically handles system interruptions for smooth interactions.",
+  "headline": "Fixing Gesture Interruptions: @GestureState vs @State",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/question-and-answer.webp"
@@ -64,9 +77,9 @@
     }
   },
   "articleSection": [
-    "Quick Tips",
-    "SwiftUI"
+    "Tips and Tricks, Quick Tips"
   ],
+  "keywords": "SwiftUI, GestureState, State, Gesture Interruption, DragGesture, Gesture Handling, State Management, SwiftUI animation, onEnded, cancellation",
   "inLanguage": "en"
 }</script><script type='application/ld+json'>{
   "@context": "https://schema.org",
@@ -275,18 +288,19 @@ const enableStickyInMobile = true;
       flex items-center justify-center w-16 h-16 text-4xl rounded-2xl shadow-sm
       bg-gray-50 border border-gray-100
       dark:bg-slate-800 dark:border-slate-700
-    "> 🛎️ </span> </div>  <h1 class="
+    "> 🔋 </span> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-tight
-    "> Differences Between @GestureState and @State in SwiftUI </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-12T08:20:00.000Z"> Jan 12, 2025 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
-<p><code>@GestureState</code> is ideal for transient gesture-related states, resetting automatically when gestures are interrupted. <code>@State</code> is more versatile but requires manual handling of gesture interruptions.</p>
+    "> Fixing Gesture Interruptions: @GestureState vs @State </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-12T08:21:01.000Z"> Jan 12, 2025 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
+<div class="mdx-intro"><p><strong>TL;DR</strong>: Have you ever dragged a view, pulled down the Notification Center, and found your view stuck in the middle of the screen, refusing to reset? This happens because the system interrupted the gesture, preventing <code>onEnded</code> from firing. <code>@GestureState</code> is the specific solution designed to handle these <strong>transient states and interruption resets</strong> automatically.</p></div>
+<p><code>@GestureState</code> is purpose-built for gesture operations. It automatically resets properties when a gesture is interrupted, making it ideal for transient, gesture-driven state. While <code>@State</code> is more general-purpose, handling gesture cancellations (non-normal completion) with it often requires complex, error-prone boilerplate code.</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
 <h2 id="background">Background</h2>
-<p><code>@GestureState</code> is a dedicated state management tool in SwiftUI designed for gesture operations. In many cases, developers may find that <code>@State</code> can achieve similar functionality. Why, then, did Apple introduce <code>@GestureState</code>? This article compares the two, exploring their use cases and core differences.</p>
-<h2 id="similar-behavior">Similar Behavior</h2>
-<p>Both <code>@GestureState</code> and <code>@State</code> can be used to store and update states, such as implementing interactions like tapping or dragging.</p>
+<p><code>@GestureState</code> is a property wrapper provided by SwiftUI specifically for gesture tracking. In many scenarios, developers might find that <code>@State</code> seems to achieve similar results. So, why did Apple provide <code>@GestureState</code>? Its core value lies in its automated handling of <strong>abnormal terminations (interruptions)</strong>.</p>
+<h2 id="basic-usage-comparison">Basic Usage Comparison</h2>
+<p>Both <code>@GestureState</code> and <code>@State</code> can be used to store and update state, such as implementing click or drag interactions.</p>
 <h3 id="using-gesturestate">Using @GestureState</h3>
-<p>The following code demonstrates the use of <code>@GestureState</code>:</p>
+<p>The following code demonstrates the standard usage of <code>@GestureState</code> paired with the <code>.updating</code> modifier:</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -303,8 +317,9 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> ContentView</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> GestureStateExample</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F286C4">    @</span><span style="color:#AB5959;--shiki-dark:#F286C4">GestureState</span><span style="color:#1E754F;--shiki-dark:#F286C4"> var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isPressed </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> false</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> body: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        Rectangle</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">fill</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">orange</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
@@ -316,13 +331,14 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">                    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            )</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">overlay</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">isPressed </span><span style="color:#AB5959;--shiki-dark:#F286C4">?</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Pressing</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#AB5959;--shiki-dark:#F286C4"> :</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">isPressed </span><span style="color:#AB5959;--shiki-dark:#F286C4">?</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Pressing</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#AB5959;--shiki-dark:#F286C4"> :</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Released</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            )</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">animation</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">easeInOut</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">value</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isPressed</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<p>In this example, <code>@GestureState</code> is updated to <code>true</code> during the gesture activity and automatically resets to <code>false</code> when the gesture ends or is interrupted.</p>
+<p>In this example, <code>@GestureState</code> updates to <code>true</code> while the gesture is active. As soon as the gesture ends or <strong>is interrupted</strong>, the state automatically resets to its initial value (<code>false</code>).</p>
 <h3 id="using-state">Using @State</h3>
-<p>Similar functionality can be achieved with <code>@State</code>:</p>
+<p>Similar functionality can be achieved with <code>@State</code>, though it requires more code:</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -339,8 +355,9 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> ContentView</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> StateExample</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F286C4">    @</span><span style="color:#AB5959;--shiki-dark:#F286C4">State</span><span style="color:#1E754F;--shiki-dark:#F286C4"> var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isPressed </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> false</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> body: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        Rectangle</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">fill</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">orange</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
@@ -355,41 +372,43 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">                    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            )</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">overlay</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">isPressed </span><span style="color:#AB5959;--shiki-dark:#F286C4">?</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Pressing</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#AB5959;--shiki-dark:#F286C4"> :</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">isPressed </span><span style="color:#AB5959;--shiki-dark:#F286C4">?</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Pressing</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#AB5959;--shiki-dark:#F286C4"> :</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Released</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            )</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<p>On the surface, these two approaches appear almost identical in functionality.</p>
-<h2 id="core-differences">Core Differences</h2>
-<p><strong>Handling gesture interruptions</strong> is the key difference between <code>@GestureState</code> and <code>@State</code>.</p>
-<h3 id="gesture-interruption-scenarios">Gesture Interruption Scenarios</h3>
-<p>When a gesture is interrupted by a system action (e.g., pulling down the Notification Center or triggering the app switcher gesture without completing it), the <code>onEnded</code> closure will be skipped, leaving the <code>@State</code> reset logic unexecuted. In contrast, <code>@GestureState</code> automatically resets in such cases.</p>
+<p>On the surface, these two methods appear to behave identically during normal operation.</p>
+<h2 id="the-core-difference-gesture-interruption">The Core Difference: Gesture Interruption</h2>
+<p><strong>Handling gesture interruption</strong> is the critical differentiator between <code>@GestureState</code> and <code>@State</code>, and it is a common source of bugs in SwiftUI apps.</p>
+<h3 id="what-is-gesture-interruption">What is Gesture Interruption?</h3>
+<p>A gesture stream is forcibly terminated when a system operation interrupts it. Common examples include:</p>
 <ul>
-<li><strong>Behavior of <code>@GestureState</code></strong>:
-The state resets to its initial value when the gesture is interrupted, requiring no additional handling.</li>
-<li><strong>Behavior of <code>@State</code></strong>:
-The state does not reset upon gesture interruption, retaining its last value and potentially leading to inaccurate state.</li>
+<li>Pulling down the Notification Center or Control Center.</li>
+<li>An incoming phone call taking over the screen.</li>
+<li>Triggering a system-level app switching gesture (Home indicator swipe) but not completing it.</li>
 </ul>
-<h3 id="comparison-example">Comparison Example</h3>
-<p>The following video demonstrates the behavioral differences during gesture interruptions:</p>
-<video src="https://cdn.fatbobman.com/gesturestate-vs-state-6c55ac9a-3fe2-45c2-84bb-e2e5c57c6e3c.mp4" alt="GestureState vs. State interruption handling demo" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
+<p>When this happens:</p>
 <ul>
-<li><strong><code>@GestureState</code></strong>: Automatically resets after an interruption.</li>
-<li><strong><code>@State</code></strong>: Does not reset automatically, requiring manual interruption handling.</li>
+<li><strong>The <code>@State</code> Flaw</strong>: System interruptions do <strong>not</strong> trigger the <code>onEnded</code> closure. If your reset logic relies solely on <code>onEnded</code>, the <code>isPressed</code> variable will remain stuck at <code>true</code>, causing your UI to freeze in an interactive state.</li>
+<li><strong>The <code>@GestureState</code> Advantage</strong>: The system automatically detects the interruption and forces the property to reset to its initial value. No extra code is required.</li>
+</ul>
+<h3 id="visual-comparison">Visual Comparison</h3>
+<p>The following video demonstrates the behavioral difference during an interruption:</p>
+<video src="https://cdn.fatbobman.com/gesturestate-vs-state-6c55ac9a-3fe2-45c2-84bb-e2e5c57c6e3c.mp4" alt="Comparison of interruption handling between SwiftUI GestureState and State" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
+<ul>
+<li><strong><code>@GestureState</code></strong>: The state resets automatically after the interruption.</li>
+<li><strong><code>@State</code></strong>: The state gets stuck in the “Pressing” mode, requiring manual cleanup logic (which is often tedious to implement).</li>
 </ul>
 <blockquote>
-<p>Developers can also leverage the fact that <code>@State</code> does not reset automatically during interruptions to achieve certain special requirements.</p>
+<p><strong>Note</strong>: If you absolutely must use <code>@State</code> for a gesture (e.g., you need to persist the final position of a drag), you may need to monitor <code>ScenePhase</code> changes or strictly handle cancellations to manually reset your state when the app resigns activity.</p>
 </blockquote>
-<h2 id="summary-of-gesturestate-features">Summary of @GestureState Features</h2>
-<ul>
-<li>Designed specifically for gestures, with automated state management.</li>
-<li>Better suited for transient, gesture-related states.</li>
-<li>Handles interruptions and resets automatically.</li>
-<li>Simplifies the setup of animations.</li>
-</ul>
+<h2 id="summary-how-to-choose">Summary: How to Choose</h2>
+<ol>
+<li><strong>Transient Data? Use @GestureState</strong>: For data that is only valid <em>during</em> the gesture, such as drag translation (<code>Translation</code>), pressing state (<code>Pressing</code>), or magnification scale, always prefer <code>@GestureState</code>.</li>
+<li><strong>Persistent Data? Use @State</strong>: If you need to save the result after the gesture ends (e.g., dropping a card at a new coordinate), use <code>@State</code>. However, be vigilant about handling cancellation scenarios.</li>
+</ol>
 <h2 id="further-reading">Further Reading</h2>
 <ul>
-<li><a href="/en/posts/exploring-swiftui-property-wrappers-2/#4-gesturestate" target="_blank">Detailed Guide to @GestureState</a></li>
+<li><a href="/en/posts/exploring-swiftui-property-wrappers-2/#4-gesturestate" target="_blank">Exploring SwiftUI Property Wrappers: @GestureState</a></li>
 <li><a href="/en/posts/swiftuigesture/" target="_blank">Customizing Gestures in SwiftUI</a></li>
 </ul> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <script type="module">var l=document.querySelectorAll("article");l.forEach(function(t){var e=t.querySelectorAll("a");e.forEach(function(r){r.setAttribute("target","_blank")})});</script> <script>
   window.copyCode = function(button, event) {
@@ -1146,7 +1165,7 @@ const utmTerm = "snippeten/differences-between-gesturestate-and-state-in-swiftui
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=Tip%3A%20Differences%20Between%20%40GestureState%20and%20%40State%20in%20SwiftUI%0A&url=%2Fen%2Fsnippet%2Fdifferences-between-gesturestate-and-state-in-swiftui%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=Tip%3A%20Fixing%20Gesture%20Interruptions%3A%20%40GestureState%20vs%20%40State%0A&url=%2Fen%2Fsnippet%2Fdifferences-between-gesturestate-and-state-in-swiftui%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
@@ -1323,35 +1342,35 @@ const utmTerm = "snippeten/differences-between-gesturestate-and-state-in-swiftui
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/ensuring-full-text-display-in-swiftui-techniques-and-solutions/" id="relatedPosts-Avoid Text Truncation in SwiftUI" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/rules-for-adapting-data-models-to-cloudkit/" id="relatedPosts-Rules for Adapting Data Models to CloudKit" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>Avoid Text Truncation in SwiftUI</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/why-dont-core-data-require-setting-a-primary-key/" id="relatedPosts-No Need to Set Primary Key in Core Data/SwiftData" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>Rules for Adapting Data Models to CloudKit</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/speed-up-compilation-with-prebuilt-swift-syntax/" id="relatedPosts-Speed Up Compilation with Prebuilt Swift-Syntax" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>No Need to Set Primary Key in Core Data/SwiftData</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/sequential-display-tips-with-tipkit/" id="relatedPosts-Sequential Display Tips with TipKit" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>Speed Up Compilation with Prebuilt Swift-Syntax</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/resolving-inconsistent-spacing-in-swiftui-vstackhstack-layouts/" id="relatedPosts-Fix Uneven Spacing in SwiftUI Stacks" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>Sequential Display Tips with TipKit</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/fixing-swiftlint-configuration-not-working-in-monorepo-projects/" id="relatedPosts-Fixing SwiftLint Configuration Not Working in Monorepo Projects" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Fix Uneven Spacing in SwiftUI Stacks</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/controlling-access-within-a-swift-package/" id="relatedPosts-Swift package Access Level: Sharing Code Across Targets Securely" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>Fixing SwiftLint Configuration Not Working in Monorepo Projects</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Swift package Access Level: Sharing Code Across Targets Securely</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95
