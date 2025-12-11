@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Fixing SwiftLint Configuration Not Working in Monorepo Projects</title>
-<meta name="description" content="Fix SwiftLint not working in Swift monorepos by setting config search paths in VSCode and specifying included directories in .swiftlint.yml">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Fixing SwiftLint Configuration for Monorepos in VSCode &amp; Cursor</title>
+<meta name="description" content="SwiftLint ignoring your root config in VSCode or Cursor? Learn how to set `configSearchPaths` and structure your Monorepo to share linting rules across multiple packages.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/en/snippet/fixing-swiftlint-configuration-not-working-in-monorepo-projects/">
-<meta property="og:title" content="Fixing SwiftLint Configuration Not Working in Monorepo Projects">
-<meta property="og:description" content="Fix SwiftLint not working in Swift monorepos by setting config search paths in VSCode and specifying included directories in .swiftlint.yml">
+<meta property="og:title" content="Fixing SwiftLint Configuration for Monorepos in VSCode &amp; Cursor">
+<meta property="og:description" content="SwiftLint ignoring your root config in VSCode or Cursor? Learn how to set `configSearchPaths` and structure your Monorepo to share linting rules across multiple packages.">
 <meta property="og:url" content="https://fatbobman.com/en/snippet/fixing-swiftlint-configuration-not-working-in-monorepo-projects/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/question-and-answer.webp">
@@ -42,11 +42,23 @@
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2025-04-24T14:20:00.000Z",
+  "dateModified": "2025-12-11T00:00:00.000Z",
   "datePublished": "2025-04-24T14:20:00.000Z",
   "proficiencyLevel": "Intermediate",
-  "description": "Fix SwiftLint not working in Swift monorepos by setting config search paths in VSCode and specifying included directories in .swiftlint.yml",
-  "headline": "Fixing SwiftLint Configuration Not Working in Monorepo Projects",
+  "programmingLanguage": "Swift",
+  "dependencies": "SwiftLint, VSCode, Cursor, WindSurf",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Development Tools"
+    },
+    {
+      "@type": "Thing",
+      "name": "Code Quality"
+    }
+  ],
+  "description": "SwiftLint ignoring your root config in VSCode or Cursor? Learn how to set `configSearchPaths` and structure your Monorepo to share linting rules across multiple packages.",
+  "headline": "Fixing SwiftLint Configuration for Monorepos in VSCode & Cursor",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/question-and-answer.webp"
@@ -67,7 +79,7 @@
   "articleSection": [
     "Tips and Tricks, Quick Tips"
   ],
-  "keywords": "",
+  "keywords": "SwiftLint, Monorepo, VSCode configuration, Cursor editor, swiftlint.yml, configSearchPaths, Swift Package Manager, Linting, Code Standards",
   "inLanguage": "en"
 }</script><script type='application/ld+json'>{
   "@context": "https://schema.org",
@@ -279,20 +291,21 @@ const enableStickyInMobile = true;
     "> 🔑 </span> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-tight
-    "> Fixing SwiftLint Configuration Not Working in Monorepo Projects </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-04-24T14:20:00.000Z"> Apr 24, 2025 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
-<p>SwiftLint may fail to apply lint rules in monorepo setups when packages are opened individually in VSCode or Cursor. To fix this, configure <code>swiftlint.configSearchPaths</code> in both root and sub-package <code>.vscode/settings.json</code> files to correctly locate the shared <code>.swiftlint.yml</code>. Also, explicitly define <code>included</code> paths in the config file (wildcards won’t work) to ensure proper linting across all modules.</p>
+    "> Fixing SwiftLint Configuration for Monorepos in VSCode &amp; Cursor </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-04-24T14:20:00.000Z"> Apr 24, 2025 </time>  <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <span class="italic text-muted/80">
+(Updated on  <time datetime="2025-12-11T00:00:00.000Z">Dec 11, 2025</time>)
+</span>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
+<div class="mdx-intro"><p><strong>TL;DR</strong>: When opening a subdirectory of a Swift Monorepo in VSCode or Cursor, the editor often fails to locate the root <code>.swiftlint.yml</code>. The solution lies in explicitly defining <code>swiftlint.configSearchPaths</code> in <code>.vscode/settings.json</code> and avoiding wildcard paths in your lint configuration.</p></div>
+<p>When managing Swift projects with a Monorepo (Monolithic Repository) structure, it is best practice to maintain a single, unified <code>.swiftlint.yml</code> configuration at the root level. However, if you use VSCode, Cursor (or its VSCode-forked counterparts) to open a specific sub-package directory directly, the SwiftLint extension often fails to traverse up the directory tree to find the configuration, causing linting rules to break.</p>
+<p>This guide explains how to configure your paths correctly to ensure SwiftLint works seamlessly at any level of your Monorepo.</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
-<h2 id="background">Background</h2>
-<p>When managing Swift projects using a monorepo structure, developers often create a single <code>.swiftlint.yml</code> configuration file in the root directory. However, when opening the project root or a specific Package directory in VSCode or Cursor, SwiftLint may fail to load the configuration properly, causing lint rules to be ignored. This article explains how to correctly configure SwiftLint in a monorepo setup to ensure linting works as expected.</p>
 <h2 id="prerequisites">Prerequisites</h2>
-<h3 id="environment-requirements">Environment Requirements</h3>
 <ul>
-<li>SwiftLint CLI installed</li>
-<li><a href="https://marketplace.visualstudio.com/items/?itemName=vknabel.vscode-swiftlint" rel="noreferrer noopener">SwiftLint extension</a> installed in VSCode or Cursor</li>
+<li><strong>Tool</strong>: SwiftLint CLI installed.</li>
+<li><strong>Extension</strong>: The <a href="https://marketplace.visualstudio.com/items/?itemName=vknabel.vscode-swiftlint" rel="noreferrer noopener">SwiftLint extension</a> for VSCode/Cursor.</li>
+<li><strong>Architecture</strong>: A typical Swift Monorepo structure, as shown below:</li>
 </ul>
-<h3 id="example-project-structure">Example Project Structure</h3>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
-  <span class="select-none">Bash</span>
+  <span class="select-none">Text</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
     <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -307,18 +320,19 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#59873A;--shiki-dark:#62E884">MyProject/</span><span style="color:#393A34;--shiki-dark:#F6F6F4">                  </span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">├──</span><span style="color:#B56959;--shiki-dark:#E7EE98"> .swiftlint.yml</span><span style="color:#B56959;--shiki-dark:#E7EE98">          //</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Root-level</span><span style="color:#B56959;--shiki-dark:#E7EE98"> SwiftLint</span><span style="color:#B56959;--shiki-dark:#E7EE98"> config</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">├──</span><span style="color:#B56959;--shiki-dark:#E7EE98"> .vscode/settings.json</span><span style="color:#B56959;--shiki-dark:#E7EE98">   //</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Root-level</span><span style="color:#B56959;--shiki-dark:#E7EE98"> VSCode</span><span style="color:#B56959;--shiki-dark:#E7EE98"> settings</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">├──</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Domain/</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">│</span><span style="color:#B56959;--shiki-dark:#E7EE98">   └──</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Package.swift</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">│</span><span style="color:#B56959;--shiki-dark:#E7EE98">   └──</span><span style="color:#B56959;--shiki-dark:#E7EE98"> .vscode/settings.json</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">└──</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Persistent/</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">    └──</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Package.swift</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">    └──</span><span style="color:#B56959;--shiki-dark:#E7EE98"> .vscode/settings.json</span></span></code></pre>
-<h2 id="configuration-steps">Configuration Steps</h2>
-<h3 id="vscode-settings-at-the-root-level">VSCode Settings at the Root Level</h3>
-<p>Add the SwiftLint config search path to <code>.vscode/settings.json</code> in the root directory:</p>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="text"><code><span class="line"><span>MyProject/                  </span></span>
+<span class="line"><span>├── .swiftlint.yml          // Unified root config</span></span>
+<span class="line"><span>├── .vscode/settings.json   // Root editor settings</span></span>
+<span class="line"><span>├── Domain/</span></span>
+<span class="line"><span>│   └── Package.swift</span></span>
+<span class="line"><span>│   └── .vscode/settings.json // Sub-package editor settings</span></span>
+<span class="line"><span>└── Persistent/</span></span>
+<span class="line"><span>    └── Package.swift</span></span>
+<span class="line"><span>    └── .vscode/settings.json</span></span></code></pre>
+<h2 id="the-solution">The Solution</h2>
+<p>To solve this, we need to coordinate changes between the VSCode settings file and the SwiftLint configuration file.</p>
+<h3 id="1-root-directory-editor-settings">1. Root Directory Editor Settings</h3>
+<p>In the <code>.vscode/settings.json</code> file located in your project root, force the extension to look for the configuration file specifically. This ensures that when you open the root folder, the extension locks onto the correct config.</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">JSON</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -335,9 +349,15 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">swiftlint.configSearchPaths</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: </span><span style="color:#999999;--shiki-dark:#F6F6F4">[</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">.swiftlint.yml</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">]</span></span></code></pre>
-<h3 id="swiftlintyml-configuration-notes">.swiftlint.yml Configuration Notes</h3>
-<p>The <code>included</code> section must explicitly specify all lint target directories. <strong>Wildcards are not supported</strong>, which is a common cause of misconfiguration:</p>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
+<span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">    &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">swiftlint.configSearchPaths</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#999999;--shiki-dark:#F6F6F4"> [</span></span>
+<span class="line"><span style="color:#B5695977;--shiki-dark:#DEE492">        &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">.swiftlint.yml</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    ]</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
+<h3 id="2-adjusting-swiftlintyml-crucial">2. Adjusting .swiftlint.yml (Crucial)</h3>
+<p>In your root <code>.swiftlint.yml</code>, you <strong>must explicitly list</strong> the sub-directories you want to lint.</p>
+<p><strong>❌ Avoid</strong>: Relying on default scanning or using vague wildcards. In some extension implementations, this can lead to path resolution errors.</p>
+<p><strong>✅ Recommended</strong>: Explicitly specify the <code>included</code> paths:</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">YAML</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -356,10 +376,11 @@ const enableStickyInMobile = true;
 </div>
 <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">included</span><span style="color:#999999;--shiki-dark:#F286C4">:</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F286C4">  -</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Domain/Sources</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F286C4">  -</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Persistent/Sources</span></span></code></pre>
-<p>With this setup, SwiftLint will correctly lint the specified directories when opening the full <code>MyProject</code> directory.</p>
-<h3 id="vscode-settings-for-each-package">VSCode Settings for Each Package</h3>
-<p>If you often open individual package directories like <code>Domain/</code> or <code>Persistent/</code> for development, add the following configuration in each package’s <code>.vscode/settings.json</code>:</p>
+<span class="line"><span style="color:#999999;--shiki-dark:#F286C4">  -</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Persistent/Sources</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">  # - FeatureA/Sources</span></span></code></pre>
+<h3 id="3-sub-package-editor-settings-the-fix-for-sub-directories">3. Sub-Package Editor Settings (The Fix for Sub-directories)</h3>
+<p>This is the step most developers overlook. If you frequently open the <code>Domain</code> or <code>Persistent</code> folders directly in VSCode to work on them in isolation, you need to create a <code>.vscode/settings.json</code> inside those sub-directories as well.</p>
+<p>You must point the search path to the <strong>parent</strong> configuration:</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">JSON</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -376,10 +397,14 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">swiftlint.configSearchPaths</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: </span><span style="color:#999999;--shiki-dark:#F6F6F4">[</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">../.swiftlint.yml</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">]</span></span></code></pre>
-<p>This allows SwiftLint to locate and apply the shared configuration file from the parent directory, even when working inside sub-packages.</p>
-<h2 id="swiftformat-configuration">SwiftFormat Configuration</h2>
-<p>SwiftFormat follows a similar configuration pattern but does not require specifying target directories inside the config file. Only the search path needs to be set:</p>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
+<span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">    &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">swiftlint.configSearchPaths</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#999999;--shiki-dark:#F6F6F4"> [</span></span>
+<span class="line"><span style="color:#B5695977;--shiki-dark:#DEE492">        &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">../.swiftlint.yml</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    ]</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
+<p>By setting <code>../.swiftlint.yml</code>, even if your workspace root is <code>Domain</code>, the extension can “climb up” to find the parent directory’s configuration file.</p>
+<h2 id="supplement-swiftformat-configuration">Supplement: SwiftFormat Configuration</h2>
+<p>If you also utilize SwiftFormat, its configuration is generally smarter about path resolution. However, explicitly setting the path is still a safe bet. You typically don’t need to hardcode source paths in the config file itself, just point to the config location:</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">JSON</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -396,10 +421,10 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// Root-level settings.json</span></span>
-<span class="line"><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">swiftformat.configSearchPaths</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: </span><span style="color:#999999;--shiki-dark:#F6F6F4">[</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">.swiftformat</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">]</span><span style="color:#393A34;--shiki-dark:#F6F6F4">,</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// Root directory .vscode/settings.json</span></span>
+<span class="line"><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">swiftformat.configSearchPaths</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: </span><span style="color:#999999;--shiki-dark:#F6F6F4">[</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">.swiftformat</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">]</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// Per-package settings.json</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// Sub-directory .vscode/settings.json</span></span>
 <span class="line"><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">swiftformat.configSearchPaths</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: </span><span style="color:#999999;--shiki-dark:#F6F6F4">[</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">../.swiftformat</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">]</span></span></code></pre> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <script type="module">var l=document.querySelectorAll("article");l.forEach(function(t){var e=t.querySelectorAll("a");e.forEach(function(r){r.setAttribute("target","_blank")})});</script> <script>
   window.copyCode = function(button, event) {
     if (event) event.preventDefault();
@@ -1155,7 +1180,7 @@ const utmTerm = "snippeten/fixing-swiftlint-configuration-not-working-in-monorep
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=Tip%3A%20Fixing%20SwiftLint%20Configuration%20Not%20Working%20in%20Monorepo%20Projects%0A&url=%2Fen%2Fsnippet%2Ffixing-swiftlint-configuration-not-working-in-monorepo-projects%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=Tip%3A%20Fixing%20SwiftLint%20Configuration%20for%20Monorepos%20in%20VSCode%20%26%20Cursor%0A&url=%2Fen%2Fsnippet%2Ffixing-swiftlint-configuration-not-working-in-monorepo-projects%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
@@ -1332,35 +1357,35 @@ const utmTerm = "snippeten/fixing-swiftlint-configuration-not-working-in-monorep
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/resolving-inconsistent-spacing-in-swiftui-vstackhstack-layouts/" id="relatedPosts-Fix Uneven Spacing in SwiftUI Stacks" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/disable-transition-animations-for-sheet-and-navigationstack-in-swiftui/" id="relatedPosts-Disabling Animations in SwiftUI: Instant Transitions for Sheets &#38; NavigationStack" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Fix Uneven Spacing in SwiftUI Stacks</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/fix-synchronization-issues-for-macos-apps-using-core-dataswiftdata/" id="relatedPosts-Fix Synchronization Issues for macOS Apps Using Core Data/SwiftData" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>Disabling Animations in SwiftUI: Instant Transitions for Sheets &amp; NavigationStack</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/controlling-access-within-a-swift-package/" id="relatedPosts-Swift package Access Level: Sharing Code Across Targets Securely" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>Fix Synchronization Issues for macOS Apps Using Core Data/SwiftData</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/enable-multi-finger-tap-gestures-in-swiftui/" id="relatedPosts-Multi-Finger Taps in SwiftUI: Implementing 2-Finger &#38; 3-Finger Gestures" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Swift package Access Level: Sharing Code Across Targets Securely</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/how-to-forward-custom-tag-events-to-gtm-running-inside-partytown/" id="relatedPosts-Fixing GTM Events in Partytown: Forwarding dataLayer &#38; gtag" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Multi-Finger Taps in SwiftUI: Implementing 2-Finger &amp; 3-Finger Gestures</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/why-dont-core-data-require-setting-a-primary-key/" id="relatedPosts-No Need to Set Primary Key in Core Data/SwiftData" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>Fixing GTM Events in Partytown: Forwarding dataLayer &amp; gtag</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/swift-testing-differences-between-expect-and-require/" id="relatedPosts-Swift Testing: #expect vs #require Explained" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>No Need to Set Primary Key in Core Data/SwiftData</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔍</span>Swift Testing: #expect vs #require Explained</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95

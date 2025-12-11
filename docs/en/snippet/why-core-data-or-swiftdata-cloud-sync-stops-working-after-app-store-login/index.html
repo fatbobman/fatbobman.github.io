@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Fix Core Data/SwiftData Cloud Sync Issues in Production</title>
-<meta name="description" content="Resolve Core Data/SwiftData cloud sync issues post-App Store launch. Fix CloudKit dev/prod schema, entitlement settings, and sync configurations.">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Fixing CloudKit Sync in Production: Deploying Schema</title>
+<meta name="description" content="App works in Xcode but fails in TestFlight? Your CloudKit Schema might be missing in Production. Learn how to deploy changes for Core Data &amp; SwiftData.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/en/snippet/why-core-data-or-swiftdata-cloud-sync-stops-working-after-app-store-login/">
-<meta property="og:title" content="Fix Core Data/SwiftData Cloud Sync Issues in Production">
-<meta property="og:description" content="Resolve Core Data/SwiftData cloud sync issues post-App Store launch. Fix CloudKit dev/prod schema, entitlement settings, and sync configurations.">
+<meta property="og:title" content="Fixing CloudKit Sync in Production: Deploying Schema">
+<meta property="og:description" content="App works in Xcode but fails in TestFlight? Your CloudKit Schema might be missing in Production. Learn how to deploy changes for Core Data &amp; SwiftData.">
 <meta property="og:url" content="https://fatbobman.com/en/snippet/why-core-data-or-swiftdata-cloud-sync-stops-working-after-app-store-login/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/question-and-answer.webp">
@@ -42,11 +42,27 @@
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2025-01-08T00:20:00.000Z",
+  "dateModified": "2025-12-11T00:00:00.000Z",
   "datePublished": "2025-01-08T00:20:00.000Z",
   "proficiencyLevel": "Intermediate",
-  "description": "Resolve Core Data/SwiftData cloud sync issues post-App Store launch. Fix CloudKit dev/prod schema, entitlement settings, and sync configurations.",
-  "headline": "Fix Core Data/SwiftData Cloud Sync Issues in Production",
+  "programmingLanguage": "Swift",
+  "dependencies": "SwiftData, Core Data, CloudKit",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "App Deployment"
+    },
+    {
+      "@type": "Thing",
+      "name": "CloudKit Synchronization"
+    },
+    {
+      "@type": "Thing",
+      "name": "Schema Deployment"
+    }
+  ],
+  "description": "App works in Xcode but fails in TestFlight? Your CloudKit Schema might be missing in Production. Learn how to deploy changes for Core Data & SwiftData.",
+  "headline": "Fixing CloudKit Sync in Production: Deploying Schema",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/question-and-answer.webp"
@@ -67,7 +83,7 @@
   "articleSection": [
     "Tips and Tricks, Quick Tips"
   ],
-  "keywords": "",
+  "keywords": "CloudKit sync not working, SwiftData production sync, Core Data CloudKit deploy schema, TestFlight CloudKit environment, com.apple.developer.icloud-container-environment, Production Environment, JIT Schema",
   "inLanguage": "en"
 }</script><script type='application/ld+json'>{
   "@context": "https://schema.org",
@@ -276,38 +292,41 @@ const enableStickyInMobile = true;
       flex items-center justify-center w-16 h-16 text-4xl rounded-2xl shadow-sm
       bg-gray-50 border border-gray-100
       dark:bg-slate-800 dark:border-slate-700
-    "> 🛎️ </span> </div>  <h1 class="
+    "> 🔥 </span> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-tight
-    "> Fix Core Data/SwiftData Cloud Sync Issues in Production </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-08T00:20:00.000Z"> Jan 8, 2025 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
-<p>Cloud sync issues in Core Data/SwiftData after App Store release often stem from CloudKit’s separate dev and prod environments. Manually deploy schemas to the production environment via the CloudKit Dashboard and verify <code>entitlement</code> configurations for seamless syncing.</p>
+    "> Fixing CloudKit Sync in Production: Deploying Schema </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-08T00:20:00.000Z"> Jan 8, 2025 </time>  <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <span class="italic text-muted/80">
+(Updated on  <time datetime="2025-12-11T00:00:00.000Z">Dec 11, 2025</time>)
+</span>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
+<div class="mdx-intro"><p><strong>TL;DR</strong>: CloudKit strictly isolates the “Development” and “Production” environments. App Store builds connect to Production by default. If you haven’t manually deployed your CloudKit Schema (database structure) to the Production environment, synchronization will fail completely.</p></div>
+<p>Many developers—especially those new to SwiftData or Core Data—encounter a classic scenario: Cloud sync works perfectly while debugging in Xcode, but once the app is released to TestFlight or the App Store, user data refuses to sync. This is rarely a bug in your code; rather, it is a <strong>CloudKit deployment process</strong> issue.</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
-<h2 id="issue">Issue</h2>
-<p>Many developers, especially first-time users of cloud sync features, encounter an issue where Core Data or SwiftData cloud sync works perfectly during development but fails to sync user data once the app is live on the App Store.</p>
-<h2 id="root-cause">Root Cause</h2>
-<p>This issue stems from CloudKit’s dual-environment structure:</p>
-<ul>
-<li><strong>Development Environment</strong>: Used during the app’s development process, where schemas (data model structures) are automatically generated based on local data models.</li>
-<li><strong>Production Environment</strong>: Used for the actual app released to users.</li>
-</ul>
-<p>Unless the schema is manually deployed from the development to the production environment before release, users’ data will not sync in the live app.</p>
-<h2 id="solution">Solution</h2>
-<h3 id="1-deploy-schema-to-production-environment">1. Deploy Schema to Production Environment</h3>
-<p>Manually deploy the schema from the development to the production environment via the CloudKit Dashboard. Once deployed, the production environment’s container will include the schema corresponding to the local data model.</p>
+<h2 id="the-root-cause-environment-isolation">The Root Cause: Environment Isolation</h2>
+<p>CloudKit consists of two independent environments:</p>
+<ol>
+<li><strong>Development</strong>: Exclusively for developers. In this environment, CloudKit supports <strong>JIT (Just-In-Time) Schema</strong> creation. When you write data with a new object type or property, the server automatically modifies the database structure to accommodate it.</li>
+<li><strong>Production</strong>: For real users. To ensure performance and data integrity, the Production environment <strong>prohibits</strong> automatic Schema creation or modification.</li>
+</ol>
+<p><strong>The Issue</strong>: When your app is released, it connects to the Production environment. If that environment doesn’t have a Schema definition matching your data model, CloudKit rejects all read and write requests.</p>
+<h2 id="the-solution-deploying-the-schema">The Solution: Deploying the Schema</h2>
+<p>To fix this, you must manually “promote” the structure from your Development environment to the Production environment.</p>
+<h3 id="1-access-the-cloudkit-dashboard">1. Access the CloudKit Dashboard</h3>
+<p>Log in to the <a href="https://developer.apple.com/account?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Apple Developer Portal</a>, navigate to the <strong>CloudKit Console</strong>, and select your app’s container.</p>
+<h3 id="2-execute-deployment">2. Execute Deployment</h3>
+<p>In the left-hand menu, locate <strong>Schema</strong> -&gt; <strong>Deploy Schema Changes</strong> (or look for a “Deploy” button in the top-right corner of the Record Types page).
+Click <strong>Deploy</strong>. The system will apply the current structure of your Development environment to the Production environment.</p>
 <p><picture>
   <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20210808180259192-8416980.png?imageView2/0/w/500"/>
   <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20210808180259192-8416980.png?imageView2/0/w/768"/>
   <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20210808180259192-8416980.png?imageView2/0/w/1024"/>
-  <img src="https://cdn.fatbobman.com/image-20210808180259192-8416980.png" alt="Deploy Schema" loading="lazy" decoding="async"/>
+  <img src="https://cdn.fatbobman.com/image-20210808180259192-8416980.png" alt="CloudKit Deploy Schema" loading="lazy" decoding="async"/>
 </picture></p>
-<h3 id="2-deployment-timing">2. Deployment Timing</h3>
-<p>Before each submission to the App Store, if there are any changes to the data model, the schema must be redeployed to the production environment.</p>
-<h3 id="3-verify-entitlement-configuration">3. Verify entitlement Configuration</h3>
-<p>Ensure the <code>entitlement</code> file is correctly set up for the desired environment:</p>
-<ul>
-<li><strong>Production (default for TestFlight)</strong>: No additional changes are needed.</li>
-<li><strong>Development Environment (optional for TestFlight testing)</strong>: Add the following to your <code>entitlement</code> file:</li>
-</ul>
+<blockquote>
+<p><strong>Critical</strong>: You <strong>must</strong> repeat this step every time you modify your Core Data or SwiftData Model and plan to release a new version.</p>
+</blockquote>
+<h2 id="the-testflight-exception">The TestFlight Exception</h2>
+<p>By default, builds uploaded to TestFlight are considered “quasi-production” builds, so they connect to the <strong>Production</strong> environment.</p>
+<p>If you want to test the <strong>Development</strong> environment in TestFlight (for example, to verify new Schema changes before deploying them), you need to modify your project’s <code>Entitlements.plist</code> file:</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">XML</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -324,21 +343,22 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="xml"><code><span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;</span><span style="color:#1E754F;--shiki-dark:#F286C4">key</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">com.apple.developer.icloud-services</span><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;/</span><span style="color:#1E754F;--shiki-dark:#F286C4">key</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="xml"><code><span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;</span><span style="color:#1E754F;--shiki-dark:#F286C4">key</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">com.apple.developer.icloud-container-environment</span><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;/</span><span style="color:#1E754F;--shiki-dark:#F286C4">key</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;</span><span style="color:#1E754F;--shiki-dark:#F286C4">array</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    &lt;</span><span style="color:#1E754F;--shiki-dark:#F286C4">string</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">CloudDocuments</span><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;/</span><span style="color:#1E754F;--shiki-dark:#F286C4">string</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    &lt;</span><span style="color:#1E754F;--shiki-dark:#F286C4">string</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">CloudKit</span><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;/</span><span style="color:#1E754F;--shiki-dark:#F286C4">string</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;/</span><span style="color:#1E754F;--shiki-dark:#F286C4">array</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;</span><span style="color:#1E754F;--shiki-dark:#F286C4">key</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">com.apple.developer.icloud-container-environment</span><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;/</span><span style="color:#1E754F;--shiki-dark:#F286C4">key</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;</span><span style="color:#1E754F;--shiki-dark:#F286C4">string</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">Development</span><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;/</span><span style="color:#1E754F;--shiki-dark:#F286C4">string</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span></span></code></pre>
-<h3 id="4-reset-development-environment-optional">4. Reset Development Environment (Optional)</h3>
-<p>During development, use the <code>Reset Environment</code> feature in the CloudKit Dashboard to clear all data and schemas in the development environment. This ensures a clean state for testing.</p>
-<p><img src="https://docs-assets.developer.apple.com/published/39744312eb9d5a9e4b2cb40a1d84d9a3/media-3699106@2x.png" alt="Reset Environment"/></p>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    &lt;!-- Default is Production. Change to Development to connect to the dev database --&gt;</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    &lt;</span><span style="color:#1E754F;--shiki-dark:#F286C4">string</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">Development</span><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;/</span><span style="color:#1E754F;--shiki-dark:#F286C4">string</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;/</span><span style="color:#1E754F;--shiki-dark:#F286C4">array</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;</span></span></code></pre>
+<p><em>Note: For the official build submitted for App Store Review, this value must be set back to Production (Xcode usually handles this automatically during Archiving, but it’s worth double-checking).</em></p>
+<h2 id="best-practices-checklist">Best Practices Checklist</h2>
+<ol>
+<li><strong>Check Before Release</strong>: Before submitting for review, always visit the CloudKit Console to confirm there are no undeployed Schema changes.</li>
+<li><strong>Resetting Development</strong>: If your Development data becomes “dirty” or cluttered, you can use <strong>Reset Environment</strong> in the console. (Warning: This wipes all data and structure from the Dev environment; you will need to run the app via Xcode again to regenerate the structure).</li>
+<li><strong>SwiftData</strong>: SwiftData uses the same underlying mechanism as Core Data and follows these exact deployment rules.</li>
+</ol>
 <h2 id="further-reading">Further Reading</h2>
 <ul>
-<li><a href="/en/posts/coredatawithcloudkit-3/" target="_blank">Exploring the CloudKit Dashboard</a></li>
-<li><a href="https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.developer.icloud-container-environment?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">com.apple.developer.icloud-container-environment</a></li>
-<li><a href="https://developer.apple.com/documentation/cloudkit/deploying-an-icloud-container-s-schema?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Deploying an iCloud Container’s Schema</a></li>
+<li><a href="/en/posts/coredatawithcloudkit-3/" target="_blank">Core Data with CloudKit: The CloudKit Console</a></li>
+<li><a href="https://developer.apple.com/documentation/cloudkit/deploying-an-icloud-container-s-schema?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Apple Documentation: Deploying an iCloud Container’s Schema</a></li>
 </ul> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <script type="module">var l=document.querySelectorAll("article");l.forEach(function(t){var e=t.querySelectorAll("a");e.forEach(function(r){r.setAttribute("target","_blank")})});</script> <script>
   window.copyCode = function(button, event) {
     if (event) event.preventDefault();
@@ -1094,7 +1114,7 @@ const utmTerm = "snippeten/why-core-data-or-swiftdata-cloud-sync-stops-working-a
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=Tip%3A%20Fix%20Core%20Data%2FSwiftData%20Cloud%20Sync%20Issues%20in%20Production%0A&url=%2Fen%2Fsnippet%2Fwhy-core-data-or-swiftdata-cloud-sync-stops-working-after-app-store-login%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=Tip%3A%20Fixing%20CloudKit%20Sync%20in%20Production%3A%20Deploying%20Schema%0A&url=%2Fen%2Fsnippet%2Fwhy-core-data-or-swiftdata-cloud-sync-stops-working-after-app-store-login%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
@@ -1271,35 +1291,35 @@ const utmTerm = "snippeten/why-core-data-or-swiftdata-cloud-sync-stops-working-a
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/enable-multi-finger-tap-gestures-in-swiftui/" id="relatedPosts-Multi-Finger Taps in SwiftUI: Implementing 2-Finger &#38; 3-Finger Gestures" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/fix-algolia-search-box-auto-scrolling-issue-in-safari/" id="relatedPosts-Fix: Algolia DocSearch Safari Scroll-to-Bottom Bug" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Multi-Finger Taps in SwiftUI: Implementing 2-Finger &amp; 3-Finger Gestures</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/how-to-test-core-data-code-in-vscode-cursor/" id="relatedPosts-How to Test Core Data Code in VSCode/Cursor" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Fix: Algolia DocSearch Safari Scroll-to-Bottom Bug</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/why-dont-core-data-require-setting-a-primary-key/" id="relatedPosts-Core Data &#38; SwiftData Primary Keys: Z_PK and Automatic Uniqueness" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>How to Test Core Data Code in VSCode/Cursor</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/controlling-access-within-a-swift-package/" id="relatedPosts-Swift package Access Level: Sharing Code Across Targets Securely" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔍</span>Core Data &amp; SwiftData Primary Keys: Z_PK and Automatic Uniqueness</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/controlling-access-within-a-swift-package/" id="relatedPosts-Swift package Access Level: Sharing Code Across Targets Securely" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Swift package Access Level: Sharing Code Across Targets Securely</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/swift-testing-differences-between-expect-and-require/" id="relatedPosts-Choose Between #expect and #require in Swift Tests" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Swift package Access Level: Sharing Code Across Targets Securely</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/how-to-test-core-data-code-in-vscode-cursor/" id="relatedPosts-VSCode/Cursor Core Data: Manually Compiling xcdatamodeld for Tests" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Choose Between #expect and #require in Swift Tests</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>VSCode/Cursor Core Data: Manually Compiling xcdatamodeld for Tests</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95

@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>No Need to Set Primary Key in Core Data/SwiftData</title>
-<meta name="description" content="Learn why Core Data &amp; SwiftData don&#39;t need primary keys. Understand SQLite&#39;s Z_PK, Z_ENT, and Z_PRIMARYKEY for managing unique IDs.">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Core Data &amp; SwiftData Primary Keys: Z_PK and Automatic Uniqueness</title>
+<meta name="description" content="Still manually creating primary keys? Discover how Core Data and SwiftData automatically manage uniqueness via SQLite&#39;s `Z_PK` and `Z_ENT`, and why UUIDs remain essential for data export.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/en/snippet/why-dont-core-data-require-setting-a-primary-key/">
-<meta property="og:title" content="No Need to Set Primary Key in Core Data/SwiftData">
-<meta property="og:description" content="Learn why Core Data &amp; SwiftData don&#39;t need primary keys. Understand SQLite&#39;s Z_PK, Z_ENT, and Z_PRIMARYKEY for managing unique IDs.">
+<meta property="og:title" content="Core Data &amp; SwiftData Primary Keys: Z_PK and Automatic Uniqueness">
+<meta property="og:description" content="Still manually creating primary keys? Discover how Core Data and SwiftData automatically manage uniqueness via SQLite&#39;s `Z_PK` and `Z_ENT`, and why UUIDs remain essential for data export.">
 <meta property="og:url" content="https://fatbobman.com/en/snippet/why-dont-core-data-require-setting-a-primary-key/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/question-and-answer.webp">
@@ -42,11 +42,23 @@
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2025-01-09T00:20:00.000Z",
+  "dateModified": "2025-12-11T00:00:00.000Z",
   "datePublished": "2025-01-09T00:20:00.000Z",
   "proficiencyLevel": "Intermediate",
-  "description": "Learn why Core Data & SwiftData don't need primary keys. Understand SQLite's Z_PK, Z_ENT, and Z_PRIMARYKEY for managing unique IDs.",
-  "headline": "No Need to Set Primary Key in Core Data/SwiftData",
+  "programmingLanguage": "Swift",
+  "dependencies": "Core Data, SwiftData, SQLite",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Database Schema"
+    },
+    {
+      "@type": "Thing",
+      "name": "iOS Development"
+    }
+  ],
+  "description": "Still manually creating primary keys? Discover how Core Data and SwiftData automatically manage uniqueness via SQLite's `Z_PK` and `Z_ENT`, and why UUIDs remain essential for data export.",
+  "headline": "Core Data & SwiftData Primary Keys: Z_PK and Automatic Uniqueness",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/question-and-answer.webp"
@@ -67,7 +79,7 @@
   "articleSection": [
     "Tips and Tricks, Quick Tips"
   ],
-  "keywords": "",
+  "keywords": "Core Data primary key, SwiftData primary key, Z_PK, SQLite, Z_ENT, NSManagedObjectID, PersistentIdentifier, unique identifier, iOS database, Primary Key Management",
   "inLanguage": "en"
 }</script><script type='application/ld+json'>{
   "@context": "https://schema.org",
@@ -276,29 +288,47 @@ const enableStickyInMobile = true;
       flex items-center justify-center w-16 h-16 text-4xl rounded-2xl shadow-sm
       bg-gray-50 border border-gray-100
       dark:bg-slate-800 dark:border-slate-700
-    "> 🔑 </span> </div>  <h1 class="
+    "> 🔍 </span> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-tight
-    "> No Need to Set Primary Key in Core Data/SwiftData </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-09T00:20:00.000Z"> Jan 9, 2025 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
-<p>Core Data and SwiftData auto-manage primary keys using SQLite’s <code>Z_PK</code> (auto-increment), <code>Z_ENT</code> (entity type), and <code>Z_PRIMARYKEY</code> (key tracking), eliminating the need for manual primary key setup.</p>
+    "> Core Data &amp; SwiftData Primary Keys: Z_PK and Automatic Uniqueness </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-09T00:20:00.000Z"> Jan 9, 2025 </time>  <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <span class="italic text-muted/80">
+(Updated on  <time datetime="2025-12-11T00:00:00.000Z">Dec 11, 2025</time>)
+</span>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
+<div class="mdx-intro"><p><strong>TL;DR</strong>: When using Core Data or SwiftData, developers do <strong>not</strong> need to manually create auto-incrementing primary keys like in traditional SQL development. The framework automatically builds a rigorous unique identification system using the hidden SQLite fields <code>Z_PK</code> and <code>Z_ENT</code>.</p></div>
+<p>Core Data and SwiftData leverage SQLite’s internal <code>Z_PK</code> (Auto-increment ID) and <code>Z_ENT</code> (Entity Type) to automatically manage primary keys. This ensures data uniqueness and integrity without requiring manual setup in your model definition.</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
-<h2 id="question">Question:</h2>
-<p>For iOS developers, one common question when using Core Data or SwiftData is: why don’t these frameworks require setting a primary key, like other databases?</p>
-<h2 id="answer">Answer:</h2>
-<p>The answer lies in the underlying SQLite database where both frameworks automatically implement a robust primary key mechanism:</p>
+<h2 id="the-question">The Question</h2>
+<p>When developing with Core Data or SwiftData, a common question arises: Why don’t I need to define a property like <code>id</code> or <code>primaryKey</code> in my data model? Is it safe to rely on the framework?</p>
+<h2 id="under-the-hood">Under the Hood</h2>
+<p>In reality, both frameworks implement a complete primary key management mechanism within the underlying SQLite database. If you open your App’s <code>.sqlite</code> file with a database tool (like <strong>DB Browser for SQLite</strong>), you will discover these hidden system fields:</p>
 <ol>
-<li><strong>Auto-Incremented Primary Key (<code>Z_PK</code>)</strong>: Each entity table includes a <code>Z_PK</code> column that starts at 1 and serves as the auto-incrementing primary key.</li>
-<li><strong>Entity Identification (<code>Z_ENT</code>)</strong>: A <code>Z_ENT</code> column identifies the entity type for each record.</li>
-<li><strong>Unique Record Locator (<code>Z_PK + Z_ENT</code>)</strong>: The combination of <code>Z_PK</code> and <code>Z_ENT</code> uniquely identifies each record across the entire database.</li>
-<li><strong>Primary Key Management (<code>Z_PRIMARYKEY</code>)</strong>: Core Data manages auto-incrementing values for primary keys through the <code>Z_PRIMARYKEY</code> table, which tracks the maximum key value (<code>Z_MAX</code>) for each entity.</li>
+<li>
+<p><strong>Auto-Increment Primary Key (<code>Z_PK</code>)</strong>:
+Every entity table contains an integer field named <code>Z_PK</code>. It starts at 1 and increments automatically, serving as the physical primary key for the table.</p>
+</li>
+<li>
+<p><strong>Entity Type Identifier (<code>Z_ENT</code>)</strong>:
+Every table includes a <code>Z_ENT</code> field. This integer identifies which Entity Type a record belongs to, which is crucial for handling Entity Inheritance strategies.</p>
+</li>
+<li>
+<p><strong>Unique Identifier (<code>Z_PK</code> + <code>Z_ENT</code>)</strong>:
+The framework combines these two fields to uniquely identify a record across the entire database. At the code level, this combination is represented as <code>NSManagedObjectID</code> (in Core Data) or <code>PersistentIdentifier</code> (in SwiftData).</p>
+</li>
+<li>
+<p><strong>Metadata Management (<code>Z_PRIMARYKEY</code>)</strong>:
+Core Data maintains a special table named <code>Z_PRIMARYKEY</code>. It tracks the current maximum ID value (<code>Z_MAX</code>) for each entity, ensuring that ID allocation for new records remains sequential and unique.</p>
+</li>
 </ol>
-<p>Thanks to this built-in primary key system, developers neither need nor can define their own auto-incrementing keys when setting up data models. This design ensures data uniqueness while simplifying development.</p>
-<h2 id="pro-tip">Pro Tip:</h2>
-<p>If you plan to export your data, it’s best to add an identifier property, such as a UUID, to your model. This guarantees that relationships between records remain intact after export.</p>
-<h2 id="references">References:</h2>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="1-hands-off-internal-fields">1. Hands Off Internal Fields</h3>
+<p>Never manually modify fields like <code>Z_PK</code> directly in SQLite. Doing so will corrupt the framework’s internal state and likely cause your app to crash.</p>
+<h3 id="2-use-uuids-for-export">2. Use UUIDs for Export</h3>
+<p>While the system handles internal primary keys, <code>Z_PK</code> is <strong>local and volatile</strong>. It can change during database migrations or if the database is rebuilt (e.g., during a “Vacuum” operation).
+<strong>Recommendation</strong>: If your data needs to be synced to a server, exported as JSON, or shared between devices, <strong>always add an explicit UUID property</strong> (e.g., <code>id: UUID</code>) to your model and treat it as your logical primary key.</p>
+<h2 id="further-reading">Further Reading</h2>
 <ul>
-<li><a href="/en/posts/tables_and_fields_of_coredata/" target="_blank">How Core Data Saves Data in SQLite</a></li>
-<li><a href="/en/posts/nsmanagedobjectid-and-persistentidentifier/" target="_blank">NSManagedObjectID and PersistentIdentifier: Mastering Data Identifiers in Core Data and SwiftData</a></li>
+<li><a href="/en/posts/tables_and_fields_of_coredata/" target="_blank">How Core Data saves data in SQLite</a></li>
+<li><a href="/en/posts/nsmanagedobjectid-and-persistentidentifier/" target="_blank">Deep dive into NSManagedObjectID and PersistentIdentifier</a></li>
 </ul> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <script type="module">var l=document.querySelectorAll("article");l.forEach(function(t){var e=t.querySelectorAll("a");e.forEach(function(r){r.setAttribute("target","_blank")})});</script> <script>
   window.copyCode = function(button, event) {
     if (event) event.preventDefault();
@@ -1054,7 +1084,7 @@ const utmTerm = "snippeten/why-dont-core-data-require-setting-a-primary-key";
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=Tip%3A%20No%20Need%20to%20Set%20Primary%20Key%20in%20Core%20Data%2FSwiftData%0A&url=%2Fen%2Fsnippet%2Fwhy-dont-core-data-require-setting-a-primary-key%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=Tip%3A%20Core%20Data%20%26%20SwiftData%20Primary%20Keys%3A%20Z_PK%20and%20Automatic%20Uniqueness%0A&url=%2Fen%2Fsnippet%2Fwhy-dont-core-data-require-setting-a-primary-key%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
@@ -1231,35 +1261,35 @@ const utmTerm = "snippeten/why-dont-core-data-require-setting-a-primary-key";
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/fix-synchronization-issues-for-macos-apps-using-core-dataswiftdata/" id="relatedPosts-Fix Synchronization Issues for macOS Apps Using Core Data/SwiftData" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/fixing-swiftlint-configuration-not-working-in-monorepo-projects/" id="relatedPosts-Fixing SwiftLint Configuration for Monorepos in VSCode &#38; Cursor" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>Fix Synchronization Issues for macOS Apps Using Core Data/SwiftData</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/speed-up-compilation-with-prebuilt-swift-syntax/" id="relatedPosts-Speed Up Compilation with Prebuilt Swift-Syntax" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>Fixing SwiftLint Configuration for Monorepos in VSCode &amp; Cursor</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/ensuring-full-text-display-in-swiftui-techniques-and-solutions/" id="relatedPosts-Fixing Text Truncation in SwiftUI: From fixedSize to ViewThatFits" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>Speed Up Compilation with Prebuilt Swift-Syntax</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/swift-testing-differences-between-expect-and-require/" id="relatedPosts-Choose Between #expect and #require in Swift Tests" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔍</span>Fixing Text Truncation in SwiftUI: From fixedSize to ViewThatFits</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/controlling-access-within-a-swift-package/" id="relatedPosts-Swift package Access Level: Sharing Code Across Targets Securely" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Choose Between #expect and #require in Swift Tests</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/how-to-make-a-swiftui-sheet-automatically-adjust-height/" id="relatedPosts-Auto-Adjust SwiftUI Sheet Height to Fit Content" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Swift package Access Level: Sharing Code Across Targets Securely</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/resolving-incomplete-icloud-data-sync-in-ios-development-using-initializecloudkitschema/" id="relatedPosts-Fixing SwiftData &#38; Core Data Sync: initializeCloudKitSchema" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>Auto-Adjust SwiftUI Sheet Height to Fit Content</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>Fixing SwiftData &amp; Core Data Sync: initializeCloudKitSchema</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95

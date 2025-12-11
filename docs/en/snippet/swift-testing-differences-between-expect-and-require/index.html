@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Choose Between #expect and #require in Swift Tests</title>
-<meta name="description" content="Compare #expect vs #require in Swift tests. Use #require for critical failures and #expect for non-critical assertions to optimize Swift Testing.">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Swift Testing: #expect vs #require Explained</title>
+<meta name="description" content="What is the difference between #expect and #require in Swift Testing? Learn when to use `try #require` for optional unwrapping and understand the critical differences between soft and hard assertions.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/en/snippet/swift-testing-differences-between-expect-and-require/">
-<meta property="og:title" content="Choose Between #expect and #require in Swift Tests">
-<meta property="og:description" content="Compare #expect vs #require in Swift tests. Use #require for critical failures and #expect for non-critical assertions to optimize Swift Testing.">
+<meta property="og:title" content="Swift Testing: #expect vs #require Explained">
+<meta property="og:description" content="What is the difference between #expect and #require in Swift Testing? Learn when to use `try #require` for optional unwrapping and understand the critical differences between soft and hard assertions.">
 <meta property="og:url" content="https://fatbobman.com/en/snippet/swift-testing-differences-between-expect-and-require/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/question-and-answer.webp">
@@ -42,11 +42,23 @@
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2025-01-07T00:20:00.000Z",
+  "dateModified": "2025-12-11T00:00:00.000Z",
   "datePublished": "2025-01-07T00:20:00.000Z",
-  "proficiencyLevel": "Intermediate",
-  "description": "Compare #expect vs #require in Swift tests. Use #require for critical failures and #expect for non-critical assertions to optimize Swift Testing.",
-  "headline": "Choose Between #expect and #require in Swift Tests",
+  "proficiencyLevel": "Beginner",
+  "programmingLanguage": "Swift",
+  "dependencies": "Swift 6, Swift Testing",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Swift Testing"
+    },
+    {
+      "@type": "Thing",
+      "name": "Unit Testing"
+    }
+  ],
+  "description": "What is the difference between #expect and #require in Swift Testing? Learn when to use `try #require` for optional unwrapping and understand the critical differences between soft and hard assertions.",
+  "headline": "Swift Testing: #expect vs #require Explained",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/question-and-answer.webp"
@@ -67,7 +79,7 @@
   "articleSection": [
     "Tips and Tricks, Quick Tips"
   ],
-  "keywords": "",
+  "keywords": "Swift Testing, #expect, #require, XCTUnwrap, Swift 6 testing, unit test, assertions, optional unwrapping",
   "inLanguage": "en"
 }</script><script type='application/ld+json'>{
   "@context": "https://schema.org",
@@ -276,17 +288,17 @@ const enableStickyInMobile = true;
       flex items-center justify-center w-16 h-16 text-4xl rounded-2xl shadow-sm
       bg-gray-50 border border-gray-100
       dark:bg-slate-800 dark:border-slate-700
-    "> 🚀 </span> </div>  <h1 class="
+    "> 🔍 </span> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-tight
-    "> Choose Between #expect and #require in Swift Tests </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-07T00:20:00.000Z"> Jan 7, 2025 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
-<p>Use <code>#require</code> in Swift Tests for critical conditions; it unwraps optionals, mandates <code>try</code>, and halts tests on failure. Choose <code>#expect</code> for non-critical assertions that allow test execution to continue after failure.</p>
-<p>In the Swift Testing framework, <code>#expect</code> and <code>#require</code> are common assertion macros. While they serve similar purposes, they differ significantly in behavior and use cases.</p>
+    "> Swift Testing: #expect vs #require Explained </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-07T00:20:00.000Z"> Jan 7, 2025 </time>  <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <span class="italic text-muted/80">
+(Updated on  <time datetime="2025-12-11T00:00:00.000Z">Dec 11, 2025</time>)
+</span>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
+<div class="mdx-intro"><p><strong>TL;DR</strong>: In the Swift Testing framework, <code>#expect</code> is a “soft assertion” (the test continues even if it fails), while <code>#require</code> is a “hard assertion” (the test stops immediately upon failure). Additionally, <code>#require</code> serves as the modern replacement for <code>XCTUnwrap</code>, allowing you to safely unwrap optional values within your tests.</p></div>
+<p><code>#expect</code> and <code>#require</code> are the two foundational macros in the Swift Testing framework (the standard testing library in Swift 6). While they both serve to verify conditions, they differ fundamentally in their error handling mechanisms and intended use cases.</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
-<h2 id="key-differences">Key Differences</h2>
-<h3 id="1-usage-of-try">1. Usage of try</h3>
-<p><code>#require</code> mandates the use of <code>try</code> regardless of whether the Boolean expression might throw an error.
-<strong>Example:</strong></p>
+<h2 id="1-syntax-the-necessity-of-try">1. Syntax: The Necessity of try</h2>
+<p>The mechanism behind <code>#require</code> works by throwing an error to halt test execution. Therefore, regardless of whether the expression inside it throws an error itself, you <strong>must</strong> use the <code>try</code> keyword when calling it.</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -303,14 +315,17 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> person</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> person </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#998418;--shiki-dark:#97E1F1"> Person</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">name</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Fat</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">age</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 10</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    try</span><span style="color:#998418;--shiki-dark:#97E1F1"> #require</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">person.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">age</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 10</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // Must use `try`</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    #expect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">person.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">name</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Fat</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">  // No `try` needed</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> syntaxDemo</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> value </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 10</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    // ✅ Correct: #expect does not need &#39;try&#39; (unless the expression itself throws)</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    #expect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">value </span><span style="color:#AB5959;--shiki-dark:#F286C4">==</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 10</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> </span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    // ✅ Correct: #require must always be used with &#39;try&#39;</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    try</span><span style="color:#998418;--shiki-dark:#97E1F1"> #require</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">value </span><span style="color:#AB5959;--shiki-dark:#F286C4">&gt;</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 0</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<h3 id="2-optional-unwrapping">2. Optional Unwrapping</h3>
-<p><code>#require</code> can directly unwrap optional values (similar to <code>XCTUnwrap</code>). If unwrapping fails, the test automatically fails.
-<strong>Example:</strong></p>
+<h2 id="2-core-feature-unwrapping-optionals">2. Core Feature: Unwrapping Optionals</h2>
+<p><code>#require</code> is the perfect modern replacement for <code>XCTest</code>’s <code>XCTUnwrap</code>. It attempts to unwrap an optional value. If the value is <code>nil</code>, the test fails and stops immediately; if successful, it returns the unwrapped non-optional value for subsequent use.</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -327,17 +342,20 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> notOptional</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> person: Person</span><span style="color:#999999;--shiki-dark:#F286C4">?</span><span style="color:#AB5959;--shiki-dark:#F286C4"> =</span><span style="color:#998418;--shiki-dark:#97E1F1"> Person</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">name</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Fat</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">age</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 10</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> unwrappedPerson </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#1E754F;--shiki-dark:#F286C4"> try</span><span style="color:#998418;--shiki-dark:#97E1F1"> #require</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">person</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // Successfully unwrapped</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    #expect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">unwrappedPerson.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">name</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Fat</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> unwrappingDemo</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> user: User</span><span style="color:#999999;--shiki-dark:#F286C4">?</span><span style="color:#AB5959;--shiki-dark:#F286C4"> =</span><span style="color:#998418;--shiki-dark:#97E1F1"> fetchUser</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    // If user is nil, the test terminates here.</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    // Equivalent to: guard let user = user else { throw Failure }</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> validUser </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#1E754F;--shiki-dark:#F286C4"> try</span><span style="color:#998418;--shiki-dark:#97E1F1"> #require</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">user</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> </span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    // Here, validUser is a non-optional type</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    #expect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">validUser.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">name</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Fatbobman</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<h3 id="3-behavior-on-assertion-failure">3. Behavior on Assertion Failure</h3>
-<h4 id="expect">#expect</h4>
-<ul>
-<li><strong>Behavior</strong>: Even if the assertion fails, the test case continues executing subsequent lines.</li>
-<li><strong>Example:</strong></li>
-</ul>
+<h2 id="3-runtime-behavior-continue-vs-stop">3. Runtime Behavior: Continue vs. Stop</h2>
+<p>This is the most significant logical difference, determining how issues are reported.</p>
+<h3 id="expect-soft-assertion">#expect (Soft Assertion)</h3>
+<p>Even if the assertion fails, the test function <strong>continues execution</strong>. This allows you to collect multiple error messages in a single test run.</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -354,36 +372,14 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> example</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#AB5959;--shiki-dark:#F286C4"> async</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    #expect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">3</span><span style="color:#AB5959;--shiki-dark:#F286C4"> &lt;</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 0</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // Assertion fails</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    print</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">next line</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // Still executes</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> softAssertion</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    #expect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">1</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 2</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // ❌ Fails, error is recorded</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    print</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">This line will be executed</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> </span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    #expect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">3</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 4</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // ❌ Fails again, second error is recorded</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<p><strong>Output:</strong></p>
-<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
-  <span class="select-none"></span>
-  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
-    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </div>
-    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </div>
-  </button>
-</div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>◇ Test run started.</span></span>
-<span class="line"><span>✘ Expectation failed: 3 &lt; 0</span></span>
-<span class="line"><span>↳ next line</span></span>
-<span class="line"><span>✘ Test example() failed after 0.001 seconds with 1 issue.</span></span></code></pre>
-<h4 id="require">#require</h4>
-<ul>
-<li><strong>Behavior</strong>: If the assertion fails, the test case terminates immediately, and subsequent lines are not executed.</li>
-<li><strong>Example:</strong></li>
-</ul>
+<p><strong>Result</strong>: The test is marked as failed, and the report shows <strong>2</strong> issues.</p>
+<h3 id="require-hard-assertion">#require (Hard Assertion)</h3>
+<p>Once the assertion fails, an error is thrown, and the test function <strong>terminates immediately</strong>. This is ideal for scenarios where subsequent code depends on the current condition (like precondition checks).</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -400,40 +396,51 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> example</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#AB5959;--shiki-dark:#F286C4"> async</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    try</span><span style="color:#998418;--shiki-dark:#97E1F1"> #require</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">3</span><span style="color:#AB5959;--shiki-dark:#F286C4"> &lt;</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 0</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // Assertion fails and halts execution</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    print</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">next line</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // Does not execute</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> hardAssertion</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    try</span><span style="color:#998418;--shiki-dark:#97E1F1"> #require</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">1</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 2</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // ❌ Fails, throws error, and terminates</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    print</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">This line will never be executed</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<p><strong>Output:</strong></p>
-<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
-  <span class="select-none"></span>
-  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
-    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </div>
-    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </div>
-  </button>
-</div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>◇ Test run started.</span></span>
-<span class="line"><span>✘ Expectation failed: 3 &lt; 0</span></span>
-<span class="line"><span>✘ Test example() failed after 0.002 seconds with 1 issue.</span></span></code></pre>
-<h2 id="summary">Summary</h2>
-<ul>
-<li><strong><code>#expect</code></strong>:
-Use for non-critical assertions where test execution should proceed even after a failure.</li>
-<li><strong><code>#require</code></strong>:
-Use for critical conditions that must be met; failure terminates the test case.</li>
-</ul>
+<p><strong>Result</strong>: The test is marked as failed, and the report shows only <strong>1</strong> issue.</p>
+<h2 id="summary-which-one-to-choose">Summary: Which One to Choose?</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th style="text-align:left">Feature</th><th style="text-align:left">#expect</th><th style="text-align:left">#require</th></tr></thead><tbody><tr><td style="text-align:left"><strong>Assertion Type</strong></td><td style="text-align:left">Soft Assertion</td><td style="text-align:left">Hard Assertion</td></tr><tr><td style="text-align:left"><strong>Failure Behavior</strong></td><td style="text-align:left">Records error, continues execution</td><td style="text-align:left">Records error, terminates immediately</td></tr><tr><td style="text-align:left"><strong>Keyword</strong></td><td style="text-align:left">Usually doesn’t need <code>try</code></td><td style="text-align:left">Must use <code>try</code></td></tr><tr><td style="text-align:left"><strong>Return Value</strong></td><td style="text-align:left">None</td><td style="text-align:left">Returns unwrapped value (for Optionals)</td></tr><tr><td style="text-align:left"><strong>Use Case</strong></td><td style="text-align:left">Value verification, state checks</td><td style="text-align:left">Preconditions, Optional unwrapping</td></tr></tbody></table>
 <h2 id="further-reading">Further Reading</h2>
 <ul>
-<li><a href="/en/posts/mastering-the-swift-testing-framework/" target="_blank">Swifter and Swifty: Mastering the Swift Testing Framework</a></li>
+<li><a href="/en/posts/mastering-the-swift-testing-framework/" target="_blank">Mastering the Swift Testing Framework</a></li>
 </ul> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <script type="module">var l=document.querySelectorAll("article");l.forEach(function(t){var e=t.querySelectorAll("a");e.forEach(function(r){r.setAttribute("target","_blank")})});</script> <script>
   window.copyCode = function(button, event) {
     if (event) event.preventDefault();
@@ -1189,7 +1196,7 @@ const utmTerm = "snippeten/swift-testing-differences-between-expect-and-require"
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=Tip%3A%20Choose%20Between%20%23expect%20and%20%23require%20in%20Swift%20Tests%0A&url=%2Fen%2Fsnippet%2Fswift-testing-differences-between-expect-and-require%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=Tip%3A%20Swift%20Testing%3A%20%23expect%20vs%20%23require%20Explained%0A&url=%2Fen%2Fsnippet%2Fswift-testing-differences-between-expect-and-require%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
@@ -1366,35 +1373,35 @@ const utmTerm = "snippeten/swift-testing-differences-between-expect-and-require"
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/resolving-incomplete-icloud-data-sync-in-ios-development-using-initializecloudkitschema/" id="relatedPosts-Fix iCloud Sync Issues with initializeCloudKitSchema" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/resolving-incomplete-icloud-data-sync-in-ios-development-using-initializecloudkitschema/" id="relatedPosts-Fixing SwiftData &#38; Core Data Sync: initializeCloudKitSchema" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>Fix iCloud Sync Issues with initializeCloudKitSchema</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/fix-synchronization-issues-for-macos-apps-using-core-dataswiftdata/" id="relatedPosts-Fix Synchronization Issues for macOS Apps Using Core Data/SwiftData" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>Fixing SwiftData &amp; Core Data Sync: initializeCloudKitSchema</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/rules-for-adapting-data-models-to-cloudkit/" id="relatedPosts-Designing Models for CloudKit Sync: Core Data &#38; SwiftData Rules" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>Fix Synchronization Issues for macOS Apps Using Core Data/SwiftData</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/controlling-access-within-a-swift-package/" id="relatedPosts-Swift package Access Level: Sharing Code Across Targets Securely" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>Designing Models for CloudKit Sync: Core Data &amp; SwiftData Rules</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/why-dont-core-data-require-setting-a-primary-key/" id="relatedPosts-Core Data &#38; SwiftData Primary Keys: Z_PK and Automatic Uniqueness" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Swift package Access Level: Sharing Code Across Targets Securely</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/extending-supported-data-types-for-appstorage/" id="relatedPosts-Using SwiftUI's @AppStorage with Arrays, Dates, and Custom Types" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔍</span>Core Data &amp; SwiftData Primary Keys: Z_PK and Automatic Uniqueness</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/fix-algolia-search-box-auto-scrolling-issue-in-safari/" id="relatedPosts-Fix: Algolia DocSearch Safari Scroll-to-Bottom Bug" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Using SwiftUI&#39;s @AppStorage with Arrays, Dates, and Custom Types</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Fix: Algolia DocSearch Safari Scroll-to-Bottom Bug</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95

@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>How to Test Core Data Code in VSCode/Cursor</title>
-<meta name="description" content="Learn how to test Core Data in VSCode or Cursor by configuring the Xcode toolchain and manually converting xcdatamodeld to momd with xcrun momc.">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>VSCode/Cursor Core Data: Manually Compiling xcdatamodeld for Tests</title>
+<meta name="description" content="Core Data unit tests failing in VSCode or Cursor? Learn how to configure the Xcode toolchain and use `xcrun momc` to manually compile `.xcdatamodeld` files.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/en/snippet/how-to-test-core-data-code-in-vscode-cursor/">
-<meta property="og:title" content="How to Test Core Data Code in VSCode/Cursor">
-<meta property="og:description" content="Learn how to test Core Data in VSCode or Cursor by configuring the Xcode toolchain and manually converting xcdatamodeld to momd with xcrun momc.">
+<meta property="og:title" content="VSCode/Cursor Core Data: Manually Compiling xcdatamodeld for Tests">
+<meta property="og:description" content="Core Data unit tests failing in VSCode or Cursor? Learn how to configure the Xcode toolchain and use `xcrun momc` to manually compile `.xcdatamodeld` files.">
 <meta property="og:url" content="https://fatbobman.com/en/snippet/how-to-test-core-data-code-in-vscode-cursor/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/question-and-answer.webp">
@@ -42,11 +42,27 @@
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2025-04-15T14:21:01.000Z",
+  "dateModified": "2025-12-11T00:00:00.000Z",
   "datePublished": "2025-04-15T14:21:01.000Z",
   "proficiencyLevel": "Intermediate",
-  "description": "Learn how to test Core Data in VSCode or Cursor by configuring the Xcode toolchain and manually converting xcdatamodeld to momd with xcrun momc.",
-  "headline": "How to Test Core Data Code in VSCode/Cursor",
+  "programmingLanguage": "Swift",
+  "dependencies": "Xcode, Swift 6, VSCode, Cursor",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Core Data"
+    },
+    {
+      "@type": "Thing",
+      "name": "Development Tools"
+    },
+    {
+      "@type": "Thing",
+      "name": "Testing"
+    }
+  ],
+  "description": "Core Data unit tests failing in VSCode or Cursor? Learn how to configure the Xcode toolchain and use `xcrun momc` to manually compile `.xcdatamodeld` files.",
+  "headline": "VSCode/Cursor Core Data: Manually Compiling xcdatamodeld for Tests",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/question-and-answer.webp"
@@ -67,7 +83,7 @@
   "articleSection": [
     "Tips and Tricks, Quick Tips"
   ],
-  "keywords": "",
+  "keywords": "VSCode Core Data testing, xcrun momc, xcdatamodeld to momd, Swift toolchain VSCode, Cursor Swift testing, manual compilation, SPM resources",
   "inLanguage": "en"
 }</script><script type='application/ld+json'>{
   "@context": "https://schema.org",
@@ -276,39 +292,20 @@ const enableStickyInMobile = true;
       flex items-center justify-center w-16 h-16 text-4xl rounded-2xl shadow-sm
       bg-gray-50 border border-gray-100
       dark:bg-slate-800 dark:border-slate-700
-    "> 🚀 </span> </div>  <h1 class="
+    "> 🔥 </span> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-tight
-    "> How to Test Core Data Code in VSCode/Cursor </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-04-15T14:21:01.000Z"> Apr 15, 2025 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
-<p>To test <code>Core Data</code> in VSCode or Cursor, ensure you’re using the Xcode Swift toolchain by correctly setting <code>DEVELOPER_DIR</code> in your project config. Since VSCode doesn’t auto-convert <code>.xcdatamodeld</code> files, use an <code>xcrun momc</code> script to manually convert them to <code>.momd</code>. This enables Core Data tests to run correctly without relying on Xcode’s build system.</p>
+    "> VSCode/Cursor Core Data: Manually Compiling xcdatamodeld for Tests </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-04-15T14:21:01.000Z"> Apr 15, 2025 </time>  <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <span class="italic text-muted/80">
+(Updated on  <time datetime="2025-12-11T00:00:00.000Z">Dec 11, 2025</time>)
+</span>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
+<div class="mdx-intro"><p><strong>TL;DR</strong>: When running Swift tests in VSCode or Cursor, Core Data <code>.xcdatamodeld</code> files do not compile into <code>.momd</code> automatically as they do in Xcode. This causes unit tests to crash because the model files cannot be found. The solution is to configure the correct toolchain and use <code>xcrun momc</code> to manually compile the model.</p></div>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
 <h2 id="background">Background</h2>
-<p>With the development of the Swift for VSCode extension, developers are increasingly inclined to work on Swift projects in VSCode or Cursor. However, when dealing with Apple-specific frameworks such as Core Data, the testing process often encounters obstacles. This article presents the key configuration methods required to successfully test Core Data in these environments.</p>
-<h2 id="using-the-correct-swift-toolchain">Using the Correct Swift Toolchain</h2>
-<p>On macOS, multiple versions of the Swift toolchain may be installed. Some toolchains (such as the open-source version installed by <a href="https://www.swift.org/blog/introducing-swiftly_10/?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">swiftly</a>) do not support closed-source frameworks like Core Data. It is crucial to ensure that you are using the toolchain provided by Xcode.</p>
-<h3 id="finding-and-setting-the-toolchain-path">Finding and Setting the Toolchain Path</h3>
-<p>Use <code>where swift</code> to locate all installed paths:</p>
-<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
-  <span class="select-none">Bash</span>
-  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
-    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </div>
-    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </div>
-  </button>
-</div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#59873A;--shiki-dark:#62E884">where</span><span style="color:#B56959;--shiki-dark:#E7EE98"> swift</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">/Users/yangxu/.swiftly/bin/swift</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">/usr/bin/swift</span></span></code></pre>
-<p>Run the following command to confirm the Xcode toolchain information:</p>
+<p>With the release of Swift 6, an increasing number of developers are turning to VSCode or Cursor (an AI-powered editor based on VSCode) for server-side or cross-platform Swift development. However, when working with Apple’s proprietary frameworks like Core Data, the build process in non-Xcode environments via SPM (Swift Package Manager) has gaps. The most typical issue is the <strong>failure to compile specific resource types</strong>.</p>
+<h2 id="step-1-configure-the-xcode-toolchain">Step 1: Configure the Xcode Toolchain</h2>
+<p>While you can install the open-source Swift toolchain via tools like <code>swiftly</code>, Core Data depends on the macOS SDK. Therefore, you must force VSCode to utilize the toolchain provided by your Xcode installation.</p>
+<h3 id="1-locate-xcode">1. Locate Xcode</h3>
+<p>Run the following command in your terminal to confirm the installation path of Xcode and the Swift version:</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Bash</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -326,28 +323,12 @@ const enableStickyInMobile = true;
   </button>
 </div>
 <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#59873A;--shiki-dark:#62E884">/usr/bin/swift</span><span style="color:#A65E2B;--shiki-dark:#BF9EEE"> -v</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"># Sample output:</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">Apple</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Swift</span><span style="color:#B56959;--shiki-dark:#E7EE98"> version</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 6.1</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> (swiftlang-6.1.0.110.21 </span><span style="color:#B56959;--shiki-dark:#E7EE98">clang-1700.0.13.3</span><span style="color:#393A34;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">Target:</span><span style="color:#B56959;--shiki-dark:#E7EE98"> arm64-apple-macosx15.0</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">/Applications/Xcode-16.3.0.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swift-help</span><span style="color:#B56959;--shiki-dark:#E7EE98"> intro</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">Welcome</span><span style="color:#B56959;--shiki-dark:#E7EE98"> to</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Swift!</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">Subcommands:</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">  swift</span><span style="color:#B56959;--shiki-dark:#E7EE98"> build</span><span style="color:#B56959;--shiki-dark:#E7EE98">      Build</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Swift</span><span style="color:#B56959;--shiki-dark:#E7EE98"> packages</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">  swift</span><span style="color:#B56959;--shiki-dark:#E7EE98"> package</span><span style="color:#B56959;--shiki-dark:#E7EE98">    Create</span><span style="color:#B56959;--shiki-dark:#E7EE98"> and</span><span style="color:#B56959;--shiki-dark:#E7EE98"> work</span><span style="color:#B56959;--shiki-dark:#E7EE98"> on</span><span style="color:#B56959;--shiki-dark:#E7EE98"> packages</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">  swift</span><span style="color:#B56959;--shiki-dark:#E7EE98"> run</span><span style="color:#B56959;--shiki-dark:#E7EE98">        Run</span><span style="color:#B56959;--shiki-dark:#E7EE98"> a</span><span style="color:#B56959;--shiki-dark:#E7EE98"> program</span><span style="color:#B56959;--shiki-dark:#E7EE98"> from</span><span style="color:#B56959;--shiki-dark:#E7EE98"> a</span><span style="color:#B56959;--shiki-dark:#E7EE98"> package</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">  swift</span><span style="color:#B56959;--shiki-dark:#E7EE98"> test</span><span style="color:#B56959;--shiki-dark:#E7EE98">       Run</span><span style="color:#B56959;--shiki-dark:#E7EE98"> package</span><span style="color:#B56959;--shiki-dark:#E7EE98"> tests</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">  swift</span><span style="color:#B56959;--shiki-dark:#E7EE98"> repl</span><span style="color:#B56959;--shiki-dark:#E7EE98">       Experiment</span><span style="color:#B56959;--shiki-dark:#E7EE98"> with</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Swift</span><span style="color:#B56959;--shiki-dark:#E7EE98"> code</span><span style="color:#B56959;--shiki-dark:#E7EE98"> interactively</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">  Use</span><span style="color:#999999;--shiki-dark:#E7EE98"> `</span><span style="color:#59873A;--shiki-dark:#62E884">swift</span><span style="color:#A65E2B;--shiki-dark:#BF9EEE"> --version</span><span style="color:#999999;--shiki-dark:#E7EE98">`</span><span style="color:#1E754F;--shiki-dark:#F286C4"> for</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> Swift version information.</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">  Use</span><span style="color:#999999;--shiki-dark:#E7EE98"> `</span><span style="color:#59873A;--shiki-dark:#62E884">swift</span><span style="color:#A65E2B;--shiki-dark:#BF9EEE"> --help</span><span style="color:#999999;--shiki-dark:#E7EE98">`</span><span style="color:#1E754F;--shiki-dark:#F286C4"> for</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> descriptions of available options and flags.</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">  Use</span><span style="color:#999999;--shiki-dark:#E7EE98"> `</span><span style="color:#59873A;--shiki-dark:#62E884">swift</span><span style="color:#B56959;--shiki-dark:#E7EE98"> help </span><span style="color:#AB5959;--shiki-dark:#F286C4">&lt;</span><span style="color:#B56959;--shiki-dark:#E7EE98">subcommand</span><span style="color:#AB5959;--shiki-dark:#F286C4">&gt;</span><span style="color:#999999;--shiki-dark:#E7EE98">`</span><span style="color:#1E754F;--shiki-dark:#F286C4"> for</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> more information about a subcommand.</span></span></code></pre>
-<p>Configure the Xcode toolchain path in <code>.vscode/settings.json</code>:</p>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"># Expected output should include: /Applications/Xcode.app/...</span></span></code></pre>
+<h3 id="2-modify-vscode-settings">2. Modify VSCode Settings</h3>
+<p>In your project’s root directory, modify <code>.vscode/settings.json</code> to explicitly specify the <code>swift.path</code> and the <code>DEVELOPER_DIR</code> environment variable.</p>
+<blockquote>
+<p><strong>Note</strong>: Adjust the paths according to your actual Xcode version (e.g., Xcode 17.0) if necessary.</p>
+</blockquote>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">JSON</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -367,65 +348,16 @@ const enableStickyInMobile = true;
 <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">  &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">swift.path</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">/usr/bin/</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">,</span></span>
 <span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">  &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">swift.swiftEnvironmentVariables</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">    &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">DEVELOPER_DIR</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">/Applications/Xcode-16.3.0.app</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
+<span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">    &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">DEVELOPER_DIR</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">/Applications/Xcode.app</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> </span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">  },</span></span>
-<span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">  &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">lldb.library</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">/Applications/Xcode-16.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">,</span></span>
+<span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">  &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">lldb.library</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">,</span></span>
 <span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">  &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">lldb.launch.expressions</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">native</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<p>Alternatively, you can configure it uniformly in your <code>.code-workspace</code> file:</p>
-<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
-  <span class="select-none">JSON</span>
-  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
-    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </div>
-    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </div>
-  </button>
-</div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
-<span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">  &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">folders</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#999999;--shiki-dark:#F6F6F4"> [</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    {</span></span>
-<span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">      &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">path</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">CorDataCodes</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">  ],</span></span>
-<span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">  &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">settings</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">    &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">swift.path</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">/usr/bin/</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">,</span></span>
-<span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">    &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">swift.swiftEnvironmentVariables</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">      &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">DEVELOPER_DIR</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">/Applications/Xcode-16.3.0.app</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    },</span></span>
-<span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">    &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">lldb.library</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">/Applications/Xcode-16.3.0.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">,</span></span>
-<span class="line"><span style="color:#99841877;--shiki-dark:#97E2F2">    &quot;</span><span style="color:#998418;--shiki-dark:#97E1F1">lldb.launch.expressions</span><span style="color:#99841877;--shiki-dark:#97E2F2">&quot;</span><span style="color:#999999;--shiki-dark:#F286C4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">native</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">  }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<h2 id="manually-converting-xcdatamodeld-to-momd">Manually Converting xcdatamodeld to momd</h2>
-<p>Xcode automatically converts <code>xcdatamodeld</code> to <code>momd</code> during compilation, but VSCode does not have this capability—even if the resources are declared as <code>.process</code>:</p>
-<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
-  <span class="select-none">Swift</span>
-  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
-    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </div>
-    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </div>
-  </button>
-</div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">resources</span><span style="color:#AB5959;--shiki-dark:#F286C4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> [</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">process</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Resources</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4">,</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">]),</span></span></code></pre>
-<p>You need to perform the conversion manually. Below is an example script (placed in the Package root directory):</p>
+<h2 id="step-2-manually-compile-the-data-model-critical">Step 2: Manually Compile the Data Model (Critical)</h2>
+<p>This is the step most frequently overlooked. In Xcode, the build system automatically invokes the <code>momc</code> compiler to convert <code>.xcdatamodeld</code> source files into a <code>.momd</code> directory that the runtime can read. In VSCode, we must perform this step manually.</p>
+<p>Even if you declare <code>resources: [.process(...)]</code> in your <code>Package.swift</code>, standard SPM will simply copy the raw <code>.xcdatamodeld</code> folder into the bundle. The Core Data runtime cannot initialize a model from source files; it requires the compiled binary.</p>
+<h3 id="compilation-script-compile_coredatash">Compilation Script (compile_coredata.sh)</h3>
+<p>Create a script file in your project root to invoke <code>xcrun momc</code>:</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Bash</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -444,57 +376,45 @@ const enableStickyInMobile = true;
 </div>
 <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">#!/bin/bash</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"># Replace with your module, target, and data model names</span></span>
-<span class="line"><span style="color:#B07D48;--shiki-dark:#BF9EEE">PACKAGE_NAME</span><span style="color:#999999;--shiki-dark:#F286C4">=</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">CorDataCodes</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
-<span class="line"><span style="color:#B07D48;--shiki-dark:#BF9EEE">Target_Name</span><span style="color:#999999;--shiki-dark:#F286C4">=</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">DataHandler</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
-<span class="line"><span style="color:#B07D48;--shiki-dark:#BF9EEE">MODEL_NAME</span><span style="color:#999999;--shiki-dark:#F286C4">=</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Model</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"># --- Configuration ---</span></span>
+<span class="line"><span style="color:#B07D48;--shiki-dark:#BF9EEE">PACKAGE_NAME</span><span style="color:#999999;--shiki-dark:#F286C4">=</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">MyCoreDataProject</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">   # Your Package Name</span></span>
+<span class="line"><span style="color:#B07D48;--shiki-dark:#BF9EEE">TARGET_NAME</span><span style="color:#999999;--shiki-dark:#F286C4">=</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">DataHandler</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">          # The Target Name containing the Core Data model</span></span>
+<span class="line"><span style="color:#B07D48;--shiki-dark:#BF9EEE">MODEL_NAME</span><span style="color:#999999;--shiki-dark:#F286C4">=</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">MyModel</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">               # The filename of xcdatamodeld (without extension)</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"># ---------------------</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#B07D48;--shiki-dark:#BF9EEE">SOURCE_MODEL</span><span style="color:#999999;--shiki-dark:#F286C4">=</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Sources/</span><span style="color:#B56959;--shiki-dark:#BF9EEE">$Target_Name</span><span style="color:#B56959;--shiki-dark:#E7EE98">/Resources/</span><span style="color:#B56959;--shiki-dark:#BF9EEE">$MODEL_NAME</span><span style="color:#B56959;--shiki-dark:#E7EE98">.xcdatamodeld</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
-<span class="line"><span style="color:#B07D48;--shiki-dark:#BF9EEE">TARGET_DIR</span><span style="color:#999999;--shiki-dark:#F286C4">=</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">.build/arm64-apple-macosx/debug/</span><span style="color:#999999;--shiki-dark:#E7EE98">${</span><span style="color:#B56959;--shiki-dark:#BF9EEE">PACKAGE_NAME</span><span style="color:#999999;--shiki-dark:#E7EE98">}</span><span style="color:#B56959;--shiki-dark:#E7EE98">_</span><span style="color:#999999;--shiki-dark:#E7EE98">${</span><span style="color:#B56959;--shiki-dark:#BF9EEE">Target_Name</span><span style="color:#999999;--shiki-dark:#E7EE98">}</span><span style="color:#B56959;--shiki-dark:#E7EE98">.bundle/</span><span style="color:#B56959;--shiki-dark:#BF9EEE">$MODEL_NAME</span><span style="color:#B56959;--shiki-dark:#E7EE98">.momd</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"># Source file path</span></span>
+<span class="line"><span style="color:#B07D48;--shiki-dark:#BF9EEE">SOURCE_MODEL</span><span style="color:#999999;--shiki-dark:#F286C4">=</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Sources/</span><span style="color:#B56959;--shiki-dark:#BF9EEE">$TARGET_NAME</span><span style="color:#B56959;--shiki-dark:#E7EE98">/Resources/</span><span style="color:#B56959;--shiki-dark:#BF9EEE">$MODEL_NAME</span><span style="color:#B56959;--shiki-dark:#E7EE98">.xcdatamodeld</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"># Target path: Pointing to the SPM build directory</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"># Note: You may need to adjust the path wildcard based on architecture (arm64/x86) and build mode (debug/release)</span></span>
+<span class="line"><span style="color:#B07D48;--shiki-dark:#BF9EEE">TARGET_DIR</span><span style="color:#999999;--shiki-dark:#F286C4">=</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">.build/arm64-apple-macosx/debug/</span><span style="color:#999999;--shiki-dark:#E7EE98">${</span><span style="color:#B56959;--shiki-dark:#BF9EEE">PACKAGE_NAME</span><span style="color:#999999;--shiki-dark:#E7EE98">}</span><span style="color:#B56959;--shiki-dark:#E7EE98">_</span><span style="color:#999999;--shiki-dark:#E7EE98">${</span><span style="color:#B56959;--shiki-dark:#BF9EEE">TARGET_NAME</span><span style="color:#999999;--shiki-dark:#E7EE98">}</span><span style="color:#B56959;--shiki-dark:#E7EE98">.bundle/</span><span style="color:#B56959;--shiki-dark:#BF9EEE">$MODEL_NAME</span><span style="color:#B56959;--shiki-dark:#E7EE98">.momd</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">if</span><span style="color:#999999;--shiki-dark:#F6F6F4"> [</span><span style="color:#AB5959;--shiki-dark:#F286C4"> !</span><span style="color:#AB5959;--shiki-dark:#F286C4"> -d</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#BF9EEE">$SOURCE_MODEL</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4"> ];</span><span style="color:#1E754F;--shiki-dark:#F286C4"> then</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    echo</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Error: Source model file not found: </span><span style="color:#B56959;--shiki-dark:#BF9EEE">$SOURCE_MODEL</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    echo</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">❌ Error: Source model file not found: </span><span style="color:#B56959;--shiki-dark:#BF9EEE">$SOURCE_MODEL</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    exit</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 1</span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">fi</span></span>
 <span class="line"></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">echo</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Compiling Core Data model...</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
 <span class="line"><span style="color:#59873A;--shiki-dark:#62E884">mkdir</span><span style="color:#A65E2B;--shiki-dark:#BF9EEE"> -p</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#BF9EEE">$TARGET_DIR</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"># Invoke the Xcode momc compiler</span></span>
 <span class="line"><span style="color:#59873A;--shiki-dark:#62E884">xcrun</span><span style="color:#B56959;--shiki-dark:#E7EE98"> momc</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#BF9EEE">$SOURCE_MODEL</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#BF9EEE">$TARGET_DIR</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">if</span><span style="color:#999999;--shiki-dark:#F6F6F4"> [</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic"> $?</span><span style="color:#AB5959;--shiki-dark:#F286C4"> -eq</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 0</span><span style="color:#999999;--shiki-dark:#F6F6F4"> ];</span><span style="color:#1E754F;--shiki-dark:#F286C4"> then</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    echo</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Core Data model conversion successful!</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    echo</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Source file: </span><span style="color:#B56959;--shiki-dark:#BF9EEE">$SOURCE_MODEL</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    echo</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Target file: </span><span style="color:#B56959;--shiki-dark:#BF9EEE">$TARGET_DIR</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    echo</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">✅ Success! Model compiled to:</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    echo</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#BF9EEE">   $TARGET_DIR</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">else</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    echo</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Conversion failed!</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    echo</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">❌ Compilation failed!</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    exit</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 1</span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">fi</span></span></code></pre>
-<p>Run the command:</p>
-<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
-  <span class="select-none">Bash</span>
-  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
-    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </div>
-    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </div>
-  </button>
-</div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#59873A;--shiki-dark:#62E884">./xcmodel2momd.sh</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> </span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"># Sample output:</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">Model.xcdatamodel:</span><span style="color:#B56959;--shiki-dark:#E7EE98"> note:</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Model</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Model</span><span style="color:#B56959;--shiki-dark:#E7EE98"> version</span><span style="color:#B56959;--shiki-dark:#E7EE98"> checksum:</span><span style="color:#B56959;--shiki-dark:#E7EE98"> 0wr8l/hdOcRIaAEOGJvaYn7eMvrqCq3uDvCCQiI3mSQ=</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">Core</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Data</span><span style="color:#B56959;--shiki-dark:#E7EE98"> model</span><span style="color:#B56959;--shiki-dark:#E7EE98"> conversion</span><span style="color:#B56959;--shiki-dark:#E7EE98"> successful!</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">Source</span><span style="color:#B56959;--shiki-dark:#E7EE98"> file:</span><span style="color:#B56959;--shiki-dark:#E7EE98"> Sources/Persistent/Resources/Model.xcdatamodeld</span></span>
-<span class="line"><span style="color:#59873A;--shiki-dark:#62E884">Target</span><span style="color:#B56959;--shiki-dark:#E7EE98"> file:</span><span style="color:#B56959;--shiki-dark:#E7EE98"> .build/arm64-apple-macosx/debug/CorDataCodes_DataHandler.bundle/Model.momd</span></span></code></pre>
-<p>You should re-run the script each time you modify the model.</p>
-<h2 id="outcome">Outcome</h2>
-<p>After completing the configuration, you can directly click the test button to run unit tests that involve Core Data:</p>
+<h3 id="usage">Usage</h3>
+<ol>
+<li>Grant execution permissions to the script: <code>chmod +x compile_coredata.sh</code>.</li>
+<li>Run this script (<code>./compile_coredata.sh</code>) every time you <strong>modify the data model</strong> or perform a <strong>Clean Build</strong>.</li>
+<li>Now, when you run <code>swift test</code> or click the “Test” button in VSCode, Core Data will successfully load the model.</li>
+</ol>
+<h2 id="demo">Demo</h2>
+<p>Once configured, the VSCode Testing panel can successfully execute unit tests involving Core Data:</p>
 <video src="https://cdn.fatbobman.com/test-core-data-code-in-vscode.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
 <h2 id="further-reading">Further Reading</h2>
 <ul>
@@ -1255,7 +1175,7 @@ const utmTerm = "snippeten/how-to-test-core-data-code-in-vscode-cursor";
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=Tip%3A%20How%20to%20Test%20Core%20Data%20Code%20in%20VSCode%2FCursor%0A&url=%2Fen%2Fsnippet%2Fhow-to-test-core-data-code-in-vscode-cursor%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=Tip%3A%20VSCode%2FCursor%20Core%20Data%3A%20Manually%20Compiling%20xcdatamodeld%20for%20Tests%0A&url=%2Fen%2Fsnippet%2Fhow-to-test-core-data-code-in-vscode-cursor%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
@@ -1432,35 +1352,35 @@ const utmTerm = "snippeten/how-to-test-core-data-code-in-vscode-cursor";
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/differences-between-gesturestate-and-state-in-swiftui/" id="relatedPosts-Fixing Gesture Interruptions: @GestureState vs @State" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/ensuring-full-text-display-in-swiftui-techniques-and-solutions/" id="relatedPosts-Fixing Text Truncation in SwiftUI: From fixedSize to ViewThatFits" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>Fixing Gesture Interruptions: @GestureState vs @State</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/extending-supported-data-types-for-appstorage/" id="relatedPosts-Using SwiftUI's @AppStorage with Arrays, Dates, and Custom Types" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔍</span>Fixing Text Truncation in SwiftUI: From fixedSize to ViewThatFits</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/why-core-data-or-swiftdata-cloud-sync-stops-working-after-app-store-login/" id="relatedPosts-Fixing CloudKit Sync in Production: Deploying Schema" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Using SwiftUI&#39;s @AppStorage with Arrays, Dates, and Custom Types</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/controlling-access-within-a-swift-package/" id="relatedPosts-Swift package Access Level: Sharing Code Across Targets Securely" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>Fixing CloudKit Sync in Production: Deploying Schema</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/differences-between-gesturestate-and-state-in-swiftui/" id="relatedPosts-Fixing Gesture Interruptions: @GestureState vs @State" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Swift package Access Level: Sharing Code Across Targets Securely</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/resolving-incomplete-icloud-data-sync-in-ios-development-using-initializecloudkitschema/" id="relatedPosts-Fix iCloud Sync Issues with initializeCloudKitSchema" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>Fixing Gesture Interruptions: @GestureState vs @State</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/how-to-make-a-swiftui-sheet-automatically-adjust-height/" id="relatedPosts-SwiftUI Sheet Auto-Sizing: Dynamic Height Based on Content" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>Fix iCloud Sync Issues with initializeCloudKitSchema</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔍</span>SwiftUI Sheet Auto-Sizing: Dynamic Height Based on Content</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95

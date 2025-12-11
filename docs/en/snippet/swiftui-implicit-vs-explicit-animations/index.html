@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>SwiftUI: Implicit vs Explicit Animations</title>
-<meta name="description" content="Learn the differences between implicit and explicit animations in SwiftUI. Use `.animation` for fine-tuned effects and `withAnimation` for centralized control. Understand their use cases and how to combine them effectively.">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Mastering SwiftUI Animations: Implicit vs. Explicit Guide</title>
+<meta name="description" content="Confused by `.animation` vs `withAnimation`? Master the core differences, priority rules, and Transaction mechanisms in SwiftUI to precisely control your UI state transitions.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/en/snippet/swiftui-implicit-vs-explicit-animations/">
-<meta property="og:title" content="SwiftUI: Implicit vs Explicit Animations">
-<meta property="og:description" content="Learn the differences between implicit and explicit animations in SwiftUI. Use `.animation` for fine-tuned effects and `withAnimation` for centralized control. Understand their use cases and how to combine them effectively.">
+<meta property="og:title" content="Mastering SwiftUI Animations: Implicit vs. Explicit Guide">
+<meta property="og:description" content="Confused by `.animation` vs `withAnimation`? Master the core differences, priority rules, and Transaction mechanisms in SwiftUI to precisely control your UI state transitions.">
 <meta property="og:url" content="https://fatbobman.com/en/snippet/swiftui-implicit-vs-explicit-animations/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/question-and-answer.webp">
@@ -42,11 +42,23 @@
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2025-01-12T09:50:00.000Z",
+  "dateModified": "2025-12-11T00:00:00.000Z",
   "datePublished": "2025-01-12T09:50:00.000Z",
   "proficiencyLevel": "Intermediate",
-  "description": "Learn the differences between implicit and explicit animations in SwiftUI. Use `.animation` for fine-tuned effects and `withAnimation` for centralized control. Understand their use cases and how to combine them effectively.",
-  "headline": "SwiftUI: Implicit vs Explicit Animations",
+  "programmingLanguage": "Swift",
+  "dependencies": "SwiftUI, iOS 13+, Swift 6",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "SwiftUI Animation"
+    },
+    {
+      "@type": "Thing",
+      "name": "User Interface Design"
+    }
+  ],
+  "description": "Confused by `.animation` vs `withAnimation`? Master the core differences, priority rules, and Transaction mechanisms in SwiftUI to precisely control your UI state transitions.",
+  "headline": "Mastering SwiftUI Animations: Implicit vs. Explicit Guide",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/question-and-answer.webp"
@@ -67,7 +79,7 @@
   "articleSection": [
     "Tips and Tricks, Quick Tips"
   ],
-  "keywords": "",
+  "keywords": "SwiftUI, Animation, implicit animation, explicit animation, withAnimation, Transaction, animation mechanism, SwiftUI transition, state management, UI design",
   "inLanguage": "en"
 }</script><script type='application/ld+json'>{
   "@context": "https://schema.org",
@@ -276,16 +288,22 @@ const enableStickyInMobile = true;
       flex items-center justify-center w-16 h-16 text-4xl rounded-2xl shadow-sm
       bg-gray-50 border border-gray-100
       dark:bg-slate-800 dark:border-slate-700
-    "> 🔦 </span> </div>  <h1 class="
+    "> 🚀 </span> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-tight
-    "> SwiftUI: Implicit vs Explicit Animations </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-12T09:50:00.000Z"> Jan 12, 2025 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
-<p>Implicit animations in SwiftUI use modifiers like <code>.animation</code>, automatically applying effects to state changes. Explicit animations, using <code>withAnimation</code> or <code>withTransaction</code>, offer centralized control and can override implicit behaviors. Combine both for tailored animation management.</p>
+    "> Mastering SwiftUI Animations: Implicit vs. Explicit Guide </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-12T09:50:00.000Z"> Jan 12, 2025 </time>  <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <span class="italic text-muted/80">
+(Updated on  <time datetime="2025-12-11T00:00:00.000Z">Dec 11, 2025</time>)
+</span>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
+<div class="mdx-intro"><p><strong>TL;DR</strong>: <strong>Implicit animation</strong> (<code>.animation</code>) is bound to a view and works passively, defining “how to move <em>if</em> a change happens.” <strong>Explicit animation</strong> (<code>withAnimation</code>) wraps the state change logic and acts proactively, defining “every change caused by this specific update should be animated.”</p></div>
+<p>SwiftUI provides two distinct mechanisms for animation: implicit and explicit. Beginners often confuse the priority and scope of these two, leading to lost animations or unexpected visual glitches. This article breaks down the core differences and best use cases for each.</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
-<h2 id="background">Background</h2>
-<p>SwiftUI provides two animation mechanisms: implicit animations and explicit animations. Many developers find it challenging to understand their differences and application scenarios. This article compares the two through examples, analyzing their use cases and considerations.</p>
-<h2 id="implicit-animations">Implicit Animations</h2>
-<p>Implicit animations are declared using modifiers like <code>.animation</code> or <code>.transaction</code>, specifying the animation effects applied during state changes. These animations propagate down the view hierarchy and can be overridden.</p>
+<h2 id="implicit-animation">Implicit Animation</h2>
+<p>Implicit animation is declared on a view using modifiers (like <code>.animation</code>). It acts like a property, telling the view system: “Whenever the monitored <code>value</code> changes, animate the transition using this specific curve.”</p>
+<p><strong>Key Characteristics</strong>:</p>
+<ol>
+<li><strong>Proximity Rule</strong>: An implicit animation on a child view overrides animation settings from a parent view.</li>
+<li><strong>Automatic Propagation</strong>: It propagates down the view hierarchy until it is intercepted by a deeper animation modifier.</li>
+</ol>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -304,34 +322,36 @@ const enableStickyInMobile = true;
 </div>
 <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> ImplicitAnimationDemo</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F286C4">    @</span><span style="color:#AB5959;--shiki-dark:#F286C4">State</span><span style="color:#1E754F;--shiki-dark:#F286C4"> private</span><span style="color:#1E754F;--shiki-dark:#F286C4"> var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isActive </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> false</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> body: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        VStack</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            VStack</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Hello</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    .</span><span style="color:#998418;--shiki-dark:#97E1F1">font</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">largeTitle</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Hello</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // Defines .smooth itself; highest priority</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    .</span><span style="color:#998418;--shiki-dark:#97E1F1">offset</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">x</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isActive </span><span style="color:#AB5959;--shiki-dark:#F286C4">?</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 200</span><span style="color:#AB5959;--shiki-dark:#F286C4"> :</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 0</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">                    // Applies a .smooth animation when `isActive` changes</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    .</span><span style="color:#998418;--shiki-dark:#97E1F1">animation</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">smooth</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">value</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isActive</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">World</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    .</span><span style="color:#998418;--shiki-dark:#97E1F1">font</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">largeTitle</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">World</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // Inherits .linear from the parent VStack</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    .</span><span style="color:#998418;--shiki-dark:#97E1F1">offset</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">x</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isActive </span><span style="color:#AB5959;--shiki-dark:#F286C4">?</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 200</span><span style="color:#AB5959;--shiki-dark:#F286C4"> :</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 0</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
-<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // Applies a .linear animation with speed adjustment to VStack and its elements</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // Parent container defines .linear</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">animation</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">linear</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">speed</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">3</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">value</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isActive</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // No animation applied</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // No animation defined, nor inherited (unless a Transaction is involved)</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">No Animation</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                .</span><span style="color:#998418;--shiki-dark:#97E1F1">offset</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">x</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isActive </span><span style="color:#AB5959;--shiki-dark:#F286C4">?</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 200</span><span style="color:#AB5959;--shiki-dark:#F286C4"> :</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 0</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            Toggle</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Active</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">isOn</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> $isActive</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                .</span><span style="color:#998418;--shiki-dark:#97E1F1">padding</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<p>When running the code, “No Animation” will move without animation due to the lack of an explicit declaration. “World” will use the <code>.linear.speed(3)</code> animation applied to the <code>VStack</code>, while “Hello” will use the <code>.smooth</code> animation.</p>
-<h2 id="explicit-animations">Explicit Animations</h2>
-<p>Explicit animations are defined imperatively using <code>withAnimation</code> or <code>withTransaction</code>. They are suited for scenarios requiring centralized control over state change animations.</p>
+<video src="https://cdn.fatbobman.com/implicit-animation-iShot_2025-01-12_09.11.16-1.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
+<h2 id="explicit-animation">Explicit Animation</h2>
+<p>Explicit animation is imperative. It is triggered via <code>withAnimation</code> or a <code>withTransaction</code> closure. It tells the system: “For every state change happening inside this closure, apply an animation to the resulting view updates.”</p>
+<p><strong>Key Characteristics</strong>:</p>
+<ol>
+<li><strong>Global Coverage</strong>: It provides a “default animation” for all views affected by the state change.</li>
+<li><strong>Priority</strong>: If a view <em>does not</em> have an implicit animation, it uses the explicit animation. If a view <em>does</em> have an implicit animation, <strong>the implicit animation usually overrides the explicit one</strong>.</li>
+</ol>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -350,43 +370,64 @@ const enableStickyInMobile = true;
 </div>
 <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> ExplicitAnimationDemo</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F286C4">    @</span><span style="color:#AB5959;--shiki-dark:#F286C4">State</span><span style="color:#1E754F;--shiki-dark:#F286C4"> private</span><span style="color:#1E754F;--shiki-dark:#F286C4"> var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isActive </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> false</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> body: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        VStack</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            VStack</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Hello</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    .</span><span style="color:#998418;--shiki-dark:#97E1F1">font</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">largeTitle</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    .</span><span style="color:#998418;--shiki-dark:#97E1F1">offset</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">x</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isActive </span><span style="color:#AB5959;--shiki-dark:#F286C4">?</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 200</span><span style="color:#AB5959;--shiki-dark:#F286C4"> :</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 0</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">                    // Applies a .smooth animation when `isActive` changes</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    .</span><span style="color:#998418;--shiki-dark:#97E1F1">animation</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">smooth</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">value</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isActive</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // ... (Same Hello/World structure as above) ...</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">World</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    .</span><span style="color:#998418;--shiki-dark:#97E1F1">font</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">largeTitle</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    .</span><span style="color:#998418;--shiki-dark:#97E1F1">offset</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">x</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isActive </span><span style="color:#AB5959;--shiki-dark:#F286C4">?</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 200</span><span style="color:#AB5959;--shiki-dark:#F286C4"> :</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 0</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
-<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // Applies a .linear animation with speed adjustment to VStack and its elements</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">animation</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">linear</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">speed</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">0.5</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">value</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isActive</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"></span>
-<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // No implicit animation applied</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">No Animation</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // Has no implicit animation modifier</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Default Spring</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                .</span><span style="color:#998418;--shiki-dark:#97E1F1">offset</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">x</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isActive </span><span style="color:#AB5959;--shiki-dark:#F286C4">?</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 200</span><span style="color:#AB5959;--shiki-dark:#F286C4"> :</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 0</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            </span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            Button</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Toggle</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">                // Explicit animation: All affected views without their own opinion use .spring</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                withAnimation</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">spring</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    isActive.</span><span style="color:#998418;--shiki-dark:#97E1F1">toggle</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">                }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">buttonStyle</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">borderedProminent</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<p>In this example, “No Animation” will use the <code>.spring</code> animation defined in the <code>withAnimation</code> block, as it is affected by the <code>isActive</code> state change without an explicit implicit animation.</p>
-<h2 id="comparison">Comparison</h2>
+<p>In this example, when the button is clicked:</p>
 <ul>
-<li><strong>Complementary Mechanisms</strong>: Implicit and explicit animations complement each other, catering to different animation needs.</li>
-<li><strong>Fine-tuning vs Central Control</strong>: Implicit animations allow precise control for specific elements, while explicit animations are better for centralized state change management.</li>
-<li><strong>Default Priority</strong>: Explicit animations provide default animation effects for views without implicit animations, ensuring consistency.</li>
-<li><strong>Animation Suppression</strong>: Explicit animations can suppress implicit animations using <code>disablesAnimations</code>.</li>
+<li><code>Text(&quot;Hello&quot;)</code> still uses its own <code>.smooth</code> (Implicit overrides Explicit).</li>
+<li><code>Text(&quot;Default Spring&quot;)</code> has no implicit animation, so it obeys <code>withAnimation(.spring)</code>.</li>
 </ul>
+<video src="https://cdn.fatbobman.com/explicit-animation-iShot_2025-01-12_09.23.41.mp4" muted="true" playsInline preload="none" loop data-autoplay="lazy" class="lazy-video"></video>
+<h2 id="core-differences-summary">Core Differences Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th style="text-align:left">Feature</th><th style="text-align:left">Implicit Animation (<code>.animation</code>)</th><th style="text-align:left">Explicit Animation (<code>withAnimation</code>)</th></tr></thead><tbody><tr><td style="text-align:left"><strong>Definition Location</strong></td><td style="text-align:left">View Hierarchy (View Modifier)</td><td style="text-align:left">Logic Level (State Change)</td></tr><tr><td style="text-align:left"><strong>Scope</strong></td><td style="text-align:left">Restricted to the modified view and its children</td><td style="text-align:left">All views affected by the state inside the closure</td></tr><tr><td style="text-align:left"><strong>Priority</strong></td><td style="text-align:left"><strong>High</strong> (Can override explicit animation)</td><td style="text-align:left"><strong>Low</strong> (Acts as a default fallback)</td></tr><tr><td style="text-align:left"><strong>Use Case</strong></td><td style="text-align:left">Fine-grained control for specific views</td><td style="text-align:left">Global state changes, unified transitions, List operations</td></tr></tbody></table>
+<h2 id="advanced-tip-disabling-animations">Advanced Tip: Disabling Animations</h2>
+<p>Sometimes you need to force a specific view <strong>not</strong> to animate within the context of an explicit animation. You can achieve this using a <code>Transaction</code>.</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -403,26 +444,70 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> transaction </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#998418;--shiki-dark:#97E1F1"> Transaction</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// Forcefully disable animation</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> transaction </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#998418;--shiki-dark:#97E1F1"> Transaction</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">animation</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#998418;--shiki-dark:#BF9EEE">none</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">transaction.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">disablesAnimations</span><span style="color:#AB5959;--shiki-dark:#F286C4"> =</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> true</span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">withTransaction</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">transaction</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    isActive.</span><span style="color:#998418;--shiki-dark:#97E1F1">toggle</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<h2 id="considerations-for-implicit-animations">Considerations for Implicit Animations</h2>
-<p>SwiftUI has introduced new implicit animation declarations over time. When possible, use the latest options for more precise animation control and guidance.</p>
-<ul>
-<li><strong><code>.animation(.spring)</code></strong>
-Applies <code>.spring</code> animation to all state changes within the current branch, regardless of specific states. Deprecated after iOS 14.</li>
-<li><strong><code>.animation(.spring, value: isActive)</code></strong>
-Applies <code>.spring</code> animation only when <code>isActive</code> changes.</li>
-<li><strong><code>.animation(animation:, body:)</code></strong>
-Declares animations for specific elements without affecting the entire branch.</li>
-</ul>
+<p>Or disable it at the view level:</p>
+<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
+  <span class="select-none">Swift</span>
+  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
+    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    </div>
+    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+  </button>
+</div>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">No Animation</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">animation</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#1E754F;--shiki-dark:#BF9EEE">nil</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">value</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> isActive</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // Forcefully set to nil</span></span></code></pre>
+<h2 id="modern-best-practices-swift-6">Modern Best Practices (Swift 6)</h2>
+<p>As SwiftUI evolves, adhere to these standards to avoid warnings and undefined behavior:</p>
+<ol>
+<li>
+<p><strong>Must Bind a Value</strong>:
+❌ Deprecated: <code>.animation(.spring())</code>
+✅ Recommended: <code>.animation(.spring, value: isActive)</code>
+<em>Reason: The old API caused performance issues and bugs where unrelated state changes in the view tree could trigger animations.</em></p>
+</li>
+<li>
+<p><strong>Scoped Animations</strong> (iOS 17+):
+Use <code>.animation(_:body:)</code> to precisely control the scope of an animation without affecting child views.</p>
+</li>
+</ol>
+<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
+  <span class="select-none">Swift</span>
+  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
+    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+    </div>
+    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+  </button>
+</div>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Title</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">animation</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">default</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> content </span><span style="color:#1E754F;--shiki-dark:#F286C4">in</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        content.</span><span style="color:#998418;--shiki-dark:#97E1F1">scaleEffect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">isActive </span><span style="color:#AB5959;--shiki-dark:#F286C4">?</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 1.2</span><span style="color:#AB5959;--shiki-dark:#F286C4"> :</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 1.0</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span></code></pre>
 <h2 id="further-reading">Further Reading</h2>
 <ul>
-<li><a href="/en/posts/mastering-transaction/" target="_blank">The Secret to Flawless SwiftUI Animations: A Deep Dive into Transactions</a></li>
-<li><a href="/en/posts/the_animation_mechanism_of_swiftui/" target="_blank">Demystifying SwiftUI Animation: A Comprehensive Guide</a></li>
-<li><a href="/en/posts/mastring-geometrygroup/" target="_blank">SwiftUI geometryGroup() Guide: From Theory to Practice</a></li>
+<li><a href="/en/posts/mastering-transaction/" target="_blank">Mastering Transaction in SwiftUI</a></li>
+<li><a href="/en/posts/the_animation_mechanism_of_swiftui/" target="_blank">The Animation Mechanism of SwiftUI</a></li>
 </ul> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <script type="module">var l=document.querySelectorAll("article");l.forEach(function(t){var e=t.querySelectorAll("a");e.forEach(function(r){r.setAttribute("target","_blank")})});</script> <script>
   window.copyCode = function(button, event) {
     if (event) event.preventDefault();
@@ -1178,7 +1263,7 @@ const utmTerm = "snippeten/swiftui-implicit-vs-explicit-animations";
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=Tip%3A%20SwiftUI%3A%20Implicit%20vs%20Explicit%20Animations%0A&url=%2Fen%2Fsnippet%2Fswiftui-implicit-vs-explicit-animations%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=Tip%3A%20Mastering%20SwiftUI%20Animations%3A%20Implicit%20vs.%20Explicit%20Guide%0A&url=%2Fen%2Fsnippet%2Fswiftui-implicit-vs-explicit-animations%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
@@ -1355,35 +1440,35 @@ const utmTerm = "snippeten/swiftui-implicit-vs-explicit-animations";
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/why-dont-core-data-require-setting-a-primary-key/" id="relatedPosts-No Need to Set Primary Key in Core Data/SwiftData" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/how-to-test-core-data-code-in-vscode-cursor/" id="relatedPosts-VSCode/Cursor Core Data: Manually Compiling xcdatamodeld for Tests" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>No Need to Set Primary Key in Core Data/SwiftData</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/controlling-access-within-a-swift-package/" id="relatedPosts-Swift package Access Level: Sharing Code Across Targets Securely" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>VSCode/Cursor Core Data: Manually Compiling xcdatamodeld for Tests</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/preventing-scrollview-content-clipping-in-swiftui/" id="relatedPosts-Fixing ScrollView Clipping: Allow Shadows to Overflow in SwiftUI" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Swift package Access Level: Sharing Code Across Targets Securely</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/how-to-forward-custom-tag-events-to-gtm-running-inside-partytown/" id="relatedPosts-How to Forward Events from the Main Thread to GTM Running Inside Partytown" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Fixing ScrollView Clipping: Allow Shadows to Overflow in SwiftUI</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/rules-for-adapting-data-models-to-cloudkit/" id="relatedPosts-Designing Models for CloudKit Sync: Core Data &#38; SwiftData Rules" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>How to Forward Events from the Main Thread to GTM Running Inside Partytown</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/why-core-data-or-swiftdata-cloud-sync-stops-working-after-app-store-login/" id="relatedPosts-Fix Core Data/SwiftData Cloud Sync Issues in Production" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>Designing Models for CloudKit Sync: Core Data &amp; SwiftData Rules</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/sequential-display-tips-with-tipkit/" id="relatedPosts-Sequential Tips in SwiftUI: Using TipKit’s TipGroup (iOS 18+)" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🛎️</span>Fix Core Data/SwiftData Cloud Sync Issues in Production</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>Sequential Tips in SwiftUI: Using TipKit’s TipGroup (iOS 18+)</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95

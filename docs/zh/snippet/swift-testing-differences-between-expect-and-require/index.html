@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Swift 测试：#expect 和 #require 的使用场景</title>
-<meta name="description" content="掌握 Swift 测试中的 #expect 和 #require：理解其在断言、解包与测试终止中的差异，选择适合的场景优化测试流程。">
+<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Swift Testing 宏对比：#expect vs #require 核心差异与选型</title>
+<meta name="description" content="Swift Testing 中 #expect 和 #require 有什么区别？何时使用 try #require 进行解包？详解断言失败后的行为差异，助你编写更稳健的测试代码。">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/zh/snippet/swift-testing-differences-between-expect-and-require/">
-<meta property="og:title" content="Swift 测试：#expect 和 #require 的使用场景">
-<meta property="og:description" content="掌握 Swift 测试中的 #expect 和 #require：理解其在断言、解包与测试终止中的差异，选择适合的场景优化测试流程。">
+<meta property="og:title" content="Swift Testing 宏对比：#expect vs #require 核心差异与选型">
+<meta property="og:description" content="Swift Testing 中 #expect 和 #require 有什么区别？何时使用 try #require 进行解包？详解断言失败后的行为差异，助你编写更稳健的测试代码。">
 <meta property="og:url" content="https://fatbobman.com/zh/snippet/swift-testing-differences-between-expect-and-require/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/question-and-answer.webp">
@@ -42,11 +42,23 @@
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2025-01-07T00:20:00.000Z",
+  "dateModified": "2025-12-11T00:00:00.000Z",
   "datePublished": "2025-01-07T00:20:00.000Z",
-  "proficiencyLevel": "Intermediate",
-  "description": "掌握 Swift 测试中的 #expect 和 #require：理解其在断言、解包与测试终止中的差异，选择适合的场景优化测试流程。",
-  "headline": "Swift 测试：#expect 和 #require 的使用场景",
+  "proficiencyLevel": "Beginner",
+  "programmingLanguage": "Swift",
+  "dependencies": "Swift 6, Swift Testing",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Swift Testing"
+    },
+    {
+      "@type": "Thing",
+      "name": "Unit Testing"
+    }
+  ],
+  "description": "Swift Testing 中 #expect 和 #require 有什么区别？何时使用 try #require 进行解包？详解断言失败后的行为差异，助你编写更稳健的测试代码。",
+  "headline": "Swift Testing 宏对比：#expect vs #require 核心差异与选型",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/question-and-answer.webp"
@@ -67,7 +79,7 @@
   "articleSection": [
     "提示、技巧"
   ],
-  "keywords": "",
+  "keywords": "Swift Testing, #expect, #require, XCTUnwrap, Swift 6 testing, unit test, 断言, 单元测试",
   "inLanguage": "zh-Hans"
 }</script><script type='application/ld+json'>{
   "@context": "https://schema.org",
@@ -276,17 +288,17 @@ const enableStickyInMobile = true;
       flex items-center justify-center w-16 h-16 text-4xl rounded-2xl shadow-sm
       bg-gray-50 border border-gray-100
       dark:bg-slate-800 dark:border-slate-700
-    "> 🔦 </span> </div>  <h1 class="
+    "> 🔥 </span> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-wider
-    "> Swift 测试：#expect 和 #require 的使用场景 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 tracking-wide"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 东坡肘子 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-07T00:20:00.000Z"> 2025 年 1 月 7 日 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
-<p>在 Swift 测试中，<code>#expect</code> 适合非关键断言，失败后继续测试；<code>#require</code> 用于关键条件，需 <code>try</code> 调用，支持解包可选值，失败时终止测试。</p>
-<p><code>#expect</code> 和 <code>#require</code> 是 Swift Testing 框架中常用的断言宏，二者的功能虽有相似之处，但在行为和应用场景上存在重要差异。</p>
+    "> Swift Testing 宏对比：#expect vs #require 核心差异与选型 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 tracking-wide"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 东坡肘子 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-07T00:20:00.000Z"> 2025 年 1 月 7 日 </time>  <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <span class="italic text-muted/80">
+(更新于  <time datetime="2025-12-11T00:00:00.000Z">2025 年 12 月 11 日</time>)
+</span>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
+<div class="mdx-intro"><p><strong>核心摘要</strong>：在 Swift Testing 框架中，<code>#expect</code> 是“软断言”，失败后测试继续执行；<code>#require</code> 是“硬断言”，失败后立即终止当前测试。此外，<code>#require</code> 还是 <code>XCTUnwrap</code> 的现代替代品，用于安全解包可选值。</p></div>
+<p><code>#expect</code> 和 <code>#require</code> 是 Swift Testing 框架（Swift 6 标准测试库）中最核心的两个宏。虽然它们都用于验证条件，但在错误处理机制和适用场景上存在本质区别。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
-<h2 id="主要区别">主要区别</h2>
-<h3 id="1-必须使用-try-关键字">1. 必须使用 try 关键字</h3>
-<p><code>#require</code> 无论布尔值表达式是否会抛出错误，都需要使用 <code>try</code> 调用。
-示例代码：</p>
+<h2 id="1-语法差异try-的必要性">1. 语法差异：try 的必要性</h2>
+<p><code>#require</code> 的机制是通过抛出错误来停止测试执行，因此无论表达式本身是否抛出错误，调用它时<strong>必须</strong>使用 <code>try</code> 关键字。</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -303,13 +315,17 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> person</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> person </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#998418;--shiki-dark:#97E1F1"> Person</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">name</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Fat</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">age</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 10</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    try</span><span style="color:#998418;--shiki-dark:#97E1F1"> #require</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">person.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">age</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 10</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 必须使用 try</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    #expect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">person.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">name</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Fat</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 不需要 try</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> syntaxDemo</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> value </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 10</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    // ✅ 正确：#expect 不需要 try (除非表达式本身抛出错误)</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    #expect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">value </span><span style="color:#AB5959;--shiki-dark:#F286C4">==</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 10</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> </span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    // ✅ 正确：#require 必须配合 try 使用</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    try</span><span style="color:#998418;--shiki-dark:#97E1F1"> #require</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">value </span><span style="color:#AB5959;--shiki-dark:#F286C4">&gt;</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 0</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<h3 id="2-兼具解包功能">2. 兼具解包功能</h3>
-<p><code>#require</code> 支持直接解包可选值（类似 <code>XCTUnwrap</code>），当解包失败时测试会自动失败。例如：</p>
+<h2 id="2-核心功能解包可选值-unwrapping">2. 核心功能：解包可选值 (Unwrapping)</h2>
+<p><code>#require</code> 是 <code>XCTest</code> 中 <code>XCTUnwrap</code> 的完美替代品。它可以尝试解包一个可选值（Optional），如果值为 <code>nil</code>，测试立即失败并停止；如果成功，则返回解包后的非空值供后续使用。</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -326,17 +342,20 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> notOptional</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> person: Person</span><span style="color:#999999;--shiki-dark:#F286C4">?</span><span style="color:#AB5959;--shiki-dark:#F286C4"> =</span><span style="color:#998418;--shiki-dark:#97E1F1"> Person</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">name</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Fat</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">age</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 10</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> unwrappedPerson </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#1E754F;--shiki-dark:#F286C4"> try</span><span style="color:#998418;--shiki-dark:#97E1F1"> #require</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">person</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 解包成功</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    #expect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">unwrappedPerson.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">name</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Fat</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> unwrappingDemo</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> user: User</span><span style="color:#999999;--shiki-dark:#F286C4">?</span><span style="color:#AB5959;--shiki-dark:#F286C4"> =</span><span style="color:#998418;--shiki-dark:#97E1F1"> fetchUser</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    // 如果 user 为 nil，测试在此处终止，不再执行后续代码</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    // 相当于 guard let user = user else { throw Failure }</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> validUser </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#1E754F;--shiki-dark:#F286C4"> try</span><span style="color:#998418;--shiki-dark:#97E1F1"> #require</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">user</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> </span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    </span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    // 此处 validUser 已是非可选类型</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    #expect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">validUser.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">name</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Fatbobman</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<h3 id="3-断言失败后的行为">3. 断言失败后的行为</h3>
-<h4 id="expect">#expect</h4>
-<ul>
-<li><strong>行为</strong>：即使断言失败，测试用例会继续执行。</li>
-<li>示例：</li>
-</ul>
+<h2 id="3-运行时行为继续-vs-终止">3. 运行时行为：继续 vs 终止</h2>
+<p>这是两者最大的逻辑区别，决定了测试报告的详细程度。</p>
+<h3 id="expect-软断言">#expect (软断言)</h3>
+<p>即使断言失败，测试函数<strong>继续执行</strong>。这允许你在一次测试运行中收集多个错误信息。</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -353,36 +372,14 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> example</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#AB5959;--shiki-dark:#F286C4"> async</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    #expect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">3</span><span style="color:#AB5959;--shiki-dark:#F286C4"> &lt;</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 0</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 断言失败</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    print</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">next line</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 仍然会执行</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> softAssertion</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    #expect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">1</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 2</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // ❌ 失败，记录错误</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    print</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">这行代码会被执行</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> </span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    #expect</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">3</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 4</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // ❌ 再次失败，记录第二个错误</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<p><strong>输出：</strong></p>
-<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
-  <span class="select-none"></span>
-  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
-    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </div>
-    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </div>
-  </button>
-</div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>◇ Test run started.</span></span>
-<span class="line"><span>✘ Expectation failed: 3 &lt; 0</span></span>
-<span class="line"><span>↳ next line</span></span>
-<span class="line"><span>✘ Test example() failed after 0.001 seconds with 1 issue.</span></span></code></pre>
-<h4 id="require">#require</h4>
-<ul>
-<li><strong>行为</strong>：断言失败会直接终止测试用例，后续代码不会执行。</li>
-<li>示例：</li>
-</ul>
+<p><strong>结果</strong>：测试标记为失败，报告中显示 2 个 Issue。</p>
+<h3 id="require-硬断言">#require (硬断言)</h3>
+<p>一旦断言失败，抛出错误，测试函数<strong>立即终止</strong>。适用于后续代码依赖于当前条件成立的场景（如前置条件检查）。</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -399,35 +396,48 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> example</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#AB5959;--shiki-dark:#F286C4"> async</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    try</span><span style="color:#998418;--shiki-dark:#97E1F1"> #require</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">3</span><span style="color:#AB5959;--shiki-dark:#F286C4"> &lt;</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 0</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 断言失败并终止</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    print</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">next line</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 不会执行</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#999999;--shiki-dark:#F286C4">@</span><span style="color:#AB5959;--shiki-dark:#F286C4">Test</span><span style="color:#AB5959;--shiki-dark:#F286C4"> func</span><span style="color:#59873A;--shiki-dark:#62E884"> hardAssertion</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    try</span><span style="color:#998418;--shiki-dark:#97E1F1"> #require</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">1</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ==</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 2</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // ❌ 失败，抛出错误并终止</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    print</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">这行代码永远不会执行</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<p><strong>输出：</strong></p>
-<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
-  <span class="select-none"></span>
-  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
-    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </div>
-    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </div>
-  </button>
-</div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>◇ Test run started.</span></span>
-<span class="line"><span>✘ Expectation failed: 3 &lt; 0</span></span>
-<span class="line"><span>✘ Test example() failed after 0.002 seconds with 1 issue.</span></span></code></pre>
-<h2 id="总结">总结</h2>
-<ul>
-<li><strong><code>#expect</code></strong>：适合不影响测试后续流程的断言。</li>
-<li><strong><code>#require</code></strong>：用于关键条件，失败时终止测试。</li>
-</ul>
+<p><strong>结果</strong>：测试标记为失败，报告中仅显示 1 个 Issue。</p>
+<h2 id="总结如何选择">总结：如何选择？</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th style="text-align:left">特性</th><th style="text-align:left">#expect</th><th style="text-align:left">#require</th></tr></thead><tbody><tr><td style="text-align:left"><strong>断言类型</strong></td><td style="text-align:left">软断言 (Soft)</td><td style="text-align:left">硬断言 (Hard)</td></tr><tr><td style="text-align:left"><strong>失败行为</strong></td><td style="text-align:left">记录错误，继续执行</td><td style="text-align:left">记录错误，立即终止</td></tr><tr><td style="text-align:left"><strong>关键字</strong></td><td style="text-align:left">通常不需要 <code>try</code></td><td style="text-align:left">必须使用 <code>try</code></td></tr><tr><td style="text-align:left"><strong>返回值</strong></td><td style="text-align:left">无</td><td style="text-align:left">返回解包后的值 (针对 Optional)</td></tr><tr><td style="text-align:left"><strong>适用场景</strong></td><td style="text-align:left">验证属性、状态检查</td><td style="text-align:left">前置条件检查、Optional 解包</td></tr></tbody></table>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
 <li><a href="/zh/posts/mastering-the-swift-testing-framework/" target="_blank">Swifter and Swifty：掌握 Swift Testing 框架</a></li>
@@ -1186,7 +1196,7 @@ const utmTerm = "snippetzh/swift-testing-differences-between-expect-and-require"
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=%E5%B0%8F%E8%B4%B4%E5%A3%AB%EF%BC%9ASwift%20%E6%B5%8B%E8%AF%95%EF%BC%9A%23expect%20%E5%92%8C%20%23require%20%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%0A&url=%2Fzh%2Fsnippet%2Fswift-testing-differences-between-expect-and-require%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=%E5%B0%8F%E8%B4%B4%E5%A3%AB%EF%BC%9ASwift%20Testing%20%E5%AE%8F%E5%AF%B9%E6%AF%94%EF%BC%9A%23expect%20vs%20%23require%20%E6%A0%B8%E5%BF%83%E5%B7%AE%E5%BC%82%E4%B8%8E%E9%80%89%E5%9E%8B%0A&url=%2Fzh%2Fsnippet%2Fswift-testing-differences-between-expect-and-require%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
@@ -1363,35 +1373,35 @@ const utmTerm = "snippetzh/swift-testing-differences-between-expect-and-require"
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">相关提示</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/snippet/differences-between-gesturestate-and-state-in-swiftui/" id="relatedPosts-SwiftUI 手势状态管理：详解 @GestureState 与 @State 的中断处理" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">相关提示</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/snippet/resolving-incomplete-icloud-data-sync-in-ios-development-using-initializecloudkitschema/" id="relatedPosts-Core Data/SwiftData 同步修复：initializeCloudKitSchema 指南" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>SwiftUI 手势状态管理：详解 @GestureState 与 @State 的中断处理</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/why-core-data-or-swiftdata-cloud-sync-stops-working-after-app-store-login/" id="relatedPosts-修复 Core Data/SwiftData 上架后的云同步问题" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>Core Data/SwiftData 同步修复：initializeCloudKitSchema 指南</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/disable-transition-animations-for-sheet-and-navigationstack-in-swiftui/" id="relatedPosts-SwiftUI 禁用动画：无缝切换 Sheet 与 NavigationStack" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>修复 Core Data/SwiftData 上架后的云同步问题</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/resolving-inconsistent-spacing-in-swiftui-vstackhstack-layouts/" id="relatedPosts-修复 SwiftUI Stack 布局中的不规则间距" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🛎️</span>SwiftUI 禁用动画：无缝切换 Sheet 与 NavigationStack</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/sequential-display-tips-with-tipkit/" id="relatedPosts-TipKit 实战：使用 TipGroup 按顺序显示引导提示 (iOS 18+)" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>修复 SwiftUI Stack 布局中的不规则间距</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/fixing-swiftlint-configuration-not-working-in-monorepo-projects/" id="relatedPosts-解决在 Monorepo 项目中 SwiftLint 配置文件无效" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🛎️</span>TipKit 实战：使用 TipGroup 按顺序显示引导提示 (iOS 18+)</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/how-to-make-a-swiftui-sheet-automatically-adjust-height/" id="relatedPosts-SwiftUI Sheet 自适应高度：让弹窗完美贴合内容尺寸" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>解决在 Monorepo 项目中 SwiftLint 配置文件无效</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>SwiftUI Sheet 自适应高度：让弹窗完美贴合内容尺寸</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95

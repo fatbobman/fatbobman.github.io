@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>获取 SwiftUI 视图尺寸的多种方法</title>
-<meta name="description" content="SwiftUI 中通过 `GeometryReader`、`onGeometryChange` 和 `containerRelativeFrame` 等方法获取视图尺寸，实现动态布局调整，适配多场景开发需求。">
+<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>SwiftUI 布局指南：4种方式动态获取视图尺寸</title>
+<meta name="description" content="还在滥用 GeometryReader？详解 SwiftUI 获取视图尺寸的 4 种方案。从 iOS 16 的 onGeometryChange 到 containerRelativeFrame，轻松实现高效的响应式布局。">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/zh/snippet/how-to-obtain-view-dimensions-in-swiftui/">
-<meta property="og:title" content="获取 SwiftUI 视图尺寸的多种方法">
-<meta property="og:description" content="SwiftUI 中通过 `GeometryReader`、`onGeometryChange` 和 `containerRelativeFrame` 等方法获取视图尺寸，实现动态布局调整，适配多场景开发需求。">
+<meta property="og:title" content="SwiftUI 布局指南：4种方式动态获取视图尺寸">
+<meta property="og:description" content="还在滥用 GeometryReader？详解 SwiftUI 获取视图尺寸的 4 种方案。从 iOS 16 的 onGeometryChange 到 containerRelativeFrame，轻松实现高效的响应式布局。">
 <meta property="og:url" content="https://fatbobman.com/zh/snippet/how-to-obtain-view-dimensions-in-swiftui/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/question-and-answer.webp">
@@ -42,11 +42,23 @@
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2025-01-13T17:20:00.000Z",
+  "dateModified": "2025-12-11T00:00:00.000Z",
   "datePublished": "2025-01-13T17:20:00.000Z",
   "proficiencyLevel": "Intermediate",
-  "description": "SwiftUI 中通过 `GeometryReader`、`onGeometryChange` 和 `containerRelativeFrame` 等方法获取视图尺寸，实现动态布局调整，适配多场景开发需求。",
-  "headline": "获取 SwiftUI 视图尺寸的多种方法",
+  "programmingLanguage": "Swift",
+  "dependencies": "SwiftUI, iOS 16+, iOS 17+, iOS 18",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "SwiftUI Layout"
+    },
+    {
+      "@type": "Thing",
+      "name": "Responsive Design"
+    }
+  ],
+  "description": "还在滥用 GeometryReader？详解 SwiftUI 获取视图尺寸的 4 种方案。从 iOS 16 的 onGeometryChange 到 containerRelativeFrame，轻松实现高效的响应式布局。",
+  "headline": "SwiftUI 布局指南：4种方式动态获取视图尺寸",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/question-and-answer.webp"
@@ -67,7 +79,7 @@
   "articleSection": [
     "提示、技巧"
   ],
-  "keywords": "",
+  "keywords": "SwiftUI, get view size, onGeometryChange, GeometryReader, visualEffect, containerRelativeFrame, SwiftUI layout, 视图尺寸, 响应式布局",
   "inLanguage": "zh-Hans"
 }</script><script type='application/ld+json'>{
   "@context": "https://schema.org",
@@ -276,16 +288,17 @@ const enableStickyInMobile = true;
       flex items-center justify-center w-16 h-16 text-4xl rounded-2xl shadow-sm
       bg-gray-50 border border-gray-100
       dark:bg-slate-800 dark:border-slate-700
-    "> 🛎️ </span> </div>  <h1 class="
+    "> 🔋 </span> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-wider
-    "> 获取 SwiftUI 视图尺寸的多种方法 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 tracking-wide"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 东坡肘子 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-13T17:20:00.000Z"> 2025 年 1 月 14 日 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
-<p>在 SwiftUI 中，使用 <code>GeometryReader</code>、<code>onGeometryChange</code>、<code>visualEffect</code> 或 <code>containerRelativeFrame</code>，可动态获取视图尺寸以实现响应式布局。</p>
+    "> SwiftUI 布局指南：4种方式动态获取视图尺寸 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 tracking-wide"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 东坡肘子 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-13T17:20:00.000Z"> 2025 年 1 月 14 日 </time>  <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <span class="italic text-muted/80">
+(更新于  <time datetime="2025-12-11T00:00:00.000Z">2025 年 12 月 11 日</time>)
+</span>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
+<div class="mdx-intro"><p><strong>核心摘要</strong>：在 SwiftUI 早期，<code>GeometryReader</code> 是获取视图尺寸的唯一选择，但它常导致布局副作用。随着 SwiftUI 的演进（尤其是 iOS 16/17/18 的更新），我们有了 <code>onGeometryChange</code>、<code>visualEffect</code> 等性能更好、副作用更小的替代方案。</p></div>
+<p>在 SwiftUI 中，动态获取视图的尺寸是一个常见需求。本文将梳理截至 2025 年主流的 4 种获取尺寸的方法，帮助你根据场景选择最佳方案。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
-<h2 id="背景">背景</h2>
-<p>在 SwiftUI 中，动态获取视图的尺寸是一个常见需求，尤其是在需要响应尺寸变化或调整布局的场景中。本文将介绍几种获取视图尺寸的常用方法及其适用场景。</p>
-<h2 id="使用-geometryreader">使用 GeometryReader</h2>
-<p><code>GeometryReader</code> 是适配性最强的方式，适用于所有版本的 SwiftUI。通常结合 <code>overlay</code> 或 <code>background</code> 使用，以避免影响主视图的尺寸。</p>
+<h2 id="1-通用方案geometryreader">1. 通用方案：GeometryReader</h2>
+<p><code>GeometryReader</code> 是适配性最强的方式，适用于所有版本的 SwiftUI。为了避免它抢占空间破坏布局，最佳实践是将其结合 <code>background</code> 或 <code>overlay</code> 使用。</p>
 <h3 id="示例代码">示例代码</h3>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
@@ -312,13 +325,13 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">  )</span></span></code></pre>
-<h3 id="特点">特点</h3>
+<p><strong>特点</strong>：</p>
 <ul>
-<li>将获取尺寸的逻辑封装在 <code>background</code>，不影响主视图布局。</li>
-<li>使用 <code>task(id:)</code> 确保视图加载时立即获取尺寸，并在 <code>proxy.size</code> 变化时更新。</li>
+<li><strong>优点</strong>：兼容性最好，支持所有 iOS 版本。</li>
+<li><strong>缺点</strong>：语法啰嗦，如果直接包裹视图会导致视图充满父容器。</li>
 </ul>
-<h2 id="使用-ongeometrychange">使用 onGeometryChange</h2>
-<p>从 iOS 16 开始，<code>onGeometryChange</code> 提供了更简洁的方式来监听尺寸变化。</p>
+<h2 id="2-现代标准ongeometrychange-推荐">2. 现代标准：onGeometryChange (推荐)</h2>
+<p>从 iOS 16 开始引入，并在 iOS 18 得到增强。这是目前获取视图尺寸<strong>最推荐</strong>的方式，它纯粹用于监听，不会像 <code>GeometryReader</code> 那样影响布局结构。</p>
 <h3 id="示例代码-1">示例代码</h3>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
@@ -340,15 +353,16 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F286C4">    @</span><span style="color:#AB5959;--shiki-dark:#F286C4">State</span><span style="color:#1E754F;--shiki-dark:#F286C4"> var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> size: CGSize</span><span style="color:#999999;--shiki-dark:#F286C4">?</span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> body: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        Rectangle</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">            // iOS 16+ 基础用法</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">onGeometryChange</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">for</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> CGSize.</span><span style="color:#1E754F;--shiki-dark:#F286C4">self</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> proxy </span><span style="color:#1E754F;--shiki-dark:#F286C4">in</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                proxy.</span><span style="color:#998418;--shiki-dark:#BF9EEE">size</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span><span style="color:#998418;--shiki-dark:#97E1F1"> action</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                size </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic"> $0</span></span>
+<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span><span style="color:#998418;--shiki-dark:#97E1F1"> action</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> newValue </span><span style="color:#1E754F;--shiki-dark:#F286C4">in</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                size </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> newValue</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<h3 id="ios-18-新特性">iOS 18+ 新特性</h3>
-<p>支持同时获取新旧尺寸值，方便处理尺寸变化逻辑。</p>
+<h3 id="ios-18-增强特性">iOS 18+ 增强特性</h3>
+<p>iOS 18 增加了对旧值的支持，方便处理动画或过渡逻辑：</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -368,11 +382,10 @@ const enableStickyInMobile = true;
 <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">onGeometryChange</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">for</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> CGSize.</span><span style="color:#1E754F;--shiki-dark:#F286C4">self</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> proxy </span><span style="color:#1E754F;--shiki-dark:#F286C4">in</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    proxy.</span><span style="color:#998418;--shiki-dark:#BF9EEE">size</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span><span style="color:#998418;--shiki-dark:#97E1F1"> action</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> old, new </span><span style="color:#1E754F;--shiki-dark:#F286C4">in</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    size </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> new </span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// 获取新尺寸</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    print</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Old size: </span><span style="color:#999999;--shiki-dark:#F286C4">\(</span><span style="color:#B56959;--shiki-dark:#E7EE98">old</span><span style="color:#B56959;--shiki-dark:#F286C4">)</span><span style="color:#B56959;--shiki-dark:#E7EE98">, New size: </span><span style="color:#999999;--shiki-dark:#F286C4">\(</span><span style="color:#B56959;--shiki-dark:#E7EE98">new</span><span style="color:#B56959;--shiki-dark:#F286C4">)</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">    print</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#B56959;--shiki-dark:#E7EE98">Size changed from </span><span style="color:#999999;--shiki-dark:#F286C4">\(</span><span style="color:#B56959;--shiki-dark:#E7EE98">old</span><span style="color:#B56959;--shiki-dark:#F286C4">)</span><span style="color:#B56959;--shiki-dark:#E7EE98"> to </span><span style="color:#999999;--shiki-dark:#F286C4">\(</span><span style="color:#B56959;--shiki-dark:#E7EE98">new</span><span style="color:#B56959;--shiki-dark:#F286C4">)</span><span style="color:#B5695977;--shiki-dark:#DEE492">&quot;</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<h2 id="使用-visualeffect">使用 visualEffect</h2>
-<p>如果目标是根据视图尺寸应用视觉效果（如 <code>offset</code>、<code>scaleEffect</code> 等），<code>visualEffect</code> (iOS 17+) 提供了更直接的方式。</p>
+<h2 id="3-视觉特效专用visualeffect">3. 视觉特效专用：visualEffect</h2>
+<p>如果你的目的是根据尺寸调整<strong>视觉效果</strong>（如 <code>offset</code>、<code>scale</code>、<code>blur</code>），而不是为了改变布局流，那么 iOS 17 引入的 <code>visualEffect</code> 是性能最高的选择。它不需要通过 <code>@State</code> 触发布局刷新。</p>
 <h3 id="示例代码-2">示例代码</h3>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
@@ -390,13 +403,13 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> SizeDemo</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> EffectDemo</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> body: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        Rectangle</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">foregroundStyle</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">red</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">visualEffect</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> effect, proxy </span><span style="color:#1E754F;--shiki-dark:#F286C4">in</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                effect</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                    .</span><span style="color:#998418;--shiki-dark:#97E1F1">offset</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">y</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> proxy.</span><span style="color:#998418;--shiki-dark:#BF9EEE">size</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">height</span><span style="color:#AB5959;--shiki-dark:#F286C4"> /</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 3</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 视图向下偏移自身高度的 1/3</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            .</span><span style="color:#998418;--shiki-dark:#97E1F1">visualEffect</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> content, proxy </span><span style="color:#1E754F;--shiki-dark:#F286C4">in</span></span>
+<span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">                // 直接使用 proxy 获取尺寸，无需 State 绑定</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                content.</span><span style="color:#998418;--shiki-dark:#97E1F1">offset</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">y</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> proxy.</span><span style="color:#998418;--shiki-dark:#BF9EEE">size</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">height</span><span style="color:#AB5959;--shiki-dark:#F286C4"> /</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 3</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
@@ -407,10 +420,10 @@ const enableStickyInMobile = true;
   <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20250113164145518.png?imageView2/0/w/1024"/>
   <img src="https://cdn.fatbobman.com/image-20250113164145518.png" alt="visualeffect-swiftui-demo" loading="lazy" decoding="async"/>
 </picture></p>
-<h2 id="使用-containerrelativeframe">使用 containerRelativeFrame</h2>
-<p><code>containerRelativeFrame</code> (iOS 17+) 是 <code>GeometryReader</code> 与 <code>frame</code> 的结合体，用于获取当前视图所在的特定容器（如窗口、<code>NavigationStack</code>、<code>ScrollView</code>）的尺寸，并将该尺寸作为自身的约束。</p>
+<h2 id="4-容器相对布局containerrelativeframe">4. 容器相对布局：containerRelativeFrame</h2>
+<p><code>containerRelativeFrame</code> (iOS 17+) 是处理“网格类”或“分屏类”布局的神器。它不直接告诉你尺寸数值，而是让你声明“我想要占容器宽度的几分之几”。</p>
 <h3 id="示例代码-3">示例代码</h3>
-<p>以下代码将矩形设置为窗口宽度的 1/2 和高度的 1/4：</p>
+<p>以下代码将矩形设置为父容器（如 Window 或 ScrollView）宽度的 1/2 和高度的 1/4：</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -439,59 +452,15 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<ul>
-<li><code>containerRelativeFrame</code> 将沿 <code>Rectangle</code> 向上寻找第一个满足条件的容器，当前为窗口</li>
-</ul>
-<h3 id="效果-1">效果</h3>
-<p><picture>
-  <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20250113165723092.png?imageView2/0/w/500"/>
-  <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20250113165723092.png?imageView2/0/w/768"/>
-  <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20250113165723092.png?imageView2/0/w/1024"/>
-  <img src="https://cdn.fatbobman.com/image-20250113165723092.png" alt="containerRelativeFrame" loading="lazy" decoding="async"/>
-</picture></p>
-<h3 id="容器适应性">容器适应性</h3>
-<p><code>containerRelativeFrame</code> 会自动选择合适的容器。例如，当矩形放置在 <code>NavigationStack</code> 中时，计算的尺寸基于 <code>NavigationStack</code> 的尺寸。</p>
-<div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
-  <span class="select-none">Swift</span>
-  <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
-    <div class="code-copy-icon" style="opacity:1;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-      </svg>
-    </div>
-    <div class="code-success-icon absolute inset-0 flex items-center justify-center text-green-600 dark:text-green-400" style="opacity:0;transition:opacity 0.2s">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="20 6 9 17 4 12"></polyline>
-      </svg>
-    </div>
-  </button>
-</div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> TransformsDemo</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> body: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        NavigationStack</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            Rectangle</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                .</span><span style="color:#998418;--shiki-dark:#97E1F1">containerRelativeFrame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">[.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">horizontal</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">vertical</span><span style="color:#393A34;--shiki-dark:#F6F6F4">]</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> length, axis </span><span style="color:#1E754F;--shiki-dark:#F286C4">in</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">                    if</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> axis </span><span style="color:#AB5959;--shiki-dark:#F286C4">==</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .vertical </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">                        return</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> length </span><span style="color:#AB5959;--shiki-dark:#F286C4">/</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 4</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">                    }</span><span style="color:#1E754F;--shiki-dark:#F286C4"> else</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">                        return</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> length </span><span style="color:#AB5959;--shiki-dark:#F286C4">/</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 2</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">                    }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">                }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        .</span><span style="color:#998418;--shiki-dark:#97E1F1">frame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">width</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 300</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">height</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 300</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#A0ADA0;--shiki-dark:#7B7F8B"> // 指定 NavigationStack 的尺寸</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        .</span><span style="color:#998418;--shiki-dark:#97E1F1">border</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">red</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">width</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 4</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<h3 id="效果-2">效果</h3>
+<h3 id="效果与应用">效果与应用</h3>
+<p>它会自动向上查找最近的特定容器（如 <code>NavigationStack</code> 或 <code>ScrollView</code>）。</p>
 <p><picture>
   <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20250113170136271.png?imageView2/0/w/500"/>
   <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20250113170136271.png?imageView2/0/w/768"/>
   <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/image-20250113170136271.png?imageView2/0/w/1024"/>
   <img src="https://cdn.fatbobman.com/image-20250113170136271.png" alt="containerRelativeFrame-in-navigationStack" loading="lazy" decoding="async"/>
 </picture></p>
-<h3 id="scrollview-中的应用">ScrollView 中的应用</h3>
-<p><code>containerRelativeFrame</code> 还能用来动态调整滚动视图中的子视图尺寸。例如，将子视图宽度设置为滚动视图宽度的 1/3：</p>
+<p>在 <strong>ScrollView</strong> 中实现“一屏显示三个卡片”的效果非常简单：</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -508,28 +477,15 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">struct</span><span style="color:#2E8F82;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> ScrollViewDemo</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
-<span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">    var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> body: </span><span style="color:#1E754F;--shiki-dark:#F286C4">some</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> View </span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">        ScrollView</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">horizontal</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">            HStack</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">spacing</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 10</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                ForEach</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">0</span><span style="color:#AB5959;--shiki-dark:#F286C4">..&lt;</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">10</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#998418;--shiki-dark:#BF9EEE"> _</span><span style="color:#1E754F;--shiki-dark:#F286C4"> in</span></span>
-<span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">                    Rectangle</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                        .</span><span style="color:#998418;--shiki-dark:#97E1F1">fill</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">purple</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                        .</span><span style="color:#998418;--shiki-dark:#97E1F1">aspectRatio</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">3</span><span style="color:#AB5959;--shiki-dark:#F286C4"> /</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 2</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">contentMode</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">fit</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                        .</span><span style="color:#998418;--shiki-dark:#97E1F1">containerRelativeFrame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">horizontal</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">count</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 3</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">span</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 1</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">spacing</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 0</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">                }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
-<span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<h3 id="效果-3">效果</h3>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">Rectangle</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span></span>
+<span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">containerRelativeFrame</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">horizontal</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">count</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 3</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">span</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 1</span><span style="color:#393A34;--shiki-dark:#F6F6F4">, </span><span style="color:#998418;--shiki-dark:#97E1F1">spacing</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 10</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span></code></pre>
 <p><picture>
   <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/containerRelativeFrame-scrollview-demo1.webp?imageView2/0/w/500"/>
   <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/containerRelativeFrame-scrollview-demo1.webp?imageView2/0/w/768"/>
   <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/containerRelativeFrame-scrollview-demo1.webp?imageView2/0/w/1024"/>
   <img src="https://cdn.fatbobman.com/containerRelativeFrame-scrollview-demo1.webp" alt="containerRelativeFrame-scrollView" loading="lazy" decoding="async"/>
 </picture></p>
-<h2 id="方法对比">方法对比</h2>
+<h2 id="总结如何选择">总结：如何选择？</h2>
 
 
 
@@ -560,7 +516,12 @@ const enableStickyInMobile = true;
 
 
 
-<table><thead><tr><th>方法</th><th>适用场景</th><th>特点</th></tr></thead><tbody><tr><td><strong><code>GeometryReader</code></strong></td><td>适用于所有 SwiftUI 版本</td><td>灵活性强，但需要开发者构建更多的代码</td></tr><tr><td><strong><code>onGeometryChange</code></strong></td><td>iOS 16+ 简化监听尺寸变化</td><td>语义清晰，支持监听新旧尺寸（iOS 18+）</td></tr><tr><td><strong><code>visualEffect</code></strong></td><td>iOS 17+ 用于动态调整渲染效果</td><td>简洁高效，直接使用视图的 <code>GeometryProxy</code> 信息</td></tr><tr><td><strong><code>containerRelativeFrame</code></strong></td><td>iOS 17+ 适用于相对容器计算的场景，如窗口、滚动视图等</td><td>自动匹配容器上下文，便于对子视图进行动态尺寸调整</td></tr></tbody></table>
+
+
+
+
+
+<table><thead><tr><th style="text-align:left">方法</th><th style="text-align:left">最低版本</th><th style="text-align:left">适用场景</th><th style="text-align:left">推荐指数</th></tr></thead><tbody><tr><td style="text-align:left"><strong>onGeometryChange</strong></td><td style="text-align:left">iOS 16+</td><td style="text-align:left"><strong>首选</strong>。需要获取尺寸数值更新 State 时。</td><td style="text-align:left">⭐⭐⭐⭐⭐</td></tr><tr><td style="text-align:left"><strong>visualEffect</strong></td><td style="text-align:left">iOS 17+</td><td style="text-align:left">仅需调整视觉效果（偏移、缩放），无需触发布局更新。</td><td style="text-align:left">⭐⭐⭐⭐</td></tr><tr><td style="text-align:left"><strong>containerRelativeFrame</strong></td><td style="text-align:left">iOS 17+</td><td style="text-align:left">需基于父容器（屏幕/滚动视图）按比例布局时。</td><td style="text-align:left">⭐⭐⭐⭐</td></tr><tr><td style="text-align:left"><strong>GeometryReader</strong></td><td style="text-align:left">iOS 13+</td><td style="text-align:left">维护旧项目，或需要获取坐标空间（CoordinateSpace）信息时。</td><td style="text-align:left">⭐⭐</td></tr></tbody></table>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
 <li><a href="/zh/posts/geometryreader-blessing-or-curse/" target="_blank">GeometryReader：好东西还是坏东西？</a></li>
@@ -1321,7 +1282,7 @@ const utmTerm = "snippetzh/how-to-obtain-view-dimensions-in-swiftui";
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=%E5%B0%8F%E8%B4%B4%E5%A3%AB%EF%BC%9A%E8%8E%B7%E5%8F%96%20SwiftUI%20%E8%A7%86%E5%9B%BE%E5%B0%BA%E5%AF%B8%E7%9A%84%E5%A4%9A%E7%A7%8D%E6%96%B9%E6%B3%95%0A&url=%2Fzh%2Fsnippet%2Fhow-to-obtain-view-dimensions-in-swiftui%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=%E5%B0%8F%E8%B4%B4%E5%A3%AB%EF%BC%9ASwiftUI%20%E5%B8%83%E5%B1%80%E6%8C%87%E5%8D%97%EF%BC%9A4%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%8A%A8%E6%80%81%E8%8E%B7%E5%8F%96%E8%A7%86%E5%9B%BE%E5%B0%BA%E5%AF%B8%0A&url=%2Fzh%2Fsnippet%2Fhow-to-obtain-view-dimensions-in-swiftui%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
@@ -1498,35 +1459,35 @@ const utmTerm = "snippetzh/how-to-obtain-view-dimensions-in-swiftui";
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">相关提示</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/snippet/resolving-incomplete-icloud-data-sync-in-ios-development-using-initializecloudkitschema/" id="relatedPosts-修复 iCloud 同步：使用 initializeCloudKitSchema" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">相关提示</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/snippet/swift-testing-differences-between-expect-and-require/" id="relatedPosts-Swift Testing 宏对比：#expect vs #require 核心差异与选型" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>修复 iCloud 同步：使用 initializeCloudKitSchema</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/sequential-display-tips-with-tipkit/" id="relatedPosts-TipKit 实现按序显示提示" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>Swift Testing 宏对比：#expect vs #require 核心差异与选型</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/speed-up-compilation-with-prebuilt-swift-syntax/" id="relatedPosts-Swift 6 编译加速：启用 Swift-Syntax 预构建 (Prebuilts)" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>TipKit 实现按序显示提示</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/enable-multi-finger-tap-gestures-in-swiftui/" id="relatedPosts-SwiftUI 多指点击：实现双指与三指手势 " class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔍</span>Swift 6 编译加速：启用 Swift-Syntax 预构建 (Prebuilts)</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/why-dont-core-data-require-setting-a-primary-key/" id="relatedPosts-Core Data/SwiftData 主键解密：Z_PK 与自动唯一性管理" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔍</span>SwiftUI 多指点击：实现双指与三指手势 </span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/how-to-test-core-data-code-in-vscode-cursor/" id="relatedPosts-如何在 VSCode/Cursor 中测试 Core Data 代码" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>Core Data/SwiftData 主键解密：Z_PK 与自动唯一性管理</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/how-to-forward-custom-tag-events-to-gtm-running-inside-partytown/" id="relatedPosts-Partytown 实战：修复 GTM 自定义事件与 dataLayer 失效问题" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🛎️</span>如何在 VSCode/Cursor 中测试 Core Data 代码</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🛎️</span>Partytown 实战：修复 GTM 自定义事件与 dataLayer 失效问题</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95

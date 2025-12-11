@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>数据模型适配 CloudKit 的规则与注意事项</title>
-<meta name="description" content="设计 CloudKit 适配的数据模型需避免唯一性约束、非可选属性等限制。支持轻量迁移是关键，遵循&#39;只增、不减不改&#39;原则以减少未来改动风险。。">
+<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>CloudKit 同步避坑指南：Core Data 与 SwiftData 模型设计规范</title>
+<meta name="description" content="启用 CloudKit 同步前必读！了解数据模型的硬性限制：为何禁止唯一约束？为何关系必须可选？掌握“只增不减”的轻量迁移原则，避免同步失败。">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/zh/snippet/rules-for-adapting-data-models-to-cloudkit/">
-<meta property="og:title" content="数据模型适配 CloudKit 的规则与注意事项">
-<meta property="og:description" content="设计 CloudKit 适配的数据模型需避免唯一性约束、非可选属性等限制。支持轻量迁移是关键，遵循&#39;只增、不减不改&#39;原则以减少未来改动风险。。">
+<meta property="og:title" content="CloudKit 同步避坑指南：Core Data 与 SwiftData 模型设计规范">
+<meta property="og:description" content="启用 CloudKit 同步前必读！了解数据模型的硬性限制：为何禁止唯一约束？为何关系必须可选？掌握“只增不减”的轻量迁移原则，避免同步失败。">
 <meta property="og:url" content="https://fatbobman.com/zh/snippet/rules-for-adapting-data-models-to-cloudkit/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/question-and-answer.webp">
@@ -42,11 +42,27 @@
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2025-01-11T16:54:00.000Z",
+  "dateModified": "2025-12-11T00:00:00.000Z",
   "datePublished": "2025-01-11T16:54:00.000Z",
   "proficiencyLevel": "Intermediate",
-  "description": "设计 CloudKit 适配的数据模型需避免唯一性约束、非可选属性等限制。支持轻量迁移是关键，遵循'只增、不减不改'原则以减少未来改动风险。。",
-  "headline": "数据模型适配 CloudKit 的规则与注意事项",
+  "programmingLanguage": "Swift",
+  "dependencies": "Core Data, SwiftData, CloudKit",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "CloudKit Synchronization"
+    },
+    {
+      "@type": "Thing",
+      "name": "Data Modeling"
+    },
+    {
+      "@type": "Thing",
+      "name": "Database Deployment"
+    }
+  ],
+  "description": "启用 CloudKit 同步前必读！了解数据模型的硬性限制：为何禁止唯一约束？为何关系必须可选？掌握“只增不减”的轻量迁移原则，避免同步失败。",
+  "headline": "CloudKit 同步避坑指南：Core Data 与 SwiftData 模型设计规范",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/question-and-answer.webp"
@@ -67,7 +83,7 @@
   "articleSection": [
     "提示、技巧"
   ],
-  "keywords": "",
+  "keywords": "CloudKit, Core Data, SwiftData, model limitations, unique constraints, lightweight migration, sync rules, 数据模型, 同步限制",
   "inLanguage": "zh-Hans"
 }</script><script type='application/ld+json'>{
   "@context": "https://schema.org",
@@ -276,67 +292,66 @@ const enableStickyInMobile = true;
       flex items-center justify-center w-16 h-16 text-4xl rounded-2xl shadow-sm
       bg-gray-50 border border-gray-100
       dark:bg-slate-800 dark:border-slate-700
-    "> 🔥 </span> </div>  <h1 class="
+    "> 🔍 </span> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-wider
-    "> 数据模型适配 CloudKit 的规则与注意事项 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 tracking-wide"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 东坡肘子 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-11T16:54:00.000Z"> 2025 年 1 月 12 日 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
-<p>在为 Core Data 或 SwiftData 启用 CloudKit 同步时，禁止使用唯一性约束、非可选属性、未定义类型等限制。所有关系需设置为可选并包含逆向关系，模型调整只能使用轻量迁移，遵循“只增、不减不改”原则。</p>
+    "> CloudKit 同步避坑指南：Core Data 与 SwiftData 模型设计规范 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 tracking-wide"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 东坡肘子 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-11T16:54:00.000Z"> 2025 年 1 月 12 日 </time>  <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <span class="italic text-muted/80">
+(更新于  <time datetime="2025-12-11T00:00:00.000Z">2025 年 12 月 11 日</time>)
+</span>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
+<div class="mdx-intro"><p><strong>核心摘要</strong>：启用 CloudKit 同步很简单，但让它稳定运行很难。绝大多数对模型调整后的同步错误都源于违反了数据模型的<strong>硬性物理限制</strong>。请务必在设计阶段遵守以下规则。</p></div>
+<p>在为 Core Data 或 SwiftData 启用 CloudKit 同步时，由于 CloudKit 本身的分布式特性，它对本地数据模型（Schema）有着比纯本地数据库更严格的要求。如果未在建模阶段充分考虑这些限制，后期调整将异常痛苦。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
-<h2 id="背景">背景</h2>
-<p>在使用 Core Data 或 SwiftData 的云同步功能时，如果未在建模阶段充分考虑 CloudKit 的限制，可能在后期遇到模型调整的复杂性问题。以下是模型必须遵守的规则及注意事项，以确保顺利实现云同步功能。</p>
-<h2 id="数据模型必须遵守的规则">数据模型必须遵守的规则</h2>
-<h3 id="1-唯一性约束">1. 唯一性约束</h3>
-<p><strong>禁止使用</strong>：</p>
+<h2 id="数据模型必须遵守的硬性规则">数据模型必须遵守的硬性规则</h2>
+<p>以下规则是<strong>强制性</strong>的，违反任何一条都会导致同步失败或应用崩溃。</p>
+<h3 id="1-禁止唯一性约束-no-unique-constraints">1. 禁止唯一性约束 (No Unique Constraints)</h3>
+<p>CloudKit 不支持原子性的唯一性检查。</p>
 <ul>
-<li>Core Data 中的 <code>Unique constraints</code></li>
-<li>SwiftData 中的 <code>@Attribute(.unique)</code></li>
+<li><strong>Core Data</strong>: 禁止在 Entity 的 Configuration 中配置 <code>Unique constraints</code>。</li>
+<li><strong>SwiftData</strong>: 禁止在属性上使用 <code>@Attribute(.unique)</code> 宏。</li>
 </ul>
-<h3 id="2-属性要求">2. 属性要求</h3>
+<h3 id="2-属性必须可选或有默认值">2. 属性必须可选或有默认值</h3>
+<p>CloudKit 需要能够处理“部分数据”同步的情况。</p>
 <ul>
-<li>禁止设置为非可选值且没有默认值</li>
-<li>允许的配置
+<li><strong>禁止</strong>：非可选（Non-Optional）且<strong>没有</strong>默认值的属性。</li>
+<li><strong>允许</strong>：
 <ul>
-<li>可选</li>
-<li>有默认值</li>
-<li>可选 + 默认值</li>
+<li>可选类型（Optional, <code>?</code>）</li>
+<li>非可选但设有默认值（Default Value）</li>
+<li>可选且有默认值</li>
 </ul>
 </li>
 </ul>
 <h3 id="3-类型限制">3. 类型限制</h3>
 <ul>
-<li>禁止使用 Core Data 的 <code>Undefined</code> 类型</li>
+<li><strong>禁止</strong>：使用 Core Data 的 <code>Undefined</code> 类型。</li>
 </ul>
-<h3 id="4-关系要求">4. 关系要求</h3>
+<h3 id="4-关系-relationships-的严格要求">4. 关系 (Relationships) 的严格要求</h3>
+<p>这是最容易出错的地方：</p>
 <ul>
-<li>
-<p>所有 <code>relationship</code> 必须设置为可选（<code>Optional</code>）</p>
-</li>
-<li>
-<p>所有 <code>relationship</code> 必须设置逆向（<code>Inverse</code>）关系</p>
-</li>
-<li>
-<p>禁止使用</p>
+<li><strong>必须可选</strong>：所有 Relationship 必须设置为 <code>Optional</code>。</li>
+<li><strong>必须有逆向</strong>：所有 Relationship 必须设置 <code>Inverse</code>（逆向关系）。在一些情况下，SwiftData 宏会自动处理，但在 Core Data编辑器中需手动指定。</li>
+<li><strong>禁止 Deny 删除规则</strong>：Delete Rule 不能设为 <code>Deny</code>。</li>
+<li><strong>禁止有序关系</strong>：Core Data 中不能勾选 <code>Ordered</code>（Arrangement）。SwiftData 没有该选项。</li>
+</ul>
+<h2 id="迁移策略只增不减">迁移策略：只增不减</h2>
+<p>启用 CloudKit 后，Schema 的变更受到极大限制。你<strong>只能</strong>使用轻量迁移（Lightweight Migration）。</p>
+<h3 id="严格的修改限制">严格的修改限制</h3>
+<p>一旦应用上线（Schema 推送到 Production 环境），请遵守 <strong>“只增、不减、不改”</strong> 原则：</p>
+<ol>
+<li><strong>禁止删除</strong>：不要删除已存在的 Entity 或 Attribute。即使你不再使用，也请保留在模型中。</li>
+<li><strong>禁止重命名</strong>：不要重命名 Entity 或 Attribute。CloudKit 会将其视为“删除了旧的，添加了新的”，导致旧数据丢失且同步异常。</li>
+<li><strong>禁止修改类型</strong>：不要改变属性的数据类型（如从 String 改为 Int）。</li>
+</ol>
+<h3 id="推荐做法">推荐做法</h3>
+<p>如果必须修改模型：</p>
 <ul>
-<li><code>Deny</code> 删除规则</li>
+<li><strong>添加新属性</strong>：这是最安全的做法。</li>
+<li><strong>废弃旧属性</strong>：在代码层面不再使用旧属性，但保留模型定义。</li>
 </ul>
-</li>
-<li>
-<p>有序关系（<code>Ordered</code>）</p>
-</li>
-</ul>
-<h2 id="注意事项">注意事项</h2>
-<p>启用云同步功能后，模型调整只能使用轻量迁移。开发者需在模型设计初期充分考虑 CloudKit 的适配性，以减少未来改动的风险。以下为轻量迁移的关键限制：</p>
-<h3 id="模型调整原则">模型调整原则</h3>
-<ul>
-<li><strong>禁止删除</strong> 已存在的实体或属性</li>
-<li><strong>禁止重命名</strong> 已存在的实体或属性</li>
-</ul>
-<h3 id="建议">建议</h3>
-<p>遵循 “只增、不减不改” 原则：仅添加新实体、新属性或新关系。</p>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
-<li><a href="/zh/posts/coredatawithcloudkit-2/" target="_blank">Core Data with CloudKit —— 同步本地数据库到 iCloud 私有数据库</a></li>
-<li><a href="/zh/posts/coredatawithcloudkit-4/" target="_blank">Core Data with CloudKit —— 调试、测试、迁移及其他</a></li>
+<li><a href="/zh/posts/coredatawithcloudkit-2/" target="_blank">Core Data with CloudKit：同步本地数据库到 iCloud</a></li>
+<li><a href="/zh/posts/coredatawithcloudkit-4/" target="_blank">Core Data with CloudKit：调试、测试与迁移指南</a></li>
 </ul> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <script type="module">var l=document.querySelectorAll("article");l.forEach(function(t){var e=t.querySelectorAll("a");e.forEach(function(r){r.setAttribute("target","_blank")})});</script> <script>
   window.copyCode = function(button, event) {
     if (event) event.preventDefault();
@@ -1092,7 +1107,7 @@ const utmTerm = "snippetzh/rules-for-adapting-data-models-to-cloudkit";
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=%E5%B0%8F%E8%B4%B4%E5%A3%AB%EF%BC%9A%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B%E9%80%82%E9%85%8D%20CloudKit%20%E7%9A%84%E8%A7%84%E5%88%99%E4%B8%8E%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%0A&url=%2Fzh%2Fsnippet%2Frules-for-adapting-data-models-to-cloudkit%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=%E5%B0%8F%E8%B4%B4%E5%A3%AB%EF%BC%9ACloudKit%20%E5%90%8C%E6%AD%A5%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97%EF%BC%9ACore%20Data%20%E4%B8%8E%20SwiftData%20%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83%0A&url=%2Fzh%2Fsnippet%2Frules-for-adapting-data-models-to-cloudkit%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
@@ -1269,35 +1284,35 @@ const utmTerm = "snippetzh/rules-for-adapting-data-models-to-cloudkit";
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">相关提示</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/snippet/controlling-access-within-a-swift-package/" id="relatedPosts-Swift 模块化：使用 package 关键字实现 Target 间安全共享" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">相关提示</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/snippet/how-to-test-core-data-code-in-vscode-cursor/" id="relatedPosts-VSCode/Cursor 测试 Core Data：手动编译 xcdatamodeld 指南" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>Swift 模块化：使用 package 关键字实现 Target 间安全共享</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/fixing-swiftlint-configuration-not-working-in-monorepo-projects/" id="relatedPosts-解决在 Monorepo 项目中 SwiftLint 配置文件无效" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>VSCode/Cursor 测试 Core Data：手动编译 xcdatamodeld 指南</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/differences-between-gesturestate-and-state-in-swiftui/" id="relatedPosts-SwiftUI 手势状态管理：详解 @GestureState 与 @State 的中断处理" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>解决在 Monorepo 项目中 SwiftLint 配置文件无效</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/preventing-scrollview-content-clipping-in-swiftui/" id="relatedPosts-解决 SwiftUI ScrollView 内容截剪问题" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>SwiftUI 手势状态管理：详解 @GestureState 与 @State 的中断处理</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/fix-synchronization-issues-for-macos-apps-using-core-dataswiftdata/" id="relatedPosts-修复 macOS SwiftData/Core Data 同步失效：手动添加 CloudKit.framework" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>解决 SwiftUI ScrollView 内容截剪问题</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/differences-between-gesturestate-and-state-in-swiftui/" id="relatedPosts-SwiftUI 手势状态管理：详解 @GestureState 与 @State 的中断处理" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>修复 macOS SwiftData/Core Data 同步失效：手动添加 CloudKit.framework</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/snippet/how-to-forward-custom-tag-events-to-gtm-running-inside-partytown/" id="relatedPosts-Partytown 实战：修复 GTM 自定义事件与 dataLayer 失效问题" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>SwiftUI 手势状态管理：详解 @GestureState 与 @State 的中断处理</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide"><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🛎️</span>Partytown 实战：修复 GTM 自定义事件与 dataLayer 失效问题</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95

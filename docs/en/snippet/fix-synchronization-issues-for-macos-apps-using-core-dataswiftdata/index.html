@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Fix Synchronization Issues for macOS Apps Using Core Data/SwiftData</title>
-<meta name="description" content="Fix macOS Core Data/SwiftData sync issues by adding `CloudKit.framework` manually. Resolve anomalies and ensure proper sync in TestFlight or release builds.">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Fixing macOS SwiftData/Core Data Sync: The CloudKit.framework Issue</title>
+<meta name="description" content="macOS app syncing in Debug but failing in TestFlight? The culprit is often a missing `CloudKit.framework`. Learn how to fix this silent SwiftData &amp; Core Data bug.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/en/snippet/fix-synchronization-issues-for-macos-apps-using-core-dataswiftdata/">
-<meta property="og:title" content="Fix Synchronization Issues for macOS Apps Using Core Data/SwiftData">
-<meta property="og:description" content="Fix macOS Core Data/SwiftData sync issues by adding `CloudKit.framework` manually. Resolve anomalies and ensure proper sync in TestFlight or release builds.">
+<meta property="og:title" content="Fixing macOS SwiftData/Core Data Sync: The CloudKit.framework Issue">
+<meta property="og:description" content="macOS app syncing in Debug but failing in TestFlight? The culprit is often a missing `CloudKit.framework`. Learn how to fix this silent SwiftData &amp; Core Data bug.">
 <meta property="og:url" content="https://fatbobman.com/en/snippet/fix-synchronization-issues-for-macos-apps-using-core-dataswiftdata/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/question-and-answer.webp">
@@ -42,11 +42,31 @@
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2025-01-23T00:20:00.000Z",
+  "dateModified": "2025-12-11T00:00:00.000Z",
   "datePublished": "2025-01-23T00:20:00.000Z",
   "proficiencyLevel": "Intermediate",
-  "description": "Fix macOS Core Data/SwiftData sync issues by adding `CloudKit.framework` manually. Resolve anomalies and ensure proper sync in TestFlight or release builds.",
-  "headline": "Fix Synchronization Issues for macOS Apps Using Core Data/SwiftData",
+  "programmingLanguage": "Swift",
+  "dependencies": "macOS 13+, Xcode 14+, SwiftData, Core Data",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "SwiftData"
+    },
+    {
+      "@type": "Thing",
+      "name": "CloudKit"
+    },
+    {
+      "@type": "Thing",
+      "name": "Core Data"
+    },
+    {
+      "@type": "Thing",
+      "name": "App Deployment"
+    }
+  ],
+  "description": "macOS app syncing in Debug but failing in TestFlight? The culprit is often a missing `CloudKit.framework`. Learn how to fix this silent SwiftData & Core Data bug.",
+  "headline": "Fixing macOS SwiftData/Core Data Sync: The CloudKit.framework Issue",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/question-and-answer.webp"
@@ -67,7 +87,7 @@
   "articleSection": [
     "Tips and Tricks, Quick Tips"
   ],
-  "keywords": "",
+  "keywords": "macOS, SwiftData sync not working, Core Data CloudKit sync failed, TestFlight sync issue, CloudKit.framework missing, NSPersistentCloudKitContainer, Debug vs Release",
   "inLanguage": "en"
 }</script><script type='application/ld+json'>{
   "@context": "https://schema.org",
@@ -279,69 +299,48 @@ const enableStickyInMobile = true;
     "> 🔋 </span> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-tight
-    "> Fix Synchronization Issues for macOS Apps Using Core Data/SwiftData </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-23T00:20:00.000Z"> Jan 23, 2025 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
-<p>macOS apps using <code>Core Data</code>/<code>SwiftData</code> for synchronization must manually include <code>CloudKit.framework</code> in the project’s dependencies. Unlike iOS, macOS does not automatically include this framework, leading to sync failures in TestFlight or release versions. Add <code>CloudKit.framework</code> in “Frameworks, Libraries, and Embedded Content,” rebuild the app, and verify functionality in release environments to resolve the issue.</p>
+    "> Fixing macOS SwiftData/Core Data Sync: The CloudKit.framework Issue </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-23T00:20:00.000Z"> Jan 23, 2025 </time>  <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <span class="italic text-muted/80">
+(Updated on  <time datetime="2025-12-11T00:00:00.000Z">Dec 11, 2025</time>)
+</span>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
+<div class="mdx-intro"><p><strong>TL;DR</strong>: If your macOS app performs CloudKit sync perfectly in Xcode Debug mode but fails completely in <strong>TestFlight</strong> or <strong>App Store</strong> builds, you likely missed linking the <code>CloudKit.framework</code> in your project target. This is a subtle but common build configuration trap in macOS development.</p></div>
+<p>When using <code>Core Data</code> or <code>SwiftData</code> for iCloud synchronization on macOS, you <strong>must</strong> explicitly add <code>CloudKit.framework</code> to the project’s <strong>“Frameworks, Libraries, and Embedded Content”</strong> section. Without it, the app will compile successfully, but the synchronization features will fail silently in release builds.</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
-<h2 id="background">Background</h2>
-<p>Core Data and SwiftData offer robust CloudKit-based data synchronization capabilities, widely used in iOS and macOS applications supporting multi-device sync. However, many developers encounter issues with synchronization functionality not working properly on macOS when extending iOS apps with sync support to the macOS platform.</p>
-<p>This article analyzes the root cause of this issue and provides a detailed solution.</p>
-<h2 id="problem-description">Problem Description</h2>
-<p>When using Core Data/SwiftData synchronization features on macOS, developers may encounter the following issues:</p>
+<h2 id="the-symptoms">The Symptoms</h2>
+<p>Developers often encounter this baffling scenario when porting iOS apps to macOS (whether native or Mac Catalyst):</p>
 <ol>
-<li>Synchronization Anomalies Between Devices:
-<ul>
-<li>Data synchronizes normally between iOS devices.</li>
-<li>Data fails to synchronize between iOS and macOS devices or between macOS devices.</li>
-</ul>
-</li>
-<li>Correct Permission Configurations:
-<ul>
-<li>macOS has the necessary permissions correctly configured (e.g., iCloud sync permissions), but the issue persists.</li>
-</ul>
-</li>
-<li>Inconsistent Behavior in Debug vs. Release Environments:
-<ul>
-<li>Sync works as expected when running the macOS app in Xcode debug mode.</li>
-<li>Sync fails in versions distributed via TestFlight or the App Store.</li>
-</ul>
-</li>
+<li><strong>Works in Debug</strong>: When running directly from Xcode (Debug mode), data syncs instantly between iPhone and Mac.</li>
+<li><strong>Fails in Production</strong>: Once archived and uploaded to TestFlight, or exported as a Release build, data on the macOS side becomes “disconnected”—neither uploading nor downloading.</li>
+<li><strong>No Errors</strong>: The app doesn’t crash. The Console often shows no obvious CloudKit error logs, or simply vaguely indicates that the container is unavailable.</li>
+<li><strong>Capabilities Look Correct</strong>: The iCloud and Background Modes in “Signing &amp; Capabilities” appear to be configured correctly.</li>
 </ol>
-<h2 id="root-cause">Root Cause</h2>
-<p>The core issue is that:
-<strong>macOS apps using Core Data/SwiftData for data synchronization must manually add <code>CloudKit.framework</code> to the project dependencies.</strong></p>
-<p>In iOS apps, <code>CloudKit.framework</code> is automatically included in the build. However, this is not the case for macOS projects. If this dependency is not manually added, TestFlight and release versions will fail to access CloudKit services, resulting in synchronization failure.</p>
-<h2 id="solution">Solution</h2>
-<h3 id="step-1-check-and-add-cloudkitframework">Step 1: Check and Add CloudKit.framework</h3>
-<p>Ensure that <code>CloudKit.framework</code> is correctly added as a dependency in your macOS project’s build settings:</p>
+<h2 id="the-root-cause">The Root Cause</h2>
+<p>In iOS projects, Xcode’s build system usually links the CloudKit framework implicitly when it detects CloudKit usage. However, in macOS projects (especially those created from certain templates or migrated from iOS), this automatic linking may not happen.</p>
+<p>When <code>CloudKit.framework</code> is not explicitly linked:</p>
+<ul>
+<li><strong>Debug Mode</strong>: Due to the permissive nature of the debugger and the dynamic linker during development, the framework might be loaded accidentally, leading to a “false positive” success.</li>
+<li><strong>Release Mode</strong>: The system performs stricter dependency checks. If the framework isn’t linked, the CloudKit service fails to initialize properly, effectively cutting off the sync capabilities of <code>NSPersistentCloudKitContainer</code> or the SwiftData <code>ModelContainer</code>.</li>
+</ul>
+<h2 id="the-solution">The Solution</h2>
+<p>The fix is straightforward—you simply need to manually force the framework link:</p>
+<h3 id="1-add-the-framework-dependency">1. Add the Framework Dependency</h3>
 <ol>
-<li>Open your project settings and navigate to <strong>“Frameworks, Libraries, and Embedded Content”</strong>.</li>
-<li>Click the <strong>“+”</strong> button, search for, and select <strong><code>CloudKit.framework</code></strong>.</li>
+<li>Click on the project root in the <strong>Project Navigator</strong> in Xcode.</li>
+<li>Select your macOS app <strong>Target</strong>.</li>
+<li>Go to the <strong>Build Phases</strong> tab (or the <strong>General</strong> tab).</li>
+<li>Locate <strong>Link Binary With Libraries</strong> (or “Frameworks, Libraries, and Embedded Content”).</li>
+<li>Click the <strong>+</strong> button, search for <strong><code>CloudKit.framework</code></strong>, and add it.</li>
 </ol>
-<p>Here’s a visual example of the configuration:</p>
 <p><picture>
   <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/cloudKit-framework-issu.webp?imageView2/0/w/500"/>
   <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/cloudKit-framework-issu.webp?imageView2/0/w/768"/>
   <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/cloudKit-framework-issu.webp?imageView2/0/w/1024"/>
-  <img src="https://cdn.fatbobman.com/cloudKit-framework-issu.webp" alt="CloudKit.framework Issue" loading="lazy" decoding="async"/>
+  <img src="https://cdn.fatbobman.com/cloudKit-framework-issu.webp" alt="Adding CloudKit.framework in Xcode" loading="lazy" decoding="async"/>
 </picture></p>
-<h3 id="step-2-rebuild-and-verify">Step 2: Rebuild and Verify</h3>
-<ol>
-<li>Ensure there are no other configuration issues related to synchronization.</li>
-<li>Rebuild the project and test it via TestFlight or the release version.</li>
-</ol>
-<p>After completing the steps above, the cloud synchronization functionality in your macOS app should work as expected.</p>
-<h2 id="notes">Notes</h2>
-<ul>
-<li><strong>Special Consideration for Catalyst Projects:</strong>
-If you are using Catalyst to port an iOS app to macOS, you must also manually add the <code>CloudKit.framework</code> dependency.</li>
-<li><strong>App Store Review Behavior:</strong>
-macOS apps missing the <code>CloudKit.framework</code> can still pass App Store review. This leniency may lead developers to overlook the root cause, so extra attention is needed.</li>
-</ul>
+<h3 id="2-verify-the-build">2. Verify the Build</h3>
+<p>Perform a Clean Build Folder (<code>Cmd + Shift + K</code>), then Archive and upload to TestFlight again. Synchronization should now function correctly in the production environment.</p>
 <h2 id="further-reading">Further Reading</h2>
-<p>The following resources provide in-depth insights into Core Data and CloudKit, helping developers better understand synchronization mechanisms:</p>
 <ul>
-<li><a href="/en/posts/coredatawithcloudkit-2/" target="_blank">Core Data with CloudKit: Syncing Local Database to iCloud Private Database</a></li>
-<li><a href="/en/posts/coredatawithcloudkit-6/" target="_blank">Core Data with CloudKit: Sharing Data in the iCloud</a></li>
+<li><a href="/en/posts/coredatawithcloudkit-2/" target="_blank">Core Data with CloudKit: Syncing Local DB to iCloud</a></li>
 </ul> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <script type="module">var l=document.querySelectorAll("article");l.forEach(function(t){var e=t.querySelectorAll("a");e.forEach(function(r){r.setAttribute("target","_blank")})});</script> <script>
   window.copyCode = function(button, event) {
     if (event) event.preventDefault();
@@ -1097,7 +1096,7 @@ const utmTerm = "snippeten/fix-synchronization-issues-for-macos-apps-using-core-
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=Tip%3A%20Fix%20Synchronization%20Issues%20for%20macOS%20Apps%20Using%20Core%20Data%2FSwiftData%0A&url=%2Fen%2Fsnippet%2Ffix-synchronization-issues-for-macos-apps-using-core-dataswiftdata%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=Tip%3A%20Fixing%20macOS%20SwiftData%2FCore%20Data%20Sync%3A%20The%20CloudKit.framework%20Issue%0A&url=%2Fen%2Fsnippet%2Ffix-synchronization-issues-for-macos-apps-using-core-dataswiftdata%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
@@ -1274,35 +1273,35 @@ const utmTerm = "snippeten/fix-synchronization-issues-for-macos-apps-using-core-
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/disabling-scroll-in-swiftui-scrollview-when-content-is-smaller-than-container/" id="relatedPosts-How to Disable Scrolling in SwiftUI When Content Fits" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/why-dont-core-data-require-setting-a-primary-key/" id="relatedPosts-Core Data &#38; SwiftData Primary Keys: Z_PK and Automatic Uniqueness" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>How to Disable Scrolling in SwiftUI When Content Fits</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/controlling-access-within-a-swift-package/" id="relatedPosts-Swift package Access Level: Sharing Code Across Targets Securely" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔍</span>Core Data &amp; SwiftData Primary Keys: Z_PK and Automatic Uniqueness</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/resolving-incomplete-icloud-data-sync-in-ios-development-using-initializecloudkitschema/" id="relatedPosts-Fixing SwiftData &#38; Core Data Sync: initializeCloudKitSchema" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Swift package Access Level: Sharing Code Across Targets Securely</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/rules-for-adapting-data-models-to-cloudkit/" id="relatedPosts-Rules for Adapting Data Models to CloudKit" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>Fixing SwiftData &amp; Core Data Sync: initializeCloudKitSchema</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/how-to-make-a-swiftui-sheet-automatically-adjust-height/" id="relatedPosts-SwiftUI Sheet Auto-Sizing: Dynamic Height Based on Content" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔑</span>Rules for Adapting Data Models to CloudKit</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/resolving-incomplete-icloud-data-sync-in-ios-development-using-initializecloudkitschema/" id="relatedPosts-Fix iCloud Sync Issues with initializeCloudKitSchema" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔍</span>SwiftUI Sheet Auto-Sizing: Dynamic Height Based on Content</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/resolving-inconsistent-spacing-in-swiftui-vstackhstack-layouts/" id="relatedPosts-Fixing Inconsistent Spacing in SwiftUI Stacks" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>Fix iCloud Sync Issues with initializeCloudKitSchema</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>Fixing Inconsistent Spacing in SwiftUI Stacks</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95

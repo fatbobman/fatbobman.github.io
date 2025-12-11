@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Rules for Adapting Data Models to CloudKit</title>
-<meta name="description" content="Learn the rules for adapting data models to CloudKit, including restrictions on unique constraints, non-optional attributes, and relationships. Ensure smooth cloud synchronization with lightweight migrations.">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Designing Models for CloudKit Sync: Core Data &amp; SwiftData Rules</title>
+<meta name="description" content="Planning to enable CloudKit sync? Learn the strict data modeling rules—from banned unique constraints to mandatory optional relationships—and the &#39;add-only&#39; migration strategy to prevent sync failures.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/en/snippet/rules-for-adapting-data-models-to-cloudkit/">
-<meta property="og:title" content="Rules for Adapting Data Models to CloudKit">
-<meta property="og:description" content="Learn the rules for adapting data models to CloudKit, including restrictions on unique constraints, non-optional attributes, and relationships. Ensure smooth cloud synchronization with lightweight migrations.">
+<meta property="og:title" content="Designing Models for CloudKit Sync: Core Data &amp; SwiftData Rules">
+<meta property="og:description" content="Planning to enable CloudKit sync? Learn the strict data modeling rules—from banned unique constraints to mandatory optional relationships—and the &#39;add-only&#39; migration strategy to prevent sync failures.">
 <meta property="og:url" content="https://fatbobman.com/en/snippet/rules-for-adapting-data-models-to-cloudkit/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/question-and-answer.webp">
@@ -42,11 +42,27 @@
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2025-01-11T16:54:00.000Z",
+  "dateModified": "2025-12-11T00:00:00.000Z",
   "datePublished": "2025-01-11T16:54:00.000Z",
   "proficiencyLevel": "Intermediate",
-  "description": "Learn the rules for adapting data models to CloudKit, including restrictions on unique constraints, non-optional attributes, and relationships. Ensure smooth cloud synchronization with lightweight migrations.",
-  "headline": "Rules for Adapting Data Models to CloudKit",
+  "programmingLanguage": "Swift",
+  "dependencies": "Core Data, SwiftData, CloudKit",
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "CloudKit Synchronization"
+    },
+    {
+      "@type": "Thing",
+      "name": "Data Modeling"
+    },
+    {
+      "@type": "Thing",
+      "name": "Database Deployment"
+    }
+  ],
+  "description": "Planning to enable CloudKit sync? Learn the strict data modeling rules—from banned unique constraints to mandatory optional relationships—and the 'add-only' migration strategy to prevent sync failures.",
+  "headline": "Designing Models for CloudKit Sync: Core Data & SwiftData Rules",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/question-and-answer.webp"
@@ -67,7 +83,7 @@
   "articleSection": [
     "Tips and Tricks, Quick Tips"
   ],
-  "keywords": "",
+  "keywords": "CloudKit, Core Data, SwiftData, model limitations, unique constraints, lightweight migration, sync rules, database schema, NSPersistentCloudKitContainer",
   "inLanguage": "en"
 }</script><script type='application/ld+json'>{
   "@context": "https://schema.org",
@@ -279,60 +295,63 @@ const enableStickyInMobile = true;
     "> 🔑 </span> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-tight
-    "> Rules for Adapting Data Models to CloudKit </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-11T16:54:00.000Z"> Jan 12, 2025 </time> </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
-<p>When using CloudKit with Core Data or SwiftData, avoid unique constraints, undefined types, and non-optional attributes without defaults. Relationships must be optional and have inverse settings. Use lightweight migrations for adjustments, adhering to “add-only” changes.</p>
+    "> Designing Models for CloudKit Sync: Core Data &amp; SwiftData Rules </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 "> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Fatbobman </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-01-11T16:54:00.000Z"> Jan 12, 2025 </time>  <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <span class="italic text-muted/80">
+(Updated on  <time datetime="2025-12-11T00:00:00.000Z">Dec 11, 2025</time>)
+</span>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <!-- <WeeklyBottomNavigator lang={lang} issue={post.data.issue} /> --> <article class="prose dark:prose-invert mx-auto w-full prose-h2:font-semibold prose-h3:font-medium mb-16"> <div> 
+<div class="mdx-intro"><p><strong>TL;DR</strong>: Enabling CloudKit sync is easy, but keeping it stable is difficult. The vast majority of sync errors following model adjustments stem from violating <strong>hard physical limitations</strong> of the data model. It is crucial to adhere to these rules during the design phase.</p></div>
+<p>When enabling CloudKit synchronization for Core Data or SwiftData, the distributed nature of CloudKit imposes much stricter requirements on the local data model (Schema) than a purely local database. If these limitations are not fully considered during the modeling phase, subsequent adjustments can be incredibly painful.</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
-<h2 id="background">Background</h2>
-<p>When using Core Data or SwiftData for cloud synchronization, failing to consider CloudKit’s limitations during the modeling phase can lead to complex issues later. Below are the essential rules and considerations to ensure smooth integration with CloudKit.</p>
-<h2 id="mandatory-rules-for-data-models">Mandatory Rules for Data Models</h2>
-<h3 id="1-unique-constraints">1. Unique Constraints</h3>
-<p><strong>Prohibited</strong>:</p>
+<h2 id="mandatory-data-model-rules">Mandatory Data Model Rules</h2>
+<p>The following rules are <strong>compulsory</strong>. Violating any of them will result in sync failures or application crashes.</p>
+<h3 id="1-no-unique-constraints">1. No Unique Constraints</h3>
+<p>CloudKit does not support atomic uniqueness checks across devices.</p>
 <ul>
-<li>Core Data: <code>Unique constraints</code></li>
-<li>SwiftData: <code>@Attribute(.unique)</code></li>
+<li><strong>Core Data</strong>: Do not configure <code>Unique constraints</code> in the Entity Configuration.</li>
+<li><strong>SwiftData</strong>: Do not use the <code>@Attribute(.unique)</code> macro on properties.</li>
 </ul>
-<h3 id="2-attribute-requirements">2. Attribute Requirements</h3>
+<h3 id="2-attributes-must-be-optional-or-have-defaults">2. Attributes Must Be Optional or Have Defaults</h3>
+<p>CloudKit needs to handle “partial data” synchronization scenarios.</p>
 <ul>
-<li>Attributes <strong>must not</strong> be non-optional without default values.</li>
-<li>Allowed configurations:
+<li><strong>Forbidden</strong>: Non-Optional attributes <strong>without</strong> a default value.</li>
+<li><strong>Allowed</strong>:
 <ul>
-<li>Optional</li>
-<li>With a default value</li>
-<li>Optional + Default value</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-type-restrictions">3. Type Restrictions</h3>
-<ul>
-<li>The Core Data <code>Undefined</code> type <strong>must not</strong> be used.</li>
-</ul>
-<h3 id="4-relationship-requirements">4. Relationship Requirements</h3>
-<ul>
-<li>All relationships must be <strong>optional</strong>.</li>
-<li>All relationships must include <strong>inverse</strong> relationships.</li>
-<li>Prohibited configurations:
-<ul>
-<li><code>Deny</code> deletion rule</li>
-<li>Ordered relationships (<code>Ordered</code>)</li>
+<li>Optional types (<code>?</code>).</li>
+<li>Non-Optional types with a Default Value.</li>
+<li>Optional types with a Default Value.</li>
 </ul>
 </li>
 </ul>
-<h2 id="key-considerations">Key Considerations</h2>
-<p>Once cloud synchronization is enabled, model changes are limited to <strong>lightweight migrations</strong>. Developers should plan their data model carefully during the design phase to minimize future modifications.</p>
-<h3 id="model-adjustment-principles">Model Adjustment Principles</h3>
+<h3 id="3-type-limitations">3. Type Limitations</h3>
 <ul>
-<li><strong>Do not delete</strong> existing entities or attributes.</li>
-<li><strong>Do not rename</strong> existing entities or attributes.</li>
+<li><strong>Forbidden</strong>: Using the Core Data <code>Undefined</code> type.</li>
 </ul>
-<h3 id="recommendations">Recommendations</h3>
-<p>Follow the principle of <strong>“add only, no deletions or modifications”</strong>:</p>
+<h3 id="4-strict-relationship-requirements">4. Strict Relationship Requirements</h3>
+<p>This is the most common source of errors:</p>
 <ul>
-<li>Only add new entities, attributes, or relationships.</li>
+<li><strong>Must Be Optional</strong>: All Relationships must be marked as <code>Optional</code>.</li>
+<li><strong>Must Have Inverse</strong>: All Relationships must have an <code>Inverse</code> relationship defined. While SwiftData macros often handle this automatically, it must be specified manually in the Core Data editor.</li>
+<li><strong>No ‘Deny’ Delete Rules</strong>: The Delete Rule cannot be set to <code>Deny</code>.</li>
+<li><strong>No Ordered Relationships</strong>: You cannot check <code>Ordered</code> (Arrangement) in Core Data. SwiftData does not support this option either.</li>
+</ul>
+<h2 id="migration-strategy-add-only">Migration Strategy: Add-Only</h2>
+<p>Once CloudKit is enabled, schema changes are heavily restricted. You are effectively limited to <strong>Lightweight Migration</strong>.</p>
+<h3 id="strict-modification-limits">Strict Modification Limits</h3>
+<p>Once your app is live (and the Schema has been pushed to the Production environment), you must adhere to the <strong>“Add-Only, No-Delete, No-Change”</strong> principle:</p>
+<ol>
+<li><strong>No Deletions</strong>: Do not delete existing Entities or Attributes. Even if you no longer use them, keep them in the model definition.</li>
+<li><strong>No Renaming</strong>: Do not rename Entities or Attributes. CloudKit interprets a rename as “deleting the old one and adding a new one,” resulting in data loss for the old field and sync inconsistencies.</li>
+<li><strong>No Type Changes</strong>: Do not change the data type of an attribute (e.g., changing a <code>String</code> to an <code>Int</code>).</li>
+</ol>
+<h3 id="recommended-practices">Recommended Practices</h3>
+<p>If you must modify the model:</p>
+<ul>
+<li><strong>Add New Attributes</strong>: This is the safest approach.</li>
+<li><strong>Deprecate Old Attributes</strong>: Stop using the old attributes in your code, but leave the model definition intact.</li>
 </ul>
 <h2 id="further-reading">Further Reading</h2>
 <ul>
-<li><a href="/en/posts/coredatawithcloudkit-2/" target="_blank">Core Data with CloudKit: Syncing Local Database to iCloud Private Database</a></li>
-<li><a href="/en/posts/coredatawithcloudkit-4/" target="_blank">Core Data with CloudKit: Troubleshooting</a></li>
+<li><a href="/en/posts/coredatawithcloudkit-2/" target="_blank">Core Data with CloudKit: Syncing Local Database to iCloud</a></li>
+<li><a href="/en/posts/coredatawithcloudkit-4/" target="_blank">Core Data with CloudKit: Debugging, Testing, and Migration</a></li>
 </ul> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <script type="module">var l=document.querySelectorAll("article");l.forEach(function(t){var e=t.querySelectorAll("a");e.forEach(function(r){r.setAttribute("target","_blank")})});</script> <script>
   window.copyCode = function(button, event) {
     if (event) event.preventDefault();
@@ -1088,7 +1107,7 @@ const utmTerm = "snippeten/rules-for-adapting-data-models-to-cloudkit";
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=Tip%3A%20Rules%20for%20Adapting%20Data%20Models%20to%20CloudKit%0A&url=%2Fen%2Fsnippet%2Frules-for-adapting-data-models-to-cloudkit%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=Tip%3A%20Designing%20Models%20for%20CloudKit%20Sync%3A%20Core%20Data%20%26%20SwiftData%20Rules%0A&url=%2Fen%2Fsnippet%2Frules-for-adapting-data-models-to-cloudkit%2F%0A&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
@@ -1265,35 +1284,35 @@ const utmTerm = "snippeten/rules-for-adapting-data-models-to-cloudkit";
       handleScroll();
     }
   });
-</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/swiftui-implicit-vs-explicit-animations/" id="relatedPosts-SwiftUI: Implicit vs Explicit Animations" class="
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> <section class="pt-2 pb-10" id="more-tips"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">Related Tips</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/en/snippet/controlling-access-within-a-swift-package/" id="relatedPosts-Swift package Access Level: Sharing Code Across Targets Securely" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>SwiftUI: Implicit vs Explicit Animations</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/speed-up-compilation-with-prebuilt-swift-syntax/" id="relatedPosts-Speed Up Compilation with Prebuilt Swift-Syntax" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🚀</span>Swift package Access Level: Sharing Code Across Targets Securely</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/ensuring-full-text-display-in-swiftui-techniques-and-solutions/" id="relatedPosts-Fixing Text Truncation in SwiftUI: From fixedSize to ViewThatFits" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔦</span>Speed Up Compilation with Prebuilt Swift-Syntax</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/how-to-forward-custom-tag-events-to-gtm-running-inside-partytown/" id="relatedPosts-How to Forward Events from the Main Thread to GTM Running Inside Partytown" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔍</span>Fixing Text Truncation in SwiftUI: From fixedSize to ViewThatFits</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/resolving-inconsistent-spacing-in-swiftui-vstackhstack-layouts/" id="relatedPosts-Fixing Inconsistent Spacing in SwiftUI Stacks" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>How to Forward Events from the Main Thread to GTM Running Inside Partytown</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/disabling-scroll-in-swiftui-scrollview-when-content-is-smaller-than-container/" id="relatedPosts-How to Disable Scrolling in SwiftUI When Content Fits" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔥</span>Fixing Inconsistent Spacing in SwiftUI Stacks</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/en/snippet/how-to-make-a-swiftui-sheet-automatically-adjust-height/" id="relatedPosts-SwiftUI Sheet Auto-Sizing: Dynamic Height Based on Content" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔋</span>How to Disable Scrolling in SwiftUI When Content Fits</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors "><span class="hidden sm:inline-block text-xs mr-2 md:mr-1">🔍</span>SwiftUI Sheet Auto-Sizing: Dynamic Height Based on Content</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> Subscribe to Fatbobman </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> Weekly Swift &amp; SwiftUI highlights. Join developers. </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95
