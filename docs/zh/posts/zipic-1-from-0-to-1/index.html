@@ -1,0 +1,1722 @@
+<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>独立开发者的试炼：Zipic 从 0 到 1 的产品化之路</title>
+<meta name="description" content="做独立产品这件事，说起来容易，真动手了才知道水有多深。这是一个独立开发者将职场小需求变成主力产品的真实故事。我们将跟随 Zipic 作者十里的视角，一起回顾产品从 0 到 1 的全过程。本篇聚焦产品设计与决策思考。">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://fatbobman.com/zh/posts/zipic-1-from-0-to-1/">
+<meta property="og:title" content="独立开发者的试炼：Zipic 从 0 到 1 的产品化之路">
+<meta property="og:description" content="做独立产品这件事，说起来容易，真动手了才知道水有多深。这是一个独立开发者将职场小需求变成主力产品的真实故事。我们将跟随 Zipic 作者十里的视角，一起回顾产品从 0 到 1 的全过程。本篇聚焦产品设计与决策思考。">
+<meta property="og:url" content="https://fatbobman.com/zh/posts/zipic-1-from-0-to-1/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://storage.5km.host/zipic-share-banner.jpeg">
+
+<meta property="og:locale" content="zh">
+<meta property="og:site_name" content="fatbobman.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@fatbobman">
+<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><!-- 其他路径的 hreflang -->
+  <link rel="alternate" hreflang="zh-CN" href="https://fatbobman.com/zh/posts/zipic-1-from-0-to-1/">
+  <link rel="alternate" hreflang="en" href="https://fatbobman.com/en/posts/zipic-1-from-0-to-1/">
+  <link rel="alternate" hreflang="x-default" href="https://fatbobman.com/en/posts/zipic-1-from-0-to-1/"><script type="text/partytown" src="https://analytics.ahrefs.com/analytics.js" data-key="KF0NNRpbcfyJPzijzZEiOw"></script><script data-partytown-skip="true">
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.async = true; // Add async attribute
+        hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script><script type="text/partytown">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5C7N4MF5');</script><script>
+      // Immediately set theme before page renders
+      if (
+        localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      }
+    </script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "author": {
+    "@id": "#author"
+  },
+  "dateModified": "2025-12-22T14:12:00.000Z",
+  "datePublished": "2025-12-22T14:12:00.000Z",
+  "description": "做独立产品这件事，说起来容易，真动手了才知道水有多深。这是一个独立开发者将职场小需求变成主力产品的真实故事。我们将跟随 Zipic 作者十里的视角，一起回顾产品从 0 到 1 的全过程。本篇聚焦产品设计与决策思考。",
+  "headline": "独立开发者的试炼：Zipic 从 0 到 1 的产品化之路",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://storage.5km.host/zipic-share-banner.jpeg"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://fatbobman.com/zh/posts/zipic-1-from-0-to-1/"
+  },
+  "url": "https://fatbobman.com/zh/posts/zipic-1-from-0-to-1/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fatbobman's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  },
+  "articleSection": [
+    "Dev Diary",
+    "Guest Post"
+  ],
+  "inLanguage": "zh-Hans"
+}</script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "#author",
+  "name": "东坡肘子 (徐杨)",
+  "alternateName": "Fatbobman (Xu Yang)",
+  "jobTitle": "Apple Developer",
+  "description": "苹果生态开发者，专注 Swift 和 SwiftUI 开发。Fatbobman's Blog 作者。",
+  "url": "https://fatbobman.com",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/FatWithBoys.png"
+  },
+  "sameAs": [
+    "https://github.com/fatbobman",
+    "https://x.com/fatbobman",
+    "https://www.linkedin.com/in/fatbobman/",
+    "https://bsky.app/profile/fatbobman.com",
+    "https://mastodon.social/@fatbobman",
+    "https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3",
+    "https://fatbobman.com/zh/about/",
+    "https://fatbobman.com/en/about/"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Fatbobman's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  }
+}</script><link rel="stylesheet" href="/_astro/about.BpPgF8gb.css">
+<link rel="stylesheet" href="/_astro/_slug_.C4bWZTUX.css">
+<style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);background-color:#ffffffe6}.dark .sticky[data-astro-cid-4wsjtibl]{background-color:#171717e6}.sticky[data-astro-cid-4wsjtibl] .sticky-logo[data-astro-cid-4wsjtibl]{width:2rem;opacity:1;margin-right:.75rem}
+</style><script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push","gtag"])})(window,'partytown','forward');/* Partytown 0.11.2 - MIT QwikDev */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,l,d,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(d=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(l=setTimeout(v,(null==s?void 0:s.fallbackTimeout)||1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.11.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<d.length;n++)(o=r.createElement("script")).innerHTML=d[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(l)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");if(r)e.newDocument.body.append(r)})})(document);</script></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <!-- 
+    修改点 1: px-4 sm:px-6
+    给大标题区域增加左右边距，防止在屏幕变窄时贴边。
+  --> <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-4 sm:pb-6" data-astro-cid-4wsjtibl> <div id="blogTitle" class="w-full"> <!-- 
+    修改点 1: class="group block w-full"
+    让链接容器变成块级元素并占满整行，确保内部内容可以基于整个页面宽度居中
+  --> <a href="/zh/" class="group block w-full"> <!-- 
+      修改点 2: justify-center
+      确保 Flex 容器的内容在水平方向上绝对居中
+    --> <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 mx-auto pt-6 sm:pt-8 pb-2 sm:pb-0"> <!-- 吉祥物图标 --> <img src="/_astro/fat-blog-slug-icon.Cw1pK0wd.webp" class="w-20 h-20 sm:w-14 sm:h-14 rounded-full shadow-sm transition-transform duration-300 group-hover:rotate-12 group-hover:scale-105" alt="Fatbobman Logo"> <!-- SVG 文字容器 --> <div class="font-black w-[240px] sm:w-[300px] text-heading transition-opacity duration-300 group-hover:opacity-80 mt-2 sm:mt-0 sm:-mb-1"> <svg fill="currentColor" width="100%" viewBox="0 0 500 100"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </div> </a> </div> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <!-- 
+      修改点 2: px-4 sm:px-6 py-3
+      1. 删除了原来的 p-2 sm:p-0
+      2. 增加了统一的 px-4 sm:px-6，让 Sticky 导航栏左右两端留有空白，不再紧贴屏幕边缘。
+      3. 增加了 py-3，让导航栏高度稍微高一点点，看起来更从容。
+    --> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto px-4 sm:px-6 py-3" data-astro-cid-4wsjtibl> <div class="flex items-center space-x-2" data-astro-cid-4wsjtibl> <!-- Sticky Logo --> <a href="/" class="sticky-logo overflow-hidden transition-all duration-500 w-0 opacity-0 flex items-center justify-center" aria-label="Fatbobman Blog" data-astro-cid-4wsjtibl> <!-- 这里使用修改后的小尺寸 Logo (h-6 或 h-7) --> <img src="/_astro/fat-blog-slug-icon.Cw1pK0wd.webp" class="h-6 w-6 rounded-full" alt="Logo" data-astro-cid-4wsjtibl> </a> <div id="lang-data" data-lang="zh" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" aria-label="Change Language" class="group p-2 w-10 h-10 text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center"> <!-- 替换文字为 SVG 图标 --> <!-- 
+    这里使用 w-5 h-5 (20px) 配合 stroke-width="2" 
+    以匹配 SearchButton 和 ThemeSwitcher 的视觉分量
+  --> <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <!-- 一个简单的地球图标 --> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-language"></use> </svg> <!-- 可选：如果非要保留文字，可以把文字做小一点放在图标旁边，或者只在 Hover 时显示 --> </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <button type="button" onclick="
+            try {
+                if ('/en/posts/zipic-1-from-0-to-1/' !== '#') {
+                    window.location.href = '/en/posts/zipic-1-from-0-to-1/';
+                }
+            } catch (e) {
+                console.log('Navigation failed:', e);
+            }
+        " class="w-full text-left px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
+English
+<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-2 hidden text-primary" id="EN-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-language"></use> </svg> </div> </button> </li><li> <button type="button" onclick="
+              try {
+                  if ('#' !== '#') {
+                      window.location.href = '#';
+                  }
+              } catch (e) {
+                  console.log('Navigation failed:', e);
+              }
+          " class="w-full text-left px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
+中文
+<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-2 hidden text-primary" id="ZH-check" width="24" height="24" viewBox="0 0 24 24"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-check"></use> </svg> </div> </button> </li> <li> <div class="border-t border-gray-200 dark:border-gray-800 w-4/5 mx-auto my-2"></div> <button class="block px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" id="set-default-lang"> <div class="inline-flex items-center"> 将中文设置为默认 </div> </button> </li> </ul> <script type="module">function a(){const t=localStorage.getItem("lang"),e=document.getElementById("EN-check"),n=document.getElementById("ZH-check");e!==null&&n!==null&&(t==="en"?(e.classList.remove("hidden"),n.classList.add("hidden")):t==="zh"&&(n.classList.remove("hidden"),e.classList.add("hidden")))}document.addEventListener("DOMContentLoaded",()=>{a()});const l=document.getElementById("set-default-lang");l?.addEventListener("click",()=>{const t=document.getElementById("lang-data");if(t!=null){const e=t.dataset.lang;e!=null&&(localStorage.setItem("lang",e),a())}});</script> </div> <button id="theme-dropdown-button" data-dropdown-toggle="theme-dropdown-menu" type="button" aria-label="Theme Switcher" class="group p-2 w-10 h-10 text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center"> <!-- 
+    已更新为统一的 24px 线性图标 
+    注意：移除了 fill-current，改为 fill="none" stroke="currentColor"
+  --> <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none" class="w-5 h-5 hidden" id="theme_icon_system"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-computer"></use> </svg> <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none" class="w-5 h-5 hidden" id="theme_icon_dark"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-moon"></use> </svg> <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none" class="w-5 h-5 hidden" id="theme_icon_light"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-sun"></use> </svg> </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="theme-dropdown-menu"> <ul class="py-2 font-medium" role="none"> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex w-full px-4 py-2 text-sm align-text-center hover:text-secondary" id="theme_button_light"> <svg class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-sun"></use> </svg> <span class="ml-2">Light</span> </button> </li> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex w-full px-4 py-2 text-sm align-text-center hover:text-secondary" id="theme_button_dark"> <svg class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-moon"></use> </svg> <span class="ml-2">Dark</span> </button> </li> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex w-full px-4 py-2 text-sm align-text-center hover:text-secondary" id="theme_button_system"> <svg class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-computer"></use> </svg> <span class="ml-2">System</span> </button> </li> </ul> </div> <script>
+  // 获取按钮
+  var themeDropdownButton = document.getElementById('theme-dropdown-button'); // 新增：获取主开关按钮
+  var themeButtonLight = document.getElementById('theme_button_light');
+  var themeButtonDark = document.getElementById('theme_button_dark');
+  var themeButtonSystem = document.getElementById('theme_button_system');
+
+  // 获取图标
+  var themeToggleDarkIcon = document.getElementById('theme_icon_dark');
+  var themeToggleLightIcon = document.getElementById('theme_icon_light');
+  var themeToggleSystemIcon = document.getElementById('theme_icon_system');
+
+  function setTheme() {
+    if (
+      localStorage.getItem('color-theme') === 'dark' ||
+      (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
+  function setThemeButton() {
+    let theme = localStorage.getItem('color-theme');
+    // 先隐藏所有，再显示对应的
+    themeToggleDarkIcon.classList.add('hidden');
+    themeToggleLightIcon.classList.add('hidden');
+    themeToggleSystemIcon.classList.add('hidden');
+
+    if (theme === 'dark') {
+      themeToggleDarkIcon.classList.remove('hidden');
+    } else if (theme === 'light') {
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      themeToggleSystemIcon.classList.remove('hidden');
+    }
+  }
+
+  function resetTheme() {
+    setTheme();
+    setThemeButton();
+  }
+
+  // 初始化
+  resetTheme();
+
+  // 监听系统暗黑模式的变化
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    resetTheme();
+  });
+
+  // 监听 Storage 变化 (多标签页同步)
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'color-theme') {
+      resetTheme();
+    }
+  });
+
+  // --- 核心修复：点击选项后，同时关闭下拉菜单 ---
+
+  // Dark 模式
+  themeButtonDark.addEventListener('click', function () {
+    localStorage.setItem('color-theme', 'dark');
+    resetTheme();
+    themeDropdownButton.click(); // 模拟点击主按钮以关闭菜单
+  });
+
+  // Light 模式
+  themeButtonLight.addEventListener('click', function () {
+    localStorage.setItem('color-theme', 'light');
+    resetTheme();
+    themeDropdownButton.click(); // 模拟点击主按钮以关闭菜单
+  });
+
+  // System 模式
+  themeButtonSystem.addEventListener('click', function () {
+    localStorage.removeItem('color-theme');
+    resetTheme();
+    themeDropdownButton.click(); // 模拟点击主按钮以关闭菜单
+  });
+</script> <div id="docsearch" class="group w-10 h-10 text-default hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center cursor-pointer"> <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-search"></use> </svg> </div> </div> <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 mx-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false" id="navbar-toggle-button"> <span class="sr-only">Open main menu</span> <svg class="w-5 h-5 text-default" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path> </svg> </button> <nav class="hidden w-full md:block md:w-auto px-4 z-40" id="navbar-solid-bg"> <ul class="flex flex-col font-bold mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700"> <a href="/zh/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent tracking-widest"> 首页 </a><a href="/zh/posts/" class="block py-2 px-3 md:p-0 rounded text-invert bg-secondary md:bg-transparent md:text-secondary md:dark:bg-transparent tracking-widest" aria-current="page"> 文章 </a><a href="/zh/weekly/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent tracking-widest"> 周报 </a><a href="/zh/snippet/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent tracking-widest"> 小贴士 </a><a href="/zh/about/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent tracking-widest"> 关于 </a> </ul> </nav> </div> </div> <div id="placeholder" class="hidden" data-astro-cid-4wsjtibl></div> </div> <script>(function(){const enableSticky = true;
+const enableStickyInMobile = true;
+
+  window.onload = function () {
+    checkStickyHeader();
+    stickySetup();
+  };
+
+  window.addEventListener('resize', stickySetup);
+
+  function checkStickyHeader() {
+    const title = document.getElementById('blogTitle');
+    const stickyHeader = document.getElementById('stickyHeader');
+    const placeholder = document.getElementById('placeholder');
+
+    if (title && stickyHeader && placeholder) {
+      const offset = title.offsetTop + title.offsetHeight;
+
+      if (shouldStick() && window.scrollY >= offset) {
+        stickyHeader.classList.add('sticky');
+        placeholder.style.display = 'block';
+        placeholder.style.height = `${stickyHeader.offsetHeight}px`;
+      } else {
+        stickyHeader.classList.remove('sticky');
+        placeholder.style.display = 'none';
+      }
+    }
+  }
+
+  function shouldStick() {
+    if (!enableSticky) return false;
+
+    let isMobile = window.matchMedia('(max-width: 640px)').matches;
+    if (isMobile && !enableStickyInMobile) return false;
+
+    return true;
+  }
+
+  function stickySetup() {
+    window.onscroll = checkStickyHeader;
+  }
+})();</script>  </header>  <main class="w-full mx-auto max-w-3xl p-4 md:p-6 "> <div class="container mx-auto">   <!-- 
+  调整 1: 减小垂直间距 
+  pt-16 -> pt-12, pb-10 -> pb-8 
+--><header class="mx-auto max-w-3xl text-center pt-12 pb-8 px-4 sm:px-6">  <div class="flex flex-wrap justify-center items-center gap-2.5 mb-6">  <a href="/en/posts/zipic-1-from-0-to-1/" id="language-switcher-for-topic" class="
+          inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border transition-all
+          /* Light: 白底黑字 */
+          bg-white text-gray-600 border-gray-200 hover:bg-gray-900 hover:text-white hover:border-gray-900
+          /* Dark: 调整为半透明蓝底 (Tinted Blue)，看起来更清透，不发灰 */
+          dark:bg-blue-500/10 dark:text-blue-300 dark:border-blue-500/20 dark:hover:bg-blue-500/20 dark:hover:text-blue-200
+        "> <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 mr-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> Read in English </a>  <a href="/zh/tags/Dev-Diary/" class="
+          inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold transition-colors
+          bg-red-50 text-red-600 hover:bg-red-100
+          dark:bg-blue-500/10 dark:text-blue-400 dark:hover:bg-blue-500/20
+        ">
+#Dev Diary </a><a href="/zh/tags/Guest-Post/" class="
+          inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold transition-colors
+          bg-red-50 text-red-600 hover:bg-red-100
+          dark:bg-blue-500/10 dark:text-blue-400 dark:hover:bg-blue-500/20
+        ">
+#Guest Post </a> </div>  <h1 class="
+      text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
+      tracking-wider
+    "> 独立开发者的试炼：Zipic 从 0 到 1 的产品化之路 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 gap-y-2 tracking-wide"> <a itemprop="author" href="https://x.com/okooo5km" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 十里 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2025-12-22T14:12:00.000Z"> 2025 年 12 月 22 日 </time>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <article class="prose dark:prose-invert mx-auto w-full prose-headings:tracking-wide prose-p:tracking-wide prose-a:tracking-wide"> <div> 
+<div class="mdx-intro"><p>临近年底，Raycast 推出了 2025 Wrapped 年度报告。在我高频使用的扩展列表中，<strong>Images Compression</strong>（Zipic 的 Raycast 扩展）毫无悬念地占据了<a href="https://x.com/fatbobman/status/2001837106617012643?s=20?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">榜首</a>。</p><p>对于博主而言，如何在保证画质清晰的前提下尽可能压缩体积，是一项每日必修课。而 <a href="https://l.fatbobman.com/zipic" rel="noreferrer noopener">Zipic</a> 正是过去两年中帮助我实现“优雅与高效”平衡的最大功臣。它不仅是一个压缩工具，更代表了一种极致的原生开发体验。</p><p>为了挖掘这背后的故事，我特意邀请了 Zipic 的作者 <a href="https://x.com/okooo5km?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">十里</a> 复盘了产品从 0 到 1 的全过程。由于内容过于详实，我将原文拆分为三个篇章：<strong>产品设计</strong>（本文）、<a href="/zh/posts/zipic-2-selling-and-distribution/" target="_blank">分发与售卖</a> 以及 <a href="/zh/posts/zipic-3-technical-details/" target="_blank">技术细节复盘</a>。</p></div>
+<aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline pt-4"></div></aside>
+<p>做独立产品这件事，说起来容易，真动手了才知道水有多深。Zipic 从一个职场工作的小需求，到现在成为我一直在做的主力产品，中间踩过的坑、学到的东西，远比我预想的多。</p>
+<p>嗨，大家好，我是<a href="https://x.com/okooo5km?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">十里</a>👋！今天这篇文章想聊聊开发 <a href="https://l.fatbobman.com/zipic" rel="noreferrer noopener">Zipic</a> 过程中一些真实的技术挑战和决策思考，不是教程，更像是创造记录。希望对同样在 macOS 平台折腾的创客们有点帮助。</p>
+<h2 id="从痛点到产品">从痛点到产品</h2>
+<figure style="margin: 2em 0; text-align: center;"><img src="https://storage.5km.host/zipic-origin.jpeg" alt="Zipic Origin Story" style="
+max-width: 80%;     
+width: 550px;         
+border-radius: 16px; 
+box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+display: inline-block;
+"/></figure>
+<p>在前公司做产品经理期间，日常工作离不开文档和 PPT，每份方案都要配大量截图和流程图。文件体积慢慢成了困扰——一份 PPT 动辄几十上百 MB，传文件要等，存几个版本就占掉好几百 MB，打开还卡顿。印象最深的是外包公司交付过一个 600+ MB 的 PPT，在我那台 256GB 的 MBP 上格外扎眼。</p>
+<h3 id="从不爽到动手">从“不爽”到“动手”</h3>
+<p>根源其实是图片。每张截图几 MB，塞进文档里体积自然爆炸。与其抱怨文档大，不如先把图片压一压。</p>
+<p>找了几个工具，选定了<a href="https://tuya.xinxiao.tech/?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">图压</a>，设计不错、效果也好。但用久了有些不满足：应用体积大（Electron 通病）、交互方式单一、支持格式有限。脑子里冒出念头：“要不自己做一个？”</p>
+<p>琢磨了一阵后定位清晰了：与其事后压缩文档，不如从源头把图片处理好。Zipic 要做的就是图片压缩这个基础需求——更原生、更轻量、更灵活。</p>
+<p><img src="https://docs.zipic.app/_astro/cover-en.CCCHyYF8.webp" alt/></p>
+<h3 id="zipic-的核心原则">Zipic 的核心原则</h3>
+<ul>
+<li><strong>小而美</strong>：专注图片压缩，把这一件事做好</li>
+<li><strong>原生体验</strong>：用 SwiftUI 开发，完全遵循 macOS 的设计规范</li>
+<li><strong>高效灵活</strong>：支持更多快捷的交互方式</li>
+<li><strong>格式丰富</strong>：支持更多常用的图像/文档格式</li>
+<li><strong>隐私安全</strong>：所有处理都在本地完成，不上传任何数据</li>
+</ul>
+<p>虽然最后确定做图片压缩工具，但文档压缩功能一直在我的 Roadmap 里。计划 2.0 大版本会支持文档和视频压缩，让它变成一个从源头到最终优化的完整方案。</p>
+<p>不过那是后话了。接下来聊聊做 Zipic 过程中遇到的一些问题和经验。</p>
+<h2 id="产品迭代中的决策思考">产品迭代中的决策思考</h2>
+<p>代码写得再漂亮，用户用起来不顺手也是白搭。Zipic 从第一版到现在经历了无数次迭代，每一次改动背后都有用户反馈在驱动。</p>
+<h3 id="ui交互优化的迭代过程">UI/交互优化的迭代过程</h3>
+<p>第一版 Zipic 的界面我自己觉得挺好的——简洁、干净、macOS 风格。但上线后很快收到反馈：“图片压缩前后的对比在哪里看？”“怎么知道压缩效果好不好？”</p>
+<p>我当时的设计是只显示压缩后的文件大小和压缩率，觉得数字已经足够说明问题了。但用户不这么想，他们想<strong>亲眼看到</strong>画质有没有损失 😅</p>
+<p>用户反馈的收集渠道：应用内反馈入口、Twitter/X 关键词监控。负面反馈往往最有价值。</p>
+<p><strong>对比视图：给用户“确定感”</strong></p>
+<figure style="margin: 2em 0; text-align: center;"><img src="https://storage.5km.host/zipic-comparation.jpeg?x=1" alt="Zipic Comparison View" style="
+max-width: 80%;     
+width: 550px;         
+border-radius: 16px; 
+box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+display: inline-block;
+"/></figure>
+<p>用户反馈“想看压缩效果”，表面是功能需求，深层是<strong>心理需求</strong>——他们需要确认“压缩没有毁掉我的图片”。</p>
+<p>压缩率 85%、节省 2MB 这些数字是理性信息，但用户的担忧是感性的：“画质真的没变差吗？”数字无法回答这个问题，只有亲眼看到才能安心。</p>
+<p>所以我加入了对比视图：左右滑动查看压缩前后差异，支持缩放到像素级对比。技术上不复杂，就是两张图片叠加用一个可拖动的分割线控制显示区域。</p>
+<p>产品决策上有个权衡：对比视图需要同时加载原图和压缩图，会影响处理速度。最终选择<strong>默认关闭但易于开启</strong>——不影响追求效率的用户，但需要确认的用户随时可以查看。这种“渐进式披露”的思路在很多场景都适用：核心流程保持简洁，高级功能按需展开。</p>
+<p><strong>多种压缩入口：融入用户已有的工作流</strong></p>
+<figure style="margin: 2em 0; text-align: center;"><img src="https://storage.5km.host/zipic-more-compression-entries.jpeg?x=1" alt="Zipic More Compression Entries" style="
+max-width: 80%;     
+width: 550px;         
+border-radius: 16px; 
+box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+display: inline-block;
+"/></figure>
+<p>最初 Zipic 只支持拖拽到主窗口、选择文件、拖拽到 Dock 图标这些基础操作。用起来没问题，但总觉得“还不够”。</p>
+<p>后来想明白了：问题不在功能本身，而在于<strong>用户必须中断当前工作来使用工具</strong>。写博客时想压缩截图，得先打开 Zipic，再把图片拖进去——这个“切换成本”虽然只有几秒，但足以打断心流。</p>
+<p>解决思路是：<strong>不要让用户适应工具，而是让工具融入用户已有的工作流</strong>。于是陆续加入了：</p>
+<ul>
+<li><strong>文件夹监控</strong>：设置好监控目录后新图片自动压缩，用户甚至不需要主动操作</li>
+<li><strong>剪贴板压缩</strong>：复制图片后直接粘贴即可压缩，截图工作流完全不用中断</li>
+<li><strong>Notch 拖放</strong>：把文件拖到刘海屏的 Notch 区域直接触发压缩，不需要先打开窗口</li>
+<li><strong>效率工具联动</strong>：提供 Raycast 扩展和 URL Scheme 支持，键盘党在 Finder 选中文件后敲个回车就能压缩，完全不需要触碰鼠标</li>
+</ul>
+<p>这些入口让 Zipic 从“需要专门打开的工具”变成了“随时可调用的助手”。设计工具类产品时，值得思考：用户在什么场景下需要这个功能？能不能在那个场景里直接触发，而不是让用户绕一圈？</p>
+<p><strong>预设功能：减少重复决策</strong></p>
+<figure style="margin: 2em 0; text-align: center;"><img src="https://storage.5km.host/zipic-preset-design-thing.jpeg" alt="Zipic Preset Design Thing" style="
+max-width: 80%;     
+width: 550px;         
+border-radius: 16px; 
+box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+display: inline-block;
+"/></figure>
+<p>早期版本每次压缩都要手动选质量和格式。功能上没问题，但用久了会发现：90% 的情况我都选同样的配置，为什么每次都要重新选一遍？</p>
+<p>这是个<strong>认知负担</strong>的问题。每次选择都消耗一点注意力，虽然单次微不足道，但累积起来会让工具变得“累”。</p>
+<p>预设功能的本质是<strong>把重复的决策固化下来</strong>。用户只需要思考一次“我通常需要什么配置”，之后就是一键完成。这个思路延伸一下：任何高频且模式固定的操作，都值得考虑提供“记住我的选择”的能力。</p>
+<p><strong>欢迎窗口：展示而非告知</strong></p>
+<figure style="margin: 2em 0; text-align: center;"><img src="https://storage.5km.host/zipic-welcome-design-show-not-tell.jpeg" alt="Zipic Welcome Design Show Not Tell" style="
+max-width: 80%;     
+width: 550px;         
+border-radius: 16px; 
+box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+display: inline-block;
+"/></figure>
+<p>1.8.0 版本加入了欢迎窗口（Onboarding），解决的是<strong>功能发现</strong>问题。</p>
+<p>Zipic 的功能越来越丰富，但数据显示很多用户只用基础的拖拽压缩，Notch 拖放、文件夹监控这些主打功能反而没人知道。功能做了但用户不知道，等于没做。</p>
+<p>用户很少会认真看文字说明。原因很简单：<strong>阅读是有成本的</strong>，用户打开一个工具是想完成任务，不是来学习的。</p>
+<p>我的思路是：<strong>展示而非告知</strong>。与其用文字解释“你可以把文件拖到 Notch 区域”，不如直接用动画演示这个操作。用户一眼就能 get 到“原来还能这么用”，不需要理解任何文字。</p>
+<p>技术上选择 Lottie 作为动画格式——文件体积小、支持矢量缩放、可精确控制播放。每个功能点做了一个循环动画，展示具体的操作手势和反馈效果。欢迎窗口分四步：欢迎页 → 依赖安装（自动完成）→ 功能轮播 → 完成页。用户可以点击指示器跳转，不用非得按顺序看完——尊重用户的时间。</p>
+<p><img src="https://storage.5km.host/Feature2_light.gif" alt/></p>
+<p>有个细节：动画做了亮色/暗色两套主题适配，根据系统外观自动切换。工作量翻倍，但<strong>视觉一致性</strong>很重要，用户不应该在暗色模式下看到一个刺眼的亮色动画。</p>
+<p>上线后有用户说“原来 Zipic 还能文件夹监控自动压缩，太方便了”——这正是我想要的效果。功能的价值只有在被使用时才能体现。</p>
+<h3 id="功能优先级的权衡">功能优先级的权衡</h3>
+<figure style="margin: 2em 0; text-align: center;"><img src="https://storage.5km.host/zipic-feature-limit-roadmap.jpeg" alt="Zipic Feature Limit Roadmap" style="
+max-width: 80%;     
+width: 550px;         
+border-radius: 16px; 
+box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+display: inline-block;
+"/></figure>
+<p><strong>免费版 vs Pro 版的边界</strong></p>
+<p>这个问题纠结了很久，定价策略直接影响用户转化和产品口碑。最终的划分逻辑是：<strong>免费版覆盖核心需求，Pro 版提供效率提升</strong>。</p>
+<ul>
+<li><strong>免费版</strong>：基础压缩、常见格式（JPEG、PNG、WebP、HEIC）、有限格式转换、每天 25 张限制</li>
+<li><strong>Pro 版</strong>：无限批量、更多格式（AVIF、TIFF、PDF、GIF）、完整格式转换、文件夹监控、剪贴板压缩、Notch 拖放、无限预设等</li>
+</ul>
+<p>这样划分的考虑是：偶尔压缩几张图的用户免费版完全够用，不会觉得被限制；而重度用户（设计师、博主、开发者）会很自然地为效率付费。</p>
+<p><strong>功能丰富度 vs 产品复杂度</strong></p>
+<p>每增加一个功能界面就复杂一分，我的原则是：<strong>宁可少做，不要做成四不像</strong>。</p>
+<p>举个例子，有用户建议加入“图片裁剪”功能。需求合理吗？合理。但加进来后 Zipic 就从“压缩工具”变成“图片编辑工具”了，定位会模糊。最终没有采纳，而是推荐用户用系统自带的预览 app 裁剪后再压缩。</p>
+<p>类似被我拒绝的需求还有：上传图床、图片拼接……这些都是好功能，但不属于 Zipic 的边界。</p>
+<h3 id="性能要让用户感受到">性能要让用户感受到</h3>
+<figure style="margin: 2em 0; text-align: center;"><img src="https://storage.5km.host/zipic-performance.jpeg?x=1" alt="Zipic Performance" style="
+max-width: 80%;     
+width: 550px;         
+border-radius: 16px; 
+box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+display: inline-block;
+"/></figure>
+<p>性能优化不仅仅是代码层面的“跑分”，更是用户在使用产品时的<strong>真实体感</strong>。</p>
+<p><strong>内存管理的隐形体验</strong></p>
+<p>图片压缩是内存密集型操作。一张 8000×6000 的照片解码到内存要占用近 200MB，如果处理不当，用户最直观的感受就是：<strong>电脑风扇狂转，甚至应用直接崩溃</strong>。</p>
+<p>为了避免这种情况，Zipic 采用了<strong>流式处理 + 及时释放</strong>的策略——不是先把所有图片加载到内存，而是处理完一张立即释放。缩略图预览则采用了下采样技术，只加载所需分辨率。这些后端的技术决策，反映在前端就是“轻快、不卡”。</p>
+<p><strong>拒绝“假死”：及时的进度反馈</strong></p>
+<p>批量处理时用户最怕的是应用“假死”——界面卡住，不知道程序在干什么只能干等。这也是性能体验的一部分：<strong>心理等待时间</strong>。</p>
+<p>我的做法是提供整体进度条（已完成/总数）和预估剩余时间（根据已处理文件的平均耗时动态计算），让用户对整个过程有清晰的预期，缓解等待的焦虑。</p>
+<blockquote>
+<p>关于 ImageIO 下采样和双队列并发的具体技术实现，我会在本系列的 <a href="/zh/posts/zipic-3-technical-details/" target="_blank">技术细节复盘</a> 中详细展开。</p>
+</blockquote>
+<h2 id="做独立产品的心得体会">做独立产品的心得体会</h2>
+<p>回顾 Zipic 从想法到产品的整个过程，感慨挺多的。这一路走来有兴奋、有焦虑、有成就感，也有不少“早知道就……”的时刻。</p>
+<h3 id="技术选型的思考">技术选型的思考</h3>
+<figure style="margin: 2em 0; text-align: center;"><img src="https://storage.5km.host/zipic-technology-stack.jpeg" alt="Zipic Technology Stack" style="
+max-width: 80%;     
+width: 550px;         
+border-radius: 16px; 
+box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+display: inline-block;
+"/></figure>
+<p>做 Zipic 之前我也纠结过：要不要用 Electron 或者 Tauri 这类跨平台方案？一套代码多平台运行听起来很诱人。</p>
+<p>但最终还是选择了 Swift + SwiftUI 原生开发。原因很简单：<strong>我要做的是“macOS 上最好用的图片压缩工具”，而不是“能在多个平台勉强运行的工具”</strong>。</p>
+<p>原生开发的优势很明显：应用体积小（Zipic 只有 12MB 左右），启动速度快，内存占用低，和系统的融合度高。SwiftUI 的声明式语法写起来也很舒服，配合 Xcode 的预览功能 UI 开发效率挺高的。</p>
+<p>当然 SwiftUI 也有它的坑——在复杂场景下性能不如 AppKit，有些系统 API 还是得用 AppKit 桥接。Zipic 的主窗口最终就是用 AppKit 重构的，才解决了一些边界情况的问题。</p>
+<p><strong>我的建议是</strong>：如果你的目标用户主要在一个平台，原生开发值得考虑。跨平台方案适合快速验证想法，但要做到极致体验，原生还是有不可替代的优势。</p>
+<h3 id="产品与技术的平衡">产品与技术的平衡</h3>
+<figure style="margin: 2em 0; text-align: center;"><img src="https://storage.5km.host/zipic-balance-user-tech.jpeg" alt="Zipic Balance User Tech" style="
+max-width: 80%;     
+width: 550px;         
+border-radius: 16px; 
+box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+display: inline-block;
+"/></figure>
+<p>作为开发者很容易陷入“技术炫技”的陷阱——看到一个新框架很酷就想用上，看到一种新架构很优雅就想重构。但用户不关心你用了什么技术，他们只关心：<strong>这个工具能不能帮我解决问题？用起来顺不顺手？</strong></p>
+<p><strong>用户反馈驱动开发，而不是技术兴趣驱动开发</strong>。每个功能上线前问自己：这个真的是用户需要的吗？还是只是我觉得“应该有”？</p>
+<h3 id="独立开发的挑战">独立开发的挑战</h3>
+<figure style="margin: 2em 0; text-align: center;"><img src="https://storage.5km.host/indie-hacker-challenge.jpeg" alt="Zipic Indie Hacker Challenge" style="
+max-width: 80%;     
+width: 550px;         
+border-radius: 16px; 
+box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+display: inline-block;
+"/></figure>
+<p>独立开发最大的挑战不是技术，而是<strong>一个人要扮演太多角色</strong>：产品经理、UI 设计师、前端开发、后端开发、运营、客服……时间管理变得特别重要，我的做法是按周规划，每周只聚焦 2-3 个核心任务，那些“可以做但不紧急”的事学会放到下一周甚至下个月。</p>
+<p><strong>营销是技术人最容易忽略的短板</strong>，这是一门大学问。很多开发者（包括曾经的我）觉得“产品好自然有人用”，但可能会变成 <strong>好酒也怕巷子深</strong>。市面上同类产品太多了，大多数用户根本没机会发现你，好的产品也可能看到的人很少。</p>
+<p>我的体会是：在不擅长营销的时候，可以立马做的就是<strong>尽可能增加曝光</strong>。今年黑五我从 11 月中旬就开始准备，在 GitHub 上各种黑五优惠合集仓库提交 PR，最终成功提交了 11 个站点。效果很明显：Zipic 和 Orchard 这次黑五两款产品加起来的销售额是去年 Zipic 黑五活动期间的两倍多。</p>
+<p>Reddit 也值得重视。去年黑五的订单大部分来自我在 r/macapps 发的一个帖子，一个帖子带来的转化很多，也可认真评论帖子自荐产品；Reddit 也是发掘用户需求的好地方。</p>
+<p>说到底，<strong>有收入才能可持续</strong>。技术再好、产品再精致，卖不出去就是自嗨。独立开发不是纯粹的技术活，学会营销、学会推广，是必修课（小学生艰难修行中🫠）。</p>
+<p>还有一点：<strong>要学会接受“不完美”</strong>。初期版本可能有瑕疵，但先发布、收集反馈、快速迭代，比憋一个“完美版本”更有效。</p>
+<h3 id="对未来的展望">对未来的展望</h3>
+<figure style="margin: 2em 0; text-align: center;"><img src="https://storage.5km.host/zipic-roadmap-future.jpeg" alt="Zipic Roadmap Future" style="
+max-width: 80%;     
+width: 550px;         
+border-radius: 16px; 
+box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+display: inline-block;
+"/></figure>
+<p>Zipic 的 Roadmap 里还有很多想做的事：视频压缩、文档压缩（终于要把最初的想法捡回来了）……一步一步来吧。</p>
+<p>对于同样想做独立产品的朋友，可以试着 <strong>先从解决自己的问题开始</strong>。日常遇到的痛点很可能也是别人的痛点。从小需求切入，做一个“小而美”的工具，比一上来就想做一个“大而全”的平台更容易有正向反馈。Zipic 是我辞职做独立开发后的第一款产品，它让我验证了这条路是可行的。</p>
+<p>最后，感谢每一位使用 Zipic 的用户。你们的反馈、建议、甚至吐槽，都是我继续前进的动力。</p>
+<blockquote>
+<p>“优雅而高效地解决用户问题，才是产品的价值所在。“</p>
+</blockquote>
+<h2 id="zipic">Zipic</h2>
+<p>如果你对 Zipic 感兴趣，可以访问 <a href="https://l.fatbobman.com/zipic" rel="noreferrer noopener">官网</a> 下载试用，<a href="https://docs.zipic.app?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">pdocs.zipic.app</a> 有详细的帮助说明。有任何问题或建议，欢迎随时<a href="mailto:okooo5km@gmail.com?utm_source=Fatbobman%20Blog&#38;utm_medium=web" rel="noreferrer noopener">联系我</a>！</p>
+<p>在接下来的两篇中，我将分享 Zipic 的 <a href="/zh/posts/zipic-2-selling-and-distribution/" target="_blank">分发与售卖</a>、<a href="/zh/posts/zipic-3-technical-details/" target="_blank">技术细节复盘</a>，感兴趣的朋友可以关注后续内容。</p>
+<footer class="mdx-author"><p class="mdx-author__title">About Author</p><p><strong><a href="https://x.com/okooo5km?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">十里</a></strong> 是 <a href="https://l.fatbobman.com/zipic" rel="noreferrer noopener">Zipic</a>、<a href="https://orchard.5km.tech/?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Orchard</a>、<a href="https://hipixel.5km.tech/?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">HiPixel</a>、<a href="https://apps.apple.com/app/id6448658165?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">TimeGo Clock</a> 等应用的作者，喜欢做「小而美」的产品——功能不贪多，但每个细节都想抠到位。 如果你也在折腾独立产品，欢迎来聊！</p></footer> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/Dev-Diary/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>Dev Diary </a><a href="/zh/tags/Guest-Post/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>Guest Post </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/blogupgrade/" class="
+                group relative flex flex-col justify-center px-5 py-4 h-full
+                bg-white dark:bg-gray-900/50 
+                border border-gray-200 dark:border-gray-700/60 rounded-xl
+                hover:border-orange-400/50 dark:hover:border-blue-500/50
+                hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
+                transition-all duration-300
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">博客更新记</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/swiftplaygrounds4/" class="
+                group relative flex flex-col justify-center px-5 py-4 h-full
+                bg-white dark:bg-gray-900/50 
+                border border-gray-200 dark:border-gray-700/60 rounded-xl
+                hover:border-orange-400/50 dark:hover:border-blue-500/50
+                hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
+                transition-all duration-300
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">Swift Playgrounds 4 娱乐还是生产力</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/dancing-with-ai-my-month-with-claude-code/" class="
+                group relative flex flex-col justify-center px-5 py-4 h-full
+                bg-white dark:bg-gray-900/50 
+                border border-gray-200 dark:border-gray-700/60 rounded-xl
+                hover:border-orange-400/50 dark:hover:border-blue-500/50
+                hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
+                transition-all duration-300
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">与 AI 共舞：我的 Claude Code 一月谈</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/healthnote_development_log_2020/" class="
+                group relative flex flex-col justify-center px-5 py-4 h-full
+                bg-white dark:bg-gray-900/50 
+                border border-gray-200 dark:border-gray-700/60 rounded-xl
+                hover:border-orange-400/50 dark:hover:border-blue-500/50
+                hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
+                transition-all duration-300
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">老人新兵 —— 一款 iOS APP 的开发手记</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+          bg-black dark:bg-white text-white dark:text-black
+          font-bold text-sm px-8 py-3 rounded-xl
+          hover:opacity-80 hover:scale-105 active:scale-95
+          transition-all duration-200 shadow-sm
+          w-full sm:w-auto inline-block text-center
+        "> 立即订阅 </a> </div> <!-- 右侧：功能按钮组 --> <!-- 适配逻辑：移动端堆叠(grid-cols-1)，平板以上并排(sm:grid-cols-2) --> <!-- w-full lg:w-auto 保证移动端撑满，桌面端紧凑 --> <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full lg:w-auto min-w-[320px]"> <!-- 咖啡按钮 --> <a href="https://www.buymeacoffee.com/fatbobman" target="_blank" rel="noopener" class="group flex items-center justify-center lg:justify-start gap-3 px-5 py-3 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl shadow-sm hover:shadow-md hover:border-orange-200 dark:hover:border-orange-900 transition-all"> <span class="text-2xl group-hover:scale-110 transition-transform">☕️</span> <div class="text-left"> <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">支持</div> <div class="text-sm font-bold text-gray-800 dark:text-gray-100">请喝杯咖啡</div> </div> </a> <!-- Discord 按钮 --> <a href="https://discord.com/invite/7FedN5E2QQ" target="_blank" rel="noopener" class="group flex items-center justify-center lg:justify-start gap-3 px-5 py-3 bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-xl shadow-sm hover:shadow-md hover:border-blue-200 dark:hover:border-blue-900 transition-all"> <span class="text-2xl group-hover:scale-110 transition-transform">💬</span> <div class="text-left"> <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">社区</div> <div class="text-sm font-bold text-gray-800 dark:text-gray-100">加入 Discord</div> </div> </a> </div> </div> </div> <script>(function(){const lang = "zh";
+
+  // Track newsletter subscription button click via GTM dataLayer
+  document.addEventListener('DOMContentLoaded', () => {
+    const subscribeBtn = document.getElementById('subscribe-bottom-btn');
+    if (!subscribeBtn) return;
+
+    subscribeBtn.addEventListener('click', () => {
+      // Initialize dataLayer if not exists
+      window.dataLayer = window.dataLayer || [];
+
+      // Push event to dataLayer for GTM
+      window.dataLayer.push({
+        event: 'subscribe_click',
+        content_type: 'newsletter_subscribe',
+        click_location: 'bottom',
+        lang: lang
+      });
+
+      console.log('[Subscribe Tracking] Bottom subscribe button clicked (dataLayer)');
+    }, { capture: true });  // 使用捕获阶段，确保在其他监听器之前执行
+  });
+})();</script> <!-- 
+  提示框容器 (Toast Container)
+  z-index: 确保在最上层
+--><div id="copy-alert" class="hidden fixed bottom-10 right-5 z-50"> <div id="alert-1" class="
+      flex items-center px-6 py-3 rounded-full shadow-lg border backdrop-blur-md
+      transition-all duration-300 transform
+      
+      /* === Light Mode (Red Theme) === */
+      /* 白底 + 红色文字 + 红色边框，阴影带红 */
+      bg-white/95 text-red-600 border-red-100 shadow-red-500/10
+      
+      /* === Dark Mode (Blue Theme) === */
+      /* 深蓝底 + 蓝色文字 + 蓝色边框，阴影带蓝 */
+      dark:bg-slate-800/90 dark:text-blue-400 dark:border-blue-500/30 dark:shadow-blue-500/20
+    " role="alert"> <!-- 图标 (可选，增加精致感) --> <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path> <polyline points="22 4 12 14.01 9 11.01"></polyline> </svg> <div class="text-sm font-bold tracking-wide">链接已复制</div> </div> </div> <style>
+  /* 保持原有的图标定位逻辑 */
+  .copy-icon {
+    position: absolute;
+    left: -30px; 
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    pointer-events: all;
+    /* 给图标加一点颜色过渡 */
+    color: #9ca3af; /* gray-400 */
+  }
+  
+  /* Hover 时图标变色 (JS里添加了 hover:text-secondary 类，这里作为兜底) */
+  .copy-icon:hover {
+    color: var(--aw-color-primary); /* 使用 CSS 变量响应主题 */
+  }
+
+  article h2,
+  article h3,
+  article h4,
+  article h5 {
+    position: relative;
+  }
+
+  /* 提示框动画 */
+  #copy-alert {
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* 弹性动画 */
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  
+  #copy-alert.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+</style> <script>(function(){const lang = "zh";
+
+  const isTouchDevice = () => {
+    if (typeof window === 'undefined') return false;
+    return (
+      'ontouchstart' in window ||
+      (navigator && navigator.maxTouchPoints > 0) ||
+      window.matchMedia('(pointer: coarse)').matches
+    );
+  };
+
+  // 使用 defer 或 load 事件确保 DOM 就绪
+  document.addEventListener('DOMContentLoaded', () => {
+    if (isTouchDevice()) {
+      // 触摸设备不启用复制功能，避免与点击行为冲突
+      return;
+    }
+
+    let hideTimeout;
+    const alertDiv = document.getElementById('copy-alert');
+
+    // 绑定标题图标
+    document.querySelectorAll('article h2, article h3, article h4, article h5').forEach((header) => {
+      // 创建图标容器
+      const copyIcon = document.createElement('span');
+      // 使用更简洁的 Link 图标 SVG
+      copyIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>`;
+      copyIcon.className = 'copy-icon';
+      copyIcon.style.opacity = '0';
+      
+      header.insertBefore(copyIcon, header.firstChild);
+
+      // 悬停显示逻辑
+      header.addEventListener('mouseover', () => copyIcon.style.opacity = '1');
+      header.addEventListener('mouseout', () => copyIcon.style.opacity = '0');
+
+      // 点击复制逻辑
+      copyIcon.addEventListener('click', () => {
+        const url = window.location.href.split('#')[0] + '#' + header.id;
+        
+        navigator.clipboard.writeText(url).then(() => {
+          if (alertDiv) {
+            // 显示动画
+            alertDiv.classList.remove('hidden');
+            // 强制重绘以触发 transition
+            void alertDiv.offsetWidth; 
+            alertDiv.classList.add('show');
+
+            // 清除旧定时器
+            if (hideTimeout) clearTimeout(hideTimeout);
+
+            // 3秒后隐藏
+            hideTimeout = setTimeout(() => {
+              alertDiv.classList.remove('show');
+              // 等待动画结束后再 hidden
+              setTimeout(() => {
+                alertDiv.classList.add('hidden');
+              }, 500);
+            }, 3000);
+          }
+        });
+      });
+    });
+  });
+})();</script> <script>
+  window.copyCode = function(button, event) {
+    if (event) event.preventDefault();
+
+    // header 是按钮的父级 div.code-header
+    const header = button.closest('.code-header');
+    if (!header) return;
+
+    // 代码块是 header 的下一个兄弟元素 (pre 或包含 pre 的元素)
+    let nextEl = header.nextElementSibling;
+    if (!nextEl) return;
+
+    // 找到 pre 元素（可能是直接的 pre，或者在 figure/div 内）
+    const pre = nextEl.tagName === 'PRE' ? nextEl : nextEl.querySelector('pre');
+    const codeEl = pre?.querySelector('code') ?? pre;
+    if (!codeEl) return;
+
+    const code = codeEl.textContent ?? '';
+
+    // 图标切换：直接操作 style.opacity 更可靠
+    function showSuccessFeedback() {
+      const copyIcon = button.querySelector('.code-copy-icon');
+      const successIcon = button.querySelector('.code-success-icon');
+
+      if (copyIcon && successIcon) {
+        // 隐藏复制图标，显示成功图标
+        copyIcon.style.opacity = '0';
+        successIcon.style.opacity = '1';
+
+        // 2秒后恢复
+        setTimeout(() => {
+          copyIcon.style.opacity = '1';
+          successIcon.style.opacity = '0';
+        }, 2000);
+      }
+    }
+
+    const handleFailure = (err) => {
+      console.error('Copy Failed', err);
+      fallbackCopyTextToClipboard(code);
+    };
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(code).then(showSuccessFeedback).catch(handleFailure);
+    } else {
+      fallbackCopyTextToClipboard(code);
+    }
+
+    function fallbackCopyTextToClipboard(text) {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showSuccessFeedback();
+        } else {
+          console.error('Fallback Copy Failed: execCommand returned false');
+        }
+      } catch (err) {
+        console.error('Fallback Copy Failed', err);
+      }
+      document.body.removeChild(textArea);
+    }
+  }
+</script> <script>(function(){const baseUrl = "https://fatbobman.com/ads/";
+const langSuffix = "zh";
+const utmTerm = "zh/zipic-1-from-0-to-1";
+
+  // ========================================
+  // Configuration & Constants
+  // ========================================
+
+  const CACHE_DURATION = 20 * 60 * 1000; // 20 minutes
+  const STALE_THRESHOLD = 24 * 60 * 60 * 1000; // 24 hours - when to force UI refresh
+
+  // 读取 URL 参数用于测试和预览
+  const urlParams = new URLSearchParams(window.location.search);
+  const adIdParam = urlParams.get('adid') || urlParams.get('adId');
+  const sponsorIdParam = urlParams.get('sponsorId');
+  const scheduleIdParam = urlParams.get('scheduleId');
+  const forceUpdateParam = urlParams.get('adForceUpdate') === 'true';
+
+  const isPreviewMode = !!(adIdParam || sponsorIdParam || scheduleIdParam);
+  const effectiveCacheDuration = isPreviewMode ? 60 * 1000 : CACHE_DURATION;
+
+  // Store current ad metadata for click tracking
+  const currentAdMetadata = {
+    version1: null,  // .dynamic-ad-card metadata
+    version2: null   // .dynamic-ad-inline metadata
+  };
+
+  // ========================================
+  // Cache Management Functions
+  // ========================================
+
+  /**
+   * Load ad from cache with SWR metadata
+   * @param {string} cacheKey - Cache key
+   * @returns {Object|null} - Cached ad data with metadata or null
+   */
+  function loadFromCache(cacheKey) {
+    try {
+      const cachedData = localStorage.getItem(cacheKey);
+      if (!cachedData) return null;
+
+      const cached = JSON.parse(cachedData);
+
+      // Backward compatibility: handle old cache format
+      if (cached.content && !cached.metadata) {
+        console.log(`[AdsLoader SWR] Old cache format detected for ${cacheKey}, will update`);
+        return null; // Force refresh to get new format
+      }
+
+      return cached;
+    } catch (e) {
+      console.warn(`[AdsLoader SWR] Failed to parse cached ad: ${cacheKey}`, e);
+      localStorage.removeItem(cacheKey);
+      return null;
+    }
+  }
+
+  /**
+   * Save ad to cache with metadata
+   * @param {string} cacheKey - Cache key
+   * @param {string} content - Ad HTML content
+   * @param {Object} metadata - Ad metadata from response headers
+   */
+  function saveToCache(cacheKey, content, metadata) {
+    try {
+      const cacheData = {
+        content: content,
+        metadata: {
+          ...metadata,
+          fetchedAt: Date.now()
+        }
+      };
+
+      localStorage.setItem(cacheKey, JSON.stringify(cacheData));
+      const cacheMinutes = Math.round(effectiveCacheDuration / 60000);
+      console.log(`[AdsLoader SWR] Saved to cache: ${cacheKey} (${cacheMinutes} min)`, metadata);
+    } catch (e) {
+      console.warn(`[AdsLoader SWR] Failed to save cache: ${cacheKey}`, e);
+    }
+  }
+
+  /**
+   * Extract metadata from response headers
+   * @param {Response} response - Fetch response object
+   * @returns {Object} - Metadata object
+   */
+  function extractMetadata(response) {
+    return {
+      sponsorId: response.headers.get('X-Sponsor-Id') || 'unknown',
+      adId: response.headers.get('X-Ad-Id') || 'unknown',
+      version: parseInt(response.headers.get('X-Ad-Version') || '1'),
+      lang: response.headers.get('X-Ad-Lang') || langSuffix,
+      lastUpdated: response.headers.get('Last-Modified') || new Date().toISOString(),
+      forceUpdate: response.headers.get('X-Force-Update') === 'true',
+      campaign: response.headers.get('X-UTM-Campaign') || null // Optional UTM campaign
+    };
+  }
+
+  // ========================================
+  // Smart Refresh Logic
+  // ========================================
+
+  /**
+   * Check if two timestamps are on the same UTC calendar day
+   * @param {number} timestamp1 - First timestamp (milliseconds)
+   * @param {number} timestamp2 - Second timestamp (milliseconds)
+   * @returns {boolean} - True if same UTC day
+   */
+  function isSameUTCDay(timestamp1, timestamp2) {
+    const d1 = new Date(timestamp1);
+    const d2 = new Date(timestamp2);
+    return d1.getUTCFullYear() === d2.getUTCFullYear() &&
+           d1.getUTCMonth() === d2.getUTCMonth() &&
+           d1.getUTCDate() === d2.getUTCDate();
+  }
+
+  /**
+   * Decide if UI should be refreshed based on cache age and ad changes
+   * @param {Object|null} cached - Cached ad data with metadata
+   * @param {Object} newMetadata - New ad metadata from server
+   * @returns {boolean} - True if UI should be refreshed
+   */
+  function shouldRefreshUI(cached, newMetadata) {
+    // Rule 1: No cache -> always render (first load)
+    if (!cached || !cached.metadata) {
+      console.log('[AdsLoader SWR] No cache, will render immediately');
+      return true;
+    }
+
+    // Rule 2: Force update parameter -> always refresh
+    if (forceUpdateParam || newMetadata.forceUpdate) {
+      console.log('[AdsLoader SWR] Force update detected, will refresh UI');
+      return true;
+    }
+
+    const cachedMeta = cached.metadata;
+    const cacheAge = Date.now() - cachedMeta.fetchedAt;
+
+    // Rule 3: Sponsor changed -> always refresh (different advertiser)
+    if (cachedMeta.sponsorId !== newMetadata.sponsorId) {
+      console.log(`[AdsLoader SWR] Sponsor changed: ${cachedMeta.sponsorId} → ${newMetadata.sponsorId}, will refresh UI`);
+      return true;
+    }
+
+    // Rule 4: UTC date changed -> always refresh (ad schedule switches by calendar day)
+    if (!isSameUTCDay(cachedMeta.fetchedAt, Date.now())) {
+      const cachedDate = new Date(cachedMeta.fetchedAt).toISOString().split('T')[0];
+      const currentDate = new Date().toISOString().split('T')[0];
+      console.log(`[AdsLoader SWR] UTC date changed: ${cachedDate} → ${currentDate}, will refresh UI`);
+      return true;
+    }
+
+    // Rule 5: Cache older than 24 hours -> always refresh
+    if (cacheAge > STALE_THRESHOLD) {
+      console.log(`[AdsLoader SWR] Cache very old (${Math.round(cacheAge / 3600000)}h), will refresh UI`);
+      return true;
+    }
+
+    // Rule 6: Ad ID changed (same sponsor, different version) -> refresh if old, else silent update
+    if (cachedMeta.adId !== newMetadata.adId) {
+      console.log(`[AdsLoader SWR] Ad changed but cache fresh (${Math.round(cacheAge / 60000)}min), will update silently`);
+      return false; // Silent update
+    }
+
+    // Rule 7: Default - silent update
+    console.log(`[AdsLoader SWR] Cache fresh (${Math.round(cacheAge / 60000)}min old), will update silently`);
+    return false;
+  }
+
+  // ========================================
+  // UTM Parameters Injection
+  // ========================================
+
+  /**
+   * Inject UTM parameters to all links in ad HTML
+   * Only applies to non-default ads (sponsored ads)
+   * @param {string} html - Ad HTML content
+   * @param {Object} metadata - Ad metadata (sponsorId, campaign, version, etc.)
+   * @returns {string} - Modified HTML with UTM parameters
+   */
+  function injectUTMParameters(html, metadata) {
+    // Skip UTM injection for default ads
+    if (metadata.sponsorId === 'default') {
+      return html;
+    }
+
+    // Create temporary container to parse HTML
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = html;
+
+    // Find all links
+    const links = tempDiv.querySelectorAll('a[href]');
+
+    if (links.length === 0) {
+      return html; // No links found, return original HTML
+    }
+
+    // Build UTM parameters
+    const utmParams = {
+      utm_source: 'fatbobman',
+      utm_medium: 'blog',
+      utm_content: metadata.version === 2 ? 'post-header' : 'post-footer'
+    };
+
+    // Add campaign if available
+    if (metadata.campaign) {
+      utmParams.utm_campaign = metadata.campaign;
+    }
+
+    // Add term if available
+    if (utmTerm) {
+      utmParams.utm_term = utmTerm;
+    }
+
+    // Inject UTM parameters to each link
+    links.forEach(link => {
+      try {
+        const url = new URL(link.href);
+
+        // Add each UTM parameter
+        Object.entries(utmParams).forEach(([key, value]) => {
+          url.searchParams.set(key, value);
+        });
+
+        link.href = url.toString();
+      } catch (e) {
+        // Invalid URL, skip
+        console.warn('[AdsLoader SWR] Skipping invalid URL:', link.href, e);
+      }
+    });
+
+    console.log('[AdsLoader SWR] Injected UTM parameters:', utmParams, `(${links.length} link(s))`);
+    return tempDiv.innerHTML;
+  }
+
+  // ========================================
+  // GA4 Click Tracking
+  // ========================================
+
+  /**
+   * Track ad click in Google Analytics 4 via GTM dataLayer
+   * @param {string} destinationUrl - Click destination URL
+   * @param {Object} metadata - Ad metadata
+   */
+  function trackAdClick(destinationUrl, metadata) {
+    // Initialize dataLayer if not exists (works with both regular GTM and Partytown)
+    window.dataLayer = window.dataLayer || [];
+
+    // Build event data based on ad type
+    const eventData = {
+      event: 'ad_click',
+      destination_url: destinationUrl
+    };
+
+    if (metadata.sponsorId === 'default') {
+      // Default ad: simple tracking with position only
+      eventData.content_type = 'default_ad';
+      eventData.ad_position = metadata.version === 2 ? 'post-header' : 'post-footer';
+    } else {
+      // Sponsored ad: detailed tracking
+      eventData.content_type = 'sponsored_ad';
+      eventData.ad_position = metadata.version === 2 ? 'post-header' : 'post-footer';
+      eventData.sponsor_id = metadata.sponsorId;
+      eventData.ad_id = metadata.adId;
+      eventData.ad_version = metadata.version;
+      eventData.ad_lang = metadata.lang;
+    }
+
+    // Push event to dataLayer for GTM
+    window.dataLayer.push(eventData);
+    console.log('[AdsLoader SWR] Ad click tracked (dataLayer):', eventData);
+  }
+
+  /**
+   * Attach click tracking to ad links (reads metadata dynamically from currentAdMetadata)
+   * @param {string} containerSelector - Container selector
+   * @param {string} version - 'version1' or 'version2' key in currentAdMetadata
+   */
+  function attachClickTracking(containerSelector, version) {
+    const containers = document.querySelectorAll(containerSelector);
+    if (containers.length === 0) return;
+
+    containers.forEach(container => {
+      // Use event delegation to handle dynamically loaded ads
+      container.addEventListener('click', (event) => {
+        // Find the clicked link (or parent link)
+        const link = event.target.closest('a[href]');
+        if (!link) return;
+
+        // Get current metadata dynamically (always up-to-date)
+        const metadata = currentAdMetadata[version];
+        if (!metadata) {
+          console.warn(`[AdsLoader SWR] No metadata available for ${version}, skipping tracking`);
+          return;
+        }
+
+        // Track the click
+        trackAdClick(link.href, metadata);
+      }, { capture: false, passive: true });
+    });
+
+    console.log(`[AdsLoader SWR] Click tracking attached to ${containers.length} container(s): ${containerSelector}`);
+  }
+
+  // ========================================
+  // Ad Loading & Rendering
+  // ========================================
+
+  /**
+   * Render ad to containers
+   * @param {string} html - Ad HTML content
+   * @param {string} containerSelector - Container selector
+   * @param {Object} metadata - Ad metadata for tracking
+   * @param {string} reason - Reason for rendering (for logging)
+   */
+  function renderAd(html, containerSelector, metadata, reason = 'unknown') {
+    const containers = document.querySelectorAll(containerSelector);
+    if (containers.length === 0) {
+      console.warn(`[AdsLoader SWR] No containers found: ${containerSelector}`);
+      return;
+    }
+
+    containers.forEach(container => {
+      container.innerHTML = html;
+    });
+
+    // Store metadata for this version
+    if (containerSelector === '.dynamic-ad-card') {
+      currentAdMetadata.version1 = metadata;
+    } else if (containerSelector === '.dynamic-ad-inline') {
+      currentAdMetadata.version2 = metadata;
+    }
+
+    console.log(`[AdsLoader SWR] Rendered ad to ${containers.length} container(s): ${containerSelector} (${reason})`);
+  }
+
+  /**
+   * Fetch ad from server
+   * @param {number} version - Ad version (1 or 2)
+   * @param {string} cacheKey - Cache key
+   * @param {string} containerSelector - Container selector
+   * @param {Object|null} cached - Cached ad data (if any)
+   */
+  async function fetchAd(version, cacheKey, containerSelector, cached) {
+    // Build URL with parameters
+    const params = new URLSearchParams({
+      lang: langSuffix,
+      version: version.toString()
+    });
+
+    // Add test/preview parameters
+    if (adIdParam) params.append('adId', adIdParam);
+    if (sponsorIdParam) params.append('sponsorId', sponsorIdParam);
+    if (scheduleIdParam) params.append('scheduleId', scheduleIdParam);
+    if (forceUpdateParam) params.append('adForceUpdate', 'true');
+
+    const url = `${baseUrl}?${params.toString()}`;
+    const previewTag = isPreviewMode ? ' [PREVIEW MODE]' : '';
+    console.log(`[AdsLoader SWR] Fetching ad: ${url}${previewTag}`);
+
+    try {
+      const response = await fetch(url, {
+        headers: { 'Accept': 'text/html' },
+        cache: 'no-cache'
+      });
+
+      // Validate HTTP status
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      // Validate required metadata headers
+      const sponsorId = response.headers.get('X-Sponsor-Id');
+      const adId = response.headers.get('X-Ad-Id');
+
+      if (!sponsorId || !adId || sponsorId === 'null' || adId === 'null') {
+        console.warn('[AdsLoader SWR] Invalid response: missing or null metadata headers');
+        throw new Error('Invalid ad response: missing metadata headers');
+      }
+
+      const content = await response.text();
+      const metadata = extractMetadata(response);
+
+      // Inject UTM parameters for sponsored ads
+      const processedContent = injectUTMParameters(content, metadata);
+
+      console.log('[AdsLoader SWR] Server response metadata:', metadata);
+
+      // Decide if UI should be refreshed
+      const shouldRefresh = shouldRefreshUI(cached, metadata);
+
+      // Always update cache (with UTM-enhanced content)
+      saveToCache(cacheKey, processedContent, metadata);
+
+      // Conditionally refresh UI (with UTM-enhanced content)
+      if (shouldRefresh) {
+        renderAd(processedContent, containerSelector, metadata, shouldRefresh === true && !cached ? 'initial load' : 'smart refresh');
+      } else {
+        console.log(`[AdsLoader SWR] UI kept as-is, updated cache for next visit`);
+      }
+
+    } catch (error) {
+      console.error(`[AdsLoader SWR] Error loading ad (version ${version}):`, error);
+
+      // Smart fallback strategy based on cached ad type
+      if (cached && cached.metadata) {
+        if (cached.metadata.sponsorId === 'default') {
+          // Default ad: keep displaying cached content (own content, safe to show when stale)
+          console.log('[AdsLoader SWR] Fetch failed, keeping default ad cache');
+          // UI already shows cached content, no action needed
+        } else {
+          // Sponsored ad: clear display (avoid showing expired paid ads)
+          console.log('[AdsLoader SWR] Fetch failed, clearing sponsored ad to avoid showing stale content');
+          const emptyMetadata = { sponsorId: 'error', version: version };
+          renderAd('', containerSelector, emptyMetadata, 'error-clear');
+        }
+      } else {
+        // No cache: leave blank
+        console.log('[AdsLoader SWR] Fetch failed with no cache, leaving blank');
+      }
+    }
+  }
+
+  /**
+   * Load ad with SWR strategy
+   * @param {number} version - Ad version
+   * @param {string} cacheKey - Cache key
+   * @param {string} containerSelector - Container selector
+   */
+  function loadAd(version, cacheKey, containerSelector) {
+    // Check if containers exist
+    const containers = document.querySelectorAll(containerSelector);
+    if (containers.length === 0) {
+      console.log(`[AdsLoader SWR] No containers found for ${containerSelector}, skipping version ${version}`);
+      return;
+    }
+
+    // Step 1: Load from cache if available
+    const cached = loadFromCache(cacheKey);
+    if (cached && cached.content) {
+      console.log(`[AdsLoader SWR] Displaying cached ad: ${cacheKey}`, cached.metadata);
+      // Inject UTM parameters to cached content (in case it's from old cache without UTM)
+      const processedCachedContent = injectUTMParameters(cached.content, cached.metadata);
+      renderAd(processedCachedContent, containerSelector, cached.metadata, 'from cache');
+    } else {
+      console.log(`[AdsLoader SWR] No cache available for ${cacheKey}, will show blank until loaded`);
+    }
+
+    // Step 2: Fetch from server in background
+    fetchAd(version, cacheKey, containerSelector, cached);
+  }
+
+  // ========================================
+  // Initialization
+  // ========================================
+
+  function initAds() {
+    console.log('[AdsLoader SWR] Initializing ad loading with Stale-While-Revalidate strategy...');
+    console.log(`[AdsLoader SWR] Config: cacheDuration=${effectiveCacheDuration/60000}min, staleThreshold=${STALE_THRESHOLD/3600000}h`);
+
+    if (isPreviewMode) {
+      const params = [];
+      if (adIdParam) params.push(`adId=${adIdParam}`);
+      if (sponsorIdParam) params.push(`sponsorId=${sponsorIdParam}`);
+      if (scheduleIdParam) params.push(`scheduleId=${scheduleIdParam}`);
+      console.log(`[AdsLoader SWR] 🔍 PREVIEW MODE: ${params.join(', ')}`);
+    }
+
+    if (forceUpdateParam) {
+      console.log('[AdsLoader SWR] 🔄 FORCE UPDATE MODE: UI will always refresh');
+    }
+
+    // Generate cache keys (include test params to avoid conflicts)
+    const cacheKeySuffix = langSuffix + (adIdParam || sponsorIdParam || scheduleIdParam || '');
+    const cacheKeyCard = 'dynamicAdCardSWR-' + cacheKeySuffix;
+    const cacheKeyInline = 'dynamicAdInlineSWR-' + cacheKeySuffix;
+
+    // Load both ad versions
+    loadAd(1, cacheKeyCard, '.dynamic-ad-card');
+    loadAd(2, cacheKeyInline, '.dynamic-ad-inline');
+
+    // Attach click tracking event listeners (after ads are loaded)
+    // These will dynamically read metadata from currentAdMetadata
+    attachClickTracking('.dynamic-ad-card', 'version1');
+    attachClickTracking('.dynamic-ad-inline', 'version2');
+  }
+
+  // Start loading when page is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAds);
+  } else {
+    initAds();
+  }
+})();</script> <script type="module">var c=document.querySelectorAll("article");c.forEach(function(r){var a=r.querySelectorAll("a");a.forEach(function(e){var t=e.getAttribute("href");t&&t.startsWith("http")&&!t.includes("fatbobman.com")&&!t.includes("fatbobman.github.com")&&!t.includes("localhost")&&e.setAttribute("target","_blank")})});</script> <!-- <LeaveFeedback lang={lang} /> --> <!-- <BottomWeeklySubscribe lang={lang} /> --> <div id="gitalk-container" data-comment-id="Zipic 从 0 到 1 的产品化之路" data-lang="zh" data-repo="blogComments" data-createIssueManually="true" data-anchor="card-advertisement" class="pb-16"></div>
+
+    <script defer>
+      document.addEventListener('DOMContentLoaded', async function () {
+      const container = document.getElementById('gitalk-container');
+      let anchor = '';
+      if (container) {
+        anchor = container.getAttribute('data-anchor') || '';
+      }
+        // 提前检查是否需要加载评论
+        try {
+          const response = await fetch('https://fatbobman.com/status/comment');
+          const data = await response.text();
+          console.log(data, "comment");
+
+          if (data !== '1') {
+            console.log('评论功能未启用，跳过监控和加载操作。');
+            return; // 提前返回，跳过后续逻辑
+          }
+        } catch (error) {
+          console.error('检查评论状态时出错：', error);
+          return; // 出现错误时也跳过后续逻辑
+        }
+
+        // 如果返回值为 "1"，则启动观察器
+        const observerTarget = document.getElementById(anchor);
+        if (observerTarget) {
+          const observer = new IntersectionObserver(async (entries, observer) => {
+            const entry = entries[0];
+            if (entry.isIntersecting) {
+              console.log("load comment")
+              // 停止观察，避免重复触发
+              observer.unobserve(observerTarget);
+
+              // 动态加载评论区脚本
+              await loadGitalk();
+            }
+          }, {
+            root: null, // 相对于视口
+            rootMargin: '20%', // 提前 20% 的位置触发
+            threshold: 0.1, // 元素显示 10% 即触发
+          });
+
+          observer.observe(observerTarget);
+        }
+
+        // 动态加载 Gitalk 脚本并初始化评论区
+        async function loadGitalk() {
+          const container = document.getElementById('gitalk-container');
+          if (container) {
+            const commentID = container.getAttribute('data-comment-id');
+            const lang = container.getAttribute('data-lang');
+            const repo = container.getAttribute('data-repo')
+            const createIssueManually = container.getAttribute('data-createIssueManually')
+
+            console.log(repo);
+            console.log(createIssueManually)
+
+            // 动态加载 Gitalk 脚本
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js';
+            script.defer = true;
+            script.onload = () => {
+              const gitalk = new Gitalk({
+                clientID: 'fcf61195c7f73253dc8b',
+                clientSecret: '0ac2907be08248a1fcb5312e27480ad535c682e5',
+                repo: repo,
+                owner: 'fatbobman',
+                admin: ['fatbobman'],
+                id: commentID.split('/').pop().substring(0, 49),
+                distractionFreeMode: true,
+                createIssueManually: createIssueManually,
+                language: lang,
+              });
+
+              gitalk.render('gitalk-container');
+            };
+            document.body.appendChild(script);
+          }
+        }
+      });
+    </script> <!-- 
+  左侧悬浮容器 
+  建议：这里 top: 0px 配合内部 padding 应该能和右侧对齐。
+  如果右侧 Sidebar 顶部有 padding，这里也保持一致。
+--><div class="hidden lg:block w-32 xl:w-44 lg:absolute" id="toc" style="left: -30px; top: 0px"> <div class="text-muted items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-out" id="toc-content"> <!-- 按钮容器 --> <!-- id="toc-float-button" 供 JS 定位使用 --> <!-- 建议：pb-2 可以微调，确保和右侧间距感一致 --> <div class="w-full flex justify-end pb-2" id="toc-float-button"> <div id="toc-button" class="
+    group relative flex items-center justify-center w-9 h-9 rounded-full 
+    transition-all duration-300 cursor-pointer
+    
+    /* === 默认状态 (Ghost) === */
+    bg-transparent ring-0
+    text-gray-500 dark:text-gray-400
+
+    /* === Hover 状态 (悬浮反馈) === */
+    hover:scale-110 hover:-translate-y-0.5
+    hover:bg-red-50 hover:text-red-600 hover:ring-1 hover:ring-red-100
+    dark:hover:bg-blue-500/10 dark:hover:text-blue-400 dark:hover:ring-blue-500/20
+
+    /* === Active 状态 (展开时常驻高亮) === */
+    [&.active]:bg-red-50 [&.active]:text-red-600 [&.active]:ring-1 [&.active]:ring-red-100
+    dark:[&.active]:bg-blue-500/10 dark:[&.active]:text-blue-400 dark:[&.active]:ring-blue-500/20
+  " aria-label="Toggle Table of Contents"> <!-- 
+    单一图标
+    group-[.active]:rotate-90 -> 当父容器有 active 类时，图标旋转 90 度
+  --> <svg class="w-5 h-5 transition-transform duration-300 group-[.active]:rotate-90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-toc"></use> </svg> </div> </div> <!-- 列表内容 --> <div class="text-default text-xxs xl:text-xs hidden max-h-[70vh] overflow-y-auto" id="toc-list" data-source-type="article" aria-live="polite" style="scroll-behavior: smooth;"></div> </div> </div> <script type="module" src="/_astro/TOC.astro_astro_type_script_index_0_lang.B1ErLf9O.js"></script> <div class="hidden md:block md:absolute" id="sidebar" style="right: -50px; top: 0px"> <div class="invisible flex flex-col space-y-4 text-muted items-center justify-center opacity-0 transition-all duration-1000 delay-300 ease-out" id="sidebar-content"> <!-- <PreviousPost lang={lang} post = {post} source = {source}/> --> <!-- <NextPost lang={lang} post = {post} source = {source} /> --> <!-- <DictButton lang={lang} post = {post}/> --> <!-- <ShareWithBlueSky lang={lang} post = {post} source = {source}/> --> <!-- <ShareWithFacebook lang={lang} post = {post} source = {source}/> --> <!-- { lang === Lang.ZH &&
+    <ShareWithWeibo lang={lang} post = {post} source = {source}/>
+    } --> <!-- <ShareWithLinkedin lang={lang} post = {post} source = {source}/> --> <a href="#subscript" id="sidebar-subscribe-btn" class="
+    group relative flex items-center justify-center w-9 h-9 rounded-full 
+    transition-all duration-500
+    hover:scale-110 hover:-translate-y-0.5
+    
+    /* === 默认状态：无背景圆，无阴影，根据模式显示文字颜色 === */
+  text-gray-500 dark:text-gray-400
+    
+    /* === 闪烁或 hover 时显示背景圆和阴影 === */
+    /* Light Mode (Red Theme) */
+    hover:bg-red-50 hover:text-red-600 hover:ring-1 hover:ring-red-100 hover:shadow-sm
+    hover:hover:bg-red-100 hover:hover:text-red-700
+    
+    /* Dark Mode (Blue Theme) */
+    dark:hover:bg-blue-500/10 dark:hover:text-blue-400 dark:hover:ring-blue-500/20
+    dark:hover:hover:bg-blue-500/20 dark:hover:hover:text-blue-300
+    
+    /* === 闪烁状态（通过 data-blinking 属性控制）=== */
+    data-[blinking=true]:bg-red-50 data-[blinking=true]:text-red-600 data-[blinking=true]:ring-1 data-[blinking=true]:ring-red-100 data-[blinking=true]:shadow-sm
+    dark:data-[blinking=true]:bg-blue-500/10 dark:data-[blinking=true]:text-blue-400 dark:data-[blinking=true]:ring-blue-500/20
+  " aria-label="订阅周报" data-tooltip-target="tooltip-sidebar-subscribe" data-tooltip-placement="left" data-blinking="false"> <svg class="w-6 h-6 transition-transform duration-300 group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-email"></use> </svg>  <span id="ping-dot" class="absolute top-0 right-0 -mt-0.5 -mr-0.5 flex h-2.5 w-2.5 hidden"> <span id="ping-animation" class="absolute inline-flex h-full w-full rounded-full opacity-75 bg-red-400 dark:bg-blue-400"></span> <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500 dark:bg-blue-500"></span> </span> </a> <!-- Tooltip (保持不变，深色背景通用) --> <div id="tooltip-sidebar-subscribe" role="tooltip" class="absolute z-50 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700 transition-opacity duration-300 whitespace-nowrap"> 订阅周报 <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>(function(){const lang = "zh";
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const subscribeBtn = document.getElementById('sidebar-subscribe-btn');
+    if (subscribeBtn) {
+      subscribeBtn.addEventListener('click', () => {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'subscribe_click',
+          content_type: 'newsletter_subscribe',
+          click_location: 'sidebar_floating',
+          lang: lang
+        });
+      });
+    }
+
+    // 控制呼吸点的间歇闪烁
+    const pingDot = document.getElementById('ping-dot');
+    const pingAnimation = document.getElementById('ping-animation');
+    
+    if (pingDot && pingAnimation && subscribeBtn) {
+      // 生成 10-20 秒之间的随机时间（毫秒）
+      const getRandomDelay = () => Math.random() * 10000 + 10000; // 10000-20000ms
+      
+      const startBlinking = () => {
+        // 显示呼吸点并开始闪烁，同时显示背景圆
+        pingDot.classList.remove('hidden');
+        pingAnimation.classList.add('animate-ping');
+        subscribeBtn.setAttribute('data-blinking', 'true');
+        
+        // 闪烁 10-20 秒后停止
+        const blinkDuration = getRandomDelay();
+        setTimeout(() => {
+          // 停止闪烁并隐藏，同时隐藏背景圆
+          pingAnimation.classList.remove('animate-ping');
+          pingDot.classList.add('hidden');
+          subscribeBtn.setAttribute('data-blinking', 'false');
+          
+          // 等待 10-20 秒后再次开始
+          const pauseDuration = getRandomDelay();
+          setTimeout(startBlinking, pauseDuration);
+        }, blinkDuration);
+      };
+      
+      // 初始等待 10-20 秒后开始第一次闪烁
+      const initialDelay = getRandomDelay();
+      setTimeout(startBlinking, initialDelay);
+    }
+  });
+})();</script> <!-- 
+  容器样式：
+  1. w-9 h-9: 与订阅按钮尺寸保持一致，确保垂直对齐
+  2. text-gray-400: 默认灰色，降低视觉权重
+  3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
+  4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
+--><a href="https://x.com/intent/tweet?text=%E7%8B%AC%E7%AB%8B%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%84%E8%AF%95%E7%82%BC%EF%BC%9AZipic%20%E4%BB%8E%200%20%E5%88%B0%201%20%E7%9A%84%E4%BA%A7%E5%93%81%E5%8C%96%E4%B9%8B%E8%B7%AF&url=https%3A%2F%2Ffatbobman.com%2Fzh%2Fposts%2Fzipic-1-from-0-to-1%2F&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+    group relative flex items-center justify-center w-9 h-9 rounded-full 
+    transition-all duration-300 
+    hover:scale-110 hover:-translate-y-0.5
+    
+    /* === 默认状态 (隐形背景) === */
+    bg-transparent ring-0
+    text-gray-500 dark:text-gray-400
+    
+    /* === Light Mode Hover (Red Theme) === */
+    hover:bg-red-50 hover:text-red-600 hover:ring-1 hover:ring-red-100
+    
+    /* === Dark Mode Hover (Blue Theme) === */
+    dark:hover:bg-blue-500/10 dark:hover:text-blue-400 dark:hover:ring-blue-500/20
+  " data-tooltip-target="tooltip-share-with-twitter" data-tooltip-placement="left" aria-label="Share on X"> <svg class="w-6 h-6 transition-transform duration-300 group-hover:rotate-12" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-twitter"></use> </svg> </a> <!-- Tooltip: 样式与订阅按钮保持一致 --> <div id="tooltip-share-with-twitter" role="tooltip" class="absolute z-50 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700 transition-opacity duration-300 whitespace-nowrap"> <div>Share on X</div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <!-- 
+  容器修改：
+  1. 移除 opacity-80: 保持颜色纯净，轨道的 gray-200/700 已经足够低调。
+  2. bg-gray-200 dark:bg-gray-700: 保持中性轨道色。
+--><div class="relative w-[2px] h-32 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden my-4" aria-hidden="true"> <div id="sidebar-reading-progress" class="
+        absolute top-0 left-0 w-full transition-all duration-100 ease-out
+        
+        /* === Light Mode (Red Theme) === */
+        /* 使用深红色，呼应品牌色 #c72f1c */
+        bg-red-600
+        
+        /* === Dark Mode (Blue Theme) === */
+        /* 使用亮蓝色，呼应暗黑主色 #60a5fa */
+        dark:bg-blue-400
+      " style="height: 0%"></div> </div> <script>
+  function initProgressBar() {
+    const progressBar = document.getElementById('sidebar-reading-progress');
+    // 请确保你的文章容器 ID 确实是 'article-area'，否则进度条不会动
+    const article = document.getElementById('article-area'); 
+
+    if (!progressBar || !article) return;
+
+    function updateProgress() {
+      const articleRect = article.getBoundingClientRect();
+      const articleTop = article.offsetTop;
+      const articleHeight = article.offsetHeight;
+      const windowHeight = window.innerHeight;
+      const scrollTop = window.scrollY;
+
+      // 进度计算
+      let progress = (scrollTop - articleTop + 150) / (articleHeight - windowHeight + 150);
+
+      progress = Math.min(Math.max(progress, 0), 1);
+
+      progressBar.style.height = `${progress * 100}%`;
+    }
+
+    // 优化：使用 passive: true 提高滚动性能
+    window.addEventListener('scroll', () => requestAnimationFrame(updateProgress), { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress(); 
+  }
+
+  // 这里的判断逻辑可以保留
+  if (window.innerWidth >= 768) {
+    initProgressBar();
+    document.addEventListener('astro:page-load', initProgressBar);
+  }
+</script> <!-- 
+  容器样式：
+  1. w-9 h-9: 保持尺寸统一
+  2. text-gray-400: 默认低调
+  3. hover:text-blue-600: 悬浮时变为品牌色 (区别于 X 的黑色)
+  4. hover:bg-blue-50: 悬浮时增加淡淡的蓝色背景
+--><button id="sidebar-comment-btn" type="button" class="
+  group relative flex items-center justify-center w-9 h-9 rounded-full 
+  transition-all duration-300 
+  hover:scale-110 hover:-translate-y-0.5
+  
+  /* === 默认状态 (隐形背景) === */
+  bg-transparent ring-0
+  text-gray-500 dark:text-gray-400
+  
+  /* === Light Mode Hover (Red Theme) === */
+  hover:bg-red-50 hover:text-red-600 hover:ring-1 hover:ring-red-100
+  
+  /* === Dark Mode Hover (Blue Theme) === */
+  dark:hover:bg-blue-500/10 dark:hover:text-blue-400 dark:hover:ring-blue-500/20
+  " aria-label="Comment" data-tooltip-target="tooltip-sidebar-comment" data-tooltip-placement="left"> <svg class="w-6 h-6 transition-transform duration-300 group-hover:rotate-12" " fill="currentColor" stroke="currentColor" stroke-width="5" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-comment"></use> </svg> </button> <!-- Tooltip --> <div id="tooltip-sidebar-comment" role="tooltip" class="absolute z-50 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700 transition-opacity duration-300 whitespace-nowrap"> <div>Share Your Thoughts</div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>
+  // 保持原有逻辑，但做了防御性编程
+  // 使用 IIFE 或 block scope 避免变量污染全局
+  {
+    const SCROLL_OFFSET = 80;
+
+    // 逻辑：找到评论区并平滑滚动
+    const handleCommentScroll = () => {
+      // 优先尝试 gitalk，也可以扩展支持 giscus 或其他评论系统
+      const commentContainer = document.getElementById('gitalk-container') || document.getElementById('giscus'); 
+      
+      if (commentContainer) {
+        const topPosition = commentContainer.getBoundingClientRect().top + window.scrollY - SCROLL_OFFSET;
+        window.scrollTo({ top: topPosition, behavior: 'smooth' });
+      } else {
+        // 如果找不到评论区容器（比如还没加载），尝试直接滚到底部
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      }
+    };
+
+    // 绑定事件
+    // Astro View Transitions 兼容：如果用了 ViewTransitions，需要监听 'astro:page-load'
+    // 这里使用基础的 DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('sidebar-comment-btn');
+      if (btn) {
+        btn.addEventListener('click', handleCommentScroll);
+      }
+    });
+  }
+</script> <!-- 
+  容器样式：
+  1. w-9 h-9, rounded-full: 尺寸统一
+  2. opacity-0 invisible: 默认隐藏，由 JS 控制显隐
+  3. hover:text-blue-600: 悬浮高亮
+--><button id="sidebar-top-btn" type="button" class="
+  group relative flex items-center justify-center w-9 h-9 rounded-full 
+  transition-all duration-300 
+  hover:scale-110 hover:-translate-y-0.5
+  
+  /* === 默认状态 (隐形背景) === */
+  bg-transparent ring-0
+  text-gray-500 dark:text-gray-400
+  
+  /* === Light Mode Hover (Red Theme) === */
+  hover:bg-red-50 hover:text-red-600 hover:ring-1 hover:ring-red-100
+  
+  /* === Dark Mode Hover (Blue Theme) === */
+  dark:hover:bg-blue-500/10 dark:hover:text-blue-400 dark:hover:ring-blue-500/20
+  " aria-label="Back to Top" data-tooltip-target="tooltip-back-to-top" data-tooltip-placement="left"> <svg class="w-6 h-6" fill="currentColor" stroke="currentColor" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-top"></use> </svg> </button> <!-- Tooltip --> <div id="tooltip-back-to-top" role="tooltip" class="absolute z-50 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700 transition-opacity duration-300 whitespace-nowrap"> <div>Back to Top</div> <div class="tooltip-arrow" data-popper-arrow></div> </div> <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const topBtn = document.getElementById('sidebar-top-btn');
+    const SHOW_THRESHOLD = 400; // 滚动超过 400px 后显示
+
+    if (topBtn) {
+      // 1. 点击事件
+      topBtn.addEventListener('click', () => {
+        const header = document.getElementById('wholeHeader');
+        if (header) {
+          const target = header.offsetTop + header.offsetHeight;
+          window.scrollTo({ top: target, behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+
+      // 2. 滚动监听
+      const handleScroll = () => {
+        if (window.scrollY > SHOW_THRESHOLD) {
+          // 显示
+          topBtn.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+          topBtn.classList.add('opacity-100', 'visible', 'translate-y-0');
+        } else {
+          // 隐藏 (加一点下沉效果 translate-y-4，显得是从下面冒出来的)
+          topBtn.classList.remove('opacity-100', 'visible', 'translate-y-0');
+          topBtn.classList.add('opacity-0', 'invisible', 'translate-y-4');
+        }
+      };
+
+      // 性能优化：使用 RAF 进行节流
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            handleScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+      
+      // 初始化执行一次，防止刷新页面后停留在中间但按钮没出来
+      handleScroll();
+    }
+  });
+</script> </div> </div> <script type="module" src="/_astro/SideBar.astro_astro_type_script_index_0_lang.kcu16vqK.js"></script> </div>   </div> </main> </div> <footer> <footer class="bg-block border-t border-gray-100 dark:border-slate-800 mt-20" id="page-footer"> <div class="mx-auto w-full max-w-5xl px-6 py-12 md:py-16"> <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">  <div class="md:col-span-4 lg:col-span-5 space-y-4"> <div class="flex items-center space-x-2">  <span class="text-xl font-black tracking-tight text-heading">
+Fatbobman's <span class="text-primary">Blog</span> </span> </div> <p class="text-sm text-muted leading-relaxed max-w-xs"> 探索 Swift 与 Apple 开发生态的无限可能。 </p> </div>  <div class="md:col-span-8 lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">  <div> <h3 class="text-sm font-bold text-heading uppercase tracking-wider mb-4 tracking-wider"> 探索 </h3> <ul class="space-y-3 text-sm text-muted"> <li><a href="/zh/snippet/" class="hover:text-primary transition-colors">小贴士</a></li> <li><a href="/zh/posts/" class="hover:text-primary transition-colors">文章</a></li> <li><a href="/zh/tags/" class="hover:text-primary transition-colors">标签</a></li> <li><a href="/zh/collections/" class="hover:text-primary transition-colors">合集</a></li> </ul> </div>  <div> <h3 class="text-sm font-bold text-heading uppercase tracking-wider mb-4 tracking-wider"> 订阅 </h3> <ul class="space-y-3 text-sm text-muted"> <li><a href="https://weekly.fatbobman.com/welcome" class="hover:text-primary transition-colors" target="_blank">周报订阅</a></li> <li><a href="/zh/rss.xml" class="hover:text-primary transition-colors" target="_blank">RSS 订阅</a></li> </ul> </div>  <div> <h3 class="text-sm font-bold text-heading uppercase tracking-wider mb-4 tracking-wider"> 合作与支持 </h3> <ul class="space-y-3 text-sm text-muted">  <li><a href="/zh/about/#contact" class="hover:text-primary transition-colors">联系我</a></li> <li> <a href="https://afdian.com/a/fatbobman" class="hover:text-primary transition-colors group flex items-center" target="_blank"> <span>请肘子喝茶</span> <span class="ml-1 group-hover:scale-110 transition-transform inline-block">☕️</span> </a> </li> </ul> </div> </div> </div>  <div class="mt-12 pt-8 border-t border-gray-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-muted/60 gap-4"> <div class="text-center md:text-left"> <span>&copy; <span>2020-</span>2025 Fatbobman Digital Limited. All Rights Reserved.</span> </div> <div class="flex items-center gap-4">  <div class="opacity-70 hover:opacity-100 transition-opacity"> <div class="flex items-center justify-center w-full px-6 pt-2 text-sm pb-10"> <button type="button" onclick="
+        try {
+          window.open('https://beian.miit.gov.cn/#/Integrated/index', '_blank');
+        } catch (e) {
+          console.log('Failed to open ICP link:', e);
+        }
+      " class="text-xxs hover:underline text-muted tracking-wide" aria-label="ICP Registration Information">
+辽ICP备20006550号-1
+</button> </div> </div> </div> </div> </div> </footer> </footer> </div> <section> <div id="weekly-modal" data-subscribeText="订阅周报" data-placeholder="输入你的邮箱" data-embed-url="https://weekly.fatbobman.com/embed" data-iframe-class="mx-auto sm:w-[320px] md:w-[480px] sm:h-[200px] md:h-[320px] dark:opacity-80 dark:rounded-lg dark:shadow-2xl dark:border-gray-600" data-iframe-style="border:0px solid #EEE; background:white; width: 100%; max-width: 480px;"> <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"> <!-- Modal content --> <div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-lg shadow-2xl border-gray-200 border dark:border-gray-600"> <!-- Modal header --> <div class="flex items-center justify-between px-4 md:px-5 pt-4 pb-0 rounded-t dark:border-gray-600"> <button id="popup-modal-close-button" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"> <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path> </svg> <span class="sr-only">Close modal</span> </button> </div> <!-- Modal body --> <div class="px-4 md:px-5 pb-4 md:w-[480px] sm:w-80 mx-auto"> <div class="sm:hidden md:block text-base text-center font-bold text-gray-900 dark:text-blue-100 pt-4 pb-2 font-wide">每周一，与全球开发者共享 Swift 与 SwiftUI 开发精华</div> <div id="weekly-modal-embed" class="flex flex-col items-center justify-center gap-4" data-iframe-loaded="false"> <div class="relative flex items-center justify-center"> <div class="w-8 h-8 border-2 border-gray-200 dark:border-gray-700 border-t-secondary rounded-full animate-spin" aria-hidden="true"></div> </div> <div class="text-sm text-gray-400 dark:text-gray-500 text-center" data-weekly-loader data-error-text="订阅内容加载失败，请稍后重试。" aria-live="polite"> 加载订阅内容... </div> </div> </div> </div> </div> </div> </section> <script type="module" src="/_astro/WeeklyModalLoader.astro_astro_type_script_index_0_lang.DMZWLG_2.js"></script>  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js" async></script> <script>
+  // 为每个需要清除 focus 状态的按钮都添加一个 clear-focus 类, 下面的代码将在点击后自动移除 focus 状态
+  document.addEventListener('DOMContentLoaded', () => {
+    // 获取所有具有 'clear-focus' 类的按钮
+    const buttons = document.querySelectorAll('.clear-focus');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setTimeout(() => {
+          button.blur();
+        }, 0);
+      });
+    });
+  });
+
+  window.onpageshow = function () {
+    document.documentElement.classList.add('motion-safe:scroll-smooth');
+  };
+
+  if (typeof window !== 'undefined') {
+    const videos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+
+    const disableTooltipsOnTouch = () => {
+      const isTouch =
+        'ontouchstart' in window ||
+        (navigator && navigator.maxTouchPoints > 0) ||
+        (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+      if (!isTouch) {
+        return;
+      }
+      const triggers = document.querySelectorAll('[data-tooltip-target]');
+      triggers.forEach((trigger) => {
+        const tooltipId = trigger.getAttribute('data-tooltip-target');
+        trigger.removeAttribute('data-tooltip-target');
+        trigger.removeAttribute('data-tooltip-placement');
+        if (tooltipId) {
+          const tooltipEl = document.getElementById(tooltipId);
+          if (tooltipEl && tooltipEl.parentNode) {
+            tooltipEl.parentNode.removeChild(tooltipEl);
+          }
+        }
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', disableTooltipsOnTouch);
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+
+            if (entry.isIntersecting) {
+              // 进入视窗 -> 尝试播放（浏览器会根据策略决定是否允许）
+              video.play().catch(() => {
+                // 某些情况下（浏览器策略）可能会失败，静默即可
+              });
+            } else {
+              // 离开视窗 -> 暂停，节省 CPU & 带宽
+              video.pause();
+            }
+          });
+        },
+        {
+          threshold: 0.1, // 至少有 10% 出现在视窗里时触发
+        }
+      );
+
+      videos.forEach((video) => observer.observe(video));
+
+      // 清理逻辑：页面卸载时取消所有观察
+      window.addEventListener('beforeunload', () => {
+        videos.forEach((video) => observer.unobserve(video));
+        observer.disconnect();
+      });
+
+      // 处理 bfcache 情况
+      window.addEventListener('pageshow', (event) => {
+        // 如果是从 bfcache 恢复，重新初始化
+        if (event.persisted) {
+          const newVideos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+          newVideos.forEach((video) => {
+            if (!videos.includes(video)) {
+              observer.observe(video);
+            }
+          });
+        }
+      });
+    } else {
+      // 老浏览器的降级策略：什么都不做，用户手动播放
+    }
+  }
+</script> <script>(function(){const lang = "zh";
+const searchText = "搜索...";
+const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('docsearch');
+    if (!button) {
+      return;
+    }
+
+    let docsearchScriptPromise = null;
+    let initialized = false;
+
+    const loadDocsearchLibrary = () => {
+      if (typeof window !== 'undefined' && typeof window.docsearch === 'function') {
+        return Promise.resolve();
+      }
+      if (!docsearchScriptPromise) {
+        docsearchScriptPromise = new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.3';
+          script.defer = true;
+          script.onload = () => resolve();
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+      }
+      return docsearchScriptPromise;
+    };
+
+    const handleFirstClick = async (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      try {
+        // Load DocSearch library
+        await loadDocsearchLibrary();
+
+        // Import and execute search module
+        const module = await import(runSearchModuleUrl);
+
+        // openSearch will call initSearch internally, so we don't need to call both
+        await module.openSearch(lang, searchText);
+
+        // Remove the first-click listener after successful initialization
+        button.removeEventListener('click', handleFirstClick, true);
+        initialized = true;
+      } catch (error) {
+        console.error('Failed to initialize DocSearch:', error);
+      }
+    };
+
+    button.addEventListener('click', handleFirstClick, true);
+  });
+})();</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <!--Magic Fix 解决在 Safari 下搜索框取消后会滚动到页面底部--> <div class="fixed"> <input type="text"> </div> </body></html>
