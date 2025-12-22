@@ -1,12 +1,12 @@
-<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>WWDC 2021 新 Formatter API：新老比较及如何自定义</title>
-<meta name="description" content="了解WWDC2021新Formatter API的设计机制，对比新旧API的差异。本文将演示如何创建符合新API的自定义Formatter，包括String和AttributedString格式，并支持链式配置和本地化。">
+<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>Swift 现代 Formatter API：深度解析与自定义指南</title>
+<meta name="description" content="了解基于 Swift 协议的 Formatter 的设计机制，对比新传统的 NSFormatter 的差异。本文将演示如何创建符合新API的自定义 Formatter，包括 String 和 AttributedString 格式，并支持链式配置和本地化。">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/zh/posts/newformatter/">
-<meta property="og:title" content="WWDC 2021 新 Formatter API：新老比较及如何自定义">
-<meta property="og:description" content="了解WWDC2021新Formatter API的设计机制，对比新旧API的差异。本文将演示如何创建符合新API的自定义Formatter，包括String和AttributedString格式，并支持链式配置和本地化。">
+<meta property="og:title" content="Swift 现代 Formatter API：深度解析与自定义指南">
+<meta property="og:description" content="了解基于 Swift 协议的 Formatter 的设计机制，对比新传统的 NSFormatter 的差异。本文将演示如何创建符合新API的自定义 Formatter，包括 String 和 AttributedString 格式，并支持链式配置和本地化。">
 <meta property="og:url" content="https://fatbobman.com/zh/posts/newformatter/">
 <meta property="og:type" content="article">
-<meta property="og:image" content="https://og.fatbobman.com/oc/newFormatter.png">
+<meta property="og:image" content="https://og.fatbobman.com/card/modern-swift-formatter-api-zh.webp">
 
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="fatbobman.com">
@@ -42,13 +42,13 @@
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2021-10-01T02:00:00.000Z",
+  "dateModified": "2025-12-22T00:00:00.000Z",
   "datePublished": "2021-10-01T02:00:00.000Z",
-  "description": "了解WWDC2021新Formatter API的设计机制，对比新旧API的差异。本文将演示如何创建符合新API的自定义Formatter，包括String和AttributedString格式，并支持链式配置和本地化。",
-  "headline": "WWDC 2021 新 Formatter API：新老比较及如何自定义",
+  "description": "了解基于 Swift 协议的 Formatter 的设计机制，对比新传统的 NSFormatter 的差异。本文将演示如何创建符合新API的自定义 Formatter，包括 String 和 AttributedString 格式，并支持链式配置和本地化。",
+  "headline": "Swift 现代 Formatter API：深度解析与自定义指南",
   "image": {
     "@type": "ImageObject",
-    "url": "https://og.fatbobman.com/oc/newFormatter.png"
+    "url": "https://og.fatbobman.com/card/modern-swift-formatter-api-zh.webp"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -287,21 +287,23 @@ const enableStickyInMobile = true;
 #Frameworks </a> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-wider
-    "> WWDC 2021 新 Formatter API：新老比较及如何自定义 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 gap-y-2 tracking-wide"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 东坡肘子 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2021-10-01T02:00:00.000Z"> 2021 年 10 月 1 日 </time>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <article class="prose dark:prose-invert mx-auto w-full prose-headings:tracking-wide prose-p:tracking-wide prose-a:tracking-wide"> <div> 
-<p>在 WWDC 2021 的 <a href="https://developer.apple.com/videos/play/wwdc2021/10109/?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">What’s in Foundation</a> 专题中，苹果隆重介绍了适用于 Swift 的新 Formatter API。网上已经有不少文章对新 API 的用法进行了说明。本文将通过介绍如何创建符合新 API 的 Formatter，让读者从另一个角度了解新 Formatter API 的设计机制；并对新旧两款 API 进行比较。</p>
+    "> Swift 现代 Formatter API：深度解析与自定义指南 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 gap-y-2 tracking-wide"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 东坡肘子 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2021-10-01T02:00:00.000Z"> 2021 年 10 月 1 日 </time>  <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <span class="italic text-muted/80">
+(更新于  <time datetime="2025-12-22T00:00:00.000Z">2025 年 12 月 22 日</time>)
+</span>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <article class="prose dark:prose-invert mx-auto w-full prose-headings:tracking-wide prose-p:tracking-wide prose-a:tracking-wide"> <div> 
+<p>Foundation 框架为 Swift 开发者提供了一套声明式的现代 Formatter API（常被称为 <code>FormatStyle</code>）。相比于传统的 <code>NSFormatter</code> 子类，这套基于协议的 API 更加契合 Swift 的语言特性。本文将深入探讨其设计机制，并通过实例演示如何创建自定义的 Formatter。</p>
 <blockquote>
 <p>本文的演示代码可以在 <a href="https://github.com/fatbobman/CustomParseableFormatStyleDemo?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Github</a> 上下载</p>
 </blockquote>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
 <h2 id="新旧交替或风格转换">新旧交替或风格转换</h2>
-<h3 id="新-formatter-api-可以做什么">新 Formatter API 可以做什么</h3>
+<h3 id="现代-formatter-api-可以做什么">现代 Formatter API 可以做什么</h3>
 <p>新 Formatter 提供了一个便捷的接口，让 Swift 程序员以更熟悉方式在应用程序中呈现本地化的格式字符串。</p>
-<h3 id="新-api-比旧-api-好吗">新 API 比旧 API 好吗</h3>
+<h3 id="swift-原生-api-的优势与局限">Swift 原生 API 的优势与局限</h3>
 <p>好和坏都是相对的，对于以 Swift 开发为主或者只会 Swift 的程序员（比如我本人），新 Formatter 不仅学习和使用起来更容易，同时也更适合日益流行的声明式编程风格。不过从整体功能和效率上讲，新 Formatter 并不具备优势。</p>
 <h3 id="新旧-api-比较">新旧 API 比较</h3>
 <h4 id="调用方便度">调用方便度</h4>
-<p>如果说新 API 相较旧 API 的最大优势，便是在调用上更符合直觉、更方便了。</p>
-<p>旧 API：</p>
+<p>如果说现代 Formatter API 相较传统的 NSFormatter 的最大优势，便是在调用上更符合直觉、更方便了。</p>
+<p>传统的 NSFormatter：</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -325,7 +327,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">      numberFormat.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">roundingMode</span><span style="color:#AB5959;--shiki-dark:#F286C4"> =</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">halfUp</span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">      let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> numString </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> numberFormat.</span><span style="color:#998418;--shiki-dark:#97E1F1">string</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">from</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#998418;--shiki-dark:#97E1F1"> NSNumber</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">3.147</span><span style="color:#999999;--shiki-dark:#F6F6F4">))</span><span style="color:#AB5959;--shiki-dark:#F286C4">!</span></span>
 <span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">      // 3.15</span></span></code></pre>
-<p>新 API：</p>
+<p>现代 Formatter API：</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -345,7 +347,7 @@ const enableStickyInMobile = true;
 <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">      let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> number </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#2F798A;--shiki-dark:#BF9EEE"> 3.147</span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">      let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> numString </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> number.</span><span style="color:#998418;--shiki-dark:#97E1F1">formatted</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">number</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">precision</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">fractionLength</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">2</span><span style="color:#999999;--shiki-dark:#F6F6F4">))</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">rounded</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">rule</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#998418;--shiki-dark:#BF9EEE">up</span><span style="color:#999999;--shiki-dark:#F6F6F4">))</span></span>
 <span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">      // 3.15</span></span></code></pre>
-<p>旧 API：</p>
+<p>传统的 NSFormatter：</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -374,7 +376,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">                              .</span><span style="color:#998418;--shiki-dark:#97E1F1">compactMap</span><span style="color:#999999;--shiki-dark:#F6F6F4">{</span><span style="color:#393A34;--shiki-dark:#F6F6F4">numberFormat.</span><span style="color:#998418;--shiki-dark:#97E1F1">string</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">from</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#998418;--shiki-dark:#97E1F1">NSNumber</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">value</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic"> $0</span><span style="color:#999999;--shiki-dark:#F6F6F4">))}</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">                  )</span><span style="color:#AB5959;--shiki-dark:#F286C4"> ??</span><span style="color:#B5695977;--shiki-dark:#DEE492"> &quot;&quot;</span></span>
 <span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">      // 3.35, 534.35, and 4,546.43</span></span></code></pre>
-<p>新 API：</p>
+<p>现代 Formatter API：</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -398,11 +400,11 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">            )</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        )</span></span>
 <span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    // 3.35, 534.35, and 4,546.43</span></span></code></pre>
-<p>即使你对新 API 并不很了解，仅凭代码的自动提示你就可以快速组合出想要的格式化结果。</p>
+<p>即使你对现代 Formatter API 并不很了解，仅凭代码的自动提示你就可以快速组合出想要的格式化结果。</p>
 <h4 id="运行效率">运行效率</h4>
-<p>在 WWDC 视频中，苹果几次提及新 API 对性能的提升。不过苹果并没有告诉你全部的真相。</p>
-<p>从我个人的测试数据来看，新 API 的效率相较于仅使用一次的 Formatter 实例来说，提升还是比较明显的（30% —— 300%），不过同可复用的 Formatter 实例比较，仍有数量级上的差距。</p>
-<p>旧 API，每次都重新创建实例</p>
+<p>虽然官方强调了性能提升，不过苹果并没有告诉你全部的真相。</p>
+<p>从我个人的测试数据来看，现代 API 的效率相较于仅使用一次的 Formatter 实例来说，提升还是比较明显的（30% —— 300%），不过同可复用的 Formatter 实例比较，仍有数量级上的差距。</p>
+<p>传统的 NSFormatter，每次都重新创建实例</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -431,7 +433,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// 0.121</span></span></code></pre>
-<p>旧 API，只创建一次实例</p>
+<p>传统的 NSFormatter，只创建一次实例</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -460,7 +462,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// 0.005</span></span></code></pre>
-<p>新 API</p>
+<p>现代 Formatter API</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -485,13 +487,13 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// 0.085</span></span></code></pre>
-<p>使用新 API，配置的内容越多，执行所需时间也会相应增长。不过除非是对性能有非常高要求的场景，否则新 API 的执行效率还是有可以令人满意的。</p>
+<p>使用这套 API，配置的内容越多，执行所需时间也会相应增长。不过除非是对性能有非常高要求的场景，否则现代 Formatter API 的执行效率还是有可以令人满意的。</p>
 <blockquote>
 <p>本文的 Demo 中，附带了部分 Unit Test 代码，大家可以自行测试。</p>
 </blockquote>
 <h4 id="统一性">统一性</h4>
-<p>旧 API 中，针对不同的格式化类型，我们需要创建不同的 Formatter 实例。比如使用 NumberFormatter 格式化数字、DateFormatter 格式化日期。</p>
-<p>新 API 针对每个支持的类型都提供了统一的调用接口，尽量减少代码层面的复杂度</p>
+<p>传统的 NSFormatter 中，针对不同的格式化类型，我们需要创建不同的 Formatter 实例。比如使用 NumberFormatter 格式化数字、DateFormatter 格式化日期。</p>
+<p>现代 Formatter API 针对每个支持的类型都提供了统一的调用接口，尽量减少代码层面的复杂度</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -515,9 +517,9 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">Date.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">now</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">addingTimeInterval</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">100000</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">formatted</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">relative</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">presentation</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">named</span><span style="color:#999999;--shiki-dark:#F6F6F4">))</span></span>
 <span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// tomorrow</span></span></code></pre>
 <h4 id="自定义难度">自定义难度</h4>
-<p>新 API 的调用便利性是建立在大量繁杂工作的基础之上的。相较于旧 API 通过属性直接设置，新 API 采用函数式编程方式，针对每个属性单独编写设置方法。虽然并不复杂，但工作量明显提高。</p>
+<p>现代 Formatter API 的调用便利性是建立在大量繁杂工作的基础之上的。相较于传统的 NSFormatter 通过属性直接设置，现代 Formatter API 采用函数式编程方式，针对每个属性单独编写设置方法。虽然并不复杂，但工作量明显提高。</p>
 <h4 id="attributedstring">AttributedString</h4>
-<p>新 API 为每个可转换类型都提供 AttributedString 格式支持。通过 AttribtedString 中的 Field，可以方便的生成想要的显示样式。</p>
+<p>现代 Formatter API 为每个可转换类型都提供 AttributedString 格式支持。通过 AttributedString 中的 Field，可以方便的生成想要的显示样式。</p>
 <p>比如：</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
@@ -558,9 +560,9 @@ const enableStickyInMobile = true;
   <img src="https://cdn.fatbobman.com/image-20210930142453213-2983094.png" alt="image-20210930142453213" loading="lazy" decoding="async"/>
 </picture></p>
 <h4 id="代码出错率">代码出错率</h4>
-<p>在新 API 中，一切都是类型安全的，开发者无需反复的查阅文档，你的代码可以享受编译时检查的好处。</p>
+<p>在现代 Formatter API 中，一切都是类型安全的，开发者无需反复的查阅文档，你的代码可以享受编译时检查的好处。</p>
 <p>比如下面的代码</p>
-<p>旧 API</p>
+<p>传统的 NSFormatter</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -584,7 +586,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}()</span></span>
 <span class="line"></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> dateString </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> dateFormatter.</span><span style="color:#998418;--shiki-dark:#97E1F1">string</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">from</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> Date.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">now</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span></code></pre>
-<p>新 API</p>
+<p>现代 Formatter API</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -602,19 +604,18 @@ const enableStickyInMobile = true;
   </button>
 </div>
 <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> dateString </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> Date.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">now</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">formatted</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">iso8601</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">year</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">month</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">day</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">dateSeparator</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">dash</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">dateTimeSeparator</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">space</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">time</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#998418;--shiki-dark:#97E1F1">includingFractionalSeconds</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#1E754F;--shiki-dark:#BF9EEE"> false</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#998418;--shiki-dark:#97E1F1">timeSeparator</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">colon</span><span style="color:#999999;--shiki-dark:#F6F6F4">))</span></span></code></pre>
-<p>如果单从代码量上来看，在本例中，新 API 不占据任何优势。不过你无需在 yyyy 和 YYYY 或者 MM 还是 mm 中犹豫，也不用反复查看 <a href="https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_symbol_table?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">令人头痛的文档</a>，减少了在代码中犯错的可能性。</p>
-<h3 id="风格转换">风格转换？</h3>
-<p>旧 API 是 Objectiv-C 的产物，它十分高效且好用，但在 Swift 中使用难免有不协调感。</p>
-<p>新 API 是完全为 Swift 开发的，它采用了当前流行的声明式的风格。开发者只需要声明需要显示的字段，系统将以合适的格式进行呈现。</p>
+<p>如果单从代码量上来看，在本例中，现代 Formatter API 不占据任何优势。不过你无需在 yyyy 和 YYYY 或者 MM 还是 mm 中犹豫，也不用反复查看 <a href="https://www.unicode.org/reports/tr35/tr35-dates.html#Date_Field_symbol_table?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">令人头痛的文档</a>，减少了在代码中犯错的可能性。在现代 Swift 开发中，这种类型安全的配置已成为最佳实践。</p>
+<h3 id="面向协议的声明式风格">面向协议的声明式风格</h3>
+<p>传统的 NSFormatter 是 Objectiv-C 的产物，它十分高效且好用，但在 Swift 中使用难免有不协调感。</p>
+<p>现代 Formatter API 是完全为 Swift 开发的，它采用了当前流行的声明式的风格。开发者只需要声明需要显示的字段，系统将以合适的格式进行呈现。</p>
 <p>两种风格将在苹果的开发生态中长期共存，开发者可以选择适合自己的方式来实现同一个目标。</p>
-<p>因此不存在风格转换的问题，苹果只是补交了 Swift 开发环境上缺失的一部分而已。</p>
+<p>因此不存在风格转换的问题，这是 Foundation 框架向 Swift 现代化迈进的重要一步，目前已成为 SwiftUI 等框架的首选格式化方案。</p>
 <h3 id="结论">结论</h3>
-<p>新旧 API 将长期共存。</p>
-<p>新 API 并非用来替换旧的 Formatter API，应该算是旧 Formatter 的 Swift 实现版本。新 API 基本涵盖了旧 API 绝大多数的功能，着重改善了开发者的使用体验。</p>
-<p>类似的情况在最近几年中将不断上演，苹果在 Swift 语言层面基本完善的情况下，将逐步提供其核心框架的 Swift 版本。本届 WWDC 上推出的 AttributedString 也可以佐证这一点。</p>
-<h2 id="如何自定义新的-formatter">如何自定义新的 Formatter</h2>
+<p>现代 Formatter API 并非用来替换旧的 NSFormatter API，应该算是旧 NSFormatter 的 Swift 实现版本。现代 Formatter API 基本涵盖了 NSFormatter API 绝大多数的功能，着重改善了开发者的使用体验。</p>
+<p>类似的情况在最近几年中将不断上演，苹果在 Swift 语言层面基本完善的情况下，将逐步提供其核心框架的 Swift 版本。随之而来的 AttributedString 也是这一体系的重要组成部分。</p>
+<h2 id="如何自定义现代-formatter-api">如何自定义现代 Formatter API</h2>
 <h3 id="新老-api-在自定义方面的不同">新老 API 在自定义方面的不同</h3>
-<p>旧 API 是用类实现的，在创建自定义格式化器时，我们需要创建一个 Formatter 的子类，并至少实现以下两个方法：</p>
+<p>传统的 NSFormatter 是用类实现的，在创建自定义格式化器时，我们需要创建一个 Formatter 的子类，并至少实现以下两个方法：</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -666,7 +667,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#1E754F;--shiki-dark:#BF9EEE">        nil</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span></code></pre>
 <p>数据的格式转换都是在<strong>一个类</strong>定义中完成的。</p>
-<p>新 API 充分体现了 Swift 作为面向协议语言的特点，使用两个协议（<code>FormatStyle</code>、<code>ParseStrategy</code>），分别定义了格式化数据和从格式化转换两个方向的实现。</p>
+<p>现代 Formatter API 充分体现了 Swift 作为面向协议语言的特点，使用两个协议（<code>FormatStyle</code>、<code>ParseStrategy</code>），分别定义了格式化数据和从格式化转换两个方向的实现。</p>
 <h3 id="新协议">新协议</h3>
 <h4 id="formatstyle">FormatStyle</h4>
 <p>将被格式化类型转换成格式化类型。</p>
@@ -700,7 +701,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    /// If the format allows selecting a locale, returns a copy of this format with the new locale set. Default implementation returns an unmodified self.</span></span>
 <span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">    func</span><span style="color:#59873A;--shiki-dark:#62E884"> locale</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#59873A;--shiki-dark:#62E884">_</span><span style="color:#393A34;font-style:inherit;--shiki-dark:#FFB86C;--shiki-dark-font-style:italic"> locale</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: Locale</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#AB5959;--shiki-dark:#F286C4"> -&gt;</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic"> Self</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<p>尽管在导出类型上使用了泛型，不过由于新 API 着重于格式化（而不是类型转换），因此通常 FormatOutpu 为 <code>String</code> 或者 <code>AttributedString</code>。</p>
+<p>尽管在导出类型上使用了泛型，不过由于现代 Formatter API 着重于格式化（而不是类型转换），因此通常 FormatOutput 为 <code>String</code> 或者 <code>AttributedString</code>。</p>
 <p><code>func format(_ value: Self.FormatInput) -&gt; Self.FormatOutput</code> 是必须实现的方法，<code>locale</code> 用来为 Formatter 设置区域信息，其返回值中的 <code>format</code> 方法的输出类型同原结构一致。因此，尽管 Formatter 会针对不同区域提供不同语言的返回结果，但为了兼容性，返回结果仍为 <code>String</code>。</p>
 <p>FormatStyle 协议同时约定了必须满足 Codable 和 Hashable。</p>
 <h4 id="parsestrategy">ParseStrategy</h4>
@@ -732,7 +733,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">    /// Creates an instance of the `ParseOutput` type from `value`.</span></span>
 <span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">    func</span><span style="color:#59873A;--shiki-dark:#62E884"> parse</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#59873A;--shiki-dark:#62E884">_</span><span style="color:#393A34;font-style:inherit;--shiki-dark:#FFB86C;--shiki-dark-font-style:italic"> value</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: </span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic">Self</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.ParseInput</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#AB5959;--shiki-dark:#F286C4"> throws</span><span style="color:#AB5959;--shiki-dark:#F286C4"> -&gt;</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic"> Self</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.ParseOutput</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
-<p><code>parse</code> 的定义可比旧 API 的 <code>getObjectValue</code> 容易理解多了。</p>
+<p><code>parse</code> 的定义可比传统的 NSFormatter 的 <code>getObjectValue</code> 容易理解多了。</p>
 <h4 id="parseablefromatstyle">ParseableFromatStyle</h4>
 <p>由于 <code>FormatStyle</code> 和 <code>ParseStrategy</code> 是两个独立的协议，因此苹果又提供了 <code>ParseableFromatStyle</code> 协议，方便我们在一个结构体中实现两个协议的方法。</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
@@ -762,8 +763,8 @@ const enableStickyInMobile = true;
 <p>尽管理论上也可以通过 <code>FormatStyle&amp;ParseStrategy</code> 在一个结构体中实现双向转换，不过官方框架只支持通过 <code>ParseableFromatStyle</code> 协议实现的 Formatter。</p>
 </blockquote>
 <h3 id="其他">其他</h3>
-<p>尽管 <code>ParseableFromatStyle</code> 协议并没有要求一定要输出 AttributedString，不过在官方的新 Formatter API 中还是为每个类型都提供了 AttributedString 的输出。</p>
-<p>为了方便 Formatter 的调用，所有的官方 Formatter 都使用了 Swift 5.5 的新功能——在泛型上下文中扩展静态成员查找</p>
+<p>尽管 <code>ParseableFromatStyle</code> 协议并没有要求一定要输出 AttributedString，不过在官方的现代 Formatter API 中还是为每个类型都提供了 AttributedString 的输出。</p>
+<p>为了方便 Formatter 的调用，所有的官方 Formatter 都利用 Swift 的**静态成员查找（Static Member Lookup）**特性，我们可以为自定义 Formatter 提供极佳的链式调用体验。</p>
 <p>例如</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
@@ -875,7 +876,7 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">color, </span><span style="color:#998418;--shiki-dark:#97E1F1">format</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">uiColor</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">alpah</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">mark</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">prefix</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span></code></pre>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">Text</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">color, </span><span style="color:#998418;--shiki-dark:#97E1F1">format</span><span style="color:#999999;--shiki-dark:#F6F6F4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">uiColor</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">alpha</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">mark</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">prefix</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span></code></pre>
 <p><picture>
   <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/image-20210930171608519.png?imageView2/0/w/500"/>
   <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/image-20210930171608519.png?imageView2/0/w/768"/>
@@ -1080,7 +1081,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">        return</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> result</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">    func</span><span style="color:#59873A;--shiki-dark:#62E884"> alpah</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#59873A;--shiki-dark:#62E884">_</span><span style="color:#393A34;font-style:inherit;--shiki-dark:#FFB86C;--shiki-dark-font-style:italic"> value</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: Alpha </span><span style="color:#999999;--shiki-dark:#F286C4">=</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">show</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#AB5959;--shiki-dark:#F286C4"> -&gt;</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic"> Self</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">    func</span><span style="color:#59873A;--shiki-dark:#62E884"> alpha</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#59873A;--shiki-dark:#62E884">_</span><span style="color:#393A34;font-style:inherit;--shiki-dark:#FFB86C;--shiki-dark-font-style:italic"> value</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: Alpha </span><span style="color:#999999;--shiki-dark:#F286C4">=</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">show</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#AB5959;--shiki-dark:#F286C4"> -&gt;</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic"> Self</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">        guard</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> alpha </span><span style="color:#AB5959;--shiki-dark:#F286C4">!=</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> value </span><span style="color:#1E754F;--shiki-dark:#F286C4">else</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#1E754F;--shiki-dark:#F286C4"> return</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic"> self</span><span style="color:#999999;--shiki-dark:#F6F6F4"> }</span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">        var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> result </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic"> self</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">        result.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">alpha</span><span style="color:#AB5959;--shiki-dark:#F286C4"> =</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> value</span></span>
@@ -1118,7 +1119,7 @@ const enableStickyInMobile = true;
     </div>
   </button>
 </div>
-<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> colorString </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#998418;--shiki-dark:#97E1F1"> UIColorFormatStyle</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">alpah</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">show</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">prefix</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#BF9EEE">none</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">format</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">UIColor.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">blue</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
+<pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">let</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> colorString </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#998418;--shiki-dark:#97E1F1"> UIColorFormatStyle</span><span style="color:#999999;--shiki-dark:#F6F6F4">()</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">alpha</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">show</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">prefix</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#BF9EEE">none</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#998418;--shiki-dark:#97E1F1">format</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">UIColor.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">blue</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span>
 <span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// 0000FFFF</span></span></code></pre>
 <h3 id="localized-支持">localized 支持</h3>
 <p>由于 <code>format</code> 的输出类型为 String，因此，我们需要在 <code>getField</code> 中将 <code>Mark</code> 转换成对应区域的文字。在 <code>getField</code> 中做如下修改：</p>
@@ -1198,8 +1199,7 @@ const enableStickyInMobile = true;
 <pre class="astro-code astro-code-themes vitesse-light dracula-soft" style="background-color:#ffffff;--shiki-dark-bg:#282A36;color:#393a34;--shiki-dark:#f6f6f4;overflow-x:auto" tabindex="0" data-language="swift"><code><span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4"># Red</span><span style="color:#AB5959;--shiki-dark:#F286C4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">00</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> Green</span><span style="color:#AB5959;--shiki-dark:#F286C4">:</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">00</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> Blue</span><span style="color:#AB5959;--shiki-dark:#F286C4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4">FF Alpha</span><span style="color:#AB5959;--shiki-dark:#F286C4">:</span><span style="color:#393A34;--shiki-dark:#F6F6F4">FF</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4"># 红：</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">00</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> 绿：</span><span style="color:#2F798A;--shiki-dark:#BF9EEE">00</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> 蓝：FF 透明度：FF</span></span></code></pre>
 <blockquote>
-<p><del>截至本文完成时，<code>String(localized:String,locale:Locale)</code> 仍有 Bug，无法获取到对应的 Locale 文字。系统的 Formatter 也有这个问题。正常的情况下，我们可以使用如下代码，在非中文区域获得中文的 mark 显示</del></p>
-<p>之前对 String 新的构造方法理解有误，经过官方的邮件解释，<code>String(localized:String, locale:Locale)</code> 中的 <code>locale</code> 是用来设置字符串差值中 formatter 的 locale。因此对原有代码进行了修改。</p>
+<p><strong>建议方案：</strong> “需要注意的是，<code>String(localized: locale:)</code> 中的 <code>locale</code> 参数主要用于影响字符串插值（Interpolation）中的格式化行为。因此，在自定义 Formatter 时，我们需要显式地处理区域信息的传递。”</p>
 </blockquote>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
@@ -1281,7 +1281,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">    subscript</span><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic">T</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;(</span><span style="color:#59873A;--shiki-dark:#62E884">dynamicMember</span><span style="color:#393A34;font-style:inherit;--shiki-dark:#FFB86C;--shiki-dark-font-style:italic"> keyPath</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: KeyPath</span><span style="color:#999999;--shiki-dark:#F6F6F4">&lt;</span><span style="color:#393A34;--shiki-dark:#F6F6F4">AttributeScopes.UIColorAttributes, T</span><span style="color:#999999;--shiki-dark:#F6F6F4">&gt;)</span><span style="color:#AB5959;--shiki-dark:#F286C4"> -&gt;</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> T </span><span style="color:#1E754F;--shiki-dark:#F286C4">where</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> T</span><span style="color:#AB5959;--shiki-dark:#F286C4">:</span><span style="color:#59873A;font-style:inherit;--shiki-dark:#97E1F1;--shiki-dark-font-style:italic"> AttributedStringKey</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic"> self</span><span style="color:#999999;--shiki-dark:#F6F6F4">[</span><span style="color:#393A34;--shiki-dark:#F6F6F4">T.</span><span style="color:#1E754F;--shiki-dark:#F286C4">self</span><span style="color:#999999;--shiki-dark:#F6F6F4">]</span><span style="color:#999999;--shiki-dark:#F6F6F4"> }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
 <blockquote>
-<p>过些日子我会写篇博文介绍 AttributedString 的用法，以及如何自定义 AttributedKey</p>
+<p>关于 AttributedString 的深度用法，可以参考我的另一篇文章 <a href="/zh/posts/attributedstring/" target="_blank">AttributedString 详解</a>。</p>
 </blockquote>
 <p>由于将 UIColor 格式化成 AttributedString 是单向的（无需从 AttribuedString 转换回 UIColor），因此 Attributed 只需遵循 FormatStyle 协议</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
@@ -1342,7 +1342,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">            return</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> result</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">        }</span></span>
 <span class="line"></span>
-<span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">        func</span><span style="color:#59873A;--shiki-dark:#62E884"> alpah</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#59873A;--shiki-dark:#62E884">_</span><span style="color:#393A34;font-style:inherit;--shiki-dark:#FFB86C;--shiki-dark-font-style:italic"> value</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: Alpha </span><span style="color:#999999;--shiki-dark:#F286C4">=</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">show</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#AB5959;--shiki-dark:#F286C4"> -&gt;</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic"> Self</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
+<span class="line"><span style="color:#AB5959;--shiki-dark:#F286C4">        func</span><span style="color:#59873A;--shiki-dark:#62E884"> alpha</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#59873A;--shiki-dark:#62E884">_</span><span style="color:#393A34;font-style:inherit;--shiki-dark:#FFB86C;--shiki-dark-font-style:italic"> value</span><span style="color:#393A34;--shiki-dark:#F6F6F4">: Alpha </span><span style="color:#999999;--shiki-dark:#F286C4">=</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> .</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">show</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span><span style="color:#AB5959;--shiki-dark:#F286C4"> -&gt;</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic"> Self</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">            guard</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> alpha </span><span style="color:#AB5959;--shiki-dark:#F286C4">!=</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> value </span><span style="color:#1E754F;--shiki-dark:#F286C4">else</span><span style="color:#999999;--shiki-dark:#F6F6F4"> {</span><span style="color:#1E754F;--shiki-dark:#F286C4"> return</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic"> self</span><span style="color:#999999;--shiki-dark:#F6F6F4"> }</span></span>
 <span class="line"><span style="color:#1E754F;--shiki-dark:#F286C4">            var</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> result </span><span style="color:#AB5959;--shiki-dark:#F286C4">=</span><span style="color:#A65E2B;font-style:inherit;--shiki-dark:#BF9EEE;--shiki-dark-font-style:italic"> self</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">            result.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">alpha</span><span style="color:#AB5959;--shiki-dark:#F286C4"> =</span><span style="color:#393A34;--shiki-dark:#F6F6F4"> value</span></span>
@@ -1437,35 +1437,35 @@ const enableStickyInMobile = true;
 <p><img src="https://cdn.fatbobman.com/uicolorFormatter.gif" alt="uicolorFormatter"/></p>
 <p>可以在 <a href="https://github.com/fatbobman/CustomParseableFormatStyleDemo?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Github</a> 上下载全部代码。</p>
 <h2 id="总结">总结</h2>
-<p>鉴于官方已经提供了大量种类齐全、功能丰富的 Formatter，大多数的开发者可能都不会碰到需要自定义 Formatter 的场景。不过通过对自定义 Formatter 协议的了解，可以加强我们对原生 Formatter 的认识，在代码中更好地使用它们。</p> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/Swift/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>Swift </a><a href="/zh/tags/Frameworks/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>Frameworks </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/mixing_text_and_graphics_with_text_in_swiftui/" class="
+<p>鉴于官方已经提供了大量种类齐全、功能丰富的 Formatter，大多数的开发者可能都不会碰到需要自定义 Formatter 的场景。不过通过对自定义 Formatter 协议的了解，可以加强我们对原生 Formatter 的认识，在代码中更好地使用它们。</p> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/Swift/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>Swift </a><a href="/zh/tags/Frameworks/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>Frameworks </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/attributedstring/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">在 SwiftUI 中用 Text 实现图文混排</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/search_and_location_in_text/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">AttributedString —— 不仅仅让文字更漂亮</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/search_and_location_in_text/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">在 Text 中实现基于关键字的搜索和定位</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/table_in_swiftui/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">在 Text 中实现基于关键字的搜索和定位</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/mixing_text_and_graphics_with_text_in_swiftui/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">用 Table 在 SwiftUI 下创建表格</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/attributedstring/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">在 SwiftUI 中用 Text 实现图文混排</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/table_in_swiftui/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">AttributedString —— 不仅仅让文字更漂亮</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">用 Table 在 SwiftUI 下创建表格</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a></div></section> <!-- <BuymeacoffeeInPost lang={lang} /> --> <!-- <WeeklySubscribe lang={lang} bottom={0} top={8} anchor='related-posts'/> --> <!-- <Author lang={lang} /> --> <!-- 整合底座容器 --><div class="mt-16 mb-28 bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700/60 rounded-2xl p-6 sm:p-8"> <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12"> <!-- 左侧：订阅区域 --> <!-- 适配逻辑：移动端/平板居中(text-center)，桌面端居左(lg:text-left) --> <div class="flex-1 w-full text-center lg:text-left flex flex-col items-center lg:items-start"> <h3 class="font-bold text-xl text-gray-900 dark:text-gray-100 mb-2"> 订阅 Fatbobman 周报 </h3> <p class="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md"> 每周精选 Swift 与 SwiftUI 开发技巧，加入众多开发者的行列。 </p> <!-- 订阅按钮：使用锚点链接触发 Modal --> <a href="#subscript" id="subscribe-bottom-btn" class="
           bg-black dark:bg-white text-white dark:text-black
           font-bold text-sm px-8 py-3 rounded-xl
           hover:opacity-80 hover:scale-105 active:scale-95
@@ -2352,7 +2352,7 @@ const utmTerm = "zh/newformatter";
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=WWDC%202021%20%E6%96%B0%20Formatter%20API%EF%BC%9A%E6%96%B0%E8%80%81%E6%AF%94%E8%BE%83%E5%8F%8A%E5%A6%82%E4%BD%95%E8%87%AA%E5%AE%9A%E4%B9%89&url=https%3A%2F%2Ffatbobman.com%2Fzh%2Fposts%2Fnewformatter%2F&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=Swift%20%E7%8E%B0%E4%BB%A3%20Formatter%20API%EF%BC%9A%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%E4%B8%8E%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E5%8D%97&url=https%3A%2F%2Ffatbobman.com%2Fzh%2Fposts%2Fnewformatter%2F&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5

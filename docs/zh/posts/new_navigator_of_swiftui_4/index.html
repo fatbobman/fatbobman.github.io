@@ -1,12 +1,12 @@
-<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>SwiftUI 4.0 的全新导航系统</title>
-<meta name="description" content="SwiftUI 4.0 推出全新导航系统，使用 NavigationStack 和 NavigationSplitView 实现编程式导航，支持视图堆栈管理、Deep Link 跳转。了解新API！">
+<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>SwiftUI 现代导航系统详解：NavigationStack 与 NavigationSplitView</title>
+<meta name="description" content="详解 SwiftUI 现代导航系统，使用 NavigationStack 和 NavigationSplitView 实现编程式导航，支持视图堆栈管理、Deep Link 跳转。了解新API！">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/zh/posts/new_navigator_of_swiftui_4/">
-<meta property="og:title" content="SwiftUI 4.0 的全新导航系统">
-<meta property="og:description" content="SwiftUI 4.0 推出全新导航系统，使用 NavigationStack 和 NavigationSplitView 实现编程式导航，支持视图堆栈管理、Deep Link 跳转。了解新API！">
+<meta property="og:title" content="SwiftUI 现代导航系统详解：NavigationStack 与 NavigationSplitView">
+<meta property="og:description" content="详解 SwiftUI 现代导航系统，使用 NavigationStack 和 NavigationSplitView 实现编程式导航，支持视图堆栈管理、Deep Link 跳转。了解新API！">
 <meta property="og:url" content="https://fatbobman.com/zh/posts/new_navigator_of_swiftui_4/">
 <meta property="og:type" content="article">
-<meta property="og:image" content="https://og.fatbobman.com/oc/new_navigator_of_SwiftUI_4.png">
+<meta property="og:image" content="https://og.fatbobman.com/card/deep-dive-into-modern-swiftui-navigation-zh.webp">
 
 <meta property="og:locale" content="zh">
 <meta property="og:site_name" content="fatbobman.com">
@@ -42,13 +42,13 @@
   "author": {
     "@id": "#author"
   },
-  "dateModified": "2022-06-14T00:12:00.000Z",
+  "dateModified": "2025-12-22T00:01:00.000Z",
   "datePublished": "2022-06-14T00:12:00.000Z",
-  "description": "SwiftUI 4.0 推出全新导航系统，使用 NavigationStack 和 NavigationSplitView 实现编程式导航，支持视图堆栈管理、Deep Link 跳转。了解新API！",
-  "headline": "SwiftUI 4.0 的全新导航系统",
+  "description": "详解 SwiftUI 现代导航系统，使用 NavigationStack 和 NavigationSplitView 实现编程式导航，支持视图堆栈管理、Deep Link 跳转。了解新API！",
+  "headline": "SwiftUI 现代导航系统详解：NavigationStack 与 NavigationSplitView",
   "image": {
     "@type": "ImageObject",
-    "url": "https://og.fatbobman.com/oc/new_navigator_of_SwiftUI_4.png"
+    "url": "https://og.fatbobman.com/card/deep-dive-into-modern-swiftui-navigation-zh.webp"
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -281,12 +281,14 @@ const enableStickyInMobile = true;
 #SwiftUI </a> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-wider
-    "> SwiftUI 4.0 的全新导航系统 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 gap-y-2 tracking-wide"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 东坡肘子 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2022-06-14T00:12:00.000Z"> 2022 年 6 月 14 日 </time>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <article class="prose dark:prose-invert mx-auto w-full prose-headings:tracking-wide prose-p:tracking-wide prose-a:tracking-wide"> <div> 
-<p>长久以来，开发者对 SwiftUI 的导航系统颇有微词。受 NavigationView 的能力限制，开发者需要动用各种技巧乃至黑科技才能实现一些本应具备基本功能（例如：返回根视图、向堆栈添加任意视图、返回任意层级视图、Deep Link 跳转等 ）。SwiftUI 4.0（ iOS 16+ 、macOS 13+ ）对导航系统作出了重大改变，提供了以视图堆栈为管理对象的新 API ，让开发者可以轻松实现编程式导航。本文将对新的导航系统作以介绍。</p>
+    "> SwiftUI 现代导航系统详解：NavigationStack 与 NavigationSplitView </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 gap-y-2 tracking-wide"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 东坡肘子 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2022-06-14T00:12:00.000Z"> 2022 年 6 月 14 日 </time>  <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <span class="italic text-muted/80">
+(更新于  <time datetime="2025-12-22T00:01:00.000Z">2025 年 12 月 22 日</time>)
+</span>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <article class="prose dark:prose-invert mx-auto w-full prose-headings:tracking-wide prose-p:tracking-wide prose-a:tracking-wide"> <div> 
+<p>长久以来，开发者对 SwiftUI 早期的导航系统（NavigationView）颇有微词。受其能力限制，实现返回根视图、向堆栈添加任意视图或 Deep Link 跳转等基本功能往往需要动用各种黑科技。自 iOS 16 和 macOS 13 起，SwiftUI 引入了以视图堆栈为管理对象的现代 API，让编程式导航变得轻松且直观。本文将深度解析这一现代导航系统。</p>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
-<h2 id="一分为二">一分为二</h2>
-<p>新的导航系统最直接的变化是废弃了 NavigationView，将其功能分成了两个单独的控件 NavigationStack 和 NavigationSplitView。</p>
-<p>NavigationStack 针对的是单栏的使用场景，例如 iPhone 、Apple TV、Apple Watch：</p>
+<h2 id="一分为二职能明确的导航控件">一分为二：职能明确的导航控件</h2>
+<p>现代导航系统最直接的变化是将功能分成了两个单独的控件：<code>NavigationStack</code> 和 <code>NavigationSplitView</code>。</p>
+<p><code>NavigationStack</code> 针对的是单栏堆栈场景（如 iPhone、Apple TV、WatchOS）：</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -307,7 +309,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#A0ADA0;--shiki-dark:#7B7F8B">// 相当于</span></span>
 <span class="line"><span style="color:#998418;--shiki-dark:#97E1F1">NavigationView</span><span style="color:#999999;--shiki-dark:#F6F6F4">{}</span></span>
 <span class="line"><span style="color:#393A34;--shiki-dark:#F6F6F4">    .</span><span style="color:#998418;--shiki-dark:#97E1F1">navigationViewStyle</span><span style="color:#999999;--shiki-dark:#F6F6F4">(</span><span style="color:#393A34;--shiki-dark:#F6F6F4">.</span><span style="color:#B07D48;--shiki-dark:#F6F6F4">stack</span><span style="color:#999999;--shiki-dark:#F6F6F4">)</span></span></code></pre>
-<p>NavigationSplitView 则针对的是多栏场景，例如 ：iPadOS 、macOS：</p>
+<p><code>NavigationSplitView</code> 则针对多栏布局（如 iPadOS、macOS）：</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -384,10 +386,10 @@ const enableStickyInMobile = true;
 <blockquote>
 <p>在 iPhone 这类设备中，NavigationSplitView 会自动进行单栏适配。但是无论是切换动画、编程式 API 接口等多方面都与 NavigationStack 明显不同。因此对于支持多硬件平台的应用来说，最好针对不同的场景分别使用对应的导航控件。</p>
 </blockquote>
-<h2 id="两个组件两种逻辑">两个组件两种逻辑</h2>
-<p>相较于控件名称上的改变，编程式导航 API 才是本次更新的最大亮点。使用新的编程式 API ，开发者可以轻松地实现例如：返回根视图、在当前视图堆栈中添加任意视图（ 视图跳转 ）、视图外跳转（ Deep Link ）等功能。</p>
+<h2 id="现代编程式导航逻辑">现代编程式导航逻辑</h2>
+<p>相较于控件名称的变化，编程式导航（Programmatic Navigation）的增强才是真正的杀手锏。开发者可以轻松地实现例如：返回根视图、在当前视图堆栈中添加任意视图（ 视图跳转 ）、视图外跳转（ Deep Link ）等功能。</p>
 <p>苹果为 NavigationStack 和 NavigationSplitView 提供了两种不同逻辑的 API ，这点或许会给部分开发者造成困扰。</p>
-<h3 id="navigationview-的编程式导航">NavigationView 的编程式导航</h3>
+<h3 id="传统的编程式跳转遗留方式">传统的编程式跳转（遗留方式）</h3>
 <p>NavigationView 其实是具备一定的编程式导航能力的，比如，我们可以通过以下两种 NavigationLink 的构造方法来实现有限的编程式跳转：</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
@@ -414,10 +416,8 @@ const enableStickyInMobile = true;
 <li>较难实现从视图外调用导航功能</li>
 </ul>
 <p>“能用，但不好用” 可能就是对老版本编程式导航比较贴切地总结。</p>
-<h3 id="navigationstack">NavigationStack</h3>
-<p>NavigationStack 从两个角度入手以解决上述问题。</p>
-<h4 id="基于类型的响应式目标视图处理机制">基于类型的响应式目标视图处理机制</h4>
-<p>比如下面的代码是在老版本（ 4.0 之前 ）SwiftUI 中使用编程式跳转的一种方式：</p>
+<h3 id="navigationstack基于类型的响应式跳转">NavigationStack：基于类型的响应式跳转</h3>
+<p>比如下面的代码是在传统导航 API 中使用编程式跳转的一种方式：</p>
 <div class="code-header flex justify-between items-center h-9 px-4 text-xs font-medium font-sans rounded-t-lg bg-gray-100 text-gray-600 border-t border-l border-r border-gray-200 dark:bg-[#1e293b] dark:text-slate-400 dark:border-t dark:border-l dark:border-r dark:border-slate-700/50">
   <span class="select-none">Swift</span>
   <button class="copy-button group relative flex items-center justify-center py-1 px-2 rounded transition-colors duration-200 text-gray-400 hover:text-red-600 dark:hover:text-blue-400" aria-label="Copy code" onclick="window.copyCode(this, event)">
@@ -507,8 +507,8 @@ const enableStickyInMobile = true;
 <li>对由同一类型的值驱动的目标进行统一管理（ 可以将堆栈中所有视图的 NavigationLink 处理程序统一到根视图中 ），有利于复杂的逻辑判断，也方便剥离代码</li>
 <li>NavigationLink 将优先使用最接近的类型目标管理代码。例如根视图，与第三层视图都通过 navigationDestination 定义了对 Int 的响应，那么第三层及其之上的视图将使用第三层的处理逻辑</li>
 </ul>
-<h4 id="可管理的视图堆栈系统">可管理的视图堆栈系统</h4>
-<p>相较于基于类型的响应式目标视图处理机制，可管理的视图堆栈系统才是新导航系统的杀手锏。</p>
+<h3 id="可管理的视图堆栈navigationpath">可管理的视图堆栈：NavigationPath</h3>
+<p>相较于基于类型的响应式目标视图处理机制，可管理的视图堆栈系统才是真正的杀手锏。</p>
 <p>NavigationStack 支持两种堆栈管理类型：</p>
 <ul>
 <li>
@@ -832,7 +832,7 @@ const enableStickyInMobile = true;
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">    }</span></span>
 <span class="line"><span style="color:#999999;--shiki-dark:#F6F6F4">}</span></span></code></pre>
 <blockquote>
-<p>SwiftUI 4.0 中，在 List 绑定了数据后，通过 List 构造方法创建的循环或 ForEach 创建的循环中的内容（ 不能自带点击属性，例如 Button 或 onTapGesture ），将被隐式添加 tag 修饰符，从而具备点击后可更改绑定数据的能力</p>
+<p>在 List 绑定了数据后，通过 List 构造方法创建的循环或 ForEach 创建的循环中的内容（ 不能自带点击属性，例如 Button 或 onTapGesture ），将被隐式添加 tag 修饰符，从而具备点击后可更改绑定数据的能力</p>
 </blockquote>
 <p>无论将 List 放置在 NavigationSplitView 的最左侧一栏（ 双栏模式 ）还是左侧两栏中（ 三栏模式 ），都可以通过 List 的绑定数据进行导航。这是 NavigationSplitView 的独有功能。</p>
 <blockquote>
@@ -1388,37 +1388,28 @@ const enableStickyInMobile = true;
   <img src="https://cdn.fatbobman.com/image-20220613220926715.png" alt="image-20220613220926715" loading="lazy" decoding="async"/>
 </picture></p>
 <h2 id="总结">总结</h2>
-<p>SwiftUI 4.0 导航系统的变化如此之大，开发者在惊喜的同时，也要冷静的面对事实。相当一部分开发者由于版本适配的原因并不会使用新的 API ，因此，每个人都需要认真考虑如下问题：</p>
-<ul>
-<li>如何从新 API 中获得灵感</li>
-<li>如何在老版本中运用编程式导航思想</li>
-<li>如何让新老版本的程序都能享受系统提供的便利</li>
-</ul>
-<p>另一方面，新导航系统也向每一个开发者传递了明确的信号，苹果希望应用能够为 iPad 和 macOS 提供更加符合各自设备特点的 UI 界面。这种信号会越来越强，苹果也为此会提供越来越多的 API。</p>
-<blockquote>
-<p>目前已经有人实现了 NavigationStack 在低版本 SwiftUI 下的仿制品 —— <a href="https://github.com/johnpatrickmorgan/NavigationBackport?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">NavigationBackport</a> ，有兴趣的朋友可以参考作者的实现方式</p>
-</blockquote> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/SwiftUI/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>SwiftUI </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/unified_management_of_resources_in_multi-package_projects/" class="
+<p>SwiftUI 现代导航系统的推出，标志着框架在复杂应用架构支持上的成熟。虽然目前仍有部分老项目需要处理低版本系统适配，但对于绝大多数新项目而言，掌握 <code>NavigationStack</code> 与 <code>NavigationSplitView</code> 的配合使用已是必修课。这套系统不仅提供了强大的编程式控制力，更在视觉上引导开发者为不同尺寸的设备提供更具适应性的 UI 体验。</p> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/SwiftUI/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>SwiftUI </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/adaptive-navigation-scheme/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">在多包项目中统一管理资源</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/onappear-call-timing/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">在 SwiftUI 中创建自适应的程序化导航方案</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/unified_management_of_resources_in_multi-package_projects/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">onAppear 的调用时机</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/adaptive-navigation-scheme/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">在多包项目中统一管理资源</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/swiftui-ipad/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">在 SwiftUI 中创建自适应的程序化导航方案</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/serious-issues-caused-by-delayed-state-updates-in-swiftui/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">在 SwiftUI 下对 iPad 进行适配</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/serious-issues-caused-by-delayed-state-updates-in-swiftui/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
@@ -2312,7 +2303,7 @@ const utmTerm = "zh/new_navigator_of_swiftui_4";
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=SwiftUI%204.0%20%E7%9A%84%E5%85%A8%E6%96%B0%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F&url=https%3A%2F%2Ffatbobman.com%2Fzh%2Fposts%2Fnew_navigator_of_swiftui_4%2F&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=SwiftUI%20%E7%8E%B0%E4%BB%A3%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F%E8%AF%A6%E8%A7%A3%EF%BC%9ANavigationStack%20%E4%B8%8E%20NavigationSplitView&url=https%3A%2F%2Ffatbobman.com%2Fzh%2Fposts%2Fnew_navigator_of_swiftui_4%2F&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
