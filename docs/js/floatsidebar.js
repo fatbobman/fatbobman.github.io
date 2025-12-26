@@ -1,11 +1,10 @@
-
 function getOffsetTop(element) {
-    var offsetTop = 0;
-    while (element) {
-        offsetTop += element.offsetTop;
-        element = element.offsetParent;
-    }
-    return offsetTop;
+  var offsetTop = 0;
+  while (element) {
+    offsetTop += element.offsetTop;
+    element = element.offsetParent;
+  }
+  return offsetTop;
 }
 
 var sidebar = document.querySelector('#sidebar');
@@ -17,20 +16,20 @@ var padding = 50;
 var topOffset = 0;
 
 function adjustSidebarPosition() {
-    var sidebarOffsetTop = sidebar.getBoundingClientRect().top;
-    if (sidebarOffsetTop <= stickyPoint) {
-        // 获取 positioningElement 的右侧与浏览器右侧之间的距离
-        var positioningElementRight = (window.innerWidth - positioningElement.getBoundingClientRect().width) / 2;
-        sidebar.style.position = 'fixed';
-        sidebar.style.top = stickyPoint + 'px';
-        sidebar.style.right = positioningElementRight - padding + 'px';
-    }
+  var sidebarOffsetTop = sidebar.getBoundingClientRect().top;
+  if (sidebarOffsetTop <= stickyPoint) {
+    // 获取 positioningElement 的右侧与浏览器右侧之间的距离
+    var positioningElementRight = (window.innerWidth - positioningElement.getBoundingClientRect().width) / 2;
+    sidebar.style.position = 'fixed';
+    sidebar.style.top = stickyPoint + 'px';
+    sidebar.style.right = positioningElementRight - padding + 'px';
+  }
 
-    if (window.scrollY <= initialTop - stickyPoint) {
-        sidebar.style.position = 'absolute';
-        sidebar.style.top = topOffset + 'px';
-        sidebar.style.right = '-' + padding + 'px';
-    }
+  if (window.scrollY <= initialTop - stickyPoint) {
+    sidebar.style.position = 'absolute';
+    sidebar.style.top = topOffset + 'px';
+    sidebar.style.right = '-' + padding + 'px';
+  }
 }
 
 document.addEventListener('scroll', adjustSidebarPosition);

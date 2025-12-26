@@ -49,17 +49,20 @@ export async function onRequest(context) {
       default:
         return new Response(JSON.stringify({ error: 'Method not allowed' }), {
           status: 405,
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
         });
     }
   } catch (error) {
-    return new Response(JSON.stringify({
-      error: error.message,
-      stack: error.stack
-    }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: error.message,
+        stack: error.stack,
+      }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 }
 
@@ -74,13 +77,16 @@ async function handleList(kv) {
     try {
       adsData = JSON.parse(rawData);
     } catch (e) {
-      return new Response(JSON.stringify({
-        error: 'Failed to parse ads data',
-        details: e.message
-      }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
-      });
+      return new Response(
+        JSON.stringify({
+          error: 'Failed to parse ads data',
+          details: e.message,
+        }),
+        {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
     }
   } else {
     // Initialize with empty structure if no data exists
@@ -94,34 +100,38 @@ async function handleList(kv) {
           cta: '成为赞助商',
           link: '/en/sponsorship/',
           logo: 'https://cdn.fatbobman.com/placeholder-tools.svg',
-          badge: '示例赞助商'
+          badge: '示例赞助商',
         },
         en: {
           id: 'default-en',
           title: 'Reach Swift Developers. Share Your Product.',
-          description: 'Promote your framework, tool, service, or app to a highly targeted iOS & Swift developer audience across blog and newsletter placements.',
+          description:
+            'Promote your framework, tool, service, or app to a highly targeted iOS & Swift developer audience across blog and newsletter placements.',
           cta: 'Become a sponsor',
           link: '/en/sponsorship/',
           logo: 'https://cdn.fatbobman.com/placeholder-tools.svg',
-          badge: 'Example Sponsor'
-        }
+          badge: 'Example Sponsor',
+        },
       },
       metadata: {
         lastUpdated: new Date().toISOString(),
-        version: '1.0'
-      }
+        version: '1.0',
+      },
     };
   }
 
-  return new Response(JSON.stringify({
-    success: true,
-    data: adsData,
-    count: adsData.schedules.length,
-    timestamp: new Date().toISOString()
-  }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' }
-  });
+  return new Response(
+    JSON.stringify({
+      success: true,
+      data: adsData,
+      count: adsData.schedules.length,
+      timestamp: new Date().toISOString(),
+    }),
+    {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
 }
 
 /**
@@ -134,24 +144,30 @@ async function handleCreate(kv, request) {
 
   // Validate required fields
   if (!sponsorId || !startDate || !endDate || !variants) {
-    return new Response(JSON.stringify({
-      error: 'Missing required fields: sponsorId, startDate, endDate, variants'
-    }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: 'Missing required fields: sponsorId, startDate, endDate, variants',
+      }),
+      {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   // Validate variants structure and content, auto-generate IDs
   const variantsValidation = validateVariants(variants, sponsorId);
   if (!variantsValidation.valid) {
-    return new Response(JSON.stringify({
-      error: 'Invalid variants data',
-      details: variantsValidation.errors
-    }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: 'Invalid variants data',
+        details: variantsValidation.errors,
+      }),
+      {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   // Get existing data
@@ -162,12 +178,15 @@ async function handleCreate(kv, request) {
     try {
       adsData = JSON.parse(rawData);
     } catch (e) {
-      return new Response(JSON.stringify({
-        error: 'Failed to parse existing ads data'
-      }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
-      });
+      return new Response(
+        JSON.stringify({
+          error: 'Failed to parse existing ads data',
+        }),
+        {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
     }
   } else {
     // Initialize with empty structure
@@ -181,22 +200,23 @@ async function handleCreate(kv, request) {
           cta: '成为赞助商',
           link: '/en/sponsorship/',
           logo: 'https://cdn.fatbobman.com/placeholder-tools.svg',
-          badge: '示例赞助商'
+          badge: '示例赞助商',
         },
         en: {
           id: 'default-en',
           title: 'Reach Swift Developers. Share Your Product.',
-          description: 'Promote your framework, tool, service, or app to a highly targeted iOS & Swift developer audience across blog and newsletter placements.',
+          description:
+            'Promote your framework, tool, service, or app to a highly targeted iOS & Swift developer audience across blog and newsletter placements.',
           cta: 'Become a sponsor',
           link: '/en/sponsorship/',
           logo: 'https://cdn.fatbobman.com/placeholder-tools.svg',
-          badge: 'Example Sponsor'
-        }
+          badge: 'Example Sponsor',
+        },
       },
       metadata: {
         lastUpdated: new Date().toISOString(),
-        version: '1.0'
-      }
+        version: '1.0',
+      },
     };
   }
 
@@ -210,8 +230,8 @@ async function handleCreate(kv, request) {
     startDate,
     endDate,
     enabled,
-    variants: variantsValidation.processedVariants,  // Use processed variants with auto-generated IDs
-    notes
+    variants: variantsValidation.processedVariants, // Use processed variants with auto-generated IDs
+    notes,
   };
 
   // Add to schedules array
@@ -223,15 +243,18 @@ async function handleCreate(kv, request) {
   // Save to KV
   await kv.put(ADS_KEY, JSON.stringify(adsData));
 
-  return new Response(JSON.stringify({
-    success: true,
-    message: 'Advertisement schedule created successfully',
-    data: newSchedule,
-    timestamp: new Date().toISOString()
-  }), {
-    status: 201,
-    headers: { 'Content-Type': 'application/json' }
-  });
+  return new Response(
+    JSON.stringify({
+      success: true,
+      message: 'Advertisement schedule created successfully',
+      data: newSchedule,
+      timestamp: new Date().toISOString(),
+    }),
+    {
+      status: 201,
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
 }
 
 /**
@@ -243,48 +266,60 @@ async function handleUpdate(kv, request) {
   const { id, ...updates } = body;
 
   if (!id) {
-    return new Response(JSON.stringify({
-      error: 'Missing required field: id'
-    }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: 'Missing required field: id',
+      }),
+      {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   // Get existing data
   const rawData = await kv.get(ADS_KEY, { type: 'text' });
 
   if (!rawData) {
-    return new Response(JSON.stringify({
-      error: 'No advertisement data found'
-    }), {
-      status: 404,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: 'No advertisement data found',
+      }),
+      {
+        status: 404,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   let adsData;
   try {
     adsData = JSON.parse(rawData);
   } catch (e) {
-    return new Response(JSON.stringify({
-      error: 'Failed to parse ads data'
-    }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: 'Failed to parse ads data',
+      }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   // Find schedule by ID
-  const scheduleIndex = adsData.schedules.findIndex(s => s.id === id);
+  const scheduleIndex = adsData.schedules.findIndex((s) => s.id === id);
 
   if (scheduleIndex === -1) {
-    return new Response(JSON.stringify({
-      error: 'Advertisement schedule not found'
-    }), {
-      status: 404,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: 'Advertisement schedule not found',
+      }),
+      {
+        status: 404,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   // Determine sponsorId to use for validation
@@ -294,13 +329,16 @@ async function handleUpdate(kv, request) {
   if (updates.variants) {
     const variantsValidation = validateVariants(updates.variants, sponsorId);
     if (!variantsValidation.valid) {
-      return new Response(JSON.stringify({
-        error: 'Invalid variants data',
-        details: variantsValidation.errors
-      }), {
-        status: 400,
-        headers: { 'Content-Type': 'application/json' }
-      });
+      return new Response(
+        JSON.stringify({
+          error: 'Invalid variants data',
+          details: variantsValidation.errors,
+        }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
     }
     // Use processed variants with auto-generated IDs
     updates.variants = variantsValidation.processedVariants;
@@ -309,7 +347,7 @@ async function handleUpdate(kv, request) {
   // Update schedule with provided fields
   adsData.schedules[scheduleIndex] = {
     ...adsData.schedules[scheduleIndex],
-    ...updates
+    ...updates,
   };
 
   // Update metadata
@@ -318,15 +356,18 @@ async function handleUpdate(kv, request) {
   // Save to KV
   await kv.put(ADS_KEY, JSON.stringify(adsData));
 
-  return new Response(JSON.stringify({
-    success: true,
-    message: 'Advertisement schedule updated successfully',
-    data: adsData.schedules[scheduleIndex],
-    timestamp: new Date().toISOString()
-  }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' }
-  });
+  return new Response(
+    JSON.stringify({
+      success: true,
+      message: 'Advertisement schedule updated successfully',
+      data: adsData.schedules[scheduleIndex],
+      timestamp: new Date().toISOString(),
+    }),
+    {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
 }
 
 /**
@@ -338,48 +379,60 @@ async function handleDelete(kv, request) {
   const id = url.searchParams.get('id');
 
   if (!id) {
-    return new Response(JSON.stringify({
-      error: 'Missing required query parameter: id'
-    }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: 'Missing required query parameter: id',
+      }),
+      {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   // Get existing data
   const rawData = await kv.get(ADS_KEY, { type: 'text' });
 
   if (!rawData) {
-    return new Response(JSON.stringify({
-      error: 'No advertisement data found'
-    }), {
-      status: 404,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: 'No advertisement data found',
+      }),
+      {
+        status: 404,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   let adsData;
   try {
     adsData = JSON.parse(rawData);
   } catch (e) {
-    return new Response(JSON.stringify({
-      error: 'Failed to parse ads data'
-    }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: 'Failed to parse ads data',
+      }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   // Find schedule by ID
-  const scheduleIndex = adsData.schedules.findIndex(s => s.id === id);
+  const scheduleIndex = adsData.schedules.findIndex((s) => s.id === id);
 
   if (scheduleIndex === -1) {
-    return new Response(JSON.stringify({
-      error: 'Advertisement schedule not found'
-    }), {
-      status: 404,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: 'Advertisement schedule not found',
+      }),
+      {
+        status: 404,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   // Remove schedule
@@ -391,15 +444,18 @@ async function handleDelete(kv, request) {
   // Save to KV
   await kv.put(ADS_KEY, JSON.stringify(adsData));
 
-  return new Response(JSON.stringify({
-    success: true,
-    message: 'Advertisement schedule deleted successfully',
-    data: deletedSchedule,
-    timestamp: new Date().toISOString()
-  }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' }
-  });
+  return new Response(
+    JSON.stringify({
+      success: true,
+      message: 'Advertisement schedule deleted successfully',
+      data: deletedSchedule,
+      timestamp: new Date().toISOString(),
+    }),
+    {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
 }
 
 /**
@@ -412,12 +468,15 @@ async function handleUpdateDefault(kv, request) {
 
   // Validate required fields
   if (!zh || !en) {
-    return new Response(JSON.stringify({
-      error: 'Missing required fields: zh and en default ads'
-    }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: 'Missing required fields: zh and en default ads',
+      }),
+      {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   // Validate zh default ad (support both array and object formats)
@@ -438,12 +497,15 @@ async function handleUpdateDefault(kv, request) {
   }
 
   if (!zhValidation.valid) {
-    return new Response(JSON.stringify({
-      error: `Invalid zh default ad: ${zhValidation.errors.join(', ')}`
-    }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: `Invalid zh default ad: ${zhValidation.errors.join(', ')}`,
+      }),
+      {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   // Validate en default ad (support both array and object formats)
@@ -464,12 +526,15 @@ async function handleUpdateDefault(kv, request) {
   }
 
   if (!enValidation.valid) {
-    return new Response(JSON.stringify({
-      error: `Invalid en default ad: ${enValidation.errors.join(', ')}`
-    }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: `Invalid en default ad: ${enValidation.errors.join(', ')}`,
+      }),
+      {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   // Get existing data
@@ -480,12 +545,15 @@ async function handleUpdateDefault(kv, request) {
     try {
       adsData = JSON.parse(rawData);
     } catch (e) {
-      return new Response(JSON.stringify({
-        error: 'Failed to parse existing ads data'
-      }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' }
-      });
+      return new Response(
+        JSON.stringify({
+          error: 'Failed to parse existing ads data',
+        }),
+        {
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
     }
   } else {
     adsData = {
@@ -493,8 +561,8 @@ async function handleUpdateDefault(kv, request) {
       default: {},
       metadata: {
         lastUpdated: new Date().toISOString(),
-        version: '1.0'
-      }
+        version: '1.0',
+      },
     };
   }
 
@@ -505,15 +573,18 @@ async function handleUpdateDefault(kv, request) {
   // Save to KV
   await kv.put(ADS_KEY, JSON.stringify(adsData));
 
-  return new Response(JSON.stringify({
-    success: true,
-    message: 'Default advertisement updated successfully',
-    data: adsData.default,
-    timestamp: new Date().toISOString()
-  }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' }
-  });
+  return new Response(
+    JSON.stringify({
+      success: true,
+      message: 'Default advertisement updated successfully',
+      data: adsData.default,
+      timestamp: new Date().toISOString(),
+    }),
+    {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
 }
 
 /**
@@ -556,7 +627,7 @@ function validateAdVariant(variant, lang = '') {
 
   return {
     valid: errors.length === 0,
-    errors
+    errors,
   };
 }
 
@@ -620,7 +691,7 @@ function validateScheduleVariant(variant, lang = '', sponsorId = '') {
   return {
     valid: errors.length === 0,
     errors,
-    id: generatedId
+    id: generatedId,
   };
 }
 
@@ -645,7 +716,7 @@ function validateVariants(variants, sponsorId = '') {
       if (validation.valid && validation.id) {
         processedVariants.zh.push({
           ...variant,
-          id: validation.id  // Auto-generated: {sponsorId}-zh-v{version}
+          id: validation.id, // Auto-generated: {sponsorId}-zh-v{version}
         });
       } else {
         processedVariants.zh.push(variant);
@@ -664,7 +735,7 @@ function validateVariants(variants, sponsorId = '') {
       if (validation.valid && validation.id) {
         processedVariants.en.push({
           ...variant,
-          id: validation.id  // Auto-generated: {sponsorId}-en-v{version}
+          id: validation.id, // Auto-generated: {sponsorId}-en-v{version}
         });
       } else {
         processedVariants.en.push(variant);
@@ -675,7 +746,7 @@ function validateVariants(variants, sponsorId = '') {
   return {
     valid: errors.length === 0,
     errors,
-    processedVariants: errors.length === 0 ? processedVariants : undefined
+    processedVariants: errors.length === 0 ? processedVariants : undefined,
   };
 }
 
@@ -696,9 +767,9 @@ function isValidURL(string) {
  * Generate UUID v4
  */
 function generateUUID() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    const r = Math.random() * 16 | 0;
-    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });
 }
@@ -712,21 +783,27 @@ async function handleImport(kv, request) {
 
   // Validate structure
   if (!body.schedules || !Array.isArray(body.schedules)) {
-    return new Response(JSON.stringify({
-      error: 'Invalid data: missing schedules array'
-    }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: 'Invalid data: missing schedules array',
+      }),
+      {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   if (!body.default || !body.default.zh || !body.default.en) {
-    return new Response(JSON.stringify({
-      error: 'Invalid data: missing default ads (zh and en required)'
-    }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({
+        error: 'Invalid data: missing default ads (zh and en required)',
+      }),
+      {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   // Update metadata timestamp
@@ -735,19 +812,22 @@ async function handleImport(kv, request) {
     metadata: {
       ...(body.metadata || {}),
       lastUpdated: new Date().toISOString(),
-      version: '1.0'
-    }
+      version: '1.0',
+    },
   };
 
   // Save to KV
   await kv.put(ADS_KEY, JSON.stringify(importData));
 
-  return new Response(JSON.stringify({
-    success: true,
-    message: `Imported ${body.schedules.length} schedules and default ads`,
-    timestamp: new Date().toISOString()
-  }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' }
-  });
+  return new Response(
+    JSON.stringify({
+      success: true,
+      message: `Imported ${body.schedules.length} schedules and default ads`,
+      timestamp: new Date().toISOString(),
+    }),
+    {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
 }

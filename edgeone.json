@@ -1,53 +1,53 @@
 {
-    "name": "blogsource",
-    "outputDirectory": "./docs",
-    "proxy": 4321,
-    "kv_namespaces": [
+  "name": "blogsource",
+  "outputDirectory": "./docs",
+  "proxy": 4321,
+  "kv_namespaces": [
+    {
+      "binding": "test1",
+      "id": "ns-z9VoO3Bn2kL6"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "$wwwhost",
+      "destination": "$host",
+      "statusCode": 301
+    },
+    {
+      "source": "en/tags/Cor%20Data/",
+      "destination": "en/tags/Core-Data/",
+      "statusCode": 301
+    },
+    {
+      "source": "zh/tags/Core%20Data/",
+      "destination": "zh/tags/Core-Data/",
+      "statusCode": 301
+    }
+  ],
+  "rewrites": [],
+  "headers": [
+    {
+      "source": "/*",
+      "headers": [
         {
-            "binding": "test1",
-            "id": "ns-z9VoO3Bn2kL6"
-        }
-    ],
-    "redirects": [
-        {
-            "source": "$wwwhost",
-            "destination": "$host",
-            "statusCode": 301
+          "key": "X-Frame-Options",
+          "value": "DENY"
         },
         {
-            "source": "en/tags/Cor%20Data/",
-            "destination": "en/tags/Core-Data/",
-            "statusCode": 301
-        },
-        {
-            "source": "zh/tags/Core%20Data/",
-            "destination": "zh/tags/Core-Data/",
-            "statusCode": 301
+          "key": "Cache-Control",
+          "value": "max-age=7200"
         }
-    ],
-    "rewrites": [],
-    "headers": [
+      ]
+    },
+    {
+      "source": "/_astro/*",
+      "headers": [
         {
-            "source": "/*",
-            "headers": [
-                {
-                    "key": "X-Frame-Options",
-                    "value": "DENY"
-                },
-                {
-                    "key": "Cache-Control",
-                    "value": "max-age=7200"
-                }
-            ]
-        },
-        {
-            "source": "/_astro/*",
-            "headers": [
-                {
-                    "key": "Cache-Control",
-                    "value": "max-age=15768000, immutable"
-                }
-            ]
+          "key": "Cache-Control",
+          "value": "max-age=15768000, immutable"
         }
-    ]
+      ]
+    }
+  ]
 }

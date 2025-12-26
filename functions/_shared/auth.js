@@ -42,7 +42,7 @@ export function verifySession(request) {
 
   // Parse cookies
   const cookies = Object.fromEntries(
-    cookieHeader.split(';').map(c => {
+    cookieHeader.split(';').map((c) => {
       const [key, val] = c.trim().split('=');
       return [key, val];
     })
@@ -70,7 +70,7 @@ export function requireAuth(request) {
   if (!verifySession(request)) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), {
       status: 401,
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
     });
   }
   return null; // Authentication successful

@@ -29,7 +29,7 @@ export const TAILWIND_CONFIG = {
       colors: {
         primary: '#c72f1c',
         secondary: '#c72f1c',
-      }
-    }
-  }
+      },
+    },
+  },
 };

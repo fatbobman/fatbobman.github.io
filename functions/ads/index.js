@@ -34,7 +34,7 @@ export async function onRequest(context) {
   if (!['zh', 'en'].includes(lang)) {
     return new Response(JSON.stringify({ error: 'Invalid lang parameter. Must be zh or en.' }), {
       status: 400,
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
     });
   }
 
@@ -46,7 +46,7 @@ export async function onRequest(context) {
     'http://dev.fatbobman.com:8788',
     'https://fatbobman.com',
     'https://fatbobman.github.io',
-    'blogsource-8wyy6rcw.edgeone.site'
+    'blogsource-8wyy6rcw.edgeone.site',
   ];
 
   const origin = request.headers.get('Origin');
@@ -60,7 +60,8 @@ export async function onRequest(context) {
     headers.append('Vary', 'Origin');
 
     // Expose custom headers to JavaScript (required for CORS)
-    headers.append('Access-Control-Expose-Headers',
+    headers.append(
+      'Access-Control-Expose-Headers',
       'X-Build-Number, X-Ad-Id, X-Sponsor-Id, X-Ad-Version, X-Ad-Lang, X-UTM-Campaign, X-Force-Update, Last-Modified'
     );
   }
@@ -105,7 +106,7 @@ export async function onRequest(context) {
         version: requestedVersion,
         lang: lang,
         lastUpdated: adsData.metadata?.lastUpdated || new Date().toISOString(),
-        forceUpdate: forceUpdate
+        forceUpdate: forceUpdate,
       });
 
       headers.append('Cache-Control', 'public, max-age=300, stale-while-revalidate=600');
@@ -117,15 +118,13 @@ export async function onRequest(context) {
 
     if (requestedScheduleId) {
       // Test mode: find specific schedule by ID (ignore date)
-      activeSchedule = adsData.schedules.find(s => s.id === requestedScheduleId);
+      activeSchedule = adsData.schedules.find((s) => s.id === requestedScheduleId);
     } else if (requestedSponsorId) {
       // Test mode: find specific sponsor (ignore date)
-      activeSchedule = adsData.schedules.find(s =>
-        s.sponsorId === requestedSponsorId && s.enabled
-      );
+      activeSchedule = adsData.schedules.find((s) => s.sponsorId === requestedSponsorId && s.enabled);
     } else {
       // Production mode: find schedule active now (UTC time)
-      activeSchedule = adsData.schedules.find(s => {
+      activeSchedule = adsData.schedules.find((s) => {
         if (!s.enabled) return false;
 
         // Parse dates as UTC (full day coverage)
@@ -154,7 +153,7 @@ export async function onRequest(context) {
         version: requestedVersion,
         lang: lang,
         lastUpdated: adsData.metadata?.lastUpdated || new Date().toISOString(),
-        forceUpdate: forceUpdate
+        forceUpdate: forceUpdate,
       });
 
       headers.append('Cache-Control', 'public, max-age=300, stale-while-revalidate=600');
@@ -183,7 +182,7 @@ export async function onRequest(context) {
         version: requestedVersion,
         lang: lang,
         lastUpdated: adsData.metadata?.lastUpdated || new Date().toISOString(),
-        forceUpdate: forceUpdate
+        forceUpdate: forceUpdate,
       });
 
       headers.append('Cache-Control', 'public, max-age=300, stale-while-revalidate=600');
@@ -204,7 +203,7 @@ export async function onRequest(context) {
       lang: lang,
       lastUpdated: adsData.metadata?.lastUpdated || new Date().toISOString(),
       forceUpdate: forceUpdate,
-      campaign: activeSchedule.campaign // Optional UTM campaign parameter
+      campaign: activeSchedule.campaign, // Optional UTM campaign parameter
     });
 
     // Cache for 30 seconds for sponsored ads
@@ -221,7 +220,6 @@ export async function onRequest(context) {
     headers.append('ETag', etag);
 
     return new Response(html, { headers });
-
   } catch (error) {
     console.error('Error fetching ad:', error);
     return fallbackResponse(headers, lang);
@@ -239,12 +237,12 @@ function findVariantWithFallback(variants, requestedVersion) {
   if (variants.length === 0) return null;
 
   // Priority 1: Find requested version
-  let variant = variants.find(v => v.version === requestedVersion);
+  let variant = variants.find((v) => v.version === requestedVersion);
   if (variant) return variant;
 
   // Priority 2: Fallback to version 1
   if (requestedVersion !== 1) {
-    variant = variants.find(v => v.version === 1);
+    variant = variants.find((v) => v.version === 1);
     if (variant) return variant;
   }
 

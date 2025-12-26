@@ -14,7 +14,7 @@ export async function onRequest(context) {
   if (request.method !== 'GET') {
     return new Response(JSON.stringify({ error: 'Method not allowed' }), {
       status: 405,
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
     });
   }
 
@@ -23,12 +23,15 @@ export async function onRequest(context) {
   if (authError) return authError;
 
   // If authenticated, return success
-  return new Response(JSON.stringify({
-    success: true,
-    message: 'Authentication successful! You have access to admin APIs.',
-    timestamp: new Date().toISOString()
-  }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' }
-  });
+  return new Response(
+    JSON.stringify({
+      success: true,
+      message: 'Authentication successful! You have access to admin APIs.',
+      timestamp: new Date().toISOString(),
+    }),
+    {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
 }

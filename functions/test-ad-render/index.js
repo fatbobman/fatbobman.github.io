@@ -14,7 +14,8 @@ const testAds = {
     {
       id: 'test-zh-v1',
       title: 'Mac 原生 AI 客户端：聚合 GPT、Claude 及本地模型',
-      description: 'BoltAI 将 GPT、Claude、Gemini 和 Ollama 本地模型集成到你的工作流中。支持屏幕感知与代码重构，真正属于开发者的原生神器。',
+      description:
+        'BoltAI 将 GPT、Claude、Gemini 和 Ollama 本地模型集成到你的工作流中。支持屏幕感知与代码重构，真正属于开发者的原生神器。',
       cta: '立即试用',
       link: 'https://l.fatbobman.com/sb-boltai-zh',
       logo: 'https://cdn.fatbobman.com/sb-boltai-White512@2x.png',
@@ -22,35 +23,36 @@ const testAds = {
         {
           content: {
             text: '🎉 优惠码: <span class="font-bold font-mono">BFCM25</span> <span class="opacity-80">(51% OFF)</span>',
-            html: true
+            html: true,
           },
           enabled: true,
-          highlight: true
-        }
+          highlight: true,
+        },
       ],
       badge: 'Sponsor',
       showSponsorLink: true,
-      sponsorLinkText: '成为赞助商'
+      sponsorLinkText: '成为赞助商',
     },
     {
       id: 'test-zh-v2',
       title: {
         text: 'BoltAI - <span class="text-orange-700 dark:text-blue-300">开发者的 AI 神器</span>',
-        html: true
+        html: true,
       },
-      description: '原生 macOS 应用，无缝整合多个 AI 模型。一键重构代码，智能理解屏幕内容，让 AI 真正成为你的编程助手。',
+      description:
+        '原生 macOS 应用，无缝整合多个 AI 模型。一键重构代码，智能理解屏幕内容，让 AI 真正成为你的编程助手。',
       cta: '免费下载',
       link: 'https://l.fatbobman.com/sb-boltai-zh',
       logo: 'https://cdn.fatbobman.com/sb-boltai-White512@2x.png',
       features: ['🚀 限时优惠 51% OFF'],
-      badge: 'Sponsor'
+      badge: 'Sponsor',
     },
     {
       id: 'test-zh-v3',
       title: 'Proxyman - 原生 macOS 网络调试代理',
       description: {
         text: '告别手动证书配置。Proxyman 使用 <strong class="text-orange-700 dark:text-blue-400">Atlantis 框架</strong>自动捕获和解密 HTTPs 流量。',
-        html: true
+        html: true,
       },
       cta: '免费下载',
       link: 'https://l.fatbobman.com/sb-proxyman-zh',
@@ -60,10 +62,10 @@ const testAds = {
         {
           content: '🚀 功能: 零配置调试',
           enabled: true,
-          highlight: true
-        }
+          highlight: true,
+        },
       ],
-      badge: 'Sponsor'
+      badge: 'Sponsor',
     },
     {
       id: 'test-zh-v4',
@@ -74,14 +76,15 @@ const testAds = {
       logo: 'https://cdn.fatbobman.com/placeholder-tools.svg',
       features: [],
       badge: 'Sponsor',
-      showSponsorLink: false
-    }
+      showSponsorLink: false,
+    },
   ],
   en: [
     {
       id: 'test-en-v1',
       title: 'Native macOS AI Client: GPT, Claude, Gemini & Local Models',
-      description: 'BoltAI integrates GPT, Claude, Gemini, and Ollama local models directly into your workflow. Features screen context awareness and code refactoring — built for developers.',
+      description:
+        'BoltAI integrates GPT, Claude, Gemini, and Ollama local models directly into your workflow. Features screen context awareness and code refactoring — built for developers.',
       cta: 'Try it now',
       link: 'https://l.fatbobman.com/sb-boltai',
       logo: 'https://cdn.fatbobman.com/sb-boltai-White512@2x.png',
@@ -89,28 +92,29 @@ const testAds = {
         {
           content: {
             text: '🎉 Code: <span class="font-bold font-mono">BFCM25</span> <span class="opacity-80">(51% OFF)</span>',
-            html: true
+            html: true,
           },
           enabled: true,
-          highlight: true
-        }
+          highlight: true,
+        },
       ],
       badge: 'SPONSOR',
       showSponsorLink: true,
-      sponsorLinkText: 'Become a sponsor'
+      sponsorLinkText: 'Become a sponsor',
     },
     {
       id: 'test-en-v2',
       title: 'Example Product - No Promotion',
-      description: 'This is an example ad without special promotional features. Still maintains a clean and elegant display.',
+      description:
+        'This is an example ad without special promotional features. Still maintains a clean and elegant display.',
       cta: 'Learn More',
       link: '/en/sponsorship/',
       logo: 'https://cdn.fatbobman.com/placeholder-tools.svg',
       features: [],
       badge: 'SPONSOR',
-      showSponsorLink: false
-    }
-  ]
+      showSponsorLink: false,
+    },
+  ],
 };
 
 export async function onRequest(context) {
@@ -128,8 +132,8 @@ export async function onRequest(context) {
     return new Response(JSON.stringify(adData, null, 2), {
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      }
+        'Access-Control-Allow-Origin': '*',
+      },
     });
   }
 
@@ -191,7 +195,9 @@ export async function onRequest(context) {
         <div>
           <label class="block text-sm font-medium mb-1">Variant:</label>
           <select id="variant" class="border rounded px-3 py-2">
-            ${variants.map((v, i) => `<option value="${i}" ${i === variantIndex ? 'selected' : ''}>${v.id}</option>`).join('')}
+            ${variants
+              .map((v, i) => `<option value="${i}" ${i === variantIndex ? 'selected' : ''}>${v.id}</option>`)
+              .join('')}
           </select>
         </div>
         <div>
@@ -246,8 +252,8 @@ export async function onRequest(context) {
   return new Response(htmlPage, {
     headers: {
       'Content-Type': 'text/html; charset=UTF-8',
-      'Access-Control-Allow-Origin': '*'
-    }
+      'Access-Control-Allow-Origin': '*',
+    },
   });
 }
 
@@ -257,7 +263,7 @@ function escapeHtml(text) {
     '<': '&lt;',
     '>': '&gt;',
     '"': '&quot;',
-    "'": '&#039;'
+    "'": '&#039;',
   };
-  return text.replace(/[&<>"']/g, m => map[m]);
+  return text.replace(/[&<>"']/g, (m) => map[m]);
 }

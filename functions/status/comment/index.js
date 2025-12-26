@@ -1,5 +1,4 @@
-const showComment = "1"
-
+const showComment = '1';
 
 export function onRequest() {
   return new Response(showComment, {
@@ -9,4 +8,3 @@ export function onRequest() {
     },
   });
 }
-

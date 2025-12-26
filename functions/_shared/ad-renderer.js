@@ -34,9 +34,9 @@ function escapeHtml(text) {
     '<': '&lt;',
     '>': '&gt;',
     '"': '&quot;',
-    "'": '&#039;'
+    "'": '&#039;',
   };
-  return text.replace(/[&<>"']/g, m => map[m]);
+  return text.replace(/[&<>"']/g, (m) => map[m]);
 }
 
 /**
@@ -104,12 +104,15 @@ export function renderAdPrimary(adData, lang = 'zh') {
     badge = 'SPONSOR',
     showSponsorLink = true,
     sponsorLinkText,
-    customStyles = {}
+    customStyles = {},
   } = adData;
 
   const titleHtml = renderRichText(title);
   const descriptionHtml = renderRichText(description);
-  const featuresHtml = features.map(f => renderFeature(f)).filter(Boolean).join('\n');
+  const featuresHtml = features
+    .map((f) => renderFeature(f))
+    .filter(Boolean)
+    .join('\n');
   const hasSponsorFeatures = features.length > 0;
   const isAnchorLink = typeof link === 'string' && link.startsWith('#');
   const targetAttr = isAnchorLink ? '' : ' target="_blank"';
@@ -121,7 +124,8 @@ export function renderAdPrimary(adData, lang = 'zh') {
   const sponsorLinkHref = lang === 'zh' ? '/zh/sponsorship/' : '/en/sponsorship/';
 
   // Logo HTML with dark mode support
-  const logoHtml = logoDark ? `
+  const logoHtml = logoDark
+    ? `
     <!-- Light mode logo -->
     <img
       src="${logo}"
@@ -136,7 +140,8 @@ export function renderAdPrimary(adData, lang = 'zh') {
       class="hidden dark:block w-12 h-12 sm:w-16 sm:h-16 rounded-xl shadow-sm bg-transparent object-cover"
       loading="lazy"
     />
-  ` : `
+  `
+    : `
     <img
       src="${logo}"
       alt="Sponsor Logo"
@@ -167,7 +172,9 @@ export function renderAdPrimary(adData, lang = 'zh') {
         <div class="flex-1 min-w-0 pt-0.5">
           <!-- 顶部行：标题 + 标签 -->
           <div class="flex items-start justify-between gap-3 mb-1.5">
-            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ${customStyles.titleClass || ''}">
+            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ${
+              customStyles.titleClass || ''
+            }">
               ${titleHtml}
             </h4>
 
@@ -182,12 +189,16 @@ export function renderAdPrimary(adData, lang = 'zh') {
           </div>
 
           <!-- 描述文字 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ${customStyles.descriptionClass || ''}">
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ${
+            customStyles.descriptionClass || ''
+          }">
             ${descriptionHtml}
           </p>
 
           <!-- 底部行：Features + CTA -->
-          ${hasSponsorFeatures ? `
+          ${
+            hasSponsorFeatures
+              ? `
           <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ${customStyles.ctaClass || ''}">
             <!-- Features -->
             ${featuresHtml}
@@ -204,7 +215,8 @@ export function renderAdPrimary(adData, lang = 'zh') {
               </svg>
             </div>
           </div>
-          ` : `
+          `
+              : `
           <!-- No features, show only CTA -->
           <div class="mt-3 flex items-center gap-1 text-xs sm:text-sm
             text-gray-500 dark:text-gray-500
@@ -216,13 +228,16 @@ export function renderAdPrimary(adData, lang = 'zh') {
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
             </svg>
           </div>
-          `}
+          `
+          }
         </div>
       </div>
     </div>
   </a>
 
-  ${showSponsorLink ? `
+  ${
+    showSponsorLink
+      ? `
   <!-- 外部链接：招商 -->
   <div class="flex justify-end mt-2 mr-1">
     <a href="${sponsorLinkHref}" target="_blank"
@@ -236,7 +251,9 @@ export function renderAdPrimary(adData, lang = 'zh') {
       </svg>
     </a>
   </div>
-  ` : ''}
+  `
+      : ''
+  }
 </div>
   `.trim();
 }
@@ -249,15 +266,7 @@ export function renderAdPrimary(adData, lang = 'zh') {
  * @returns {string} Complete HTML for the advertisement
  */
 export function renderAdSecondary(adData, lang = 'zh') {
-  const {
-    title,
-    description,
-    cta,
-    link,
-    logo,
-    logoDark,
-    badge = lang === 'zh' ? '本期赞助' : 'SPONSOR'
-  } = adData;
+  const { title, description, cta, link, logo, logoDark, badge = lang === 'zh' ? '本期赞助' : 'SPONSOR' } = adData;
 
   const titleHtml = renderRichText(title);
   const descriptionHtml = renderRichText(description);
@@ -271,14 +280,16 @@ export function renderAdSecondary(adData, lang = 'zh') {
   const trackingClass = lang === 'zh' ? 'tracking-wide' : '';
 
   // Logo HTML with optional dark mode support
-  const logoHtml = logo ? (
-    logoDark ? `
+  const logoHtml = logo
+    ? logoDark
+      ? `
       <img src="${logo}" alt="icon" class="inline-block w-4 h-4 rounded-sm mr-1.5 -mt-0.5 opacity-80 align-middle dark:hidden">
       <img src="${logoDark}" alt="icon" class="inline-block w-4 h-4 rounded-sm mr-1.5 -mt-0.5 opacity-80 align-middle hidden dark:inline-block">
-    ` : `
+    `
+      : `
       <img src="${logo}" alt="icon" class="inline-block w-4 h-4 rounded-sm mr-1.5 -mt-0.5 opacity-80 align-middle">
     `
-  ) : '';
+    : '';
 
   return `
 <!-- 顶部原生文字广告容器 -->
@@ -302,10 +313,14 @@ export function renderAdSecondary(adData, lang = 'zh') {
 
       <!-- 正文内容：像博主的一句话推荐 -->
       <p class="text-base leading-relaxed text-body ${trackingClass}">
-        ${logoHtml}${descriptionHtml}${ctaHtml ? `
+        ${logoHtml}${descriptionHtml}${
+          ctaHtml
+            ? `
         <span class="ml-1 font-medium text-secondary group-hover:underline decoration-text-secondary underline-offset-2">
           ${ctaHtml}
-        </span>` : ''}
+        </span>`
+            : ''
+        }
       </p>
 
     </div>
