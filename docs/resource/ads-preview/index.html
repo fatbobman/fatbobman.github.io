@@ -1,0 +1,725 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>广告预览 - Live Ads Preview</title>
+<meta name="description" content="实时预览云端 KV 存储中的所有广告数据">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://fatbobman.com/resource/ads-preview/">
+<meta property="og:title" content="Fatbobman&#39;s Blog - A Blog About Swift, SwiftUI, and More">
+<meta property="og:description" content="实时预览云端 KV 存储中的所有广告数据">
+<meta property="og:url" content="https://fatbobman.com/resource/ads-preview/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://fatbobman.com/images/blog-card.png">
+
+<meta property="og:locale" content="en">
+<meta property="og:site_name" content="fatbobman.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@fatbobman">
+<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/en/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><!-- 其他路径的 hreflang -->
+  <link rel="alternate" hreflang="en" href="https://fatbobman.com/resource/ads-preview/">
+  <link rel="alternate" hreflang="zh-CN" href="https://fatbobman.com/resource/ads-preview/">
+  <link rel="alternate" hreflang="x-default" href="https://fatbobman.com/resource/ads-preview/"><script type="text/partytown" src="https://analytics.ahrefs.com/analytics.js" data-key="KF0NNRpbcfyJPzijzZEiOw"></script><script data-partytown-skip="true">
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.async = true; // Add async attribute
+        hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script><script type="text/partytown">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5C7N4MF5');</script><script>
+      // Immediately set theme before page renders
+      if (
+        localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      }
+    </script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "#author",
+  "name": "东坡肘子 (徐杨)",
+  "alternateName": "Fatbobman (Xu Yang)",
+  "jobTitle": "Apple Developer",
+  "description": "苹果生态开发者，专注 Swift 和 SwiftUI 开发。Fatbobman's Blog 作者。",
+  "url": "https://fatbobman.com",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/FatWithBoys.png"
+  },
+  "sameAs": [
+    "https://github.com/fatbobman",
+    "https://x.com/fatbobman",
+    "https://www.linkedin.com/in/fatbobman/",
+    "https://bsky.app/profile/fatbobman.com",
+    "https://mastodon.social/@fatbobman",
+    "https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3",
+    "https://fatbobman.com/zh/about/",
+    "https://fatbobman.com/en/about/"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Fatbobman's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  }
+}</script><link rel="stylesheet" href="/_astro/about.NdP0k1fh.css">
+<style>code[data-astro-cid-kvic7ki7]{font-family:Courier New,monospace}
+.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);background-color:#ffffffe6}.dark .sticky[data-astro-cid-4wsjtibl]{background-color:#171717e6}.sticky[data-astro-cid-4wsjtibl] .sticky-logo[data-astro-cid-4wsjtibl]{width:2rem;opacity:1;margin-right:.75rem}
+</style><script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push","gtag"])})(window,'partytown','forward');/* Partytown 0.11.2 - MIT QwikDev */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,l,d,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(d=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(l=setTimeout(v,(null==s?void 0:s.fallbackTimeout)||1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.11.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<d.length;n++)(o=r.createElement("script")).innerHTML=d[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(l)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");if(r)e.newDocument.body.append(r)})})(document);</script></head> <body class="antialiased text-default bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <!-- 
+    修改点 1: px-4 sm:px-6
+    给大标题区域增加左右边距，防止在屏幕变窄时贴边。
+  --> <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-4 sm:pb-6" data-astro-cid-4wsjtibl> <div id="blogTitle" class="w-full"> <!-- 
+    修改点 1: class="group block w-full"
+    让链接容器变成块级元素并占满整行，确保内部内容可以基于整个页面宽度居中
+  --> <a href="/en/" class="group block w-full"> <!-- 
+      修改点 2: justify-center
+      确保 Flex 容器的内容在水平方向上绝对居中
+    --> <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 mx-auto pt-6 sm:pt-8 pb-2 sm:pb-0"> <!-- 吉祥物图标 --> <img src="/_astro/fat-blog-slug-icon.Cw1pK0wd.webp" class="w-20 h-20 sm:w-14 sm:h-14 rounded-full shadow-sm transition-transform duration-300 group-hover:rotate-12 group-hover:scale-105" alt="Fatbobman Logo"> <!-- SVG 文字容器 --> <div class="font-black w-[240px] sm:w-[300px] text-heading transition-opacity duration-300 group-hover:opacity-80 mt-2 sm:mt-0 sm:-mb-1"> <svg fill="currentColor" width="100%" viewBox="0 0 500 100"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </div> </a> </div> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <!-- 
+      修改点 2: px-4 sm:px-6 py-3
+      1. 删除了原来的 p-2 sm:p-0
+      2. 增加了统一的 px-4 sm:px-6，让 Sticky 导航栏左右两端留有空白，不再紧贴屏幕边缘。
+      3. 增加了 py-3，让导航栏高度稍微高一点点，看起来更从容。
+    --> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto px-4 sm:px-6 py-3" data-astro-cid-4wsjtibl> <div class="flex items-center space-x-2" data-astro-cid-4wsjtibl> <!-- Sticky Logo --> <a href="/" class="sticky-logo overflow-hidden transition-all duration-500 w-0 opacity-0 flex items-center justify-center" aria-label="Fatbobman Blog" data-astro-cid-4wsjtibl> <!-- 这里使用修改后的小尺寸 Logo (h-6 或 h-7) --> <img src="/_astro/fat-blog-slug-icon.Cw1pK0wd.webp" class="h-6 w-6 rounded-full" alt="Logo" data-astro-cid-4wsjtibl> </a> <div id="lang-data" data-lang="en" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" aria-label="Change Language" class="group p-2 w-10 h-10 text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center"> <!-- 替换文字为 SVG 图标 --> <!-- 
+    这里使用 w-5 h-5 (20px) 配合 stroke-width="2" 
+    以匹配 SearchButton 和 ThemeSwitcher 的视觉分量
+  --> <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <!-- 一个简单的地球图标 --> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-language"></use> </svg> <!-- 可选：如果非要保留文字，可以把文字做小一点放在图标旁边，或者只在 Hover 时显示 --> </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <button type="button" onclick="
+            try {
+                if ('#' !== '#') {
+                    window.location.href = '#';
+                }
+            } catch (e) {
+                console.log('Navigation failed:', e);
+            }
+        " class="w-full text-left px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
+English
+<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-2 hidden text-primary" id="EN-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-language"></use> </svg> </div> </button> </li><li> <button type="button" onclick="
+              try {
+                  if ('/resource/ads-preview/' !== '#') {
+                      window.location.href = '/resource/ads-preview/';
+                  }
+              } catch (e) {
+                  console.log('Navigation failed:', e);
+              }
+          " class="w-full text-left px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
+中文
+<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-2 hidden text-primary" id="ZH-check" width="24" height="24" viewBox="0 0 24 24"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-check"></use> </svg> </div> </button> </li> <li> <div class="border-t border-gray-200 dark:border-gray-800 w-4/5 mx-auto my-2"></div> <button class="block px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" id="set-default-lang"> <div class="inline-flex items-center"> Set English as Default </div> </button> </li> </ul> <script type="module">function a(){const t=localStorage.getItem("lang"),e=document.getElementById("EN-check"),n=document.getElementById("ZH-check");e!==null&&n!==null&&(t==="en"?(e.classList.remove("hidden"),n.classList.add("hidden")):t==="zh"&&(n.classList.remove("hidden"),e.classList.add("hidden")))}document.addEventListener("DOMContentLoaded",()=>{a()});const l=document.getElementById("set-default-lang");l?.addEventListener("click",()=>{const t=document.getElementById("lang-data");if(t!=null){const e=t.dataset.lang;e!=null&&(localStorage.setItem("lang",e),a())}});</script> </div> <button id="theme-dropdown-button" data-dropdown-toggle="theme-dropdown-menu" type="button" aria-label="Theme Switcher" class="group p-2 w-10 h-10 text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center"> <!-- 
+    已更新为统一的 24px 线性图标 
+    注意：移除了 fill-current，改为 fill="none" stroke="currentColor"
+  --> <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none" class="w-5 h-5 hidden" id="theme_icon_system"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-computer"></use> </svg> <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none" class="w-5 h-5 hidden" id="theme_icon_dark"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-moon"></use> </svg> <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none" class="w-5 h-5 hidden" id="theme_icon_light"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-sun"></use> </svg> </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="theme-dropdown-menu"> <ul class="py-2 font-medium" role="none"> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex w-full px-4 py-2 text-sm align-text-center hover:text-secondary" id="theme_button_light"> <svg class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-sun"></use> </svg> <span class="ml-2">Light</span> </button> </li> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex w-full px-4 py-2 text-sm align-text-center hover:text-secondary" id="theme_button_dark"> <svg class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-moon"></use> </svg> <span class="ml-2">Dark</span> </button> </li> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex w-full px-4 py-2 text-sm align-text-center hover:text-secondary" id="theme_button_system"> <svg class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-computer"></use> </svg> <span class="ml-2">System</span> </button> </li> </ul> </div> <script>
+  // 获取按钮
+  var themeDropdownButton = document.getElementById('theme-dropdown-button'); // 新增：获取主开关按钮
+  var themeButtonLight = document.getElementById('theme_button_light');
+  var themeButtonDark = document.getElementById('theme_button_dark');
+  var themeButtonSystem = document.getElementById('theme_button_system');
+
+  // 获取图标
+  var themeToggleDarkIcon = document.getElementById('theme_icon_dark');
+  var themeToggleLightIcon = document.getElementById('theme_icon_light');
+  var themeToggleSystemIcon = document.getElementById('theme_icon_system');
+
+  function setTheme() {
+    if (
+      localStorage.getItem('color-theme') === 'dark' ||
+      (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
+  function setThemeButton() {
+    let theme = localStorage.getItem('color-theme');
+    // 先隐藏所有，再显示对应的
+    themeToggleDarkIcon.classList.add('hidden');
+    themeToggleLightIcon.classList.add('hidden');
+    themeToggleSystemIcon.classList.add('hidden');
+
+    if (theme === 'dark') {
+      themeToggleDarkIcon.classList.remove('hidden');
+    } else if (theme === 'light') {
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      themeToggleSystemIcon.classList.remove('hidden');
+    }
+  }
+
+  function resetTheme() {
+    setTheme();
+    setThemeButton();
+  }
+
+  // 初始化
+  resetTheme();
+
+  // 监听系统暗黑模式的变化
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    resetTheme();
+  });
+
+  // 监听 Storage 变化 (多标签页同步)
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'color-theme') {
+      resetTheme();
+    }
+  });
+
+  // --- 核心修复：点击选项后，同时关闭下拉菜单 ---
+
+  // Dark 模式
+  themeButtonDark.addEventListener('click', function () {
+    localStorage.setItem('color-theme', 'dark');
+    resetTheme();
+    themeDropdownButton.click(); // 模拟点击主按钮以关闭菜单
+  });
+
+  // Light 模式
+  themeButtonLight.addEventListener('click', function () {
+    localStorage.setItem('color-theme', 'light');
+    resetTheme();
+    themeDropdownButton.click(); // 模拟点击主按钮以关闭菜单
+  });
+
+  // System 模式
+  themeButtonSystem.addEventListener('click', function () {
+    localStorage.removeItem('color-theme');
+    resetTheme();
+    themeDropdownButton.click(); // 模拟点击主按钮以关闭菜单
+  });
+</script> <div id="docsearch" class="group w-10 h-10 text-default hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center cursor-pointer"> <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-search"></use> </svg> </div> </div> <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 mx-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false" id="navbar-toggle-button"> <span class="sr-only">Open main menu</span> <svg class="w-5 h-5 text-default" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path> </svg> </button> <nav class="hidden w-full md:block md:w-auto px-4 z-40" id="navbar-solid-bg"> <ul class="flex flex-col font-bold mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700"> <a href="/en/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent "> Home </a><a href="/en/posts/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent "> Articles </a><a href="/en/weekly/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent "> Weekly </a><a href="/en/snippet/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent "> Tips </a><a href="/en/sponsorship/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent "> Sponsorship </a><a href="/en/about/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent "> About </a> </ul> </nav> </div> </div> <div id="placeholder" class="hidden" data-astro-cid-4wsjtibl></div> </div> <script>(function(){const enableSticky = true;
+const enableStickyInMobile = true;
+
+  window.onload = function () {
+    checkStickyHeader();
+    stickySetup();
+  };
+
+  window.addEventListener('resize', stickySetup);
+
+  function checkStickyHeader() {
+    const title = document.getElementById('blogTitle');
+    const stickyHeader = document.getElementById('stickyHeader');
+    const placeholder = document.getElementById('placeholder');
+
+    if (title && stickyHeader && placeholder) {
+      const offset = title.offsetTop + title.offsetHeight;
+
+      if (shouldStick() && window.scrollY >= offset) {
+        stickyHeader.classList.add('sticky');
+        placeholder.style.display = 'block';
+        placeholder.style.height = `${stickyHeader.offsetHeight}px`;
+      } else {
+        stickyHeader.classList.remove('sticky');
+        placeholder.style.display = 'none';
+      }
+    }
+  }
+
+  function shouldStick() {
+    if (!enableSticky) return false;
+
+    let isMobile = window.matchMedia('(max-width: 640px)').matches;
+    if (isMobile && !enableStickyInMobile) return false;
+
+    return true;
+  }
+
+  function stickySetup() {
+    window.onscroll = checkStickyHeader;
+  }
+})();</script>  </header> <h1 class="sr-only">广告预览 - Live Ads Preview</h1> <main class="w-full mx-auto max-w-3xl p-4 md:p-6 "> <div class="container mx-auto">   <main data-astro-cid-kvic7ki7> <section class="container max-w-6xl mx-auto px-4 py-8" data-astro-cid-kvic7ki7> <!-- 加载状态 --> <div id="loadingState" class="text-center py-16" data-astro-cid-kvic7ki7> <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4" data-astro-cid-kvic7ki7></div> <p class="text-gray-600 dark:text-gray-400" data-astro-cid-kvic7ki7>正在从云端加载广告数据...</p> <p class="text-sm text-gray-500 dark:text-gray-500 mt-2" data-astro-cid-kvic7ki7>Loading ads data from KV storage...</p> </div> <!-- 错误状态 --> <div id="errorState" class="hidden text-center py-16" data-astro-cid-kvic7ki7> <div class="text-6xl mb-4" data-astro-cid-kvic7ki7>❌</div> <h2 class="text-2xl font-bold text-red-600 dark:text-red-400 mb-2" data-astro-cid-kvic7ki7>加载失败</h2> <p id="errorMessage" class="text-gray-600 dark:text-gray-400" data-astro-cid-kvic7ki7></p> <button onclick="location.reload()" class="mt-4 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg" data-astro-cid-kvic7ki7>
+重新加载
+</button> </div> <!-- 主内容 --> <div id="mainContent" class="hidden space-y-12" data-astro-cid-kvic7ki7> <!-- 说明部分 --> <div class="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-6" data-astro-cid-kvic7ki7> <div class="flex items-start justify-between" data-astro-cid-kvic7ki7> <div data-astro-cid-kvic7ki7> <h2 class="text-2xl font-bold mb-4 text-blue-900 dark:text-blue-100" data-astro-cid-kvic7ki7>
+📊 实时广告预览 / Live Ads Preview
+</h2> <div class="space-y-2 text-gray-700 dark:text-gray-300" data-astro-cid-kvic7ki7> <p data-astro-cid-kvic7ki7>
+此页面从 <span class="font-mono text-sm bg-blue-100 dark:bg-blue-800 px-2 py-1 rounded" data-astro-cid-kvic7ki7>EdgeOne KV</span> 实时读取广告数据。
+</p> <ul class="list-disc list-inside space-y-1 ml-4 text-sm" data-astro-cid-kvic7ki7> <li data-astro-cid-kvic7ki7>✅ 数据来源: 云端 KV 存储 (Production / Mock)</li> <li data-astro-cid-kvic7ki7>✅ 实时显示: 包含所有排期广告和默认广告</li> <li data-astro-cid-kvic7ki7>✅ 按样式分组: Style 1 (卡片) / Style 2 (原生)</li> <li data-astro-cid-kvic7ki7>✅ 按语言分组: 中文 (ZH) / 英文 (EN)</li> </ul> </div> </div> <button onclick="location.reload()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm flex items-center gap-2" data-astro-cid-kvic7ki7> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" data-astro-cid-kvic7ki7> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" data-astro-cid-kvic7ki7></path> </svg>
+刷新数据
+</button> </div> <!-- 统计信息 --> <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4" data-astro-cid-kvic7ki7> <div class="bg-white dark:bg-slate-800 rounded-lg p-4 border border-blue-200 dark:border-blue-800" data-astro-cid-kvic7ki7> <div class="text-3xl font-bold text-blue-600 dark:text-blue-400" id="statTotal" data-astro-cid-kvic7ki7>0</div> <div class="text-sm text-gray-600 dark:text-gray-400" data-astro-cid-kvic7ki7>总广告数</div> </div> <div class="bg-white dark:bg-slate-800 rounded-lg p-4 border border-blue-200 dark:border-blue-800" data-astro-cid-kvic7ki7> <div class="text-3xl font-bold text-green-600 dark:text-green-400" id="statSchedules" data-astro-cid-kvic7ki7>0</div> <div class="text-sm text-gray-600 dark:text-gray-400" data-astro-cid-kvic7ki7>排期广告</div> </div> <div class="bg-white dark:bg-slate-800 rounded-lg p-4 border border-blue-200 dark:border-blue-800" data-astro-cid-kvic7ki7> <div class="text-3xl font-bold text-purple-600 dark:text-purple-400" id="statDefault" data-astro-cid-kvic7ki7>0</div> <div class="text-sm text-gray-600 dark:text-gray-400" data-astro-cid-kvic7ki7>默认广告</div> </div> <div class="bg-white dark:bg-slate-800 rounded-lg p-4 border border-blue-200 dark:border-blue-800" data-astro-cid-kvic7ki7> <div class="text-3xl font-bold text-orange-600 dark:text-orange-400" id="statLastUpdated" data-astro-cid-kvic7ki7>-</div> <div class="text-sm text-gray-600 dark:text-gray-400" data-astro-cid-kvic7ki7>最后更新</div> </div> </div> </div> <!-- 排期广告 - 中文 --> <div id="zhSchedulesSection" class="hidden" data-astro-cid-kvic7ki7> <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100 flex items-center gap-3" data-astro-cid-kvic7ki7>
+🇨🇳 排期广告 - 中文
+<span class="text-lg font-normal text-gray-500" data-astro-cid-kvic7ki7>/ Scheduled Ads - Chinese</span> </h2> <div id="zhSchedulesContainer" class="space-y-8" data-astro-cid-kvic7ki7></div> </div> <!-- 排期广告 - 英文 --> <div id="enSchedulesSection" class="hidden" data-astro-cid-kvic7ki7> <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100 flex items-center gap-3" data-astro-cid-kvic7ki7>
+🇬🇧 排期广告 - 英文
+<span class="text-lg font-normal text-gray-500" data-astro-cid-kvic7ki7>/ Scheduled Ads - English</span> </h2> <div id="enSchedulesContainer" class="space-y-8" data-astro-cid-kvic7ki7></div> </div> <!-- 默认广告 --> <div id="defaultAdsSection" class="hidden" data-astro-cid-kvic7ki7> <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100 flex items-center gap-3" data-astro-cid-kvic7ki7>
+🏠 默认广告
+<span class="text-lg font-normal text-gray-500" data-astro-cid-kvic7ki7>/ Default Fallback Ads</span> </h2> <div class="space-y-8" data-astro-cid-kvic7ki7> <div data-astro-cid-kvic7ki7> <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4" data-astro-cid-kvic7ki7>中文 (Chinese)</h3> <div id="defaultZhContainer" class="space-y-4" data-astro-cid-kvic7ki7></div> </div> <div data-astro-cid-kvic7ki7> <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4" data-astro-cid-kvic7ki7>英文 (English)</h3> <div id="defaultEnContainer" class="space-y-4" data-astro-cid-kvic7ki7></div> </div> </div> </div> </div> </section> </main>   </div> </main> </div> <footer> <footer class="bg-block border-t border-gray-100 dark:border-slate-800 mt-20" id="page-footer"> <div class="mx-auto w-full max-w-5xl px-6 py-12 md:py-16"> <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">  <div class="md:col-span-4 lg:col-span-5 space-y-4"> <div class="flex items-center space-x-2">  <span class="text-xl font-black tracking-tight text-heading">
+Fatbobman's <span class="text-primary">Blog</span> </span> </div> <p class="text-sm text-muted leading-relaxed max-w-xs"> Exploring the infinite possibilities of Swift and Apple development ecosystem. </p> </div>  <div class="md:col-span-8 lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">  <div> <h3 class="text-sm font-bold text-heading uppercase tracking-wider mb-4 "> Explore </h3> <ul class="space-y-3 text-sm text-muted"> <li><a href="/en/snippet/" class="hover:text-primary transition-colors">Quick Tips</a></li> <li><a href="/en/posts/" class="hover:text-primary transition-colors">Posts</a></li> <li><a href="/en/tags/" class="hover:text-primary transition-colors">Tags</a></li> <li><a href="/en/collections/" class="hover:text-primary transition-colors">Collections</a></li> </ul> </div>  <div> <h3 class="text-sm font-bold text-heading uppercase tracking-wider mb-4 "> Subscribe </h3> <ul class="space-y-3 text-sm text-muted"> <li><a href="https://weekly.fatbobman.com/welcome" class="hover:text-primary transition-colors" target="_blank">Newsletter</a></li> <li><a href="/rss.xml" class="hover:text-primary transition-colors" target="_blank">RSS</a></li> </ul> </div>  <div> <h3 class="text-sm font-bold text-heading uppercase tracking-wider mb-4 "> Connect &amp; Support </h3> <ul class="space-y-3 text-sm text-muted"> <li><a href="/en/sponsorship/" class="hover:text-primary transition-colors" rel="sponsored">Promote on Blog</a></li> <li><a href="/en/about/#contact" class="hover:text-primary transition-colors">Contact Me</a></li> <li> <a href="https://www.buymeacoffee.com/fatbobman" class="hover:text-primary transition-colors group flex items-center" target="_blank"> <span>Buy Me a Coffee</span> <span class="ml-1 group-hover:scale-110 transition-transform inline-block">☕️</span> </a> </li> </ul> </div> </div> </div>  <div class="mt-12 pt-8 border-t border-gray-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-muted/60 gap-4"> <div class="text-center md:text-left"> <span>&copy; 2026 Fatbobman Digital Limited. All Rights Reserved.</span> </div> <div class="flex items-center gap-4">  <div class="opacity-70 hover:opacity-100 transition-opacity"> <div class="flex items-center justify-center w-full px-6 pt-2 text-sm pb-10"> <button type="button" onclick="
+        try {
+          window.open('https://beian.miit.gov.cn/#/Integrated/index', '_blank');
+        } catch (e) {
+          console.log('Failed to open ICP link:', e);
+        }
+      " class="text-xxs hover:underline text-muted tracking-wide" aria-label="ICP Registration Information">
+辽ICP备20006550号-1
+</button> </div> </div> </div> </div> </div> </footer> </footer> </div> <section> <div id="weekly-modal" data-subscribeText="Join Now" data-placeholder="Subscribe with your email" data-embed-url="https://weekly.fatbobman.com/embed" data-iframe-class="mx-auto sm:w-[320px] md:w-[480px] sm:h-[200px] md:h-[320px] dark:opacity-80 dark:rounded-lg dark:shadow-2xl dark:border-gray-600" data-iframe-style="border:0px solid #EEE; background:white; width: 100%; max-width: 480px;"> <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"> <!-- Modal content --> <div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-lg shadow-2xl border-gray-200 border dark:border-gray-600"> <!-- Modal header --> <div class="flex items-center justify-between px-4 md:px-5 pt-4 pb-0 rounded-t dark:border-gray-600"> <button id="popup-modal-close-button" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"> <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path> </svg> <span class="sr-only">Close modal</span> </button> </div> <!-- Modal body --> <div class="px-4 md:px-5 pb-4 md:w-[480px] sm:w-80 mx-auto"> <div class="sm:hidden md:block text-base text-center font-bold text-gray-900 dark:text-blue-100 pt-4 pb-2 ">Weekly Swift &amp; SwiftUI Highlights - Every Monday</div> <div id="weekly-modal-embed" class="flex flex-col items-center justify-center gap-4" data-iframe-loaded="false"> <div class="relative flex items-center justify-center"> <div class="w-8 h-8 border-2 border-gray-200 dark:border-gray-700 border-t-secondary rounded-full animate-spin" aria-hidden="true"></div> </div> <div class="text-sm text-gray-400 dark:text-gray-500 text-center" data-weekly-loader data-error-text="Failed to load subscription form. Please retry later." aria-live="polite"> Preparing subscription form... </div> </div> </div> </div> </div> </div> </section> <script type="module" src="/_astro/WeeklyModalLoader.astro_astro_type_script_index_0_lang.DMZWLG_2.js"></script>  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js" async></script> <script>
+  // 为每个需要清除 focus 状态的按钮都添加一个 clear-focus 类, 下面的代码将在点击后自动移除 focus 状态
+  document.addEventListener('DOMContentLoaded', () => {
+    // 获取所有具有 'clear-focus' 类的按钮
+    const buttons = document.querySelectorAll('.clear-focus');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setTimeout(() => {
+          button.blur();
+        }, 0);
+      });
+    });
+  });
+
+  window.onpageshow = function () {
+    document.documentElement.classList.add('motion-safe:scroll-smooth');
+  };
+
+  if (typeof window !== 'undefined') {
+    const videos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+
+    const disableTooltipsOnTouch = () => {
+      const isTouch =
+        'ontouchstart' in window ||
+        (navigator && navigator.maxTouchPoints > 0) ||
+        (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+      if (!isTouch) {
+        return;
+      }
+      const triggers = document.querySelectorAll('[data-tooltip-target]');
+      triggers.forEach((trigger) => {
+        const tooltipId = trigger.getAttribute('data-tooltip-target');
+        trigger.removeAttribute('data-tooltip-target');
+        trigger.removeAttribute('data-tooltip-placement');
+        if (tooltipId) {
+          const tooltipEl = document.getElementById(tooltipId);
+          if (tooltipEl && tooltipEl.parentNode) {
+            tooltipEl.parentNode.removeChild(tooltipEl);
+          }
+        }
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', disableTooltipsOnTouch);
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+
+            if (entry.isIntersecting) {
+              // 进入视窗 -> 尝试播放（浏览器会根据策略决定是否允许）
+              video.play().catch(() => {
+                // 某些情况下（浏览器策略）可能会失败，静默即可
+              });
+            } else {
+              // 离开视窗 -> 暂停，节省 CPU & 带宽
+              video.pause();
+            }
+          });
+        },
+        {
+          threshold: 0.1, // 至少有 10% 出现在视窗里时触发
+        }
+      );
+
+      videos.forEach((video) => observer.observe(video));
+
+      // 清理逻辑：页面卸载时取消所有观察
+      window.addEventListener('beforeunload', () => {
+        videos.forEach((video) => observer.unobserve(video));
+        observer.disconnect();
+      });
+
+      // 处理 bfcache 情况
+      window.addEventListener('pageshow', (event) => {
+        // 如果是从 bfcache 恢复，重新初始化
+        if (event.persisted) {
+          const newVideos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+          newVideos.forEach((video) => {
+            if (!videos.includes(video)) {
+              observer.observe(video);
+            }
+          });
+        }
+      });
+    } else {
+      // 老浏览器的降级策略：什么都不做，用户手动播放
+    }
+  }
+</script> <script>(function(){const lang = "zh";
+const searchText = "搜索...";
+const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('docsearch');
+    if (!button) {
+      return;
+    }
+
+    let docsearchScriptPromise = null;
+    let initialized = false;
+
+    const loadDocsearchLibrary = () => {
+      if (typeof window !== 'undefined' && typeof window.docsearch === 'function') {
+        return Promise.resolve();
+      }
+      if (!docsearchScriptPromise) {
+        docsearchScriptPromise = new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.3';
+          script.defer = true;
+          script.onload = () => resolve();
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+      }
+      return docsearchScriptPromise;
+    };
+
+    const handleFirstClick = async (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      try {
+        // Load DocSearch library
+        await loadDocsearchLibrary();
+
+        // Import and execute search module
+        const module = await import(runSearchModuleUrl);
+
+        // openSearch will call initSearch internally, so we don't need to call both
+        await module.openSearch(lang, searchText);
+
+        // Remove the first-click listener after successful initialization
+        button.removeEventListener('click', handleFirstClick, true);
+        initialized = true;
+      } catch (error) {
+        console.error('Failed to initialize DocSearch:', error);
+      }
+    };
+
+    button.addEventListener('click', handleFirstClick, true);
+  });
+})();</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <!--Magic Fix 解决在 Safari 下搜索框取消后会滚动到页面底部--> <div class="fixed"> <input type="text"> </div> </body></html> <script>(function(){
+  // DOM 元素
+  const loadingState = document.getElementById('loadingState');
+  const errorState = document.getElementById('errorState');
+  const errorMessage = document.getElementById('errorMessage');
+  const mainContent = document.getElementById('mainContent');
+
+  // 统计元素
+  const statTotal = document.getElementById('statTotal');
+  const statSchedules = document.getElementById('statSchedules');
+  const statDefault = document.getElementById('statDefault');
+  const statLastUpdated = document.getElementById('statLastUpdated');
+
+  // 容器元素
+  const zhSchedulesSection = document.getElementById('zhSchedulesSection');
+  const enSchedulesSection = document.getElementById('enSchedulesSection');
+  const defaultAdsSection = document.getElementById('defaultAdsSection');
+  const zhSchedulesContainer = document.getElementById('zhSchedulesContainer');
+  const enSchedulesContainer = document.getElementById('enSchedulesContainer');
+  const defaultZhContainer = document.getElementById('defaultZhContainer');
+  const defaultEnContainer = document.getElementById('defaultEnContainer');
+
+  // 加载广告数据
+  async function loadAdsData() {
+    try {
+      // 尝试从 API 加载数据
+      let data;
+
+      try {
+        const response = await fetch('/api/ads-all', {
+          headers: {
+            'Accept': 'application/json',
+          },
+          cache: 'no-cache',
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        data = await response.json();
+
+        if (data.error) {
+          throw new Error(data.error);
+        }
+      } catch (apiError) {
+        // API 调用失败,回退到本地示例数据
+        console.warn('[Preview] API 不可用,使用本地示例数据:', apiError.message);
+
+        // 加载本地示例数据
+        const sampleResponse = await fetch('/docs/ads-kv-example-v2.json');
+        if (!sampleResponse.ok) {
+          throw new Error('无法加载 API 和本地示例数据');
+        }
+        data = await sampleResponse.json();
+
+        // 显示提示信息
+        const warningDiv = document.createElement('div');
+        warningDiv.className = 'bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mb-6';
+        warningDiv.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">⚠️</span>
+            <div>
+              <p class="font-semibold text-yellow-900 dark:text-yellow-100">使用本地示例数据</p>
+              <p class="text-sm text-yellow-700 dark:text-yellow-300">EdgeOne API 不可用 (EdgeOne CLI 未启动)。正在显示 <code class="bg-yellow-100 dark:bg-yellow-800 px-1 rounded">docs/ads-kv-example-v2.json</code> 的示例数据。</p>
+              <p class="text-sm text-yellow-700 dark:text-yellow-300 mt-1">要查看真实数据,请运行 <code class="bg-yellow-100 dark:bg-yellow-800 px-1 rounded">npm run edge:dev</code></p>
+            </div>
+          </div>
+        `;
+        mainContent.insertBefore(warningDiv, mainContent.firstChild);
+      }
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      // 渲染数据
+      renderAds(data);
+
+    } catch (error) {
+      console.error('Failed to load ads data:', error);
+      showError(error.message);
+    }
+  }
+
+  // 显示错误
+  function showError(message) {
+    loadingState.classList.add('hidden');
+    errorState.classList.remove('hidden');
+    errorMessage.textContent = message;
+  }
+
+  // 格式化日期
+  function formatDate(isoString) {
+    if (!isoString) return '-';
+    const date = new Date(isoString);
+    return date.toLocaleDateString('zh-CN', {
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  }
+
+  // 创建广告预览卡片
+  function createAdPreviewCard(adData, lang, type = 'scheduled') {
+    const borderColor = type === 'default'
+      ? 'border-orange-300 dark:border-orange-600'
+      : 'border-gray-300 dark:border-gray-600';
+
+    const styleBadgeColor = adData.style === 2
+      ? 'bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200'
+      : 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200';
+
+    return `
+      <div class="border-2 border-dashed ${borderColor} rounded-lg p-4 hover:shadow-lg transition-shadow">
+        <div class="mb-3 flex flex-wrap items-center gap-2 text-sm font-mono">
+          <span class="${styleBadgeColor} px-2 py-1 rounded">
+            Style ${adData.style || 1}
+          </span>
+          <span class="bg-purple-100 dark:bg-purple-800 text-purple-800 dark:text-purple-200 px-2 py-1 rounded">
+            v${adData.version}
+          </span>
+          ${adData.title ? `<span class="text-gray-600 dark:text-gray-400 truncate max-w-md">${escapeHtml(adData.title)}</span>` : ''}
+        </div>
+        <div class="ad-preview-slot" data-ad='${JSON.stringify(adData)}' data-lang="${lang}"></div>
+      </div>
+    `;
+  }
+
+  // HTML 转义
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // 渲染广告
+  function renderAds(data) {
+    // 隐藏加载状态,显示主内容
+    loadingState.classList.add('hidden');
+    mainContent.classList.remove('hidden');
+
+    // 更新统计信息
+    let totalAds = 0;
+    let scheduleCount = data.schedules?.length || 0;
+
+    data.schedules?.forEach((schedule) => {
+      totalAds += (schedule.variants?.zh?.length || 0) + (schedule.variants?.en?.length || 0);
+    });
+
+    let defaultCount = 0;
+    if (Array.isArray(data.default?.zh)) defaultCount += data.default.zh.length;
+    if (Array.isArray(data.default?.en)) defaultCount += data.default.en.length;
+
+    totalAds += defaultCount;
+
+    statTotal.textContent = totalAds;
+    statSchedules.textContent = scheduleCount;
+    statDefault.textContent = defaultCount;
+    statLastUpdated.textContent = formatDate(data.metadata?.lastUpdated);
+
+    // 渲染排期广告 - 中文
+    const zhSchedules = data.schedules?.filter(s => s.variants?.zh?.length > 0) || [];
+    if (zhSchedules.length > 0) {
+      zhSchedulesSection.classList.remove('hidden');
+
+      zhSchedules.forEach((schedule) => {
+        const section = document.createElement('div');
+        section.className = 'mb-8';
+
+        const header = document.createElement('div');
+        header.className = 'mb-4 p-4 bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-gray-700';
+        header.innerHTML = `
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+            ${escapeHtml(schedule.sponsorId)}
+          </h3>
+          <div class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+            <div>📅 ${schedule.startDate} → ${schedule.endDate}</div>
+            <div>🎯 状态: ${schedule.enabled ? '<span class="text-green-600 dark:text-green-400">✓ 已启用</span>' : '<span class="text-gray-500">✗ 已禁用</span>'}</div>
+            ${schedule.notes ? `<div>📝 ${escapeHtml(schedule.notes)}</div>` : ''}
+            <div class="text-xs">🆔 ${schedule.id}</div>
+          </div>
+        `;
+
+        const variantsContainer = document.createElement('div');
+        variantsContainer.className = 'space-y-4';
+
+        schedule.variants.zh.forEach((variant) => {
+          const card = document.createElement('div');
+          card.innerHTML = createAdPreviewCard(variant, 'zh', 'scheduled');
+          variantsContainer.appendChild(card);
+        });
+
+        section.appendChild(header);
+        section.appendChild(variantsContainer);
+        zhSchedulesContainer.appendChild(section);
+      });
+    }
+
+    // 渲染排期广告 - 英文
+    const enSchedules = data.schedules?.filter(s => s.variants?.en?.length > 0) || [];
+    if (enSchedules.length > 0) {
+      enSchedulesSection.classList.remove('hidden');
+
+      enSchedules.forEach((schedule) => {
+        const section = document.createElement('div');
+        section.className = 'mb-8';
+
+        const header = document.createElement('div');
+        header.className = 'mb-4 p-4 bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-gray-700';
+        header.innerHTML = `
+          <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+            ${escapeHtml(schedule.sponsorId)}
+          </h3>
+          <div class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+            <div>📅 ${schedule.startDate} → ${schedule.endDate}</div>
+            <div>🎯 Status: ${schedule.enabled ? '<span class="text-green-600 dark:text-green-400">✓ Enabled</span>' : '<span class="text-gray-500">✗ Disabled</span>'}</div>
+            ${schedule.notes ? `<div>📝 ${escapeHtml(schedule.notes)}</div>` : ''}
+            <div class="text-xs">🆔 ${schedule.id}</div>
+          </div>
+        `;
+
+        const variantsContainer = document.createElement('div');
+        variantsContainer.className = 'space-y-4';
+
+        schedule.variants.en.forEach((variant) => {
+          const card = document.createElement('div');
+          card.innerHTML = createAdPreviewCard(variant, 'en', 'scheduled');
+          variantsContainer.appendChild(card);
+        });
+
+        section.appendChild(header);
+        section.appendChild(variantsContainer);
+        enSchedulesContainer.appendChild(section);
+      });
+    }
+
+    // 渲染默认广告
+    if (data.default?.zh || data.default?.en) {
+      defaultAdsSection.classList.remove('hidden');
+
+      // 中文默认广告
+      if (data.default.zh) {
+        if (Array.isArray(data.default.zh)) {
+          // 新格式: 数组
+          data.default.zh.forEach((variant) => {
+            const card = document.createElement('div');
+            card.innerHTML = createAdPreviewCard(variant, 'zh', 'default');
+            defaultZhContainer.appendChild(card);
+          });
+        } else {
+          // 旧格式: 单个对象
+          const card = document.createElement('div');
+          card.innerHTML = createAdPreviewCard(data.default.zh, 'zh', 'default');
+          defaultZhContainer.appendChild(card);
+        }
+      }
+
+      // 英文默认广告
+      if (data.default.en) {
+        if (Array.isArray(data.default.en)) {
+          // 新格式: 数组
+          data.default.en.forEach((variant) => {
+            const card = document.createElement('div');
+            card.innerHTML = createAdPreviewCard(variant, 'en', 'default');
+            defaultEnContainer.appendChild(card);
+          });
+        } else {
+          // 旧格式: 单个对象
+          const card = document.createElement('div');
+          card.innerHTML = createAdPreviewCard(data.default.en, 'en', 'default');
+          defaultEnContainer.appendChild(card);
+        }
+      }
+    }
+
+    // 现在需要使用 AdRenderer 组件渲染广告
+    // 由于 AdRenderer 是 Astro 组件,我们需要用 iframe 或者重新实现渲染逻辑
+    // 这里我们使用重新实现的渲染函数
+    renderAdPreviews();
+  }
+
+  // 渲染广告预览
+  function renderAdPreviews() {
+    // 这里我们通过调用 Edge Function 的渲染端点来获取 HTML
+    const slots = document.querySelectorAll('.ad-preview-slot');
+
+    slots.forEach(async (slot) => {
+      const adData = JSON.parse(slot.dataset.ad);
+      const lang = slot.dataset.lang;
+
+      try {
+        // 调用广告渲染 API
+        const params = new URLSearchParams({
+          lang: lang,
+          version: adData.version.toString(),
+        });
+
+        // 如果有 sponsorId,可以添加参数测试特定广告
+        if (adData.sponsorId) {
+          params.append('sponsorId', adData.sponsorId);
+        }
+
+        const response = await fetch(`/ads/?${params.toString()}`);
+
+        if (response.ok) {
+          const html = await response.text();
+          slot.innerHTML = html;
+        } else {
+          slot.innerHTML = `<div class="text-red-600 dark:text-red-400 text-sm">渲染失败: HTTP ${response.status}</div>`;
+        }
+      } catch (error) {
+        slot.innerHTML = `<div class="text-red-600 dark:text-red-400 text-sm">渲染错误: ${error.message}</div>`;
+      }
+    });
+  }
+
+  // 页面加载时执行
+  loadAdsData();
+})();</script> 
