@@ -93,8 +93,9 @@ export async function onRequestGet(context) {
       });
     }
 
-    // 返回格式化的 JSON
-    return new Response(JSON.stringify(parsedData, null, 2), {
+    // 返回压缩的 JSON (不使用美化,避免潜在的格式问题)
+    // JSON.stringify 会自动确保所有字符串都使用双引号
+    return new Response(JSON.stringify(parsedData), {
       status: 200,
       headers,
     });
