@@ -261,6 +261,12 @@ export function renderAdPrimary(adData, lang = 'zh') {
 /**
  * Render advertisement HTML (Secondary Style - Article Inline)
  * Designed to blend seamlessly with article content
+ *
+ * Uses pointer-events technique to handle nested links:
+ * - Invisible overlay link covers the entire card area
+ * - Content has pointer-events-none by default
+ * - Inner links (in description) restore pointer-events-auto
+ *
  * @param {object} adData - AdVariant data object
  * @param {string} lang - Language code (zh/en)
  * @returns {string} Complete HTML for the advertisement
@@ -293,38 +299,39 @@ export function renderAdSecondary(adData, lang = 'zh') {
 
   return `
 <!-- 顶部原生文字广告容器 -->
-<div class="relative not-prose font-sans">
-  <a href="${link}"${anchorAttributes} class="group block">
-    <!-- 核心布局：左侧边框 + 文字内容 -->
-    <div class="
-      relative pl-4 py-1
-      border-l-4 border-secondary
-    ">
+<div class="relative not-prose font-sans group">
+  <!-- 隐形覆盖层：点击卡片空白处跳转到赞助商链接 -->
+  <a href="${link}"${anchorAttributes} class="absolute inset-0 z-0"></a>
 
-      <!-- 第一行：Sponsor 标识 + 标题 -->
-      <div class="flex items-baseline gap-2 mb-2 flex-wrap ${trackingClass}">
-        <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 select-none">
-          ${escapeHtml(badge)}
-        </span>
-        <div class="text-base font-bold text-heading">
-          ${titleHtml}
-        </div>
+  <!-- 核心布局：左侧边框 + 文字内容 -->
+  <div class="relative pl-4 py-1 border-l-4 border-secondary z-10 pointer-events-none">
+
+    <!-- 第一行：Sponsor 标识 + 标题 -->
+    <div class="flex items-baseline gap-2 mb-2 flex-wrap ${trackingClass}">
+      <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 select-none">
+        ${escapeHtml(badge)}
+      </span>
+      <div class="text-base font-bold text-heading">
+        ${titleHtml}
       </div>
-
-      <!-- 正文内容：像博主的一句话推荐 -->
-      <p class="text-base leading-relaxed text-body ${trackingClass}">
-        ${logoHtml}${descriptionHtml}${
-          ctaHtml
-            ? `
-        <span class="ml-1 font-medium text-secondary group-hover:underline decoration-text-secondary underline-offset-2">
-          ${ctaHtml}
-        </span>`
-            : ''
-        }
-      </p>
-
     </div>
-  </a>
+
+    <!-- 正文内容 -->
+    <p class="text-base leading-relaxed text-body ${trackingClass}">
+      ${logoHtml}
+      <!-- description 中的链接需要恢复 pointer-events 否则无法点击 -->
+      <span class="pointer-events-auto">${descriptionHtml}</span>
+      ${
+        ctaHtml
+          ? `
+      <span class="ml-1 font-medium text-secondary group-hover:underline decoration-text-secondary underline-offset-2 pointer-events-auto">
+        ${ctaHtml}
+      </span>`
+          : ''
+      }
+    </p>
+
+  </div>
 </div>
   `.trim();
 }

@@ -485,6 +485,10 @@ const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
     // 将 sponsorId 添加到 adData 中,用于渲染 API
     const adDataWithSponsor = { ...adData, sponsorId };
 
+    // 使用 Base64 编码存储 JSON 数据,避免特殊字符问题
+    const adDataJson = JSON.stringify(adDataWithSponsor);
+    const adDataBase64 = btoa(unescape(encodeURIComponent(adDataJson)));
+
     return `
       <div class="border-2 border-dashed ${borderColor} rounded-lg p-4 hover:shadow-lg transition-shadow">
         <div class="mb-3 flex flex-wrap items-center gap-2 text-sm font-mono">
@@ -496,7 +500,7 @@ const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
           </span>
           ${adData.title ? `<span class="text-gray-600 dark:text-gray-400 truncate max-w-md">${escapeHtml(adData.title)}</span>` : ''}
         </div>
-        <div class="ad-preview-slot" data-ad='${JSON.stringify(adDataWithSponsor)}' data-lang="${lang}"></div>
+        <div class="ad-preview-slot" data-ad-base64="${adDataBase64}" data-lang="${lang}"></div>
       </div>
     `;
   }
@@ -666,7 +670,10 @@ const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
 
       // 并行渲染当前批次
       await Promise.all(batch.map(async (slot) => {
-        const adData = JSON.parse(slot.dataset.ad);
+        // 从 Base64 解码广告数据
+        const adDataBase64 = slot.dataset.adBase64;
+        const adDataJson = decodeURIComponent(escape(atob(adDataBase64)));
+        const adData = JSON.parse(adDataJson);
         const lang = slot.dataset.lang;
 
         console.log('[Preview] Rendering ad:', {
