@@ -159,7 +159,7 @@ export function renderAdPrimary(adData, lang = 'zh') {
   return `
 <div class="relative mt-12 mb-2 not-prose font-sans ${customStyles.containerClass || ''}">
   <!-- 隐形覆盖层：点击卡片空白处跳转到赞助商链接 -->
-  <a href="${link}"${anchorAttributes} class="absolute inset-0 z-0"></a>
+  <a href="${link}"${anchorAttributes} class="absolute inset-0 z-0 js-ad-overlay"></a>
 
   <!-- 核心广告卡片 -->
   <div class="group
@@ -201,8 +201,8 @@ export function renderAdPrimary(adData, lang = 'zh') {
         <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ${
           customStyles.descriptionClass || ''
         }">
-          <!-- description 中的链接需要恢复 pointer-events 否则无法点击 -->
-          <span class="pointer-events-auto">${descriptionHtml}</span>
+          <!-- description 中的链接需要恢复 pointer-events 并阻止事件冒泡 -->
+          <span class="pointer-events-auto js-ad-content">${descriptionHtml}</span>
         </p>
 
         <!-- 底部行：Features + CTA -->
@@ -211,14 +211,14 @@ export function renderAdPrimary(adData, lang = 'zh') {
               ? `
           <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ${customStyles.ctaClass || ''}">
             <!-- Features -->
-            <span class="pointer-events-auto">${featuresHtml}</span>
+            <span class="pointer-events-auto js-ad-content">${featuresHtml}</span>
 
             <!-- 引导文字 -->
             <div class="ml-auto flex items-center gap-1
               text-gray-500 dark:text-gray-500
               transition-all duration-200 font-medium
               group-hover:text-secondary dark:group-hover:text-secondary
-              pointer-events-auto">
+              pointer-events-auto js-ad-content">
               ${escapeHtml(cta)}
               <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -232,7 +232,7 @@ export function renderAdPrimary(adData, lang = 'zh') {
           <div class="mt-3 flex items-center gap-1 text-xs sm:text-sm
             text-gray-500 dark:text-gray-500
             transition-all duration-200 font-medium
-            group-hover:text-secondary dark:group-hover:text-secondary ${customStyles.ctaClass || ''} pointer-events-auto">
+            group-hover:text-secondary dark:group-hover:text-secondary ${customStyles.ctaClass || ''} pointer-events-auto js-ad-content">
             ${escapeHtml(cta)}
             <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
               fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -265,6 +265,23 @@ export function renderAdPrimary(adData, lang = 'zh') {
   `
       : ''
   }
+
+  <!-- 内部链接点击拦截脚本 -->
+  <script>
+    (function() {
+      const container = currentScript.parentElement;
+      const contents = container.querySelectorAll('.js-ad-content');
+
+      contents.forEach(content => {
+        content.addEventListener('click', function(e) {
+          // 如果点击的是链接或链接内部元素,阻止冒泡到覆盖层
+          if (e.target.closest('a')) {
+            e.stopPropagation();
+          }
+        }, true); // 使用捕获阶段
+      });
+    })();
+  </script>
 </div>
   `.trim();
 }
@@ -312,7 +329,7 @@ export function renderAdSecondary(adData, lang = 'zh') {
 <!-- 顶部原生文字广告容器 -->
 <div class="relative not-prose font-sans group">
   <!-- 隐形覆盖层：点击卡片空白处跳转到赞助商链接 -->
-  <a href="${link}"${anchorAttributes} class="absolute inset-0 z-0"></a>
+  <a href="${link}"${anchorAttributes} class="absolute inset-0 z-0 js-ad-overlay"></a>
 
   <!-- 核心布局：左侧边框 + 文字内容 -->
   <div class="relative pl-4 py-1 border-l-4 border-secondary z-10 pointer-events-none">
@@ -330,12 +347,12 @@ export function renderAdSecondary(adData, lang = 'zh') {
     <!-- 正文内容 -->
     <p class="text-base leading-relaxed text-body ${trackingClass}">
       ${logoHtml}
-      <!-- description 中的链接需要恢复 pointer-events 否则无法点击 -->
-      <span class="pointer-events-auto">${descriptionHtml}</span>
+      <!-- description 中的链接需要恢复 pointer-events 并阻止事件冒泡 -->
+      <span class="pointer-events-auto js-ad-content">${descriptionHtml}</span>
       ${
         ctaHtml
           ? `
-      <span class="ml-1 font-medium text-secondary group-hover:underline decoration-text-secondary underline-offset-2 pointer-events-auto">
+      <span class="ml-1 font-medium text-secondary group-hover:underline decoration-text-secondary underline-offset-2 pointer-events-auto js-ad-content">
         ${ctaHtml}
       </span>`
           : ''
@@ -343,6 +360,24 @@ export function renderAdSecondary(adData, lang = 'zh') {
     </p>
 
   </div>
+
+  <!-- 内部链接点击拦截脚本 -->
+  <script>
+    (function() {
+      const container = currentScript.parentElement;
+      const overlay = container.querySelector('.js-ad-overlay');
+      const contents = container.querySelectorAll('.js-ad-content');
+
+      contents.forEach(content => {
+        content.addEventListener('click', function(e) {
+          // 如果点击的是链接或链接内部元素,阻止冒泡到覆盖层
+          if (e.target.closest('a')) {
+            e.stopPropagation();
+          }
+        }, true); // 使用捕获阶段
+      });
+    })();
+  </script>
 </div>
   `.trim();
 }

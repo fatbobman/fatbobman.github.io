@@ -242,7 +242,7 @@ const enableStickyInMobile = true;
 </h2> <div class="space-y-8" data-astro-cid-jhwx4wuq> <div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: boltai-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
   <!-- 隐形覆盖层：点击卡片空白处跳转到赞助商链接 -->
-  <a href="https://l.fatbobman.com/sb-boltai-zh" target="_blank" rel="sponsored" class="absolute inset-0 z-0"></a>
+  <a href="https://l.fatbobman.com/sb-boltai-zh" target="_blank" rel="sponsored" class="absolute inset-0 z-0 js-ad-overlay"></a>
 
   <!-- 核心广告卡片 -->
   <div class="group
@@ -287,15 +287,15 @@ Variant ID: boltai-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
 
         <!-- 描述文字 -->
         <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-          <!-- description 中的链接需要恢复 pointer-events 否则无法点击 -->
-          <span class="pointer-events-auto">BoltAI 将 GPT、Claude、Gemini 和 Ollama 本地模型集成到你的工作流中。支持屏幕感知与代码重构，真正属于开发者的原生神器。</span>
+          <!-- description 中的链接需要恢复 pointer-events 并阻止事件冒泡 -->
+          <span class="pointer-events-auto js-ad-content">BoltAI 将 GPT、Claude、Gemini 和 Ollama 本地模型集成到你的工作流中。支持屏幕感知与代码重构，真正属于开发者的原生神器。</span>
         </p>
 
         <!-- 底部行：Features + CTA -->
           
           <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
             <!-- Features -->
-            <span class="pointer-events-auto">
+            <span class="pointer-events-auto js-ad-content">
         <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md
           bg-orange-50/85 dark:bg-blue-500/10
           text-orange-700 dark:text-blue-300
@@ -310,7 +310,7 @@ Variant ID: boltai-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
               text-gray-500 dark:text-gray-500
               transition-all duration-200 font-medium
               group-hover:text-secondary dark:group-hover:text-secondary
-              pointer-events-auto">
+              pointer-events-auto js-ad-content">
               立即试用
               <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -339,10 +339,27 @@ Variant ID: boltai-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
     </a>
   </div>
   
+
+  <!-- 内部链接点击拦截脚本 -->
+  <script>
+    (function() {
+      const container = currentScript.parentElement;
+      const contents = container.querySelectorAll('.js-ad-content');
+
+      contents.forEach(content => {
+        content.addEventListener('click', function(e) {
+          // 如果点击的是链接或链接内部元素,阻止冒泡到覆盖层
+          if (e.target.closest('a')) {
+            e.stopPropagation();
+          }
+        }, true); // 使用捕获阶段
+      });
+    })();
+  </script>
 </div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: boltai-zh-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
   <!-- 隐形覆盖层：点击卡片空白处跳转到赞助商链接 -->
-  <a href="https://l.fatbobman.com/sb-boltai-zh" target="_blank" rel="sponsored" class="absolute inset-0 z-0"></a>
+  <a href="https://l.fatbobman.com/sb-boltai-zh" target="_blank" rel="sponsored" class="absolute inset-0 z-0 js-ad-overlay"></a>
 
   <!-- 核心广告卡片 -->
   <div class="group
@@ -387,15 +404,15 @@ Variant ID: boltai-zh-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
 
         <!-- 描述文字 -->
         <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-          <!-- description 中的链接需要恢复 pointer-events 否则无法点击 -->
-          <span class="pointer-events-auto">原生 macOS 应用，无缝整合多个 AI 模型。一键重构代码，智能理解屏幕内容，让 AI 真正成为你的编程助手。</span>
+          <!-- description 中的链接需要恢复 pointer-events 并阻止事件冒泡 -->
+          <span class="pointer-events-auto js-ad-content">原生 macOS 应用，无缝整合多个 AI 模型。一键重构代码，智能理解屏幕内容，让 AI 真正成为你的编程助手。</span>
         </p>
 
         <!-- 底部行：Features + CTA -->
           
           <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
             <!-- Features -->
-            <span class="pointer-events-auto">
+            <span class="pointer-events-auto js-ad-content">
       <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md
         bg-orange-50/85 dark:bg-blue-500/10
         text-orange-700 dark:text-blue-300
@@ -410,7 +427,7 @@ Variant ID: boltai-zh-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
               text-gray-500 dark:text-gray-500
               transition-all duration-200 font-medium
               group-hover:text-secondary dark:group-hover:text-secondary
-              pointer-events-auto">
+              pointer-events-auto js-ad-content">
               免费下载
               <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -439,10 +456,27 @@ Variant ID: boltai-zh-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
     </a>
   </div>
   
+
+  <!-- 内部链接点击拦截脚本 -->
+  <script>
+    (function() {
+      const container = currentScript.parentElement;
+      const contents = container.querySelectorAll('.js-ad-content');
+
+      contents.forEach(content => {
+        content.addEventListener('click', function(e) {
+          // 如果点击的是链接或链接内部元素,阻止冒泡到覆盖层
+          if (e.target.closest('a')) {
+            e.stopPropagation();
+          }
+        }, true); // 使用捕获阶段
+      });
+    })();
+  </script>
 </div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: proxyman-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
   <!-- 隐形覆盖层：点击卡片空白处跳转到赞助商链接 -->
-  <a href="https://l.fatbobman.com/sb-proxyman-zh" target="_blank" rel="sponsored" class="absolute inset-0 z-0"></a>
+  <a href="https://l.fatbobman.com/sb-proxyman-zh" target="_blank" rel="sponsored" class="absolute inset-0 z-0 js-ad-overlay"></a>
 
   <!-- 核心广告卡片 -->
   <div class="group
@@ -495,15 +529,15 @@ Variant ID: proxyman-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML
 
         <!-- 描述文字 -->
         <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-          <!-- description 中的链接需要恢复 pointer-events 否则无法点击 -->
-          <span class="pointer-events-auto">告别手动证书配置。Proxyman 使用 <strong class="text-orange-700 dark:text-blue-400">Atlantis 框架</strong>自动捕获和解密 HTTPs 流量。原生应用，高性能，专为 Apple Silicon 打造。</span>
+          <!-- description 中的链接需要恢复 pointer-events 并阻止事件冒泡 -->
+          <span class="pointer-events-auto js-ad-content">告别手动证书配置。Proxyman 使用 <strong class="text-orange-700 dark:text-blue-400">Atlantis 框架</strong>自动捕获和解密 HTTPs 流量。原生应用，高性能，专为 Apple Silicon 打造。</span>
         </p>
 
         <!-- 底部行：Features + CTA -->
           
           <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
             <!-- Features -->
-            <span class="pointer-events-auto">
+            <span class="pointer-events-auto js-ad-content">
         <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md
           bg-orange-50/85 dark:bg-blue-500/10
           text-orange-700 dark:text-blue-300
@@ -518,7 +552,7 @@ Variant ID: proxyman-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML
               text-gray-500 dark:text-gray-500
               transition-all duration-200 font-medium
               group-hover:text-secondary dark:group-hover:text-secondary
-              pointer-events-auto">
+              pointer-events-auto js-ad-content">
               免费下载
               <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -547,10 +581,27 @@ Variant ID: proxyman-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML
     </a>
   </div>
   
+
+  <!-- 内部链接点击拦截脚本 -->
+  <script>
+    (function() {
+      const container = currentScript.parentElement;
+      const contents = container.querySelectorAll('.js-ad-content');
+
+      contents.forEach(content => {
+        content.addEventListener('click', function(e) {
+          // 如果点击的是链接或链接内部元素,阻止冒泡到覆盖层
+          if (e.target.closest('a')) {
+            e.stopPropagation();
+          }
+        }, true); // 使用捕获阶段
+      });
+    })();
+  </script>
 </div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: example-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
   <!-- 隐形覆盖层：点击卡片空白处跳转到赞助商链接 -->
-  <a href="/zh/sponsorship/" target="_blank" rel="sponsored" class="absolute inset-0 z-0"></a>
+  <a href="/zh/sponsorship/" target="_blank" rel="sponsored" class="absolute inset-0 z-0 js-ad-overlay"></a>
 
   <!-- 核心广告卡片 -->
   <div class="group
@@ -595,8 +646,8 @@ Variant ID: example-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML 
 
         <!-- 描述文字 -->
         <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-          <!-- description 中的链接需要恢复 pointer-events 否则无法点击 -->
-          <span class="pointer-events-auto">这是一个没有特殊促销信息的广告示例。依然保持简洁优雅的展示效果。</span>
+          <!-- description 中的链接需要恢复 pointer-events 并阻止事件冒泡 -->
+          <span class="pointer-events-auto js-ad-content">这是一个没有特殊促销信息的广告示例。依然保持简洁优雅的展示效果。</span>
         </p>
 
         <!-- 底部行：Features + CTA -->
@@ -605,7 +656,7 @@ Variant ID: example-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML 
           <div class="mt-3 flex items-center gap-1 text-xs sm:text-sm
             text-gray-500 dark:text-gray-500
             transition-all duration-200 font-medium
-            group-hover:text-secondary dark:group-hover:text-secondary  pointer-events-auto">
+            group-hover:text-secondary dark:group-hover:text-secondary  pointer-events-auto js-ad-content">
             了解更多
             <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
               fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -618,6 +669,23 @@ Variant ID: example-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML 
     </div>
 
   
+
+  <!-- 内部链接点击拦截脚本 -->
+  <script>
+    (function() {
+      const container = currentScript.parentElement;
+      const contents = container.querySelectorAll('.js-ad-content');
+
+      contents.forEach(content => {
+        content.addEventListener('click', function(e) {
+          // 如果点击的是链接或链接内部元素,阻止冒泡到覆盖层
+          if (e.target.closest('a')) {
+            e.stopPropagation();
+          }
+        }, true); // 使用捕获阶段
+      });
+    })();
+  </script>
 </div> </div> </div> </div> <!-- 中文广告 - 副样式 --> <div data-astro-cid-jhwx4wuq> <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100" data-astro-cid-jhwx4wuq>
 中文广告 - 副样式 (Chinese Ads - Secondary Style)
 </h2> <div class="space-y-8" data-astro-cid-jhwx4wuq> <div class="text-center py-8 text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq> <p data-astro-cid-jhwx4wuq>暂无副样式广告</p> </div> </div> </div> <!-- 英文广告 - 主样式 --> <div data-astro-cid-jhwx4wuq> <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100" data-astro-cid-jhwx4wuq>
@@ -625,7 +693,7 @@ Variant ID: example-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML 
 </h2> <div class="space-y-8" data-astro-cid-jhwx4wuq> <div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: boltai-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
   <!-- 隐形覆盖层：点击卡片空白处跳转到赞助商链接 -->
-  <a href="https://l.fatbobman.com/sb-boltai" target="_blank" rel="sponsored" class="absolute inset-0 z-0"></a>
+  <a href="https://l.fatbobman.com/sb-boltai" target="_blank" rel="sponsored" class="absolute inset-0 z-0 js-ad-overlay"></a>
 
   <!-- 核心广告卡片 -->
   <div class="group
@@ -670,15 +738,15 @@ Variant ID: boltai-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
 
         <!-- 描述文字 -->
         <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-          <!-- description 中的链接需要恢复 pointer-events 否则无法点击 -->
-          <span class="pointer-events-auto">BoltAI integrates GPT, Claude, Gemini, and Ollama local models directly into your workflow. Features screen context awareness and code refactoring — built for developers.</span>
+          <!-- description 中的链接需要恢复 pointer-events 并阻止事件冒泡 -->
+          <span class="pointer-events-auto js-ad-content">BoltAI integrates GPT, Claude, Gemini, and Ollama local models directly into your workflow. Features screen context awareness and code refactoring — built for developers.</span>
         </p>
 
         <!-- 底部行：Features + CTA -->
           
           <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
             <!-- Features -->
-            <span class="pointer-events-auto">
+            <span class="pointer-events-auto js-ad-content">
         <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md
           bg-orange-50/85 dark:bg-blue-500/10
           text-orange-700 dark:text-blue-300
@@ -693,7 +761,7 @@ Variant ID: boltai-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
               text-gray-500 dark:text-gray-500
               transition-all duration-200 font-medium
               group-hover:text-secondary dark:group-hover:text-secondary
-              pointer-events-auto">
+              pointer-events-auto js-ad-content">
               Try it now
               <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -722,10 +790,27 @@ Variant ID: boltai-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
     </a>
   </div>
   
+
+  <!-- 内部链接点击拦截脚本 -->
+  <script>
+    (function() {
+      const container = currentScript.parentElement;
+      const contents = container.querySelectorAll('.js-ad-content');
+
+      contents.forEach(content => {
+        content.addEventListener('click', function(e) {
+          // 如果点击的是链接或链接内部元素,阻止冒泡到覆盖层
+          if (e.target.closest('a')) {
+            e.stopPropagation();
+          }
+        }, true); // 使用捕获阶段
+      });
+    })();
+  </script>
 </div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: boltai-en-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
   <!-- 隐形覆盖层：点击卡片空白处跳转到赞助商链接 -->
-  <a href="https://l.fatbobman.com/sb-boltai" target="_blank" rel="sponsored" class="absolute inset-0 z-0"></a>
+  <a href="https://l.fatbobman.com/sb-boltai" target="_blank" rel="sponsored" class="absolute inset-0 z-0 js-ad-overlay"></a>
 
   <!-- 核心广告卡片 -->
   <div class="group
@@ -770,15 +855,15 @@ Variant ID: boltai-en-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
 
         <!-- 描述文字 -->
         <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-          <!-- description 中的链接需要恢复 pointer-events 否则无法点击 -->
-          <span class="pointer-events-auto">Native macOS app that brings multiple AI models to your fingertips. Refactor code with one click, understand screen context intelligently.</span>
+          <!-- description 中的链接需要恢复 pointer-events 并阻止事件冒泡 -->
+          <span class="pointer-events-auto js-ad-content">Native macOS app that brings multiple AI models to your fingertips. Refactor code with one click, understand screen context intelligently.</span>
         </p>
 
         <!-- 底部行：Features + CTA -->
           
           <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
             <!-- Features -->
-            <span class="pointer-events-auto">
+            <span class="pointer-events-auto js-ad-content">
       <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md
         bg-orange-50/85 dark:bg-blue-500/10
         text-orange-700 dark:text-blue-300
@@ -793,7 +878,7 @@ Variant ID: boltai-en-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
               text-gray-500 dark:text-gray-500
               transition-all duration-200 font-medium
               group-hover:text-secondary dark:group-hover:text-secondary
-              pointer-events-auto">
+              pointer-events-auto js-ad-content">
               Free Download
               <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -822,10 +907,27 @@ Variant ID: boltai-en-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
     </a>
   </div>
   
+
+  <!-- 内部链接点击拦截脚本 -->
+  <script>
+    (function() {
+      const container = currentScript.parentElement;
+      const contents = container.querySelectorAll('.js-ad-content');
+
+      contents.forEach(content => {
+        content.addEventListener('click', function(e) {
+          // 如果点击的是链接或链接内部元素,阻止冒泡到覆盖层
+          if (e.target.closest('a')) {
+            e.stopPropagation();
+          }
+        }, true); // 使用捕获阶段
+      });
+    })();
+  </script>
 </div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: proxyman-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
   <!-- 隐形覆盖层：点击卡片空白处跳转到赞助商链接 -->
-  <a href="https://l.fatbobman.com/sb-proxyman" target="_blank" rel="sponsored" class="absolute inset-0 z-0"></a>
+  <a href="https://l.fatbobman.com/sb-proxyman" target="_blank" rel="sponsored" class="absolute inset-0 z-0 js-ad-overlay"></a>
 
   <!-- 核心广告卡片 -->
   <div class="group
@@ -878,15 +980,15 @@ Variant ID: proxyman-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML
 
         <!-- 描述文字 -->
         <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-          <!-- description 中的链接需要恢复 pointer-events 否则无法点击 -->
-          <span class="pointer-events-auto">Stop manual certificate configuration. Proxyman uses the <strong class="text-orange-700 dark:text-blue-400">Atlantis framework</strong> to capture and decrypt HTTPs traffic automatically. Native, high-performance, and built for Apple Silicon.</span>
+          <!-- description 中的链接需要恢复 pointer-events 并阻止事件冒泡 -->
+          <span class="pointer-events-auto js-ad-content">Stop manual certificate configuration. Proxyman uses the <strong class="text-orange-700 dark:text-blue-400">Atlantis framework</strong> to capture and decrypt HTTPs traffic automatically. Native, high-performance, and built for Apple Silicon.</span>
         </p>
 
         <!-- 底部行：Features + CTA -->
           
           <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
             <!-- Features -->
-            <span class="pointer-events-auto">
+            <span class="pointer-events-auto js-ad-content">
         <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md
           bg-orange-50/85 dark:bg-blue-500/10
           text-orange-700 dark:text-blue-300
@@ -901,7 +1003,7 @@ Variant ID: proxyman-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML
               text-gray-500 dark:text-gray-500
               transition-all duration-200 font-medium
               group-hover:text-secondary dark:group-hover:text-secondary
-              pointer-events-auto">
+              pointer-events-auto js-ad-content">
               Free Download
               <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -930,10 +1032,27 @@ Variant ID: proxyman-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML
     </a>
   </div>
   
+
+  <!-- 内部链接点击拦截脚本 -->
+  <script>
+    (function() {
+      const container = currentScript.parentElement;
+      const contents = container.querySelectorAll('.js-ad-content');
+
+      contents.forEach(content => {
+        content.addEventListener('click', function(e) {
+          // 如果点击的是链接或链接内部元素,阻止冒泡到覆盖层
+          if (e.target.closest('a')) {
+            e.stopPropagation();
+          }
+        }, true); // 使用捕获阶段
+      });
+    })();
+  </script>
 </div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: example-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
   <!-- 隐形覆盖层：点击卡片空白处跳转到赞助商链接 -->
-  <a href="/en/sponsorship/" target="_blank" rel="sponsored" class="absolute inset-0 z-0"></a>
+  <a href="/en/sponsorship/" target="_blank" rel="sponsored" class="absolute inset-0 z-0 js-ad-overlay"></a>
 
   <!-- 核心广告卡片 -->
   <div class="group
@@ -978,8 +1097,8 @@ Variant ID: example-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML 
 
         <!-- 描述文字 -->
         <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-          <!-- description 中的链接需要恢复 pointer-events 否则无法点击 -->
-          <span class="pointer-events-auto">This is an example ad without special promotional features. Still maintains a clean and elegant display.</span>
+          <!-- description 中的链接需要恢复 pointer-events 并阻止事件冒泡 -->
+          <span class="pointer-events-auto js-ad-content">This is an example ad without special promotional features. Still maintains a clean and elegant display.</span>
         </p>
 
         <!-- 底部行：Features + CTA -->
@@ -988,7 +1107,7 @@ Variant ID: example-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML 
           <div class="mt-3 flex items-center gap-1 text-xs sm:text-sm
             text-gray-500 dark:text-gray-500
             transition-all duration-200 font-medium
-            group-hover:text-secondary dark:group-hover:text-secondary  pointer-events-auto">
+            group-hover:text-secondary dark:group-hover:text-secondary  pointer-events-auto js-ad-content">
             Learn More
             <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
               fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1001,6 +1120,23 @@ Variant ID: example-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML 
     </div>
 
   
+
+  <!-- 内部链接点击拦截脚本 -->
+  <script>
+    (function() {
+      const container = currentScript.parentElement;
+      const contents = container.querySelectorAll('.js-ad-content');
+
+      contents.forEach(content => {
+        content.addEventListener('click', function(e) {
+          // 如果点击的是链接或链接内部元素,阻止冒泡到覆盖层
+          if (e.target.closest('a')) {
+            e.stopPropagation();
+          }
+        }, true); // 使用捕获阶段
+      });
+    })();
+  </script>
 </div> </div> </div> </div> <!-- 英文广告 - 副样式 --> <div data-astro-cid-jhwx4wuq> <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100" data-astro-cid-jhwx4wuq>
 英文广告 - 副样式 (English Ads - Secondary Style)
 </h2> <div class="space-y-8" data-astro-cid-jhwx4wuq> <div class="text-center py-8 text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq> <p data-astro-cid-jhwx4wuq>No secondary style ads available</p> </div> </div> </div> <!-- 默认广告 --> <div data-astro-cid-jhwx4wuq> <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100" data-astro-cid-jhwx4wuq>
@@ -1008,7 +1144,7 @@ Variant ID: example-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML 
 </h2> <div class="space-y-8" data-astro-cid-jhwx4wuq> <div class="border-2 border-dashed border-orange-300 dark:border-orange-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-orange-600 dark:text-orange-400" data-astro-cid-jhwx4wuq>
 Default ZH: default-zh </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
   <!-- 隐形覆盖层：点击卡片空白处跳转到赞助商链接 -->
-  <a href="/zh/sponsorship/" target="_blank" rel="sponsored" class="absolute inset-0 z-0"></a>
+  <a href="/zh/sponsorship/" target="_blank" rel="sponsored" class="absolute inset-0 z-0 js-ad-overlay"></a>
 
   <!-- 核心广告卡片 -->
   <div class="group
@@ -1053,8 +1189,8 @@ Default ZH: default-zh </div> <!-- Render the ad HTML directly --><div class="re
 
         <!-- 描述文字 -->
         <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-          <!-- description 中的链接需要恢复 pointer-events 否则无法点击 -->
-          <span class="pointer-events-auto">在博客和周刊中推广您的框架、工具、服务或应用，精准触达高度专注的 iOS 和 Swift 开发者受众。</span>
+          <!-- description 中的链接需要恢复 pointer-events 并阻止事件冒泡 -->
+          <span class="pointer-events-auto js-ad-content">在博客和周刊中推广您的框架、工具、服务或应用，精准触达高度专注的 iOS 和 Swift 开发者受众。</span>
         </p>
 
         <!-- 底部行：Features + CTA -->
@@ -1063,7 +1199,7 @@ Default ZH: default-zh </div> <!-- Render the ad HTML directly --><div class="re
           <div class="mt-3 flex items-center gap-1 text-xs sm:text-sm
             text-gray-500 dark:text-gray-500
             transition-all duration-200 font-medium
-            group-hover:text-secondary dark:group-hover:text-secondary  pointer-events-auto">
+            group-hover:text-secondary dark:group-hover:text-secondary  pointer-events-auto js-ad-content">
             成为赞助商
             <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
               fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1091,10 +1227,27 @@ Default ZH: default-zh </div> <!-- Render the ad HTML directly --><div class="re
     </a>
   </div>
   
+
+  <!-- 内部链接点击拦截脚本 -->
+  <script>
+    (function() {
+      const container = currentScript.parentElement;
+      const contents = container.querySelectorAll('.js-ad-content');
+
+      contents.forEach(content => {
+        content.addEventListener('click', function(e) {
+          // 如果点击的是链接或链接内部元素,阻止冒泡到覆盖层
+          if (e.target.closest('a')) {
+            e.stopPropagation();
+          }
+        }, true); // 使用捕获阶段
+      });
+    })();
+  </script>
 </div> </div> <div class="border-2 border-dashed border-orange-300 dark:border-orange-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-orange-600 dark:text-orange-400" data-astro-cid-jhwx4wuq>
 Default EN: default-en </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
   <!-- 隐形覆盖层：点击卡片空白处跳转到赞助商链接 -->
-  <a href="/en/sponsorship/" target="_blank" rel="sponsored" class="absolute inset-0 z-0"></a>
+  <a href="/en/sponsorship/" target="_blank" rel="sponsored" class="absolute inset-0 z-0 js-ad-overlay"></a>
 
   <!-- 核心广告卡片 -->
   <div class="group
@@ -1139,8 +1292,8 @@ Default EN: default-en </div> <!-- Render the ad HTML directly --><div class="re
 
         <!-- 描述文字 -->
         <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-          <!-- description 中的链接需要恢复 pointer-events 否则无法点击 -->
-          <span class="pointer-events-auto">Promote your framework, tool, service, or app to a highly targeted iOS &amp; Swift developer audience across blog and newsletter placements.</span>
+          <!-- description 中的链接需要恢复 pointer-events 并阻止事件冒泡 -->
+          <span class="pointer-events-auto js-ad-content">Promote your framework, tool, service, or app to a highly targeted iOS &amp; Swift developer audience across blog and newsletter placements.</span>
         </p>
 
         <!-- 底部行：Features + CTA -->
@@ -1149,7 +1302,7 @@ Default EN: default-en </div> <!-- Render the ad HTML directly --><div class="re
           <div class="mt-3 flex items-center gap-1 text-xs sm:text-sm
             text-gray-500 dark:text-gray-500
             transition-all duration-200 font-medium
-            group-hover:text-secondary dark:group-hover:text-secondary  pointer-events-auto">
+            group-hover:text-secondary dark:group-hover:text-secondary  pointer-events-auto js-ad-content">
             Become a sponsor
             <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5"
               fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1177,6 +1330,23 @@ Default EN: default-en </div> <!-- Render the ad HTML directly --><div class="re
     </a>
   </div>
   
+
+  <!-- 内部链接点击拦截脚本 -->
+  <script>
+    (function() {
+      const container = currentScript.parentElement;
+      const contents = container.querySelectorAll('.js-ad-content');
+
+      contents.forEach(content => {
+        content.addEventListener('click', function(e) {
+          // 如果点击的是链接或链接内部元素,阻止冒泡到覆盖层
+          if (e.target.closest('a')) {
+            e.stopPropagation();
+          }
+        }, true); // 使用捕获阶段
+      });
+    })();
+  </script>
 </div> </div> </div> </div> <!-- 技术说明 --> <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6" data-astro-cid-jhwx4wuq> <h2 class="text-xl font-bold mb-4 text-gray-900 dark:text-gray-100" data-astro-cid-jhwx4wuq>
 🔧 技术架构
 </h2> <div class="space-y-3 text-sm text-gray-700 dark:text-gray-300" data-astro-cid-jhwx4wuq> <div data-astro-cid-jhwx4wuq> <strong data-astro-cid-jhwx4wuq>1. 共享模板函数</strong> <code class="block bg-gray-100 dark:bg-gray-900 px-3 py-2 rounded mt-1 text-xs" data-astro-cid-jhwx4wuq>
