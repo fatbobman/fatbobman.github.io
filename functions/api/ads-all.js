@@ -74,8 +74,27 @@ export async function onRequestGet(context) {
       });
     }
 
-    // 直接返回原始数据
-    return new Response(rawData, {
+    // 解析并重新序列化 JSON 以确保格式正确
+    // 这样可以修复 KV 中可能存在的未转义字符问题
+    let parsedData;
+    try {
+      parsedData = JSON.parse(rawData);
+    } catch (parseError) {
+      console.error('[ads-all] Failed to parse KV data:', parseError);
+      return new Response(JSON.stringify({
+        error: 'Invalid JSON in KV storage',
+        details: parseError.message,
+        schedules: [],
+        default: { zh: [], en: [] },
+        metadata: { lastUpdated: null, version: 'parse-error' }
+      }, null, 2), {
+        status: 500,
+        headers,
+      });
+    }
+
+    // 返回格式化的 JSON
+    return new Response(JSON.stringify(parsedData, null, 2), {
       status: 200,
       headers,
     });

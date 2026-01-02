@@ -67,7 +67,7 @@
       "url": "https://fatbobman.com/images/blog-card.png"
     }
   }
-}</script><link rel="stylesheet" href="/_astro/about.NdP0k1fh.css">
+}</script><link rel="stylesheet" href="/_astro/about.BDe3YpJn.css">
 <style>code[data-astro-cid-kvic7ki7]{font-family:Courier New,monospace}
 .sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);background-color:#ffffffe6}.dark .sticky[data-astro-cid-4wsjtibl]{background-color:#171717e6}.sticky[data-astro-cid-4wsjtibl] .sticky-logo[data-astro-cid-4wsjtibl]{width:2rem;opacity:1;margin-right:.75rem}
 </style><script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push","gtag"])})(window,'partytown','forward');/* Partytown 0.11.2 - MIT QwikDev */
@@ -427,52 +427,18 @@ const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
   // 加载广告数据
   async function loadAdsData() {
     try {
-      // 尝试从 API 加载数据
-      let data;
+      const response = await fetch('https://fatbobman.com/api/ads-all', {
+        headers: {
+          'Accept': 'application/json',
+        },
+        cache: 'no-cache',
+      });
 
-      try {
-        const response = await fetch('/api/ads-all', {
-          headers: {
-            'Accept': 'application/json',
-          },
-          cache: 'no-cache',
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
-
-        data = await response.json();
-
-        if (data.error) {
-          throw new Error(data.error);
-        }
-      } catch (apiError) {
-        // API 调用失败,回退到本地示例数据
-        console.warn('[Preview] API 不可用,使用本地示例数据:', apiError.message);
-
-        // 加载本地示例数据
-        const sampleResponse = await fetch('/docs/ads-kv-example-v2.json');
-        if (!sampleResponse.ok) {
-          throw new Error('无法加载 API 和本地示例数据');
-        }
-        data = await sampleResponse.json();
-
-        // 显示提示信息
-        const warningDiv = document.createElement('div');
-        warningDiv.className = 'bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mb-6';
-        warningDiv.innerHTML = `
-          <div class="flex items-center gap-3">
-            <span class="text-2xl">⚠️</span>
-            <div>
-              <p class="font-semibold text-yellow-900 dark:text-yellow-100">使用本地示例数据</p>
-              <p class="text-sm text-yellow-700 dark:text-yellow-300">EdgeOne API 不可用 (EdgeOne CLI 未启动)。正在显示 <code class="bg-yellow-100 dark:bg-yellow-800 px-1 rounded">docs/ads-kv-example-v2.json</code> 的示例数据。</p>
-              <p class="text-sm text-yellow-700 dark:text-yellow-300 mt-1">要查看真实数据,请运行 <code class="bg-yellow-100 dark:bg-yellow-800 px-1 rounded">npm run edge:dev</code></p>
-            </div>
-          </div>
-        `;
-        mainContent.insertBefore(warningDiv, mainContent.firstChild);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
+
+      const data = await response.json();
 
       if (data.error) {
         throw new Error(data.error);
@@ -507,7 +473,7 @@ const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
   }
 
   // 创建广告预览卡片
-  function createAdPreviewCard(adData, lang, type = 'scheduled') {
+  function createAdPreviewCard(adData, lang, sponsorId, type = 'scheduled') {
     const borderColor = type === 'default'
       ? 'border-orange-300 dark:border-orange-600'
       : 'border-gray-300 dark:border-gray-600';
@@ -515,6 +481,9 @@ const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
     const styleBadgeColor = adData.style === 2
       ? 'bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200'
       : 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200';
+
+    // 将 sponsorId 添加到 adData 中,用于渲染 API
+    const adDataWithSponsor = { ...adData, sponsorId };
 
     return `
       <div class="border-2 border-dashed ${borderColor} rounded-lg p-4 hover:shadow-lg transition-shadow">
@@ -527,7 +496,7 @@ const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
           </span>
           ${adData.title ? `<span class="text-gray-600 dark:text-gray-400 truncate max-w-md">${escapeHtml(adData.title)}</span>` : ''}
         </div>
-        <div class="ad-preview-slot" data-ad='${JSON.stringify(adData)}' data-lang="${lang}"></div>
+        <div class="ad-preview-slot" data-ad='${JSON.stringify(adDataWithSponsor)}' data-lang="${lang}"></div>
       </div>
     `;
   }
@@ -592,7 +561,7 @@ const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
 
         schedule.variants.zh.forEach((variant) => {
           const card = document.createElement('div');
-          card.innerHTML = createAdPreviewCard(variant, 'zh', 'scheduled');
+          card.innerHTML = createAdPreviewCard(variant, 'zh', schedule.sponsorId, 'scheduled');
           variantsContainer.appendChild(card);
         });
 
@@ -630,7 +599,7 @@ const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
 
         schedule.variants.en.forEach((variant) => {
           const card = document.createElement('div');
-          card.innerHTML = createAdPreviewCard(variant, 'en', 'scheduled');
+          card.innerHTML = createAdPreviewCard(variant, 'en', schedule.sponsorId, 'scheduled');
           variantsContainer.appendChild(card);
         });
 
@@ -650,13 +619,13 @@ const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
           // 新格式: 数组
           data.default.zh.forEach((variant) => {
             const card = document.createElement('div');
-            card.innerHTML = createAdPreviewCard(variant, 'zh', 'default');
+            card.innerHTML = createAdPreviewCard(variant, 'zh', 'default', 'default');
             defaultZhContainer.appendChild(card);
           });
         } else {
           // 旧格式: 单个对象
           const card = document.createElement('div');
-          card.innerHTML = createAdPreviewCard(data.default.zh, 'zh', 'default');
+          card.innerHTML = createAdPreviewCard(data.default.zh, 'zh', 'default', 'default');
           defaultZhContainer.appendChild(card);
         }
       }
@@ -667,13 +636,13 @@ const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
           // 新格式: 数组
           data.default.en.forEach((variant) => {
             const card = document.createElement('div');
-            card.innerHTML = createAdPreviewCard(variant, 'en', 'default');
+            card.innerHTML = createAdPreviewCard(variant, 'en', 'default', 'default');
             defaultEnContainer.appendChild(card);
           });
         } else {
           // 旧格式: 单个对象
           const card = document.createElement('div');
-          card.innerHTML = createAdPreviewCard(data.default.en, 'en', 'default');
+          card.innerHTML = createAdPreviewCard(data.default.en, 'en', 'default', 'default');
           defaultEnContainer.appendChild(card);
         }
       }
@@ -686,38 +655,79 @@ const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
   }
 
   // 渲染广告预览
-  function renderAdPreviews() {
-    // 这里我们通过调用 Edge Function 的渲染端点来获取 HTML
+  async function renderAdPreviews() {
     const slots = document.querySelectorAll('.ad-preview-slot');
 
-    slots.forEach(async (slot) => {
-      const adData = JSON.parse(slot.dataset.ad);
-      const lang = slot.dataset.lang;
+    // 批量渲染,避免同时发送太多请求
+    const BATCH_SIZE = 5; // 每批最多5个请求
 
-      try {
-        // 调用广告渲染 API
-        const params = new URLSearchParams({
-          lang: lang,
-          version: adData.version.toString(),
+    for (let i = 0; i < slots.length; i += BATCH_SIZE) {
+      const batch = Array.from(slots).slice(i, i + BATCH_SIZE);
+
+      // 并行渲染当前批次
+      await Promise.all(batch.map(async (slot) => {
+        const adData = JSON.parse(slot.dataset.ad);
+        const lang = slot.dataset.lang;
+
+        console.log('[Preview] Rendering ad:', {
+          lang,
+          version: adData.version,
+          sponsorId: adData.sponsorId,
+          title: adData.title?.substring(0, 30)
         });
 
-        // 如果有 sponsorId,可以添加参数测试特定广告
-        if (adData.sponsorId) {
-          params.append('sponsorId', adData.sponsorId);
-        }
+        try {
+          // 构建渲染 API 参数
+          const params = new URLSearchParams({
+            lang: lang,
+            version: adData.version.toString(),
+          });
 
-        const response = await fetch(`/ads/?${params.toString()}`);
+          let url;
 
-        if (response.ok) {
-          const html = await response.text();
-          slot.innerHTML = html;
-        } else {
-          slot.innerHTML = `<div class="text-red-600 dark:text-red-400 text-sm">渲染失败: HTTP ${response.status}</div>`;
+          // 默认广告使用 adId=default 参数
+          if (adData.sponsorId === 'default') {
+            params.append('adId', 'default');
+            url = `https://fatbobman.com/ads/?${params.toString()}`;
+            console.log('[Preview] Fetching default ad:', url);
+          } else {
+            // 排期广告使用 sponsorId 参数
+            params.append('sponsorId', adData.sponsorId);
+            url = `https://fatbobman.com/ads/?${params.toString()}`;
+            console.log('[Preview] Fetching scheduled ad:', url);
+          }
+
+          const response = await fetch(url);
+
+          if (response.ok) {
+            const html = await response.text();
+            console.log('[Preview] Success:', adData.sponsorId, 'Length:', html.length);
+
+            // 检查响应头
+            const sponsorIdHeader = response.headers.get('X-Sponsor-Id');
+            const adIdHeader = response.headers.get('X-Ad-Id');
+            console.log('[Preview] Response headers:', { sponsorIdHeader, adIdHeader });
+
+            // 如果响应头缺失,说明返回的是 fallback
+            if (!sponsorIdHeader || sponsorIdHeader === 'null' || !adIdHeader || adIdHeader === 'null') {
+              console.warn('[Preview] ⚠️ Got fallback response instead of actual ad!');
+            }
+
+            slot.innerHTML = html;
+          } else {
+            console.error('[Preview] HTTP Error:', adData.sponsorId, response.status);
+            slot.innerHTML = `<div class="text-red-600 dark:text-red-400 text-sm">渲染失败: HTTP ${response.status}</div>`;
+          }
+        } catch (error) {
+          console.error('[Preview] Error:', adData.sponsorId, error);
+          slot.innerHTML = `<div class="text-red-600 dark:text-red-400 text-sm">渲染错误: ${error.message}</div>`;
         }
-      } catch (error) {
-        slot.innerHTML = `<div class="text-red-600 dark:text-red-400 text-sm">渲染错误: ${error.message}</div>`;
-      }
-    });
+      }));
+
+      console.log(`[Preview] Batch ${Math.floor(i / BATCH_SIZE) + 1} completed`);
+    }
+
+    console.log('[Preview] All ads rendered');
   }
 
   // 页面加载时执行
