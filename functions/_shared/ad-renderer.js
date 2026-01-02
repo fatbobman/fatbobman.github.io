@@ -126,7 +126,7 @@ export function renderAdPrimary(adData, lang = 'zh') {
 
   // Sponsor link text with fallback
   const finalSponsorLinkText = sponsorLinkText || (lang === 'zh' ? '成为赞助商' : 'Become a sponsor');
-  const sponsorLinkHref = lang === 'zh' ? '/zh/sponsorship/' : '/en/sponsorship/';
+  const sponsorLinkHref = lang === 'zh' ? '/en/sponsorship/' : '/en/sponsorship/';
 
   // Logo HTML with dark mode support
   const logoHtml = logoDark
