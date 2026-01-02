@@ -88,6 +88,11 @@ function renderFeature(feature) {
 
 /**
  * Render advertisement HTML (Primary Style)
+ *
+ * Uses onclick technique to handle nested links:
+ * - Main card area uses onclick for sponsor link
+ * - Inner links in description use onclick and stopPropagation
+ *
  * @param {object} adData - AdVariant data object
  * @param {string} lang - Language code (zh/en)
  * @returns {string} Complete HTML for the advertisement
@@ -152,50 +157,51 @@ export function renderAdPrimary(adData, lang = 'zh') {
 
   return `
 <div class="relative mt-12 mb-2 not-prose font-sans ${customStyles.containerClass || ''}">
-  <!-- 核心广告卡片 -->
-  <a href="${link}"${anchorAttributes} class="block not-prose">
-    <div class="group
-      relative overflow-hidden rounded-xl
-      border border-gray-200/80 dark:border-gray-700/70
-      bg-white/95 dark:bg-slate-900/40
-      p-4 sm:p-5
-      shadow-sm
-      transition-colors duration-200">
+  <!-- 核心广告卡片 - 点击整个卡片跳转到赞助商链接 -->
+  <div class="group
+    relative overflow-hidden rounded-xl
+    border border-gray-200/80 dark:border-gray-700/70
+    bg-white/95 dark:bg-slate-900/40
+    p-4 sm:p-5
+    shadow-sm
+    transition-colors duration-200
+    cursor-pointer"
+    onclick="window.open('${link}', '${isAnchorLink ? '_self' : '_blank'}')">
 
-      <div class="flex items-start gap-4">
-        <!-- Logo -->
-        <div class="shrink-0">
-          ${logoHtml}
+    <div class="flex items-start gap-4">
+      <!-- Logo -->
+      <div class="shrink-0">
+        ${logoHtml}
+      </div>
+
+      <!-- 内容区域 -->
+      <div class="flex-1 min-w-0 pt-0.5">
+        <!-- 顶部行：标题 + 标签 -->
+        <div class="flex items-start justify-between gap-3 mb-1.5">
+          <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ${
+            customStyles.titleClass || ''
+          }">
+            ${titleHtml}
+          </h4>
+
+          <!-- Sponsor 标签 -->
+          <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+            text-gray-400 dark:text-gray-500
+            border border-gray-200/60 dark:border-gray-700/60
+            bg-white/60 dark:bg-slate-900/50
+            rounded px-1.5 py-0.5 select-none">
+            ${escapeHtml(badge)}
+          </span>
         </div>
 
-        <!-- 内容区域 -->
-        <div class="flex-1 min-w-0 pt-0.5">
-          <!-- 顶部行：标题 + 标签 -->
-          <div class="flex items-start justify-between gap-3 mb-1.5">
-            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ${
-              customStyles.titleClass || ''
-            }">
-              ${titleHtml}
-            </h4>
+        <!-- 描述文字 -->
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ${
+          customStyles.descriptionClass || ''
+        }">
+          ${descriptionHtml}
+        </p>
 
-            <!-- Sponsor 标签 -->
-            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
-              text-gray-400 dark:text-gray-500
-              border border-gray-200/60 dark:border-gray-700/60
-              bg-white/60 dark:bg-slate-900/50
-              rounded px-1.5 py-0.5 select-none">
-              ${escapeHtml(badge)}
-            </span>
-          </div>
-
-          <!-- 描述文字 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ${
-            customStyles.descriptionClass || ''
-          }">
-            ${descriptionHtml}
-          </p>
-
-          <!-- 底部行：Features + CTA -->
+        <!-- 底部行：Features + CTA -->
           ${
             hasSponsorFeatures
               ? `
@@ -233,7 +239,6 @@ export function renderAdPrimary(adData, lang = 'zh') {
         </div>
       </div>
     </div>
-  </a>
 
   ${
     showSponsorLink
@@ -243,7 +248,8 @@ export function renderAdPrimary(adData, lang = 'zh') {
     <a href="${sponsorLinkHref}" target="_blank"
       class="group/link flex items-center gap-1
       text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
-      transition-colors not-prose">
+      transition-colors not-prose"
+      onclick="event.stopPropagation()">
       ${escapeHtml(finalSponsorLinkText)}
       <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
         fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -272,9 +278,6 @@ export function renderAdSecondary(adData, lang = 'zh') {
   const descriptionHtml = renderRichText(description);
   const ctaHtml = cta ? renderRichText(cta) : '';
   const isAnchorLink = typeof link === 'string' && link.startsWith('#');
-  const targetAttr = isAnchorLink ? '' : ' target="_blank"';
-  const relAttr = isAnchorLink ? '' : ' rel="sponsored"';
-  const anchorAttributes = `${targetAttr}${relAttr}`;
 
   // Chinese language tracking
   const trackingClass = lang === 'zh' ? 'tracking-wide' : '';
@@ -294,37 +297,37 @@ export function renderAdSecondary(adData, lang = 'zh') {
   return `
 <!-- 顶部原生文字广告容器 -->
 <div class="relative not-prose font-sans">
-  <a href="${link}"${anchorAttributes} class="group block">
-    <!-- 核心布局：左侧边框 + 文字内容 -->
-    <div class="
-      relative pl-4 py-1
-      border-l-4 border-secondary
-    ">
+  <!-- 核心布局：左侧边框 + 文字内容 -->
+  <div class="
+    group relative pl-4 py-1
+    border-l-4 border-secondary
+    cursor-pointer
+  "
+    onclick="window.open('${link}', '${isAnchorLink ? '_self' : '_blank'}')">
 
-      <!-- 第一行：Sponsor 标识 + 标题 -->
-      <div class="flex items-baseline gap-2 mb-2 flex-wrap ${trackingClass}">
-        <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 select-none">
-          ${escapeHtml(badge)}
-        </span>
-        <div class="text-base font-bold text-heading">
-          ${titleHtml}
-        </div>
+    <!-- 第一行：Sponsor 标识 + 标题 -->
+    <div class="flex items-baseline gap-2 mb-2 flex-wrap ${trackingClass}">
+      <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 select-none">
+        ${escapeHtml(badge)}
+      </span>
+      <div class="text-base font-bold text-heading">
+        ${titleHtml}
       </div>
-
-      <!-- 正文内容：像博主的一句话推荐 -->
-      <p class="text-base leading-relaxed text-body ${trackingClass}">
-        ${logoHtml}${descriptionHtml}${
-          ctaHtml
-            ? `
-        <span class="ml-1 font-medium text-secondary group-hover:underline decoration-text-secondary underline-offset-2">
-          ${ctaHtml}
-        </span>`
-            : ''
-        }
-      </p>
-
     </div>
-  </a>
+
+    <!-- 正文内容：像博主的一句话推荐 -->
+    <p class="text-base leading-relaxed text-body ${trackingClass}">
+      ${logoHtml}${descriptionHtml}${
+        ctaHtml
+          ? `
+      <span class="ml-1 font-medium text-secondary group-hover:underline decoration-text-secondary underline-offset-2">
+        ${ctaHtml}
+      </span>`
+          : ''
+      }
+    </p>
+
+  </div>
 </div>
   `.trim();
 }

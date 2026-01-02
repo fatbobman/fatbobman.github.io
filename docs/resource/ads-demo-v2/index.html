@@ -241,20 +241,21 @@ const enableStickyInMobile = true;
 中文广告 - 主样式 (Chinese Ads - Primary Style)
 </h2> <div class="space-y-8" data-astro-cid-jhwx4wuq> <div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: boltai-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
-  <!-- 核心广告卡片 -->
-  <a href="https://l.fatbobman.com/sb-boltai-zh" target="_blank" rel="sponsored" class="block not-prose">
-    <div class="group
-      relative overflow-hidden rounded-xl
-      border border-gray-200/80 dark:border-gray-700/70
-      bg-white/95 dark:bg-slate-900/40
-      p-4 sm:p-5
-      shadow-sm
-      transition-colors duration-200">
+  <!-- 核心广告卡片 - 点击整个卡片跳转到赞助商链接 -->
+  <div class="group
+    relative overflow-hidden rounded-xl
+    border border-gray-200/80 dark:border-gray-700/70
+    bg-white/95 dark:bg-slate-900/40
+    p-4 sm:p-5
+    shadow-sm
+    transition-colors duration-200
+    cursor-pointer"
+    onclick="window.open('https://l.fatbobman.com/sb-boltai-zh', '_blank')">
 
-      <div class="flex items-start gap-4">
-        <!-- Logo -->
-        <div class="shrink-0">
-          
+    <div class="flex items-start gap-4">
+      <!-- Logo -->
+      <div class="shrink-0">
+        
     <img
       src="https://cdn.fatbobman.com/sb-boltai-White512@2x.png"
       alt="Sponsor Logo"
@@ -262,32 +263,32 @@ Variant ID: boltai-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
       loading="lazy"
     />
   
+      </div>
+
+      <!-- 内容区域 -->
+      <div class="flex-1 min-w-0 pt-0.5">
+        <!-- 顶部行：标题 + 标签 -->
+        <div class="flex items-start justify-between gap-3 mb-1.5">
+          <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+            Mac 原生 AI 客户端：聚合 GPT、Claude 及本地模型
+          </h4>
+
+          <!-- Sponsor 标签 -->
+          <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+            text-gray-400 dark:text-gray-500
+            border border-gray-200/60 dark:border-gray-700/60
+            bg-white/60 dark:bg-slate-900/50
+            rounded px-1.5 py-0.5 select-none">
+            Sponsor
+          </span>
         </div>
 
-        <!-- 内容区域 -->
-        <div class="flex-1 min-w-0 pt-0.5">
-          <!-- 顶部行：标题 + 标签 -->
-          <div class="flex items-start justify-between gap-3 mb-1.5">
-            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
-              Mac 原生 AI 客户端：聚合 GPT、Claude 及本地模型
-            </h4>
+        <!-- 描述文字 -->
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+          BoltAI 将 GPT、Claude、Gemini 和 Ollama 本地模型集成到你的工作流中。支持屏幕感知与代码重构，真正属于开发者的原生神器。
+        </p>
 
-            <!-- Sponsor 标签 -->
-            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
-              text-gray-400 dark:text-gray-500
-              border border-gray-200/60 dark:border-gray-700/60
-              bg-white/60 dark:bg-slate-900/50
-              rounded px-1.5 py-0.5 select-none">
-              Sponsor
-            </span>
-          </div>
-
-          <!-- 描述文字 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-            BoltAI 将 GPT、Claude、Gemini 和 Ollama 本地模型集成到你的工作流中。支持屏幕感知与代码重构，真正属于开发者的原生神器。
-          </p>
-
-          <!-- 底部行：Features + CTA -->
+        <!-- 底部行：Features + CTA -->
           
           <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
             <!-- Features -->
@@ -317,7 +318,6 @@ Variant ID: boltai-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
         </div>
       </div>
     </div>
-  </a>
 
   
   <!-- 外部链接：招商 -->
@@ -325,7 +325,8 @@ Variant ID: boltai-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
     <a href="/zh/sponsorship/" target="_blank"
       class="group/link flex items-center gap-1
       text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
-      transition-colors not-prose">
+      transition-colors not-prose"
+      onclick="event.stopPropagation()">
       成为赞助商
       <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
         fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -336,20 +337,21 @@ Variant ID: boltai-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
   
 </div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: boltai-zh-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
-  <!-- 核心广告卡片 -->
-  <a href="https://l.fatbobman.com/sb-boltai-zh" target="_blank" rel="sponsored" class="block not-prose">
-    <div class="group
-      relative overflow-hidden rounded-xl
-      border border-gray-200/80 dark:border-gray-700/70
-      bg-white/95 dark:bg-slate-900/40
-      p-4 sm:p-5
-      shadow-sm
-      transition-colors duration-200">
+  <!-- 核心广告卡片 - 点击整个卡片跳转到赞助商链接 -->
+  <div class="group
+    relative overflow-hidden rounded-xl
+    border border-gray-200/80 dark:border-gray-700/70
+    bg-white/95 dark:bg-slate-900/40
+    p-4 sm:p-5
+    shadow-sm
+    transition-colors duration-200
+    cursor-pointer"
+    onclick="window.open('https://l.fatbobman.com/sb-boltai-zh', '_blank')">
 
-      <div class="flex items-start gap-4">
-        <!-- Logo -->
-        <div class="shrink-0">
-          
+    <div class="flex items-start gap-4">
+      <!-- Logo -->
+      <div class="shrink-0">
+        
     <img
       src="https://cdn.fatbobman.com/sb-boltai-White512@2x.png"
       alt="Sponsor Logo"
@@ -357,32 +359,32 @@ Variant ID: boltai-zh-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
       loading="lazy"
     />
   
+      </div>
+
+      <!-- 内容区域 -->
+      <div class="flex-1 min-w-0 pt-0.5">
+        <!-- 顶部行：标题 + 标签 -->
+        <div class="flex items-start justify-between gap-3 mb-1.5">
+          <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+            BoltAI - <span class="text-orange-700 dark:text-blue-300">开发者的 AI 神器</span>
+          </h4>
+
+          <!-- Sponsor 标签 -->
+          <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+            text-gray-400 dark:text-gray-500
+            border border-gray-200/60 dark:border-gray-700/60
+            bg-white/60 dark:bg-slate-900/50
+            rounded px-1.5 py-0.5 select-none">
+            Sponsor
+          </span>
         </div>
 
-        <!-- 内容区域 -->
-        <div class="flex-1 min-w-0 pt-0.5">
-          <!-- 顶部行：标题 + 标签 -->
-          <div class="flex items-start justify-between gap-3 mb-1.5">
-            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
-              BoltAI - <span class="text-orange-700 dark:text-blue-300">开发者的 AI 神器</span>
-            </h4>
+        <!-- 描述文字 -->
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+          原生 macOS 应用，无缝整合多个 AI 模型。一键重构代码，智能理解屏幕内容，让 AI 真正成为你的编程助手。
+        </p>
 
-            <!-- Sponsor 标签 -->
-            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
-              text-gray-400 dark:text-gray-500
-              border border-gray-200/60 dark:border-gray-700/60
-              bg-white/60 dark:bg-slate-900/50
-              rounded px-1.5 py-0.5 select-none">
-              Sponsor
-            </span>
-          </div>
-
-          <!-- 描述文字 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-            原生 macOS 应用，无缝整合多个 AI 模型。一键重构代码，智能理解屏幕内容，让 AI 真正成为你的编程助手。
-          </p>
-
-          <!-- 底部行：Features + CTA -->
+        <!-- 底部行：Features + CTA -->
           
           <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
             <!-- Features -->
@@ -412,7 +414,6 @@ Variant ID: boltai-zh-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
         </div>
       </div>
     </div>
-  </a>
 
   
   <!-- 外部链接：招商 -->
@@ -420,7 +421,8 @@ Variant ID: boltai-zh-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
     <a href="/zh/sponsorship/" target="_blank"
       class="group/link flex items-center gap-1
       text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
-      transition-colors not-prose">
+      transition-colors not-prose"
+      onclick="event.stopPropagation()">
       成为赞助商
       <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
         fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -431,20 +433,21 @@ Variant ID: boltai-zh-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
   
 </div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: proxyman-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
-  <!-- 核心广告卡片 -->
-  <a href="https://l.fatbobman.com/sb-proxyman-zh" target="_blank" rel="sponsored" class="block not-prose">
-    <div class="group
-      relative overflow-hidden rounded-xl
-      border border-gray-200/80 dark:border-gray-700/70
-      bg-white/95 dark:bg-slate-900/40
-      p-4 sm:p-5
-      shadow-sm
-      transition-colors duration-200">
+  <!-- 核心广告卡片 - 点击整个卡片跳转到赞助商链接 -->
+  <div class="group
+    relative overflow-hidden rounded-xl
+    border border-gray-200/80 dark:border-gray-700/70
+    bg-white/95 dark:bg-slate-900/40
+    p-4 sm:p-5
+    shadow-sm
+    transition-colors duration-200
+    cursor-pointer"
+    onclick="window.open('https://l.fatbobman.com/sb-proxyman-zh', '_blank')">
 
-      <div class="flex items-start gap-4">
-        <!-- Logo -->
-        <div class="shrink-0">
-          
+    <div class="flex items-start gap-4">
+      <!-- Logo -->
+      <div class="shrink-0">
+        
     <!-- Light mode logo -->
     <img
       src="https://cdn.fatbobman.com/ads/proxyman-icon-blue-trim.webp"
@@ -460,32 +463,32 @@ Variant ID: proxyman-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML
       loading="lazy"
     />
   
+      </div>
+
+      <!-- 内容区域 -->
+      <div class="flex-1 min-w-0 pt-0.5">
+        <!-- 顶部行：标题 + 标签 -->
+        <div class="flex items-start justify-between gap-3 mb-1.5">
+          <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+            Proxyman - 原生 macOS 网络调试代理
+          </h4>
+
+          <!-- Sponsor 标签 -->
+          <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+            text-gray-400 dark:text-gray-500
+            border border-gray-200/60 dark:border-gray-700/60
+            bg-white/60 dark:bg-slate-900/50
+            rounded px-1.5 py-0.5 select-none">
+            Sponsor
+          </span>
         </div>
 
-        <!-- 内容区域 -->
-        <div class="flex-1 min-w-0 pt-0.5">
-          <!-- 顶部行：标题 + 标签 -->
-          <div class="flex items-start justify-between gap-3 mb-1.5">
-            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
-              Proxyman - 原生 macOS 网络调试代理
-            </h4>
+        <!-- 描述文字 -->
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+          告别手动证书配置。Proxyman 使用 <strong class="text-orange-700 dark:text-blue-400">Atlantis 框架</strong>自动捕获和解密 HTTPs 流量。原生应用，高性能，专为 Apple Silicon 打造。
+        </p>
 
-            <!-- Sponsor 标签 -->
-            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
-              text-gray-400 dark:text-gray-500
-              border border-gray-200/60 dark:border-gray-700/60
-              bg-white/60 dark:bg-slate-900/50
-              rounded px-1.5 py-0.5 select-none">
-              Sponsor
-            </span>
-          </div>
-
-          <!-- 描述文字 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-            告别手动证书配置。Proxyman 使用 <strong class="text-orange-700 dark:text-blue-400">Atlantis 框架</strong>自动捕获和解密 HTTPs 流量。原生应用，高性能，专为 Apple Silicon 打造。
-          </p>
-
-          <!-- 底部行：Features + CTA -->
+        <!-- 底部行：Features + CTA -->
           
           <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
             <!-- Features -->
@@ -515,7 +518,6 @@ Variant ID: proxyman-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML
         </div>
       </div>
     </div>
-  </a>
 
   
   <!-- 外部链接：招商 -->
@@ -523,7 +525,8 @@ Variant ID: proxyman-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML
     <a href="/zh/sponsorship/" target="_blank"
       class="group/link flex items-center gap-1
       text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
-      transition-colors not-prose">
+      transition-colors not-prose"
+      onclick="event.stopPropagation()">
       成为赞助商
       <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
         fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -534,20 +537,21 @@ Variant ID: proxyman-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML
   
 </div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: example-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
-  <!-- 核心广告卡片 -->
-  <a href="/zh/sponsorship/" target="_blank" rel="sponsored" class="block not-prose">
-    <div class="group
-      relative overflow-hidden rounded-xl
-      border border-gray-200/80 dark:border-gray-700/70
-      bg-white/95 dark:bg-slate-900/40
-      p-4 sm:p-5
-      shadow-sm
-      transition-colors duration-200">
+  <!-- 核心广告卡片 - 点击整个卡片跳转到赞助商链接 -->
+  <div class="group
+    relative overflow-hidden rounded-xl
+    border border-gray-200/80 dark:border-gray-700/70
+    bg-white/95 dark:bg-slate-900/40
+    p-4 sm:p-5
+    shadow-sm
+    transition-colors duration-200
+    cursor-pointer"
+    onclick="window.open('/zh/sponsorship/', '_blank')">
 
-      <div class="flex items-start gap-4">
-        <!-- Logo -->
-        <div class="shrink-0">
-          
+    <div class="flex items-start gap-4">
+      <!-- Logo -->
+      <div class="shrink-0">
+        
     <img
       src="https://cdn.fatbobman.com/placeholder-tools.svg"
       alt="Sponsor Logo"
@@ -555,32 +559,32 @@ Variant ID: example-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML 
       loading="lazy"
     />
   
+      </div>
+
+      <!-- 内容区域 -->
+      <div class="flex-1 min-w-0 pt-0.5">
+        <!-- 顶部行：标题 + 标签 -->
+        <div class="flex items-start justify-between gap-3 mb-1.5">
+          <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+            示例产品 - 无促销活动
+          </h4>
+
+          <!-- Sponsor 标签 -->
+          <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+            text-gray-400 dark:text-gray-500
+            border border-gray-200/60 dark:border-gray-700/60
+            bg-white/60 dark:bg-slate-900/50
+            rounded px-1.5 py-0.5 select-none">
+            Sponsor
+          </span>
         </div>
 
-        <!-- 内容区域 -->
-        <div class="flex-1 min-w-0 pt-0.5">
-          <!-- 顶部行：标题 + 标签 -->
-          <div class="flex items-start justify-between gap-3 mb-1.5">
-            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
-              示例产品 - 无促销活动
-            </h4>
+        <!-- 描述文字 -->
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+          这是一个没有特殊促销信息的广告示例。依然保持简洁优雅的展示效果。
+        </p>
 
-            <!-- Sponsor 标签 -->
-            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
-              text-gray-400 dark:text-gray-500
-              border border-gray-200/60 dark:border-gray-700/60
-              bg-white/60 dark:bg-slate-900/50
-              rounded px-1.5 py-0.5 select-none">
-              Sponsor
-            </span>
-          </div>
-
-          <!-- 描述文字 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-            这是一个没有特殊促销信息的广告示例。依然保持简洁优雅的展示效果。
-          </p>
-
-          <!-- 底部行：Features + CTA -->
+        <!-- 底部行：Features + CTA -->
           
           <!-- No features, show only CTA -->
           <div class="mt-3 flex items-center gap-1 text-xs sm:text-sm
@@ -597,7 +601,6 @@ Variant ID: example-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML 
         </div>
       </div>
     </div>
-  </a>
 
   
 </div> </div> </div> </div> <!-- 中文广告 - 副样式 --> <div data-astro-cid-jhwx4wuq> <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100" data-astro-cid-jhwx4wuq>
@@ -606,20 +609,21 @@ Variant ID: example-zh-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML 
 英文广告 - 主样式 (English Ads - Primary Style)
 </h2> <div class="space-y-8" data-astro-cid-jhwx4wuq> <div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: boltai-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
-  <!-- 核心广告卡片 -->
-  <a href="https://l.fatbobman.com/sb-boltai" target="_blank" rel="sponsored" class="block not-prose">
-    <div class="group
-      relative overflow-hidden rounded-xl
-      border border-gray-200/80 dark:border-gray-700/70
-      bg-white/95 dark:bg-slate-900/40
-      p-4 sm:p-5
-      shadow-sm
-      transition-colors duration-200">
+  <!-- 核心广告卡片 - 点击整个卡片跳转到赞助商链接 -->
+  <div class="group
+    relative overflow-hidden rounded-xl
+    border border-gray-200/80 dark:border-gray-700/70
+    bg-white/95 dark:bg-slate-900/40
+    p-4 sm:p-5
+    shadow-sm
+    transition-colors duration-200
+    cursor-pointer"
+    onclick="window.open('https://l.fatbobman.com/sb-boltai', '_blank')">
 
-      <div class="flex items-start gap-4">
-        <!-- Logo -->
-        <div class="shrink-0">
-          
+    <div class="flex items-start gap-4">
+      <!-- Logo -->
+      <div class="shrink-0">
+        
     <img
       src="https://cdn.fatbobman.com/sb-boltai-White512@2x.png"
       alt="Sponsor Logo"
@@ -627,32 +631,32 @@ Variant ID: boltai-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
       loading="lazy"
     />
   
+      </div>
+
+      <!-- 内容区域 -->
+      <div class="flex-1 min-w-0 pt-0.5">
+        <!-- 顶部行：标题 + 标签 -->
+        <div class="flex items-start justify-between gap-3 mb-1.5">
+          <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+            Native macOS AI Client: GPT, Claude, Gemini &amp; Local Models
+          </h4>
+
+          <!-- Sponsor 标签 -->
+          <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+            text-gray-400 dark:text-gray-500
+            border border-gray-200/60 dark:border-gray-700/60
+            bg-white/60 dark:bg-slate-900/50
+            rounded px-1.5 py-0.5 select-none">
+            SPONSOR
+          </span>
         </div>
 
-        <!-- 内容区域 -->
-        <div class="flex-1 min-w-0 pt-0.5">
-          <!-- 顶部行：标题 + 标签 -->
-          <div class="flex items-start justify-between gap-3 mb-1.5">
-            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
-              Native macOS AI Client: GPT, Claude, Gemini &amp; Local Models
-            </h4>
+        <!-- 描述文字 -->
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+          BoltAI integrates GPT, Claude, Gemini, and Ollama local models directly into your workflow. Features screen context awareness and code refactoring — built for developers.
+        </p>
 
-            <!-- Sponsor 标签 -->
-            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
-              text-gray-400 dark:text-gray-500
-              border border-gray-200/60 dark:border-gray-700/60
-              bg-white/60 dark:bg-slate-900/50
-              rounded px-1.5 py-0.5 select-none">
-              SPONSOR
-            </span>
-          </div>
-
-          <!-- 描述文字 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-            BoltAI integrates GPT, Claude, Gemini, and Ollama local models directly into your workflow. Features screen context awareness and code refactoring — built for developers.
-          </p>
-
-          <!-- 底部行：Features + CTA -->
+        <!-- 底部行：Features + CTA -->
           
           <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
             <!-- Features -->
@@ -682,7 +686,6 @@ Variant ID: boltai-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
         </div>
       </div>
     </div>
-  </a>
 
   
   <!-- 外部链接：招商 -->
@@ -690,7 +693,8 @@ Variant ID: boltai-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
     <a href="/en/sponsorship/" target="_blank"
       class="group/link flex items-center gap-1
       text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
-      transition-colors not-prose">
+      transition-colors not-prose"
+      onclick="event.stopPropagation()">
       Become a sponsor
       <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
         fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -701,20 +705,21 @@ Variant ID: boltai-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
   
 </div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: boltai-en-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
-  <!-- 核心广告卡片 -->
-  <a href="https://l.fatbobman.com/sb-boltai" target="_blank" rel="sponsored" class="block not-prose">
-    <div class="group
-      relative overflow-hidden rounded-xl
-      border border-gray-200/80 dark:border-gray-700/70
-      bg-white/95 dark:bg-slate-900/40
-      p-4 sm:p-5
-      shadow-sm
-      transition-colors duration-200">
+  <!-- 核心广告卡片 - 点击整个卡片跳转到赞助商链接 -->
+  <div class="group
+    relative overflow-hidden rounded-xl
+    border border-gray-200/80 dark:border-gray-700/70
+    bg-white/95 dark:bg-slate-900/40
+    p-4 sm:p-5
+    shadow-sm
+    transition-colors duration-200
+    cursor-pointer"
+    onclick="window.open('https://l.fatbobman.com/sb-boltai', '_blank')">
 
-      <div class="flex items-start gap-4">
-        <!-- Logo -->
-        <div class="shrink-0">
-          
+    <div class="flex items-start gap-4">
+      <!-- Logo -->
+      <div class="shrink-0">
+        
     <img
       src="https://cdn.fatbobman.com/sb-boltai-White512@2x.png"
       alt="Sponsor Logo"
@@ -722,32 +727,32 @@ Variant ID: boltai-en-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
       loading="lazy"
     />
   
+      </div>
+
+      <!-- 内容区域 -->
+      <div class="flex-1 min-w-0 pt-0.5">
+        <!-- 顶部行：标题 + 标签 -->
+        <div class="flex items-start justify-between gap-3 mb-1.5">
+          <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+            BoltAI - AI Assistant for Developers
+          </h4>
+
+          <!-- Sponsor 标签 -->
+          <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+            text-gray-400 dark:text-gray-500
+            border border-gray-200/60 dark:border-gray-700/60
+            bg-white/60 dark:bg-slate-900/50
+            rounded px-1.5 py-0.5 select-none">
+            SPONSOR
+          </span>
         </div>
 
-        <!-- 内容区域 -->
-        <div class="flex-1 min-w-0 pt-0.5">
-          <!-- 顶部行：标题 + 标签 -->
-          <div class="flex items-start justify-between gap-3 mb-1.5">
-            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
-              BoltAI - AI Assistant for Developers
-            </h4>
+        <!-- 描述文字 -->
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+          Native macOS app that brings multiple AI models to your fingertips. Refactor code with one click, understand screen context intelligently.
+        </p>
 
-            <!-- Sponsor 标签 -->
-            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
-              text-gray-400 dark:text-gray-500
-              border border-gray-200/60 dark:border-gray-700/60
-              bg-white/60 dark:bg-slate-900/50
-              rounded px-1.5 py-0.5 select-none">
-              SPONSOR
-            </span>
-          </div>
-
-          <!-- 描述文字 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-            Native macOS app that brings multiple AI models to your fingertips. Refactor code with one click, understand screen context intelligently.
-          </p>
-
-          <!-- 底部行：Features + CTA -->
+        <!-- 底部行：Features + CTA -->
           
           <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
             <!-- Features -->
@@ -777,7 +782,6 @@ Variant ID: boltai-en-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
         </div>
       </div>
     </div>
-  </a>
 
   
   <!-- 外部链接：招商 -->
@@ -785,7 +789,8 @@ Variant ID: boltai-en-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
     <a href="/en/sponsorship/" target="_blank"
       class="group/link flex items-center gap-1
       text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
-      transition-colors not-prose">
+      transition-colors not-prose"
+      onclick="event.stopPropagation()">
       Become a sponsor
       <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
         fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -796,20 +801,21 @@ Variant ID: boltai-en-v2 | Style: 1 | Version:  </div> <!-- Render the ad HTML d
   
 </div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: proxyman-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
-  <!-- 核心广告卡片 -->
-  <a href="https://l.fatbobman.com/sb-proxyman" target="_blank" rel="sponsored" class="block not-prose">
-    <div class="group
-      relative overflow-hidden rounded-xl
-      border border-gray-200/80 dark:border-gray-700/70
-      bg-white/95 dark:bg-slate-900/40
-      p-4 sm:p-5
-      shadow-sm
-      transition-colors duration-200">
+  <!-- 核心广告卡片 - 点击整个卡片跳转到赞助商链接 -->
+  <div class="group
+    relative overflow-hidden rounded-xl
+    border border-gray-200/80 dark:border-gray-700/70
+    bg-white/95 dark:bg-slate-900/40
+    p-4 sm:p-5
+    shadow-sm
+    transition-colors duration-200
+    cursor-pointer"
+    onclick="window.open('https://l.fatbobman.com/sb-proxyman', '_blank')">
 
-      <div class="flex items-start gap-4">
-        <!-- Logo -->
-        <div class="shrink-0">
-          
+    <div class="flex items-start gap-4">
+      <!-- Logo -->
+      <div class="shrink-0">
+        
     <!-- Light mode logo -->
     <img
       src="https://cdn.fatbobman.com/ads/proxyman-icon-blue-trim.webp"
@@ -825,32 +831,32 @@ Variant ID: proxyman-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML
       loading="lazy"
     />
   
+      </div>
+
+      <!-- 内容区域 -->
+      <div class="flex-1 min-w-0 pt-0.5">
+        <!-- 顶部行：标题 + 标签 -->
+        <div class="flex items-start justify-between gap-3 mb-1.5">
+          <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+            Native macOS Web Debugging Proxy
+          </h4>
+
+          <!-- Sponsor 标签 -->
+          <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+            text-gray-400 dark:text-gray-500
+            border border-gray-200/60 dark:border-gray-700/60
+            bg-white/60 dark:bg-slate-900/50
+            rounded px-1.5 py-0.5 select-none">
+            SPONSOR
+          </span>
         </div>
 
-        <!-- 内容区域 -->
-        <div class="flex-1 min-w-0 pt-0.5">
-          <!-- 顶部行：标题 + 标签 -->
-          <div class="flex items-start justify-between gap-3 mb-1.5">
-            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
-              Native macOS Web Debugging Proxy
-            </h4>
+        <!-- 描述文字 -->
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+          Stop manual certificate configuration. Proxyman uses the <strong class="text-orange-700 dark:text-blue-400">Atlantis framework</strong> to capture and decrypt HTTPs traffic automatically. Native, high-performance, and built for Apple Silicon.
+        </p>
 
-            <!-- Sponsor 标签 -->
-            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
-              text-gray-400 dark:text-gray-500
-              border border-gray-200/60 dark:border-gray-700/60
-              bg-white/60 dark:bg-slate-900/50
-              rounded px-1.5 py-0.5 select-none">
-              SPONSOR
-            </span>
-          </div>
-
-          <!-- 描述文字 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-            Stop manual certificate configuration. Proxyman uses the <strong class="text-orange-700 dark:text-blue-400">Atlantis framework</strong> to capture and decrypt HTTPs traffic automatically. Native, high-performance, and built for Apple Silicon.
-          </p>
-
-          <!-- 底部行：Features + CTA -->
+        <!-- 底部行：Features + CTA -->
           
           <div class="mt-3 flex flex-wrap items-center gap-3 text-xs sm:text-sm ">
             <!-- Features -->
@@ -880,7 +886,6 @@ Variant ID: proxyman-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML
         </div>
       </div>
     </div>
-  </a>
 
   
   <!-- 外部链接：招商 -->
@@ -888,7 +893,8 @@ Variant ID: proxyman-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML
     <a href="/en/sponsorship/" target="_blank"
       class="group/link flex items-center gap-1
       text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
-      transition-colors not-prose">
+      transition-colors not-prose"
+      onclick="event.stopPropagation()">
       Become a sponsor
       <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
         fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -899,20 +905,21 @@ Variant ID: proxyman-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML
   
 </div> </div><div class="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-gray-500 dark:text-gray-400" data-astro-cid-jhwx4wuq>
 Variant ID: example-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
-  <!-- 核心广告卡片 -->
-  <a href="/en/sponsorship/" target="_blank" rel="sponsored" class="block not-prose">
-    <div class="group
-      relative overflow-hidden rounded-xl
-      border border-gray-200/80 dark:border-gray-700/70
-      bg-white/95 dark:bg-slate-900/40
-      p-4 sm:p-5
-      shadow-sm
-      transition-colors duration-200">
+  <!-- 核心广告卡片 - 点击整个卡片跳转到赞助商链接 -->
+  <div class="group
+    relative overflow-hidden rounded-xl
+    border border-gray-200/80 dark:border-gray-700/70
+    bg-white/95 dark:bg-slate-900/40
+    p-4 sm:p-5
+    shadow-sm
+    transition-colors duration-200
+    cursor-pointer"
+    onclick="window.open('/en/sponsorship/', '_blank')">
 
-      <div class="flex items-start gap-4">
-        <!-- Logo -->
-        <div class="shrink-0">
-          
+    <div class="flex items-start gap-4">
+      <!-- Logo -->
+      <div class="shrink-0">
+        
     <img
       src="https://cdn.fatbobman.com/placeholder-tools.svg"
       alt="Sponsor Logo"
@@ -920,32 +927,32 @@ Variant ID: example-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML 
       loading="lazy"
     />
   
+      </div>
+
+      <!-- 内容区域 -->
+      <div class="flex-1 min-w-0 pt-0.5">
+        <!-- 顶部行：标题 + 标签 -->
+        <div class="flex items-start justify-between gap-3 mb-1.5">
+          <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+            Example Product - No Promotion
+          </h4>
+
+          <!-- Sponsor 标签 -->
+          <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+            text-gray-400 dark:text-gray-500
+            border border-gray-200/60 dark:border-gray-700/60
+            bg-white/60 dark:bg-slate-900/50
+            rounded px-1.5 py-0.5 select-none">
+            SPONSOR
+          </span>
         </div>
 
-        <!-- 内容区域 -->
-        <div class="flex-1 min-w-0 pt-0.5">
-          <!-- 顶部行：标题 + 标签 -->
-          <div class="flex items-start justify-between gap-3 mb-1.5">
-            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
-              Example Product - No Promotion
-            </h4>
+        <!-- 描述文字 -->
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+          This is an example ad without special promotional features. Still maintains a clean and elegant display.
+        </p>
 
-            <!-- Sponsor 标签 -->
-            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
-              text-gray-400 dark:text-gray-500
-              border border-gray-200/60 dark:border-gray-700/60
-              bg-white/60 dark:bg-slate-900/50
-              rounded px-1.5 py-0.5 select-none">
-              SPONSOR
-            </span>
-          </div>
-
-          <!-- 描述文字 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-            This is an example ad without special promotional features. Still maintains a clean and elegant display.
-          </p>
-
-          <!-- 底部行：Features + CTA -->
+        <!-- 底部行：Features + CTA -->
           
           <!-- No features, show only CTA -->
           <div class="mt-3 flex items-center gap-1 text-xs sm:text-sm
@@ -962,7 +969,6 @@ Variant ID: example-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML 
         </div>
       </div>
     </div>
-  </a>
 
   
 </div> </div> </div> </div> <!-- 英文广告 - 副样式 --> <div data-astro-cid-jhwx4wuq> <h2 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100" data-astro-cid-jhwx4wuq>
@@ -971,20 +977,21 @@ Variant ID: example-en-v1 | Style: 1 | Version:  </div> <!-- Render the ad HTML 
 默认广告 (Default Fallback Ads)
 </h2> <div class="space-y-8" data-astro-cid-jhwx4wuq> <div class="border-2 border-dashed border-orange-300 dark:border-orange-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-orange-600 dark:text-orange-400" data-astro-cid-jhwx4wuq>
 Default ZH: default-zh </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
-  <!-- 核心广告卡片 -->
-  <a href="/zh/sponsorship/" target="_blank" rel="sponsored" class="block not-prose">
-    <div class="group
-      relative overflow-hidden rounded-xl
-      border border-gray-200/80 dark:border-gray-700/70
-      bg-white/95 dark:bg-slate-900/40
-      p-4 sm:p-5
-      shadow-sm
-      transition-colors duration-200">
+  <!-- 核心广告卡片 - 点击整个卡片跳转到赞助商链接 -->
+  <div class="group
+    relative overflow-hidden rounded-xl
+    border border-gray-200/80 dark:border-gray-700/70
+    bg-white/95 dark:bg-slate-900/40
+    p-4 sm:p-5
+    shadow-sm
+    transition-colors duration-200
+    cursor-pointer"
+    onclick="window.open('/zh/sponsorship/', '_blank')">
 
-      <div class="flex items-start gap-4">
-        <!-- Logo -->
-        <div class="shrink-0">
-          
+    <div class="flex items-start gap-4">
+      <!-- Logo -->
+      <div class="shrink-0">
+        
     <img
       src="https://cdn.fatbobman.com/placeholder-tools.svg"
       alt="Sponsor Logo"
@@ -992,32 +999,32 @@ Default ZH: default-zh </div> <!-- Render the ad HTML directly --><div class="re
       loading="lazy"
     />
   
+      </div>
+
+      <!-- 内容区域 -->
+      <div class="flex-1 min-w-0 pt-0.5">
+        <!-- 顶部行：标题 + 标签 -->
+        <div class="flex items-start justify-between gap-3 mb-1.5">
+          <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+            在此投放广告，触达 Swift 开发者
+          </h4>
+
+          <!-- Sponsor 标签 -->
+          <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+            text-gray-400 dark:text-gray-500
+            border border-gray-200/60 dark:border-gray-700/60
+            bg-white/60 dark:bg-slate-900/50
+            rounded px-1.5 py-0.5 select-none">
+            示例赞助商
+          </span>
         </div>
 
-        <!-- 内容区域 -->
-        <div class="flex-1 min-w-0 pt-0.5">
-          <!-- 顶部行：标题 + 标签 -->
-          <div class="flex items-start justify-between gap-3 mb-1.5">
-            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
-              在此投放广告，触达 Swift 开发者
-            </h4>
+        <!-- 描述文字 -->
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+          在博客和周刊中推广您的框架、工具、服务或应用，精准触达高度专注的 iOS 和 Swift 开发者受众。
+        </p>
 
-            <!-- Sponsor 标签 -->
-            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
-              text-gray-400 dark:text-gray-500
-              border border-gray-200/60 dark:border-gray-700/60
-              bg-white/60 dark:bg-slate-900/50
-              rounded px-1.5 py-0.5 select-none">
-              示例赞助商
-            </span>
-          </div>
-
-          <!-- 描述文字 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-            在博客和周刊中推广您的框架、工具、服务或应用，精准触达高度专注的 iOS 和 Swift 开发者受众。
-          </p>
-
-          <!-- 底部行：Features + CTA -->
+        <!-- 底部行：Features + CTA -->
           
           <!-- No features, show only CTA -->
           <div class="mt-3 flex items-center gap-1 text-xs sm:text-sm
@@ -1034,7 +1041,6 @@ Default ZH: default-zh </div> <!-- Render the ad HTML directly --><div class="re
         </div>
       </div>
     </div>
-  </a>
 
   
   <!-- 外部链接：招商 -->
@@ -1042,7 +1048,8 @@ Default ZH: default-zh </div> <!-- Render the ad HTML directly --><div class="re
     <a href="/zh/sponsorship/" target="_blank"
       class="group/link flex items-center gap-1
       text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
-      transition-colors not-prose">
+      transition-colors not-prose"
+      onclick="event.stopPropagation()">
       成为赞助商
       <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
         fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1053,20 +1060,21 @@ Default ZH: default-zh </div> <!-- Render the ad HTML directly --><div class="re
   
 </div> </div> <div class="border-2 border-dashed border-orange-300 dark:border-orange-600 rounded-lg p-4" data-astro-cid-jhwx4wuq> <div class="mb-2 text-sm font-mono text-orange-600 dark:text-orange-400" data-astro-cid-jhwx4wuq>
 Default EN: default-en </div> <!-- Render the ad HTML directly --><div class="relative mt-12 mb-2 not-prose font-sans ">
-  <!-- 核心广告卡片 -->
-  <a href="/en/sponsorship/" target="_blank" rel="sponsored" class="block not-prose">
-    <div class="group
-      relative overflow-hidden rounded-xl
-      border border-gray-200/80 dark:border-gray-700/70
-      bg-white/95 dark:bg-slate-900/40
-      p-4 sm:p-5
-      shadow-sm
-      transition-colors duration-200">
+  <!-- 核心广告卡片 - 点击整个卡片跳转到赞助商链接 -->
+  <div class="group
+    relative overflow-hidden rounded-xl
+    border border-gray-200/80 dark:border-gray-700/70
+    bg-white/95 dark:bg-slate-900/40
+    p-4 sm:p-5
+    shadow-sm
+    transition-colors duration-200
+    cursor-pointer"
+    onclick="window.open('/en/sponsorship/', '_blank')">
 
-      <div class="flex items-start gap-4">
-        <!-- Logo -->
-        <div class="shrink-0">
-          
+    <div class="flex items-start gap-4">
+      <!-- Logo -->
+      <div class="shrink-0">
+        
     <img
       src="https://cdn.fatbobman.com/placeholder-tools.svg"
       alt="Sponsor Logo"
@@ -1074,32 +1082,32 @@ Default EN: default-en </div> <!-- Render the ad HTML directly --><div class="re
       loading="lazy"
     />
   
+      </div>
+
+      <!-- 内容区域 -->
+      <div class="flex-1 min-w-0 pt-0.5">
+        <!-- 顶部行：标题 + 标签 -->
+        <div class="flex items-start justify-between gap-3 mb-1.5">
+          <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
+            Reach Swift Developers. Share Your Product.
+          </h4>
+
+          <!-- Sponsor 标签 -->
+          <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
+            text-gray-400 dark:text-gray-500
+            border border-gray-200/60 dark:border-gray-700/60
+            bg-white/60 dark:bg-slate-900/50
+            rounded px-1.5 py-0.5 select-none">
+            Example Sponsor
+          </span>
         </div>
 
-        <!-- 内容区域 -->
-        <div class="flex-1 min-w-0 pt-0.5">
-          <!-- 顶部行：标题 + 标签 -->
-          <div class="flex items-start justify-between gap-3 mb-1.5">
-            <h4 class="text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 leading-snug ">
-              Reach Swift Developers. Share Your Product.
-            </h4>
+        <!-- 描述文字 -->
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
+          Promote your framework, tool, service, or app to a highly targeted iOS &amp; Swift developer audience across blog and newsletter placements.
+        </p>
 
-            <!-- Sponsor 标签 -->
-            <span class="shrink-0 text-[10px] font-semibold tracking-wide uppercase
-              text-gray-400 dark:text-gray-500
-              border border-gray-200/60 dark:border-gray-700/60
-              bg-white/60 dark:bg-slate-900/50
-              rounded px-1.5 py-0.5 select-none">
-              Example Sponsor
-            </span>
-          </div>
-
-          <!-- 描述文字 -->
-          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed sm:line-clamp-none ">
-            Promote your framework, tool, service, or app to a highly targeted iOS &amp; Swift developer audience across blog and newsletter placements.
-          </p>
-
-          <!-- 底部行：Features + CTA -->
+        <!-- 底部行：Features + CTA -->
           
           <!-- No features, show only CTA -->
           <div class="mt-3 flex items-center gap-1 text-xs sm:text-sm
@@ -1116,7 +1124,6 @@ Default EN: default-en </div> <!-- Render the ad HTML directly --><div class="re
         </div>
       </div>
     </div>
-  </a>
 
   
   <!-- 外部链接：招商 -->
@@ -1124,7 +1131,8 @@ Default EN: default-en </div> <!-- Render the ad HTML directly --><div class="re
     <a href="/en/sponsorship/" target="_blank"
       class="group/link flex items-center gap-1
       text-[11px] text-gray-400 hover:text-gray-600 dark:hover:text-gray-300
-      transition-colors not-prose">
+      transition-colors not-prose"
+      onclick="event.stopPropagation()">
       Become a sponsor
       <svg class="w-3 h-3 opacity-0 -ml-1 group-hover/link:opacity-100 group-hover/link:ml-0 transition-all"
         fill="none" viewBox="0 0 24 24" stroke="currentColor">
