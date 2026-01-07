@@ -3,126 +3,126 @@
 
   <url>
     <loc>https://fatbobman.com/en/about/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.100Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/en/collections/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/en/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/en/posts/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/en/snippet/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/en/sponsorship/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/en/tags/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/en/weekly/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/healthnotes/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/healthnotes/privacy/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/zh/about/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/zh/collections/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/zh/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/zh/posts/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/zh/snippet/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/zh/tags/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://fatbobman.com/zh/weekly/</loc>
-    <lastmod>2026-01-04T10:24:26.452Z</lastmod>
+    <lastmod>2026-01-07T00:25:03.101Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -3390,6 +3390,20 @@
   </url>
 
   <url>
+    <loc>https://fatbobman.com/zh/posts/running-swift-on-mcu/</loc>
+    <lastmod>2026-01-07T14:12:00.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://fatbobman.com/en/posts/running-swift-on-mcu/</loc>
+    <lastmod>2026-01-07T14:12:00.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://fatbobman.com/en/weekly/issue-001/</loc>
     <lastmod>2023-10-09T14:00:00.000Z</lastmod>
     <changefreq>monthly</changefreq>
@@ -5561,7 +5575,7 @@
 
   <url>
     <loc>https://fatbobman.com/zh/tags/Dev-Diary/</loc>
-    <lastmod>2025-12-24T14:10:00.000Z</lastmod>
+    <lastmod>2026-01-07T14:12:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5582,7 +5596,7 @@
 
   <url>
     <loc>https://fatbobman.com/zh/tags/Guest-Post/</loc>
-    <lastmod>2025-12-24T14:10:00.000Z</lastmod>
+    <lastmod>2026-01-07T14:12:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5603,7 +5617,7 @@
 
   <url>
     <loc>https://fatbobman.com/zh/tags/Swift/</loc>
-    <lastmod>2025-12-22T00:00:00.000Z</lastmod>
+    <lastmod>2026-01-07T14:12:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5666,7 +5680,7 @@
 
   <url>
     <loc>https://fatbobman.com/en/tags/Dev-Diary/</loc>
-    <lastmod>2025-12-24T14:10:00.000Z</lastmod>
+    <lastmod>2026-01-07T14:12:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5687,7 +5701,7 @@
 
   <url>
     <loc>https://fatbobman.com/en/tags/Guest-Post/</loc>
-    <lastmod>2025-12-24T14:10:00.000Z</lastmod>
+    <lastmod>2026-01-07T14:12:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -5708,7 +5722,7 @@
 
   <url>
     <loc>https://fatbobman.com/en/tags/Swift/</loc>
-    <lastmod>2025-12-22T00:00:00.000Z</lastmod>
+    <lastmod>2026-01-07T14:12:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
