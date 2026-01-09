@@ -324,9 +324,9 @@ const enableStickyInMobile = true;
 <span class="line"><span></span></span>
 <span class="line"><span>void main(void)</span></span>
 <span class="line"><span>{</span></span>
-<span class="line"><span>    int x = 10;             /* Assign value to variable x x/</span></span>
-<span class="line"><span>    int *p = &amp;x;            /* Get the address of variable x */</span></span>
-<span class="line"><span>    x = *p++ + ++*p;        /* Do some weird stuff */</span></span>
+<span class="line"><span>    int x = 10;             /* Assign value to variable x */</span></span>
+<span class="line"><span>    int *p = &amp;x;			/* Get the address of variable x x/</span></span>
+<span class="line"><span>    x = *p++ + ++*p;		/* Do some weird stuff */</span></span>
 <span class="line"><span>    printf(&quot;x = %d\n&quot;, x);  /* Print the result */</span></span>
 <span class="line"><span>}</span></span></code></pre>
 <p><em>Result: <code>x = 10</code> (Note: This code involves Undefined Behavior, and the result often depends on the specific compiler implementation).</em></p>
