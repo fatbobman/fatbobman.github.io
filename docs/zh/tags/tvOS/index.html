@@ -1,0 +1,517 @@
+<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>tvOS | 肘子的 Swift 记事本</title>
+<meta name="description" content="有关 tvOS 的文章">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://fatbobman.com/zh/tags/tvOS/">
+<meta property="og:title" content="tvOS | 肘子的 Swift 记事本">
+<meta property="og:description" content="有关 tvOS 的文章">
+<meta property="og:url" content="https://fatbobman.com/zh/tags/tvOS/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://fatbobman.com/images/blog-card.png">
+
+<meta property="og:locale" content="zh">
+<meta property="og:site_name" content="fatbobman.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@fatbobman">
+<meta name="twitter:creator" content="@fatbobman"><link rel="alternate" type="application/rss+xml" title="RSS Feed for My Website" href="https://fatbobman.com/zh/rss.xml"><link rel="sitemap" href="/sitemap-index.xml"><!-- 其他路径的 hreflang -->
+  <link rel="alternate" hreflang="zh-CN" href="https://fatbobman.com/zh/tags/tvOS/">
+  <link rel="alternate" hreflang="en" href="https://fatbobman.com/en/tags/tvOS/">
+  <link rel="alternate" hreflang="x-default" href="https://fatbobman.com/en/tags/tvOS/"><script type="text/partytown" src="https://analytics.ahrefs.com/analytics.js" data-key="KF0NNRpbcfyJPzijzZEiOw"></script><script data-partytown-skip="true">
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.async = true; // Add async attribute
+        hm.src = "https://hm.baidu.com/hm.js?14e5d60a3ea6276655f9d14c58b1fcd0";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script><script type="text/partytown">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5C7N4MF5');</script><script>
+      // Immediately set theme before page renders
+      if (
+        localStorage.getItem('color-theme') === 'dark' ||
+        (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        document.documentElement.classList.add('dark');
+      }
+    </script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "#author",
+  "name": "东坡肘子 (徐杨)",
+  "alternateName": "Fatbobman (Xu Yang)",
+  "jobTitle": "Apple Developer",
+  "description": "苹果生态开发者，专注 Swift 和 SwiftUI 开发。Fatbobman's Blog 作者。",
+  "url": "https://fatbobman.com",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/FatWithBoys.png"
+  },
+  "sameAs": [
+    "https://github.com/fatbobman",
+    "https://x.com/fatbobman",
+    "https://www.linkedin.com/in/fatbobman/",
+    "https://bsky.app/profile/fatbobman.com",
+    "https://mastodon.social/@fatbobman",
+    "https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3",
+    "https://fatbobman.com/zh/about/",
+    "https://fatbobman.com/en/about/"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Fatbobman's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  }
+}</script><link rel="stylesheet" href="/_astro/about.4LkOSyze.css">
+<style>.sticky[data-astro-cid-4wsjtibl]{position:fixed;top:0;left:50%;transform:translate(-50%);width:100%;max-width:100%;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);background-color:#ffffffe6}.dark .sticky[data-astro-cid-4wsjtibl]{background-color:#171717e6}.sticky[data-astro-cid-4wsjtibl] .sticky-logo[data-astro-cid-4wsjtibl]{width:2rem;opacity:1;margin-right:.75rem}
+</style><script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push","gtag"])})(window,'partytown','forward');/* Partytown 0.11.2 - MIT QwikDev */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,l,d,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(d=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(l=setTimeout(v,(null==s?void 0:s.fallbackTimeout)||1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.11.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<d.length;n++)(o=r.createElement("script")).innerHTML=d[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(l)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");if(r)e.newDocument.body.append(r)})})(document);</script></head> <body class="antialiased text-default  bg-page">  <div class="flex flex-col min-h-screen justify-between "> <div> <header> <div class="bg-block" id="wholeHeader" data-astro-cid-4wsjtibl> <!-- 
+    修改点 1: px-4 sm:px-6
+    给大标题区域增加左右边距，防止在屏幕变窄时贴边。
+  --> <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-4 sm:pb-6" data-astro-cid-4wsjtibl> <div id="blogTitle" class="w-full"> <!-- 
+    修改点 1: class="group block w-full"
+    让链接容器变成块级元素并占满整行，确保内部内容可以基于整个页面宽度居中
+  --> <a href="/zh/" class="group block w-full"> <!-- 
+      修改点 2: justify-center
+      确保 Flex 容器的内容在水平方向上绝对居中
+    --> <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-5 mx-auto pt-6 sm:pt-8 pb-2 sm:pb-0"> <!-- 吉祥物图标 --> <img src="/_astro/fat-blog-slug-icon.Cw1pK0wd.webp" class="w-20 h-20 sm:w-14 sm:h-14 rounded-full shadow-sm transition-transform duration-300 group-hover:rotate-12 group-hover:scale-105" alt="Fatbobman Logo"> <!-- SVG 文字容器 --> <div class="font-black w-[240px] sm:w-[300px] text-heading transition-opacity duration-300 group-hover:opacity-80 mt-2 sm:mt-0 sm:-mb-1"> <svg fill="currentColor" width="100%" viewBox="0 0 500 100"> <use href="/_astro/blogTitle.Ca1NZNqJ.svg#blog-title"></use> </svg> </div> </div> </a> </div> </div> <div class="bg-block z-50 shadow-custom-light dark:shadow-custom-dark" id="stickyHeader" data-astro-cid-4wsjtibl> <!-- 
+      修改点 2: px-4 sm:px-6 py-3
+      1. 删除了原来的 p-2 sm:p-0
+      2. 增加了统一的 px-4 sm:px-6，让 Sticky 导航栏左右两端留有空白，不再紧贴屏幕边缘。
+      3. 增加了 py-3，让导航栏高度稍微高一点点，看起来更从容。
+    --> <div class="max-w-5xl flex flex-wrap items-center justify-between mx-auto px-4 sm:px-6 py-3" data-astro-cid-4wsjtibl> <div class="flex items-center space-x-2" data-astro-cid-4wsjtibl> <!-- Sticky Logo --> <a href="/" class="sticky-logo overflow-hidden transition-all duration-500 w-0 opacity-0 flex items-center justify-center" aria-label="Fatbobman Blog" data-astro-cid-4wsjtibl> <!-- 这里使用修改后的小尺寸 Logo (h-6 或 h-7) --> <img src="/_astro/fat-blog-slug-icon.Cw1pK0wd.webp" class="h-6 w-6 rounded-full" alt="Logo" data-astro-cid-4wsjtibl> </a> <div id="lang-data" data-lang="zh" style="display: none;"></div> <button id="language-dropdown-button" data-dropdown-toggle="language-dropdown-menu" type="button" aria-label="Change Language" class="group p-2 w-10 h-10 text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center"> <!-- 替换文字为 SVG 图标 --> <!-- 
+    这里使用 w-5 h-5 (20px) 配合 stroke-width="2" 
+    以匹配 SearchButton 和 ThemeSwitcher 的视觉分量
+  --> <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <!-- 一个简单的地球图标 --> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-language"></use> </svg> <!-- 可选：如果非要保留文字，可以把文字做小一点放在图标旁边，或者只在 Hover 时显示 --> </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-page divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="language-dropdown-menu"> <ul class="py-2 font-medium text-sm" role="none"> <li> <button type="button" onclick="
+            try {
+                if ('/en/tags/tvOS/' !== '#') {
+                    window.location.href = '/en/tags/tvOS/';
+                }
+            } catch (e) {
+                console.log('Navigation failed:', e);
+            }
+        " class="w-full text-left px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
+English
+<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-2 hidden text-primary" id="EN-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-language"></use> </svg> </div> </button> </li><li> <button type="button" onclick="
+              try {
+                  if ('#' !== '#') {
+                      window.location.href = '#';
+                  }
+              } catch (e) {
+                  console.log('Navigation failed:', e);
+              }
+          " class="w-full text-left px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem"> <div class="inline-flex items-center">
+中文
+<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 ml-2 hidden text-primary" id="ZH-check" width="24" height="24" viewBox="0 0 24 24"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-check"></use> </svg> </div> </button> </li> <li> <div class="border-t border-gray-200 dark:border-gray-800 w-4/5 mx-auto my-2"></div> <button class="block px-4 py-2 text-default hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" id="set-default-lang"> <div class="inline-flex items-center"> 将中文设置为默认 </div> </button> </li> </ul> <script type="module">function a(){const t=localStorage.getItem("lang"),e=document.getElementById("EN-check"),n=document.getElementById("ZH-check");e!==null&&n!==null&&(t==="en"?(e.classList.remove("hidden"),n.classList.add("hidden")):t==="zh"&&(n.classList.remove("hidden"),e.classList.add("hidden")))}document.addEventListener("DOMContentLoaded",()=>{a()});const l=document.getElementById("set-default-lang");l?.addEventListener("click",()=>{const t=document.getElementById("lang-data");if(t!=null){const e=t.dataset.lang;e!=null&&(localStorage.setItem("lang",e),a())}});</script> </div> <button id="theme-dropdown-button" data-dropdown-toggle="theme-dropdown-menu" type="button" aria-label="Theme Switcher" class="group p-2 w-10 h-10 text-default hover:text-secondary hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center"> <!-- 
+    已更新为统一的 24px 线性图标 
+    注意：移除了 fill-current，改为 fill="none" stroke="currentColor"
+  --> <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none" class="w-5 h-5 hidden" id="theme_icon_system"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-computer"></use> </svg> <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none" class="w-5 h-5 hidden" id="theme_icon_dark"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-moon"></use> </svg> <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" fill="none" class="w-5 h-5 hidden" id="theme_icon_light"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-sun"></use> </svg> </button> <!-- Dropdown --> <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700" id="theme-dropdown-menu"> <ul class="py-2 font-medium" role="none"> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex w-full px-4 py-2 text-sm align-text-center hover:text-secondary" id="theme_button_light"> <svg class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-sun"></use> </svg> <span class="ml-2">Light</span> </button> </li> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex w-full px-4 py-2 text-sm align-text-center hover:text-secondary" id="theme_button_dark"> <svg class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-moon"></use> </svg> <span class="ml-2">Dark</span> </button> </li> <li class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-default"> <button class="flex w-full px-4 py-2 text-sm align-text-center hover:text-secondary" id="theme_button_system"> <svg class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-computer"></use> </svg> <span class="ml-2">System</span> </button> </li> </ul> </div> <script>
+  // 获取按钮
+  var themeDropdownButton = document.getElementById('theme-dropdown-button'); // 新增：获取主开关按钮
+  var themeButtonLight = document.getElementById('theme_button_light');
+  var themeButtonDark = document.getElementById('theme_button_dark');
+  var themeButtonSystem = document.getElementById('theme_button_system');
+
+  // 获取图标
+  var themeToggleDarkIcon = document.getElementById('theme_icon_dark');
+  var themeToggleLightIcon = document.getElementById('theme_icon_light');
+  var themeToggleSystemIcon = document.getElementById('theme_icon_system');
+
+  function setTheme() {
+    if (
+      localStorage.getItem('color-theme') === 'dark' ||
+      (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+
+  function setThemeButton() {
+    let theme = localStorage.getItem('color-theme');
+    // 先隐藏所有，再显示对应的
+    themeToggleDarkIcon.classList.add('hidden');
+    themeToggleLightIcon.classList.add('hidden');
+    themeToggleSystemIcon.classList.add('hidden');
+
+    if (theme === 'dark') {
+      themeToggleDarkIcon.classList.remove('hidden');
+    } else if (theme === 'light') {
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      themeToggleSystemIcon.classList.remove('hidden');
+    }
+  }
+
+  function resetTheme() {
+    setTheme();
+    setThemeButton();
+  }
+
+  // 初始化
+  resetTheme();
+
+  // 监听系统暗黑模式的变化
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    resetTheme();
+  });
+
+  // 监听 Storage 变化 (多标签页同步)
+  window.addEventListener('storage', function (event) {
+    if (event.key === 'color-theme') {
+      resetTheme();
+    }
+  });
+
+  // --- 核心修复：点击选项后，同时关闭下拉菜单 ---
+
+  // Dark 模式
+  themeButtonDark.addEventListener('click', function () {
+    localStorage.setItem('color-theme', 'dark');
+    resetTheme();
+    themeDropdownButton.click(); // 模拟点击主按钮以关闭菜单
+  });
+
+  // Light 模式
+  themeButtonLight.addEventListener('click', function () {
+    localStorage.setItem('color-theme', 'light');
+    resetTheme();
+    themeDropdownButton.click(); // 模拟点击主按钮以关闭菜单
+  });
+
+  // System 模式
+  themeButtonSystem.addEventListener('click', function () {
+    localStorage.removeItem('color-theme');
+    resetTheme();
+    themeDropdownButton.click(); // 模拟点击主按钮以关闭菜单
+  });
+</script> <div id="docsearch" class="group w-10 h-10 text-default hover:bg-gray-100 dark:hover:bg-page focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 rounded-lg flex items-center justify-center cursor-pointer"> <svg class="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"> <use href="/_astro/iconCollection.Ch_vtVZw.svg#icon-search"></use> </svg> </div> </div> <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 mx-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-solid-bg" aria-expanded="false" id="navbar-toggle-button"> <span class="sr-only">Open main menu</span> <svg class="w-5 h-5 text-default" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path> </svg> </button> <nav class="hidden w-full md:block md:w-auto px-4 z-40" id="navbar-solid-bg"> <ul class="flex flex-col font-bold mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700"> <a href="/zh/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent tracking-widest"> 首页 </a><a href="/zh/posts/" class="block py-2 px-3 md:p-0 rounded text-invert bg-secondary md:bg-transparent md:text-secondary md:dark:bg-transparent tracking-widest" aria-current="page"> 文章 </a><a href="/zh/weekly/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent tracking-widest"> 周报 </a><a href="/zh/snippet/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent tracking-widest"> 小贴士 </a><a href="/zh/about/" class="block py-2 px-3 md:p-0 rounded text-heading md:hover:text-secondary hover:bg-gray-100 dark:hover:bg-gray-700 md:hover:bg-transparent md:dark:hover:bg-transparent tracking-widest"> 关于 </a> </ul> </nav> </div> </div> <div id="placeholder" class="hidden" data-astro-cid-4wsjtibl></div> </div> <script>(function(){const enableSticky = true;
+const enableStickyInMobile = true;
+
+  window.onload = function () {
+    checkStickyHeader();
+    stickySetup();
+  };
+
+  window.addEventListener('resize', stickySetup);
+
+  function checkStickyHeader() {
+    const title = document.getElementById('blogTitle');
+    const stickyHeader = document.getElementById('stickyHeader');
+    const placeholder = document.getElementById('placeholder');
+
+    if (title && stickyHeader && placeholder) {
+      const offset = title.offsetTop + title.offsetHeight;
+
+      if (shouldStick() && window.scrollY >= offset) {
+        stickyHeader.classList.add('sticky');
+        placeholder.style.display = 'block';
+        placeholder.style.height = `${stickyHeader.offsetHeight}px`;
+      } else {
+        stickyHeader.classList.remove('sticky');
+        placeholder.style.display = 'none';
+      }
+    }
+  }
+
+  function shouldStick() {
+    if (!enableSticky) return false;
+
+    let isMobile = window.matchMedia('(max-width: 640px)').matches;
+    if (isMobile && !enableStickyInMobile) return false;
+
+    return true;
+  }
+
+  function stickySetup() {
+    window.onscroll = checkStickyHeader;
+  }
+})();</script>  </header>  <main class="w-full mx-auto max-w-3xl p-4 md:p-6 "> <div class="container mx-auto">   <!-- 
+  容器调整：
+  1. border-b border-gray-100: 添加一条通栏的极淡底线，作为基准线。
+  2. mb-8: 增加底部间距，让内容不顶着 Tab。
+--><div class="flex items-center justify-center border-b border-gray-100 dark:border-slate-800"> <!-- 
+     内部 Flex：
+     -mx-4 space-x-8: 增加 Tab 之间的间距，显得更透气。
+  --> <div class="flex items-center space-x-6 sm:space-x-10 overflow-x-auto overflow-y-hidden flex-nowrap"> <a rel="noopener noreferrer" href="/zh/posts/" class="
+              relative py-4 text-base font-medium transition-all duration-200 border-b-2
+              tracking-wide
+               mb-[-1px]
+ 
+              border-transparent text-muted hover:text-primary hover:border-gray-200 dark:hover:border-slate-700
+            "> 文章   </a><a rel="noopener noreferrer" href="/zh/collections/" class="
+              relative py-4 text-base font-medium transition-all duration-200 border-b-2
+              tracking-wide
+               mb-[-1px]
+ 
+              border-transparent text-muted hover:text-primary hover:border-gray-200 dark:hover:border-slate-700
+            "> 合集   </a><a rel="noopener noreferrer" href="/zh/tags/" class="
+              relative py-4 text-base font-medium transition-all duration-200 border-b-2
+              tracking-wide
+               mb-[-1px]
+ 
+              border-primary text-heading font-bold
+            "> 标签  <div class="absolute bottom-0 left-0 w-full h-[1px] shadow-[0_0_10px_rgba(var(--aw-color-primary),0.5)]"></div> </a> </div> </div>  <h1 class="sr-only">tvOS</h1>  <div class="flex flex-wrap justify-center gap-x-3 gap-y-3 mx-auto max-w-4xl px-4 py-8"> <a href="/zh/tags/Apple-Event/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> Apple Event </a><a href="/zh/tags/AI/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> AI </a><a href="/zh/tags/Core-Data/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> Core Data </a><a href="/zh/tags/CloudKit/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> CloudKit </a><a href="/zh/tags/Dev-Diary/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> Dev Diary </a><a href="/zh/tags/Dev-Tools/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> Dev Tools </a><a href="/zh/tags/Frameworks/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> Frameworks </a><a href="/zh/tags/Guest-Post/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> Guest Post </a><a href="/zh/tags/Life/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> Life </a><a href="/zh/tags/SwiftUI/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> SwiftUI </a><a href="/zh/tags/Swift/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> Swift </a><a href="/zh/tags/SwiftData/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> SwiftData </a><a href="/zh/tags/tvOS/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-primary border-primary text-white shadow-md
+          "> <span class="opacity-50 mr-1">#</span> tvOS </a><a href="/zh/tags/Tools/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> Tools </a><a href="/zh/tags/watchOS/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> watchOS </a><a href="/zh/tags/Web/" class="
+            inline-flex items-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            border
+            
+            bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 text-gray-600 dark:text-gray-400 hover:border-primary hover:text-primary dark:hover:border-blue-400 dark:hover:text-blue-400
+          "> <span class="opacity-50 mr-1">#</span> Web </a> </div> <section class="text-default bg-page"> <div class="container max-w-5xl sm:px-0 pt-2 pb-12 mx-auto"> <div class="relative col-span-12 px-0 space-y-6 sm:col-span-9"> <div class="col-span-12  relative px-0 sm:col-span-8"> <div class="
+            group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
+            transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
+            
+          "><div class="flex items-center gap-3 text-xs text-muted"><time datetime="2026-01-14T14:12:00.000Z" class="font-medium opacity-80">2026 年 1 月 14 日</time><span class="opacity-80">by Ronnie Wong</span></div><h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight scroll-mt-4 sm:scroll-mt-20 tracking-wide" id="2026"><a href="/zh/posts/surviving-tvos/" class="focus:outline-none"><span class="absolute inset-0" aria-hidden="true"></span>在 tvOS 上活下來：一個非典型播放器的工程實錄</a></h2><p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1 hidden sm:block tracking-wide">tvOS 绝非 iPad 的放大版。本文是 Syncnext 播放器的工程实录，深入解析 Apple TV 开发的真实陷阱：从 Focus 焦点机制、严苛的存储限制，到 SwiftUI 填坑与 AVPlayer 深度调优，助开发者在 tvOS 平台上“活下来”</p><div class="flex flex-wrap gap-x-3 mt-2 relative z-10"><a href="/zh/tags/SwiftUI/" class="
+                    relative z-10 text-xs font-medium 
+                    transition-colors duration-200
+                    text-gray-500 hover:text-primary
+                    dark:text-blue-400 dark:hover:text-blue-200
+                  ">
+#SwiftUI</a><a href="/zh/tags/tvOS/" class="
+                    relative z-10 text-xs font-medium 
+                    transition-colors duration-200
+                    text-gray-500 hover:text-primary
+                    dark:text-blue-400 dark:hover:text-blue-200
+                  ">
+#tvOS</a><a href="/zh/tags/Guest-Post/" class="
+                    relative z-10 text-xs font-medium 
+                    transition-colors duration-200
+                    text-gray-500 hover:text-primary
+                    dark:text-blue-400 dark:hover:text-blue-200
+                  ">
+#Guest Post</a></div></div> </div> </div> </div> </section>   </div> </main> </div> <footer> <footer class="bg-block border-t border-gray-100 dark:border-slate-800 mt-20" id="page-footer"> <div class="mx-auto w-full max-w-5xl px-6 py-12 md:py-16"> <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">  <div class="md:col-span-4 lg:col-span-5 space-y-4"> <div class="flex items-center space-x-2">  <span class="text-xl font-black tracking-tight text-heading">
+Fatbobman's <span class="text-primary">Blog</span> </span> </div> <p class="text-sm text-muted leading-relaxed max-w-xs"> 探索 Swift 与 Apple 开发生态的无限可能。 </p> </div>  <div class="md:col-span-8 lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">  <div> <h3 class="text-sm font-bold text-heading uppercase tracking-wider mb-4 tracking-wider"> 探索 </h3> <ul class="space-y-3 text-sm text-muted"> <li><a href="/zh/snippet/" class="hover:text-primary transition-colors">小贴士</a></li> <li><a href="/zh/posts/" class="hover:text-primary transition-colors">文章</a></li> <li><a href="/zh/tags/" class="hover:text-primary transition-colors">标签</a></li> <li><a href="/zh/collections/" class="hover:text-primary transition-colors">合集</a></li> </ul> </div>  <div> <h3 class="text-sm font-bold text-heading uppercase tracking-wider mb-4 tracking-wider"> 订阅 </h3> <ul class="space-y-3 text-sm text-muted"> <li><a href="https://weekly.fatbobman.com/welcome" class="hover:text-primary transition-colors" target="_blank">周报订阅</a></li> <li><a href="/zh/rss.xml" class="hover:text-primary transition-colors" target="_blank">RSS 订阅</a></li> </ul> </div>  <div> <h3 class="text-sm font-bold text-heading uppercase tracking-wider mb-4 tracking-wider"> 合作与支持 </h3> <ul class="space-y-3 text-sm text-muted">  <li><a href="/zh/about/#contact" class="hover:text-primary transition-colors">联系我</a></li> <li> <a href="https://afdian.com/a/fatbobman" class="hover:text-primary transition-colors group flex items-center" target="_blank"> <span>请肘子喝茶</span> <span class="ml-1 group-hover:scale-110 transition-transform inline-block">☕️</span> </a> </li> </ul> </div> </div> </div>  <div class="mt-12 pt-8 border-t border-gray-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center text-xs text-muted/60 gap-4"> <div class="text-center md:text-left"> <span>&copy; <span>2020-</span>2026 Fatbobman Digital Limited. All Rights Reserved.</span> </div> <div class="flex items-center gap-4">  <div class="opacity-70 hover:opacity-100 transition-opacity"> <div class="flex items-center justify-center w-full px-6 pt-2 text-sm pb-10"> <button type="button" onclick="
+        try {
+          window.open('https://beian.miit.gov.cn/#/Integrated/index', '_blank');
+        } catch (e) {
+          console.log('Failed to open ICP link:', e);
+        }
+      " class="text-xxs hover:underline text-muted tracking-wide" aria-label="ICP Registration Information">
+辽ICP备20006550号-1
+</button> </div> </div> </div> </div> </div> </footer> </footer> </div> <section> <div id="weekly-modal" data-subscribeText="订阅周报" data-placeholder="输入你的邮箱" data-embed-url="https://weekly.fatbobman.com/embed" data-iframe-class="mx-auto sm:w-[320px] md:w-[480px] sm:h-[200px] md:h-[320px] dark:opacity-80 dark:rounded-lg dark:shadow-2xl dark:border-gray-600" data-iframe-style="border:0px solid #EEE; background:white; width: 100%; max-width: 480px;"> <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"> <!-- Modal content --> <div class="relative bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-lg shadow-2xl border-gray-200 border dark:border-gray-600"> <!-- Modal header --> <div class="flex items-center justify-between px-4 md:px-5 pt-4 pb-0 rounded-t dark:border-gray-600"> <button id="popup-modal-close-button" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"> <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path> </svg> <span class="sr-only">Close modal</span> </button> </div> <!-- Modal body --> <div class="px-4 md:px-5 pb-4 md:w-[480px] sm:w-80 mx-auto"> <div class="sm:hidden md:block text-base text-center font-bold text-gray-900 dark:text-blue-100 pt-4 pb-2 font-wide">每周一，与全球开发者共享 Swift 与 SwiftUI 开发精华</div> <div id="weekly-modal-embed" class="flex flex-col items-center justify-center gap-4" data-iframe-loaded="false"> <div class="relative flex items-center justify-center"> <div class="w-8 h-8 border-2 border-gray-200 dark:border-gray-700 border-t-secondary rounded-full animate-spin" aria-hidden="true"></div> </div> <div class="text-sm text-gray-400 dark:text-gray-500 text-center" data-weekly-loader data-error-text="订阅内容加载失败，请稍后重试。" aria-live="polite"> 加载订阅内容... </div> </div> </div> </div> </div> </div> </section> <script type="module" src="/_astro/WeeklyModalLoader.astro_astro_type_script_index_0_lang.DMZWLG_2.js"></script>  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js" async></script> <script>
+  // 为每个需要清除 focus 状态的按钮都添加一个 clear-focus 类, 下面的代码将在点击后自动移除 focus 状态
+  document.addEventListener('DOMContentLoaded', () => {
+    // 获取所有具有 'clear-focus' 类的按钮
+    const buttons = document.querySelectorAll('.clear-focus');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setTimeout(() => {
+          button.blur();
+        }, 0);
+      });
+    });
+  });
+
+  window.onpageshow = function () {
+    document.documentElement.classList.add('motion-safe:scroll-smooth');
+  };
+
+  if (typeof window !== 'undefined') {
+    const videos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+
+    const disableTooltipsOnTouch = () => {
+      const isTouch =
+        'ontouchstart' in window ||
+        (navigator && navigator.maxTouchPoints > 0) ||
+        (window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+      if (!isTouch) {
+        return;
+      }
+      const triggers = document.querySelectorAll('[data-tooltip-target]');
+      triggers.forEach((trigger) => {
+        const tooltipId = trigger.getAttribute('data-tooltip-target');
+        trigger.removeAttribute('data-tooltip-target');
+        trigger.removeAttribute('data-tooltip-placement');
+        if (tooltipId) {
+          const tooltipEl = document.getElementById(tooltipId);
+          if (tooltipEl && tooltipEl.parentNode) {
+            tooltipEl.parentNode.removeChild(tooltipEl);
+          }
+        }
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', disableTooltipsOnTouch);
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+
+            if (entry.isIntersecting) {
+              // 进入视窗 -> 尝试播放（浏览器会根据策略决定是否允许）
+              video.play().catch(() => {
+                // 某些情况下（浏览器策略）可能会失败，静默即可
+              });
+            } else {
+              // 离开视窗 -> 暂停，节省 CPU & 带宽
+              video.pause();
+            }
+          });
+        },
+        {
+          threshold: 0.1, // 至少有 10% 出现在视窗里时触发
+        }
+      );
+
+      videos.forEach((video) => observer.observe(video));
+
+      // 清理逻辑：页面卸载时取消所有观察
+      window.addEventListener('beforeunload', () => {
+        videos.forEach((video) => observer.unobserve(video));
+        observer.disconnect();
+      });
+
+      // 处理 bfcache 情况
+      window.addEventListener('pageshow', (event) => {
+        // 如果是从 bfcache 恢复，重新初始化
+        if (event.persisted) {
+          const newVideos = Array.from(document.querySelectorAll('video.lazy-video[data-autoplay="lazy"]'));
+          newVideos.forEach((video) => {
+            if (!videos.includes(video)) {
+              observer.observe(video);
+            }
+          });
+        }
+      });
+    } else {
+      // 老浏览器的降级策略：什么都不做，用户手动播放
+    }
+  }
+</script> <script>(function(){const lang = "zh";
+const searchText = "搜索...";
+const runSearchModuleUrl = "/_astro/runsearch.Cf7wkMmH.js";
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('docsearch');
+    if (!button) {
+      return;
+    }
+
+    let docsearchScriptPromise = null;
+    let initialized = false;
+
+    const loadDocsearchLibrary = () => {
+      if (typeof window !== 'undefined' && typeof window.docsearch === 'function') {
+        return Promise.resolve();
+      }
+      if (!docsearchScriptPromise) {
+        docsearchScriptPromise = new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/npm/@docsearch/js@3.8.3';
+          script.defer = true;
+          script.onload = () => resolve();
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+      }
+      return docsearchScriptPromise;
+    };
+
+    const handleFirstClick = async (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      try {
+        // Load DocSearch library
+        await loadDocsearchLibrary();
+
+        // Import and execute search module
+        const module = await import(runSearchModuleUrl);
+
+        // openSearch will call initSearch internally, so we don't need to call both
+        await module.openSearch(lang, searchText);
+
+        // Remove the first-click listener after successful initialization
+        button.removeEventListener('click', handleFirstClick, true);
+        initialized = true;
+      } catch (error) {
+        console.error('Failed to initialize DocSearch:', error);
+      }
+    };
+
+    button.addEventListener('click', handleFirstClick, true);
+  });
+})();</script> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7N4MF5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <!--Magic Fix 解决在 Safari 下搜索框取消后会滚动到页面底部--> <div class="fixed"> <input type="text"> </div> </body></html>
