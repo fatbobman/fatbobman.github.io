@@ -59,6 +59,24 @@
       "position": 1,
       "item": {
         "@type": "BlogPosting",
+        "name": "macOS 录屏软件开发实录：从像素抓取到元数据重现",
+        "url": "https://fatbobman.com/zh/posts/screensage-from-pixel-to-meta/",
+        "datePublished": "2026-02-04T14:12:00.000Z",
+        "image": {
+          "@type": "ImageObject",
+          "url": "http://og.fatbobman.com/card/screensage-from-pixel-to-meta-zh.webp"
+        },
+        "headline": "macOS 录屏软件开发实录：从像素抓取到元数据重现",
+        "author": {
+          "@id": "#author"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "BlogPosting",
         "name": "isolated(any) 与 #isolation：让 Swift 闭包自动继承隔离域",
         "url": "https://fatbobman.com/zh/posts/letting-swift-closures-automatically-inherit-isolation/",
         "datePublished": "2026-01-21T14:00:00.000Z",
@@ -74,7 +92,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 2,
+      "position": 3,
       "item": {
         "@type": "BlogPosting",
         "name": "在 tvOS 上活下來：一個非典型播放器的工程實錄",
@@ -92,7 +110,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 4,
       "item": {
         "@type": "BlogPosting",
         "name": "告别“可移植汇编”：我已让 Swift 在 MCU 上运行七年",
@@ -110,7 +128,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 5,
       "item": {
         "@type": "BlogPosting",
         "name": "独立开发者的试炼：Zipic 从 0 到 1 的产品化之路",
@@ -121,24 +139,6 @@
           "url": "https://storage.5km.host/zipic-share-banner.jpeg"
         },
         "headline": "独立开发者的试炼：Zipic 从 0 到 1 的产品化之路",
-        "author": {
-          "@id": "#author"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "BlogPosting",
-        "name": "逃离 Mac App Store：如何从零构建独立应用的分发与售卖体系",
-        "url": "https://fatbobman.com/zh/posts/zipic-2-selling-and-distribution/",
-        "datePublished": "2025-12-22T14:11:00.000Z",
-        "image": {
-          "@type": "ImageObject",
-          "url": "https://storage.5km.host/zipic-share-banner.jpeg"
-        },
-        "headline": "逃离 Mac App Store：如何从零构建独立应用的分发与售卖体系",
         "author": {
           "@id": "#author"
         }
@@ -376,16 +376,27 @@ const enableStickyInMobile = true;
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               border-b border-gray-100 dark:border-gray-800
+            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-02-04T14:12:00.000Z" class="font-medium opacity-80"> 2026 年 2 月 4 日 </time> <span class="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-300 font-medium bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 rounded text-[10px] tracking-wide uppercase">
+Guest Post by Sintone </span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/screensage-from-pixel-to-meta/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> macOS 录屏软件开发实录：从像素抓取到元数据重现 </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">视频正在取代文字成为主流的表达方式，而好工具是创作的加速器。macOS 录屏软件 ScreenSage Pro 的独立开发者 Sintone 分享了从像素抓取到元数据重现的全过程。从屏幕录制、元数据捕获，到高性能视频合成，他详述了开发中的挑战与解决方案。</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/Dev-Diary/" class="
+    relative z-10 text-xs font-medium 
+    transition-colors duration-200
+    text-gray-500 hover:text-primary
+    dark:text-blue-400 dark:hover:text-blue-200
+  ">
+#Dev Diary </a> </div> </div>   </article><article>  <div class="
+              group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
+              transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
+              
             ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-01-21T14:00:00.000Z" class="font-medium opacity-80"> 2026 年 1 月 21 日 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/letting-swift-closures-automatically-inherit-isolation/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> isolated(any) 与 #isolation：让 Swift 闭包自动继承隔离域 </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Swift 6 为并发引入了许多新功能与关键字。虽然其中不少内容在日常开发中可能鲜少用到，但一旦遭遇特定场景，若对这些新概念缺乏了解，即便有 AI 辅助也可能陷入僵局。本文将通过一个在开发测试中遇到的实际并发问题，来介绍如何利用 **`@isolated(any)`** 以及 **`#isolation`** 宏，实现函数的隔离域继承，从而让编译器自动推断闭包的运行环境。</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/Swift/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
     text-gray-500 hover:text-primary
     dark:text-blue-400 dark:hover:text-blue-200
   ">
-#Swift </a> </div> </div>   </article><article>  <div class="
+#Swift </a> </div> </div>  <aside aria-label="advertisement" class="w-full max-w-4xl mx-auto my-4 px-2 sm:px-4"> <div class="dynamic-ad-card"></div> </aside> </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
-              
+              border-b border-gray-100 dark:border-gray-800
             ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-01-14T14:12:00.000Z" class="font-medium opacity-80"> 2026 年 1 月 14 日 </time> <span class="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-300 font-medium bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 rounded text-[10px] tracking-wide uppercase">
 Guest Post by Ronnie Wong </span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/surviving-tvos/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> 在 tvOS 上活下來：一個非典型播放器的工程實錄 </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">tvOS 绝非 iPad 的放大版。本文是 Syncnext 播放器的工程实录，深入解析 Apple TV 开发的真实陷阱：从 Focus 焦点机制、严苛的存储限制，到 SwiftUI 填坑与 AVPlayer 深度调优，助开发者在 tvOS 平台上“活下来”</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/SwiftUI/" class="
     relative z-10 text-xs font-medium 
@@ -399,7 +410,7 @@ Guest Post by Ronnie Wong </span> </div>  <h2 class="text-lg sm:text-xl font-bol
     text-gray-500 hover:text-primary
     dark:text-blue-400 dark:hover:text-blue-200
   ">
-#tvOS </a> </div> </div>  <aside aria-label="advertisement" class="w-full max-w-4xl mx-auto my-4 px-2 sm:px-4"> <div class="dynamic-ad-card"></div> </aside> </article><article>  <div class="
+#tvOS </a> </div> </div>   </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               border-b border-gray-100 dark:border-gray-800
@@ -458,7 +469,7 @@ Guest Post by 十里 </span> </div>  <h2 class="text-lg sm:text-xl font-bold tex
 #SwiftUI </a> </div> </div>   </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
-              border-b border-gray-100 dark:border-gray-800
+              
             ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2025-12-17T14:12:00.000Z" class="font-medium opacity-80"> 2025 年 12 月 17 日 </time> <span class="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-300 font-medium bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 rounded text-[10px] tracking-wide uppercase">
 Guest Post by Cai Yue </span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/my-eight-years-with-cloudkit/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> 我和 CloudKit 的这八年：从开源 IceCream 到商业应用实战 </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">IceCream 作者 Cai Yue 分享他与 CloudKit 八年的开发历程：从 2017 年开源 IceCream 并获得 Apple 官方认可，到将 CloudKit 应用于 Music Mate 和 Setlists 等商业项目的实战经验。文章深入探讨了 CloudKit 的核心优势、关键局限以及进阶玩法。通过真实案例展示如何在生产环境中高效使用 CloudKit，为苹果生态开发者提供避坑指南和最佳实践。</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/Dev-Diary/" class="
     relative z-10 text-xs font-medium 
@@ -472,24 +483,7 @@ Guest Post by Cai Yue </span> </div>  <h2 class="text-lg sm:text-xl font-bold te
     text-gray-500 hover:text-primary
     dark:text-blue-400 dark:hover:text-blue-200
   ">
-#CloudKit </a> </div> </div>   </article><article>  <div class="
-              group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
-              transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
-              
-            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2025-12-10T14:12:00.000Z" class="font-medium opacity-80"> 2025 年 12 月 10 日 </time> <span class="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-300 font-medium bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 rounded text-[10px] tracking-wide uppercase">
-Guest Post by Haozes </span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/watchos-development-pitfalls-and-practical-tips/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> 从 YaoYao 到 Tooboo：watchOS 开发避坑与实战 </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">作为 YaoYao 和 Tooboo 的作者，Haozes 分享了 watchOS 开发中关于版本兼容、App 唤起通信、数据同步、重启恢复、内存泄露和电量优化等高质量实战经验。这篇文章涵盖了从 HealthKit 到 WCSession、从 HKWorkoutSession 到 TimelineSchedule 的完整开发避坑与性能调优指南，对于正在开发或计划开发 Apple Watch 应用的开发者具有极高参考价值。</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/SwiftUI/" class="
-    relative z-10 text-xs font-medium 
-    transition-colors duration-200
-    text-gray-500 hover:text-primary
-    dark:text-blue-400 dark:hover:text-blue-200
-  ">
-#SwiftUI </a><a href="/zh/tags/watchOS/" class="
-    relative z-10 text-xs font-medium 
-    transition-colors duration-200
-    text-gray-500 hover:text-primary
-    dark:text-blue-400 dark:hover:text-blue-200
-  ">
-#watchOS </a> </div> </div>   </article>  <div class="flex justify-center pt-8 pb-2"> <a class="inline-flex items-center gap-1 text-sm font-medium text-muted hover:text-heading transition-colors group" href="/zh/posts/#more-artical-start"> 更多文章 <span class="group-hover:translate-x-0.5 transition-transform">→</span> </a> </div> </section> <script>(function(){const baseUrl = "https://fatbobman.com/ads/";
+#CloudKit </a> </div> </div>   </article>  <div class="flex justify-center pt-8 pb-2"> <a class="inline-flex items-center gap-1 text-sm font-medium text-muted hover:text-heading transition-colors group" href="/zh/posts/#more-artical-start"> 更多文章 <span class="group-hover:translate-x-0.5 transition-transform">→</span> </a> </div> </section> <script>(function(){const baseUrl = "https://fatbobman.com/ads/";
 const langSuffix = "zh";
 const utmTerm = "homepage";
 
