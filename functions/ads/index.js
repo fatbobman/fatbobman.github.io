@@ -222,6 +222,12 @@ export async function onRequest(context) {
     return new Response(html, { headers });
   } catch (error) {
     console.error('Error fetching ad:', error);
+    if (url.searchParams.get('debug') === 'true') {
+      return new Response(JSON.stringify({ error: error.message, stack: error.stack }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
     return fallbackResponse(headers, lang);
   }
 }
