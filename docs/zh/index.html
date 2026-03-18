@@ -59,6 +59,24 @@
       "position": 1,
       "item": {
         "@type": "BlogPosting",
+        "name": "CDE：一次让 Core Data 更像现代 Swift 的尝试",
+        "url": "https://fatbobman.com/zh/posts/cde-an-attempt-to-make-core-data-feel-more-like-modern-swift/",
+        "datePublished": "2026-03-18T14:00:00.000Z",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://og.fatbobman.com/card/cde-an-attempt-to-make-core-data-feel-more-like-modern-swift-zh.webp"
+        },
+        "headline": "CDE：一次让 Core Data 更像现代 Swift 的尝试",
+        "author": {
+          "@id": "#author"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "BlogPosting",
         "name": "2026 年，为什么我仍在思考 Core Data",
         "url": "https://fatbobman.com/zh/posts/why-i-am-still-thinking-about-core-data-in-2026/",
         "datePublished": "2026-03-11T14:00:00.000Z",
@@ -74,7 +92,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 2,
+      "position": 3,
       "item": {
         "@type": "BlogPosting",
         "name": "跨域传递 NSManagedObjectContext 为什么在 Swift 6.2 中不再报错？真正的变化不在编译器",
@@ -92,7 +110,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 4,
       "item": {
         "@type": "BlogPosting",
         "name": "Xcode 26.3 + Claude Agent：模型替换、MCP、Skill 与自适应配置",
@@ -110,7 +128,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 5,
       "item": {
         "@type": "BlogPosting",
         "name": "macOS 录屏软件开发实录：从像素抓取到元数据重现",
@@ -121,24 +139,6 @@
           "url": "http://og.fatbobman.com/card/screensage-from-pixel-to-meta-zh.webp"
         },
         "headline": "macOS 录屏软件开发实录：从像素抓取到元数据重现",
-        "author": {
-          "@id": "#author"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "BlogPosting",
-        "name": "isolated(any) 与 #isolation：让 Swift 闭包自动继承隔离域",
-        "url": "https://fatbobman.com/zh/posts/letting-swift-closures-automatically-inherit-isolation/",
-        "datePublished": "2026-01-21T14:00:00.000Z",
-        "image": {
-          "@type": "ImageObject",
-          "url": "https://og.fatbobman.com/card/letting-swift-closures-automatically-inherit-isolation-zh.webp"
-        },
-        "headline": "isolated(any) 与 #isolation：让 Swift 闭包自动继承隔离域",
         "author": {
           "@id": "#author"
         }
@@ -376,16 +376,38 @@ const enableStickyInMobile = true;
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               border-b border-gray-100 dark:border-gray-800
+            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-03-18T14:00:00.000Z" class="font-medium opacity-80"> 2026 年 3 月 18 日 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/cde-an-attempt-to-make-core-data-feel-more-like-modern-swift/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> CDE：一次让 Core Data 更像现代 Swift 的尝试 </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">在上一篇文章中，我聊了聊 Core Data 在当下项目中的一些现实处境。在本文中，我将介绍我的一个实验性项目 Core Data Evolution，探索能不能让 Core Data 在现代 Swift 项目中以一种更自然的方式继续存在下去？</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/Core-Data/" class="
+    relative z-10 text-xs font-medium 
+    transition-colors duration-200
+    text-gray-500 hover:text-primary
+    dark:text-blue-400 dark:hover:text-blue-200
+  ">
+#Core Data </a><a href="/zh/tags/Concurrency/" class="
+    relative z-10 text-xs font-medium 
+    transition-colors duration-200
+    text-gray-500 hover:text-primary
+    dark:text-blue-400 dark:hover:text-blue-200
+  ">
+#Concurrency </a><a href="/zh/tags/Swift/" class="
+    relative z-10 text-xs font-medium 
+    transition-colors duration-200
+    text-gray-500 hover:text-primary
+    dark:text-blue-400 dark:hover:text-blue-200
+  ">
+#Swift </a> </div> </div>   </article><article>  <div class="
+              group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
+              transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
+              
             ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-03-11T14:00:00.000Z" class="font-medium opacity-80"> 2026 年 3 月 11 日 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/why-i-am-still-thinking-about-core-data-in-2026/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> 2026 年，为什么我仍在思考 Core Data </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Core Data 在 2026 年仍有大量存量项目，但它与现代 Swift 的并发模型、类型安全和代码表达之间的错位越来越明显。本文梳理三个核心问题，并思考在不放弃 Core Data 的前提下实现现代化改造的可能。</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/Core-Data/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
     text-gray-500 hover:text-primary
     dark:text-blue-400 dark:hover:text-blue-200
   ">
-#Core Data </a> </div> </div>   </article><article>  <div class="
+#Core Data </a> </div> </div>  <aside aria-label="advertisement" class="w-full max-w-4xl mx-auto my-4 px-2 sm:px-4"> <div class="dynamic-ad-card"></div> </aside> </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
-              
+              border-b border-gray-100 dark:border-gray-800
             ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-03-04T14:00:00.000Z" class="font-medium opacity-80"> 2026 年 3 月 4 日 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/sendable-nsmanagedobjectcontext/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> 跨域传递 NSManagedObjectContext 为什么在 Swift 6.2 中不再报错？真正的变化不在编译器 </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">当同一段与并发有关的代码在 Xcode 16 中无法通过，却能在 Xcode 26 中顺利编译时，你第一时间会想到什么？我最初的判断是编译器进化了，但现实并没有这么简单。本文将记录我最近遇到的一次有意思的排查过程：从测试失败出发，一步步追到 Core Data 的 SDK interface，最终发现，问题的关键并不完全在 Swift 编译器本身，而在 NSManagedObjectContext 被导入 Swift 的方式已经发生了变化。</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/Swift/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
@@ -404,7 +426,7 @@ const enableStickyInMobile = true;
     text-gray-500 hover:text-primary
     dark:text-blue-400 dark:hover:text-blue-200
   ">
-#Core Data </a> </div> </div>  <aside aria-label="advertisement" class="w-full max-w-4xl mx-auto my-4 px-2 sm:px-4"> <div class="dynamic-ad-card"></div> </aside> </article><article>  <div class="
+#Core Data </a> </div> </div>   </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               border-b border-gray-100 dark:border-gray-800
@@ -467,7 +489,7 @@ Guest Post by Ronnie Wong </span> </div>  <h2 class="text-lg sm:text-xl font-bol
 #tvOS </a> </div> </div>   </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
-              border-b border-gray-100 dark:border-gray-800
+              
             ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-01-07T14:12:00.000Z" class="font-medium opacity-80"> 2026 年 1 月 7 日 </time> <span class="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-300 font-medium bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 rounded text-[10px] tracking-wide uppercase">
 Guest Post by Andy Liu </span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/running-swift-on-mcu/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> 告别“可移植汇编”：我已让 Swift 在 MCU 上运行七年 </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">在苹果官方正式开启嵌入式支持之前，Andy Liu 和他的 MadMachine 团队就已经在这个领域深耕多年。他们认为，在功能日益复杂的开发场景中，Swift 的现代语言特性将展现出巨大的优势。在数年前便选择了一套与社区主流不同的理念与技术路线。 我邀请 Andy 分享他们过去几年在 Swift 嵌入式开发中的实战经历分享出来。这既是一份宝贵的历史记录，也希望能为社区提供一个不一样的思考维度。</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/Swift/" class="
     relative z-10 text-xs font-medium 
@@ -476,17 +498,6 @@ Guest Post by Andy Liu </span> </div>  <h2 class="text-lg sm:text-xl font-bold t
     dark:text-blue-400 dark:hover:text-blue-200
   ">
 #Swift </a><a href="/zh/tags/Dev-Diary/" class="
-    relative z-10 text-xs font-medium 
-    transition-colors duration-200
-    text-gray-500 hover:text-primary
-    dark:text-blue-400 dark:hover:text-blue-200
-  ">
-#Dev Diary </a> </div> </div>   </article><article>  <div class="
-              group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
-              transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
-              
-            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2025-12-22T14:12:00.000Z" class="font-medium opacity-80"> 2025 年 12 月 22 日 </time> <span class="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-300 font-medium bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 rounded text-[10px] tracking-wide uppercase">
-Guest Post by 十里 </span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/zipic-1-from-0-to-1/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> 独立开发者的试炼：Zipic 从 0 到 1 的产品化之路 </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">做独立产品这件事，说起来容易，真动手了才知道水有多深。这是一个独立开发者将职场小需求变成主力产品的真实故事。我们将跟随 Zipic 作者十里的视角，一起回顾产品从 0 到 1 的全过程。本篇聚焦产品设计与决策思考。</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/Dev-Diary/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
     text-gray-500 hover:text-primary
