@@ -38,12 +38,80 @@
       }
     </script><script type='application/ld+json'>{
   "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "关于 Fatbobman's Blog",
+  "description": "Fatbobman's Blog 是一个专注于 Swift、SwiftUI、Core Data 和 SwiftData 等技术领域的原创技术博客，记录开发经验与学习心得。",
+  "url": "https://fatbobman.com/zh/about/",
+  "inLanguage": "zh-Hans",
+  "mainEntity": {
+    "@id": "https://fatbobman.com/#author"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Fatbobman's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://fatbobman.com/images/blog-card.png"
+    }
+  },
+  "about": {
+    "@type": "ItemList",
+    "name": "博客内容",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "CreativeWork",
+          "name": "Swift 开发",
+          "description": "深入探讨 Swift 语言特性、并发编程与性能优化。"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "CreativeWork",
+          "name": "SwiftUI 实践",
+          "description": "分享 SwiftUI 开发中的最佳实践与常见问题解决方案。"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "CreativeWork",
+          "name": "Core Data 与 SwiftData",
+          "description": "探索 Core Data 和 SwiftData 在数据持久化中的应用与优化。"
+        }
+      }
+    ]
+  },
+  "potentialAction": {
+    "@type": "SubscribeAction",
+    "target": "https://fatbobman.com/zh/weekly/",
+    "description": "订阅周报，获取最新博客文章与苹果开发生态精选内容。"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cdn.fatbobman.com/FatWithBoys.png"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://fatbobman.com/zh/about/"
+  }
+}</script><script type='application/ld+json'>{
+  "@context": "https://schema.org",
   "@type": "Person",
-  "@id": "#author",
+  "@id": "https://fatbobman.com/#author",
   "name": "东坡肘子 (徐杨)",
-  "alternateName": "Fatbobman (Xu Yang)",
+  "alternateName": [
+    "Fatbobman (Xu Yang)",
+    "Fatbobman",
+    "徐杨"
+  ],
   "jobTitle": "Apple Developer",
-  "description": "苹果生态开发者，专注 Swift 和 SwiftUI 开发。Fatbobman's Blog 作者。",
+  "description": "苹果生态开发者与技术作者，专注 Swift、SwiftUI、Core Data 和 SwiftData。Fatbobman's Blog 作者，肘子的 Swift 周报策划者。",
   "url": "https://fatbobman.com",
   "image": {
     "@type": "ImageObject",
@@ -56,8 +124,24 @@
     "https://bsky.app/profile/fatbobman.com",
     "https://mastodon.social/@fatbobman",
     "https://web.okjike.com/u/e32947ef-7751-4363-9456-b340eef2efd3",
+    "https://developer.apple.com/community/recognition/#xu-yang",
     "https://fatbobman.com/zh/about/",
     "https://fatbobman.com/en/about/"
+  ],
+  "knowsAbout": [
+    "Swift",
+    "SwiftUI",
+    "Core Data",
+    "SwiftData",
+    "CloudKit",
+    "Apple platforms"
+  ],
+  "subjectOf": [
+    {
+      "@type": "WebPage",
+      "name": "Apple Developer Community Recognition",
+      "url": "https://developer.apple.com/community/recognition/#xu-yang"
+    }
   ],
   "worksFor": {
     "@type": "Organization",
