@@ -59,6 +59,24 @@
       "position": 1,
       "item": {
         "@type": "BlogPosting",
+        "name": "Debugging Notes on Two SwiftUI Animation Bugs",
+        "url": "https://fatbobman.com/en/posts/debugging-notes-on-two-swiftui-animation-bugs/",
+        "datePublished": "2026-07-01T14:00:00.000Z",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://og.fatbobman.com/card/debugging-notes-on-two-swiftui-animation-bugs-en.webp"
+        },
+        "headline": "Debugging Notes on Two SwiftUI Animation Bugs",
+        "author": {
+          "@id": "https://fatbobman.com/#author"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "BlogPosting",
         "name": "From Size Class to Available Space: Is horizontalSizeClass Still Reliable?",
         "url": "https://fatbobman.com/en/posts/from-size-class-to-available-space/",
         "datePublished": "2026-06-17T14:00:00.000Z",
@@ -74,7 +92,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 2,
+      "position": 3,
       "item": {
         "@type": "BlogPosting",
         "name": "Core Data + Observation: From Property-Level Reactivity to a Freer Mental Model",
@@ -92,7 +110,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 4,
       "item": {
         "@type": "BlogPosting",
         "name": "Taming Row Height and Spacing Jumps in SwiftUI List with a Custom Layout",
@@ -110,7 +128,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 5,
       "item": {
         "@type": "BlogPosting",
         "name": "CDE: An Attempt to Make Core Data Feel More Like Modern Swift",
@@ -121,24 +139,6 @@
           "url": "https://og.fatbobman.com/card/cde-an-attempt-to-make-core-data-feel-more-like-modern-swift-en.webp"
         },
         "headline": "CDE: An Attempt to Make Core Data Feel More Like Modern Swift",
-        "author": {
-          "@id": "https://fatbobman.com/#author"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "BlogPosting",
-        "name": " Why I'm Still Thinking About Core Data in 2026",
-        "url": "https://fatbobman.com/en/posts/why-i-am-still-thinking-about-core-data-in-2026/",
-        "datePublished": "2026-03-11T14:00:00.000Z",
-        "image": {
-          "@type": "ImageObject",
-          "url": "https://og.fatbobman.com/card/why-i-am-still-thinking-about-core-data-in-2026-en.webp"
-        },
-        "headline": " Why I'm Still Thinking About Core Data in 2026",
         "author": {
           "@id": "https://fatbobman.com/#author"
         }
@@ -397,7 +397,7 @@ const enableStickyInMobile = true;
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               border-b border-gray-100 dark:border-gray-800
-            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-06-17T14:00:00.000Z" class="font-medium opacity-80"> Jun 17, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/from-size-class-to-available-space/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> From Size Class to Available Space: Is horizontalSizeClass Still Reliable? </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Starting with WWDC 26, when an iPhone app is mirrored to a Mac through iPhone Mirroring, its window can be freely resized. At the same time, iPhone-only apps running on iPad will also enter a resizable environment. Even without updating a physical device to a beta system, developers can already experience this change through Xcode 27 previews or the iOS 27 simulation environment in Device Hub.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/SwiftUI/" class="
+            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-07-01T14:00:00.000Z" class="font-medium opacity-80"> Jul 1, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/debugging-notes-on-two-swiftui-animation-bugs/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> Debugging Notes on Two SwiftUI Animation Bugs </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Easy-to-use animation has always been one of SwiftUI&#39;s defining features. But the nature of a declarative framework is a double-edged sword: once an animation misbehaves, tracking down the cause is often trickier than in an imperative framework. This post records two SwiftUI animation bugs I ran into over the past two weeks, along with how I tracked each of them down.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/SwiftUI/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
     text-gray-500 hover:text-primary
@@ -407,6 +407,16 @@ const enableStickyInMobile = true;
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               
+            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-06-17T14:00:00.000Z" class="font-medium opacity-80"> Jun 17, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/from-size-class-to-available-space/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> From Size Class to Available Space: Is horizontalSizeClass Still Reliable? </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Starting with WWDC 26, when an iPhone app is mirrored to a Mac through iPhone Mirroring, its window can be freely resized. At the same time, iPhone-only apps running on iPad will also enter a resizable environment. Even without updating a physical device to a beta system, developers can already experience this change through Xcode 27 previews or the iOS 27 simulation environment in Device Hub.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/SwiftUI/" class="
+    relative z-10 text-xs font-medium 
+    transition-colors duration-200
+    text-gray-500 hover:text-primary
+    dark:text-blue-400 dark:hover:text-blue-200
+  ">
+#SwiftUI </a> </div> </div>  <aside aria-label="advertisement" class="w-full max-w-4xl mx-auto my-4 px-2 sm:px-4"> <div class="dynamic-ad-card"></div> </aside> </article><article>  <div class="
+              group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
+              transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
+              border-b border-gray-100 dark:border-gray-800
             ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-06-03T14:00:00.000Z" class="font-medium opacity-80"> Jun 3, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/core-data-observation-freer-mental-model/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> Core Data + Observation: From Property-Level Reactivity to a Freer Mental Model </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">The introduction of the Observation framework has refined SwiftUI’s state reactivity from the object level down to the property level, significantly reducing many unnecessary view computations caused by coarse-grained observation. I recently explored and implemented Observation support in Core Data Evolution, giving `NSManagedObject` property-level precise observation capabilities. This article discusses the motivation behind this feature, how to use it, its implementation approach, the engineering challenges involved, and some of the trade-offs made during development.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/Core-Data/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
@@ -425,7 +435,7 @@ const enableStickyInMobile = true;
     text-gray-500 hover:text-primary
     dark:text-blue-400 dark:hover:text-blue-200
   ">
-#SwiftUI </a> </div> </div>  <aside aria-label="advertisement" class="w-full max-w-4xl mx-auto my-4 px-2 sm:px-4"> <div class="dynamic-ad-card"></div> </aside> </article><article>  <div class="
+#SwiftUI </a> </div> </div>   </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               border-b border-gray-100 dark:border-gray-800
@@ -492,7 +502,7 @@ const enableStickyInMobile = true;
 #Core Data </a> </div> </div>   </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
-              border-b border-gray-100 dark:border-gray-800
+              
             ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-02-06T02:30:00.000Z" class="font-medium opacity-80"> Feb 6, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/xcode-263-claude/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> Xcode 26.3 + Claude Agent: Model Swapping,MCP, Skills, and Adaptive Configuration </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Unexpectedly, Apple has directly provided support for Claude Code/Codex in Xcode 26.3. With this update, developers can finally use native AI Agents elegantly within Xcode. Over the past two days, I’ve conducted a series of experiments with this new version, including configuring MCP and writing an adaptive `CLAUDE.md`. This article uses Claude Code as an example to share some tips that go beyond the official documentation.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/AI/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
@@ -505,18 +515,7 @@ const enableStickyInMobile = true;
     text-gray-500 hover:text-primary
     dark:text-blue-400 dark:hover:text-blue-200
   ">
-#Dev Tools </a> </div> </div>   </article><article>  <div class="
-              group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
-              transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
-              
-            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-02-04T14:12:00.000Z" class="font-medium opacity-80"> Feb 4, 2026 </time> <span class="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-300 font-medium bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 rounded text-[10px] tracking-wide uppercase">
-Guest Post by Sintone </span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/screensage-from-pixel-to-meta/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> From Pixel Capture to Metadata: Reimagining Screen Recording Architecture on macOS </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Independent developer Sintone shares a deep dive into building a macOS screen recorder. Learn practical solutions for ScreenCaptureKit errors (-3821), high-performance video composition with Metal, and optimizing complex SwiftUI timelines using the new @Observable macro.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/Dev-Diary/" class="
-    relative z-10 text-xs font-medium 
-    transition-colors duration-200
-    text-gray-500 hover:text-primary
-    dark:text-blue-400 dark:hover:text-blue-200
-  ">
-#Dev Diary </a> </div> </div>   </article>  <div class="flex justify-center pt-8 pb-2"> <a class="inline-flex items-center gap-1 text-sm font-medium text-muted hover:text-heading transition-colors group" href="/en/posts/#more-artical-start"> More Articles <span class="group-hover:translate-x-0.5 transition-transform">→</span> </a> </div> </section> <script>(function(){const baseUrl = "https://fatbobman.com/ads";
+#Dev Tools </a> </div> </div>   </article>  <div class="flex justify-center pt-8 pb-2"> <a class="inline-flex items-center gap-1 text-sm font-medium text-muted hover:text-heading transition-colors group" href="/en/posts/#more-artical-start"> More Articles <span class="group-hover:translate-x-0.5 transition-transform">→</span> </a> </div> </section> <script>(function(){const baseUrl = "https://fatbobman.com/ads";
 const langSuffix = "en";
 const utmTerm = "homepage";
 
@@ -1119,7 +1118,7 @@ const utmTerm = "homepage";
                 border border-gray-100 dark:border-slate-700/50
                 transition-all duration-300
                 hover:-translate-y-1 hover:shadow-md hover:border-gray-200 dark:hover:border-slate-600
-              ">  <div class="h-1 w-full bg-gradient-to-r from-red-500 to-orange-400 opacity-80 group-hover:opacity-100 transition-opacity"></div> <div class="flex flex-col flex-1 p-5 sm:p-6">  <p class="text-xs font-bold tracking-wide uppercase text-muted mb-2 group-hover:text-primary transition-colors"> CloudKik </p>  <h3 class="text-lg font-bold text-heading leading-tight group-hover:text-primary transition-colors "> Sync and Sharing </h3>  <div class="mt-auto pt-4 flex items-center text-sm font-medium text-muted group-hover:text-primary transition-colors"> <span class="text-xs">Explore</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"> <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"></path> </svg> </div> </div> </a><a href="/en/collections/data-flow/" aria-label="Data Flow and State Management" class="
+              ">  <div class="h-1 w-full bg-gradient-to-r from-red-500 to-orange-400 opacity-80 group-hover:opacity-100 transition-opacity"></div> <div class="flex flex-col flex-1 p-5 sm:p-6">  <p class="text-xs font-bold tracking-wide uppercase text-muted mb-2 group-hover:text-primary transition-colors"> CloudKit Service </p>  <h3 class="text-lg font-bold text-heading leading-tight group-hover:text-primary transition-colors "> Sync and Sharing </h3>  <div class="mt-auto pt-4 flex items-center text-sm font-medium text-muted group-hover:text-primary transition-colors"> <span class="text-xs">Explore</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"> <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"></path> </svg> </div> </div> </a><a href="/en/collections/data-flow/" aria-label="Data Flow and State Management" class="
                 group relative flex flex-col h-full
                 overflow-hidden rounded-2xl
                 bg-gray-50 dark:bg-slate-800/50
