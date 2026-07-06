@@ -313,7 +313,7 @@ const enableStickyInMobile = true;
 #Guest Post </a> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-wider
-    "> 告别“可移植汇编”：我已让 Swift 在 MCU 上运行七年 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 gap-y-2 tracking-wide"> <a itemprop="author" href="https://x.com/madmachineio" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Andy Liu </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2026-01-07T14:12:00.000Z"> 2026 年 1 月 7 日 </time>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <article class="prose dark:prose-invert mx-auto w-full prose-headings:tracking-wide prose-p:tracking-wide prose-a:tracking-wide"> <div> 
+    "> 告别“可移植汇编”：我已让 Swift 在 MCU 上运行七年 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 gap-y-2 tracking-wide"> <a itemprop="author" href="https://x.com/madmachineio" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> Andy Liu </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2026-01-07T14:12:00.000Z"> 2026 年 1 月 7 日 </time>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <article class="prose dark:prose-invert mx-auto w-full prose-headings:tracking-wide prose-p:tracking-wide prose-a:tracking-wide" data-reading-root="post" data-content-type="post" data-slug="zh/running-swift-on-mcu" data-lang="zh" data-category data-tags="[&#34;Swift&#34;,&#34;Dev Diary&#34;,&#34;Guest Post&#34;]"> <div> 
 <div class="mdx-intro"><p>在 2025 年，Swift 在嵌入式领域的进展已步入正轨。尽管 Swift 自诞生之初便怀揣跨平台的愿景，但要在嵌入式开发这块“硬骨头”上获得显著份额，仍有很长的路要走。</p><p>事实上，在苹果官方正式开启嵌入式支持之前，<a href="https://x.com/madmachineio?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Andy Liu</a> 和他的 <a href="https://madmachine.io?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">MadMachine</a> 团队就已经在这个领域深耕多年。</p><p>与目前主流关注“如何在受限硬件上极致压榨资源”的视角不同，Andy 敏锐地预见到了底层硬件性能的飞速提升与成本的持续下降。他认为，在功能日益复杂的开发场景中，Swift 的现代语言特性将展现出巨大的优势。因此，在数年前构建自己的硬件和 Swift 版本时，他选择了一套与社区主流不同的理念与技术路线。</p><p>我特意邀请 Andy，请他将过去几年在 Swift 嵌入式开发中的实战经历分享出来。这既是一份宝贵的历史记录，也希望能为社区提供一个不一样的思考维度。</p><p>过去两年，Andy 以数字游民的身分游历多国，最近他又有了关于智能硬件的新想法，期待他的新作品能早日与大家见面。</p></div>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline pt-4"></div></aside>
 <p>Hi, 大家好。我是 Andy Liu, 很高兴接受肘子的邀请，梳理一下自己和团队在 Swift 嵌入式开发上至今走过的旅程。</p>
@@ -443,7 +443,147 @@ const enableStickyInMobile = true;
 <p>2024 年 6 月，Swift 官方在 WWDC 上宣布原生支持嵌入式开发。这一消息让社区大为振奋，Swift 向“高效系统级编程语言”的目标迈出了坚实一步。</p>
 <p>时隔一年多，我感觉官方在嵌入式方向也进入了某种“无反馈优化期”。官方有实力默默耕耘，但参考 Swift 在 Windows 或 Android 平台的进展，我深有感触：一项技术即便打磨得再完美，若长期缺乏市场（开发者）反馈的空转，对团队内外信心的损耗是巨大的。这也是为什么至今仍只有 Swift 开发者才知道 Swift 是一门“通用语言”。</p>
 <p>尽管如此，官方的介入对我们项目利大于弊。过去每逢 macOS 或 Xcode 更新，我们的定制编译器就可能失效；现在，我们终于可以摆脱版本追逐的泥潭，将重心回归到真实案例和产品制作中。我们的初心未变：<strong>使用 Swift 这门优雅的语言，在嵌入式领域做一些真正有意思的事情。</strong></p>
-<footer class="mdx-author"><p class="mdx-author__title">About Author</p><p><a href="https://x.com/madmachineio?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Andy Liu</a> 是 <a href="https://madmachine.io?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">MadMachine</a> 项目作者，热爱折腾有趣的软硬件：喜欢从 0 到 1 做原型、追性能、抠细节，也享受把奇怪点子一步步落地的过程。你有稀奇古怪的想法，奇怪的需求，或者想一起探讨某个技术路线？欢迎随时来找他聊聊。</p></footer> </div> </article> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/Swift/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>Swift </a><a href="/zh/tags/Dev-Diary/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>Dev Diary </a><a href="/zh/tags/Guest-Post/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>Guest Post </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/swift-in-linux/" class="
+<footer class="mdx-author"><p class="mdx-author__title">About Author</p><p><a href="https://x.com/madmachineio?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">Andy Liu</a> 是 <a href="https://madmachine.io?utm_source=Fatbobman%20Blog&utm_medium=web" rel="noreferrer noopener">MadMachine</a> 项目作者，热爱折腾有趣的软硬件：喜欢从 0 到 1 做原型、追性能、抠细节，也享受把奇怪点子一步步落地的过程。你有稀奇古怪的想法，奇怪的需求，或者想一起探讨某个技术路线？欢迎随时来找他聊聊。</p></footer> </div> </article> <script>
+  (() => {
+    const rootSelector = '[data-reading-root="post"]';
+    const thresholds = [25, 50, 75, 90, 100];
+
+    function parseTags(value) {
+      if (!value) return [];
+
+      try {
+        const parsed = JSON.parse(value);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function getViewportType() {
+      return window.matchMedia('(max-width: 767px)').matches ? 'mobile' : 'desktop';
+    }
+
+    function getRootMetrics(root) {
+      const rect = root.getBoundingClientRect();
+      const height = Math.max(root.scrollHeight, root.offsetHeight, rect.height);
+
+      return {
+        height,
+        top: rect.top + window.scrollY,
+      };
+    }
+
+    function initArticleReadDepthTracker() {
+      const previousTracker = window.__fatArticleReadDepthTracker;
+      if (previousTracker && typeof previousTracker.destroy === 'function') {
+        previousTracker.destroy();
+      }
+
+      // Missing root means this is not a Post reading-completion surface.
+      const root = document.querySelector(rootSelector);
+      if (!root || root.dataset.contentType !== 'post') {
+        window.__fatArticleReadDepthTracker = null;
+        return;
+      }
+
+      const metadata = {
+        content_type: 'post',
+        slug: root.dataset.slug || '',
+        lang: root.dataset.lang || '',
+        category: root.dataset.category || '',
+        tags: parseTags(root.dataset.tags),
+      };
+
+      if (!metadata.slug || !metadata.lang) {
+        window.__fatArticleReadDepthTracker = null;
+        return;
+      }
+
+      // Thresholds are one-shot per page view; later height changes only affect future thresholds.
+      const firedThresholds = new Set();
+      const mediaElements = Array.from(root.querySelectorAll('img, video, iframe'));
+      let completed = false;
+      let scheduled = false;
+      let resizeObserver;
+
+      function pushReadingEvent(eventName, depthPercent, articleHeight) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: eventName,
+          ...metadata,
+          viewport_type: getViewportType(),
+          article_height: Math.round(articleHeight),
+          depth_percent: depthPercent,
+        });
+      }
+
+      function updateProgress() {
+        scheduled = false;
+
+        const { height, top } = getRootMetrics(root);
+        if (height <= 0) return;
+
+        const viewportBottom = window.scrollY + window.innerHeight;
+        const progress = Math.min(Math.max((viewportBottom - top) / height, 0), 1);
+        const depthPercent = Math.floor(progress * 100);
+
+        thresholds.forEach((threshold) => {
+          if (depthPercent < threshold || firedThresholds.has(threshold)) return;
+
+          firedThresholds.add(threshold);
+          pushReadingEvent('article_read_depth', threshold, height);
+
+          if (threshold === 90 && !completed) {
+            completed = true;
+            pushReadingEvent('article_completed', threshold, height);
+          }
+        });
+      }
+
+      function scheduleUpdate() {
+        if (scheduled) return;
+
+        scheduled = true;
+        window.requestAnimationFrame(updateProgress);
+      }
+
+      window.addEventListener('scroll', scheduleUpdate, { passive: true });
+      window.addEventListener('resize', scheduleUpdate);
+      window.addEventListener('orientationchange', scheduleUpdate);
+      window.addEventListener('load', scheduleUpdate);
+      mediaElements.forEach((element) => element.addEventListener('load', scheduleUpdate));
+
+      if ('ResizeObserver' in window) {
+        resizeObserver = new ResizeObserver(scheduleUpdate);
+        resizeObserver.observe(root);
+      }
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(scheduleUpdate).catch(() => {});
+      }
+
+      window.__fatArticleReadDepthTracker = {
+        destroy() {
+          window.removeEventListener('scroll', scheduleUpdate);
+          window.removeEventListener('resize', scheduleUpdate);
+          window.removeEventListener('orientationchange', scheduleUpdate);
+          window.removeEventListener('load', scheduleUpdate);
+          mediaElements.forEach((element) => element.removeEventListener('load', scheduleUpdate));
+          if (resizeObserver) resizeObserver.disconnect();
+        },
+      };
+
+      scheduleUpdate();
+    }
+
+    if (!window.__fatArticleReadDepthTrackerBootstrapped) {
+      window.__fatArticleReadDepthTrackerBootstrapped = true;
+      document.addEventListener('astro:page-load', initArticleReadDepthTracker);
+    }
+
+    initArticleReadDepthTracker();
+  })();
+</script> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/Swift/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>Swift </a><a href="/zh/tags/Dev-Diary/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>Dev Diary </a><a href="/zh/tags/Guest-Post/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>Guest Post </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/swift-in-linux/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
@@ -1170,7 +1310,7 @@ const utmTerm = "zh/running-swift-on-mcu";
   } else {
     initAds();
   }
-})();</script> <script type="module">var c=document.querySelectorAll("article");c.forEach(function(r){var a=r.querySelectorAll("a");a.forEach(function(e){var t=e.getAttribute("href");t&&t.startsWith("http")&&!t.includes("fatbobman.com")&&!t.includes("fatbobman.github.com")&&!t.includes("localhost")&&e.setAttribute("target","_blank")})});</script> <!-- <LeaveFeedback lang={lang} /> --> <!-- <BottomWeeklySubscribe lang={lang} /> --> <div id="gitalk-container" data-comment-id="告别“可移植汇编”：我已让 Swift 在 MCU 上运行七年" data-lang="zh" data-repo="blogComments" data-createIssueManually="true" data-anchor="card-advertisement" class="pb-16"></div>
+})();</script> <script type="module">var c=document.querySelectorAll("article");c.forEach(function(r){var a=r.querySelectorAll("a");a.forEach(function(e){var t=e.getAttribute("href");t&&t.startsWith("http")&&!t.includes("fatbobman.com")&&!t.includes("fatbobman.github.com")&&!t.includes("localhost")&&e.setAttribute("target","_blank")})});</script> <!-- <LeaveFeedback lang={lang} /> --> <!-- <BottomWeeklySubscribe lang={lang} /> --> <div id="post-comment-loader-anchor" class="h-px" aria-hidden="true"></div> <div id="gitalk-container" data-comment-id="告别“可移植汇编”：我已让 Swift 在 MCU 上运行七年" data-lang="zh" data-repo="blogComments" data-createIssueManually="true" data-anchor="post-comment-loader-anchor" class="pb-16"></div>
 
     <script defer>
       document.addEventListener('DOMContentLoaded', async function () {
