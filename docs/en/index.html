@@ -59,6 +59,24 @@
       "position": 1,
       "item": {
         "@type": "BlogPosting",
+        "name": "Liquid Glass: A Field Guide to UIKit Compatibility Pitfalls",
+        "url": "https://fatbobman.com/en/posts/liquid-glass-a-field-guide-to-uikit-compatibility-pitfalls/",
+        "datePublished": "2026-07-29T14:00:00.000Z",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://og.fatbobman.com/card/liquid-glass-a-field-guide-to-uikit-compatibility-pitfalls-en.webp"
+        },
+        "headline": "Liquid Glass: A Field Guide to UIKit Compatibility Pitfalls",
+        "author": {
+          "@id": "https://fatbobman.com/#author"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "BlogPosting",
         "name": "Debugging Notes on Two SwiftUI Animation Bugs",
         "url": "https://fatbobman.com/en/posts/debugging-notes-on-two-swiftui-animation-bugs/",
         "datePublished": "2026-07-01T14:00:00.000Z",
@@ -74,7 +92,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 2,
+      "position": 3,
       "item": {
         "@type": "BlogPosting",
         "name": "From Size Class to Available Space: Is horizontalSizeClass Still Reliable?",
@@ -92,7 +110,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 4,
       "item": {
         "@type": "BlogPosting",
         "name": "Core Data + Observation: From Property-Level Reactivity to a Freer Mental Model",
@@ -110,7 +128,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 5,
       "item": {
         "@type": "BlogPosting",
         "name": "Taming Row Height and Spacing Jumps in SwiftUI List with a Custom Layout",
@@ -121,24 +139,6 @@
           "url": "https://og.fatbobman.com/card/taming-row-height-and-spacing-jumps-en.webp"
         },
         "headline": "Taming Row Height and Spacing Jumps in SwiftUI List with a Custom Layout",
-        "author": {
-          "@id": "https://fatbobman.com/#author"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "BlogPosting",
-        "name": "CDE: An Attempt to Make Core Data Feel More Like Modern Swift",
-        "url": "https://fatbobman.com/en/posts/cde-an-attempt-to-make-core-data-feel-more-like-modern-swift/",
-        "datePublished": "2026-03-18T14:00:00.000Z",
-        "image": {
-          "@type": "ImageObject",
-          "url": "https://og.fatbobman.com/card/cde-an-attempt-to-make-core-data-feel-more-like-modern-swift-en.webp"
-        },
-        "headline": "CDE: An Attempt to Make Core Data Feel More Like Modern Swift",
         "author": {
           "@id": "https://fatbobman.com/#author"
         }
@@ -397,7 +397,8 @@ const enableStickyInMobile = true;
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               border-b border-gray-100 dark:border-gray-800
-            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-07-01T14:00:00.000Z" class="font-medium opacity-80"> Jul 1, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/debugging-notes-on-two-swiftui-animation-bugs/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> Debugging Notes on Two SwiftUI Animation Bugs </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Easy-to-use animation has always been one of SwiftUI&#39;s defining features. But the nature of a declarative framework is a double-edged sword: once an animation misbehaves, tracking down the cause is often trickier than in an imperative framework. This post records two SwiftUI animation bugs I ran into over the past two weeks, along with how I tracked each of them down.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/SwiftUI/" class="
+            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-07-29T14:00:00.000Z" class="font-medium opacity-80"> Jul 29, 2026 </time> <span class="inline-flex items-center gap-1 text-indigo-600 dark:text-indigo-300 font-medium bg-indigo-50 dark:bg-indigo-900/30 px-2 py-0.5 rounded text-[10px] tracking-wide uppercase">
+Guest Post by Megabits </span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/liquid-glass-a-field-guide-to-uikit-compatibility-pitfalls/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> Liquid Glass: A Field Guide to UIKit Compatibility Pitfalls </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Although Liquid Glass has been around for two years, the compatibility issues it introduced haven’t completely disappeared. Drawing on a real-world project, SLIT_STUDIO developer Megabits summarizes several common UIKit adaptation pitfalls and the solutions he used to address them.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/SwiftUI/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
     text-gray-500 hover:text-primary
@@ -407,13 +408,23 @@ const enableStickyInMobile = true;
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               
-            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-06-17T14:00:00.000Z" class="font-medium opacity-80"> Jun 17, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/from-size-class-to-available-space/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> From Size Class to Available Space: Is horizontalSizeClass Still Reliable? </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Starting with WWDC 26, when an iPhone app is mirrored to a Mac through iPhone Mirroring, its window can be freely resized. At the same time, iPhone-only apps running on iPad will also enter a resizable environment. Even without updating a physical device to a beta system, developers can already experience this change through Xcode 27 previews or the iOS 27 simulation environment in Device Hub.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/SwiftUI/" class="
+            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-07-01T14:00:00.000Z" class="font-medium opacity-80"> Jul 1, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/debugging-notes-on-two-swiftui-animation-bugs/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> Debugging Notes on Two SwiftUI Animation Bugs </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Easy-to-use animation has always been one of SwiftUI&#39;s defining features. But the nature of a declarative framework is a double-edged sword: once an animation misbehaves, tracking down the cause is often trickier than in an imperative framework. This post records two SwiftUI animation bugs I ran into over the past two weeks, along with how I tracked each of them down.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/SwiftUI/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
     text-gray-500 hover:text-primary
     dark:text-blue-400 dark:hover:text-blue-200
   ">
 #SwiftUI </a> </div> </div>  <aside aria-label="advertisement" class="w-full max-w-4xl mx-auto my-4 px-2 sm:px-4"> <div class="dynamic-ad-card"></div> </aside> </article><article>  <div class="
+              group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
+              transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
+              border-b border-gray-100 dark:border-gray-800
+            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-06-17T14:00:00.000Z" class="font-medium opacity-80"> Jun 17, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/from-size-class-to-available-space/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> From Size Class to Available Space: Is horizontalSizeClass Still Reliable? </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Starting with WWDC 26, when an iPhone app is mirrored to a Mac through iPhone Mirroring, its window can be freely resized. At the same time, iPhone-only apps running on iPad will also enter a resizable environment. Even without updating a physical device to a beta system, developers can already experience this change through Xcode 27 previews or the iOS 27 simulation environment in Device Hub.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/SwiftUI/" class="
+    relative z-10 text-xs font-medium 
+    transition-colors duration-200
+    text-gray-500 hover:text-primary
+    dark:text-blue-400 dark:hover:text-blue-200
+  ">
+#SwiftUI </a> </div> </div>   </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               border-b border-gray-100 dark:border-gray-800
@@ -480,7 +491,7 @@ const enableStickyInMobile = true;
 #Core Data </a> </div> </div>   </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
-              border-b border-gray-100 dark:border-gray-800
+              
             ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-03-04T14:00:00.000Z" class="font-medium opacity-80"> Mar 4, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/sendable-nsmanagedobjectcontext/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> Why Does Passing NSManagedObjectContext Across Isolation Domains No Longer Error in Swift 6.2? The Real Change Isn&#39;t in the Compiler </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">This post documents a recent debugging journey: starting from a test failure, tracing all the way down to the Core Data SDK interface, and ultimately discovering that the key change had nothing to do with the Swift compiler itself — it was how NSManagedObjectContext is imported into Swift that had changed.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/Swift/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
@@ -499,23 +510,7 @@ const enableStickyInMobile = true;
     text-gray-500 hover:text-primary
     dark:text-blue-400 dark:hover:text-blue-200
   ">
-#Core Data </a> </div> </div>   </article><article>  <div class="
-              group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
-              transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
-              
-            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-02-06T02:30:00.000Z" class="font-medium opacity-80"> Feb 6, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/xcode-263-claude/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> Xcode 26.3 + Claude Agent: Model Swapping,MCP, Skills, and Adaptive Configuration </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Unexpectedly, Apple has directly provided support for Claude Code/Codex in Xcode 26.3. With this update, developers can finally use native AI Agents elegantly within Xcode. Over the past two days, I’ve conducted a series of experiments with this new version, including configuring MCP and writing an adaptive `CLAUDE.md`. This article uses Claude Code as an example to share some tips that go beyond the official documentation.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/AI/" class="
-    relative z-10 text-xs font-medium 
-    transition-colors duration-200
-    text-gray-500 hover:text-primary
-    dark:text-blue-400 dark:hover:text-blue-200
-  ">
-#AI </a><a href="/en/tags/Dev-Tools/" class="
-    relative z-10 text-xs font-medium 
-    transition-colors duration-200
-    text-gray-500 hover:text-primary
-    dark:text-blue-400 dark:hover:text-blue-200
-  ">
-#Dev Tools </a> </div> </div>   </article>  <div class="flex justify-center pt-8 pb-2"> <a class="inline-flex items-center gap-1 text-sm font-medium text-muted hover:text-heading transition-colors group" href="/en/posts/#more-artical-start"> More Articles <span class="group-hover:translate-x-0.5 transition-transform">→</span> </a> </div> </section> <script>(function(){const baseUrl = "https://fatbobman.com/ads";
+#Core Data </a> </div> </div>   </article>  <div class="flex justify-center pt-8 pb-2"> <a class="inline-flex items-center gap-1 text-sm font-medium text-muted hover:text-heading transition-colors group" href="/en/posts/#more-artical-start"> More Articles <span class="group-hover:translate-x-0.5 transition-transform">→</span> </a> </div> </section> <script>(function(){const baseUrl = "https://fatbobman.com/ads";
 const langSuffix = "en";
 const utmTerm = "homepage";
 
