@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>从使用 AI 到委托 AI：我的一些思考</title>
-<meta name="description" content="从使用 AI 到委托 AI：探讨可预测性、验收边界、人机工具分工、外置交接与独立验证，并介绍 Task-Driven 如何让复杂工作更可信、更可控。">
+<!DOCTYPE html><html lang="zh"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="sitemap" href="/sitemap-index.xml"><!-- <link rel="shortcut icon" href={iconSVG.src} /> --><link rel="icon" type="image/png" sizes="16x16" href="/_astro/favicon-16x16.2312221518-2.DhhY-2ao.png"><link rel="icon" type="image/png" sizes="32x32" href="/_astro/favicon-32x32.2312221518-2.BbUzUdRZ.png"><link rel="mask-icon" href="/_astro/faviconSVG-32x32.2312221518-2.ll_gTgJS.svg"><link rel="apple-touch-icon" sizes="180x180" href="/_astro/apple-touch-icon.2312227635.BE1WvNvp.png"><title>从使用 AI 到委托 AI（上）：我为什么不再等更强的模型</title>
+<meta name="description" content="为什么更强的 AI 模型仍无法解决协作中的波动与漂移？本文深入探讨 AI Agent 在长上下文、规则遵循上的局限，解析从“使用 AI”到“敢于委托 AI”的关键瓶颈。">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://fatbobman.com/zh/posts/from-using-ai-to-delegating-work-to-ai/">
-<meta property="og:title" content="从使用 AI 到委托 AI：我的一些思考">
-<meta property="og:description" content="从使用 AI 到委托 AI：探讨可预测性、验收边界、人机工具分工、外置交接与独立验证，并介绍 Task-Driven 如何让复杂工作更可信、更可控。">
+<meta property="og:title" content="从使用 AI 到委托 AI（上）：我为什么不再等更强的模型">
+<meta property="og:description" content="为什么更强的 AI 模型仍无法解决协作中的波动与漂移？本文深入探讨 AI Agent 在长上下文、规则遵循上的局限，解析从“使用 AI”到“敢于委托 AI”的关键瓶颈。">
 <meta property="og:url" content="https://fatbobman.com/zh/posts/from-using-ai-to-delegating-work-to-ai/">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://og.fatbobman.com/card/from-using-ai-to-delegating-work-to-ai-zh.webp">
@@ -42,10 +42,10 @@
   "author": {
     "@id": "https://fatbobman.com/#author"
   },
-  "dateModified": "2026-08-19T14:00:00.000Z",
+  "dateModified": "2026-08-27T09:00:00.000Z",
   "datePublished": "2026-08-19T14:00:00.000Z",
-  "description": "从使用 AI 到委托 AI：探讨可预测性、验收边界、人机工具分工、外置交接与独立验证，并介绍 Task-Driven 如何让复杂工作更可信、更可控。",
-  "headline": "从使用 AI 到委托 AI：我的一些思考",
+  "description": "为什么更强的 AI 模型仍无法解决协作中的波动与漂移？本文深入探讨 AI Agent 在长上下文、规则遵循上的局限，解析从“使用 AI”到“敢于委托 AI”的关键瓶颈。",
+  "headline": "从使用 AI 到委托 AI（上）：我为什么不再等更强的模型",
   "image": {
     "@type": "ImageObject",
     "url": "https://og.fatbobman.com/card/from-using-ai-to-delegating-work-to-ai-zh.webp"
@@ -301,124 +301,53 @@ const enableStickyInMobile = true;
 #AI </a> </div>  <h1 class="
       text-2xl sm:text-3xl md:text-4xl font-extrabold text-heading leading-tight mb-6
       tracking-wider
-    "> 从使用 AI 到委托 AI：我的一些思考 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 gap-y-2 tracking-wide"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 东坡肘子 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2026-08-19T14:00:00.000Z"> 2026 年 8 月 19 日 </time>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <article class="prose dark:prose-invert mx-auto w-full prose-headings:tracking-wide prose-p:tracking-wide prose-a:tracking-wide" data-reading-root="post" data-content-type="post" data-slug="zh/from-using-ai-to-delegating-work-to-ai" data-lang="zh" data-category data-tags="[&#34;AI&#34;]"> <div> 
+    "> 从使用 AI 到委托 AI（上）：我为什么不再等更强的模型 </h1>  <div class="flex flex-wrap justify-center items-center text-sm text-muted font-medium gap-x-4 gap-y-2 tracking-wide"> <a itemprop="author" href="https://x.com/intent/follow?screen_name=fatbobman" target="_blank" class="flex items-center hover:text-primary transition-colors group"> <span class="border-b border-transparent group-hover:border-primary transition-colors"> 东坡肘子 </span> </a> <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <time datetime="2026-08-19T14:00:00.000Z"> 2026 年 8 月 19 日 </time>  <span class="text-gray-300 dark:text-slate-700" aria-hidden="true">&bull;</span> <span class="italic text-muted/80">
+(更新于  <time datetime="2026-08-27T09:00:00.000Z">2026 年 8 月 27 日</time>)
+</span>  </div> </header> <svg style="display: none;"> <symbol id="icon-clipboard" viewBox="0 0 1024 1024"> <path d="M426.666667 42.666667l170.666667 0q41.344 0 74.325333 23.850667t46.336 61.482667l50.005333 0q52.992 0 90.496 37.504t37.504 90.496l0 597.333333q0 52.992-37.504 90.496t-90.496 37.504l-512 0q-52.992 0-90.496-37.504t-37.504-90.496l0-597.333333q0-52.992 37.504-90.496t90.496-37.504l50.005333 0q13.312-37.674667 46.336-61.482667t74.325333-23.850667zM768 213.333333l-50.005333 0q-13.312 37.674667-46.336 61.482667t-74.325333 23.850667l-170.666667 0q-41.344 0-74.325333-23.850667t-46.336-61.482667l-50.005333 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333l0 597.333333q0 17.664 12.501333 30.165333t30.165333 12.501333l512 0q17.664 0 30.165333-12.501333t12.501333-30.165333l0-597.333333q0-17.664-12.501333-30.165333t-30.165333-12.501333zM597.333333 128l-170.666667 0q-17.664 0-30.165333 12.501333t-12.501333 30.165333 12.501333 30.165333 30.165333 12.501333l170.666667 0q17.664 0 30.165333-12.501333t12.501333-30.165333-12.501333-30.165333-30.165333-12.501333z"></path> </symbol> <symbol id="icon-check" viewBox="0 0 1024 1024"> <path d="M421.858 683.366l401.796-448.518c18.66-20.828 50.668-22.586 71.498-3.928 20.828 18.66 22.586 50.67 3.928 71.498L463.638 788.494c-18.606 20.768-50.5 22.586-71.344 4.066l-263.29-233.924c-20.906-18.572-22.796-50.576-4.222-71.48 18.574-20.906 50.576-22.796 71.48-4.222L421.86 683.366z"></path> </symbol> </svg> <div class="relative" id="article-area"> <article class="prose dark:prose-invert mx-auto w-full prose-headings:tracking-wide prose-p:tracking-wide prose-a:tracking-wide" data-reading-root="post" data-content-type="post" data-slug="zh/from-using-ai-to-delegating-work-to-ai" data-lang="zh" data-category data-tags="[&#34;AI&#34;]"> <div> 
 <p>从问答、代码生成，到让 Agent 接手更完整的工作，不知不觉间，我已经使用 AI 好几年了。</p>
-<p>这些年里，变化的不只是模型能力，人与 AI 的协作方式也一直在变。我也在一边使用，一边调整自己的方法。</p>
-<p>AI 没有唯一的最佳用法。聊天适合讨论和整理信息，嵌入工具的 AI 适合即时辅助，Agent 则把一次问答扩展成一连串可以自主探索、调用工具和修正结果的操作。它们服务于不同场景，没有谁真正取代谁。</p>
-<p>这篇文章只讨论其中一个更窄的场景：<strong>当一项工作已经有明确目标、边界和验收要求时，怎样把它真正交给 AI。</strong></p>
-<p>Agent 能完成的工作越复杂，这个问题就越突出。模型的输出仍然存在波动；上下文变长后，目标和规则可能逐渐淡化；拆进多个上下文，又会带来信息损失和交接偏移。让另一个模型复核，也不意味着结果一定会自然收敛。</p>
-<p>因此，我关心的已经不只是“AI 能不能完成这项工作”，而是另外几个问题：执行范围是否稳定，结果能否被信任，投入是否可以预期，以及什么时候需要人介入。</p>
-<p>这些问题最终指向同一个词：<strong>可委托性</strong>。</p>
+<p>这些年变的不只是模型能力，使用形态也换了好几轮。我的方法跟着一直在变：有时聊天，有时让 AI 嵌在工具里即时辅助，有时则把一整项工作交给 Agent。</p>
+<p>我没有找到唯一的最佳用法。聊天适合讨论和整理信息；嵌入应用的 AI 响应快、交互顺；Agent 则把一问一答扩展成可以自主探索、调用工具和修正结果的一串操作。它们服务于不同场景，没有谁真正取代谁。</p>
+<p>但随着 Agent 能接手的工作越来越复杂，我开始遇到一个新的问题：<strong>能做，和敢交出去，是两回事。</strong></p>
+<blockquote>
+<p>这是两篇系列的上篇。本文讲我为什么不再把工作方式押在下一代模型上；<a href="/zh/posts/from-using-ai-to-delegating-work-to-ai-2/" target="_blank">下篇</a>讲什么样的 AI 工作方式才真正值得托付。</p>
+</blockquote>
 <aside aria-label="advertisement" role="complementary"><div class="dynamic-ad-inline"></div></aside>
-<h2 id="我想要的是可以放心委托的-ai">我想要的，是可以放心委托的 AI</h2>
-<h3 id="稳定比偶尔做到最好更重要">稳定，比偶尔做到最好更重要</h3>
-<p>委托需要信任，而信任来自可预测性，不来自偶尔的惊艳表现：<strong>一个稳定的 B+ 可以被放心使用，一个时好时坏的 A 很难。</strong></p>
-<p>因此，我想控制的不是模型能力的上限，而是整个流程的波动。例如：一项工作究竟会进行多少轮，范围会不会越做越大，验收标准是否中途改变，不同上下文之间会不会各自理解成不同的事情。</p>
-<p>这并不意味着要强迫模型每次都给出相同答案。模型的单次输出本来就有随机性，过度限制反而会损害它的判断和执行能力。真正需要控制的是：一次较差的结果，不能未经检查就一路传到最终交付。</p>
-<p>所以，边界之内应当让模型充分发挥；边界之外，则依靠独立验证和外置交接阻断偏差。我们无法消除每一次波动，但可以避免波动被不断放大。</p>
-<p>当然，可委托性也有前提。委托者需要稳定地提供意图、边界和授权，这部分不能由系统代替。但系统同样有责任主动询问那些必不可少、又无法自行推断的信息。使用者没有提供一个从未被问过的答案，不应被归咎为「使用者不合格」。</p>
-<h3 id="要让成本可预测验收标准就必须有边界">要让成本可预测，验收标准就必须有边界</h3>
-<p>可预测性有两部分：一部分是质量，另一部分是成本。缺少任何一部分，工作都很难真正委托。</p>
-<p>一项任务可能三轮完成，也可能三十轮才结束。即使最后的质量始终不错，只要无法预估投入，就难以安排、预算，也无法判断人应该在什么时候介入。</p>
-<p>AI 的成本很难被压缩成一个统一数字。不同模型价格不同，任务轮次会随难度变化，运行时间也受环境影响。真正可以控制的，不是一个抽象的成本上限，而是验收标准：要求做到什么程度，就要为这个程度付出相应代价。</p>
-<p>没有边界的验收标准，会带来没有边界的成本。事后不断追加检查也解决不了问题，因为每一轮加严，仍然是在追逐那个没有终点的目标。</p>
-<p>因此，顺序应该是：<strong>工作价值决定验收标准，验收标准决定投入成本</strong>。不能绕过标准，直接要求一个复杂任务「便宜、快速，而且绝对可靠」。</p>
-<p>这也意味着流程必须分档。价值较低的工作使用轻流程，价值较高的工作才值得采用重流程。轻流程不是把同一套要求做得马虎一些，而是一开始就选择与工作价值相称的验收标准。</p>
-<p>不过，流程可以简化，底线不能省略：外置记录仍然是权威，范围之外的问题仍要明确写出，授权也不能靠推测。可以减少的是仪式，不是这些基本性质。</p>
-<h3 id="不追求证明所有问题都找完了">不追求证明「所有问题都找完了」</h3>
-<p>既然不追求单次表现的峰值，也要接受另一件事：不把「证明所有问题都已经找到」当成每个任务的义务。</p>
-<p>这不意味着降低检查要求。已经发现的问题，默认仍然会阻止任务通过。真正放弃的，只是那个几乎没有尽头的附加目标——不仅要解决已知问题，还要证明未知问题已经不存在。</p>
-<p>如果一项工作需要带着残留问题结束，这些问题必须被明确记录，由有权做决定的人根据工作的价值选择是否接受。没有记录的问题既无法验收，也无法被质疑。所谓边界，不能只是把缺陷推到看不见的地方。</p>
-<h3 id="人模型和工具应该各做什么">人、模型和工具应该各做什么</h3>
-<p>要把工作委托出去，首先得给被委托的一方一份边界清楚的任务；同时，还要有人做价值判断，也要有可靠的工具提供事实、保存状态并守住边界。</p>
-<p>分工的标准其实很简单：<strong>谁能可靠地提供某样东西，它就应该归谁负责。</strong></p>
-<ul>
-<li>
-<p>人负责意图、边界、验收标准、价值判断和授权；</p>
-</li>
-<li>
-<p>模型负责边界内的判断与执行；</p>
-</li>
-<li>
-<p>工具负责事实、状态、记录，以及对边界的强制约束。</p>
-</li>
-</ul>
-<p>任何一方越界，都会带来问题。</p>
-<p>如果让工具代替判断，流程会变得僵硬，规则没有覆盖的地方还可能悄悄失效；如果让模型自己决定边界，它就会逐渐偏移，因为对模型来说，「猜到的」与「真正知道的」在表达上并没有明显区别；如果让人承担大量机械工作，人既会成为瓶颈，也很难长期保持可靠。</p>
-<p>每增加一道人工确认，都会在高频使用中形成负担。人的注意力应该留给那些无法推断、必须由人做出的判断。</p>
-<p>其中最不能让渡的是授权。授权表达的是人的意志，不是对事实的判断。模型可以分析一件事是否值得做，却不能据此推断「已经获准去做」。</p>
-<p>因此，一次授权不能自动扩展到后续动作。讨论过、草案已经完成、流程按惯例应该继续，都不等于获得授权。会改变共享历史或产生外部影响的动作，应该单独确认。反过来，授权门也应尽量少，每一道都应该对应一个只有人才能做的决定。</p>
-<h3 id="交接必须写在对话之外">交接必须写在对话之外</h3>
-<p>委托会跨越不同上下文。只存在于当前对话里的目标和边界，下一个会话既看不到，也无法据此继续工作。因此，需要一个独立于对话、可以长期保存的交接载体。</p>
-<p><strong>这份外置记录不是权威内容的摘要，它本身就是权威</strong>。对话记录、模型记忆和编排器传入的上下文，都只能作为辅助；一旦它们与外置记录冲突，应当以外置记录为准。</p>
-<p>交接也不能只向前传递。下游发现的问题、提出的异议和作出的裁决，都必须能够写回并保存。只能从上游传到下游的文档更像一份简报，而不是完整的交接，因为它无法记录「上一轮的判断后来被推翻了」。</p>
-<p>这份记录应该保存「是什么」，而不是「具体怎么做」：意图、边界、验收标准、已经作出的决定及其理由，需要长期保留；执行方法则可以交给当时的模型重新判断。后者会随着模型进步而变化，没有必要固化成越来越厚的操作手册。</p>
-<p>独立上下文和外置交接解决的是两个不同问题。前者减少不同判断之间的相互影响，后者防止信息丢失和目标漂移。只有独立上下文，没有可靠交接，会变成单纯的信息损失；只有交接，没有独立判断，又容易让所有人沿着同一个假设继续自洽。两者同时存在，跨上下文协作才真正成立。</p>
-<p>外置记录还有一个额外价值：<strong>后续工作可以查到某个决定当初为什么这样做。单看提交历史，通常很难得到完整答案</strong>。</p>
-<h3 id="只保留不会很快过时的规则">只保留不会很快过时的规则</h3>
-<p>一套工作方式是否耐用，可以用一个问题来检验：模型升级之后，这条规则会不会变得多余？</p>
-<p>如果答案是会，它通常就不应该成为体系的固定部分，而应当继续留给模型。</p>
-<p>模型负责的范围会随着能力提升而扩大，所以体系不该用越来越多的文字去规定它本来就会做的事情。人的职责不会消失，因为意图、价值和授权无法推断；工具的职责也不会消失，因为事实需要被稳定记录和复核，而不能每次都让模型重新猜测。</p>
-<p>成本也是如此。模型侧的投入可能随着能力提升而下降：今天需要十轮的工作，未来也许两轮就能完成。但落在人和工具上的固定成本，不会因为模型变强就自动消失。它们是否值得，始终要由工作的价值来决定。</p>
-<h2 id="task-driven让这些准则真正落地">Task-Driven：让这些准则真正落地</h2>
-<p>从去年底开始，我一直沿着这些方向实践，并逐渐整理出一套名为 Task-Driven 的工作方式。它由 Skill、文档、规则和命令行工具组成。</p>
-<p>最近在继续完善 Task-Driven 时，我遇到了一些仅靠补充流程和规则无法解决的判断难题。这时我才意识到：过去我一直在积累具体做法，却没有把支撑这些做法的原则真正提炼出来。缺少这一层抽象，当不同目标和规则发生冲突时，许多判断便没有稳定的依据。</p>
-<p>本文正是在这个过程中写成的。它不是先提出一套理论，再用 Task-Driven 去实现；而是从已有实践中反向梳理出我的 AI 应用原则，将它们明确下来，再用这些原则继续审视和调整 Task-Driven。</p>
-<p>从这个角度看，这篇文章本身也是 Task-Driven 自我完善的一部分。它一直在通过自身的工作方式改进自身，算是一种自举。</p>
-<p>对我来说，Task-Driven 更像一种操作方式，而不是传统意义上的产品。日常动作只有四类：凝练一项工作、进入一个角色、完成一次交接，以及关闭一个 task。<strong>这里的 task 是契约的载体，也是跨上下文交接的基本单位，不是一份包罗万象的产品规格书。</strong></p>
-<h3 id="契约从哪里来先讨论再凝练">契约从哪里来：先讨论，再凝练</h3>
-<p>Task-Driven 与现在流行的 Spec-Driven 表面相似，起点却不同。</p>
-<p>Spec-Driven 往往假设已经有一份足够完整的规格，再从中派生计划、任务和代码。我的日常工作通常不是这样开始的：意图最初只存在于脑中，我先和 AI 讨论，再把讨论结果凝练成一份边界明确、可以验收的工作契约。</p>
-<p>没有一份更大的全局文档，并不代表漏掉了某个步骤，它本来就是起点。即使后来出现更完整的文档，它也是「讨论、生成、拆分」的结果，而不是前提。</p>
-<p>凝练从「意图锁定」（Intent Lock）开始。AI 先把它理解到的目标、补充条件和仍然缺少的授权完整列出，再由人做一次精确确认。确认需要使用明确、可识别的指令；之前的讨论、赞同或一句含糊的「继续」，都不算正式确认。只有通过这一步，AI 才能写出 Goal、Scope、Non-Goals 和 Acceptance。</p>
-<p>这里落实了两条原则。</p>
-<p>第一，验收标准要描述最终结果，而不是把当前想到的例子误写成全部情况。例子只代表最低覆盖；不确定的内容必须标成假设或未决事项，不能伪装成已经确定的事实。</p>
-<p>第二，确认意图和授权创建任务是两件不同的事。前者不能代替后者；创建授权还必须绑定到某一版具体草案。草案一旦发生实质变化，旧授权也随之失效。</p>
-<h3 id="谁在什么边界里工作角色与独立上下文">谁在什么边界里工作：角色与独立上下文</h3>
-<p>对于目标明确、但第一版几乎不可能直接闭合的复杂工作，我通常会从 Frame → PM → Design → Dev → QA 这条路径开始。不过，这只是一条典型路径，不是必须依次走完的固定流水线。</p>
-<p>不同任务可以采用不同路线。一个范围清楚的小修正，可能从 Frame 直接进入 Dev；行为已经明确的任务，可以跳过 Design；决策和调研类工作也未必需要 Dev。路径可以缩短，但必须是一项被明确记录的决定，不能靠模型自行省略。</p>
-<p>Frame 把想法整理成可讨论的任务；PM 收敛价值、范围和成功标准；Design 把意图转化为可以实现、可以验证的流程与状态；Dev 在边界内完成实现，并提供与工作规模相称的证据；QA 则依据契约作出独立判断，而不是重复实现者的结论。Ship 只是生命周期动作，不是一个负责写判断记录的角色。</p>
-<p><strong>真正固定的是角色的责任边界，而不是角色出现的顺序</strong>。每个角色的定义只说明三件事：它拥有什么、不能做什么、问题应该交给谁。至于具体怎么做，仍然交给模型判断。</p>
-<p>路径也不要求始终向前。Dev 如果发现行为契约不完整，可以回到 Design；如果发现目标或范围本身有问题，则回到 PM。QA 发现实现缺陷，就交回 Dev；发现行为定义有缺口，就交回 Design；如果任务从根本上需要重写或拆分，甚至可以重新回到 Frame。</p>
-<p>问题修正之后，工作再从相应位置继续向下。因此，同一个角色可能在一项任务中出现多次，例如 Design → Dev → QA → Design → Dev → QA。这种反复不是流程失效，而是新发现正在回到真正拥有决定权的地方。<strong>每一轮都必须带回新的事实、判断或证据；如果只是围绕同一问题不断加严规则，就应该重新检查验收边界，而不是让循环无限持续</strong>。</p>
-<p>默认情况下，每一次角色工作都使用新的上下文，并在整个过程中保持角色不变。新上下文重新读取最新的外置记录，因此独立判断不等于丢失历史。这样既减少了上一轮思路的影响，也避免模型在同一段对话里一边实现、一边扮演独立审查者。</p>
-<p>这正是耐久性原则的落地：执行方法属于模型，写进制度的内容越多，越容易随着模型变强而过时；角色边界和交接规则则会继续存在。</p>
-<h3 id="权威放在哪里外置记录与双向反馈">权威放在哪里：外置记录与双向反馈</h3>
-<p>无论走哪条路径，权威都不在对话里。每个角色开始工作时，都从外置任务记录中读取当前边界；结束时，再把判断、反馈和下一步交接写回记录。</p>
-<p>反馈本身带有明确去向：每一条都说明应该由哪个角色处理，以及它是否已经解决。下游可以推翻上游的判断，而且这个变化会被保留下来。</p>
-<p>相比之下，如果只在某个会话里说一句「上一版方案不对」，下一个上下文很可能永远不会知道。</p>
-<h3 id="事实由工具保证而不是由模型猜测">事实由工具保证，而不是由模型猜测</h3>
-<p>权威记录由运行工具（runtime）写入，模型不能直接修改。任务状态、记录索引、反馈、生命周期字段，都由工具管理；模型只负责在工具提供的结构中写下判断。</p>
-<p>有一条规则尤其重要：凡是会被用作判断依据的汇总结果，都应该尽可能由工具生成，而不是让模型临时检索后自己统计。</p>
-<p>模型自己搜出来的数字很难复核：别人不知道它查了哪些范围，也不知道是否遗漏；同样的问题换一次上下文，答案还可能不同。一个用来发现偏离的机制，如果连自己的输入都不稳定，就很难真正发现偏离。</p>
-<h3 id="证据不是一句已经测试过">证据不是一句「已经测试过」</h3>
-<p>Task-Driven 中的验证证据会绑定到当时的代码状态，包括产品仓的提交、是否存在未提交修改，以及修改摘要。</p>
-<p>下一次校验证据时，比较的是「记录证据时的代码状态」与「当前代码状态」是否一致，而不是去相信一句「之前已经测试过」。</p>
-<p>这既是工具提供事实的具体例子，也对应「不追求穷尽」的原则：一份证据只能证明，在某个明确的代码状态下，某条命令得到了某个结果；它不会被包装成「所有情况都已经覆盖」。</p>
-<h3 id="两档流程">两档流程</h3>
-<p>不是所有工作都值得使用同一套流程。</p>
-<p>除了角色管道，Task-Driven 还有一条 freeform 路径。运行工具只负责创建、续跑、记录过程和显式关闭；如何理解问题、怎样执行、如何验证、是否返工，都交给当时的模型决定。</p>
-<p>freeform 不是角色管道的简化版本，而是另一档流程：它从一开始就采用更轻的验收标准，适合简单或一次性的工作。</p>
-<p>但两档流程共享同一条底线：记录仍然外置并且具有权威性，会改变共享历史或产生外部影响的动作仍然需要单独授权。轻量化的是过程，不是底线。</p>
-<h3 id="授权门">授权门</h3>
-<p>提交、推送、发布等动作都会改变历史或影响外部环境，因此需要分别获得授权。之前讨论过，不代表这一次已经获准执行；任务仓和产品仓的提交，也彼此独立。</p>
-<p>授权门的数量是刻意控制的。整条流程中，真正需要人确认的只有少数几个位置，例如确认意图、授权创建、批准对外或重要的历史变更。其余能够由工具可靠校验的事情，不再增加人工确认。</p>
-<p>原因很简单：每多一道确认，都会在长期、高频使用中累积成负担。</p>
-<h3 id="一次失控的循环让我看见了缺失的边界">一次失控的循环，让我看见了缺失的边界</h3>
-<p>Task-Driven 并不会自动带来好结果。之前的一项工作，就让我清楚地看到了它的缺口。</p>
-<p>那是一个决策类任务。Frame 在验收标准中写了一句：「它的解耦性可以被独立复核。」我的本意，只是排除一句未经验证的「已经完成」。但这句话没有说明应该由谁复核、复核到什么程度。</p>
-<p>于是，它逐渐被理解成「必须能够由机器验证」。而让一份规范文档通过机器证明自身正确，几乎没有天然终点：验证器本身又会成为新的待验证对象。</p>
-<p>结果是，整个任务产生了三十多条记录、十几版方案，最终内容中将近七成在讨论如何验证，而不是被验证的设计本身。</p>
-<p>更值得警惕的是，每一轮独立检查在当时的标准下都成立，没有哪一轮明显做错了。<strong>局部上每一步都正确，整体却仍然偏离目标。</strong></p>
-<p>这种问题比一次误判更难发现，因为它不会制造一个清晰的错误信号。每一轮都会自然地得出同一个结论：还可以再严格一点。</p>
-<p>复盘之后，我发现问题不在执行，而在最初的契约。我从未写清楚「这项工作值得投入多少」，也没有定义「做到什么程度就足够了」。与此同时，体系里的所有力量都在推动它变得更严：独立验证、重复问题升级、完备性检查、发现失败就阻止通过，却没有任何机制负责判断「现在已经足够」。</p>
-<p>这正是「成本是否可预测，取决于验收标准是否有边界」这条原则的来源。它不是我先想明白、再写进体系的结论，而是付出代价之后倒推出来的。</p>
-<h2 id="代价">代价</h2>
-<p>Task-Driven 会使用更多 token，也会花费更多时间，而且对模型的能力也有一定的要求。</p>
-<p>它并不是那种可以让弱模型“化腐朽为神奇”的银弹。相反，越是刚性的契约、状态机和物理不变量约束，在初始化和边界划分（如 PM 规划与 Design 设计）时，越需要旗舰模型极高强度的抽象推理能力。如果模型的基础理解力不够，它甚至无法在 Runtime 的硬性校验下迈出第一步（例如 DeepSeek Flash V4 在 Preview 版本时因后训练对齐不足，频繁在 runtime 契约中发生工具调用漂移；而在正式版重做了针对 Agent 工作流与 Tool 使用的 Post-Training，这个问题才得到根本性解决）。</p>
-<p><strong>它换取的是更稳定、更容易交接和复核的结果，而不是声称自己一定能做出「更好」的结果。至少对我来说，其产出是稳定的，可委托的</strong></p>
-<p>它主要面向开发、调研等专业知识工作，也只有在问题足够复杂时才划算。聊天、补全和单次问答仍然各有自己的位置。</p>
-<p>本文只是我个人现阶段的思考。它与我的技术背景、使用习惯和工作场景密切相关，也一定还会继续变化。或许等 Task-Driven 更成熟之后，我会再单独写一篇文章，介绍它的技术细节。</p> </div> </article> <script>
+<h2 id="我不再把工作方式押在下一代模型上">我不再把工作方式押在下一代模型上</h2>
+<p>模型当然还会继续进步，我也没有兴趣预测能力增长会在什么时候放缓，或者 AGI 何时出现。</p>
+<p>我只是不再假设：等模型再强一点，今天的协作问题就会自然消失。</p>
+<p>同一个模型面对同一项任务，结果仍然可能不同。任务越复杂，差异越容易扩大。新模型能减少错误、提升工具使用能力，却不会自动把 AI 变成一个结果完全固定的输入输出工具。</p>
+<p>一种常见做法是让一个模型执行，再让另一个模型检查。这能带来不同视角，但不保证自然收敛。检查者也可能误判，还可能继承执行者没有写明的假设。</p>
+<p>所以，我需要的不能只是更高的能力上限。能力可以继续增长，但我的工作方式必须在模型仍有波动时就能成立。</p>
+<h2 id="通用性也是一层限制">通用性也是一层限制</h2>
+<p>还有一层常被忽略的限制，来自通用性。模型厂商和工具厂商需要服务不同的用户、行业与工作方式，因此产品会优先改善共性能力：理解指令、调用工具、管理上下文，以及完成一般性的任务。</p>
+<p>这不是厂商做得不够，而是通用产品的职责决定的。某项工作为什么值得做、边界在哪里、验收应该严到什么程度、哪些动作必须另行授权，并没有一套适用于所有人的答案。产品越通用，就越难为某一种专业工作持续深入，也越难替某个使用者作出专属取舍。</p>
+<p>厂商可以提供更好的模型、工具和扩展能力，却不能替我完成最后一段适配。因此，我同样不会等待某个官方工具有一天自然长成最适合我的工作方式。</p>
+<h2 id="复杂工作迟早会跨越上下文">复杂工作迟早会跨越上下文</h2>
+<p>上下文变长后，目标、规则和早先的决定会逐渐失去分量。即使窗口还能容纳更多文字，模型也不一定能同等重视每一部分。</p>
+<p>复杂工作因此迟早要切开：换一个会话，交给另一个 Agent，或者让同一个模型在新的上下文里继续。</p>
+<p>切开会造成信息损失，却也有价值。新的上下文不必沿用上一轮的思路，可以重新判断；不同角色彼此隔离，也比同一个模型一边执行、一边宣布自己通过独立检查更可信。</p>
+<p>难点不在要不要切，而在切开之后拿什么接住。</p>
+<p>如果目标、边界和决定只存在于聊天记录里，每个新上下文都得重新解释任务。模型可能漏掉前提，也可能把上一轮的临时判断当成最终结论。上下文越多，漂移越容易累积。</p>
+<h2 id="发起一件工作也比想象中难">发起一件工作，也比想象中难</h2>
+<p>问一个问题不难，让 AI 生成一个功能也不难。真正困难的是：怎样把人脑中的一件事，变成边界明确、可以验收、能够交接的工作。</p>
+<p>Spec-Driven 提供了一种答案，但它通常假定已经有一份较完整的规格。我的日常工作往往不是这样开始的。最初只有一个意图，我需要先和 AI 讨论，再逐渐明确目标、范围、非目标和完成标准。</p>
+<p>发起之所以难，正卡在这一步：模型可以整理和追问，却不能替人决定一项工作为什么值得做、做到什么程度才够、哪些动作已经获得授权。意图、价值和授权不是事实，模型没法从上下文里推出来，只能由人给。</p>
+<h2 id="规则也不能只写给模型看">规则也不能只写给模型看</h2>
+<p>新模型对指令和文档的遵循已经比过去好很多，但在长任务中，规定好的格式和步骤仍然可能逐渐松动。</p>
+<p>继续增加提示词不一定有用。规则写得越多，上下文越重，模型需要同时记住和解释的东西也越多。</p>
+<p>我的体会是：凡是可以由外部工具稳定完成的检查，就不该每次都依赖模型记得去做。模型适合判断和执行，工具适合提供事实、保存状态，并强制那些不应随临场理解变化的边界。</p>
+<h2 id="我关心的问题变了">我关心的问题变了</h2>
+<p>把这些放在一起，会得到一个很现实的结论：阻碍委托的并不是某一个孤立的模型缺点，而是几类问题同时存在。</p>
+<p><picture>
+  <source media="(max-width: 479px)" srcset="https://cdn.fatbobman.com/ai-delegation-problem-map.webp?imageView2/0/w/500"/>
+  <source media="(max-width: 767px)" srcset="https://cdn.fatbobman.com/ai-delegation-problem-map.webp?imageView2/0/w/768"/>
+  <source media="(max-width: 1024px)" srcset="https://cdn.fatbobman.com/ai-delegation-problem-map.webp?imageView2/0/w/1024"/>
+  <img src="https://cdn.fatbobman.com/ai-delegation-problem-map.webp" alt="为什么更强的模型仍不等于可委托" loading="lazy" decoding="async"/>
+</picture></p>
+<p>因此，我不再只问“AI 能不能完成这项工作”。以我现在使用的模型，很多工作它已经能做。</p>
+<p>我更在意的是：<strong>我敢不敢把工作交出去，然后不盯着每一步。</strong></p>
+<p>这关心的不是能力峰值，而是范围能否保持稳定、结果是否经过可信检查、投入是否可以预期、任务中断后能否继续，以及什么时候必须回到人这里作决定。</p>
+<p>我把这些性质合在一起，称为“可委托性”。<a href="/zh/posts/from-using-ai-to-delegating-work-to-ai-2/" target="_blank">下篇</a>继续讲它。</p> </div> </article> <script>
   (() => {
     const rootSelector = '[data-reading-root="post"]';
     const thresholds = [25, 50, 75, 90, 100];
@@ -558,7 +487,14 @@ const enableStickyInMobile = true;
 
     initArticleReadDepthTracker();
   })();
-</script> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/AI/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>AI </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/ai-services-i-am-currently-using/" class="
+</script> <aside aria-label="advertisement" role="complementary" id="card-advertisement"><div class="dynamic-ad-card"></div></aside> <!-- 标签容器：居中 --><div class="flex flex-wrap justify-center items-center gap-2 mb-10"> <span class="text-xs font-medium text-gray-400 uppercase tracking-widest mr-2">Tags</span> <a href="/zh/tags/AI/" class="text-xs font-medium sm:font-semibold mx-2 text-muted hover:text-secondary tracking-normal"> <span class="opacity-50">#</span>AI </a> </div> <section class="py-10" id="related-posts"><!-- Section 标题：与正文区分，增加层次感 --><div class="flex items-center gap-2 mb-6 justify-center text-gray-400 dark:text-gray-500"><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span><span class="text-xs font-bold uppercase tracking-widest">延伸阅读</span><span class="h-px w-8 bg-gray-200 dark:bg-gray-700"></span></div><!-- 网格布局：2列 (移动端 1列太长，直接 2列更紧凑) --><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><a href="/zh/posts/pari-programming-with-ai/" class="
+                group relative flex flex-col justify-center px-5 py-4 h-full
+                bg-white dark:bg-gray-900/50 
+                border border-gray-200 dark:border-gray-700/60 rounded-xl
+                hover:border-orange-400/50 dark:hover:border-blue-500/50
+                hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
+                transition-all duration-300
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">与 AI 结对编程</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/ai-services-i-am-currently-using/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
@@ -572,14 +508,7 @@ const enableStickyInMobile = true;
                 hover:border-orange-400/50 dark:hover:border-blue-500/50
                 hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
                 transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">Xcode 26.3 + Claude Agent：模型替换、MCP、Skill 与自适应配置</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/pari-programming-with-ai/" class="
-                group relative flex flex-col justify-center px-5 py-4 h-full
-                bg-white dark:bg-gray-900/50 
-                border border-gray-200 dark:border-gray-700/60 rounded-xl
-                hover:border-orange-400/50 dark:hover:border-blue-500/50
-                hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] dark:hover:shadow-none
-                transition-all duration-300
-              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">与 AI 结对编程</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/dancing-with-ai-my-month-with-claude-code/" class="
+              "><!-- 装饰：左上角的小点或图标，增加精致感 --><div class="absolute top-4 left-3 w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600 group-hover:bg-orange-500 dark:group-hover:bg-blue-500 transition-colors"></div><div class="flex items-start justify-between gap-3 pl-2"><!-- 标题 --><span class="text-[15px] leading-relaxed font-medium text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors font-wide">Xcode 26.3 + Claude Agent：模型替换、MCP、Skill 与自适应配置</span><!-- 箭头图标：Hover 时平移出现 --><svg class="w-4 h-4 text-gray-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div></a><a href="/zh/posts/dancing-with-ai-my-month-with-claude-code/" class="
                 group relative flex flex-col justify-center px-5 py-4 h-full
                 bg-white dark:bg-gray-900/50 
                 border border-gray-200 dark:border-gray-700/60 rounded-xl
@@ -1473,7 +1402,7 @@ const utmTerm = "zh/from-using-ai-to-delegating-work-to-ai";
   2. text-gray-400: 默认灰色，降低视觉权重
   3. hover:text-black / dark:hover:text-white: 悬浮时变为 X 的品牌色
   4. hover:bg-gray-100: 悬浮时增加淡淡的背景，增加点击区域感
---><a href="https://x.com/intent/tweet?text=%E4%BB%8E%E4%BD%BF%E7%94%A8%20AI%20%E5%88%B0%E5%A7%94%E6%89%98%20AI%EF%BC%9A%E6%88%91%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83&url=https%3A%2F%2Ffatbobman.com%2Fzh%2Fposts%2Ffrom-using-ai-to-delegating-work-to-ai%2F&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
+--><a href="https://x.com/intent/tweet?text=%E4%BB%8E%E4%BD%BF%E7%94%A8%20AI%20%E5%88%B0%E5%A7%94%E6%89%98%20AI%EF%BC%88%E4%B8%8A%EF%BC%89%EF%BC%9A%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%86%8D%E7%AD%89%E6%9B%B4%E5%BC%BA%E7%9A%84%E6%A8%A1%E5%9E%8B&url=https%3A%2F%2Ffatbobman.com%2Fzh%2Fposts%2Ffrom-using-ai-to-delegating-work-to-ai%2F&hashtags=ios,swiftlang&via=fatbobman" target="_blank" id="sidebar-share-with-twitter" class="
     group relative flex items-center justify-center w-9 h-9 rounded-full 
     transition-all duration-300 
     hover:scale-110 hover:-translate-y-0.5
