@@ -59,6 +59,24 @@
       "position": 1,
       "item": {
         "@type": "BlogPosting",
+        "name": "From pbxproj to xcproj: Xcode Project Configuration Gets a JSON Format",
+        "url": "https://fatbobman.com/en/posts/from-pbxproj-to-xcproj/",
+        "datePublished": "2026-09-17T14:30:00.000Z",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://og.fatbobman.com/card/from-pbxproj-to-xcproj-en.webp"
+        },
+        "headline": "From pbxproj to xcproj: Xcode Project Configuration Gets a JSON Format",
+        "author": {
+          "@id": "https://fatbobman.com/#author"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "BlogPosting",
         "name": "SwiftData: Optimization Starts with Modeling",
         "url": "https://fatbobman.com/en/posts/swiftdata-optimization-starts-with-modeling/",
         "datePublished": "2026-09-02T14:00:00.000Z",
@@ -74,7 +92,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 2,
+      "position": 3,
       "item": {
         "@type": "BlogPosting",
         "name": "From Using AI to Delegating Work to AI (Part 1): Why I No Longer Wait for Stronger Models",
@@ -92,7 +110,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 4,
       "item": {
         "@type": "BlogPosting",
         "name": "From Using AI to Delegating Work to AI (Part 2): What I Mean by Delegability",
@@ -110,7 +128,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 5,
       "item": {
         "@type": "BlogPosting",
         "name": "ContentBuilder Explained: The Secret Behind SwiftUI's Type-Checking Speedup",
@@ -121,24 +139,6 @@
           "url": "https://og.fatbobman.com/card/contentbuilder-explained-en.webp"
         },
         "headline": "ContentBuilder Explained: The Secret Behind SwiftUI's Type-Checking Speedup",
-        "author": {
-          "@id": "https://fatbobman.com/#author"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "BlogPosting",
-        "name": "Controlling Orphans in SwiftUI Text: Uncovering the Undocumented avoidsOrphans",
-        "url": "https://fatbobman.com/en/posts/controlling-orphans-in-swiftui-text/",
-        "datePublished": "2026-08-06T14:00:00.000Z",
-        "image": {
-          "@type": "ImageObject",
-          "url": "https://og.fatbobman.com/card/controlling-orphans-in-swiftui-text-en.webp"
-        },
-        "headline": "Controlling Orphans in SwiftUI Text: Uncovering the Undocumented avoidsOrphans",
         "author": {
           "@id": "https://fatbobman.com/#author"
         }
@@ -397,23 +397,39 @@ const enableStickyInMobile = true;
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               border-b border-gray-100 dark:border-gray-800
+            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-09-17T14:30:00.000Z" class="font-medium opacity-80"> Sep 17, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/from-pbxproj-to-xcproj/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> From pbxproj to xcproj: Xcode Project Configuration Gets a JSON Format </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Apple has released the 27.2 beta. Although the iPhone Duo simulator is still missing, the new `project.xcproj` is quite eye-catching. It replaces the `project.pbxproj` build graph inside the `.xcodeproj` bundle, not the entire project bundle. What are its highlights, what problems does it solve, and what remains unchanged? This article will explore these aspects.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/AI/" class="
+    relative z-10 text-xs font-medium 
+    transition-colors duration-200
+    text-gray-500 hover:text-primary
+    dark:text-blue-400 dark:hover:text-blue-200
+  ">
+#AI </a><a href="/en/tags/Dev-Tools/" class="
+    relative z-10 text-xs font-medium 
+    transition-colors duration-200
+    text-gray-500 hover:text-primary
+    dark:text-blue-400 dark:hover:text-blue-200
+  ">
+#Dev Tools </a> </div> </div>   </article><article>  <div class="
+              group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
+              transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
+              
             ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-09-02T14:00:00.000Z" class="font-medium opacity-80"> Sep 2, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/swiftdata-optimization-starts-with-modeling/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> SwiftData: Optimization Starts with Modeling </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Once a dataset grows large, SwiftData lists start to stutter. This has been the performance complaint I&#39;ve heard most often these past few years. Once you actually spend time on it, you find that the slowness isn&#39;t only the long initial load — the enormous memory footprint drags performance down just as much. This article looks at why these problems show up in SwiftData, and where to start fixing them.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/SwiftData/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
     text-gray-500 hover:text-primary
     dark:text-blue-400 dark:hover:text-blue-200
   ">
-#SwiftData </a> </div> </div>   </article><article>  <div class="
+#SwiftData </a> </div> </div>  <aside aria-label="advertisement" class="w-full max-w-4xl mx-auto my-4 px-2 sm:px-4"> <div class="dynamic-ad-card"></div> </aside> </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
-              
+              border-b border-gray-100 dark:border-gray-800
             ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-08-19T14:00:00.000Z" class="font-medium opacity-80"> Aug 19, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/from-using-ai-to-delegating-work-to-ai/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> From Using AI to Delegating Work to AI (Part 1): Why I No Longer Wait for Stronger Models </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">From Q&amp;A and code generation to letting agents take on more complete pieces of work, I have now been using AI for several years.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/AI/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
     text-gray-500 hover:text-primary
     dark:text-blue-400 dark:hover:text-blue-200
   ">
-#AI </a> </div> </div>  <aside aria-label="advertisement" class="w-full max-w-4xl mx-auto my-4 px-2 sm:px-4"> <div class="dynamic-ad-card"></div> </aside> </article><article>  <div class="
+#AI </a> </div> </div>   </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               border-b border-gray-100 dark:border-gray-800
@@ -457,18 +473,8 @@ Guest Post by Megabits </span> </div>  <h2 class="text-lg sm:text-xl font-bold t
 #SwiftUI </a> </div> </div>   </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
-              border-b border-gray-100 dark:border-gray-800
-            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-07-01T14:00:00.000Z" class="font-medium opacity-80"> Jul 1, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/debugging-notes-on-two-swiftui-animation-bugs/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> Debugging Notes on Two SwiftUI Animation Bugs </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Easy-to-use animation has always been one of SwiftUI&#39;s defining features. But the nature of a declarative framework is a double-edged sword: once an animation misbehaves, tracking down the cause is often trickier than in an imperative framework. This post records two SwiftUI animation bugs I ran into over the past two weeks, along with how I tracked each of them down.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/SwiftUI/" class="
-    relative z-10 text-xs font-medium 
-    transition-colors duration-200
-    text-gray-500 hover:text-primary
-    dark:text-blue-400 dark:hover:text-blue-200
-  ">
-#SwiftUI </a> </div> </div>   </article><article>  <div class="
-              group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
-              transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               
-            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-06-17T14:00:00.000Z" class="font-medium opacity-80"> Jun 17, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/from-size-class-to-available-space/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> From Size Class to Available Space: Is horizontalSizeClass Still Reliable? </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Starting with WWDC 26, when an iPhone app is mirrored to a Mac through iPhone Mirroring, its window can be freely resized. At the same time, iPhone-only apps running on iPad will also enter a resizable environment. Even without updating a physical device to a beta system, developers can already experience this change through Xcode 27 previews or the iOS 27 simulation environment in Device Hub.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/SwiftUI/" class="
+            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-07-01T14:00:00.000Z" class="font-medium opacity-80"> Jul 1, 2026 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/en/posts/debugging-notes-on-two-swiftui-animation-bugs/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> Debugging Notes on Two SwiftUI Animation Bugs </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">Easy-to-use animation has always been one of SwiftUI&#39;s defining features. But the nature of a declarative framework is a double-edged sword: once an animation misbehaves, tracking down the cause is often trickier than in an imperative framework. This post records two SwiftUI animation bugs I ran into over the past two weeks, along with how I tracked each of them down.</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/en/tags/SwiftUI/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
     text-gray-500 hover:text-primary

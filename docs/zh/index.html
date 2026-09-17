@@ -59,6 +59,24 @@
       "position": 1,
       "item": {
         "@type": "BlogPosting",
+        "name": "从 pbxproj 到 xcproj：Xcode 工程配置迎来 JSON 格式",
+        "url": "https://fatbobman.com/zh/posts/from-pbxproj-to-xcproj/",
+        "datePublished": "2026-09-17T14:30:00.000Z",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://og.fatbobman.com/card/from-pbxproj-to-xcproj-zh.webp"
+        },
+        "headline": "从 pbxproj 到 xcproj：Xcode 工程配置迎来 JSON 格式",
+        "author": {
+          "@id": "https://fatbobman.com/#author"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "BlogPosting",
         "name": "SwiftData：优化从建模开始",
         "url": "https://fatbobman.com/zh/posts/swiftdata-optimization-starts-with-modeling/",
         "datePublished": "2026-09-02T14:00:00.000Z",
@@ -74,7 +92,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 2,
+      "position": 3,
       "item": {
         "@type": "BlogPosting",
         "name": "从使用 AI 到委托 AI（下）：我想要的可委托性",
@@ -92,7 +110,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 4,
       "item": {
         "@type": "BlogPosting",
         "name": "从使用 AI 到委托 AI（上）：我为什么不再等更强的模型",
@@ -110,7 +128,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 5,
       "item": {
         "@type": "BlogPosting",
         "name": "ContentBuilder 解析：SwiftUI 类型检查性能提升的秘密",
@@ -121,24 +139,6 @@
           "url": "https://og.fatbobman.com/card/contentbuilder-explained-zh.webp"
         },
         "headline": "ContentBuilder 解析：SwiftUI 类型检查性能提升的秘密",
-        "author": {
-          "@id": "https://fatbobman.com/#author"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "BlogPosting",
-        "name": "在 SwiftUI Text 中控制孤行：挖掘未公开的 avoidsOrphans",
-        "url": "https://fatbobman.com/zh/posts/controlling-orphans-in-swiftui-text/",
-        "datePublished": "2026-08-06T14:00:00.000Z",
-        "image": {
-          "@type": "ImageObject",
-          "url": "https://og.fatbobman.com/card/controlling-orphans-in-swiftui-text-zh.webp"
-        },
-        "headline": "在 SwiftUI Text 中控制孤行：挖掘未公开的 avoidsOrphans",
         "author": {
           "@id": "https://fatbobman.com/#author"
         }
@@ -397,23 +397,39 @@ const enableStickyInMobile = true;
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               border-b border-gray-100 dark:border-gray-800
+            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-09-17T14:30:00.000Z" class="font-medium opacity-80"> 2026 年 9 月 17 日 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/from-pbxproj-to-xcproj/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> 从 pbxproj 到 xcproj：Xcode 工程配置迎来 JSON 格式 </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">苹果新发布了 27.2 beta。尽管 iPhone Duo 模拟器依然缺席，但新增的 `project.xcproj` 令人眼前一亮。它替代的是 `.xcodeproj` 包里的那份构建图 `project.pbxproj`，而不是整个工程包。它有哪些亮点，解决了什么问题，又有哪些事情没有改变，本文将对此进行探讨。</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/AI/" class="
+    relative z-10 text-xs font-medium 
+    transition-colors duration-200
+    text-gray-500 hover:text-primary
+    dark:text-blue-400 dark:hover:text-blue-200
+  ">
+#AI </a><a href="/zh/tags/Dev-Tools/" class="
+    relative z-10 text-xs font-medium 
+    transition-colors duration-200
+    text-gray-500 hover:text-primary
+    dark:text-blue-400 dark:hover:text-blue-200
+  ">
+#Dev Tools </a> </div> </div>   </article><article>  <div class="
+              group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
+              transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
+              
             ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-09-02T14:00:00.000Z" class="font-medium opacity-80"> 2026 年 9 月 2 日 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/swiftdata-optimization-starts-with-modeling/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> SwiftData：优化从建模开始 </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">数据集一大，SwiftData 的列表就开始卡。这是这几年里我听到最多的性能抱怨。SwiftUI 确实有责任，但并非最主要的问题。真正花时间之后会发现，慢的不只是一开始加载时间长，巨大的内存占用同样会把性能拖垮。本文将聊聊在 SwiftData 中为什么会出现这些问题，以及该从哪里下手改善。</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/SwiftData/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
     text-gray-500 hover:text-primary
     dark:text-blue-400 dark:hover:text-blue-200
   ">
-#SwiftData </a> </div> </div>   </article><article>  <div class="
+#SwiftData </a> </div> </div>  <aside aria-label="advertisement" class="w-full max-w-4xl mx-auto my-4 px-2 sm:px-4"> <div class="dynamic-ad-card"></div> </aside> </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
-              
+              border-b border-gray-100 dark:border-gray-800
             ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-08-27T09:00:00.000Z" class="font-medium opacity-80"> 2026 年 8 月 27 日 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/from-using-ai-to-delegating-work-to-ai-2/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> 从使用 AI 到委托 AI（下）：我想要的可委托性 </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">AI 工作流的核心其实很简单——人定好验收标准，AI 执行并且按标准验收。说得没错，但实现起来并不容易。“标准”如何而来？如何得到尊重？随着上下文的增长或换一个新上下文，标准难免偏移甚至会被篡改。我需要一种可被信任的 AI 使用方式，简单来说就是“可委托”</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/AI/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
     text-gray-500 hover:text-primary
     dark:text-blue-400 dark:hover:text-blue-200
   ">
-#AI </a> </div> </div>  <aside aria-label="advertisement" class="w-full max-w-4xl mx-auto my-4 px-2 sm:px-4"> <div class="dynamic-ad-card"></div> </aside> </article><article>  <div class="
+#AI </a> </div> </div>   </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               border-b border-gray-100 dark:border-gray-800
@@ -457,18 +473,8 @@ Guest Post by Megabits </span> </div>  <h2 class="text-lg sm:text-xl font-bold t
 #SwiftUI </a> </div> </div>   </article><article>  <div class="
               group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
               transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
-              border-b border-gray-100 dark:border-gray-800
-            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-07-01T14:00:00.000Z" class="font-medium opacity-80"> 2026 年 7 月 1 日 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/debugging-notes-on-two-swiftui-animation-bugs/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> 两个 SwiftUI 动画 Bug 排查小记 </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">易用的动画一直是 SwiftUI 的主要特色之一。但声明式框架的特性是一把双刃剑：动画一旦出现异常，排查往往比命令式框架更棘手。本文记录了过去两周里，我在开发中遇到的两个与 SwiftUI 动画有关的 Bug，以及对应的排查过程。</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/SwiftUI/" class="
-    relative z-10 text-xs font-medium 
-    transition-colors duration-200
-    text-gray-500 hover:text-primary
-    dark:text-blue-400 dark:hover:text-blue-200
-  ">
-#SwiftUI </a> </div> </div>   </article><article>  <div class="
-              group relative flex flex-col gap-2 py-6 sm:py-8 px-2 sm:px-4 
-              transition-colors duration-200 hover:bg-gray-50/50 dark:hover:bg-white/[0.02] 
               
-            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-06-17T14:00:00.000Z" class="font-medium opacity-80"> 2026 年 6 月 17 日 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/from-size-class-to-available-space/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> 从 Size Class 到可用空间，horizontalSizeClass 还可靠吗？ </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">从 WWDC 26 开始，iPhone 应用在 iPhone Mirroring 到 Mac 时，其窗口尺寸将支持自由调整。这次更新带来的影响远不止“iPhone 应用可以调整尺寸”这么简单。它正在改变许多开发者长期以来对布局系统的理解。这种变化究竟是一次突然出现的转向，还是 Apple 多年布局下的必然演进？本文将对此进行探讨。</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/SwiftUI/" class="
+            ">  <div class="flex items-center gap-3 text-xs text-muted"> <time datetime="2026-07-01T14:00:00.000Z" class="font-medium opacity-80"> 2026 年 7 月 1 日 </time> <span class="opacity-80">by Fatbobman</span> </div>  <h2 class="text-lg sm:text-xl font-bold text-heading mt-0.5 transition-colors duration-200 group-hover:text-primary leading-tight"> <a href="/zh/posts/debugging-notes-on-two-swiftui-animation-bugs/" class="focus:outline-none">  <span class="absolute inset-0" aria-hidden="true"></span> 两个 SwiftUI 动画 Bug 排查小记 </a> </h2>  <p class="text-sm text-muted leading-relaxed line-clamp-2 mt-1">易用的动画一直是 SwiftUI 的主要特色之一。但声明式框架的特性是一把双刃剑：动画一旦出现异常，排查往往比命令式框架更棘手。本文记录了过去两周里，我在开发中遇到的两个与 SwiftUI 动画有关的 Bug，以及对应的排查过程。</p>  <div class="flex flex-wrap gap-x-3 mt-2 relative z-10"> <a href="/zh/tags/SwiftUI/" class="
     relative z-10 text-xs font-medium 
     transition-colors duration-200
     text-gray-500 hover:text-primary
