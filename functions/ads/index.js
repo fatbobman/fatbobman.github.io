@@ -10,6 +10,7 @@
  *   - sponsorId: specific sponsor ID to display (optional, for testing)
  *   - scheduleId: specific schedule UUID (optional, for testing)
  *   - adId: 'default' to force return default ad (optional, for preview)
+ *   - design: 'fb' to render new-design markup (optional, default: old design)
  */
 
 import { getKV } from '../_shared/mock-kv.js';
@@ -29,6 +30,7 @@ export async function onRequest(context) {
   const requestedScheduleId = url.searchParams.get('scheduleId');
   const adId = url.searchParams.get('adId'); // 'default' to force default ad
   const forceUpdate = url.searchParams.get('adForceUpdate') === 'true'; // Force UI refresh for debugging
+  const design = url.searchParams.get('design') === 'fb' ? 'fb' : ''; // 'fb' = new-design markup
 
   // Validate lang parameter
   if (!['zh', 'en'].includes(lang)) {
@@ -97,7 +99,7 @@ export async function onRequest(context) {
         return fallbackResponse(headers, lang);
       }
 
-      const html = renderAdByStyle(defaultAd, lang, defaultAd.style || 1);
+      const html = renderAdByStyle(defaultAd, lang, defaultAd.style || 1, design);
 
       // Add metadata headers for SWR
       addMetadataHeaders(headers, {
@@ -144,7 +146,7 @@ export async function onRequest(context) {
         return fallbackResponse(headers, lang);
       }
 
-      const html = renderAdByStyle(defaultAd, lang, defaultAd.style || 1);
+      const html = renderAdByStyle(defaultAd, lang, defaultAd.style || 1, design);
 
       // Add metadata headers for SWR
       addMetadataHeaders(headers, {
@@ -173,7 +175,7 @@ export async function onRequest(context) {
         return fallbackResponse(headers, lang);
       }
 
-      const html = renderAdByStyle(defaultAd, lang, defaultAd.style || 1);
+      const html = renderAdByStyle(defaultAd, lang, defaultAd.style || 1, design);
 
       // Add metadata headers for SWR
       addMetadataHeaders(headers, {
@@ -190,7 +192,7 @@ export async function onRequest(context) {
     }
 
     // Generate HTML for the selected variant
-    const html = renderAdByStyle(selectedVariant, lang, selectedVariant.style || 1);
+    const html = renderAdByStyle(selectedVariant, lang, selectedVariant.style || 1, design);
 
     // Generate ad ID (e.g., boltai-zh-v1)
     const generatedAdId = `${activeSchedule.sponsorId}-${lang}-v${selectedVariant.version}`;

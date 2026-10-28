@@ -333,13 +333,106 @@ export function renderAdSecondary(adData, lang = 'zh') {
 }
 
 /**
+ * Render a single feature as a plain <li> for the new design (html.fb).
+ * Disabled features and empty content are skipped.
+ * @param {string|object} feature - Feature data
+ * @returns {string} <li> HTML or empty string
+ */
+function renderFeatureFb(feature) {
+  let content = '';
+  if (typeof feature === 'string') {
+    content = escapeHtml(feature);
+  } else if (feature && typeof feature === 'object') {
+    if (feature.enabled === false) return '';
+    content = renderRichText(feature.content);
+  }
+  return content ? `<li>${content}</li>` : '';
+}
+
+/**
+ * Render advertisement HTML for the new design (html.fb).
+ * Used for both style 1 (card) and style 2 (inline); styles live in site.css (`html.fb .sponsor*`).
+ * Links are real anchors so the client's delegated click tracking and UTM injection keep working.
+ * @param {object} adData - AdVariant data object. Optional `label` replaces the top "Sponsor" tag — only for
+ *   house ads (e.g. the newsletter default ad), which should also set `showSponsorLink: false`.
+ * @param {string} lang - Language code (zh/en)
+ * @returns {string} Complete HTML for the advertisement
+ */
+export function renderAdFb(adData, lang = 'zh') {
+  const {
+    title,
+    description,
+    cta,
+    link,
+    logo,
+    logoDark,
+    features,
+    showSponsorLink = true,
+    sponsorLinkText,
+    label,
+  } = adData;
+  const isZh = lang === 'zh';
+  const tagText = label ? String(label) : isZh ? '赞助 · Sponsor' : 'Sponsor';
+  const groupLabel = label ? String(label) : isZh ? '赞助内容' : 'Sponsored';
+
+  const titleHtml = renderRichText(title);
+  const descriptionHtml = renderRichText(description);
+  const ctaText = cta ? renderRichText(cta) : isZh ? '了解更多' : 'Learn More';
+
+  const isAnchorLink = typeof link === 'string' && link.startsWith('#');
+  const targetAttrs = isAnchorLink ? '' : ' target="_blank" rel="sponsored noopener"';
+  const hrefAttr = escapeHtml(typeof link === 'string' ? link : '');
+
+  // Logo: image if provided, otherwise the first letter of the (tag-stripped) title
+  let logoInner;
+  const logoImg = (src, cls) =>
+    `<img class="${cls}" src="${escapeHtml(String(src))}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">`;
+  if (logo) {
+    // 提供 logoDark 时同时输出两张，由 site.css 按 html.dark 切换
+    logoInner = logoImg(logo, 'logo-light') + (logoDark ? logoImg(logoDark, 'logo-dark') : '');
+  } else {
+    const plainTitle = (typeof title === 'string' ? title : (title && title.text) || '').replace(/<[^>]*>/g, '').trim();
+    logoInner = escapeHtml(Array.from(plainTitle)[0] || 'S');
+  }
+
+  const featItems = (Array.isArray(features) ? features : []).map(renderFeatureFb).filter(Boolean);
+  const featsHtml = featItems.length ? `\n      <ul class="sponsor-feats">${featItems.join('')}</ul>` : '';
+
+  const becomeText = sponsorLinkText || (isZh ? '成为赞助商' : 'Become a sponsor');
+  const becomeHtml =
+    showSponsorLink !== false
+      ? `\n    <a class="sponsor-become" href="/en/sponsorship/">${escapeHtml(becomeText)} →</a>`
+      : '';
+
+  return `
+<div class="sponsor" role="group" aria-label="${escapeHtml(groupLabel)}">
+  <div class="sponsor-top">
+    <span class="sponsor-tag label">${escapeHtml(tagText)}</span>${becomeHtml}
+  </div>
+  <div class="sponsor-body">
+    <div class="sponsor-logo" aria-hidden="true">${logoInner}</div>
+    <div>
+      <p class="sponsor-title">${titleHtml}</p>
+      <p class="sponsor-desc">${descriptionHtml}</p>${featsHtml}
+      <a class="sponsor-cta" href="${hrefAttr}"${targetAttrs}>${ctaText} →</a>
+    </div>
+  </div>
+</div>
+  `.trim();
+}
+
+/**
  * Render advertisement by style
  * @param {object} adData - AdVariant data object
  * @param {string} lang - Language code (zh/en)
  * @param {number} style - Style type (1=primary, 2=secondary)
+ * @param {string} [design] - Design variant; 'fb' selects the new-design markup for both styles
  * @returns {string} Complete HTML for the advertisement
  */
-export function renderAdByStyle(adData, lang = 'zh', style = 1) {
+export function renderAdByStyle(adData, lang = 'zh', style = 1, design = '') {
+  if (design === 'fb') {
+    return renderAdFb(adData, lang);
+  }
   if (style === 2) {
     return renderAdSecondary(adData, lang);
   }
