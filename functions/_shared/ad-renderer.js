@@ -356,9 +356,10 @@ function renderFeatureFb(feature) {
  * @param {object} adData - AdVariant data object. Optional `label` replaces the top "Sponsor" tag — only for
  *   house ads (e.g. the newsletter default ad), which should also set `showSponsorLink: false`.
  * @param {string} lang - Language code (zh/en)
+ * @param {number} [style] - 1 = card (with logo), 2 = inline (no logo, blends into the article text)
  * @returns {string} Complete HTML for the advertisement
  */
-export function renderAdFb(adData, lang = 'zh') {
+export function renderAdFb(adData, lang = 'zh', style = 1) {
   const {
     title,
     description,
@@ -383,7 +384,8 @@ export function renderAdFb(adData, lang = 'zh') {
   const targetAttrs = isAnchorLink ? '' : ' target="_blank" rel="sponsored noopener"';
   const hrefAttr = escapeHtml(typeof link === 'string' ? link : '');
 
-  // Logo: image if provided, otherwise the first letter of the (tag-stripped) title
+  // Logo（仅卡片样式）：有图用图，否则取标题（去掉标签后）的首字。内嵌样式不显示 logo，文字与正文对齐
+  const isInline = style === 2;
   let logoInner;
   const logoImg = (src, cls) =>
     `<img class="${cls}" src="${escapeHtml(String(src))}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">`;
@@ -405,13 +407,17 @@ export function renderAdFb(adData, lang = 'zh') {
       : '';
 
   return `
-<div class="sponsor" role="group" aria-label="${escapeHtml(groupLabel)}">
+<div class="sponsor${isInline ? ' sponsor-inline' : ''}" role="group" aria-label="${escapeHtml(groupLabel)}">
   <div class="sponsor-top">
     <span class="sponsor-tag label">${escapeHtml(tagText)}</span>${becomeHtml}
   </div>
   <div class="sponsor-body">
-    <div class="sponsor-logo" aria-hidden="true">${logoInner}</div>
-    <div>
+    ${
+      isInline
+        ? ''
+        : `<div class="sponsor-logo" aria-hidden="true">${logoInner}</div>
+    `
+    }<div>
       <p class="sponsor-title">${titleHtml}</p>
       <p class="sponsor-desc">${descriptionHtml}</p>${featsHtml}
       <a class="sponsor-cta" href="${hrefAttr}"${targetAttrs}>${ctaText} →</a>
@@ -431,7 +437,7 @@ export function renderAdFb(adData, lang = 'zh') {
  */
 export function renderAdByStyle(adData, lang = 'zh', style = 1, design = '') {
   if (design === 'fb') {
-    return renderAdFb(adData, lang);
+    return renderAdFb(adData, lang, style);
   }
   if (style === 2) {
     return renderAdSecondary(adData, lang);
