@@ -371,10 +371,14 @@ export function renderAdFb(adData, lang = 'zh', style = 1) {
     showSponsorLink = true,
     sponsorLinkText,
     label,
+    badge,
   } = adData;
   const isZh = lang === 'zh';
-  const tagText = label ? String(label) : isZh ? '赞助 · Sponsor' : 'Sponsor';
-  const groupLabel = label ? String(label) : isZh ? '赞助内容' : 'Sponsored';
+  // 顶部标签：优先用 label；自家推广（showSponsorLink: false，如周报默认广告）可直接用 badge；
+  // 真正的赞助商始终显示“赞助 · Sponsor”，保证赞助身份的披露
+  const customTag = label || (showSponsorLink === false && badge) || '';
+  const tagText = customTag ? String(customTag) : isZh ? '赞助 · Sponsor' : 'Sponsor';
+  const groupLabel = customTag ? String(customTag) : isZh ? '赞助内容' : 'Sponsored';
 
   const titleHtml = renderRichText(title);
   const descriptionHtml = renderRichText(description);
