@@ -9,7 +9,7 @@ Articles are original long-form technical writing focused on how things actually
 - [Home](https://fatbobman.com/en/)
 - [All posts](https://fatbobman.com/en/posts/): Every article, grouped by year
 - [Fatbobman's Swift Weekly](https://fatbobman.com/en/weekly/): Weekly curated Swift and SwiftUI articles, tools and news
-- [Latest issue #159: When Apps Are No Longer Tied to a Specific Operating System](https://fatbobman.com/en/weekly/issue-159/)
+- [Latest issue #160: The Case of the Rapidly Disappearing Disk Space](https://fatbobman.com/en/weekly/issue-160/)
 - [Tips](https://fatbobman.com/en/snippet/): Short, practical snippets
 - [Collections](https://fatbobman.com/en/collections/): Articles organised into topic series
 - [Tags](https://fatbobman.com/en/tags/)
@@ -64,7 +64,7 @@ Articles are original long-form technical writing focused on how things actually
 - [首页](https://fatbobman.com/zh/)
 - [全部文章](https://fatbobman.com/zh/posts/): 按年份归档的全部文章
 - [肘子的 Swift 周报](https://fatbobman.com/zh/weekly/): 每周一期的 Swift / SwiftUI 文章、工具与动态精选
-- [最新一期：第 159 期 · 当应用不再属于特定操作系统](https://fatbobman.com/zh/weekly/issue-159/)
+- [最新一期：第 160 期 · 快速消失的硬盘容量](https://fatbobman.com/zh/weekly/issue-160/)
 - [Tips](https://fatbobman.com/zh/snippet/): 短小、可直接使用的技巧
 - [合集](https://fatbobman.com/zh/collections/): 按主题编排的系列文章
 - [标签](https://fatbobman.com/zh/tags/)
