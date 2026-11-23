@@ -9,7 +9,7 @@ Articles are original long-form technical writing focused on how things actually
 - [Home](https://fatbobman.com/en/)
 - [All posts](https://fatbobman.com/en/posts/): Every article, grouped by year
 - [Fatbobman's Swift Weekly](https://fatbobman.com/en/weekly/): Weekly curated Swift and SwiftUI articles, tools and news
-- [Latest issue #162: Putting “Better” Before “Faster”](https://fatbobman.com/en/weekly/issue-162/)
+- [Latest issue #163: macOS for the Masses, or macOS for Developers?](https://fatbobman.com/en/weekly/issue-163/)
 - [Tips](https://fatbobman.com/en/snippet/): Short, practical snippets
 - [Collections](https://fatbobman.com/en/collections/): Articles organised into topic series
 - [Tags](https://fatbobman.com/en/tags/)
@@ -64,7 +64,7 @@ Articles are original long-form technical writing focused on how things actually
 - [首页](https://fatbobman.com/zh/)
 - [全部文章](https://fatbobman.com/zh/posts/): 按年份归档的全部文章
 - [肘子的 Swift 周报](https://fatbobman.com/zh/weekly/): 每周一期的 Swift / SwiftUI 文章、工具与动态精选
-- [最新一期：第 162 期 · 把「更好」放在「更快」之前](https://fatbobman.com/zh/weekly/issue-162/)
+- [最新一期：第 163 期 · 大众的 macOS，还是开发者的 macOS？](https://fatbobman.com/zh/weekly/issue-163/)
 - [Tips](https://fatbobman.com/zh/snippet/): 短小、可直接使用的技巧
 - [合集](https://fatbobman.com/zh/collections/): 按主题编排的系列文章
 - [标签](https://fatbobman.com/zh/tags/)
